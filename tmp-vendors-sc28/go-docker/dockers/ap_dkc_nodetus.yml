@@ -1,0 +1,23 @@
+# https://hub.docker.com/_/node
+version: ${AP_DKCF_VER}
+
+services:
+    nodetusserver:
+        container_name: ${AP_DK_CON_NODETUS}
+        build:
+            context: .
+            args:
+                VERSION: lts-hydrogen
+            dockerfile: ./dockers/dockerfiles/${AP_DK_CON_NODETUS}.Dockerfile
+        restart: always
+        stdin_open: true
+        tty: true
+        ports:
+            - ${AP_PORT_NODETUS_PUBLIC}:3000
+        volumes:
+            - ${AP_SERVER_NODETUS_DATA_DIR}:/data
+            - ./volumes/${AP_DK_CON_NODETUS}:/nodetus
+            - ./dockers/entrypoints/ap_entrypoint_${AP_DK_CON_NODETUS}.sh:/ap_entrypoint.sh:ro
+        entrypoint: /ap_entrypoint.sh
+        networks:
+            - sc28

@@ -1,0 +1,134 @@
+[
+  {
+    "command": "insertDateTime",
+    "accelerator": null
+  },
+  {
+    "command": "focusElementSideBar",
+    "accelerator": null
+  },
+  {
+    "command": "focusElementNoteList",
+    "accelerator": null
+  },
+  {
+    "command": "focusElementNoteTitle",
+    "accelerator": null
+  },
+  {
+    "command": "focusElementNoteBody",
+    "accelerator": null
+  },
+  {
+    "command": "toggleSideBar",
+    "accelerator": "Option+1"
+  },
+  {
+    "command": "toggleNoteList",
+    "accelerator": "Option+2"
+  },
+  {
+    "command": "toggleVisiblePanes",
+    "accelerator": "Option+3"
+  },
+  {
+    "command": "help",
+    "accelerator": "Ctrl+Cmd+/"
+  },
+  {
+    "command": "editor.sortSelectedLines",
+    "accelerator": null
+  },
+  {
+    "command": "CombineNotes",
+    "accelerator": null
+  },
+  {
+    "command": "textMark",
+    "accelerator": "Cmd+Shift+Y"
+  },
+  {
+    "command": "searchAttachments",
+    "accelerator": "Ctrl+Cmd+F"
+  },
+  {
+    "command": "textStrikethrough",
+    "accelerator": "Cmd+Shift+U"
+  },
+  {
+    "command": "textUnderline",
+    "accelerator": "Cmd+U"
+  },
+  {
+    "command": "textSuperscript",
+    "accelerator": null
+  },
+  {
+    "command": "textSubscript",
+    "accelerator": null
+  },
+  {
+    "command": "editor.joinLines",
+    "accelerator": "Cmd+J"
+  },
+  {
+    "command": "createNoteOverview",
+    "accelerator": null
+  },
+  {
+    "command": "favsAddFolder",
+    "accelerator": null
+  },
+  {
+    "command": "favsAddTag",
+    "accelerator": null
+  },
+  {
+    "command": "favsAddNote",
+    "accelerator": null
+  },
+  {
+    "command": "tabsPinNote",
+    "accelerator": null
+  },
+  {
+    "command": "toggleOutline",
+    "accelerator": "Option+4"
+  },
+  {
+    "command": "quickMove1",
+    "accelerator": "Cmd+Shift+1"
+  },
+  {
+    "command": "quickMove2",
+    "accelerator": "Cmd+Shift+2"
+  },
+  {
+    "command": "quickMove3",
+    "accelerator": "Cmd+Shift+3"
+  },
+  {
+    "command": "quickMove4",
+    "accelerator": "Cmd+Shift+4"
+  },
+  {
+    "command": "quickMove5",
+    "accelerator": "Cmd+Shift+5"
+  },
+  {
+    "command": "quickMove6",
+    "accelerator": "Cmd+Shift+6"
+  },
+  {
+    "command": "quickMove7",
+    "accelerator": "Cmd+Shift+7"
+  },
+  {
+    "command": "quickMove8",
+    "accelerator": "Cmd+Shift+8"
+  },
+  {
+    "command": "quickMove9",
+    "accelerator": "Cmd+Shift+9"
+  }
+]

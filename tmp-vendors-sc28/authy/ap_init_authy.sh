@@ -1,0 +1,4 @@
+# https://authy.com/
+
+export AP_VENDORS_AUTHY_SETUP_DIR="${AP_SCRIPTO_COMMON_DIR}/vendors/authy"
+export AP_VENDORS_AUTHY_SETUP_CONFIGS_DIR="${AP_VENDORS_AUTHY_SETUP_DIR}/configs"

@@ -1,0 +1,186 @@
+[
+    {
+        "command": "textCode",
+        "accelerator": "Option+Cmd+C"
+    },
+    {
+        "command": "insertDateTime",
+        "accelerator": null
+    },
+    {
+        "command": "focusSearch",
+        "accelerator": null
+    },
+    {
+        "command": "focusElementSideBar",
+        "accelerator": "F1"
+    },
+    {
+        "command": "focusElementNoteList",
+        "accelerator": "F2"
+    },
+    {
+        "command": "focusElementNoteTitle",
+        "accelerator": "F3"
+    },
+    {
+        "command": "focusElementNoteBody",
+        "accelerator": "F4"
+    },
+    {
+        "command": "toggleSideBar",
+        "accelerator": "Option+1"
+    },
+    {
+        "command": "toggleNoteList",
+        "accelerator": "Option+2"
+    },
+    {
+        "command": "toggleVisiblePanes",
+        "accelerator": "Option+3"
+    },
+    {
+        "command": "setTags",
+        "accelerator": "Shift+Cmd+T"
+    },
+    {
+        "command": "help",
+        "accelerator": "Ctrl+Cmd+/"
+    },
+    {
+        "command": "editor.redo",
+        "accelerator": "Shift+Cmd+Z"
+    },
+    {
+        "command": "editor.sortSelectedLines",
+        "accelerator": null
+    },
+    {
+        "command": "switchProfile1",
+        "accelerator": null
+    },
+    {
+        "command": "switchProfile2",
+        "accelerator": null
+    },
+    {
+        "command": "switchProfile3",
+        "accelerator": null
+    },
+    {
+        "command": "historyBackward",
+        "accelerator": "Option+["
+    },
+    {
+        "command": "historyForward",
+        "accelerator": "Option+]"
+    },
+    {
+        "command": "newFolder",
+        "accelerator": "Shift+Cmd+N"
+    },
+    {
+        "command": "CombineNotes",
+        "accelerator": "Shift+Cmd+C"
+    },
+    {
+        "command": "searchAttachments",
+        "accelerator": "Ctrl+Cmd+F"
+    },
+    {
+        "command": "tabsPinNote",
+        "accelerator": "Ctrl+Option+P"
+    },
+    {
+        "command": "toggleOutline",
+        "accelerator": "Option+4"
+    },
+    {
+        "command": "quickMove1",
+        "accelerator": "Ctrl+Cmd+1"
+    },
+    {
+        "command": "quickMove2",
+        "accelerator": "Ctrl+Cmd+2"
+    },
+    {
+        "command": "quickMove3",
+        "accelerator": "Ctrl+Cmd+3"
+    },
+    {
+        "command": "quickMove4",
+        "accelerator": null
+    },
+    {
+        "command": "quickMove5",
+        "accelerator": null
+    },
+    {
+        "command": "quickMove6",
+        "accelerator": null
+    },
+    {
+        "command": "quickMove7",
+        "accelerator": null
+    },
+    {
+        "command": "quickMove8",
+        "accelerator": null
+    },
+    {
+        "command": "quickMove9",
+        "accelerator": null
+    },
+    {
+        "command": "apDeleteNotesAndAssociatedAttachmentsWithoutConfirmation",
+        "accelerator": "Cmd+Option+D"
+    },
+    {
+        "command": "formatTable",
+        "accelerator": "Option+Cmd+F"
+    },
+    {
+        "command": "apDeleteFolderAndChildNotesWithoutConfirmation",
+        "accelerator": "Ctrl+Shift+D"
+    },
+    {
+        "command": "CopyAllTags",
+        "accelerator": null
+    },
+    {
+        "command": "TaggingDialog",
+        "accelerator": null
+    },
+    {
+        "command": "apMoveToFolder",
+        "accelerator": "Cmd+Shift+E"
+    },
+    {
+        "command": "ezInsertTable",
+        "accelerator": "Option+Cmd+T"
+    },
+    {
+        "command": "ezFormatTable",
+        "accelerator": null
+    },
+    {
+        "command": "ezDeleteCol",
+        "accelerator": null
+    },
+    {
+        "command": "tableAddRowBelow",
+        "accelerator": "Shift+Cmd+K"
+    },
+    {
+        "command": "tableAddColumnRight",
+        "accelerator": "Shift+Cmd+L"
+    },
+    {
+        "command": "ezInsertNewRow",
+        "accelerator": null
+    },
+    {
+        "command": "ezInsertNewCol",
+        "accelerator": null
+    }
+]

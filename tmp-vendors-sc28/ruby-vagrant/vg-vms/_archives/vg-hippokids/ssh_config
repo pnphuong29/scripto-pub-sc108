@@ -1,0 +1,6 @@
+Host pnphuong29-*
+	User git
+
+Host pnphuong29-hk7
+	HostName github.com
+	IdentityFile ~/pnphuong29/keys/ap_pc7_hk7_rw.key.priv

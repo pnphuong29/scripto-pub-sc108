@@ -1,0 +1,3 @@
+*.lock
+.git
+node_modules

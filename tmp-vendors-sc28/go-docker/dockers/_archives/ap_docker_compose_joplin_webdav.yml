@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+    joplin-webdav:
+        container_name: sc28-joplin-webdav
+        build:
+            context: ./joplin-webdav
+            args:
+                VERSION: 2.4.53
+            dockerfile: Dockerfile
+        restart: always
+        tty: true
+        ports:
+            - '${AP_PORT_JOPLIN_WEBDAV}:${AP_PORT_JOPLIN_WEBDAV}'
+        environment:
+            AP_PORT_JOPLIN_WEBDAV: ${AP_PORT_JOPLIN_WEBDAV}
+        volumes:
+            - ./joplin-webdav/ap_entrypoint.sh:/sc28/joplin-webdav/ap_entrypoint.sh:ro
+            - ${AP_JOPLIN_WEBDAV_DATA_DIR}:/var/www/webdav
+            # - ${AP_DOCKERS_DATA_DIR}/sc28/joplin-webdav/logs:/sc28/joplin-webdav/logs
+        entrypoint: /sc28/joplin-webdav/ap_entrypoint.sh
+        networks:
+            - sc28

@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+    xxx-server:
+        container_name: xxx-server
+        build:
+            context: ./xxx
+            args:
+                VERSION: 2.4.53
+            dockerfile: Dockerfile
+        healthcheck:
+            test: curl --fail -I ${AP_URL_XXX} || exit 1
+            interval: 15s
+            timeout: 5s
+            retries: 5
+        restart: always
+        tty: true
+        ports:
+            - ${AP_PORT_XXX}:9021
+        volumes:
+            - ${AP_XXX_DATA_DIR}:/data
+            - ${AP_XXX_LOGS_DIR}:/logs
+            - ./xxx/ap_entrypoint.sh:/ap_entrypoint.sh:ro
+        entrypoint: /ap_entrypoint.sh
+        networks:
+            - sc28

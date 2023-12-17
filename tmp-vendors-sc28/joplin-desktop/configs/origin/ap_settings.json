@@ -1,0 +1,76 @@
+{
+	"$schema": "https://joplinapp.org/schema/settings.json",
+	"locale": "en_GB",
+	"api.token": "7703e7f5bc36c9d94edd62cad81c00f197fe7c85cbac8c4e076215e4aa61affbfa290b35ec6175ac047566e7d5aa11d5576808e0e748911bb43b18f7fd8b9db3",
+	"markdown.plugin.softbreaks": false,
+	"markdown.plugin.typographer": false,
+	"spellChecker.language": "en-GB",
+	"ui.layout": {
+		"key": "root",
+		"children": [
+			{
+				"key": "tempContainer-fqZqA1KX6YSRAkIlHREodw",
+				"children": [
+					{
+						"key": "plugin-view-joplin.plugin.benji.favorites-favorites.panel",
+						"context": {
+							"pluginId": "joplin.plugin.benji.favorites"
+						},
+						"visible": false,
+						"height": 115
+					},
+					{
+						"key": "sideBar",
+						"visible": true
+					}
+				],
+				"visible": true,
+				"width": 209
+			},
+			{
+				"key": "noteList",
+				"visible": true,
+				"width": 305
+			},
+			{
+				"key": "tempContainer-bWNVJvYUTsIwJH8rKawDSu",
+				"children": [
+					{
+						"key": "plugin-view-joplin.plugin.note.tabs-note.tabs.panel",
+						"context": {
+							"pluginId": "joplin.plugin.note.tabs"
+						},
+						"visible": true,
+						"height": 41
+					},
+					{
+						"key": "editor",
+						"visible": true
+					}
+				],
+				"visible": true
+			},
+			{
+				"key": "plugin-view-outline-outline.panel",
+				"context": {
+					"pluginId": "outline"
+				},
+				"visible": false
+			}
+		],
+		"visible": true
+	},
+	"noteVisiblePanes": [
+		"editor",
+		"viewer"
+	],
+	"sync.target": 9,
+	"sync.9.path": "http://ohmmanipadmehum.ddns.info:13000",
+	"sync.9.username": "nidnos@gmail.com",
+	"clipperServer.autoStart": true,
+	"startMinimized": true,
+	"theme": 1,
+	"notes.sortOrder.field": "user_updated_time",
+	"notes.sortOrder.reverse": true,
+	"editor.codeView": true
+}

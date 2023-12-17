@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=TagSpaces
+Comment=TagSpaces
+Exec=/home/albert/pnphuong29/software/tagspaces/5.5.4/bin/tagspaces.AppImage
+Terminal=false
+Type=Application

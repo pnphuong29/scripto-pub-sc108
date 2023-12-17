@@ -1,0 +1,8 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "official-ubuntu-server-focal-amd64"
+  config.vm.box_url = "http://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64-vagrant.box"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "vagrant-official-ubuntu-server-focal-amd64"
+  end
+end

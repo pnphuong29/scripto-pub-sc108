@@ -1,0 +1,19 @@
+matches:
+  - trigger: '!!test'
+    replace: '{{form1.file}}'
+    vars:
+      - name: files
+        type: shell
+        params:
+          cmd: 'find ~/Documents -maxdepth 1'
+      - name: form1
+        type: form
+        params:
+          layout: |
+            Select file:
+            [[file]]
+          fields:
+            file:
+              type: list
+              values: '{{files}}'
+

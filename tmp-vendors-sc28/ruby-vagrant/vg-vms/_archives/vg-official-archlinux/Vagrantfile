@@ -1,0 +1,7 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "vagrant init archlinux/archlinux"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "vagrant-official-archlinux"
+  end
+end

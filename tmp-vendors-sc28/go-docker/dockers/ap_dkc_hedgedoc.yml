@@ -1,0 +1,65 @@
+version: ${AP_DKCF_VER}
+
+services:
+    hedgedocpg:
+        container_name: ${AP_DK_CON_HEDGEDOC_PG}
+        image: postgres:13.4-alpine
+        environment:
+            - POSTGRES_USER=albert
+            - POSTGRES_PASSWORD_FILE=/run/secrets/hedgedoc_pg_pass
+            - POSTGRES_DB=hedgedoc
+            - PGDATA=/var/lib/postgresql/data
+            - POSTGRES_HOST_AUTH_METHOD=password
+            - POSTGRES_INITDB_ARGS=--auth-host=password
+        volumes:
+            - ${AP_SERVER_HEDGEDOC_DB_DIR}/pg:/var/lib/postgresql/data
+        ports:
+            - ${AP_PORT_HEDGEDOC_PG_PUBLIC}:5432
+        restart: always
+        secrets:
+            - hedgedoc_pg_pass
+
+    hedgedoc:
+        container_name: ${AP_DK_CON_HEDGEDOC}
+        depends_on:
+            - ${AP_DK_CON_HEDGEDOC_PG}
+        # Make sure to use the latest release from https://hedgedoc.org/latest-release
+        # image: quay.io/hedgedoc/hedgedoc:1.9.7
+        build:
+            context: .
+            args:
+                - VERSION=1.9.7
+            dockerfile: ./dockerfiles/${AP_DK_CON_HEDGEDOC}.Dockerfile
+        environment:
+            # https://docs.hedgedoc.org/configuration/
+            - CMD_DB_URL=postgres://albert:${AP_SECRET_HEDGEDOC_PG_PASS}@${AP_DK_CON_HEDGEDOC_PG}:5432/hedgedoc
+            - CMD_DOMAIN=${AP_DOMAIN_HEDGEDOC}
+            # - CMD_HOST=localhost
+            - CMD_PORT=${AP_PORT_HEDGEDOC_PUBLIC}
+            - CMD_URL_ADDPORT=false # Add port to domain
+            - CMD_PROTOCOL_USESSL=true
+            # - CMD_ALLOW_ORIGIN=['localhost'], ['hedgedoc.ohmmanipadmehum.ddns.info']
+            - CMD_DEFAULT_PERMISSION=private
+            - CMD_EMAIL=true # Set to allow email sign-in
+            - CMD_ALLOW_EMAIL_REGISTER=false # https://docs.hedgedoc.org/configuration/#email-local-account
+            - CMD_ALLOW_ANONYMOUS=false # Set to allow anonymous usage (default is true)
+            - CMD_ALLOW_ANONYMOUS_EDITS=false
+            - CMD_ALLOW_FREEURL=false # Set to allow new note creation by accessing a nonexistent note URL
+            - CMD_REQUIRE_FREEURL_AUTHENTICATION=true # Set to require authentication for FreeURL mode style note creation
+            - CMD_IMAGE_UPLOAD_TYPE=filesystem
+            - CMD_DOCUMENT_MAX_LENGTH=100000 # default
+            - NODE_ENV=production
+            # - DEBUG=true
+        healthcheck:
+            test: curl --fail -I ${AP_URL_HEDGEDOC} || exit 1
+            interval: 15s
+            timeout: 5s
+            retries: 5
+        restart: always
+        ports:
+            - ${AP_PORT_HEDGEDOC_PUBLIC}:${AP_PORT_HEDGEDOC_PUBLIC}
+        volumes:
+            # Current working directory in Docker context is /hedgedoc
+            - ${AP_SERVER_HEDGEDOC_DATA_DIR}:/hedgedoc/public/uploads
+            - ./entrypoints/ap_entrypoint_${AP_DK_CON_HEDGEDOC}.sh:/ap_entrypoint.sh:ro
+        entrypoint: /ap_entrypoint.sh

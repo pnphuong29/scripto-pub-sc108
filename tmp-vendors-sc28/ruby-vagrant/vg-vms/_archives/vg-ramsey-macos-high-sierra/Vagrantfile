@@ -1,0 +1,10 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "ramsey/macos-high-sierra"
+  config.vm.box_version = "1.0.0"
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "vagrant-ramsey-macos-high-sierra"
+    vb.gui = false
+  end
+end

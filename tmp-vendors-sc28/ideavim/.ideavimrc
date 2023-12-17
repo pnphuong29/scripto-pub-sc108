@@ -1,0 +1,132 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+set clipboard+=unnamedplus
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+noremap <unique> <A-/> :Commentary<CR>
+inoremap <unique> <A-/> <Esc>:Commentary<CR>i
+
+autocmd BufNewFile,BufRead Dockerfile setlocal commentstring=#\ %s
+autocmd BufNewFile,BufRead *.Dockerfile setlocal commentstring=#\ %s
+autocmd BufNewFile,BufRead Caddyfile setlocal commentstring=#\ %s
+autocmd BufNewFile,BufRead *.Caddyfile setlocal commentstring=#\ %s
+autocmd BufNewFile,BufRead .env setlocal commentstring=#\ %s
+autocmd BufNewFile,BufRead .env.* setlocal commentstring=#\ %s
+autocmd BufNewFile,BufRead *.conf setlocal commentstring=#\ %s
+autocmd BufNewFile,BufRead .gitignore setlocal commentstring=#\ %s
+autocmd BufNewFile,BufRead *.sql setlocal commentstring=--\ %s
+autocmd BufNewFile,BufRead *.php setlocal commentstring=//\ %s
+autocmd BufNewFile,BufRead *.cnf setlocal commentstring=#\ %s
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+" Keymap
+" Jump to previous tab
+nnoremap <unique> <nowait> <S-Tab> gT
+
+" Jump to next tab
+nnoremap <unique> <nowait> <Tab> gt
+
+" Move current tab to the previous position
+inoremap <unique> <nowait> <A-[> <Esc>:tabmove -1<CR>i
+nnoremap <unique> <nowait> <A-[> :tabmove -1<CR>
+
+" Move current tab to the next position
+nnoremap <unique> <nowait> <A-]> :tabmove +1<CR>
+inoremap <unique> <nowait> <A-]> <Esc>:tabmove +1<CR>i
+
+" Close window
+nnoremap <unique> <nowait> <A-w> <C-w>q
+inoremap <unique> <nowait> <A-w> <Esc><C-w>q
+
+" Exit
+nnoremap <unique> <nowait> <A-q> :qall<CR>
+inoremap <unique> <nowait> <A-q> <Esc>:qall<CR>
+
+" Save changes
+nnoremap <unique> <nowait> <A-s> :w<CR>
+inoremap <unique> <nowait> <A-s> <Esc>:w<CR>
+" inoremap <unique> <nowait> <A-s> <Esc>:w<CR>i
+
+" ------- Others -------
+" Move cursor to the beginning of line
+nnoremap <nowait> <C-a> 0
+inoremap <nowait> <C-a> <Esc>0i
+
+" Move cursor to the end of line
+nnoremap <nowait> <C-e> $
+inoremap <nowait> <C-e> <Esc>$i
+
+" Switch to select mode for copying to the lhs in insert mode
+inoremap <unique> <nowait> <S-Left> <Esc>v<Left>b
+
+" Switch to select mode for copying to the rhs in insert mode
+inoremap <unique> <nowait> <S-Right> <Esc><Right>v<Right>w
+
+" Move cursor down N lines
+nnoremap <unique> <nowait> <S-Down> :+7<CR>
+inoremap <unique> <nowait> <S-Down> <Esc>:+7<CR>
+noremap <unique> <nowait> <PageDown> :+14<CR>
+inoremap <unique> <nowait> <PageDown> <Esc>:+14<CR>
+
+" Move cursor up N lines
+nnoremap <unique> <nowait> <S-Up> :-7<CR>
+inoremap <unique> <nowait> <S-Up> <Esc>:-7<CR>
+nnoremap <unique> <nowait> <PageUp> :-14<CR>
+inoremap <unique> <nowait> <PageUp> <Esc>:-14<CR>
+
+" Press Enter <CR> in normal mode
+nnoremap <unique> <nowait> <CR> i<CR>
+
+" Press Backspace <BS> in normal mode
+nnoremap <unique> <nowait> <BS> i<BS>
+
+" Press Del <Del> in normal mode
+nnoremap <unique> <nowait> <Del> i<Del>
+
+" Press Space <Space> in normal mode
+nnoremap <unique> <nowait> <Space> i
+
+" Paste
+nnoremap <unique> <nowait> <A-v> p
+inoremap <unique> <nowait> <A-v> <Esc>p<Right>i
+
+" Delete word backward
+inoremap <nowait> <C-w> <Esc><Right>dbi
+
+" Copy from the current cursor position to the end of line
+nnoremap <unique> <nowait> <S-End> v$<Left>
+inoremap <unique> <nowait> <S-End> <Esc><Right>v$<Left>
+
+" Copy from the current cursor position to the beginning of line
+nnoremap <unique> <nowait> <S-Home> v0
+inoremap <unique> <nowait> <S-Home> <Esc>v0

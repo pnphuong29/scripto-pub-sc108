@@ -1,0 +1,60 @@
+# https://www.metabase.com/docs/latest/installation-and-operation/running-metabase-on-docker
+version: ${AP_DKCF_VER}
+
+services:
+    mbpg:
+        container_name: ${AP_DK_CON_MB_PG}
+        image: postgres:15.3
+        tty: true
+        ports:
+            - ${AP_PORT_MB_PG_PUBLIC}:5432
+        environment:
+            - POSTGRES_USER=${AP_DK_MB_PG_USER}
+            - POSTGRES_PASSWORD_FILE=/run/secrets/mb_pg_pass
+            - POSTGRES_DB=${AP_DK_MB_PG_NAME}
+            - PGDATA=/var/lib/postgresql/data
+            - POSTGRES_HOST_AUTH_METHOD=password
+            - POSTGRES_INITDB_ARGS=--auth-host=password
+        volumes:
+            - ${AP_SERVER_MB_DB_DIR}/pg:/var/lib/postgresql/data
+            - ${AP_SERVER_MB_BK_DIR}/db:/backups
+        restart: always
+        secrets:
+            - mb_pg_pass
+
+    mb:
+        container_name: ${AP_DK_CON_MB}
+        depends_on:
+            - ${AP_DK_CON_MB_PG}
+        # image: metabase/metabase:latest
+        build:
+            context: .
+            args:
+                VERSION: latest
+            dockerfile: ./dockerfiles/${AP_DK_CON_MB}.Dockerfile
+        restart: always
+        healthcheck:
+            test: curl --fail -I :${AP_URL_MB}/api/health || exit 1
+            interval: 15s
+            timeout: 5s
+            retries: 5
+        tty: true
+        ports:
+            - ${AP_PORT_MB_PUBLIC}:3000
+        environment:
+            - MB_DB_TYPE=postgres
+            - MB_DB_DBNAME=${AP_DK_MB_PG_NAME}
+            - MB_DB_USER=${AP_DK_MB_PG_USER}
+            - MB_DB_PASS=${AP_SECRET_MB_PG_PASS}
+            # - MB_DB_PASS_FILE=/run/secrets/mb_pg_pass # Use secret with Docker Swarm
+            - MB_DB_PORT=5432
+            - MB_DB_HOST=${AP_DK_CON_MB_PG}
+            # - MB_DB_FILE=/metabase/metabase.db
+            - MUID=${USER}
+            - MGID=${USER}
+            # - JAVA_TIMEZONE=Asia/Ho_Chi_Minh
+        volumes:
+            - ./entrypoints/ap_entrypoint_${AP_DK_CON_MB}.sh:/ap_entrypoint.sh
+        entrypoint: /ap_entrypoint.sh
+        # secrets:
+        #     - mb_pg_pass

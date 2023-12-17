@@ -1,0 +1,31 @@
+version: ${AP_DKCF_VER}
+
+secrets:
+    mysql_root_pass:
+        file: ${AP_SECRET_MYSQL_ROOT_PASS_FILE:?}
+    pg_pass:
+        file: ${AP_SECRET_PG_PASS_FILE:?}
+    pga_pass:
+        file: ${AP_SECRET_PGA_PASS_FILE:?}
+    jl_pg_pass:
+        file: ${AP_SECRET_JL_PG_PASS_FILE:?}
+    hedgedoc_pg_pass:
+        file: ${AP_SECRET_HEDGEDOC_PG_PASS_FILE:?}
+    mb_pg_pass:
+        file: ${AP_SECRET_MB_PG_PASS_FILE:?}
+    wp_mysql_root_pass:
+        file: ${AP_SECRET_WP_MYSQL_ROOT_PASS_FILE:?}
+    wp_mysql_pass:
+        file: ${AP_SECRET_WP_MYSQL_PASS_FILE:?}
+    woo_mysql_root_pass:
+        file: ${AP_SECRET_WP_MYSQL_ROOT_PASS_FILE:?}
+    woo_mysql_pass:
+        file: ${AP_SECRET_WP_MYSQL_PASS_FILE:?}
+
+volumes:
+    pg:
+        name: pg
+
+networks:
+    sc28:
+        name: sc28

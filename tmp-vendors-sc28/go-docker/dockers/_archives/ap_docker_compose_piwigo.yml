@@ -1,0 +1,50 @@
+# https://hub.docker.com/_/php
+# https://hub.docker.com/_/mysql
+version: '3.9'
+
+services:
+    piwigo-mysql:
+        container_name: ${AP_DK_CON_NAME_PIWIGO_DB}
+        # build:
+        #     context: ./piwigo-mysql
+        #     args:
+        #         VERSION: 8.0
+        #     dockerfile: Dockerfile
+        image: mysql:8.0
+        environment:
+            MYSQL_ROOT_PASSWORD: ${AP_DK_PIWIGO_DB_ROOT_PASS}
+            MYSQL_DATABASE: ${AP_DK_PIWIGO_DB_NAME} # Create a new database
+            MYSQL_USER: ${AP_DK_PIWIGO_DB_USER} # Create a new user with grant to newly created DB
+            MYSQL_PASSWORD: ${AP_DK_PIWIGO_DB_PASS} # Password for the newly created user
+        restart: always
+        tty: true
+        # env_file: ./${AP_DK_CON_NAME_PIWIGO_MYSQL}/.env
+        ports:
+            - ${AP_PORT_PIWIGO_DB}:${AP_PORT_PIWIGO_DB_GUEST}
+        # volumes:
+        #     - ${AP_MYSQL_SERVER_DIR}:/mysql/data
+        # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
+        # (this is just an example, not intended to be a production configuration)
+        command: --default-authentication-plugin=mysql_native_password
+
+    piwigo-app:
+        container_name: ${AP_DK_CON_NAME_PIWIGO}
+        build:
+            context: ./piwigo
+            args:
+                VERSION: 8.0
+            dockerfile: Dockerfile
+        healthcheck:
+            test: curl --fail -I ${AP_URL_PIWIGO} || exit 1
+            interval: 15s
+            timeout: 5s
+            retries: 5
+        restart: always
+        tty: true
+        ports:
+            - ${AP_PORT_PIWIGO}:${AP_PORT_PIWIGO_GUEST}
+        volumes:
+            - ${AP_PRJ_DEV7_DIR}/piwigo:/piwigo/www
+            - ${AP_PIWIGO_SERVER_LOGS_DIR}:/piwigo/logs
+            - ./${AP_DK_CON_NAME_PIWIGO}/ap_entrypoint.sh:/ap_entrypoint.sh:ro
+        entrypoint: /ap_entrypoint.sh

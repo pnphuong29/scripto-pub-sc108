@@ -1,0 +1,47 @@
+Vagrant.configure('2') do |config|
+  config.vm.box = 'pnphuong29/ubuntu-server-focal-amd64'
+  config.vm.box_version = '1.1.0'
+
+  config.vm.provider 'virtualbox' do |vb|
+    vb.name = ENV['AP_VG_VM_HIPPOKIDS_NAME']
+    vb.check_guest_additions = true
+    vb.cpus = 4
+    vb.memory = 4096
+  end
+
+  config.ssh.private_key_path = '~/pnphuong29/keys/ap_vagrant.key.priv'
+
+  # Shared folders
+  config.vm.synced_folder '/mnt/ubuntu-vg-extra-hdd/hippokids',
+                          '/mnt/ubuntu-vg-extra-hdd/hippokids',
+                          owner: 'vagrant',
+                          group: 'vagrant'
+
+  # config.vm.synced_folder "#{ENV['AP_PRJ_HK7_DIR']}/dockers/pg/data",
+  #                         "#{ENV['AP_VG_GUEST_GH_PNP29_DIR']}/ap-hippokids-js-hk7/dockers/pg/data",
+  #                         create: true, # Create host path if not exist
+  #                         automount: true,
+  #                         SharedFoldersEnableSymlinksCreate: true, # Enable symbolic links
+  #                         mount_options: ['uid=999', 'gid=999'] # Use [postgres] user of docker
+
+  # Port forwarding
+  config.vm.network 'forwarded_port', host: 8080, guest: 8080, protocol: 'tcp' # adminer
+  config.vm.network 'forwarded_port', host: 3000, guest: 3000, protocol: 'tcp' # nginx, nextjs-commerce
+  config.vm.network 'forwarded_port', host: 3001, guest: 3001, protocol: 'tcp' # nginx, vendure
+
+  # Hostname
+  config.vm.provision 'config-hostname', type: 'shell', run: 'once', inline: 'hostname hippokids'
+
+  # SSH config file
+  config.vm.provision 'config-ssh', type: 'file', run: 'once', source: 'ssh_config',
+                                    destination: '/home/vagrant/.ssh/config'
+
+  # SSH keys
+  config.vm.provision 'add-ssh-key-hk7', type: 'file', run: 'once',
+                                         source: "#{ENV['AP_SECRETS_DIR']}/ap_pc7_hk7_rw.key.priv",
+                                         destination: "#{ENV['AP_VG_GUEST_SECRETS_DIR']}/ap_pc7_hk7_rw.key.priv"
+
+  config.vm.provision 'add-ssh-key-hk21', type: 'file', run: 'once',
+                                          source: "#{ENV['AP_SECRETS_DIR']}/ap_pc7_hk21_rw.key.priv",
+                                          destination: "#{ENV['AP_VG_GUEST_SECRETS_DIR']}/ap_pc7_hk21_rw.key.priv"
+end

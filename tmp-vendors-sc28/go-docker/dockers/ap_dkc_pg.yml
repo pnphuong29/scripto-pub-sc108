@@ -1,0 +1,32 @@
+# https://hub.docker.com/_/postgres
+version: ${AP_DKCF_VER}
+
+services:
+    pg:
+        container_name: ${AP_DK_CON_PG}
+        image: postgres:14.2
+        # build:
+        # context: ./${AP_DK_CON_PG}
+        # args:
+        # VERSION: 14.2
+        # dockerfile: ./dockerfiles/${AP_DK_CON_PG}.Dockerfile
+        restart: always
+        tty: true
+        environment:
+            POSTGRES_PASSWORD_FILE: /run/secrets/pg_pass
+            POSTGRES_USER: ${AP_DK_PG_USER}
+            POSTGRES_DB: postgres
+            PGDATA: /var/lib/postgresql/data
+            POSTGRES_HOST_AUTH_METHOD: password
+            POSTGRES_INITDB_ARGS: --auth-host=password
+        ports:
+            - ${AP_PORT_PG_PUBLIC}:5432
+        volumes:
+            - ${AP_SERVER_PG_DB_DIR}:/pg/data
+            - ${AP_SERVER_PG_BK_DIR}/db:/backups
+            # - ./entrypoints/ap_entrypoint_${AP_DK_CON_PG}.sh:/ap_entrypoint.sh:ro
+        # entrypoint: /ap_entrypoint.sh
+        networks:
+            - sc28
+        secrets:
+            - pg_pass

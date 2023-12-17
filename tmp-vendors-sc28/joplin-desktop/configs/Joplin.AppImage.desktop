@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/albert/.joplin/Joplin.AppImage
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Joplin Desktop
+Name=Joplin Desktop
+Comment[en_US]=
+Comment=

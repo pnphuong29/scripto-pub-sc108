@@ -1,0 +1,227 @@
+{
+	"yaml.schemas": {
+		"https://github.com/neoclide/coc.nvim/blob/master/data/schema.json": "coc-settings.json",
+		"http://json.schemastore.org/prettierrc": ".prettierrc.json",
+		"https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
+	},
+	"npm.binPath": "~/.nvm/versions/node/v16.20.2/bin/npm",
+	"python.pythonPath": "~/.pyenv/shims/python",
+	"suggest.autoTrigger": "trigger",
+	"coc.source.file.ignoreHidden": true,
+	"coc.preferences.formatOnSaveFiletypes": [
+		"vim",
+		"html",
+		"css",
+		"js",
+		"ts",
+		"php",
+		"rb",
+		"ruby",
+		"py",
+		"go",
+		"sql",
+		"yaml",
+		"yml",
+		"md",
+		"json",
+		"config"
+	],
+	"go.goplsOptions": {
+		"completeUnimported": true
+	},
+	"solargraph.diagnostics": true,
+	"solargraph.autoformat": true,
+	"solargraph.formatting": true,
+	"solargraph.hover": true,
+	"html-css-support.enable": true,
+	"html-css-support.enabledLanguages": [
+		"html"
+	],
+	"html-css-support.styleSheets": [],
+	"htmlhint.enable": true,
+	"htmlhint.documentSelector": [
+		"html",
+		"htm"
+	],
+	"htmlhint.options": {},
+	"cssmodules.camelCase": false,
+	"cssmodules.hintName": "cssmodules",
+	"sql.database": "postgresql",
+	"colors.filetypes": [
+		"*"
+	],
+	"highlight.disableLanguages": [],
+	"highlight.colorNames.enable": true,
+	"highlight.colors.enable": true,
+	"highlight.document.enable": true,
+	"explorer.width": 70,
+	"explorer.quitOnOpen": true,
+	"explorer.openAction.strategy": "tab",
+	"explorer.icon.enableNerdfont": false,
+	"explorer.icon.source": "builtin",
+	"explorer.openAction.for.directory": "cd",
+	"explorer.file.showHiddenFiles": true,
+	"explorer.file.cdCommand": false,
+	"explorer.git.enable": true,
+	"explorer.debug": false,
+	"explorer.keyMappings.global": {
+		"i": false,
+		"<c-o>": "noop",
+		"<tab>": false,
+		"*": "toggleSelection",
+		"m": "actionMenu",
+		"gk": [
+			"wait",
+			"expandablePrev"
+		],
+		"gj": [
+			"wait",
+			"expandableNext"
+		],
+		"h": [
+			"wait",
+			"collapse"
+		],
+		"l": [
+			"wait",
+			"expandable?",
+			"expand",
+			"open"
+		],
+		"J": [
+			"wait",
+			"toggleSelection",
+			"normal:j"
+		],
+		"K": [
+			"wait",
+			"toggleSelection",
+			"normal:k"
+		],
+		"gl": [
+			"wait",
+			"expand:recursive"
+		],
+		"gh": [
+			"wait",
+			"collapse:recursive"
+		],
+		"<2-LeftMouse>": [
+			"expandable?",
+			[
+				"expanded?",
+				"collapse",
+				"expand"
+			],
+			"open"
+		],
+		"o": [
+			"wait",
+			"expanded?",
+			"collapse",
+			"expand"
+		],
+		"<space>": [
+			"wait",
+			"expanded?",
+			"collapse",
+			"expand"
+		],
+		"<cr>": [
+			"wait",
+			"expandable?",
+			"cd",
+			"open:tab"
+		],
+		"e": "open",
+		"s": "open:split",
+		"E": "open:vsplit",
+		"t": "open:tab",
+		"<bs>": [
+			"wait",
+			"gotoParent"
+		],
+		"gs": [
+			"wait",
+			"reveal:select"
+		],
+		"il": "preview:labeling",
+		"ic": "preview:content",
+		"Il": "previewOnHover:toggle:labeling",
+		"Ic": "previewOnHover:toggle:content",
+		"II": "previewOnHover:disable",
+		"yp": "copyFilepath",
+		"yn": "copyFilename",
+		"yy": "copyFile",
+		"dd": "cutFile",
+		"p": "pasteFile",
+		"df": "delete",
+		"dF": "deleteForever",
+		"a": "addFile",
+		"A": "addDirectory",
+		"r": "rename",
+		"zh": "toggleHidden",
+		"g<dot>": "toggleHidden",
+		"R": "refresh",
+		"?": "help",
+		"q": "quit",
+		"<esc>": "esc",
+		"X": "systemExecute",
+		"gd": "listDrive",
+		"f": "search",
+		"gf": "gotoSource:file",
+		"gb": "gotoSource:buffer",
+		"[[": [
+			"wait",
+			"sourcePrev"
+		],
+		"]]": [
+			"wait",
+			"sourceNext"
+		],
+		"[i": [
+			"wait",
+			"indentPrev"
+		],
+		"]i": [
+			"wait",
+			"indentNext"
+		],
+		"[m": [
+			"wait",
+			"markPrev:modified"
+		],
+		"]m": [
+			"wait",
+			"markNext:modified"
+		],
+		"[d": [
+			"wait",
+			"markPrev:diagnosticError:diagnosticWarning"
+		],
+		"]d": [
+			"wait",
+			"markNext:diagnosticError:diagnosticWarning"
+		],
+		"[D": [
+			"wait",
+			"markPrev:diagnosticError"
+		],
+		"]D": [
+			"wait",
+			"markNext:diagnosticError"
+		],
+		"[c": [
+			"wait",
+			"markPrev:git"
+		],
+		"]c": [
+			"wait",
+			"markNext:git"
+		],
+		"<<": "gitStage",
+		">>": "gitUnstage"
+	},
+  "markdown-preview-enhanced.liveUpdate": true,
+  "snippets.ultisnips.pythonPrompt": false
+}

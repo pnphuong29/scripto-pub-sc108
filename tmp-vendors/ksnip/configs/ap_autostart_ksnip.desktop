@@ -1,0 +1,41 @@
+[Desktop Entry]
+X-SnapInstanceName=ksnip
+Type=Application
+Exec=env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/ksnip_ksnip.desktop /snap/bin/ksnip
+Icon=/snap/ksnip/443/meta/gui/icon.svg
+Terminal=false
+StartupNotify=false
+Name=ksnip
+GenericName=ksnip Screenshot Tool
+GenericName[ru]=Создание снимков экрана
+Categories=Utility;
+Actions=Area;LastArea;FullScreen;Window;
+MimeType=image/bmp;image/gif;image/jpeg;image/jpg;image/png;
+Comment=Cross-platform screenshot tool that provides many annotation features for your screenshots.
+Comment[pt_BR]=Ferramenta de captura de tela de Cross-plataforma que fornece muitos recursos de anotação para suas capturas de tela.
+Comment[ru]=Кросс-платформенный инструмент для создания снимков экрана, который предоставляет множество функций их аннотирования.
+
+[Desktop Action Area]
+Exec=env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/ksnip_ksnip.desktop /snap/bin/ksnip -r -c
+Icon=/snap/ksnip/443/meta/gui/icon.svg
+Name=Capture a rectangular area
+Name[ru]=Снимок выделенной области
+
+[Desktop Action LastArea]
+Exec=env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/ksnip_ksnip.desktop /snap/bin/ksnip -l -c
+Icon=/snap/ksnip/443/meta/gui/icon.svg
+Name=Capture last selected rectangular area
+Name[ru]=Снимок последней области
+
+[Desktop Action FullScreen]
+Exec=env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/ksnip_ksnip.desktop /snap/bin/ksnip -m -c
+Icon=/snap/ksnip/443/meta/gui/icon.svg
+Name=Capture a fullscreen
+Name[ru]=Снимок всего экрана
+
+[Desktop Action Window]
+Exec=env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/ksnip_ksnip.desktop /snap/bin/ksnip -a -c
+Icon=/snap/ksnip/443/meta/gui/icon.svg
+Name=Capture the focused window
+Name[ru]=Снимок активного экрана
+

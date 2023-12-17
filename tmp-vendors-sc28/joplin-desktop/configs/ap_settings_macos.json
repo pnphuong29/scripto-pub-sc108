@@ -1,0 +1,88 @@
+{
+	"$schema": "https://joplinapp.org/schema/settings.json",
+	"locale": "en_GB",
+	"api.token": "7703e7f5bc36c9d94edd62cad81c00f197fe7c85cbac8c4e076215e4aa61affbfa290b35ec6175ac047566e7d5aa11d5576808e0e748911bb43b18f7fd8b9db3",
+	"markdown.plugin.softbreaks": false,
+	"markdown.plugin.typographer": false,
+	"spellChecker.language": "en-GB",
+	"ui.layout": {
+		"key": "root",
+		"children": [
+			{
+				"key": "tempContainer-fqZqA1KX6YSRAkIlHREodw",
+				"children": [
+					{
+						"key": "sideBar",
+						"visible": true
+					}
+				],
+				"visible": true,
+				"width": 134
+			},
+			{
+				"key": "tempContainer-em31YBdUgbsdHswmIxauSA",
+				"children": [
+					{
+						"key": "noteList",
+						"visible": true
+					}
+				],
+				"visible": true,
+				"width": 162
+			},
+			{
+				"key": "tempContainer-bWNVJvYUTsIwJH8rKawDSu",
+				"children": [
+					{
+						"key": "plugin-view-joplin.plugin.note.tabs-note.tabs.panel",
+						"context": {
+							"pluginId": "joplin.plugin.note.tabs"
+						},
+						"visible": true,
+						"height": 66
+					},
+					{
+						"key": "editor",
+						"visible": true
+					}
+				],
+				"visible": true
+			},
+			{
+				"key": "plugin-view-outline-outline.panel",
+				"context": {
+					"pluginId": "outline"
+				},
+				"visible": false
+			}
+		],
+		"visible": true
+	},
+	"noteVisiblePanes": [
+		"editor",
+		"viewer"
+	],
+	"sync.target": 9,
+	"sync.9.path": "https://joplin.tramnhien.ddns.info",
+	"sync.9.username": "pnphuong29@gmail.com",
+	"clipperServer.autoStart": true,
+	"startMinimized": true,
+	"theme": 1,
+	"notes.sortOrder.field": "title",
+	"notes.sortOrder.reverse": false,
+	"editor.codeView": true,
+	"notes.perFieldReverse": {
+		"user_updated_time": true,
+		"user_created_time": true,
+		"title": false,
+		"order": false
+	},
+	"newNoteFocus": "title",
+	"windowContentZoomFactor": 100,
+	"sync.maxConcurrentConnections": 10,
+	"spellChecker.languages": [
+		"en-GB"
+	],
+	"markdown.plugin.multitable": false,
+	"imageResizing": "neverResize"
+}
