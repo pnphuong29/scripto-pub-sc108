@@ -41,12 +41,7 @@ ap_func_init_pyenv() {
 
 alias @createdirstructpyenv="ap_func_create_dirstruct_pyenv"
 ap_func_create_dirstruct_pyenv() {
-    @logshow "Generate [pip] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_pip.bash]\n"
-    pip completion --bash >"${AP_COMPLETIONS_DIR}/ap_completion_pip.bash"
-
-    @logshow "Generate [pip3] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_pip3.bash]\n"
-    pip3 completion --bash >"${AP_COMPLETIONS_DIR}/ap_completion_pip3.bash"
-
+    @createdirstructpip
     if alias @createdirstructpyenvcommon &>/dev/null; then
         @createdirstructpyenvcommon
     fi
@@ -54,9 +49,7 @@ ap_func_create_dirstruct_pyenv() {
 
 alias @rmdirstructpyenv="ap_func_remove_dirstruct_pyenv"
 ap_func_remove_dirstruct_pyenv() {
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_pip.bash"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_pip3.bash"
-
+    @rmdirstructpip
     if alias @rmdirstructpyenvcommon &>/dev/null; then
         @rmdirstructpyenvcommon
     fi
