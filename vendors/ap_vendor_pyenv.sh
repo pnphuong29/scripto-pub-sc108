@@ -3,7 +3,7 @@ ap_func_init_pyenv() {
     # Defines the directory under which Python versions and shims reside.
     # pyenv root
     export PYENV_ROOT="${HOME}/.pyenv"
-    export AP_PYTHON_VERSION_DEFAULT_DEFAULT="3.10.0"
+    export AP_PYTHON_VERSION_DEFAULT="3.10.0"
 
     # Sets a shell-specific Python version.
     # This version overrides application-specific versions and the global version.
@@ -36,6 +36,29 @@ ap_func_init_pyenv() {
 
     if alias @initpyenvcommon &>/dev/null; then
         @initpyenvcommon
+    fi
+}
+
+alias @createdirstructpyenv="ap_func_create_dirstruct_pyenv"
+ap_func_create_dirstruct_pyenv() {
+    @logshow "Generate [pip] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_pip.bash]\n"
+    pip completion --bash >"${AP_COMPLETIONS_DIR}/ap_completion_pip.bash"
+
+    @logshow "Generate [pip3] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_pip3.bash]\n"
+    pip3 completion --bash >"${AP_COMPLETIONS_DIR}/ap_completion_pip3.bash"
+
+    if alias @createdirstructpyenvcommon &>/dev/null; then
+        @createdirstructpyenvcommon
+    fi
+}
+
+alias @rmdirstructpyenv="ap_func_remove_dirstruct_pyenv"
+ap_func_remove_dirstruct_pyenv() {
+    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_pip.bash"
+    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_pip3.bash"
+
+    if alias @rmdirstructpyenvcommon &>/dev/null; then
+        @rmdirstructpyenvcommon
     fi
 }
 
@@ -86,16 +109,18 @@ ap_func_setup_pyenv() {
     @logshow "Set pyenv global version [${AP_PYTHON_VERSION_DEFAULT}]\n"
     pyenv global "${AP_PYTHON_VERSION_DEFAULT}" # Set default global python
 
-    @genpipcompletion
+    if alias @createdirstructpyenv &>/dev/null; then
+        @createdirstructpyenv
+    fi
 }
 
 alias @rmpyenv="ap_func_remove_pyenv"
 ap_func_remove_pyenv() {
     @logshow "Remove [pyenv]\n"
     rm -rf "$(pyenv root)"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_django.bash"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_pipx.bash"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_pip.bash"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_pip3.bash"
     rm -f "${HOME}/.python-version"
+
+    if alias @rmdirstructpyenv &>/dev/null; then
+        @rmdirstructpyenv
+    fi
 }
