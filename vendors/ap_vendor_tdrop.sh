@@ -1,3 +1,24 @@
+alias @inittdrop="ap_func_init_tdrop"
+ap_func_init_tdrop() {
+    if alias @inittdropcommon &>/dev/null; then
+        @inittdropcommon
+    fi
+}
+
+alias @createdirstructtdrop="ap_func_create_dirstruct_tdrop"
+ap_func_create_dirstruct_tdrop() {
+    if alias @createdirstructtdropcommon &>/dev/null; then
+        @createdirstructtdropcommon
+    fi
+}
+
+alias @rmdirstructtdrop="ap_func_remove_dirstruct_tdrop"
+ap_func_remove_dirstruct_tdrop() {
+    if alias @rmdirstructtdropcommon &>/dev/null; then
+        @rmdirstructtdropcommon
+    fi
+}
+
 alias @setuptdrop="ap_func_setup_tdrop"
 ap_func_setup_tdrop() {
     # https://github.com/noctuid/tdrop

@@ -7,18 +7,6 @@ ap_func_init_certbot() {
 
 alias @createdirstructcertbot="ap_func_create_dirstruct_certbot"
 ap_func_create_dirstruct_certbot() {
-    @logshow "Generate [certbot] bash autocomplete\n"
-    certbot >"${AP_COMPLETIONS_DIR}/ap_completion_certbot.bash"
-
-    @logshow "Create symlink from [${AP_SOFT_DIR}/bin/certbot] to [${AP_SOFT_DIR}/certbot/bin/certbot]\n"
-    ln -sf "${AP_SOFT_DIR}/certbot/bin/certbot" "${AP_SOFT_DIR}/bin/certbot"
-
-    @logshow "Create symlink from [${AP_COMPLETIONS_DIR}/ap_completion_certbot.bash] to [${AP_SOFT_DIR}/certbot/complete/certbot.bash]\n"
-    ln -sf "${AP_SOFT_DIR}/certbot/autocomplete/certbot.bash" "${AP_COMPLETIONS_DIR}/ap_completion_certbot.bash"
-
-    @logshow "Create symlink from [${AP_MAN_DIR}/man1/certbot.1] to [${AP_SOFT_DIR}/certbot/certbot.1]\n"
-    ln -sf "${AP_SOFT_DIR}/certbot/certbot.1" "${AP_MAN_DIR}/man1/certbot.1"
-
     if alias @createdirstructcertbotcommon &>/dev/null; then
         @createdirstructcertbotcommon
     fi
@@ -26,15 +14,6 @@ ap_func_create_dirstruct_certbot() {
 
 alias @rmdirstructcertbot="ap_func_remove_dirstruct_certbot"
 ap_func_remove_dirstruct_certbot() {
-    @logshow "Remove [${AP_SOFT_DIR}/bin/certbot]\n"
-    rm -f "${AP_SOFT_DIR}/bin/certbot"
-
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_certbot.bash]\n"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_certbot.bash"
-
-    @logshow "Remove [${AP_MAN_DIR}/man1/certbot.1]\n"
-    rm -f "${AP_MAN_DIR}/man1/certbot.1"
-
     if alias @rmdirstructcertbotcommon &>/dev/null; then
         @rmdirstructcertbotcommon
     fi
