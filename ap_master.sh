@@ -64,18 +64,18 @@ fi
 # Load environment variables
 while read -r ap_env; do
     source "${ap_env}"
-done < <(find "${AP_SCRIPTO_DIR}/libs" -type f -maxdepth 1 -name "ap_env_*.sh" | sort)
+done < <(gfind "${AP_SCRIPTO_DIR}/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
 
 if [ -d "${AP_SCRIPTO_COMMON_DIR}" ]; then
     while read -r ap_env; do
         source "${ap_env}"
-    done < <(find "${AP_SCRIPTO_COMMON_DIR}/libs" -type f -maxdepth 1 -name "ap_env_*.sh" | sort)
+    done < <(gfind "${AP_SCRIPTO_COMMON_DIR}/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
 fi
 
 if [ -d "${AP_SCRIPTO_MAIN_DIR}" ]; then
     while read -r ap_env; do
         source "${ap_env}"
-    done < <(find "${AP_SCRIPTO_MAIN_DIR}/libs" -type f -maxdepth 1 -name "ap_env_*.sh" | sort)
+    done < <(gfind "${AP_SCRIPTO_MAIN_DIR}/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
 fi
 
 # For manpath command to search for man pages located in man directory
