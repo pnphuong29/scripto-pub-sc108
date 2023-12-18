@@ -41,10 +41,6 @@ ap_func_init_pyenv() {
     if alias @initpython &>/dev/null; then
         @initpython
     fi
-
-    if alias @initpipx &>/dev/null; then
-        @initpipx
-    fi
 }
 
 alias @createdirstructpyenv="ap_func_create_dirstruct_pyenv"
@@ -60,10 +56,6 @@ ap_func_create_dirstruct_pyenv() {
     if alias @createdirstructpip &>/dev/null; then
         @createdirstructpip
     fi
-
-    if alias @createdirstructpipx &>/dev/null; then
-        @createdirstructpipx
-    fi
 }
 
 alias @rmdirstructpyenv="ap_func_remove_dirstruct_pyenv"
@@ -78,10 +70,6 @@ ap_func_remove_dirstruct_pyenv() {
 
     if alias @rmdirstructpip &>/dev/null; then
         @rmdirstructpip
-    fi
-
-    if alias @rmdirstructpipx &>/dev/null; then
-        @rmdirstructpipx
     fi
 }
 
