@@ -38,9 +38,9 @@ ap_func_init_pyenv() {
         @initpyenvcommon
     fi
 
-    if alias @initpython &>/dev/null; then
-        @initpython
-    fi
+    # if alias | grep @initpython= &>/dev/null; then
+    #     @initpython
+    # fi
 }
 
 alias @createdirstructpyenv="ap_func_create_dirstruct_pyenv"
@@ -129,7 +129,6 @@ alias @rmpyenv="ap_func_remove_pyenv"
 ap_func_remove_pyenv() {
     @logshow "Remove [pyenv]\n"
     rm -rf "$(pyenv root)"
-    rm -f "${HOME}/.python-version"
 
     if alias @rmdirstructpyenv &>/dev/null; then
         @rmdirstructpyenv

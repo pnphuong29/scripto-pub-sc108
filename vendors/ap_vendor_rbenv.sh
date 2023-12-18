@@ -1,9 +1,49 @@
 alias @initrbenv="ap_func_init_rbenv"
 ap_func_init_rbenv() {
-    # https://github.com/rbenv/rbenv
-    export AP_RUBY_SETUP_VERSION="3.2.2"
+    export AP_RUBY_SETUP_VERSION="3.1.4"
+
     @addpath "${HOME}/.rbenv/bin"
-    eval "$(rbenv init - bash)"
+    eval "$("${HOME}/.rbenv/bin/rbenv" init - bash)"
+    # eval "$(rbenv init - bash)"
+
+    if alias @initrbenvcommon &>/dev/null; then
+        @initrbenvcommon
+    fi
+}
+
+alias @createdirstructrbenv="ap_func_create_dirstruct_rbenv"
+ap_func_create_dirstruct_rbenv() {
+    @logshow "Set rbenv local version [${AP_RUBY_SETUP_VERSION}] at [${HOME}]\n"
+    cd "${HOME}"
+    rbenv local "${AP_RUBY_SETUP_VERSION}"
+
+    if alias @createdirstructrbenvcommon &>/dev/null; then
+        @createdirstructrbenvcommon
+    fi
+
+    if alias @createdirstructruby &>/dev/null; then
+        @createdirstructruby
+    fi
+}
+
+alias @rmdirstructrbenv="ap_func_remove_dirstruct_rbenv"
+ap_func_remove_dirstruct_rbenv() {
+    @logshow "Remove [${AP_SOFT_DIR}/bin/rbenv]\n"
+    rm -f "${AP_SOFT_DIR}/bin/rbenv"
+
+    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_rbenv.bash]\n"
+    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_rbenv.bash"
+
+    @logshow "Remove [${AP_MAN_DIR}/man1/rbenv.1]\n"
+    rm -f "${AP_MAN_DIR}/man1/rbenv.1"
+
+    if alias @rmdirstructrbenvcommon &>/dev/null; then
+        @rmdirstructrbenvcommon
+    fi
+
+    if alias @rmdirstructruby &>/dev/null; then
+        @rmdirstructruby
+    fi
 }
 
 alias @setuprbenv="ap_func_setup_rbenv"
@@ -22,7 +62,8 @@ ap_func_setup_rbenv() {
     @addpath "${HOME}/.rbenv/bin"
 
     # Init rbenv
-    eval "$(rbenv init - bash)"
+    eval "$("${HOME}/.rbenv/bin/rbenv" init - bash)"
+    # eval "$(rbenv init - bash)"
 
     # Verify installation of rbenv
     curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-doctor | bash
@@ -46,21 +87,17 @@ ap_func_setup_rbenv() {
         solargraph \
         asciidoctor
 
-    @genrubycompletion
-    @createdirstructrbenv
+    if alias @createdirstructrbenv &>/dev/null; then
+        @createdirstructrbenv
+    fi
 }
 
 alias @rmrbenv="ap_func_remove_rbenv"
 ap_func_remove_rbenv() {
-    # https://github.com/rbenv/rbenv
     @logshow "Remove [rbenv]\n"
     rm -rf "${HOME}/.rbenv"
-    rm -rf "${AP_GH_DIR}/mernen/completion-ruby"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_ruby.bash"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_gem.bash"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_rails.bash"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_rake.bash"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_bundle.bash"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_jruby.bash"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_ruby_all.bash"
+
+    if alias @rmdirstructrbenv &>/dev/null; then
+        @rmdirstructrbenv
+    fi
 }
