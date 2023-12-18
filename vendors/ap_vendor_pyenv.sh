@@ -34,24 +34,54 @@ ap_func_init_pyenv() {
         source "${PYENV_ROOT}/completions/pyenv.bash"
     fi
 
-    if alias @initpyenvcommon &>/dev/null; then
-        @initpyenvcommon
+    if alias @initpyenv &>/dev/null; then
+        @initpyenv
+    fi
+
+    if alias @initpython &>/dev/null; then
+        @initpython
+    fi
+
+    if alias @initpipx &>/dev/null; then
+        @initpipx
     fi
 }
 
 alias @createdirstructpyenv="ap_func_create_dirstruct_pyenv"
 ap_func_create_dirstruct_pyenv() {
-    @createdirstructpip
     if alias @createdirstructpyenvcommon &>/dev/null; then
         @createdirstructpyenvcommon
+    fi
+
+    if alias @createdirstructpython &>/dev/null; then
+        @createdirstructpython
+    fi
+
+    if alias @createdirstructpip &>/dev/null; then
+        @createdirstructpip
+    fi
+
+    if alias @createdirstructpipx &>/dev/null; then
+        @createdirstructpipx
     fi
 }
 
 alias @rmdirstructpyenv="ap_func_remove_dirstruct_pyenv"
 ap_func_remove_dirstruct_pyenv() {
-    @rmdirstructpip
     if alias @rmdirstructpyenvcommon &>/dev/null; then
         @rmdirstructpyenvcommon
+    fi
+
+    if alias @rmdirstructpython &>/dev/null; then
+        @rmdirstructpython
+    fi
+
+    if alias @rmdirstructpip &>/dev/null; then
+        @rmdirstructpip
+    fi
+
+    if alias @rmdirstructpipx &>/dev/null; then
+        @rmdirstructpipx
     fi
 }
 
