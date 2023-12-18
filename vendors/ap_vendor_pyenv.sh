@@ -34,8 +34,8 @@ ap_func_init_pyenv() {
         source "${PYENV_ROOT}/completions/pyenv.bash"
     fi
 
-    if alias @initpyenv &>/dev/null; then
-        @initpyenv
+    if alias @initpyenvcommon &>/dev/null; then
+        @initpyenvcommon
     fi
 
     if alias @initpython &>/dev/null; then
