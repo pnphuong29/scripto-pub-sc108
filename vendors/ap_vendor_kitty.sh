@@ -35,6 +35,7 @@ ap_func_remove_dirstruct_kitty() {
         rm -f "${HOME}/.local/bin/kitten"
         rm -f "${HOME}/.local/share/applications/kitty"*
     fi
+
     rm -rf "${AP_SOFT_DIR}/kitty/kitty-themes"
 
     if alias @rmdirstructkittycommon &>/dev/null; then
