@@ -50,13 +50,13 @@ alias ncrtdb='occenablemaintenancemode; mysql -uroot -p "${AP_NEXTCLOUD_SERVER_D
 ## END---
 
 # Backup Nextcloud DB from host machine
-alias bkncdb="cd \${AP_SC28_VAGRANT_VMS_DIR}/vg-nextcloud; vagrant ssh -c /home/vagrant/scripto/projects/p29-github/pnphuong29/ap-scripts-nextcloud-sc56/utils/ap_bk_nextcloud_db.sh"
+alias bkncdb="cd \${AP_SC28_VAGRANT_VMS_DIR}/vg-nextcloud; vagrant ssh -c /home/vagrant/scripto/projects/github.com/pnphuong29/ap-scripts-nextcloud-sc56/utils/ap_bk_nextcloud_db.sh"
 
 # Backup Nextcloud source codes, data and DB
 alias bkncall="gacpnc7; bkncdata; bkncdb"
 
 # Restore Nextcloud DB from host machine
-alias rtncdb="cd \${AP_SC28_VAGRANT_VMS_DIR}/vg-nextcloud; vagrant ssh -c /home/vagrant/scripto/projects/p29-github/pnphuong29/ap-scripts-nextcloud-sc56/utils/ap_rt_nextcloud_db.sh"
+alias rtncdb="cd \${AP_SC28_VAGRANT_VMS_DIR}/vg-nextcloud; vagrant ssh -c /home/vagrant/scripto/projects/github.com/pnphuong29/ap-scripts-nextcloud-sc56/utils/ap_rt_nextcloud_db.sh"
 
 # @$alias $$ ap_func_nextcloud_backup {
 alias ap_alias_nextcloud_backup='ap_func_nextcloud_backup'

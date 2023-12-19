@@ -287,7 +287,7 @@ ap_func_prj_git_clone() {
 
     if [[ "$#" > 0 ]]; then
         for ap_repo_name in "$@"; do
-            git clone "git@p29-github:pnphuong29/${ap_repo_name}.git"
+            git clone "git@github.com:pnphuong29/${ap_repo_name}.git"
         done
     else
         if [[ "$ap_opt_a" == 1 ]]; then

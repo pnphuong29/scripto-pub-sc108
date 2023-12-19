@@ -36,7 +36,7 @@ export AP_VG_GUEST_HOME_DIR="/home/vagrant/${AP_USER}"
 export AP_VG_GUEST_SHARES_LOCAL_DIR="${AP_VG_GUEST_HOME_DIR}/shares"
 export AP_VG_GUEST_SECRETS_DIR="${AP_VG_GUEST_HOME_DIR}/secrets"
 export AP_VG_GUEST_TMP_DIR="${AP_VG_GUEST_HOME_DIR}/tmp"
-export AP_VG_GUEST_GH_P29_DIR="${AP_VG_GUEST_HOME_DIR}/projects/p29-github/pnphuong29"
+export AP_VG_GUEST_GH_P29_DIR="${AP_VG_GUEST_HOME_DIR}/projects/github.com/pnphuong29"
 export AP_VG_GUEST_PRJ_VMS28_DIR="${AP_VG_GUEST_GH_PNP29_DIR}/ap-vms-common-vm28"
 
 # Vagrant machine naming
