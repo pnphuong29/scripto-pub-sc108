@@ -22,6 +22,10 @@ ap_func_create_dir_struct_core() {
     @logshow "Create directories [${AP_COMPLETIONS_DIR}]\n"
     mkdir -p "${AP_COMPLETIONS_DIR}"
 
+    # Projects
+    @logshow "Create directories [${AP_PRJ_DIR}]\n"
+    mkdir -p "${AP_PRJ_DIR}"
+
     # Tmp
     @logshow "Create directories [${AP_TMP_DIR}]\n"
     mkdir -p "${AP_TMP_DIR}"

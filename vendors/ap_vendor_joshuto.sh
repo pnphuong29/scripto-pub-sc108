@@ -1,8 +1,31 @@
+alias @initjoshuto="ap_func_init_joshuto"
+ap_func_init_joshuto() {
+    export JOSHUTO_CONFIG_HOME="${AP_SCRIPTO_DIR}/vendors/joshuto/configs"
+    alias 2joshutodocs="open https://github.com/kamiyaa/joshuto/tree/main/docs"
+    alias @viscjoshuto="@vi -p \
+        \${AP_SCRIPTO_DIR}/vendors/ap_vendor_joshuto.sh \
+        \${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_joshuto.sh \
+        \${AP_SCRIPTO_DIR}/vendors/joshuto/configs/joshuto.toml \
+        \${AP_SCRIPTO_DIR}/vendors/joshuto/configs/keymap.toml \
+        \${AP_SCRIPTO_DIR}/vendors/joshuto/configs/mimetype.toml \
+        \${AP_SCRIPTO_DIR}/vendors/joshuto/configs/bookmarks.toml \
+        \${AP_SCRIPTO_DIR}/vendors/joshuto/configs/preview_file.sh \
+    "
+
+    if alias @initjoshutocommon &>/dev/null; then
+        @initjoshutocommon
+    fi
+}
+
 alias @createdirstructjoshuto="ap_func_create_dirstruct_joshuto"
 ap_func_create_dirstruct_joshuto() {
     # Preview image cache dir
     @logshow "Create directories [${AP_TMP_DIR}/joshuto/preview-image-cache]\n"
     mkdir -p "${AP_TMP_DIR}/joshuto/preview-image-cache"
+
+    @logshow "Create symlink from [${AP_SOFT_DIR}/bin/joshuto_wrapper] to [${AP_SCRIPTO_DIR}/vendors/joshuto/bin/joshuto_wrapper.sh]\n"
+    ln -sf "${AP_SCRIPTO_DIR}/vendors/joshuto/bin/joshuto_wrapper.sh" "${AP_SOFT_DIR}/bin/joshuto_wrapper"
+
     if alias @createdirstructjoshutocommon &>/dev/null; then
         @createdirstructjoshutocommon
     fi
@@ -12,6 +35,10 @@ alias @rmdirstructjoshuto="ap_func_remove_dirstruct_joshuto"
 ap_func_remove_dirstruct_joshuto() {
     @logshow "Remove [${AP_TMP_DIR}/joshuto/preview-image-cache]\n"
     rm -rf "${AP_TMP_DIR}/joshuto/preview-image-cache"
+
+    @logshow "Remove [${AP_SOFT_DIR}/bin/joshuto_wrapper]\n"
+    rm -f "${AP_SOFT_DIR}/bin/joshuto_wrapper"
+
     if alias @rmdirstructjoshutocommon &>/dev/null; then
         @rmdirstructjoshutocommon
     fi

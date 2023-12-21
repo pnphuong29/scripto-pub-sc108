@@ -4,8 +4,26 @@ ap_func_init_nvim() {
     export AP_NVIM_SETUP_VERSION="latest"
     @addpath "${AP_SOFT_DIR}/nvim/bin"
 
+    alias @vi="nvim"
+    alias @znvimswap="cd \${HOME}/.local/share/nvim/swap"
+    alias @rmnvimswapfiles="rm -f \${HOME}/.local/share/nvim/swap/\*"
+
     if alias @initnvimcommon &>/dev/null; then
         @initnvimcommon
+    fi
+}
+
+alias @createdirstructnvim="ap_func_create_dirstruct_nvim"
+ap_func_create_dirstruct_nvim() {
+    if alias @createdirstructnvimcommon &>/dev/null; then
+        @createdirstructnvimcommon
+    fi
+}
+
+alias @rmdirstructnvim="ap_func_remove_dirstruct_nvim"
+ap_func_remove_dirstruct_nvim() {
+    if alias @rmdirstructnvimcommon &>/dev/null; then
+        @rmdirstructnvimcommon
     fi
 }
 

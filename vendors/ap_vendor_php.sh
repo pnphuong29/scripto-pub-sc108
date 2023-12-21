@@ -1,7 +1,24 @@
-# alias @initphp="ap_func_init_php"
-# ap_func_init_php() {
-#     @addpath "/usr/local/opt/php@8.3/bin"
-# }
+alias @initphp="ap_func_init_php"
+ap_func_init_php() {
+    # @addpath "/usr/local/opt/php@8.1/bin"
+    if alias @initphpcommon &>/dev/null; then
+        @initphpcommon
+    fi
+}
+
+alias @createdirstructphp="ap_func_create_dirstruct_php"
+ap_func_create_dirstruct_php() {
+    if alias @createdirstructphpcommon &>/dev/null; then
+        @createdirstructphpcommon
+    fi
+}
+
+alias @rmdirstructphp="ap_func_remove_dirstruct_php"
+ap_func_remove_dirstruct_php() {
+    if alias @rmdirstructphpcommon &>/dev/null; then
+        @rmdirstructphpcommon
+    fi
+}
 
 alias @setupphp="ap_func_setup_php"
 ap_func_setup_php() {
@@ -11,82 +28,84 @@ ap_func_setup_php() {
     # - pgsql
     # - redis
     # - imagemagick
-    @logshow "Install [PHP 8.3]\n"
+    @logshow "Install [PHP 8.1]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew reinstall gd # Fix bugs "Library not loaded: /opt/homebrew/opt/libavif/lib/libavif.15.dylib"
-        brew install php@8.3
-        # @addpath "/usr/local/opt/php@8.3/bin"
+        brew install php@8.1
+        # @addpath "/usr/local/opt/php@8.1/bin"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         sudo apt install -y software-properties-common
         sudo add-apt-repository -y ppa:ondrej/php
         sudo apt update
 
         sudo apt install -y \
-            php8.3 \
-            libapache2-mod-php8.3
+            php8.1 \
+            php8.1-fpm \
+            libapache2-mod-php8.1
 
         sudo apt install -y \
-            php8.3-dev \
+            php8.1-dev \
             php-pear \
-            php8.3-curl \
+            php8.1-curl \
             php-dompdf \
-            php8.3-gd \
+            php8.1-gd \
             php-json \
-            php8.3-mbstring \
-            php8.3-xml \
-            php8.3-zip \
-            php8.3-sqlite3 \
-            php8.3-mysql \
-            php8.3-pgsql \
-            php8.3-bz2 \
-            php8.3-intl \
-            php8.3-ldap \
-            php8.3-smbclient \
-            php8.3-redis \
-            php8.3-imap \
-            php8.3-bcmath \
-            php8.3-gmp \
-            php8.3-apcu \
-            php8.3-memcached \
-            php8.3-imagick
+            php8.1-mbstring \
+            php8.1-xml \
+            php8.1-zip \
+            php8.1-sqlite3 \
+            php8.1-mysql \
+            php8.1-pgsql \
+            php8.1-bz2 \
+            php8.1-intl \
+            php8.1-ldap \
+            php8.1-smbclient \
+            php8.1-redis \
+            php8.1-imap \
+            php8.1-bcmath \
+            php8.1-gmp \
+            php8.1-apcu \
+            php8.1-memcached \
+            php8.1-imagick
     fi
 }
 
 alias @rmphp="ap_func_remove_php"
 ap_func_remove_php() {
-    @logshow "Remove [php 8.3]\n"
+    @logshow "Remove [php 8.1]\n"
     # MySQL should have only 1 version in current system
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        brew uninstall php@8.3
+        brew uninstall php@8.1
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        sudo apt remove -y \
-            php8.3 \
-            libapache2-mod-php8.3
-
-        sudo apt remove -y \
-            php8.3-dev \
+        sudo apt purge -y \
+            php8.1 \
+            php8.1-fpm \
+            libapache2-mod-php8.1 \
+            php8.1-dev \
             php-pear \
-            php8.3-curl \
+            php8.1-curl \
             php-dompdf \
-            php8.3-gd \
+            php8.1-gd \
             php-json \
-            php8.3-mbstring \
-            php8.3-xml \
-            php8.3-zip \
-            php8.3-sqlite3 \
-            php8.3-mysql \
-            php8.3-pgsql \
-            php8.3-bz2 \
-            php8.3-intl \
-            php8.3-ldap \
-            php8.3-smbclient \
-            php8.3-redis \
-            php8.3-imap \
-            php8.3-bcmath \
-            php8.3-gmp \
-            php8.3-apcu \
-            php8.3-memcached \
-            php8.3-imagick
+            php8.1-mbstring \
+            php8.1-xml \
+            php8.1-zip \
+            php8.1-sqlite3 \
+            php8.1-mysql \
+            php8.1-pgsql \
+            php8.1-bz2 \
+            php8.1-intl \
+            php8.1-ldap \
+            php8.1-smbclient \
+            php8.1-redis \
+            php8.1-imap \
+            php8.1-bcmath \
+            php8.1-gmp \
+            php8.1-apcu \
+            php8.1-memcached \
+            php8.1-imagick
+
+        sudo apt autoremove -y
     fi
 }

@@ -33,11 +33,11 @@ reverse = false
 # use_preview_script = true
 # max_preview_size = 2097152 # 2M
 # preview_images = true
-preview_shown_hook_script = "~/scripto-common/vendors/rust-joshuto/configs/on_preview_shown_kitty.sh"
-preview_removed_hook_script = "~/scripto-common/vendors/rust-joshuto/configs/on_preview_removed_kitty.sh"
-# preview_shown_hook_script = "~/scripto-common/vendors/rust-joshuto/configs/on_preview_shown.sh"
-# preview_removed_hook_script = "~/scripto-common/vendors/rust-joshuto/configs/on_preview_removed.sh"
-preview_script = "~/scripto-common/vendors/rust-joshuto/configs/preview_file.sh"
+preview_shown_hook_script = "~/scripto-common/vendors/joshuto/configs/on_preview_shown_kitty.sh"
+preview_removed_hook_script = "~/scripto-common/vendors/joshuto/configs/on_preview_removed_kitty.sh"
+# preview_shown_hook_script = "~/scripto-common/vendors/joshuto/configs/on_preview_shown.sh"
+# preview_removed_hook_script = "~/scripto-common/vendors/joshuto/configs/on_preview_removed.sh"
+preview_script = "~/scripto-common/vendors/joshuto/configs/preview_file.sh"
 
 [tab]
 # inherit, home, root

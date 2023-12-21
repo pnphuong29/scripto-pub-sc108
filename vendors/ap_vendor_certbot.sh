@@ -1,5 +1,10 @@
 alias @initcertbot="ap_func_init_certbot"
 ap_func_init_certbot() {
+    alias @zsccertbot="cd \${AP_SCRIPTO_COMMON_DIR}/vendors/certbot"
+    alias @certbotinstallapache="sudo certbot --apache --verbose"
+    alias @certbotinstallnginx="sudo certbot --nginx --verbose"
+    alias @zletsencrypt="cd /etc/letsencrypt"
+
     if alias @initcertbotcommon &>/dev/null; then
         @initcertbotcommon
     fi

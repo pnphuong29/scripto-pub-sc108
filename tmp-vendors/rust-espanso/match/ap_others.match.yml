@@ -1,9 +1,9 @@
 matches:
-  - trigger: '!!desktopsc'
-    replace: '{{template_content}}'
-    label: 'Template - Gnome Desktop Shortcut'
+  - trigger: "!!desktopsc"
+    replace: "{{template_content}}"
+    label: "Template - Gnome Desktop Shortcut"
     vars:
       - name: template_content
         type: shell
         params:
-          cmd: 'cat ~/pnphuong29/projects/p29-github/pnphuong29/ap-scripts-common-sc28/templates/ap_gnome_desktop_shortcut.tpl.desktop'
+          cmd: "cat ~/scripto-common/templates/ap_gnome_desktop_shortcut.tpl.desktop"

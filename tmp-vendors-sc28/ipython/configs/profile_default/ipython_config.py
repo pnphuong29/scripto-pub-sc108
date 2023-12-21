@@ -1,11 +1,11 @@
 # https://ipython.readthedocs.io/en/stable/config/options/terminal.html
 
-# c.BaseIPythonApplication.auto_create = ~/pnphuong29/projects/p29-github/pnphuong29/ap-scripts-common-sc28/vendors/ipython/configs
+# c.BaseIPythonApplication.auto_create = ~/scripto-common/vendors/ipython/configs
 # c.BaseIPythonApplication.extra_config_file = ''
 
 
-# c.HistoryAccessor.hist_file = ~/pnphuong29/projects/p29-github/pnphuong29/ap-scripts-common-sc28/vendors/ipython/configs/profile_default/history.sqlite
-# c.HistoryManager.hist_file = ~/pnphuong29/projects/p29-github/pnphuong29/ap-scripts-common-sc28/vendors/ipython/configs/profile_default/history.sqlite
+# c.HistoryAccessor.hist_file = ~/scripto-common/vendors/ipython/configs/profile_default/history.sqlite
+# c.HistoryManager.hist_file = ~/scripto-common/vendors/ipython/configs/profile_default/history.sqlite
 
 
 c.TerminalIPythonApp.display_banner = True

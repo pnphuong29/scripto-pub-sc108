@@ -6,7 +6,7 @@ services:
     pma:
         container_name: ${AP_DK_CON_PMA}
         depends_on:
-            - ${AP_DK_CON_MYSQL}
+            - mysql
         image: phpmyadmin
         healthcheck:
             test: curl --fail -I ${AP_URL_PMA} || exit 1
@@ -20,8 +20,8 @@ services:
         # environment:
         # - PMA_ABSOLUTE_URI=${AP_DOMAIN_PMA}
         # - PMA_ARBITRARY=1 # Use with arbitrary MySQL server
-        # - PMA_HOST=${AP_DK_CON_MYSQL}
-        # - PMA_HOSTS=${AP_DK_CON_MYSQL} # Define comma separated list of address/host names of the MySQL servers
+        # - PMA_HOST=mysql
+        # - PMA_HOSTS=mysql # Define comma separated list of address/host names of the MySQL servers
         # - PMA_PORTS= # Comma-separated ports of the database server to use.
         volumes:
             - ./configs/pma/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php # Custom user config

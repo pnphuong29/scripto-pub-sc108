@@ -3,10 +3,10 @@ version: ${AP_DKCF_VER}
 
 services:
     adminer:
-        container_name: ${AP_DK_CON_ADMINER}
+        container_name: adminer
         depends_on:
-            - ${AP_DK_CON_MYSQL}
-            - ${AP_DK_CON_PG}
+            - mysql
+            - pg
         image: adminer:latest
         restart: always
         healthcheck:
@@ -18,7 +18,7 @@ services:
         ports:
             - ${AP_PORT_ADMINER_PUBLIC}:8080
         # volumes:
-        #     - ./entrypoints/ap_entrypoint_${AP_DK_CON_ADMINER}.sh:/ap_entrypoint.sh:ro
+        #     - ./entrypoints/ap_entrypoint_adminer.sh:/ap_entrypoint.sh:ro
         #     - ./entrypoints/ap_entrypoint_debug.sh:/ap_entrypoint.sh:ro
         # entrypoint: /ap_entrypoint.sh
         networks:

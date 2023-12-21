@@ -21,9 +21,9 @@ keymap = [
 	{ keys = [ "alt+4" ],		command = "tab_switch_index 4" },
 	{ keys = [ "alt+5" ],		command = "tab_switch_index 5" },
 
-	{ keys = [ "1" ],		command = "cd ~/pnphuong29" },
-	{ keys = [ "2" ],		command = "cd ~/pnphuong29/projects/github.com/pnphuong29" },
-	{ keys = [ "3" ],		command = "cd ~/scripto-common/vendors" },
+	{ keys = [ "1" ],		command = "numbered_command 1" },
+	{ keys = [ "2" ],		command = "numbered_command 2" },
+	{ keys = [ "3" ],		command = "numbered_command 3" },
 	{ keys = [ "4" ],		command = "numbered_command 4" },
 	{ keys = [ "5" ],		command = "numbered_command 5" },
 	{ keys = [ "6" ],		command = "numbered_command 6" },
@@ -45,12 +45,10 @@ keymap = [
 	{ keys = [ "ctrl+d" ], 		command = "cursor_move_page_down 0.5" },
 
 	# vim-like keybindings
-	{ keys = [ "j" ],		command = "cd .." },
+	{ keys = [ "j" ],		command = "cursor_move_down" },
+	{ keys = [ "k" ],		command = "cursor_move_up" },
+	{ keys = [ "h" ],		command = "cd .." },
 	{ keys = [ "l" ],		command = "open" },
-	{ keys = [ "i" ],	command = "cursor_move_up" },
-	{ keys = [ "k" ],	command = "cursor_move_down" },
-	{ keys = [ "K" ], 		command = "cursor_move_page_down 0.3" },
-	{ keys = [ "I" ],  		command = "cursor_move_page_up 0.3" },
 	{ keys = [ "g", "g" ],		command = "cursor_move_home" },
 	{ keys = [ "G" ],		command = "cursor_move_end" },
 	{ keys = [ "r" ],		command = "open_with" },
@@ -73,14 +71,13 @@ keymap = [
 	{ keys = [ "p", "l" ],		command = "symlink_files --relative=false" },
 	{ keys = [ "p", "L" ],		command = "symlink_files --relative=true" },
 
-	{ keys = [ "delete" ],		command = "delete_files" },
-	{ keys = [ "d", "D" ],		command = "delete_files" },
+	{ keys = [ "delete" ],		command = "delete_files --foreground=true" },
+	{ keys = [ "d", "D" ],		command = "delete_files --foreground=true" },
 
 	{ keys = [ "p", "p" ],		command = "paste_files" },
 	{ keys = [ "p", "o" ],		command = "paste_files --overwrite=true" },
 
 	{ keys = [ "a" ],		command = "rename_append" },
-	{ keys = [ "f2" ],		command = "rename_append" },
 	{ keys = [ "A" ],		command = "rename_prepend" },
 
 	{ keys = [ "f", "t" ],		command = ":touch " },
@@ -118,7 +115,6 @@ keymap = [
 
 	{ keys = [ "g", "r" ],		command = "cd /" },
 	{ keys = [ "g", "c" ],		command = "cd ~/.config" },
-	{ keys = [ "g", "l" ],		command = "cd ~/.local" },
 	{ keys = [ "g", "d" ],		command = "cd ~/Downloads" },
 	{ keys = [ "g", "e" ],		command = "cd /etc" },
 	{ keys = [ "g", "h" ],		command = "cd ~/" },

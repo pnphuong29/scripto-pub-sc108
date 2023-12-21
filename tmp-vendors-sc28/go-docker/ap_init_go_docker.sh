@@ -102,9 +102,9 @@ alias dkinspect="docker inspect"
 alias dkinspectlogpath="docker inspect --format='{{.LogPath}}'"
 
 alias dkupessentialdockers="\
-	dkup \${AP_DK_CON_MYSQL}; \
-	dkup \${AP_DK_CON_PG}; \
-	dkup \${AP_DK_CON_ADMINER}; \
+	dkup \mysql; \
+	dkup \pg; \
+	dkup \adminer; \
 	dkup \${AP_DK_CON_PMA}; \
 	dkup \${AP_DK_CON_PGA}; \
 	dkup \${AP_DK_CON_FILEBROWSER}; \

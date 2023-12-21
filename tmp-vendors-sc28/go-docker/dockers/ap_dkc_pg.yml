@@ -3,13 +3,13 @@ version: ${AP_DKCF_VER}
 
 services:
     pg:
-        container_name: ${AP_DK_CON_PG}
+        container_name: pg
         image: postgres:14.2
         # build:
-        # context: ./${AP_DK_CON_PG}
+        # context: ./pg
         # args:
         # VERSION: 14.2
-        # dockerfile: ./dockerfiles/${AP_DK_CON_PG}.Dockerfile
+        # dockerfile: ./dockerfiles/pg.Dockerfile
         restart: always
         tty: true
         environment:
@@ -24,7 +24,7 @@ services:
         volumes:
             - ${AP_SERVER_PG_DB_DIR}:/pg/data
             - ${AP_SERVER_PG_BK_DIR}/db:/backups
-            # - ./entrypoints/ap_entrypoint_${AP_DK_CON_PG}.sh:/ap_entrypoint.sh:ro
+            # - ./entrypoints/ap_entrypoint_pg.sh:/ap_entrypoint.sh:ro
         # entrypoint: /ap_entrypoint.sh
         networks:
             - sc28

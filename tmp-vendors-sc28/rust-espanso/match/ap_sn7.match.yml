@@ -1,9 +1,9 @@
 matches:
-  - trigger: '!!sncmd1'
-    replace: '{{template_content}}'
-    label: 'SN7 - Template - Command - 1'
+  - trigger: "!!sncmd1"
+    replace: "{{template_content}}"
+    label: "SN7 - Template - Command - 1"
     vars:
       - name: template_content
         type: shell
         params:
-          cmd: 'cat ~/pnphuong29/projects/p29-github/pnphuong29/ap-snippets-sn7/_templates/ap_cmd_1.tpl.md'
+          cmd: "cat ~/pnphuong29/projects/github.com/pnphuong29/ap-snippets-sn7/_templates/ap_cmd_1.tpl.md"

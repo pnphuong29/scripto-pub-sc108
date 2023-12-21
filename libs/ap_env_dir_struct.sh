@@ -13,6 +13,9 @@ export AP_MAN_DIR="${AP_SCRIPTO_DATA_DIR}/man"
 # Autocomplete
 export AP_COMPLETIONS_DIR="${AP_SCRIPTO_DATA_DIR}/completions"
 
+# Projects
+export AP_PRJ_DIR="${AP_SCRIPTO_DATA_DIR}/projects"
+
 # Tmp
 export AP_TMP_DIR="${AP_SCRIPTO_DATA_DIR}/tmp"
 

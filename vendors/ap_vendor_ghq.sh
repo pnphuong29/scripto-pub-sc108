@@ -1,3 +1,9 @@
+alias @initghq="ap_func_init_ghq"
+ap_func_init_ghq() {
+    # https://github.com/x-motemen/ghq
+    export GHQ_ROOT="${AP_PRJ_DIR}"
+}
+
 alias @setupghq="ap_func_setup_ghq"
 ap_func_setup_ghq() {
     # https://github.com/x-motemen/ghq

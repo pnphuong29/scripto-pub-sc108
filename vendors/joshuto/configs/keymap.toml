@@ -21,8 +21,8 @@ keymap = [
 	{ keys = [ "alt+4" ],		command = "tab_switch_index 4" },
 	{ keys = [ "alt+5" ],		command = "tab_switch_index 5" },
 
-	{ keys = [ "1" ],		command = "cd ~/pnphuong29" },
-	{ keys = [ "2" ],		command = "cd ~/pnphuong29/projects/github.com/pnphuong29" },
+	{ keys = [ "1" ],		command = "cd ~/scripto-data" },
+	{ keys = [ "2" ],		command = "cd ~/scripto-data/projects/github.com/pnphuong29" },
 	{ keys = [ "3" ],		command = "cd ~/scripto-common/vendors" },
 	{ keys = [ "4" ],		command = "numbered_command 4" },
 	{ keys = [ "5" ],		command = "numbered_command 5" },

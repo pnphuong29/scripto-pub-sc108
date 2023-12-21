@@ -3,14 +3,14 @@ version: ${AP_DKCF_VER}
 
 services:
     mysql:
-        container_name: ${AP_DK_CON_MYSQL}
+        container_name: mysql
         image: mysql:8.0
         # build:
-        #     context: ./${AP_DK_CON_MYSQL}
+        #     context: ./mysql
         #     args:
         #         VERSION: 8.0
-        #         AP_DK_CON_MYSQL: ${AP_DK_CON_MYSQL}
-        #     dockerfile: ./dockerfiles/${AP_DK_CON_MYSQL}.Dockerfile
+        #         AP_DK_CON_MYSQL: mysql
+        #     dockerfile: ./dockerfiles/mysql.Dockerfile
         environment:
             MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_pass
             # MYSQL_USER:  # Create a new user
@@ -23,7 +23,7 @@ services:
         volumes:
             - ${AP_SERVER_MYSQL_DB_DIR}:/var/lib/mysql
             - ${AP_SERVER_MYSQL_BK_DIR}/db:/backups
-            # - ./entrypoints/ap_entrypoint_${AP_DK_CON_MYSQL}.sh:/ap_entrypoint.sh:ro
+            # - ./entrypoints/ap_entrypoint_mysql.sh:/ap_entrypoint.sh:ro
         # entrypoint: /ap_entrypoint.sh
         # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
         # command: --default-authentication-plugin=mysql_native_password

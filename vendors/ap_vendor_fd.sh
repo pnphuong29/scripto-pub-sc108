@@ -1,3 +1,11 @@
+alias @initfd="ap_func_init_fd"
+ap_func_init_fd() {
+    # https://github.com/sharkdp/fd
+    alias @fd="fd --hidden --no-ignore"
+    alias @fdls='fd --max-depth 1 --list-details'
+    alias @fdexclude="fd --hidden --no-ignore --exclude .git --exclude node_modules"
+}
+
 alias @createdirstructfd="ap_func_create_dir_struct_fd"
 ap_func_create_dir_struct_fd() {
     @logshow "Create symlink from [${AP_SOFT_DIR}/bin/fd] to [${AP_SOFT_DIR}/fd/fd]\n"
@@ -8,6 +16,16 @@ ap_func_create_dir_struct_fd() {
 
     @logshow "Create symlink from [${AP_MAN_DIR}/man1/fd.1] to [${AP_SOFT_DIR}/fd/fd.1]\n"
     ln -sf "${AP_SOFT_DIR}/fd/fd.1" "${AP_MAN_DIR}/man1/fd.1"
+
+    if [ ! -d "${HOME}/.config/fd" ]; then
+        @logshow "Create directory [${HOME}/.config/fd]"
+        mkdir -p "${HOME}/.config/fd"
+    fi
+
+    if [ -f "${AP_SCRIPTO_COMMON_DIR}/vendors/fd/fd.ignore" ]; then
+        @logshow "Create symlink from [${HOME}/.config/fd/ignore] to [${AP_SCRIPTO_COMMON_DIR}/vendors/fd/fd.ignore]\n"
+        ln -sf "${AP_SCRIPTO_COMMON_DIR}/vendors/fd/fd.ignore" "${HOME}/.config/fd/ignore"
+    fi
 
     if alias @createdirstructfdcommon &>/dev/null; then
         @createdirstructfdcommon

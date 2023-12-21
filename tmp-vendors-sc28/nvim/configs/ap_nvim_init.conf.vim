@@ -58,7 +58,7 @@ let g:markdown_fenced_languages = [
 \ ]
 
 let g:ap_symlinks_dir = $HOME . '/scripto/symlinks'
-let g:ap_vendors_nvim_setup_dir = $HOME . '/scripto/projects/p29-github/pnphuong29/ap-scripts-common-sc28/vendors/nvim'
+let g:ap_vendors_nvim_setup_dir = $HOME . '/scripto/projects/github.com/pnphuong29/ap-scripts-common-sc28/vendors/nvim'
 let g:ap_vendors_nvim_setup_configs_dir = ap_vendors_nvim_setup_dir . '/configs'
 let g:ap_nvim_color_scheme = 'everforest'
 " let g:ap_nvim_color_scheme = 'onehalflight'
