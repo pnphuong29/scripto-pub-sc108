@@ -1,3 +1,12 @@
+alias @initlf="ap_func_init_lf"
+ap_func_init_lf() {
+    alias @vilf="@vi -p \
+        \${AP_SCRIPTO_DIR}/ap_vendor_lf.sh \
+        \${AP_SCRIPTO_COMMON_DIR}/ap_vendor_lf.sh \
+        \${AP_SCRIPTO_COMMON_DIR}/vendors/lf/ap_lfrc.conf \
+	"
+}
+
 alias @createdirstructlf="ap_func_create_dirstruct_lf"
 ap_func_create_dirstruct_lf() {
     # https://github.com/gokcehan/lf/blob/master/doc.md

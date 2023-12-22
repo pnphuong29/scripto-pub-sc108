@@ -16,7 +16,7 @@ ap_func_init_wezterm() {
 
 alias @createdirstructwezterm="ap_func_create_dirstruct_wezterm"
 ap_func_create_dirstruct_wezterm() {
-    @logshow "Generate [wezterm] bash autocomplete\n"
+    @logshow "Generate [wezterm] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_wezterm.bash]\n"
     wezterm shell-completion --shell bash >"${AP_COMPLETIONS_DIR}/ap_completion_wezterm.bash"
 
     # Term info

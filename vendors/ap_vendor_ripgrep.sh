@@ -1,12 +1,14 @@
 alias @initripgrep="ap_func_init_ripgrep"
 ap_func_init_ripgrep() {
-    export AP_VENDORS_RIPGREP_IGNORE_FILE="${AP_SCRIPTO_COMMON_DIR}/vendors/rust-ripgrep/ap_rust_ripgrep.ignore"
+    if [ -f "${AP_SCRIPTO_COMMON_DIR}/vendors/ripgrep/ap_ripgrep.ignore" ]; then
+        export AP_VENDORS_RIPGREP_IGNORE_FILE="${AP_SCRIPTO_COMMON_DIR}/vendors/ripgrep/ap_ripgrep.ignore"
+    fi
 
-    alias @viscrg="nvim -p \
-        ${AP_SCRIPTO_DIR}/vendors/ap_vendor_ripgrep.sh \
-        ${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_ripgrep.sh \
-        ${AP_SCRIPTO_COMMON_DIR}/vendors/ripgrep/ap_rust_ripgrep.conf \
-        ${AP_SCRIPTO_COMMON_DIR}/vendors/ripgrep/ap_rust_ripgrep.ignore \
+    alias @viscrg="@vi -p \
+        \${AP_SCRIPTO_DIR}/vendors/ap_vendor_ripgrep.sh \
+        \${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_ripgrep.sh \
+        \${AP_SCRIPTO_COMMON_DIR}/vendors/ripgrep/ap_ripgrep.conf \
+        \${AP_SCRIPTO_COMMON_DIR}/vendors/ripgrep/ap_ripgrep.ignore \
     "
 
     # Find using vimgrep
@@ -22,9 +24,9 @@ ap_func_init_ripgrep() {
     alias @rgihc='rg --hidden --no-ignore --ignore-file "${AP_VENDORS_RIPGREP_IGNORE_FILE}" --color always --heading --case-sensitive --vimgrep --trim'
 
     # Update ripgrep ignore global file path in ripgrep config file
-    # export RIPGREP_CONFIG_PATH="${AP_CONFIGS_DIR}/ap_rust_ripgrep.conf"
+    # export RIPGREP_CONFIG_PATH="${AP_CONFIGS_DIR}/ap_ripgrep.conf"
 
-    # gsed -i'' "/ap_rust_ripgrep.ignore/d" "${RIPGREP_CONFIG_PATH}"
+    # gsed -i'' "/ap_ripgrep.ignore/d" "${RIPGREP_CONFIG_PATH}"
     # ap_g_pos="$(grep -n "\-\-ignore\-file" "${RIPGREP_CONFIG_PATH}" | cut -d : -f 1)"
     # gsed -i'' "${ap_g_pos}a${AP_VENDORS_RIPGREP_IGNORE_FILE}" "${RIPGREP_CONFIG_PATH}"
 }

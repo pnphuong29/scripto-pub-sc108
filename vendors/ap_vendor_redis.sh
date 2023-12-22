@@ -62,3 +62,20 @@ ap_func_remove_redis() {
         @rmdirstructredis
     fi
 }
+
+alias @showredispasswd='ap_func_get_redis_passwd'
+
+# @$func $$ ap_func_get_redis_passwd
+# ap_func_get_redis_passwd [--]
+# Description
+# 	Get redis passwd in local machine
+# Return
+# 	AP_CODE_SUCCESS
+ap_func_get_redis_passwd() {
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        printf "%s" "$(grep ^requirepass "$(brew --prefix)"/etc/redis.conf | awk '{print $2}')"
+    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+        printf "%s" "$(sudo grep ^requirepass /etc/redis/redis.conf | awk '{print $2}')"
+    fi
+    @rtn_success
+}

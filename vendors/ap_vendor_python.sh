@@ -1,5 +1,20 @@
 alias @initpython="ap_func_init_python"
 ap_func_init_python() {
+    # https://docs.python.org/3/using/cmdline.html
+    if [ -d "${AP_PRJ_LIB1_DIR}" ]; then
+        export PYTHONPATH="${PYTHONPATH}:${AP_PRJ_LIB1_DIR}/python"
+    fi
+
+    if [ -f "${AP_SCRIPTO_COMMON_DIR}/vendors/python/ap_python_startup.py" ]; then
+        export PYTHONSTARTUP="${AP_SCRIPTO_COMMON_DIR}/vendors/python/ap_python_startup.py"
+    fi
+
+    alias @pi="pip install --upgrade pip"
+    alias @pirequirementsdev="pip install --upgrade pip -r requirements_dev.txt"
+    alias @pirequirements="pip install --upgrade pip -r requirements.txt"
+    alias @venv="python -m venv"
+    alias @venvactivate="source \$(find -type f -name activate | head -1)"
+
     if alias @initpythoncommon &>/dev/null; then
         @initpythoncommon
     fi
@@ -7,6 +22,18 @@ ap_func_init_python() {
 
 alias @createdirstructpython="ap_func_create_dirstruct_python"
 ap_func_create_dirstruct_python() {
+    local ap_python_history_dir
+    ap_python_history_dir="${AP_SCRIPTO_MAIN_DIR}/data/python/$(hostname)"
+    if [ ! -d "${ap_python_history_dir}" ]; then
+        @logshow "Create directory ${ap_python_history_dir}\n"
+        mkdir -p "${ap_python_history_dir}"
+    fi
+
+    if [ -f "${HOME}/.python_history" ]; then
+        @logshow "Link [${ap_python_history_dir}/.python_history] to [${HOME}/.python_history]\n"
+        ln -sf "${HOME}/.python_history" "${ap_python_history_dir}/.python_history"
+    fi
+
     if alias @createdirstructpythoncommon &>/dev/null; then
         @createdirstructpythoncommon
     fi

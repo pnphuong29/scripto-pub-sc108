@@ -1,3 +1,16 @@
+alias @createdirstructshellcheck="ap_func_create_dirstruct_shellcheck"
+ap_func_create_dirstruct_shellcheck() {
+    if [ -f "${AP_SCRIPTO_COMMON_DIR}/vendors/shellcheck/ap_shellcheckrc.sh" ]; then
+        @logshow "Create symlink from [${HOME}/.shellcheckrc] to [${AP_SCRIPTO_COMMON_DIR}/vendors/shellcheck/ap_shellcheckrc.sh]\n"
+        ln -sf "${AP_SCRIPTO_COMMON_DIR}/vendors/shellcheck/ap_shellcheckrc.sh" "${HOME}/.shellcheckrc"
+    fi
+}
+
+alias @rmdirstructshellcheck="ap_func_remove_dirstruct_shellcheck"
+ap_func_remove_dirstruct_shellcheck() {
+    rm -f "${HOME}/.shellcheckrc"
+}
+
 alias @setupshellcheck="ap_func_setup_shellcheck"
 ap_func_setup_shellcheck() {
     @logshow "Install [shellcheck]\n"

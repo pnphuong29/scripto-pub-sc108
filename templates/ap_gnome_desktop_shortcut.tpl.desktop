@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=
+Comment=
+Keywords=a;b;
+Exec=
+Icon=org.gnome.Nautilus
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Utility;Core;FileManager;

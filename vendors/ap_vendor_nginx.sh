@@ -1,5 +1,10 @@
 alias @initnginx="ap_func_init_nginx"
 ap_func_init_nginx() {
+    alias @znginxconfd="cd /etc/nginx/conf.d"
+    alias @znginxlogs="cd /var/log/nginx"
+    alias @nginxrestart='sudo systemctl restart nginx'
+    alias @nginxreloadconfig='sudo nginx -s reload'
+
     if alias @initnginxcommon &>/dev/null; then
         @initnginxcommon
     fi

@@ -12,13 +12,17 @@ ap_func_create_dirstruct_taskwarrior() {
     ln -sf "${AP_SOFT_DIR}/taskwarrior/bin/task" "${AP_SOFT_DIR}/bin/task"
 
     # configs
-    @logshow "Create symlink from [${HOME}/.taskrc] to [${AP_SCRIPTO_COMMON_DIR}/vendors/taskwarrior/ap_taskwarrior.conf]\n"
-    ln -sf "${AP_SCRIPTO_COMMON_DIR}/vendors/taskwarrior/ap_taskwarrior.conf" "${HOME}/.taskrc"
+    if [ -f "${AP_SCRIPTO_COMMON_DIR}/vendors/taskwarrior/ap_taskwarrior.conf" ]; then
+        @logshow "Create symlink from [${HOME}/.taskrc] to [${AP_SCRIPTO_COMMON_DIR}/vendors/taskwarrior/ap_taskwarrior.conf]\n"
+        ln -sf "${AP_SCRIPTO_COMMON_DIR}/vendors/taskwarrior/ap_taskwarrior.conf" "${HOME}/.taskrc"
+    fi
 
     # data
-    @logshow "Create symlink from [${HOME}/.task] to [${AP_NC_DIR}/ws/.taskwarrior]\n"
-    rm -rf "${HOME}/.task"
-    ln -sf "${AP_NC_DIR}/ws/.taskwarrior" "${HOME}/.task"
+    if [ -d "${AP_NC_DIR}/ws/.taskwarrior" ]; then
+        @logshow "Create symlink from [${HOME}/.task] to [${AP_NC_DIR}/ws/.taskwarrior]\n"
+        rm -rf "${HOME}/.task"
+        ln -sf "${AP_NC_DIR}/ws/.taskwarrior" "${HOME}/.task"
+    fi
 
     if alias @createdirstructtaskwarriorcommon &>/dev/null; then
         @createdirstructtaskwarriorcommon
