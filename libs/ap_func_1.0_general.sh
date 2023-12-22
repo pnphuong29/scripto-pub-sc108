@@ -486,3 +486,26 @@ ap_func_trim() {
 
     @rtn_success
 }
+
+alias @newsshkey='ap_func_new_ssh_key'
+
+# @$func $$ ap_func_new_ssh_key {
+# ap_func_new_ssh_key -- <key_priv_name> <comment>
+# Description
+# 	Create new SSH key (ed25519) at AP_PRJ_SEC7_DIR or current directory
+# Return status
+# 	AP_CODE_SUCCESS
+# }
+ap_func_new_ssh_key() {
+    local ap_key_name="$1"
+    local ap_key_comment="Albert"
+    local ap_key_dir="${PWD}"
+
+    if [ -d "${AP_PRJ_SEC7_DIR}" ]; then
+        ap_key_dir="${AP_PRJ_SEC7_DIR}"
+    fi
+
+    printf "Generate new SSH key (ed25519) [%s] at [%s]\n" "${ap_key_name}" "${ap_key_dir}"
+    ssh-keygen -t ed25519 -C "${ap_key_comment}" -f "${ap_key_name}" -N "" -q
+    @rtn_success
+}
