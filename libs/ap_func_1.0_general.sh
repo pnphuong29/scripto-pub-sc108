@@ -505,7 +505,11 @@ ap_func_new_ssh_key() {
         ap_key_dir="${AP_PRJ_SEC7_DIR}"
     fi
 
-    printf "Generate new SSH key (ed25519) [%s] at [%s]\n" "${ap_key_name}" "${ap_key_dir}"
+    printf "Generate new SSH key (ed25519) at [%s]\n" "${ap_key_dir}/${ap_key_name}"
     ssh-keygen -t ed25519 -C "${ap_key_comment}" -f "${ap_key_name}" -N "" -q
+    mv "${ap_key_dir}/${ap_key_name}" "${ap_key_dir}/${ap_key_name}.key.priv"
+    mv "${ap_key_dir}/${ap_key_name}.pub" "${ap_key_dir}/${ap_key_name}.key.pub"
+    cat "${ap_key_dir}/${ap_key_name}.key.pub" | copy
+
     @rtn_success
 }
