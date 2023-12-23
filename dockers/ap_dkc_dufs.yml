@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+    dufs:
+        container_name: ${AP_DK_CON_DUFS}
+        # image: sigoden/dufs
+        build:
+            context: .
+            args:
+                VERSION: latest
+            dockerfile: ./dockerfiles/dufs.Dockerfile
+        restart: always
+        tty: true
+        ports:
+            - ${AP_PORT_DUFS_PUBLIC}:5000
+        volumes:
+            - ${HOME}/.cargo/bin/dufs:/bin/dufs
+            - ${AP_SERVER_DUFS_DATA_DIR}:/data
+            - ./entrypoints/ap_entrypoint_${AP_DK_CON_DUFS}.sh:/ap_entrypoint.sh:ro
+        entrypoint: "dufs -p 5000 -a albert:${AP_SECRET_DUFS_USER_ALBERT_PASS}@/:rw -A /data"
+        # entrypoint: /ap_entrypoint.sh

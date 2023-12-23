@@ -1,5 +1,27 @@
 alias @initvagrant="ap_func_init_vagrant"
 ap_func_init_vagrant() {
+    # This will add aliases to default vagrant commands
+    export VAGRANT_ALIAS_FILE="${AP_SCRIPTO_COMMON_DIR}/vendors/vagrant/configs/ap_alias_vagrant.rb"
+
+    # If the Vagrant guest is not trusted, you may want to disable symlink globally using below env variable
+    export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
+    # The above env variable is the same as below config in Vagrantfile
+    # config.vm.synced_folder '/host/path', '/guest/path', SharedFoldersEnableSymlinksCreate: false
+
+    alias @vg='vagrant'
+    alias @vggs='vagrant global-status'
+    alias @vggsp='vagrant global-status --prune'
+    alias @vgssh='vagrant ssh'
+    alias @vgstart='vagrant up'
+    alias @vgstop='vagrant halt'
+    alias @vgrestart='vagrant reload'
+    alias @vgreload='vagrant reload'
+    alias @vgrestartprovision='vagrant reload --provision'
+    alias @vgprovision='vagrant provision'
+    alias @vgrm='vagrant destroy -f; rm -rf .vagrant logs'
+    alias @vgrebuild='vgrm; vagrant up'
+    alias @vgstopall="vagrant stop \$(vagrant global-status | grep running | gawk '{print \$1}' | tr '\n' ' ')"
+
     if alias @initvagrantcommon &>/dev/null; then
         @initvagrantcommon
     fi

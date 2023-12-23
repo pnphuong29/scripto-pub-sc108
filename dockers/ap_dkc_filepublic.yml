@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+    filepublic:
+        container_name: ${AP_DK_CON_FILEPUBLIC}
+        build:
+            context: .
+            args:
+                VERSION: 2.4.53
+                AP_DK_CON_FILEPUBLIC: ${AP_DK_CON_FILEPUBLIC}
+            dockerfile: ./dockerfiles/filepublic.Dockerfile
+        restart: always
+        tty: true
+        ports:
+            - ${AP_PORT_FILEPUBLIC_PUBLIC}:9021
+        volumes:
+            - ${AP_SERVER_FILEPUBLIC_DATA_DIR}:/www
+            - ${AP_SERVER_FILEPUBLIC_LOGS_DIR}:/logs
+            - ./entrypoints/ap_entrypoint_${AP_DK_CON_FILEPUBLIC}.sh:/ap_entrypoint.sh:ro
+        entrypoint: /ap_entrypoint.sh

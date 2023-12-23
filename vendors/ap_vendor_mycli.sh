@@ -1,7 +1,9 @@
 # https://github.com/dbcli/mycli
-alias @mycli="ap_func_mycli"
-alias @myclilocal="myclif localhost"
-alias @myclilocalport="myclif localhost 3306"
+
+alias @mycli='ap_func_mycli'
+alias @myclilocal='ap_func_mycli localhost "${AP_PORT_MYSQL_PUBLIC}" root "$(cat "${HOME}/secrets/ap_mysql_root.passwd")"'
+alias @mycliddns1='ap_func_mycli ${AP_DOMAIN_DDNS1} "${AP_PORT_MYSQL_PUBLIC}" root "$(cat "${HOME}/secrets/ap_mysql_root.passwd")"'
+alias @mycliddns4='ap_func_mycli ${AP_DOMAIN_DDNS4} "${AP_PORT_MYSQL_PUBLIC}" root "$(cat "${HOME}/secrets/ap_mysql_root.passwd")"'
 
 # @$func $$ ap_func_mycli {
 # ap_func_mycli *<host> *<port> *<user> *<pass> <db>

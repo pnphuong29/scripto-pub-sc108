@@ -1,0 +1,86 @@
+# https://hub.docker.com/_/wordpress
+# https://hub.docker.com/_/php
+# https://hub.docker.com/_/mysql
+version: "3.9"
+
+services:
+    wpmysql:
+        container_name: ${AP_DK_CON_WP_MYSQL}
+        image: mysql:8.0
+        # build:
+        #     context: .
+        #     args:
+        #         VERSION: 8.0
+        #     dockerfile: ./dockerfiles/${AP_DK_CON_WP}.Dockerfile
+        environment:
+            MYSQL_ROOT_PASSWORD_FILE: /run/secrets/wp_mysql_root_pass
+            MYSQL_DATABASE: ${AP_DK_WP_MYSQL_NAME} # Create a new database
+            MYSQL_USER: ${AP_DK_WP_MYSQL_USER} # Create a new user with grant to newly created DB
+            MYSQL_PASSWORD_FILE: /run/secrets/wp_mysql_pass # Password for the newly created user
+        restart: always
+        tty: true
+        ports:
+            - ${AP_PORT_WP_MYSQL_PUBLIC}:3306
+        volumes:
+            - ${AP_SERVER_WP_DB_DIR}/mysql:/var/lib/mysql
+            - ${AP_SERVER_WP_BK_DIR}/db:/backups
+            # - ./entrypoints/ap_entrypoint_${AP_DK_CON_WP}.sh:/ap_entrypoint.sh:ro
+        # entrypoint: /ap_entrypoint.sh
+        # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
+        # (this is just an example, not intended to be a production configuration)
+        # command: --default-authentication-plugin=mysql_native_password
+        command: --default-authentication-plugin=caching_sha2_password
+        secrets:
+            - wp_mysql_pass
+            - wp_mysql_root_pass
+
+    wp:
+        container_name: ${AP_DK_CON_WP}
+        depends_on: ${AP_DK_CON_WP_MYSQL}
+        image: wordpress:latest
+        healthcheck:
+            test: curl --fail -I ${AP_URL_WP} || exit 1
+            interval: 15s
+            timeout: 5s
+            retries: 5
+        restart: always
+        tty: true
+        ports:
+            - ${AP_PORT_WP_DK}:80
+        environment:
+            WORDPRESS_DB_HOST: ${AP_DK_CON_WP_MYSQL}
+            WORDPRESS_DB_USER: ${AP_DK_WP_MYSQL_USER}
+            WORDPRESS_DB_PASSWORD: ${AP_SECRET_WP_MYSQL_PASS}
+            # WORDPRESS_DB_PASSWORD_FILE: /run/secrets/db_pass # Cannot use due to access denied to docker secret file, use Docker Swarm instead
+            WORDPRESS_DB_NAME: ${AP_DK_WP_MYSQL_NAME}
+        volumes:
+            - ${AP_SERVER_WP_DATA_DIR}:/var/www/html
+            # - ${AP_SERVER_WP_LOGS_DIR}:/logs
+            # - ./entrypoints/ap_entrypoint_${AP_DK_CON_WP}.sh:/ap_entrypoint.sh:ro
+        # entrypoint: /ap_entrypoint.sh
+
+        # wp_app:
+        #     container_name: ${AP_DK_CON_NAME_WP_APP}
+        #     depends_on:
+        #         - wp_db
+        #     build:
+        #         context: ./${AP_DK_CON_NAME_WP}
+        #         args:
+        #             VERSION: 8.0
+        #         dockerfile: Dockerfile
+        #     healthcheck:
+        #         test: curl --fail -I ${AP_URL_WP} || exit 1
+        #         interval: 15s
+        #         timeout: 5s
+        #         retries: 5
+        #     restart: always
+        #     tty: true
+        #     ports:
+        #         - ${AP_PORT_WP}:${AP_PORT_WP_GUEST}
+        #     volumes:
+        #         - ${AP_SERVER_WP_SERVER_DATA_DIR}:/www
+        #         - ${AP_SERVER_WP_SERVER_LOGS_DIR}:/logs
+        #         - ./${AP_DK_CON_NAME_WP}/ap_entrypoint.sh:/ap_entrypoint.sh:ro
+        #     entrypoint: /ap_entrypoint.sh
+        # secrets:
+        #     - wp_db_pass

@@ -4,6 +4,7 @@ for ap_vendor in "${AP_SCRIPTO_DIR}/vendors"/ap_vendor_*.sh; do
     ap_vendor_name="${ap_vendor_name/\.sh/}"
     ap_vendor_name="${ap_vendor_name/_/}"
 
+    # Alias - Vi commands
     if [ -f "${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
         ap_cmd="alias @visc${ap_vendor_name}='@vi -p \
             ${AP_SCRIPTO_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh \
@@ -23,6 +24,7 @@ for ap_vendor in "${AP_SCRIPTO_COMMON_DIR}/vendors"/ap_vendor_*.sh; do
     ap_vendor_name="${ap_vendor_name/ap_vendor_/}"
     ap_vendor_name="${ap_vendor_name/\.sh/}"
 
+    # Alias - Vi commands
     ap_cmd="alias @visc${ap_vendor_name}='@vi -p \
         ${AP_SCRIPTO_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh \
         ${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh \

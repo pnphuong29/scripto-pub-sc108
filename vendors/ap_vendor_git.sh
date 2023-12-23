@@ -43,6 +43,25 @@ ap_func_create_dirstruct_git() {
     @logshow "Generate [git] bash autocomplete\n"
     curl -L "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash" -o "${AP_COMPLETIONS_DIR}/ap_completion_git.bash"
 
+    if [ -f "${AP_SCRIPTO_COMMON_DIR}/vendors/git/ap_git.conf" ]; then
+        # Create .gitconfig symbolic link
+        @logshow "Link [${HOME}/.gitconfig] to [${AP_SCRIPTO_COMMON_DIR}/vendors/git/ap_git.conf]\n"
+        ln -sf "${AP_SCRIPTO_COMMON_DIR}/vendors/git/ap_git.conf" "${HOME}/.gitconfig"
+    fi
+
+    if [ -f "${AP_SCRIPTO_COMMON_DIR}/vendors/git/ap_gitignore_global" ]; then
+        # Use git global ignore as a backup solution in case you forgot to add [.gitignore]
+        # @#recommend $$ Use [.gitignore] in project whenever possible
+        @logshow "Link [${HOME}/.gitignore_global] to [${AP_SCRIPTO_COMMON_DIR}/vendors/git/ap_git.conf]\n"
+        ln -sf "${AP_SCRIPTO_COMMON_DIR}/vendors/git/ap_gitignore_global" "${HOME}/.gitignore_global"
+
+        # Update global ignore file path in ~/.gitconfig file
+        if [ "$(git config --global core.excludesFile)" != "${HOME}/.gitignore_global" ]; then
+            @logshow "Add/update global git ignore config to [${HOME}/.gitconfig] file\n"
+            git config --global core.excludesFile "${HOME}/.gitignore_global"
+        fi
+    fi
+
     if alias @createdirstructgitcommon &>/dev/null; then
         @createdirstructgitcommon
     fi
@@ -52,6 +71,8 @@ alias @rmdirstructgit="ap_func_remove_dirstruct_git"
 ap_func_remove_dirstruct_git() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_git.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_git.bash"
+    rm -f "${HOME}/.gitconfig"
+    rm -f "${HOME}/.gitignore_global"
 
     if alias @rmdirstructgitcommon &>/dev/null; then
         @rmdirstructgitcommon

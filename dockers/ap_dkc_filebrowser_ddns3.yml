@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+    filebrowser:
+        container_name: ${AP_DK_CON_FILEBROWSER}
+        # image: filebrowser/filebrowser:s6
+        build:
+            context: .
+            args:
+                VERSION: s6 # At this time 27-May-2023, only s6 version worked! latest version didnot work!
+            dockerfile: ./dockerfiles/${AP_DK_CON_FILEBROWSER}.Dockerfile
+        healthcheck:
+            test: curl --fail -I ${AP_URL_FILEBROWSER_DDNS3} || exit 1
+            interval: 15s
+            timeout: 5s
+            retries: 5
+        restart: always
+        tty: true
+        environment:
+            - FB_PORT=${AP_PORT_FILEBROWSER_PUBLIC}
+            - FB_ADDRESS=0.0.0.0
+            - FB_LOG=/logs/access.log
+            - FB_DATABASE=/db/filebrowser.db # Point to existing database, this file should be mapped from host machine
+            - FB_ROOT=/data
+            - FB_USERNAME=albert
+            # - FB_PASSWORD=$2a$10$j2Y2B3xaKJ/MJZRWBn6WNOskghqKYESBg9X/.je8bi0EOuQf/WD/. # Use `filebrowser hash` command to generate this password
+            # - FB_SIGNUP=true
+            # - PUID=1000 # Tested with this env but filebrowser still upload files under root user
+            # - PGID=1000
+        ports:
+            - ${AP_PORT_FILEBROWSER_PUBLIC}:${AP_PORT_FILEBROWSER_PUBLIC}
+        volumes:
+            - ${AP_SERVER_FILEBROWSER_DATA_DIR}:/data
+            - ${AP_SERVER_FILEBROWSER_DB_DIR}/filebrowser.db:/db/filebrowser.db # Only use this if you have existing db
+            # - ${AP_SERVER_FILEBROWSER_DIR}/db:/db
+            - ${AP_SERVER_FILEBROWSER_LOGS_DIR}:/logs
+            # - ./filebrowser/settings.json:/config/settings.json
+            - ./entrypoints/ap_entrypoint_${AP_DK_CON_FILEBROWSER}.sh:/ap_entrypoint.sh:ro
+        entrypoint: /ap_entrypoint.sh

@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+    openproject:
+        container_name: ${AP_DK_CON_OPENPROJECT}
+        image: openproject/community:13
+        environment:
+            OPENPROJECT_SECRET_KEY_BASE: Gn0hhrkU4NlZMBEdzOSDKz8qc27FNW2o
+            OPENPROJECT_HOST__NAME: ${AP_DOMAIN_OPENPROJECT_DDNS1}
+            OPENPROJECT_HTTPS: true
+            OPENPROJECT_DEFAULT__LANGUAGE: en
+        restart: always
+        tty: true
+        ports:
+            - ${AP_PORT_OPENPROJECT_PUBLIC}:80
+            # - ${AP_PORT_OPENPROJECT_PG_PUBLIC}:5432
+        volumes:
+            - ${AP_SERVER_OPENPROJECT_DATA_DIR}/assets:/var/openproject/assets
+            - ${AP_SERVER_OPENPROJECT_DB_DIR}/pg:/var/openproject/pgdata
+            - ${AP_SERVER_OPENPROJECT_BK_DIR}/db:/backups

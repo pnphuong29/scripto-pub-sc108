@@ -1,0 +1,68 @@
+# https://hub.docker.com/r/joplin/server
+
+# This is a sample docker-compose file that can be used to run Joplin Server
+# along with a PostgreSQL server.
+#
+# Update the following fields in the stanza below:
+#
+# POSTGRES_USER
+# POSTGRES_PASSWORD
+# APP_BASE_URL
+#
+# APP_BASE_URL: This is the base public URL where the service will be running.
+#	- If Joplin Server needs to be accessible over the internet, configure APP_BASE_URL as follows: https://example.com/joplin.
+#	- If Joplin Server does not need to be accessible over the internet, set the the APP_BASE_URL to your server's hostname.
+#     For Example: http://[hostname]:22300. The base URL can include the port.
+# APP_PORT: The local port on which the Docker container will listen.
+#	- This would typically be mapped to port to 443 (TLS) with a reverse proxy.
+#	- If Joplin Server does not need to be accessible over the internet, the port can be mapped to 22300.
+# https://github.com/laurent22/joplin/blob/dev/packages/server/README.md
+# By default, Joplin Server will be setup with an admin user with email `admin@localhost` and password `admin`
+
+version: "3.9"
+
+services:
+    jlpg:
+        container_name: ${AP_DK_CON_JL_PG}
+        image: postgres:14
+        ports:
+            - ${AP_PORT_JL_PG_PUBLIC}:5432
+        restart: unless-stopped
+        environment:
+            - POSTGRES_PASSWORD_FILE=/run/secrets/jl_pg_pass
+            - POSTGRES_USER=${AP_DK_JL_PG_USER}
+            - POSTGRES_DB=${AP_DK_JL_PG_NAME}
+            - PGDATA=/var/lib/postgresql/data
+            - POSTGRES_HOST_AUTH_METHOD=password
+            - POSTGRES_INITDB_ARGS=--auth-host=password
+        volumes:
+            - ${AP_SERVER_JL_DB_DIR}/pg:/var/lib/postgresql/data
+        secrets:
+            - jl_pg_pass
+
+    jl:
+        container_name: ${AP_DK_CON_JL}
+        depends_on:
+            - ${AP_DK_CON_JL_PG}
+        image: joplin/server:latest
+        ports:
+            - ${AP_PORT_JL_PUBLIC}:${AP_PORT_JL_PUBLIC}
+        restart: unless-stopped
+        environment:
+            - APP_PORT=${AP_PORT_JL_PUBLIC}
+            - APP_BASE_URL=${AP_URL_JL_DDNS3}
+            - DB_CLIENT=pg
+            - POSTGRES_PASSWORD=${AP_SECRET_JL_PG_PASS}
+            - POSTGRES_DATABASE=${AP_DK_JL_PG_NAME}
+            - POSTGRES_USER=${AP_DK_JL_PG_USER}
+            - POSTGRES_PORT=5432
+            - POSTGRES_HOST=${AP_DK_CON_JL_PG}
+            # Mail
+            # - MAILER_ENABLED=1
+            # - MAILER_HOST=smtp.gmail.com
+            # - MAILER_PORT=465
+            # - MAILER_SECURE=1
+            # - MAILER_AUTH_USER=
+            # - MAILER_AUTH_PASSWORD=
+            # - MAILER_NOREPLY_NAME=Test
+            # - MAILER_NOREPLY_EMAIL=no-reply@test.com
