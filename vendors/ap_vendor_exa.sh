@@ -74,14 +74,14 @@ ap_func_setup_exa() {
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         curl -SL \
-            "$(curl --silent https://api.github.com/repos/ogham/exa/releases | jq -r '.[0].assets[].browser_download_url' | grep "macos" | grep x86_64 | grep -v sha256)" >exa.tar.gz
+            "$(curl --silent https://api.github.com/repos/ogham/exa/releases | jq -r '.[0].assets[].browser_download_url' | grep "macos" | grep x86_64 | grep -v sha256)" >exa.zip
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         curl -SL \
-            "$(curl --silent https://api.github.com/repos/ogham/exa/releases | jq -r '.[0].assets[].browser_download_url' | grep "linux" | grep x86_64 | grep -v sha256 | grep "musl")" >exa.tar.gz
+            "$(curl --silent https://api.github.com/repos/ogham/exa/releases | jq -r '.[0].assets[].browser_download_url' | grep "linux" | grep x86_64 | grep -v sha256 | grep "musl")" >exa.zip
     fi
 
-    tar -zxf exa.tar.gz
-    rm -f exa.tar.gz
+    unzip exa.zip
+    rm -f exa.zip
 
     @createdirstructexa
 }

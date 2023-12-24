@@ -76,7 +76,7 @@ ap_func_setup_fd() {
     # Install fd
     local ap_os="darwin"
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        ap_os="linux"
+        ap_os="linux-musl"
     fi
 
     mkdir -p "${AP_TMP_DIR}/fd"

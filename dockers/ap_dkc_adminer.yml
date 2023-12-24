@@ -10,16 +10,20 @@ services:
         image: adminer:latest
         restart: always
         healthcheck:
-            test: curl --fail -I ${AP_URL_ADMINER} || exit 1
+            test: "curl --fail -I ${AP_URL_ADMINER} || exit 1"
             interval: 15s
             timeout: 5s
             retries: 5
         tty: true
         ports:
-            - ${AP_PORT_ADMINER_PUBLIC}:8080
+            - "${AP_PORT_ADMINER_PUBLIC}:8080"
         # volumes:
         #     - ./entrypoints/ap_entrypoint_adminer.sh:/ap_entrypoint.sh:ro
         #     - ./entrypoints/ap_entrypoint_debug.sh:/ap_entrypoint.sh:ro
         # entrypoint: /ap_entrypoint.sh
         networks:
-            - sc28
+            - scripto
+
+networks:
+    scripto:
+        name: scripto

@@ -3,7 +3,10 @@ ap_func_init_docker() {
     # https://github.com/docker/compose/tree/master/compose/config
     # https://github.com/docker/cli/tree/master/cli/compose/schema/data
 
-    export DOCKER_CONFIG="${DOCKER_CONFIG:-$HOME/.docker}"
+    export DOCKER_CONFIG="${DOCKER_CONFIG:-${HOME}/.docker}"
+
+    alias @zsc108dockers='cd "${AP_SCRIPTO_DIR}/dockers"'
+    alias @zscdockers='cd "${AP_SCRIPTO_COMMON_DIR}/dockers"'
 
     alias @dk='docker'
     alias @dkc="docker compose"
@@ -205,14 +208,16 @@ alias @dkup="ap_func_dkc_up"
 # @$func $$ ap_func_dkc_up {
 # ap_func_dkc_up <docker_container_names...>
 # Description
-# 	Perform `docker compose up --build` command for the input docker compose names
+# 	Perform `docker compose up --build -d` command for the input docker compose names
 # }
 ap_func_dkc_up() {
-    local ap_cmd="docker compose -f ${AP_DOCKERS_DIR}/ap_dkc_common.yml"
-
     local ap_dk_con_name
-    for ap_dk_con_name in $@; do
-        ap_cmd="${ap_cmd} -f ${AP_DOCKERS_DIR}/ap_dkc_${ap_dk_con_name}.yml"
+    for ap_dk_con_name in "$@"; do
+        if [ -f "${AP_SCRIPTO_COMMON_DIR}/dockers/ap_dkc_${ap_dk_con_name}.yml" ]; then
+            ap_cmd="${ap_cmd} -f ${AP_SCRIPTO_COMMON_DIR}/dockers/ap_dkc_${ap_dk_con_name}.yml"
+        else
+            ap_cmd="${ap_cmd} -f ${AP_SCRIPTO_DIR}/dockers/ap_dkc_${ap_dk_con_name}.yml"
+        fi
     done
 
     ap_cmd="${ap_cmd} up --build -d"
