@@ -23,15 +23,6 @@ export LC_CTYPE='en_US.UTF-8'
 export LANG='en_US.UTF-8'
 export LANGUAGE='en_US'
 
-# Set terminal for current shell
-# if [ -n "${KITTY_INSTALLATION_DIR}" ]; then
-#     export TERM=xterm-kitty
-# elif [ -n "${WEZTERM_EXECUTABLE}" ]; then
-#     export TERM=wezterm
-# else
-#     export TERM=xterm
-# fi
-
 # Update $PATH
 if type brew &>/dev/null; then
     PATH="$(brew --prefix)/sbin:${PATH}"
