@@ -46,15 +46,18 @@ ap_func_setup_nvm() {
     @logshow "Install [node v${AP_NODE_VERSION_DEFAULT}]\n"
     nvm install "v${AP_NODE_VERSION_DEFAULT}"
     npm install -g npm # Update npm to latest version
-    @gennpmcompletion
+
+    @initnvm
 }
 
 alias @rmnvm="ap_func_remove_nvm"
 ap_func_remove_nvm() {
     @logshow "Remove [nvm]\n"
+
     [ -f /usr/local/bin/node ] && sudo rm -f /usr/local/bin/node
     [ -f /usr/local/bin/npm ] && sudo rm -f /usr/local/bin/npm
     [ -f /usr/local/bin/yarn ] && sudo rm -f /usr/local/bin/yarn
+
     rm -rf "${HOME}/.nvm"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_npm.bash"
 }
