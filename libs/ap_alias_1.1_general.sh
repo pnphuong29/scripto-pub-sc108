@@ -1,4 +1,4 @@
-# CD - Common locations
+# Aliases - CD - Common locations
 alias @zdata="cd \${AP_SCRIPTO_DATA_DIR}"
 alias @zsymlinks="cd \${AP_SYMLINKS_DIR}"
 alias @zsoft="cd \${AP_SOFT_DIR}"
@@ -9,7 +9,7 @@ alias @zcompletions="cd \${AP_COMPLETIONS_DIR}"
 alias @ztmp="cd \${AP_TMP_DIR}"
 alias @zlogs="cd \${AP_LOGS_DIR}"
 
-# CD | Linux
+# Aliases - CD | Linux
 alias @zlocalshare="cd \${HOME}/.local/share"
 alias @zdesktopshortcuts="cd \${HOME}/.local/share/applications"
 alias @zconfig="cd \${HOME}/.config"
@@ -18,10 +18,22 @@ alias @zusersnap="cd \${HOME}/snap"
 alias @zsnap="cd /snap"
 alias @zsnapdesktopshortcuts="cd /var/lib/snapd/desktop/applications"
 
-# Vi commands
+# Aliases - Vi commands
 alias @vi="vi"
 
-# List commands
+alias @visshknowhosts="@vi \${HOME}/.ssh/known_hosts"
+alias @visshconfig="@vi \${HOME}/.ssh/config"
+
+alias @vibashrc="@vi \${HOME}/.bashrc"
+alias @vibashprofile="@vi \${HOME}/.bash_profile"
+alias @viprofile="@vi \${HOME}/.profile"
+
+alias @vigitconfigs="@vi -p \
+	\${HOME}/.gitconfig \
+	\${HOME}/.gitignore_global \
+    "
+
+# Aliases - List commands
 alias @lspaths='echo "${PATH}" | tr ":" "\n"'
 alias @lsaliases='alias | gsed "s@alias @@" | grep "^[@|1|2]" | sort'
 alias @lsaliasesfzf='alias | gsed "s@alias @@" | grep "^[@|1|2|3]" | sort | fzf'
@@ -30,7 +42,7 @@ alias @lsportlistening='sudo netstat -lntup'
 alias @lsusers="cat /etc/passwd"
 alias @lsgroups="cat /etc/group"
 
-# Copy commands
+# Aliases - Copy commands
 if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
     alias @copy='pbcopy'
 elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
@@ -41,16 +53,16 @@ alias @cpd='pwd | tr -d "\n" | @copy'
 alias @cpip='curl -Ss ifconfig.me | @copy; echo'
 alias @cpip6='ip a | grep inet6 | grep "scope global dynamic mngtmpaddr noprefixroute" | cut -d " " -f 6 | gsed "s@/64@@" | @copy'
 
-# Show commands
+# Aliases - Show commands
 alias @showip='curl -Ss ifconfig.me; echo'
 alias @showdt='gdate +"%Y%m%d_%H%M%S"'
 alias @showip6='ip a | grep inet6 | grep "scope global dynamic mngtmpaddr noprefixroute" | cut -d " " -f 6 | gsed "s@/64@@"'
 alias @showcpuinfo="cat /proc/cpuinfo"
 
-# Set commands
+# Aliases - Set commands
 alias @settzvn='sudo timedatectl --no-pager set-timezone Asia/Ho_Chi_Minh'
 
-# Other commands
+# Aliases - Other commands
 alias @grep='grep --color'
 alias @du1="du -h --max-depth=1"
 alias @coveragereport="coverage report"

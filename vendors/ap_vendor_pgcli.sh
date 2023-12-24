@@ -1,9 +1,6 @@
 # https://github.com/dbcli/pgcli
 
 alias @pgcli='ap_func_pgcli'
-alias @pgclilocal='ap_func_pgcli localhost "${AP_PORT_PG_PUBLIC}" postgres "$(cat "${HOME}/secrets/ap_pg.passwd")"'
-alias @pgcliddns1='ap_func_pgcli "${AP_DOMAIN_DDNS1}" "${AP_PORT_PG_PUBLIC}" postgres "$(cat "${HOME}/secrets/ap_pg.passwd")"'
-alias @pgcliddns4='ap_func_pgcli "${AP_DOMAIN_7S_DDNS71}" "${AP_PORT_PG_PUBLIC}" postgres "$(cat "${HOME}/secrets/ap_pg.passwd")"'
 
 # @$func $$ ap_func_pgcli {
 # ap_func_pgcli *<host> *<port> *<user> *<pass> <db>
