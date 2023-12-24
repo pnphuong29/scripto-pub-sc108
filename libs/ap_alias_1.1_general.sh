@@ -37,8 +37,6 @@ alias @vigitconfigs="@vi -p \
 alias @lspaths='echo "${PATH}" | tr ":" "\n"'
 alias @lsaliases='alias | gsed "s@alias @@" | grep "^[@|1|2]" | sort'
 alias @lsaliasesfzf='alias | gsed "s@alias @@" | grep "^[@|1|2|3]" | sort | fzf'
-alias @lsportlistening4='sudo netstat -lntup --listening -4'
-alias @lsportlistening='sudo netstat -lntup'
 alias @lsusers="cat /etc/passwd"
 alias @lsgroups="cat /etc/group"
 
@@ -50,13 +48,9 @@ elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
 fi
 
 alias @cpd='pwd | tr -d "\n" | @copy'
-alias @cpip='curl -Ss ifconfig.me | @copy; echo'
-alias @cpip6='ip a | grep inet6 | grep "scope global dynamic mngtmpaddr noprefixroute" | cut -d " " -f 6 | gsed "s@/64@@" | @copy'
 
 # Aliases - Show commands
-alias @showip='curl -Ss ifconfig.me; echo'
 alias @showdt='gdate +"%Y%m%d_%H%M%S"'
-alias @showip6='ip a | grep inet6 | grep "scope global dynamic mngtmpaddr noprefixroute" | cut -d " " -f 6 | gsed "s@/64@@"'
 alias @showcpuinfo="cat /proc/cpuinfo"
 
 # Aliases - Set commands
