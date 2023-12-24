@@ -84,7 +84,7 @@ ap_func_remove_certbot() {
 alias @renewsslcert="ap_func_certbot_renew"
 alias @renewsslcertddns1="ap_func_certbot_renew \${AP_DOMAIN_DDNS1}"
 alias @renewsslcertddns3="ap_func_certbot_renew \${AP_DOMAIN_DDNS3}"
-alias @renewsslcertddns4="ap_func_certbot_renew \${AP_DOMAIN_DDNS4}"
+alias @renewsslcertddns4="ap_func_certbot_renew \${AP_DOMAIN_7S_DDNS71}"
 
 # @$func $$ ap_func_certbot_renew {
 # ap_func_certbot_renew <subdomain> <domain>

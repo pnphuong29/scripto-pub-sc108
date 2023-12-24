@@ -1,8 +1,0 @@
-{
-    "port": 9955,
-    "baseURL": "",
-    "address": "0.0.0.0",
-    "log": "/logs/access.log",
-    "database": "/db/filebrowser.db",
-    "root": "/data"
-}

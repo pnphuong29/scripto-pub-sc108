@@ -5,9 +5,6 @@ ap_func_init_docker() {
 
     export DOCKER_CONFIG="${DOCKER_CONFIG:-${HOME}/.docker}"
 
-    alias @zsc108dockers='cd "${AP_SCRIPTO_DIR}/dockers"'
-    alias @zscdockers='cd "${AP_SCRIPTO_COMMON_DIR}/dockers"'
-
     alias @dk='docker'
     alias @dkc="docker compose"
 
@@ -54,12 +51,6 @@ ap_func_init_docker() {
 
 alias @createdirstructdocker="ap_func_create_dirstruct_docker"
 ap_func_create_dirstruct_docker() {
-    # Append current user to group [docker] to prevent typing sudo for every docker command
-    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        @logshow "Append user [${USER}] to group [docker]\n"
-        sudo usermod -aG docker "${USER}"
-    fi
-
     if alias @createdirstructdockercommon &>/dev/null; then
         @createdirstructdockercommon
     fi
@@ -67,11 +58,6 @@ ap_func_create_dirstruct_docker() {
 
 alias @rmdirstructdocker="ap_func_remove_dirstruct_docker"
 ap_func_remove_dirstruct_docker() {
-    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        @logshow "Remove group [docker]\n"
-        sudo groupdel docker
-    fi
-
     if alias @rmdirstructdockercommon &>/dev/null; then
         @rmdirstructdockercommon
     fi

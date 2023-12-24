@@ -23,7 +23,7 @@ ap_func_remove_dirstruct_php() {
 alias @setupphp="ap_func_setup_php"
 ap_func_setup_php() {
     # PHP should be installed after installing
-    # - apache-httpd
+    # - apache-http
     # - mysql/mariadb
     # - pgsql
     # - redis

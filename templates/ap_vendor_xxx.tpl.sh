@@ -29,6 +29,11 @@ ap_func_create_dirstruct_xxx() {
     fi
 }
 
+alias @createdirstructxxxcommon="ap_func_create_dirstruct_xxx_common"
+ap_func_create_dirstruct_xxx_common() {
+
+}
+
 alias @rmdirstructxxx="ap_func_remove_dirstruct_xxx"
 ap_func_remove_dirstruct_xxx() {
     @logshow "Remove [${AP_SOFT_DIR}/bin/xxx]\n"
@@ -43,6 +48,11 @@ ap_func_remove_dirstruct_xxx() {
     if alias @rmdirstructxxxcommon &>/dev/null; then
         @rmdirstructxxxcommon
     fi
+}
+
+alias @rmdirstructxxxcommon="ap_func_remove_dirstruct_xxx_common"
+ap_func_remove_dirstruct_xxx_common() {
+
 }
 
 alias @createglobalsymlinkxxx="ap_func_create_global_symlink_xxx"
