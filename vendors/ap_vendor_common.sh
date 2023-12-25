@@ -58,6 +58,7 @@ ap_func_setup_common_apps() {
             ppa-purge \
             apt-file \
             build-essential \
+            snapd \
             cmake \
             net-tools \
             iputils \
