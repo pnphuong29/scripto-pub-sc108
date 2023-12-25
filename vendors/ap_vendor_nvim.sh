@@ -5,8 +5,10 @@ ap_func_init_nvim() {
     @addpath "${AP_SOFT_DIR}/nvim/bin"
 
     alias @vi="nvim"
-    alias @znvimswap="cd \${HOME}/.local/share/nvim/swap"
-    alias @rmnvimswapfiles="rm -f \${HOME}/.local/share/nvim/swap/\*"
+    alias @znvimswapshare="cd \${HOME}/.local/share/nvim/swap"
+    alias @znvimswapstate="cd \${HOME}/.local/state/nvim/swap"
+    alias @rmnvimswapsharefiles="rm -f \${HOME}/.local/share/nvim/swap/\*"
+    alias @rmnvimswapstatefiles="rm -f \${HOME}/.local/state/nvim/swap/\*"
 
     if alias @initnvimcommon &>/dev/null; then
         @initnvimcommon
