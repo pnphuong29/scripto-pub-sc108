@@ -197,8 +197,9 @@ alias @dkup="ap_func_dkc_up"
 # 	Perform `docker compose up --build -d` command for the input docker compose names
 # }
 ap_func_dkc_up() {
+    local ap_cmd="docker compose"
+
     local ap_dk_con_name
-    local ap_cmd
     for ap_dk_con_name in "$@"; do
         if [ -f "${AP_SCRIPTO_COMMON_DIR}/dockers/ap_dkc_${ap_dk_con_name}.yml" ]; then
             ap_cmd="${ap_cmd} -f ${AP_SCRIPTO_COMMON_DIR}/dockers/ap_dkc_${ap_dk_con_name}.yml"
