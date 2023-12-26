@@ -8,19 +8,19 @@ ap_func_init_vagrant() {
     # The above env variable is the same as below config in Vagrantfile
     # config.vm.synced_folder '/host/path', '/guest/path', SharedFoldersEnableSymlinksCreate: false
 
-    alias @vg='vagrant'
-    alias @vggs='vagrant global-status'
-    alias @vggsp='vagrant global-status --prune'
-    alias @vgssh='vagrant ssh'
-    alias @vgstart='vagrant up'
-    alias @vgstop='vagrant halt'
-    alias @vgrestart='vagrant reload'
-    alias @vgreload='vagrant reload'
-    alias @vgrestartprovision='vagrant reload --provision'
-    alias @vgprovision='vagrant provision'
-    alias @vgrm='vagrant destroy -f; rm -rf .vagrant logs'
-    alias @vgrebuild='vgrm; vagrant up'
-    alias @vgstopall="vagrant stop \$(vagrant global-status | grep running | gawk '{print \$1}' | tr '\n' ' ')"
+    alias vg='vagrant'
+    alias vggs='vagrant global-status'
+    alias vggsp='vagrant global-status --prune'
+    alias vgssh='vagrant ssh'
+    alias vgstart='vagrant up'
+    alias vgstop='vagrant halt'
+    alias vgrestart='vagrant reload'
+    alias vgreload='vagrant reload'
+    alias vgrestartprovision='vagrant reload --provision'
+    alias vgprovision='vagrant provision'
+    alias vgrm='vagrant destroy -f; rm -rf .vagrant logs'
+    alias vgrebuild='vgrm; vagrant up'
+    alias vgstopall="vagrant stop \$(vagrant global-status | grep running | gawk '{print \$1}' | tr '\n' ' ')"
 
     if alias @initvagrantcommon &>/dev/null; then
         @initvagrantcommon
@@ -32,9 +32,9 @@ ap_func_create_dirstruct_vagrant() {
     @logshow "Generate [vagrant] bash autocomplete\n"
     curl -SL "https://raw.githubusercontent.com/hashicorp/vagrant/main/contrib/bash/completion.sh" >"${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash"
 
-    if ! grep "complete -o default -F _vagrant @vg" "${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash" &>/dev/null; then
+    if ! grep "complete -o default -F _vagrant vg" "${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash" &>/dev/null; then
         echo >>"${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash"
-        echo "complete -o default -F _vagrant @vg # @vg is an alias of 'vagrant' command" >>"${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash"
+        echo "complete -o default -F _vagrant vg # vg is an alias of 'vagrant' command" >>"${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash"
     fi
 
     if alias @createdirstructvagrantcommon &>/dev/null; then

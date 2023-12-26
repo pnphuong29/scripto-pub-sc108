@@ -10,9 +10,9 @@ ap_func_init_go() {
     @addpath "${GOROOT}/bin"
     @addpath "${GOPATH}/bin"
 
-    alias @zgopath="cd \${GOPATH}"
-    alias @zgomodules="cd \${GOPATH}/pkg/mod"
-    alias @zgobin="cd \${GOPATH}/bin"
+    alias zgopath="cd \${GOPATH}"
+    alias zgomodules="cd \${GOPATH}/pkg/mod"
+    alias zgobin="cd \${GOPATH}/bin"
 }
 
 alias @setupgo="ap_func_setup_go"

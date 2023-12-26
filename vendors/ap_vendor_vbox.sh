@@ -1,7 +1,7 @@
 alias @initvbox="ap_func_init_vbox"
 ap_func_init_vbox() {
-    alias @dlvboxguestadditions="cd \${AP_SOFT_DIR}/vbox; curl -SOL http://download.virtualbox.org/virtualbox/7.0.12/VBoxGuestAdditions_7.0.12.iso"
-    alias @dlvboxextpack="cd \${AP_SOFT_DIR}/vbox; curl -SOL http://download.virtualbox.org/virtualbox/7.0.12/Oracle_VM_VirtualBox_Extension_Pack-7.0.12-159484.vbox-extpack"
+    alias dlvboxguestadditions="cd \${AP_SOFT_DIR}/vbox; curl -SOL http://download.virtualbox.org/virtualbox/7.0.12/VBoxGuestAdditions_7.0.12.iso"
+    alias dlvboxextpack="cd \${AP_SOFT_DIR}/vbox; curl -SOL http://download.virtualbox.org/virtualbox/7.0.12/Oracle_VM_VirtualBox_Extension_Pack-7.0.12-159484.vbox-extpack"
 
     if alias @initvboxcommon &>/dev/null; then
         @initvboxcommon
@@ -13,9 +13,9 @@ ap_func_create_dirstruct_vbox() {
     # https://github.com/gryf/vboxmanage-bash-completion
     @logshow "Generate [vbox] bash autocomplete\n"
     curl -L https://raw.githubusercontent.com/gryf/vboxmanage-bash-completion/master/VBoxManage -o "${AP_COMPLETIONS_DIR}/ap_completion_vboxmanage.bash"
-    if ! grep "complete -o default -F _VBoxManage @vbm" "${AP_COMPLETIONS_DIR}/ap_completion_vboxmanage.bash" &>/dev/null; then
+    if ! grep "complete -o default -F _VBoxManage vbm" "${AP_COMPLETIONS_DIR}/ap_completion_vboxmanage.bash" &>/dev/null; then
         echo >>"${AP_COMPLETIONS_DIR}/ap_completion_vboxmanage.bash"
-        echo "complete -o default -F _VBoxManage @vbm # @vbm is an alias of VBoxManage" >>"${AP_COMPLETIONS_DIR}/ap_completion_vboxmanage.bash"
+        echo "complete -o default -F _VBoxManage vbm # vbm is an alias of VBoxManage" >>"${AP_COMPLETIONS_DIR}/ap_completion_vboxmanage.bash"
     fi
 
     if alias @createdirstructvboxcommon &>/dev/null; then

@@ -1,9 +1,9 @@
 alias @initfd="ap_func_init_fd"
 ap_func_init_fd() {
     # https://github.com/sharkdp/fd
-    alias @fd="fd --hidden --no-ignore"
-    alias @fdls='fd --max-depth 1 --list-details'
-    alias @fdexclude="fd --hidden --no-ignore --exclude .git --exclude node_modules"
+    alias fd="fd --hidden --no-ignore"
+    alias fdls='fd --max-depth 1 --list-details'
+    alias fdexclude="fd --hidden --no-ignore --exclude .git --exclude node_modules"
 }
 
 alias @createdirstructfd="ap_func_create_dir_struct_fd"

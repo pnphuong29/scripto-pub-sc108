@@ -1,4 +1,4 @@
-alias @genbashcompletions='ap_func_generate_bash_completions'
+alias genbashcompletions='ap_func_generate_bash_completions'
 
 # @$func $$ ap_func_generate_bash_completions {
 # ap_func_generate_bash_completions [--] [vendor_name...]

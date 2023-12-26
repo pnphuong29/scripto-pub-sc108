@@ -4,7 +4,7 @@ ap_func_init_ripgrep() {
         export AP_VENDORS_RIPGREP_IGNORE_FILE="${AP_SCRIPTO_COMMON_DIR}/vendors/ripgrep/ap_ripgrep.ignore"
     fi
 
-    alias @viscrg="@vi -p \
+    alias viscrg="vi -p \
         \${AP_SCRIPTO_DIR}/vendors/ap_vendor_ripgrep.sh \
         \${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_ripgrep.sh \
         \${AP_SCRIPTO_COMMON_DIR}/vendors/ripgrep/ap_ripgrep.conf \
@@ -110,13 +110,13 @@ ap_func_remove_ripgrep() {
 }
 
 alias @rg="ap_func_ripgrep"
-alias @rgr="rgf -r"
-alias @rgrc="rgf -c -r"
-alias @rga10="rgf -i -h -a 10 --"
-alias @rga20="rgf -i -h -a 20 --"
-alias @rga30="rgf -i -h -a 30 --"
-alias @rgab10="rgf -i -h -a 10 -b 10 --"
-alias @rgab20="rgf -i -h -a 20 -b 20 --"
+alias rgr="rgf -r"
+alias rgrc="rgf -c -r"
+alias rga10="rgf -i -h -a 10 --"
+alias rga20="rgf -i -h -a 20 --"
+alias rga30="rgf -i -h -a 30 --"
+alias rgab10="rgf -i -h -a 10 -b 10 --"
+alias rgab20="rgf -i -h -a 20 -b 20 --"
 
 # @@ap-func $$ ap_func_ripgrep {
 # ap_func_ripgrep [-xabhi] <extra_options> <before_context_rows> <after_context_rows> [--] *<search_string>
@@ -138,11 +138,6 @@ alias @rgab20="rgf -i -h -a 20 -b 20 --"
 ap_func_ripgrep() {
     local ap_opts_string=':x:a:b:hir:c'
     local ap_opt=''
-    local ap_opt_x=0
-    local ap_opt_a=0
-    local ap_opt_b=0
-    local ap_opt_h=0
-    local ap_opt_i=0
     local ap_opt_r=0
     local ap_opt_c=0
 
@@ -156,26 +151,21 @@ ap_func_ripgrep() {
     while getopts "${ap_opts_string}" ap_opt; do
         case "${ap_opt}" in
         'x')
-            ap_opt_x=1
             ap_extra_options="${OPTARG}"
             ap_cmd="${ap_cmd} ${ap_extra_options}"
             ;;
         'a')
-            ap_opt_a=1
             ap_lines_after_context="${OPTARG}"
             ap_cmd="${ap_cmd} --after-context ${ap_lines_after_context}"
             ;;
         'b')
-            ap_opt_b=1
             ap_lines_before_context="${OPTARG}"
             ap_cmd="${ap_cmd} --before-context ${ap_lines_before_context}"
             ;;
         'h')
-            ap_opt_h=1
             ap_cmd="${ap_cmd} --hidden"
             ;;
         'i')
-            ap_opt_i=1
             ap_cmd="${ap_cmd} --ignore-file \"${AP_VENDORS_RIPGREP_IGNORE_FILE}\""
             ;;
         'r')

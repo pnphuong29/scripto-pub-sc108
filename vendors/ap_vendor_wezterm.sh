@@ -7,7 +7,7 @@ ap_func_init_wezterm() {
     # export WEZTERM_CONFIG_FILE="${AP_SCRIPTO_COMMON_DIR}/vendors/wezterm/ap_wezterm.config.lua"
     # https://wezfurlong.org/wezterm/config/lua/config/term.html
     alias @weztermgenerateterminfo='curl -SL "https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo" >"${AP_SCRIPTO_COMMON_DIR}/vendors/wezterm/ap_wezterm.terminfo"'
-    alias @viscwezterm="@vi -p \
+    alias viscwezterm="vi -p \
         \${AP_SCRIPTO_DIR}/vendors/ap_vendor_wezterm.sh \
         \${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_wezterm.sh \
         \${AP_SCRIPTO_COMMON_DIR}/vendors/wezterm/ap_wezterm.config.lua \

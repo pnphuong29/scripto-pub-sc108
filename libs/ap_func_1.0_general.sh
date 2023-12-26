@@ -301,7 +301,7 @@ ap_func_log_msg() {
     @rtn_success
 }
 
-alias @showostype='ap_func_get_os_type'
+alias showostype='ap_func_get_os_type'
 
 # @$func $$ ap_func_get_os_type {
 # ap_func_get_os_type

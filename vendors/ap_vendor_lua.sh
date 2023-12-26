@@ -1,7 +1,21 @@
-alias @genluacompletion="ap_func_generate_lua_autocomplete"
-ap_func_generate_lua_autocomplete() {
-    @logshow "Generate [luarocks] bash autocomplete\n"
+alias @createdirstructlua="ap_func_create_dirstruct_lua"
+ap_func_create_dirstruct_lua() {
+    @logshow "Generate [lua] bash autocomplete\n"
     luarocks completion bash >"${AP_COMPLETIONS_DIR}/ap_completion_luarocks.bash"
+
+    if alias @createdirstructluacommon &>/dev/null; then
+        @createdirstructluacommon
+    fi
+}
+
+alias @rmdirstructlua="ap_func_remove_dirstruct_lua"
+ap_func_remove_dirstruct_lua() {
+    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_luarocks.bash]\n"
+    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_luarocks.bash"
+
+    if alias @rmdirstructluacommon &>/dev/null; then
+        @rmdirstructluacommon
+    fi
 }
 
 alias @setuplua="ap_func_setup_lua"
@@ -15,7 +29,9 @@ ap_func_setup_lua() {
         sudo apt install -y lua5.4 luarocks
     fi
 
-    @genluacompletion
+    if alias @createdirstructlua &>/dev/null; then
+        @createdirstructlua
+    fi
 }
 
 alias @rmlua="ap_func_remove_lua"
@@ -27,5 +43,8 @@ ap_func_remove_lua() {
         sudo apt purge -y lua
         sudo apt autoremove -y
     fi
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_luarocks.bash"
+
+    if alias @rmdirstructlua &>/dev/null; then
+        @rmdirstructlua
+    fi
 }

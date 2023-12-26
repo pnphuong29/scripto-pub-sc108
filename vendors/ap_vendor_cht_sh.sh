@@ -1,8 +1,8 @@
 alias @initchtsh="ap_func_init_chtsh"
 ap_func_init_chtsh() {
     export CHTSH_CONF="${AP_SCRIPTO_DIR}/vendors/cht-sh/ap_cht_sh.conf"
-    alias @cht='cht.sh'
-    alias @chtdemostyles='curl cht.sh/:styles-demo'
+    alias ref='cht.sh'
+    alias chtdemostyles='curl cht.sh/:styles-demo'
 
     if alias @initchtshcommon &>/dev/null; then
         @initchtshcommon

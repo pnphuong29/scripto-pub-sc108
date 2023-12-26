@@ -94,7 +94,6 @@ ap_func_setup_common_apps() {
     fi
 
     @createdirstructgit
-    @gengitcompletion
 }
 
 # common server apps

@@ -2,7 +2,7 @@ alias @initjoshuto="ap_func_init_joshuto"
 ap_func_init_joshuto() {
     export JOSHUTO_CONFIG_HOME="${AP_SCRIPTO_DIR}/vendors/joshuto/configs"
     alias 2joshutodocs="open https://github.com/kamiyaa/joshuto/tree/main/docs"
-    alias @viscjoshuto="@vi -p \
+    alias viscjoshuto="vi -p \
         \${AP_SCRIPTO_DIR}/vendors/ap_vendor_joshuto.sh \
         \${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_joshuto.sh \
         \${AP_SCRIPTO_DIR}/vendors/joshuto/configs/joshuto.toml \

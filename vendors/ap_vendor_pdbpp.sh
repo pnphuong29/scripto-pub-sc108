@@ -8,7 +8,7 @@ ap_func_create_dir_struct_pdbpp() {
 
 alias @initpdbpp="ap_func_init_pdbpp"
 ap_func_init_pdbpp() {
-    alias @viscpdbpp="@vi -p \
+    alias viscpdbpp="vi -p \
         \${AP_SCRIPTO_COMMON_DIR}/vendors/pdbpp/ap_pdbpp.py
     "
 }

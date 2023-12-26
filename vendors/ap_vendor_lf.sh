@@ -1,6 +1,6 @@
 alias @initlf="ap_func_init_lf"
 ap_func_init_lf() {
-    alias @vilf="@vi -p \
+    alias visclf="vi -p \
         \${AP_SCRIPTO_DIR}/ap_vendor_lf.sh \
         \${AP_SCRIPTO_COMMON_DIR}/ap_vendor_lf.sh \
         \${AP_SCRIPTO_COMMON_DIR}/vendors/lf/ap_lfrc.conf \

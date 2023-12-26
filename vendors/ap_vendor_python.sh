@@ -9,9 +9,9 @@ ap_func_init_python() {
         export PYTHONSTARTUP="${AP_SCRIPTO_COMMON_DIR}/vendors/python/ap_python_startup.py"
     fi
 
-    alias @pi="pip install --upgrade pip"
-    alias @pirequirementsdev="pip install --upgrade pip -r requirements_dev.txt"
-    alias @pirequirements="pip install --upgrade pip -r requirements.txt"
+    alias pipupgrade="pip install --upgrade pip"
+    alias pipirequirementsdev="pip install --upgrade pip -r requirements_dev.txt"
+    alias pipirequirements="pip install --upgrade pip -r requirements.txt"
     alias @venv="python -m venv"
     alias @venvactivate="source \$(find -type f -name activate | head -1)"
 

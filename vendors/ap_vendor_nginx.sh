@@ -1,23 +1,23 @@
 alias @initnginx="ap_func_init_nginx"
 ap_func_init_nginx() {
-    alias @nginxrestart='sudo systemctl restart nginx'
-    alias @nginxreloadconfig='sudo nginx -s reload'
-    alias @nginxtestconfig='sudo nginx -t'
+    alias nginxrestart='sudo systemctl restart nginx'
+    alias nginxreloadconfig='sudo nginx -s reload'
+    alias nginxtestconfig='sudo nginx -t'
 
-    alias @znginxconfd="cd /etc/nginx/conf.d"
-    alias @znginxlogs="cd /var/log/nginx"
+    alias znginxconfd="cd /etc/nginx/conf.d"
+    alias znginxlogs="cd /var/log/nginx"
 
-    alias @zscnginxconfigs='cd "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"'
-    alias @zscnginxrenewconfigs='cd "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"'
+    alias zscnginxconfigs='cd "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"'
+    alias zscnginxrenewconfigs='cd "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"'
 
-    alias @nginxupdateconfigs='sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/'
-    alias @nginxupdaterenewconfigs='sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/renew"/*.conf /etc/nginx/conf.d/'
+    alias nginxupdateconfigs='sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/'
+    alias nginxupdaterenewconfigs='sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/renew"/*.conf /etc/nginx/conf.d/'
 
-    alias @viscnginxrenewconfigs='@vi -p \
+    alias viscnginxrenewconfigs='vi -p \
         "${AP_SCRIPTO_DIR}/vendors/ap_vendor_nginx.sh" \
         "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/renew"/*.conf \
 	'
-    alias @viscnginxconfigs='@vi -p \
+    alias viscnginxconfigs='vi -p \
         "${AP_SCRIPTO_DIR}/vendors/ap_vendor_nginx.sh" \
         "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"/*.conf \
 	'
@@ -78,7 +78,7 @@ ap_func_setup_nginx() {
         @minfo "Output should be as followings\n"
         @minfo "pub   	rsa2048 2011-08-19 [SC] [expires: 2024-06-14]\n
 						573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62\n
-				uid		nginx signing key <signing-key@nginx.co\n"
+				uid		nginx signing key <signing-keynginx.co\n"
 
         # Set up the apt repository for stable nginx packages
         echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \

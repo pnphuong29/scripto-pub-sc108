@@ -16,22 +16,22 @@ ap_func_init_git() {
     # typically hidden (e.g. '--allow-empty' for 'git commit').
     export GIT_COMPLETION_SHOW_ALL=1
 
-    alias @gst="git status"
-    alias @gc="git commit"
-    alias @gps="git push"
-    alias @gpsupstreamoriginmaster="git push --set-upstream origin master"
-    alias @gpl="git pull"
-    alias @gplupstreamoriginmaster="git pull --set-upstream origin master"
-    alias @ga="git add ."
-    alias @gacp="git add .; git commit -m \"\${AP_GIT_COMMIT_MSG}\"; git push"
-    alias @gacpf="git add .; git commit --file=\"\${AP_GIT_COMMIT_FILE}\"; git push"
-    alias @gl="git log --all --oneline --graph --decorate"
-    alias @glt="git ls-tree -r -t --full-tree --full-name --abbrev --long"
-    alias @gl1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
-    alias @gl2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'"
-    alias @gd="git --no-pager diff --name-status"
-    alias @gshow="git --no-pager show --abbrev-commit --name-status"
-    alias @gcf="git commit --file=\${AP_GIT_COMMIT_FILE}"
+    alias gst="git status"
+    alias gc="git commit"
+    alias gps="git push"
+    alias gpsupstreamoriginmaster="git push --set-upstream origin master"
+    alias gpl="git pull"
+    alias gplupstreamoriginmaster="git pull --set-upstream origin master"
+    alias ga="git add ."
+    alias gacp="git add .; git commit -m \"\${AP_GIT_COMMIT_MSG}\"; git push"
+    alias gacpf="git add .; git commit --file=\"\${AP_GIT_COMMIT_FILE}\"; git push"
+    alias gl="git log --all --oneline --graph --decorate"
+    alias glt="git ls-tree -r -t --full-tree --full-name --abbrev --long"
+    alias gl1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
+    alias gl2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'"
+    alias gd="git --no-pager diff --name-status"
+    alias gshow="git --no-pager show --abbrev-commit --name-status"
+    alias gcf="git commit --file=\${AP_GIT_COMMIT_FILE}"
 
     if alias @initgitcommon &>/dev/null; then
         @initgitcommon
@@ -109,7 +109,7 @@ ap_func_remove_git() {
     fi
 }
 
-alias @gcm='ap_func_git_commit'
+alias gcm='ap_func_git_commit'
 ap_func_git_commit() {
     git commit -m "$1"
     return 0

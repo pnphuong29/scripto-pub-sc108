@@ -1,7 +1,7 @@
 alias @initgithubcli="ap_func_init_github_cli"
 ap_func_init_github_cli() {
     @addpath -m "${AP_SOFT_DIR}/github-cli/share/man"
-    alias @lsghrepos='gh repo list --limit 200'
+    alias lsghrepos='gh repo list --limit 200'
 
     if alias @initgithubclicommon &>/dev/null; then
         @initgithubclicommon

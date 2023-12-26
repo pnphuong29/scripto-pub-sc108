@@ -4,11 +4,11 @@ ap_func_init_nvim() {
     export AP_NVIM_SETUP_VERSION="latest"
     @addpath "${AP_SOFT_DIR}/nvim/bin"
 
-    alias @vi="nvim"
-    alias @znvimswapshare="cd \${HOME}/.local/share/nvim/swap"
-    alias @znvimswapstate="cd \${HOME}/.local/state/nvim/swap"
-    alias @rmnvimswapsharefiles="rm -f \${HOME}/.local/share/nvim/swap/\*"
-    alias @rmnvimswapstatefiles="rm -f \${HOME}/.local/state/nvim/swap/\*"
+    alias vi="nvim"
+    alias znvimswapshare="cd \${HOME}/.local/share/nvim/swap"
+    alias znvimswapstate="cd \${HOME}/.local/state/nvim/swap"
+    alias rmnvimswapsharefiles="rm -f \${HOME}/.local/share/nvim/swap/\*"
+    alias rmnvimswapstatefiles="rm -f \${HOME}/.local/state/nvim/swap/\*"
 
     if alias @initnvimcommon &>/dev/null; then
         @initnvimcommon
@@ -114,7 +114,7 @@ ap_func_remove_nvim() {
     fi
 }
 
-alias @vibulk='ap_func_nvim_bulk_edit'
+alias vibulk='ap_func_nvim_bulk_edit'
 
 # @$func $$ ap_func_nvim_bulk_edit {
 # ap_func_nvim_bulk_edit [--] <file/folder_path...>
