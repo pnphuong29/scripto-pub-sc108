@@ -30,15 +30,22 @@ ap_func_setup_fx() {
     @logshow "Install [fx-completion]\n"
     npm install --global fx-completion
 
-    @createdirstructfx
+    if alias @createdirstructfx &>/dev/null; then
+        @createdirstructfx
+    fi
 }
 
 alias @rmfx="ap_func_remove_fx"
 ap_func_remove_fx() {
     @logshow "Remove [fx]\n"
+
     local ap_go_path
     ap_go_path="$(go env GOPATH)"
     rm -rf "${ap_go_path}/pkg/mod/github.com/antonmedv/fx@"*
     rm -f "${ap_go_path}/bin/fx"
     npm uninstall -g fx-completion
+
+    if alias @rmdirstructfx &>/dev/null; then
+        @rmdirstructfx
+    fi
 }

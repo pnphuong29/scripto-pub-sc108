@@ -48,8 +48,8 @@ fi
 alias @cpd='pwd | tr -d "\n" | @copy'
 
 # Aliases - Show commands
-alias @showdt='gdate +"%Y%m%d_%H%M%S"'
-alias @showcpuinfo="cat /proc/cpuinfo"
+alias showdt='gdate +"%Y%m%d_%H%M%S"'
+alias showcpuinfo="cat /proc/cpuinfo"
 
 # Aliases - Set commands
 alias @settzvn='sudo timedatectl --no-pager set-timezone Asia/Ho_Chi_Minh'

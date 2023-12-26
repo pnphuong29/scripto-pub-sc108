@@ -128,15 +128,15 @@ ap_func_show_msg() {
 alias @dash='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 49'
 alias @hyphen='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 49'
 
-alias @showsymred='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" --'
-alias @showsymgreen='ap_func_show_symbols -f "${AP_SCHEME_COLOR_GREEN}" --'
-alias @showsymyellow='ap_func_show_symbols -f "${AP_SCHEME_COLOR_YELLOW}" --'
-alias @showsymcyan='ap_func_show_symbols -f "${AP_SCHEME_COLOR_CYAN}" --'
-alias @showsymmagenta='ap_func_show_symbols -f "${AP_SCHEME_COLOR_MAGENTA}" --'
-alias @showsymhash21='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 21'
-alias @showsymhash49='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 49'
-alias @showsymhyphen21='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 21'
-alias @showsymhyphen49='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 49'
+alias showsymred='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" --'
+alias showsymgreen='ap_func_show_symbols -f "${AP_SCHEME_COLOR_GREEN}" --'
+alias showsymyellow='ap_func_show_symbols -f "${AP_SCHEME_COLOR_YELLOW}" --'
+alias showsymcyan='ap_func_show_symbols -f "${AP_SCHEME_COLOR_CYAN}" --'
+alias showsymmagenta='ap_func_show_symbols -f "${AP_SCHEME_COLOR_MAGENTA}" --'
+alias showsymhash21='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 21'
+alias showsymhash49='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 49'
+alias showsymhyphen21='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 21'
+alias showsymhyphen49='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 49'
 
 # @$func $$ ap_func_show_symbols {
 # ap_func_show_symbols [-cnf] [format] [--] [symbol] [no_of_times]

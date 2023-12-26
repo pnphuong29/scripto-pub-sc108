@@ -63,7 +63,7 @@ ap_func_remove_redis() {
     fi
 }
 
-alias @showredispasswd='ap_func_get_redis_passwd'
+alias showredispasswd='ap_func_get_redis_passwd'
 
 # @$func $$ ap_func_get_redis_passwd
 # ap_func_get_redis_passwd [--]
