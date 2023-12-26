@@ -66,7 +66,7 @@ ap_func_setup_nvim() {
         ap_os="linux64"
     fi
 
-    curl -L "https://github.com/neovim/neovim/releases/${AP_NVIM_SETUP_VERSION}/download/nvim-${ap_os}.tar.gz" -o "${AP_TMP_DIR}/#1"
+    curl -L "https://github.com/neovim/neovim/releases/${AP_NVIM_SETUP_VERSION}/download/{nvim-${ap_os}.tar.gz}" -o "${AP_TMP_DIR}"/#1
     tar -C "${AP_SOFT_DIR}" -zxf "${AP_TMP_DIR}/nvim-${ap_os}.tar.gz"
     mv "${AP_SOFT_DIR}/nvim-${ap_os}" "${AP_SOFT_DIR}/nvim"
 
