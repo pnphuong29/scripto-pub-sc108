@@ -104,15 +104,10 @@ ap_func_certbot_renew() {
     fi
 
     sudo certbot --nginx
+
     sudo rm -rf /etc/nginx/conf.d
     sudo cp -R /etc/nginx/conf.d.bak /etc/nginx/conf.d
     sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/
-
-    # if [ -d "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d/${ap_domain}" ]; then
-    #     sudo rm -f /etc/nginx/conf.d/renew_*.conf
-    #     sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d/${ap_domain}"/*.conf /etc/nginx/conf.d/
-    #     sudo systemctl restart nginx
-    # fi
 
     @retsuccess
 }

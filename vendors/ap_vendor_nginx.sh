@@ -1,9 +1,26 @@
 alias @initnginx="ap_func_init_nginx"
 ap_func_init_nginx() {
-    alias @znginxconfd="cd /etc/nginx/conf.d"
-    alias @znginxlogs="cd /var/log/nginx"
     alias @nginxrestart='sudo systemctl restart nginx'
     alias @nginxreloadconfig='sudo nginx -s reload'
+    alias @nginxtestconfig='sudo nginx -t'
+
+    alias @znginxconfd="cd /etc/nginx/conf.d"
+    alias @znginxlogs="cd /var/log/nginx"
+
+    alias @zscnginxconfigs='cd "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"'
+    alias @zscnginxrenewconfigs='cd "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"'
+
+    alias @nginxupdateconfigs='sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/'
+    alias @nginxupdaterenewconfigs='sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/renew"/*.conf /etc/nginx/conf.d/'
+
+    alias @viscnginxrenewconfigs='@vi -p \
+        "${AP_SCRIPTO_DIR}/vendors/ap_vendor_nginx.sh" \
+        "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/renew"/*.conf \
+	'
+    alias @viscnginxconfigs='@vi -p \
+        "${AP_SCRIPTO_DIR}/vendors/ap_vendor_nginx.sh" \
+        "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"/*.conf \
+	'
 
     if alias @initnginxcommon &>/dev/null; then
         @initnginxcommon
@@ -91,9 +108,4 @@ ap_func_remove_nginx() {
     if alias @rmdirstructnginx &>/dev/null; then
         @rmdirstructnginx
     fi
-}
-
-alias @nginxupdaterenewconfigs="ap_func_update_nginx_update_renew_configs"
-ap_func_update_nginx_update_renew_configs() {
-    sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/renew"/renew_*.conf /etc/nginx/conf.d/
 }
