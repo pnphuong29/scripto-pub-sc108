@@ -103,26 +103,32 @@ ap_func_certbot_renew() {
     sudo rm -rf /etc/nginx/conf.d.bak
     sudo cp -r /etc/nginx/conf.d /etc/nginx/conf.d.bak
 
-    if [ -n "${ap_subdomain}" ]; then
-        sudo rm -rf "/etc/letsencrypt/archive/${ap_subdomain}.${ap_domain}"
-        sudo rm -rf "/etc/letsencrypt/live/${ap_subdomain}.${ap_domain}"
-    else
-        sudo rm -rf "/etc/letsencrypt/archive/${ap_domain}"
-        sudo rm -rf "/etc/letsencrypt/live/${ap_domain}"
-    fi
+    # if [ -n "${ap_subdomain}" ]; then
+    #     sudo rm -rf "/etc/letsencrypt/archive/${ap_subdomain}.${ap_domain}"
+    #     sudo rm -rf "/etc/letsencrypt/live/${ap_subdomain}.${ap_domain}"
+    # else
+    #     sudo rm -rf "/etc/letsencrypt/archive/${ap_domain}"
+    #     sudo rm -rf "/etc/letsencrypt/live/${ap_domain}"
+    # fi
 
-    sudo rm -rf /etc/letsencrypt/renewal/*
+    # sudo rm -rf /etc/letsencrypt/renewal/*
 
     if [ -d "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/renew" ]; then
-        sudo rm -f /etc/nginx/conf.d/*.conf
+        sudo rm -f /etc/nginx/conf.d/renew_*.conf
         sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/renew"/*.conf /etc/nginx/conf.d/
         sudo systemctl restart nginx
     fi
 
-    sudo certbot --nginx
+    if [[ -z "${ap_subdomain}" && -d "/etc/letsencrypt/live/${ap_domain}" ]]; then
+        sudo certbot renew --nginx
+    fi
+
+    if [ -d "/etc/letsencrypt/live/${ap_subdomain}.${ap_domain}" ]; then
+        sudo certbot --nginx
+    fi
 
     if [ -d "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d/${ap_domain}" ]; then
-        sudo rm -f /etc/nginx/conf.d/*
+        sudo rm -f /etc/nginx/conf.d/renew_*.conf
         sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d/${ap_domain}"/*.conf /etc/nginx/conf.d/
         sudo systemctl restart nginx
     fi

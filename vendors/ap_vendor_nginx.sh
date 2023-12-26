@@ -92,3 +92,8 @@ ap_func_remove_nginx() {
         @rmdirstructnginx
     fi
 }
+
+alias @nginxupdaterenewconfigs="ap_func_update_nginx_update_renew_configs"
+ap_func_update_nginx_update_renew_configs() {
+    sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/renew"/renew_*.conf /etc/nginx/conf.d/
+}
