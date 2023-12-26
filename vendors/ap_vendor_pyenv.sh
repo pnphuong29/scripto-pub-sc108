@@ -102,7 +102,8 @@ ap_func_setup_pyenv() {
             libxml2-dev \
             libxmlsec1-dev \
             libffi-dev \
-            liblzma-dev
+            liblzma-dev \
+            libpq-dev
     fi
 
     # Install pyenv
