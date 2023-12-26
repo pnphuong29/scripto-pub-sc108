@@ -115,7 +115,6 @@ ap_func_certbot_renew() {
 
     if [ -d "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/renew" ]; then
         sudo rm -rf /etc/nginx/renew
-        sudo mkdir -p /etc/nginx/renew.d
         sudo cp -R "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/renew" /etc/nginx/
         sudo mv /etc/nginx/conf.d /etc/nginx/conf.d.bak
         sudo cp -R /etc/nginx/renew /etc/nginx/conf.d
