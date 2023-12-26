@@ -112,15 +112,15 @@ ap_func_remove_php() {
 
 alias @php8.1updatesymlinks="ap_func_update_symlinks"
 ap_func_update_symlinks() {
-    ln -sf /usr/bin/php8.1 /etc/alternatives/php
-    ln -sf /usr/share/man/man1/php8.1.1.gz /etc/alternatives/php.1.gz
+    sudo ln -sf /usr/bin/php8.1 /etc/alternatives/php
+    sudo ln -sf /usr/share/man/man1/php8.1.1.gz /etc/alternatives/php.1.gz
 
-    ln -sf /usr/bin/php-config8.1 /usr/bin/php-config.default
-    ln -sf /usr/bin/php-config.default /etc/alternatives/php-config
+    sudo ln -sf /usr/bin/php-config8.1 /usr/bin/php-config.default
+    sudo ln -sf /usr/bin/php-config.default /etc/alternatives/php-config
 
-    ln -sf /usr/share/man/man1/php-config8.1.1.gz /usr/share/man/man1/php-config.default.1.gz
+    sudo ln -sf /usr/share/man/man1/php-config8.1.1.gz /usr/share/man/man1/php-config.default.1.gz
 
-    ln -sf /usr/bin/phpize8.1 /usr/bin/phpize.default
+    sudo ln -sf /usr/bin/phpize8.1 /usr/bin/phpize.default
 
-    ln -sf /usr/share/man/man1/phpize8.1.1.gz /usr/share/man/man1/phpize.default.1.gz
+    sudo ln -sf /usr/share/man/man1/phpize8.1.1.gz /usr/share/man/man1/phpize.default.1.gz
 }
