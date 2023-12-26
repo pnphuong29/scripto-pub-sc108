@@ -100,6 +100,9 @@ ap_func_certbot_renew() {
     sudo rm -rf /etc/letsencrypt.bak
     sudo cp -r /etc/letsencrypt /etc/letsencrypt.bak
 
+    sudo rm -rf /etc/nginx/conf.d.bak
+    sudo cp -r /etc/nginx/conf.d /etc/nginx/conf.d.bak
+
     if [ -n "${ap_subdomain}" ]; then
         sudo rm -rf "/etc/letsencrypt/archive/${ap_subdomain}.${ap_domain}"
         sudo rm -rf "/etc/letsencrypt/live/${ap_subdomain}.${ap_domain}"
