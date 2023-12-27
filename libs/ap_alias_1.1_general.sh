@@ -52,7 +52,7 @@ alias showdt='gdate +"%Y%m%d_%H%M%S"'
 alias showcpuinfo="cat /proc/cpuinfo"
 
 # Aliases - Set commands
-alias @settzvn='sudo timedatectl --no-pager set-timezone Asia/Ho_Chi_Minh'
+alias settzvn='sudo timedatectl --no-pager set-timezone Asia/Ho_Chi_Minh'
 
 # Aliases - Other commands
 alias grep='grep --color'
