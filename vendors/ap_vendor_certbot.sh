@@ -124,8 +124,9 @@ ap_func_certbot_backup() {
         mkdir -p "${AP_SCRIPTO_COMMON_DIR}/sslcerts"/{archive,live}
     fi
 
-    sudo cp -R /etc/letsencrypt/archive/ "${AP_SCRIPTO_COMMON_DIR}/sslcerts/archive/"
-    sudo cp -R /etc/letsencrypt/live/ "${AP_SCRIPTO_COMMON_DIR}/sslcerts/live/"
+    sudo rsync -arv /etc/letsencrypt/archive/ "${AP_SCRIPTO_COMMON_DIR}/sslcerts/archive/"
+    sudo rsync -arv /etc/letsencrypt/live/ "${AP_SCRIPTO_COMMON_DIR}/sslcerts/live/"
+    chown -R "${USER}:${USER}" "${AP_SCRIPTO_COMMON_DIR}/sslcerts"
 
     @ret_success
 }
