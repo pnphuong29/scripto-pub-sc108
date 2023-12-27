@@ -114,3 +114,110 @@ ap_func_git_commit() {
     git commit -m "$1"
     return 0
 }
+
+alias gpl='ap_func_git_pull'
+alias gplall='ap_func_git_pull all'
+alias gplscall='ap_func_git_pull sc'
+alias gplcustom='ap_func_git_pull custom'
+# @$func $$ ap_func_git_pull {
+# ap_func_git_pull [--] <project_group_code...>
+# Description
+# 	Perform git pull for projects (default: all projects)
+# 	This function should be used only for private project which has only 1 branch
+# Return status
+#	AP_CODE_SUCCESS
+# }
+ap_func_git_pull() {
+    local projects=()
+
+    for ap_prj_group_code in "$@"; do
+        local ap_prj_group_code="${ap_prj_group_code^^}"
+        local ap_prj_group_name="AP_PRJ_LIST_CODE_${ap_prj_group_code}"
+        local ap_prj_group="${!ap_prj_group_name}"
+        projects+=("${ap_prj_group[@]}")
+    done
+
+    for prj_name in "${projects[@]}"; do
+        printf "Git pull [%s]\n" "${prj_name}"
+        prj_var="AP_PRJ_${prj_name}_DIR"
+        cd "${!prj_var}"
+        git pull
+        echo
+    done
+
+    @rtn_success
+}
+
+alias gacp='ap_func_git_commit_push'
+alias gacpall='ap_func_git_commit_push all'
+alias gacpscall='ap_func_git_commit_push sc'
+alias gacpcustom='ap_func_git_commit_push custom'
+# @$func $$ ap_func_git_commit_push {
+# ap_func_git_commit_push [--] <project_group_code...>
+# Description
+# 	Perform git commit and push for projects (default: all projects)
+# 	This function should be used only for private project which has only 1 branch
+# Return status
+#	AP_CODE_SUCCESS
+# }
+ap_func_git_commit_push() {
+    local projects=("${AP_PRJ_LIST_CODE_ALL[@]}")
+
+    for ap_prj_group_code in "$@"; do
+        local ap_prj_group_code="${ap_prj_group_code^^}"
+        local ap_prj_group_name="AP_PRJ_LIST_CODE_${ap_prj_group_code}"
+        local ap_prj_group="${!ap_prj_group_name}"
+        projects+=("${ap_prj_group[@]}")
+    done
+
+    for prj_name in "${projects[@]}"; do
+        printf "Git commit and push [%s]\n" "${prj_name}"
+        prj_var="AP_PRJ_${prj_name}_DIR"
+        cd "${!prj_var}"
+        git add .
+        git commit -m "Auto commit"
+        git push
+        echo
+    done
+
+    @rtn_success
+}
+
+alias gcl='ap_func_git_clone'
+alias gcla='ap_func_git_clone all'
+alias gclsc='ap_func_git_clone sc'
+alias gclcustom='ap_func_git_clone custom'
+# @$func $$ ap_func_git_clone {
+# ap_func_git_clone [--] <project_group_code...>
+# Description
+# 	Perform git clone for group projects
+# Return status
+#	AP_CODE_SUCCESS
+# }
+ap_func_git_clone() {
+    local projects=()
+
+    for ap_prj_group_code in "$@"; do
+        local ap_prj_group_code="${ap_prj_group_code^^}"
+        local ap_prj_group_name="AP_PRJ_LIST_CODE_${ap_prj_group_code}"
+        local ap_prj_group="${!ap_prj_group_name}"
+        projects+=("${ap_prj_group[@]}")
+    done
+
+    for prj in "${projects[@]}"; do
+        printf "Clone [%s]\n" "${prj}"
+        if grep pnphuong29 "${prj}" &>/dev/null; then
+            if [ -d "${AP_GH_P29_DIR}" ]; then
+                cd "${AP_GH_P29_DIR}"
+            else
+                cd "${AP_TMP_DIR}"
+            fi
+            git clone "${prj}"
+        else
+            ghq get "${prj}"
+        fi
+        echo
+    done
+
+    @rtn_success
+}
