@@ -1,5 +1,4 @@
 # Aliases - CD - Common locations
-alias zdata="cd \${AP_SCRIPTO_DATA_DIR}"
 alias zsymlinks="cd \${AP_SYMLINKS_DIR}"
 alias zsoft="cd \${AP_SOFT_DIR}"
 alias zsoftbin="cd \${AP_SOFT_DIR}/bin"
@@ -8,6 +7,17 @@ alias zman="cd \${AP_MAN_DIR}"
 alias zcompletions="cd \${AP_COMPLETIONS_DIR}"
 alias ztmp="cd \${AP_TMP_DIR}"
 alias zlogs="cd \${AP_LOGS_DIR}"
+alias zprj="cd \${AP_PRJ_DIR}"
+
+alias zsc="cd \${AP_SCRIPTO_COMMON_DIR}"
+alias zs="cd \${AP_SCRIPTO_MAIN_DIR}"
+alias zdata1="cd \${AP_DATA1_DIR}"
+alias zdl="cd \${AP_DL_DIR}"
+
+alias zgh="cd \${AP_GH_DIR}"
+alias zgl="cd \${AP_GL_DIR}"
+alias zglp29="cd \${AP_GL_P29_DIR}"
+alias zghp29="cd \${AP_GH_P29_DIR}"
 
 # Aliases - CD | Linux
 alias zlocalshare="cd \${HOME}/.local/share"
@@ -26,10 +36,15 @@ alias vibashrc="vi \${HOME}/.bashrc"
 alias vibashprofile="vi \${HOME}/.bash_profile"
 alias viprofile="vi \${HOME}/.profile"
 
+alias viscmaster='vi "${AP_SCRIPTO_COMMON_DIR}/ap_master.sh"'
+alias vismaster='vi "${AP_SCRIPTO_MAIN_DIR}/ap_master.sh"'
+
+alias vigitcommitfile="[ -f \${PWD}/\${AP_GIT_COMMIT_FILE} ] && vi \${PWD}/\${AP_GIT_COMMIT_FILE}"
 alias vigitconfigs="vi -p \
 	\${HOME}/.gitconfig \
 	\${HOME}/.gitignore_global \
     "
+alias vichromebm="vi \${AP_CHROME_BOOKMARK_FILE_PATH}"
 
 # Aliases - List commands
 alias lspaths='echo "${PATH}" | tr ":" "\n"'

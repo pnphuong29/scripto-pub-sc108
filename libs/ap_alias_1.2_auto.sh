@@ -46,3 +46,20 @@ for ap_dkc_file in "${AP_SCRIPTO_COMMON_DIR}/dockers"/ap_dkc_*.yml; do
     # @minfo "Execute command [${ap_cmd}]\n"
     eval "$(printf "%s" "${ap_cmd}")"
 done
+
+# Alias - Vi script test bash commands
+if [ ! -d "${AP_SCRIPTO_COMMON_DIR}/tests" ]; then
+    mkdir -p "${AP_SCRIPTO_COMMON_DIR}/tests"
+fi
+
+if [ ! -d "${AP_SCRIPTO_MAIN_DIR}/tests" ]; then
+    mkdir -p "${AP_SCRIPTO_MAIN_DIR}/tests"
+fi
+
+for i in {1..10}; do
+    eval "$(printf "%s" "alias visctb${i}='vi ${AP_SCRIPTO_COMMON_DIR}/tests/ap_test_bash_${i}.sh'")"
+    eval "$(printf "%s" "alias runsctb${i}='source ${AP_SCRIPTO_COMMON_DIR}/tests/ap_test_bash_${i}.sh'")"
+
+    eval "$(printf "%s" "alias vistb${i}='vi ${AP_SCRIPTO_MAIN_DIR}/tests/ap_test_bash_${i}.sh'")"
+    eval "$(printf "%s" "alias runstb${i}='source ${AP_SCRIPTO_MAIN_DIR}/tests/ap_test_bash_${i}.sh'")"
+done
