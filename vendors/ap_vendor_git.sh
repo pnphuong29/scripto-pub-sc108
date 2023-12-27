@@ -133,7 +133,8 @@ ap_func_git_pull() {
     for ap_prj_group_code in "$@"; do
         local ap_prj_group_code="${ap_prj_group_code^^}"
         local ap_prj_group_name="AP_PRJ_LIST_CODE_${ap_prj_group_code}"
-        local ap_prj_group="${!ap_prj_group_name}"
+        eval "$(printf "ap_prj_group=("\${%s[@]}")" "${ap_prj_group_name}")"
+        @minfo "Git pull for projects [${ap_prj_group[@]}]\n"
         projects+=("${ap_prj_group[@]}")
     done
 
@@ -161,12 +162,13 @@ alias gacpcustom='ap_func_git_commit_push custom'
 #	AP_CODE_SUCCESS
 # }
 ap_func_git_commit_push() {
-    local projects=("${AP_PRJ_LIST_CODE_ALL[@]}")
+    local projects=()
 
     for ap_prj_group_code in "$@"; do
         local ap_prj_group_code="${ap_prj_group_code^^}"
         local ap_prj_group_name="AP_PRJ_LIST_CODE_${ap_prj_group_code}"
-        local ap_prj_group="${!ap_prj_group_name}"
+        eval "$(printf "ap_prj_group=("\${%s[@]}")" "${ap_prj_group_name}")"
+        @minfo "Git push and commit for projects [${ap_prj_group[@]}]\n"
         projects+=("${ap_prj_group[@]}")
     done
 
@@ -200,7 +202,8 @@ ap_func_git_clone() {
     for ap_prj_group_code in "$@"; do
         local ap_prj_group_code="${ap_prj_group_code^^}"
         local ap_prj_group_name="AP_PRJ_LIST_CODE_${ap_prj_group_code}"
-        local ap_prj_group="${!ap_prj_group_name}"
+        eval "$(printf "ap_prj_group=("\${%s[@]}")" "${ap_prj_group_name}")"
+        @minfo "Git clone for projects [${ap_prj_group[@]}]\n"
         projects+=("${ap_prj_group[@]}")
     done
 
