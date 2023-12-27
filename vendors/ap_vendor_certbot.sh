@@ -81,16 +81,15 @@ ap_func_remove_certbot() {
     fi
 }
 
-alias renewsslcert="ap_func_certbot_renew"
-
-# @$func $$ ap_func_certbot_renew {
-# ap_func_certbot_renew
+alias gensslcerts="ap_func_certbot_generate_certs"
+# @$func $$ ap_func_certbot_generate_certs {
+# ap_func_certbot_generate_certs
 # Description
-# 	Create or renew SSL certs
+# 	Generate or renew SSL certs
 # Return status
 #	AP_CODE_SUCCESS
 # }
-ap_func_certbot_renew() {
+ap_func_certbot_generate_certs() {
     sudo rm -rf /etc/letsencrypt.bak
     sudo cp -R /etc/letsencrypt /etc/letsencrypt.bak
 
@@ -108,6 +107,25 @@ ap_func_certbot_renew() {
     sudo rm -rf /etc/nginx/conf.d
     sudo cp -R /etc/nginx/conf.d.bak /etc/nginx/conf.d
     sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/
+
+    @retsuccess
+}
+
+alias bksslcerts="ap_func_certbot_backup"
+# @$func $$ ap_func_certbot_backup {
+# ap_func_certbot_backup
+# Description
+# 	Backup SSL certs
+# Return status
+#	AP_CODE_SUCCESS
+# }
+ap_func_certbot_backup() {
+    if [ ! -d "${AP_SCRIPTO_COMMON_DIR}/sslcerts" ]; then
+        mkdir -p "${AP_SCRIPTO_COMMON_DIR}/sslcerts"/{archive,live}
+    fi
+
+    sudo cp -R /etc/letsencrypt/archive/ "${AP_SCRIPTO_COMMON_DIR}/sslcerts/archive/"
+    sudo cp -R /etc/letsencrypt/live/ "${AP_SCRIPTO_COMMON_DIR}/sslcerts/live/"
 
     @retsuccess
 }
