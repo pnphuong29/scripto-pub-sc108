@@ -108,7 +108,7 @@ ap_func_certbot_generate_certs() {
     sudo cp -R /etc/nginx/conf.d.bak /etc/nginx/conf.d
     sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/
 
-    @retsuccess
+    @ret_success
 }
 
 alias bksslcerts="ap_func_certbot_backup"
@@ -127,5 +127,5 @@ ap_func_certbot_backup() {
     sudo cp -R /etc/letsencrypt/archive/ "${AP_SCRIPTO_COMMON_DIR}/sslcerts/archive/"
     sudo cp -R /etc/letsencrypt/live/ "${AP_SCRIPTO_COMMON_DIR}/sslcerts/live/"
 
-    @retsuccess
+    @ret_success
 }
