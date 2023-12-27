@@ -209,18 +209,57 @@ ap_func_git_clone() {
 
     for prj in "${projects[@]}"; do
         printf "Clone [%s]\n" "${prj}"
-        if grep pnphuong29 "${prj}" &>/dev/null; then
-            if [ -d "${AP_GH_P29_DIR}" ]; then
-                cd "${AP_GH_P29_DIR}"
-            else
-                cd "${AP_TMP_DIR}"
-            fi
-            git clone "${prj}"
-        else
-            ghq get "${prj}"
-        fi
+        # if grep pnphuong29 "${prj}" &>/dev/null; then
+        #     if [ -d "${AP_GH_P29_DIR}" ]; then
+        #         cd "${AP_GH_P29_DIR}"
+        #     else
+        #         cd "${AP_TMP_DIR}"
+        #     fi
+        #     git clone "${prj}"
+        # else
+        #     ghq get "${prj}"
+        # fi
+        ghq get "${prj}"
         echo
     done
 
     @rtn_success
+}
+
+alias gitupdateoriginghp29="ap_func_git_update_origin"
+ap_func_git_update_origin() {
+    for ap_prj_path in $(gfind "${AP_GH_P29_DIR}" -maxdepth 1 -type d | tail -n +2); do
+        if ls -al "${ap_prj_path}" | grep ".git" &>/dev/null; then
+            @minfo "Update origin for project [${ap_prj_name}]\n"
+            ap_prj_name="${ap_prj_path##*/}"
+            cd "${ap_prj_path}"
+
+            git remote remove origin
+            git remote add origin "git@github.com:pnphuong29/${ap_prj_name}.git"
+            # git remote set-url origin "git@github.com:pnphuong29/${ap_prj_name}.git"
+            git branch --set-upstream-to origin master
+            git pull --set-upstream origin master
+            git push --set-upstream origin master
+        fi
+    done
+}
+
+alias gitsetghp29repodeployinfo="ap_func_git_set_github_p29_repo_info"
+ap_func_git_set_github_p29_repo_info() {
+    for ap_prj_path in $(gfind "${AP_GH_P29_DIR}" -maxdepth 1 -type d | tail -n +2); do
+        if ls -al "${ap_prj_path}" | grep ".git" &>/dev/null; then
+            ap_prj_name="${ap_prj_path##*/}"
+            ap_prj_code="${ap_prj_code##*-}"
+            ap_new_repo_url="git@${ap_prj_code}:pnphuong29/${ap_prj_name}.git"
+
+            @minfo "Update repo url to [${ap_new_repo_url}] for project [${ap_prj_path}]"
+            cd "${ap_prj_path}"
+
+            git remote remove origin
+            git remote add origin "${ap_new_repo_url}"
+            git branch --set-upstream-to origin master
+            git pull --set-upstream origin master
+            git push --set-upstream origin master
+        fi
+    done
 }
