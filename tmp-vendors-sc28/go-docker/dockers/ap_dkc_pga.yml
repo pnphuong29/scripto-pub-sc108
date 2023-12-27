@@ -12,11 +12,11 @@ services:
         #     dockerfile: ./dockerfiles/pga.Dockerfile
         environment:
             # pgAdmin runs as the pgadmin user (UID: 5050) in the pgadmin group (GID: 5050) in the container.
-            PGADMIN_DEFAULT_EMAIL: 'pnphuong29@gmail.com'
+            PGADMIN_DEFAULT_EMAIL: "pnphuong29@gmail.com"
             PGADMIN_DEFAULT_PASSWORD: ${AP_SECRET_PGA_PASS}
             # PGADMIN_DEFAULT_PASSWORD_FILE: /run/secrets/pga_pass # will not work 100% with Docker Compose, use Docker Swarm instead
             PGADMIN_LISTEN_PORT: 443
-            PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: 'True'
+            PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: "True"
             # PGADMIN_CONFIG_LOGIN_BANNER: 'Authorised users only!'
             PGADMIN_CONFIG_CONSOLE_LOG_LEVEL: 10
             # PGADMIN_SERVER_JSON_FILE: # Default: /pgadmin4/servers.json
@@ -44,7 +44,7 @@ services:
             - ${AP_PORT_PGA_PUBLIC}:443
         volumes:
             - ${AP_SERVER_PGA_DATA_DIR}:/var/lib/pgadmin
-            # - ./configs/pga/servers.json:/pgadmin4/servers.json
+            # - ./configs/pgadmin/servers.json:/pgadmin4/servers.json
             - ${AP_NC_DIR}/ws/sql:/var/lib/pgadmin/storage/pnphuong29_gmail.com
             # - ./entrypoints/ap_entrypoint_${AP_DK_CON_PGA}.sh:/ap_entrypoint.sh:ro
         # entrypoint: /ap_entrypoint.sh

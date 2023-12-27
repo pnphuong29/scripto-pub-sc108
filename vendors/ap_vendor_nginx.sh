@@ -10,8 +10,13 @@ ap_func_init_nginx() {
     alias zscnginxconfigs='cd "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"'
     alias zscnginxrenewconfigs='cd "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"'
 
-    alias nginxupdateconfigs='sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/'
-    alias nginxupdaterenewconfigs='sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/renew"/*.conf /etc/nginx/conf.d/'
+    alias nginxupdateconfigs='
+        sudo cp -f "${AP_SCRIPTO_DIR}/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/ \
+        sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/ \
+    '
+    alias nginxupdaterenewconfigs='
+        sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/renew"/*.conf /etc/nginx/conf.d/ \
+    '
 
     alias viscnginxrenewconfigs='vi -p \
         "${AP_SCRIPTO_DIR}/vendors/ap_vendor_nginx.sh" \
