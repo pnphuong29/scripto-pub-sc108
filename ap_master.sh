@@ -1,5 +1,6 @@
 # Mandatory directories in scripto project
 export AP_SCRIPTO_DIR="${HOME}/scripto"
+export AP_SCRIPTO_SHARE_DIR="${HOME}/scripto-share"
 export AP_SCRIPTO_COMMON_DIR="${HOME}/scripto-common"
 export AP_SCRIPTO_MAIN_DIR="${HOME}/scripto-main"
 export AP_SCRIPTO_DATA_DIR="${HOME}/scripto-data"
@@ -36,11 +37,6 @@ export AP_LOGS_DEBUG_ENABLED=0
 
 # Enable/disable error messages in [getopts] command
 # export OPTERR=0
-
-# These markers are normally used to mark the start/end of a custom
-# configuration part that you need to inject into a config file
-export AP_MARKER_CONFIG_START="@@@AP_START"
-export AP_MARKER_CONFIG_END="@@@AP_END"
 
 # Try to simulate macOS GNU commands
 # Using symbolic links instead of aliases for all users including root cannot access to below commands

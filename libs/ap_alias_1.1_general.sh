@@ -11,8 +11,7 @@ alias zprj="cd \${AP_PRJ_DIR}"
 
 alias zsc="cd \${AP_SCRIPTO_COMMON_DIR}"
 alias zs="cd \${AP_SCRIPTO_MAIN_DIR}"
-alias zdata1="cd \${AP_DATA1_DIR}"
-alias zdl="cd \${AP_DL_DIR}"
+alias zsr="cd \${AP_SCRIPTO_SHARE_DIR}"
 
 alias zgh="cd \${AP_GH_DIR}"
 alias zgl="cd \${AP_GL_DIR}"
