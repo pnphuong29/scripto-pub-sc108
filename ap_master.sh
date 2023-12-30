@@ -1,25 +1,30 @@
 # Load scripto, share, common and main environment variables
-while read -r ap_env; do
-    source "${ap_env}"
-done < <(gfind "${AP_SCRIPTO_DIR}/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
+if [ -d "${AP_SCRIPTO_DIR}/libs" ]; then
+    while read -r ap_env; do
+        source "${ap_env}"
+    done < <(gfind "${AP_SCRIPTO_DIR}/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
+fi
 
-if [ -d "${AP_SCRIPTO_SHARE_DIR}" ]; then
+if [ -d "${AP_SCRIPTO_SHARE_DIR}/libs" ]; then
+    while read -r ap_env; do
+        source "${ap_env}"
+    done < <(gfind "${AP_SCRIPTO_SHARE_DIR}/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
+fi
+
+if [ -d "${AP_SCRIPTO_COMMON_DIR}/libs" ]; then
     while read -r ap_env; do
         source "${ap_env}"
     done < <(gfind "${AP_SCRIPTO_COMMON_DIR}/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
 fi
 
-if [ -d "${AP_SCRIPTO_COMMON_DIR}" ]; then
-    while read -r ap_env; do
-        source "${ap_env}"
-    done < <(gfind "${AP_SCRIPTO_COMMON_DIR}/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
-fi
-
-if [ -d "${AP_SCRIPTO_MAIN_DIR}" ]; then
+if [ -d "${AP_SCRIPTO_MAIN_DIR}/libs" ]; then
     while read -r ap_env; do
         source "${ap_env}"
     done < <(gfind "${AP_SCRIPTO_MAIN_DIR}/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
 fi
+
+# Load scripto core libraries
+source "${AP_SCRIPTO_DIR}/libs/ap_core.sh"
 
 # Try to simulate macOS GNU commands
 # Using symbolic links instead of aliases for all users including root cannot access to below commands
@@ -32,57 +37,81 @@ if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
 fi
 
 # Load scripto aliases
-while read -r ap_alias; do
-    source "${ap_alias}"
-done < <(gfind "${AP_SCRIPTO_DIR}/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | sort)
+if [ -d "${AP_SCRIPTO_DIR}/libs" ]; then
+    while read -r ap_alias; do
+        source "${ap_alias}"
+    done < <(gfind "${AP_SCRIPTO_DIR}/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | sort)
+fi
 
 # Load scripto functions
-while read -r ap_func; do
-    source "${ap_func}"
-done < <(gfind "${AP_SCRIPTO_DIR}/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | sort)
+if [ -d "${AP_SCRIPTO_DIR}/libs" ]; then
+    while read -r ap_func; do
+        source "${ap_func}"
+    done < <(gfind "${AP_SCRIPTO_DIR}/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | sort)
+fi
 
 # Load share, common & main aliases
-while read -r ap_alias; do
-    source "${ap_alias}"
-done < <(gfind "${AP_SCRIPTO_SHARE_DIR}/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | sort)
+if [ -d "${AP_SCRIPTO_SHARE_DIR}/libs" ]; then
+    while read -r ap_alias; do
+        source "${ap_alias}"
+    done < <(gfind "${AP_SCRIPTO_SHARE_DIR}/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | sort)
+fi
 
-while read -r ap_alias; do
-    source "${ap_alias}"
-done < <(gfind "${AP_SCRIPTO_COMMON_DIR}/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | sort)
+if [ -d "${AP_SCRIPTO_COMMON_DIR}/libs" ]; then
+    while read -r ap_alias; do
+        source "${ap_alias}"
+    done < <(gfind "${AP_SCRIPTO_COMMON_DIR}/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | sort)
+fi
 
-while read -r ap_alias; do
-    source "${ap_alias}"
-done < <(gfind "${AP_SCRIPTO_MAIN_DIR}/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | sort)
+if [ -d "${AP_SCRIPTO_MAIN_DIR}/libs" ]; then
+    while read -r ap_alias; do
+        source "${ap_alias}"
+    done < <(gfind "${AP_SCRIPTO_MAIN_DIR}/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | sort)
+fi
 
 # Load share, common, main & scripto vendors
-while read -r ap_func_vendor; do
-    source "${ap_func_vendor}"
-done < <(gfind "${AP_SCRIPTO_SHARE_DIR}/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | sort)
+if [ -d "${AP_SCRIPTO_SHARE_DIR}/vendors" ]; then
+    while read -r ap_vendor; do
+        source "${ap_vendor}"
+    done < <(gfind "${AP_SCRIPTO_SHARE_DIR}/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | sort)
+fi
 
-while read -r ap_func_vendor; do
-    source "${ap_func_vendor}"
-done < <(gfind "${AP_SCRIPTO_COMMON_DIR}/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | sort)
+if [ -d "${AP_SCRIPTO_COMMON_DIR}/vendors" ]; then
+    while read -r ap_vendor; do
+        source "${ap_vendor}"
+    done < <(gfind "${AP_SCRIPTO_COMMON_DIR}/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | sort)
+fi
 
-while read -r ap_func_vendor; do
-    source "${ap_func_vendor}"
-done < <(gfind "${AP_SCRIPTO_MAIN_DIR}/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | sort)
+if [ -d "${AP_SCRIPTO_MAIN_DIR}/vendors" ]; then
+    while read -r ap_vendor; do
+        source "${ap_vendor}"
+    done < <(gfind "${AP_SCRIPTO_MAIN_DIR}/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | sort)
+fi
 
-while read -r ap_func_vendor; do
-    source "${ap_func_vendor}"
-done < <(gfind "${AP_SCRIPTO_DIR}/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | sort)
+if [ -d "${AP_SCRIPTO_DIR}/vendors" ]; then
+    while read -r ap_vendor; do
+        source "${ap_vendor}"
+    done < <(gfind "${AP_SCRIPTO_DIR}/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | sort)
+fi
 
 # Load share, common and main functions
-while read -r ap_func; do
-    source "${ap_func}"
-done < <(gfind "${AP_SCRIPTO_SHARE_DIR}/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | sort)
+if [ -d "${AP_SCRIPTO_SHARE_DIR}/libs" ]; then
+    while read -r ap_func; do
+        source "${ap_func}"
+    done < <(gfind "${AP_SCRIPTO_SHARE_DIR}/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | sort)
+fi
 
-while read -r ap_func; do
-    source "${ap_func}"
-done < <(gfind "${AP_SCRIPTO_COMMON_DIR}/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | sort)
+if [ -d "${AP_SCRIPTO_COMMON_DIR}/libs" ]; then
+    while read -r ap_func; do
+        source "${ap_func}"
+    done < <(gfind "${AP_SCRIPTO_COMMON_DIR}/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | sort)
+fi
 
-while read -r ap_func; do
-    source "${ap_func}"
-done < <(gfind "${AP_SCRIPTO_MAIN_DIR}/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | sort)
+if [ -d "${AP_SCRIPTO_MAIN_DIR}/libs" ]; then
+    while read -r ap_func; do
+        source "${ap_func}"
+    done < <(gfind "${AP_SCRIPTO_MAIN_DIR}/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | sort)
+fi
 
 # Update $PATH
 @addpath "${AP_SCRIPTO_COMMON_DIR}/tests"

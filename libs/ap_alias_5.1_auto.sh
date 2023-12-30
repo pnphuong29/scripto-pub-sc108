@@ -19,8 +19,10 @@ for ap_vendor in "${AP_SCRIPTO_DIR}/vendors"/ap_vendor_*.sh; do
     fi
 
     if [ -f "${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\"'"
+        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
+
+    ap_cmd="${ap_cmd}'"
 
     # @minfo "Execute command [${ap_cmd}]\n"
     eval "$(printf "%s" "${ap_cmd}")"
@@ -46,8 +48,10 @@ for ap_vendor in "${AP_SCRIPTO_COMMON_DIR}/vendors"/ap_vendor_*.sh; do
     fi
 
     if [ -f "${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\"'"
+        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
+
+    ap_cmd="${ap_cmd}'"
 
     # @minfo "Execute command [${ap_cmd}]\n"
     eval "$(printf "%s" "${ap_cmd}")"
@@ -73,8 +77,10 @@ for ap_vendor in "${AP_SCRIPTO_SHARE_DIR}/vendors"/ap_vendor_*.sh; do
     fi
 
     if [ -f "${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\"'"
+        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
+
+    ap_cmd="${ap_cmd}'"
 
     # @minfo "Execute command [${ap_cmd}]\n"
     eval "$(printf "%s" "${ap_cmd}")"
@@ -100,8 +106,10 @@ for ap_vendor in "${AP_SCRIPTO_MAIN_DIR}/vendors"/ap_vendor_*.sh; do
     fi
 
     if [ -f "${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\"'"
+        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
+
+    ap_cmd="${ap_cmd}'"
 
     # @minfo "Execute command [${ap_cmd}]\n"
     eval "$(printf "%s" "${ap_cmd}")"

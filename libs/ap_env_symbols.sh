@@ -1,3 +1,4 @@
+# Symbols
 export AP_SYM_PASSED="✅"
 export AP_SYM_CHECKED="✅"
 export AP_SYM_TICKED="✅"

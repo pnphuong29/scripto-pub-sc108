@@ -1,3 +1,4 @@
+# Return/exit code
 export AP_CODE_SUCCESS=0
 export AP_CODE_EXISTED=1
 export AP_CODE_ERR_MISSING_ARGUMENT=2
