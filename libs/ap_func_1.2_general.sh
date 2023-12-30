@@ -154,3 +154,178 @@ ap_func_demo_colors_and_formatting() {
 
     return 0
 }
+
+alias vidir="ap_func_vim_open_all_files_in_current_dir"
+
+# @$func $$ ap_func_vim_open_all_files_in_current_dir {
+# ap_func_vim_open_all_files_in_current_dir
+# Description
+# 	Open all files in current directory
+# Return status
+#	AP_CODE_SUCCESS
+# }
+ap_func_vim_open_all_files_in_current_dir() {
+    local ap_file
+    local ap_cmd='nvim -p'
+
+    shopt -s dotglob # Enable listing dot files when globbing
+    for ap_file in "${PWD}"/*; do
+        ap_cmd="${ap_cmd} \"${ap_file}\""
+    done
+    shopt -u dotglob # Disable listing dot files when globbing
+
+    if [[ "${ap_cmd}" != "nvim -p" ]]; then
+        eval "${ap_cmd}"
+    fi
+
+    @rtn_success
+}
+
+alias @chmod="ap_func_chmod"
+alias chmod777666="ap_func_chmod 777 666"
+alias chmoddir="ap_func_chmod -d"
+alias chmoddir777="ap_func_chmod -d 777"
+alias chmodfile="ap_func_chmod -f"
+alias chmodfile666="ap_func_chmod -f 666"
+# @$func $$ ap_func_chmod {
+# ap_func_chmod <dir_mod> <file_mod> <path>
+# Description
+# 	Perform chmod for files and folders in <path> with respective input permissions
+# Options
+# 	-d Perform chmod for directories only
+# 	-f Perform chmod for files only
+# Parameters
+# 	<path> Path to search
+# Return status
+#	AP_CODE_SUCCESS
+# }
+ap_func_chmod() {
+    local ap_opts_string='df'
+    local ap_opt=''
+    local ap_opt_d=0
+    local ap_opt_f=0
+
+    unset OPTIND
+
+    while getopts "${ap_opts_string}" ap_opt; do
+        case "${ap_opt}" in
+        'd')
+            ap_opt_d=1
+            ;;
+        'f')
+            ap_opt_f=1
+            ;;
+        ?)
+            @merr "Invalid option [${OPTARG}]"
+            reterr_opt_invalid_option
+            ;;
+        esac
+    done
+
+    # Remove all options in parameter list
+    shift $((OPTIND - 1))
+
+    # Implementation
+    local ap_default_dir_mod="750"
+    local ap_default_file_mod="640"
+    local ap_default_path="${PWD}"
+
+    if [[ $ap_opt_d = 1 && $ap_opt_f = 1 ]]; then
+        @merr "Cannot have both options [d] and [f] at the same time!\n"
+        @reterr_unknown
+    fi
+
+    if [[ $ap_opt_d = 1 ]]; then
+        local ap_dir_mod="${1:-${ap_default_dir_mod}}"
+        local ap_path="${2:-${ap_default_path}}"
+        find "${ap_path}" -type d -exec chmod "${ap_dir_mod}" {} \;
+        @rtn_success
+    fi
+
+    if [[ $ap_opt_f = 1 ]]; then
+        local ap_file_mod="${1:-${ap_default_file_mod}}"
+        local ap_path="${2:-${ap_default_path}}"
+        find "${ap_path}" -type f -exec chmod "${ap_file_mod}" {} \;
+        @rtn_success
+    fi
+
+    local ap_dir_mod="${1:-${ap_default_dir_mod}}"
+    local ap_file_mod="${2:-${ap_default_file_mod}}"
+    local ap_path="${3:-${ap_default_path}}"
+
+    find "${ap_path}" -type d -exec chmod "${ap_dir_mod}" {} \;
+    find "${ap_path}" -type f -exec chmod "${ap_file_mod}" {} \;
+
+    @rtn_success
+}
+
+alias @rsync="ap_func_rsync"
+# @$func $$ ap_func_rsync {
+# ap_func_rsync [-dpuw] <domain/ip> <port> <user> <password> [--] *<src_path> <dst_path>
+# Description
+# 	Rsync a file or folder to a remote machine
+# Notes
+#	Rsync folder must have correct owner and permissions to for this function to work correctly
+# Options
+# 	-d <domain/ip>	Specify a domain or an IP address to rsync to
+#   -u <user>       Specify user
+#	-p <port>		Specify port number
+#	-w <pass>		rsync user password
+# Parameters
+# 	*<src_path>	Path to the file or folder of current machine (source)
+# 	<dst_path>	Path to the folder of the remote machine (destination) (default: `AP_RSYNC_DIR` )
+# Return status
+#	AP_CODE_SUCCESS
+# }
+ap_func_rsync() {
+    local ap_opts_string=':d:p:u:w:'
+    local ap_opt=''
+    local ap_domain_ip=""
+    local ap_port=""
+    local ap_rsync_user=""
+    local ap_rsync_pass=""
+
+    unset OPTIND
+
+    while getopts "${ap_opts_string}" ap_opt; do
+        case "${ap_opt}" in
+        'd')
+            ap_domain_ip="${OPTARG}"
+            ;;
+        'p')
+            ap_port="${OPTARG}"
+            ;;
+        'u')
+            ap_rsync_user="${OPTARG}"
+            ;;
+        'w')
+            ap_rsync_pass="${OPTARG}"
+            ;;
+        ?)
+            echo "Invalid option [${OPTARG}]"
+            @rtn_err_opt_invalid_option
+            ;;
+        esac
+    done
+
+    # Remove all options in parameter list
+    shift $((OPTIND - 1))
+
+    # Implementation
+    local ap_src_path="${1}"
+    local ap_dst_path="${2:-}" # default empty
+
+    if [[ -z "${ap_src_path:-}" ]]; then
+        @minfo "Missing source path!\n"
+        @rtn_err_missing_argument
+    fi
+
+    @minfo "Sync from [${PWD}/${ap_src_path}] to [${ap_rsync_user}@${ap_domain_ip}:/home/${ap_rsync_user}/${ap_dst_path}] via port [${ap_port}]\n"
+    if [ -n "${ap_rsync_pass}" ]; then
+        sshpass -p "${ap_rsync_pass}" rsync -av -e "ssh -p ${ap_port}" --progress "${PWD}/${ap_src_path}" "${ap_rsync_user}@${ap_domain_ip}:/home/${ap_rsync_user}/${ap_dst_path}"
+    else
+        rsync -av -e "ssh -p ${ap_port}" --progress "${PWD}/${ap_src_path}" "${ap_rsync_user}@${ap_domain_ip}:/home/${ap_rsync_user}/${ap_dst_path}"
+    fi
+
+    @rtn_success
+}

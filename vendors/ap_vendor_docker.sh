@@ -44,6 +44,10 @@ ap_func_init_docker() {
     alias dkinspect="docker inspect"
     alias dkinspectlogpath="docker inspect --format='{{.LogPath}}'"
 
+    if alias @initdockershare &>/dev/null; then
+        @initdockershare
+    fi
+
     if alias @initdockercommon &>/dev/null; then
         @initdockercommon
     fi
@@ -51,6 +55,10 @@ ap_func_init_docker() {
 
 alias @createdirstructdocker="ap_func_create_dirstruct_docker"
 ap_func_create_dirstruct_docker() {
+    if alias @createdirstructdockershare &>/dev/null; then
+        @createdirstructdockershare
+    fi
+
     if alias @createdirstructdockercommon &>/dev/null; then
         @createdirstructdockercommon
     fi
@@ -58,6 +66,10 @@ ap_func_create_dirstruct_docker() {
 
 alias @rmdirstructdocker="ap_func_remove_dirstruct_docker"
 ap_func_remove_dirstruct_docker() {
+    if alias @rmdirstructdockershare &>/dev/null; then
+        @rmdirstructdockershare
+    fi
+
     if alias @rmdirstructdockercommon &>/dev/null; then
         @rmdirstructdockercommon
     fi

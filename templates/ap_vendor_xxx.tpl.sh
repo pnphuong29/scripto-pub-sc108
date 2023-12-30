@@ -1,12 +1,31 @@
+alias @initxxxshare="ap_func_init_xxx_share"
+ap_func_init_xxx_share() {
+
+}
+
+alias @initxxxcommon="ap_func_init_xxx_common"
+ap_func_init_xxx_common() {
+
+}
+
 alias @initxxx="ap_func_init_xxx"
 ap_func_init_xxx() {
+    if alias @initxxxshare &>/dev/null; then
+        @initxxxshare
+    fi
+
     if alias @initxxxcommon &>/dev/null; then
         @initxxxcommon
     fi
 }
 
-alias @initxxxcommon="ap_func_init_xxx_common"
-ap_func_init_xxx_common() {
+alias @createdirstructxxxshare="ap_func_create_dirstruct_xxx_share"
+ap_func_create_dirstruct_xxx_share() {
+
+}
+
+alias @createdirstructxxxcommon="ap_func_create_dirstruct_xxx_common"
+ap_func_create_dirstruct_xxx_common() {
 
 }
 
@@ -24,13 +43,22 @@ ap_func_create_dirstruct_xxx() {
     @logshow "Create symlink from [${AP_MAN_DIR}/man1/xxx.1] to [${AP_SOFT_DIR}/xxx/xxx.1]\n"
     ln -sf "${AP_SOFT_DIR}/xxx/xxx.1" "${AP_MAN_DIR}/man1/xxx.1"
 
+    if alias @createdirstructxxxshare &>/dev/null; then
+        @createdirstructxxxshare
+    fi
+
     if alias @createdirstructxxxcommon &>/dev/null; then
         @createdirstructxxxcommon
     fi
 }
 
-alias @createdirstructxxxcommon="ap_func_create_dirstruct_xxx_common"
-ap_func_create_dirstruct_xxx_common() {
+alias @rmdirstructxxxshare="ap_func_remove_dirstruct_xxx_share"
+ap_func_remove_dirstruct_xxx_share() {
+
+}
+
+alias @rmdirstructxxxcommon="ap_func_remove_dirstruct_xxx_common"
+ap_func_remove_dirstruct_xxx_common() {
 
 }
 
@@ -45,14 +73,13 @@ ap_func_remove_dirstruct_xxx() {
     @logshow "Remove [${AP_MAN_DIR}/man1/xxx.1]\n"
     rm -f "${AP_MAN_DIR}/man1/xxx.1"
 
+    if alias @rmdirstructxxxshare &>/dev/null; then
+        @rmdirstructxxxshare
+    fi
+
     if alias @rmdirstructxxxcommon &>/dev/null; then
         @rmdirstructxxxcommon
     fi
-}
-
-alias @rmdirstructxxxcommon="ap_func_remove_dirstruct_xxx_common"
-ap_func_remove_dirstruct_xxx_common() {
-
 }
 
 alias @createglobalsymlinkxxx="ap_func_create_global_symlink_xxx"

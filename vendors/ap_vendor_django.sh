@@ -10,6 +10,10 @@ ap_func_create_dirstruct_django() {
     @logshow "Generate [django] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_django.bash]\n"
     curl -SL "https://raw.githubusercontent.com/django/django/main/extras/django_bash_completion" >"${AP_COMPLETIONS_DIR}/ap_completion_django.bash"
 
+    if alias @createdirstructdjangoshare &>/dev/null; then
+        @createdirstructdjangoshare
+    fi
+
     if alias @createdirstructdjangocommon &>/dev/null; then
         @createdirstructdjangocommon
     fi
@@ -19,6 +23,10 @@ alias @rmdirstructdjango="ap_func_remove_dirstruct_django"
 ap_func_remove_dirstruct_django() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_django.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_django.bash"
+
+    if alias @rmdirstructdjangoshare &>/dev/null; then
+        @rmdirstructdjangoshare
+    fi
 
     if alias @rmdirstructdjangocommon &>/dev/null; then
         @rmdirstructdjangocommon

@@ -1,5 +1,9 @@
 alias @initfx="ap_func_init_fx"
 ap_func_init_fx() {
+    if alias @initfxshare &>/dev/null; then
+        @initfxshare
+    fi
+
     if alias @initfxcommon &>/dev/null; then
         @initfxcommon
     fi
