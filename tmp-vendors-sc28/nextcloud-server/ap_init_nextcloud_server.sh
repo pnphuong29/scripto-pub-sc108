@@ -26,7 +26,7 @@ alias vincserver="vi -p \
 	${AP_VENDORS_NEXTCLOUD_SERVER_SETUP_CONFIGS_DIR}/ap_apache_httpd_nextcloud.conf"
 
 alias bkncdata="rsync -Aavx ${AP_NEXTCLOUD_SERVER_DIR}/data/ ${AP_NEXTCLOUD_SERVER_DIR}/data_$(gdate +"%Y%m%d_%H%M%S")/" # Backup Nextcloud data in host machine
-alias zncserverdata="cd ${AP_DATA1_DIR}/nextcloud"
+alias zncserverdata="cd ${AP_DATA_DIR}/nextcloud"
 alias showncaiopasswd="sudo docker exec nextcloud-aio-mastercontainer grep password /mnt/docker-aio-config/data/configuration.json"
 
 # Below aliases should be used only in vagrant machine

@@ -3,7 +3,7 @@
 # https://github.com/nextcloud/server
 # https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#pretty-urls
 
-export AP_NEXTCLOUD_SERVER_DIR="${AP_DATA1_DIR}/nextcloud"
+export AP_NEXTCLOUD_SERVER_DIR="${AP_DATA_DIR}/nextcloud"
 export AP_VENDORS_NEXTCLOUD_SERVER_SETUP_DIR="${AP_SCRIPTO_COMMON_DIR}/vendors/nextcloud-server"
 export AP_NEXTCLOUD_SERVER_DOCUMENT_ROOT='/var/www/nextcloud'
 export AP_NEXTCLOUD_SERVER_CONFIG_FILE="${AP_NEXTCLOUD_SERVER_DOCUMENT_ROOT}/config/config.php"
