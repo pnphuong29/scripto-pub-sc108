@@ -1,7 +1,7 @@
 alias @initvagrant="ap_func_init_vagrant"
 ap_func_init_vagrant() {
     # This will add aliases to default vagrant commands
-    export VAGRANT_ALIAS_FILE="${AP_SCRIPTO_COMMON_DIR}/vendors/vagrant/configs/ap_alias_vagrant.rb"
+    export VAGRANT_ALIAS_FILE="${HOME}/scripto-common/vendors/vagrant/configs/ap_alias_vagrant.rb"
 
     # If the Vagrant guest is not trusted, you may want to disable symlink globally using below env variable
     export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1

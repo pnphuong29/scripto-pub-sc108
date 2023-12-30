@@ -201,10 +201,10 @@ ap_func_dkc_up() {
 
     local ap_dk_con_name
     for ap_dk_con_name in "$@"; do
-        if [ -f "${AP_SCRIPTO_COMMON_DIR}/dockers/ap_dkc_${ap_dk_con_name}.yml" ]; then
-            ap_cmd="${ap_cmd} -f ${AP_SCRIPTO_COMMON_DIR}/dockers/ap_dkc_${ap_dk_con_name}.yml"
+        if [ -f "${HOME}/scripto-common/dockers/ap_dkc_${ap_dk_con_name}.yml" ]; then
+            ap_cmd="${ap_cmd} -f ${HOME}/scripto-common/dockers/ap_dkc_${ap_dk_con_name}.yml"
         else
-            ap_cmd="${ap_cmd} -f ${AP_SCRIPTO_DIR}/dockers/ap_dkc_${ap_dk_con_name}.yml"
+            ap_cmd="${ap_cmd} -f ${HOME}/scripto/dockers/ap_dkc_${ap_dk_con_name}.yml"
         fi
     done
 

@@ -1,6 +1,6 @@
 alias @initcertbot="ap_func_init_certbot"
 ap_func_init_certbot() {
-    alias zsccertbot="cd \${AP_SCRIPTO_COMMON_DIR}/vendors/certbot"
+    alias zsccertbot="cd \${HOME}/scripto-common/vendors/certbot"
     alias certbotinstallapache="sudo certbot --apache --verbose"
     alias certbotinstallnginx="sudo certbot --nginx --verbose"
     alias zletsencrypt="cd /etc/letsencrypt"
@@ -96,17 +96,17 @@ ap_func_certbot_generate_certs() {
     sudo rm -rf /etc/nginx/conf.d.bak
     sudo cp -R /etc/nginx/conf.d /etc/nginx/conf.d.bak
 
-    if [ -d "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/renew" ]; then
+    if [ -d "${HOME}/scripto-common/vendors/nginx/renew" ]; then
         sudo rm -rf /etc/nginx/conf.d
         sudo mkdir -p /etc/nginx/conf.d
-        sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/renew"/*.conf /etc/nginx/conf.d/
+        sudo cp -f "${HOME}/scripto-common/vendors/nginx/renew"/*.conf /etc/nginx/conf.d/
     fi
 
     sudo certbot --nginx
 
     sudo rm -rf /etc/nginx/conf.d
     sudo cp -R /etc/nginx/conf.d.bak /etc/nginx/conf.d
-    sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/
+    sudo cp -f "${HOME}/scripto-common/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/
 
     @ret_success
 }
@@ -120,13 +120,13 @@ alias bksslcerts="ap_func_certbot_backup"
 #	AP_CODE_SUCCESS
 # }
 ap_func_certbot_backup() {
-    if [ ! -d "${AP_SCRIPTO_COMMON_DIR}/sslcerts" ]; then
-        mkdir -p "${AP_SCRIPTO_COMMON_DIR}/sslcerts"/{archive,live}
+    if [ ! -d "${HOME}/scripto-common/sslcerts" ]; then
+        mkdir -p "${HOME}/scripto-common/sslcerts"/{archive,live}
     fi
 
-    sudo rsync -ar /etc/letsencrypt/archive/ "${AP_SCRIPTO_COMMON_DIR}/sslcerts/archive/"
-    sudo rsync -ar /etc/letsencrypt/live/ "${AP_SCRIPTO_COMMON_DIR}/sslcerts/live/"
-    sudo chown -R "${USER}:${USER}" "${AP_SCRIPTO_COMMON_DIR}/sslcerts"
+    sudo rsync -ar /etc/letsencrypt/archive/ "${HOME}/scripto-common/sslcerts/archive/"
+    sudo rsync -ar /etc/letsencrypt/live/ "${HOME}/scripto-common/sslcerts/live/"
+    sudo chown -R "${USER}:${USER}" "${HOME}/scripto-common/sslcerts"
 
     @ret_success
 }

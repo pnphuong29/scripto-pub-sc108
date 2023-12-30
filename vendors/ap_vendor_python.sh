@@ -5,8 +5,8 @@ ap_func_init_python() {
         export PYTHONPATH="${PYTHONPATH}:${AP_PRJ_LIB1_DIR}/python"
     fi
 
-    if [ -f "${AP_SCRIPTO_COMMON_DIR}/vendors/python/ap_python_startup.py" ]; then
-        export PYTHONSTARTUP="${AP_SCRIPTO_COMMON_DIR}/vendors/python/ap_python_startup.py"
+    if [ -f "${HOME}/scripto-common/vendors/python/ap_python_startup.py" ]; then
+        export PYTHONSTARTUP="${HOME}/scripto-common/vendors/python/ap_python_startup.py"
     fi
 
     alias pipupgrade="pip install --upgrade pip"
@@ -23,7 +23,7 @@ ap_func_init_python() {
 alias @createdirstructpython="ap_func_create_dirstruct_python"
 ap_func_create_dirstruct_python() {
     local ap_python_history_dir
-    ap_python_history_dir="${AP_SCRIPTO_MAIN_DIR}/data/python/$(hostname)"
+    ap_python_history_dir="${HOME}/scripto-main/data/python/$(hostname)"
     if [ ! -d "${ap_python_history_dir}" ]; then
         @logshow "Create directory ${ap_python_history_dir}\n"
         mkdir -p "${ap_python_history_dir}"

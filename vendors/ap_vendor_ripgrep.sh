@@ -1,14 +1,14 @@
 alias @initripgrep="ap_func_init_ripgrep"
 ap_func_init_ripgrep() {
-    if [ -f "${AP_SCRIPTO_COMMON_DIR}/vendors/ripgrep/ap_ripgrep.ignore" ]; then
-        export AP_VENDORS_RIPGREP_IGNORE_FILE="${AP_SCRIPTO_COMMON_DIR}/vendors/ripgrep/ap_ripgrep.ignore"
+    if [ -f "${HOME}/scripto-common/vendors/ripgrep/ap_ripgrep.ignore" ]; then
+        export AP_VENDORS_RIPGREP_IGNORE_FILE="${HOME}/scripto-common/vendors/ripgrep/ap_ripgrep.ignore"
     fi
 
     alias viscrg="vi -p \
-        \${AP_SCRIPTO_DIR}/vendors/ap_vendor_ripgrep.sh \
-        \${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_ripgrep.sh \
-        \${AP_SCRIPTO_COMMON_DIR}/vendors/ripgrep/ap_ripgrep.conf \
-        \${AP_SCRIPTO_COMMON_DIR}/vendors/ripgrep/ap_ripgrep.ignore \
+        \${HOME}/scripto/vendors/ap_vendor_ripgrep.sh \
+        \${HOME}/scripto-common/vendors/ap_vendor_ripgrep.sh \
+        \${HOME}/scripto-common/vendors/ripgrep/ap_ripgrep.conf \
+        \${HOME}/scripto-common/vendors/ripgrep/ap_ripgrep.ignore \
     "
 
     # Find using vimgrep

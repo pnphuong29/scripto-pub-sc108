@@ -12,9 +12,9 @@ ap_func_create_dirstruct_taskwarrior() {
     ln -sf "${AP_SOFT_DIR}/taskwarrior/bin/task" "${AP_SOFT_DIR}/bin/task"
 
     # configs
-    if [ -f "${AP_SCRIPTO_COMMON_DIR}/vendors/taskwarrior/ap_taskwarrior.conf" ]; then
-        @logshow "Create symlink from [${HOME}/.taskrc] to [${AP_SCRIPTO_COMMON_DIR}/vendors/taskwarrior/ap_taskwarrior.conf]\n"
-        ln -sf "${AP_SCRIPTO_COMMON_DIR}/vendors/taskwarrior/ap_taskwarrior.conf" "${HOME}/.taskrc"
+    if [ -f "${HOME}/scripto-common/vendors/taskwarrior/ap_taskwarrior.conf" ]; then
+        @logshow "Create symlink from [${HOME}/.taskrc] to [${HOME}/scripto-common/vendors/taskwarrior/ap_taskwarrior.conf]\n"
+        ln -sf "${HOME}/scripto-common/vendors/taskwarrior/ap_taskwarrior.conf" "${HOME}/.taskrc"
     fi
 
     # data

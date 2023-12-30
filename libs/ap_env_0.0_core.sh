@@ -1,10 +1,3 @@
-# Mandatory directories in scripto project
-export AP_SCRIPTO_DIR="${HOME}/scripto"
-export AP_SCRIPTO_SHARE_DIR="${HOME}/scripto-share"
-export AP_SCRIPTO_COMMON_DIR="${HOME}/scripto-common"
-export AP_SCRIPTO_MAIN_DIR="${HOME}/scripto-main"
-export AP_SCRIPTO_DATA_DIR="${HOME}/scripto-data"
-
 # Detect OS type
 export AP_OS_TYPE_MACOS='macos'
 export AP_OS_TYPE_UBUNTU='ubuntu'

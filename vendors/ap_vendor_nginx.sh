@@ -7,24 +7,24 @@ ap_func_init_nginx() {
     alias znginxconfd="cd /etc/nginx/conf.d"
     alias znginxlogs="cd /var/log/nginx"
 
-    alias zscnginxconfigs='cd "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"'
-    alias zscnginxrenewconfigs='cd "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"'
+    alias zscnginxconfigs='cd "${HOME}/scripto-common/vendors/nginx/conf.d"'
+    alias zscnginxrenewconfigs='cd "${HOME}/scripto-common/vendors/nginx/conf.d"'
 
     alias nginxupdateconfigs='
-        sudo cp -f "${AP_SCRIPTO_DIR}/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/ ; \
-        sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/ ; \
+        sudo cp -f "${HOME}/scripto/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/ ; \
+        sudo cp -f "${HOME}/scripto-common/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/ ; \
     '
     alias nginxupdaterenewconfigs='
-        sudo cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/renew"/*.conf /etc/nginx/conf.d/ \
+        sudo cp -f "${HOME}/scripto-common/vendors/nginx/renew"/*.conf /etc/nginx/conf.d/ \
     '
 
     alias viscnginxrenewconfigs='vi -p \
-        "${AP_SCRIPTO_DIR}/vendors/ap_vendor_nginx.sh" \
-        "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/renew"/*.conf \
+        "${HOME}/scripto/vendors/ap_vendor_nginx.sh" \
+        "${HOME}/scripto-common/vendors/nginx/renew"/*.conf \
 	'
     alias viscnginxconfigs='vi -p \
-        "${AP_SCRIPTO_DIR}/vendors/ap_vendor_nginx.sh" \
-        "${AP_SCRIPTO_COMMON_DIR}/vendors/nginx/conf.d"/*.conf \
+        "${HOME}/scripto/vendors/ap_vendor_nginx.sh" \
+        "${HOME}/scripto-common/vendors/nginx/conf.d"/*.conf \
 	'
 
     if alias @initnginxcommon &>/dev/null; then

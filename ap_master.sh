@@ -1,30 +1,47 @@
-# Load scripto, share, common and main environment variables
-if [ -d "${AP_SCRIPTO_DIR}/libs" ]; then
+# Load scripto environment variables
+if [ -d "${HOME}/scripto/libs" ]; then
     while read -r ap_env; do
         source "${ap_env}"
-    done < <(gfind "${AP_SCRIPTO_DIR}/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
+    done < <(gfind "${HOME}/scripto/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
 fi
 
-if [ -d "${AP_SCRIPTO_SHARE_DIR}/libs" ]; then
+# Load scripto share environment variables
+if [ -d "${HOME}/scripto-share/libs" ]; then
     while read -r ap_env; do
         source "${ap_env}"
-    done < <(gfind "${AP_SCRIPTO_SHARE_DIR}/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
+    done < <(gfind "${HOME}/scripto-share/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
 fi
 
-if [ -d "${AP_SCRIPTO_COMMON_DIR}/libs" ]; then
+# Load scripto common environment variables
+if [ -d "${HOME}/scripto-common/libs" ]; then
     while read -r ap_env; do
         source "${ap_env}"
-    done < <(gfind "${AP_SCRIPTO_COMMON_DIR}/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
+    done < <(gfind "${HOME}/scripto-common/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
 fi
 
-if [ -d "${AP_SCRIPTO_MAIN_DIR}/libs" ]; then
+# Load scripto main environment variables
+if [ -d "${HOME}/scripto-main/libs" ]; then
     while read -r ap_env; do
         source "${ap_env}"
-    done < <(gfind "${AP_SCRIPTO_MAIN_DIR}/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
+    done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
+fi
+
+# Load scripto common server environment variables
+if [ -d "${HOME}/scripto-common/libs" ]; then
+    while read -r ap_env; do
+        source "${ap_env}"
+    done < <(gfind "${HOME}/scripto-common/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | sort)
+fi
+
+# Load scripto share server environment variables
+if [ -d "${HOME}/scripto-share/libs" ]; then
+    while read -r ap_env; do
+        source "${ap_env}"
+    done < <(gfind "${HOME}/scripto-share/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | sort)
 fi
 
 # Load scripto core libraries
-source "${AP_SCRIPTO_DIR}/libs/ap_core.sh"
+source "${HOME}/scripto/libs/ap_core.sh"
 
 # Try to simulate macOS GNU commands
 # Using symbolic links instead of aliases for all users including root cannot access to below commands
@@ -37,101 +54,108 @@ if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
 fi
 
 # Load scripto aliases
-if [ -d "${AP_SCRIPTO_DIR}/libs" ]; then
+if [ -d "${HOME}/scripto/libs" ]; then
     while read -r ap_alias; do
         source "${ap_alias}"
-    done < <(gfind "${AP_SCRIPTO_DIR}/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | sort)
+    done < <(gfind "${HOME}/scripto/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | sort)
 fi
 
 # Load scripto functions
-if [ -d "${AP_SCRIPTO_DIR}/libs" ]; then
+if [ -d "${HOME}/scripto/libs" ]; then
     while read -r ap_func; do
         source "${ap_func}"
-    done < <(gfind "${AP_SCRIPTO_DIR}/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | sort)
+    done < <(gfind "${HOME}/scripto/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | sort)
 fi
 
-# Load share, common & main aliases
-if [ -d "${AP_SCRIPTO_SHARE_DIR}/libs" ]; then
+# Load scripto share aliases
+if [ -d "${HOME}/scripto-share/libs" ]; then
     while read -r ap_alias; do
         source "${ap_alias}"
-    done < <(gfind "${AP_SCRIPTO_SHARE_DIR}/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | sort)
+    done < <(gfind "${HOME}/scripto-share/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | sort)
 fi
 
-if [ -d "${AP_SCRIPTO_COMMON_DIR}/libs" ]; then
+# Load scripto common aliases
+if [ -d "${HOME}/scripto-common/libs" ]; then
     while read -r ap_alias; do
         source "${ap_alias}"
-    done < <(gfind "${AP_SCRIPTO_COMMON_DIR}/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | sort)
+    done < <(gfind "${HOME}/scripto-common/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | sort)
 fi
 
-if [ -d "${AP_SCRIPTO_MAIN_DIR}/libs" ]; then
+# Load scripto main aliases
+if [ -d "${HOME}/scripto-main/libs" ]; then
     while read -r ap_alias; do
         source "${ap_alias}"
-    done < <(gfind "${AP_SCRIPTO_MAIN_DIR}/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | sort)
+    done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | sort)
 fi
 
-# Load share, common, main & scripto vendors
-if [ -d "${AP_SCRIPTO_SHARE_DIR}/vendors" ]; then
+# Load scripto share vendors
+if [ -d "${HOME}/scripto-share/vendors" ]; then
     while read -r ap_vendor; do
         source "${ap_vendor}"
-    done < <(gfind "${AP_SCRIPTO_SHARE_DIR}/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | sort)
+    done < <(gfind "${HOME}/scripto-share/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | sort)
 fi
 
-if [ -d "${AP_SCRIPTO_COMMON_DIR}/vendors" ]; then
+# Load scripto common vendors
+if [ -d "${HOME}/scripto-common/vendors" ]; then
     while read -r ap_vendor; do
         source "${ap_vendor}"
-    done < <(gfind "${AP_SCRIPTO_COMMON_DIR}/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | sort)
+    done < <(gfind "${HOME}/scripto-common/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | sort)
 fi
 
-if [ -d "${AP_SCRIPTO_MAIN_DIR}/vendors" ]; then
+# Load scripto main vendors
+if [ -d "${HOME}/scripto-main/vendors" ]; then
     while read -r ap_vendor; do
         source "${ap_vendor}"
-    done < <(gfind "${AP_SCRIPTO_MAIN_DIR}/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | sort)
+    done < <(gfind "${HOME}/scripto-main/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | sort)
 fi
 
-if [ -d "${AP_SCRIPTO_DIR}/vendors" ]; then
+# Load scripto vendors
+if [ -d "${HOME}/scripto/vendors" ]; then
     while read -r ap_vendor; do
         source "${ap_vendor}"
-    done < <(gfind "${AP_SCRIPTO_DIR}/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | sort)
+    done < <(gfind "${HOME}/scripto/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | sort)
 fi
 
-# Load share, common and main functions
-if [ -d "${AP_SCRIPTO_SHARE_DIR}/libs" ]; then
+# Load share functions
+if [ -d "${HOME}/scripto-share/libs" ]; then
     while read -r ap_func; do
         source "${ap_func}"
-    done < <(gfind "${AP_SCRIPTO_SHARE_DIR}/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | sort)
+    done < <(gfind "${HOME}/scripto-share/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | sort)
 fi
 
-if [ -d "${AP_SCRIPTO_COMMON_DIR}/libs" ]; then
+# Load common functions
+if [ -d "${HOME}/scripto-common/libs" ]; then
     while read -r ap_func; do
         source "${ap_func}"
-    done < <(gfind "${AP_SCRIPTO_COMMON_DIR}/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | sort)
+    done < <(gfind "${HOME}/scripto-common/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | sort)
 fi
 
-if [ -d "${AP_SCRIPTO_MAIN_DIR}/libs" ]; then
+# Load main functions
+if [ -d "${HOME}/scripto-main/libs" ]; then
     while read -r ap_func; do
         source "${ap_func}"
-    done < <(gfind "${AP_SCRIPTO_MAIN_DIR}/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | sort)
+    done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | sort)
 fi
 
 # Update $PATH
-@addpath "${AP_SCRIPTO_COMMON_DIR}/tests"
-@addpath "${AP_SCRIPTO_COMMON_DIR}/utils"
+@addpath "${HOME}/scripto-common/tests"
+@addpath "${HOME}/scripto-common/utils"
 
-@addpath "${AP_SCRIPTO_COMMON_DIR}/tests"
-@addpath "${AP_SCRIPTO_COMMON_DIR}/utils"
+@addpath "${HOME}/scripto-common/tests"
+@addpath "${HOME}/scripto-common/utils"
 
-@addpath "${AP_SCRIPTO_MAIN_DIR}/tests"
-@addpath "${AP_SCRIPTO_MAIN_DIR}/utils"
+@addpath "${HOME}/scripto-main/tests"
+@addpath "${HOME}/scripto-main/utils"
 
 # Make executable files
-[ -d "${AP_SCRIPTO_SHARE_DIR}/utils" ] && chmod -R +x "${AP_SCRIPTO_SHARE_DIR}/utils"
-[ -d "${AP_SCRIPTO_SHARE_DIR}/tests" ] && chmod -R +x "${AP_SCRIPTO_SHARE_DIR}/tests"
+[ -d "${HOME}/scripto-share/utils" ] && chmod -R +x "${HOME}/scripto-share/utils"
+[ -d "${HOME}/scripto-share/tests" ] && chmod -R +x "${HOME}/scripto-share/tests"
 
-[ -d "${AP_SCRIPTO_COMMON_DIR}/utils" ] && chmod -R +x "${AP_SCRIPTO_COMMON_DIR}/utils"
-[ -d "${AP_SCRIPTO_COMMON_DIR}/tests" ] && chmod -R +x "${AP_SCRIPTO_COMMON_DIR}/tests"
+[ -d "${HOME}/scripto-common/utils" ] && chmod -R +x "${HOME}/scripto-common/utils"
+[ -d "${HOME}/scripto-common/tests" ] && chmod -R +x "${HOME}/scripto-common/tests"
 
-[ -d "${AP_SCRIPTO_MAIN_DIR}/utils" ] && chmod -R +x "${AP_SCRIPTO_MAIN_DIR}/utils"
-[ -d "${AP_SCRIPTO_MAIN_DIR}/tests" ] && chmod -R +x "${AP_SCRIPTO_MAIN_DIR}/tests"
+[ -d "${HOME}/scripto-main/utils" ] && chmod -R +x "${HOME}/scripto-main/utils"
+[ -d "${HOME}/scripto-main/tests" ] && chmod -R +x "${HOME}/scripto-main/tests"
 
 # For manpath command to search for man pages located in man directory
 export MANPATH="${AP_MAN_DIR}:${MANPATH}"

@@ -4,13 +4,13 @@ ap_func_init_wezterm() {
         @addpath "/Applications/WezTerm.app/Contents/MacOS"
     fi
 
-    # export WEZTERM_CONFIG_FILE="${AP_SCRIPTO_COMMON_DIR}/vendors/wezterm/ap_wezterm.config.lua"
+    # export WEZTERM_CONFIG_FILE="${HOME}/scripto-common/vendors/wezterm/ap_wezterm.config.lua"
     # https://wezfurlong.org/wezterm/config/lua/config/term.html
-    alias @weztermgenerateterminfo='curl -SL "https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo" >"${AP_SCRIPTO_COMMON_DIR}/vendors/wezterm/ap_wezterm.terminfo"'
+    alias @weztermgenerateterminfo='curl -SL "https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo" >"${HOME}/scripto-common/vendors/wezterm/ap_wezterm.terminfo"'
     alias viscwezterm="vi -p \
-        \${AP_SCRIPTO_DIR}/vendors/ap_vendor_wezterm.sh \
-        \${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_wezterm.sh \
-        \${AP_SCRIPTO_COMMON_DIR}/vendors/wezterm/ap_wezterm.config.lua \
+        \${HOME}/scripto/vendors/ap_vendor_wezterm.sh \
+        \${HOME}/scripto-common/vendors/ap_vendor_wezterm.sh \
+        \${HOME}/scripto-common/vendors/wezterm/ap_wezterm.config.lua \
 	"
 }
 
@@ -22,8 +22,8 @@ ap_func_create_dirstruct_wezterm() {
     # Term info
     # https://wezfurlong.org/wezterm/config/lua/config/term.html
     # @logshow "Installing terminfo for wezterm\n"
-    # curl -SL "https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo" >"${AP_SCRIPTO_COMMON_DIR}/vendors/wezterm/ap_wezterm.terminfo"
-    # sudo tic -x -o ~/.terminfo "${AP_SCRIPTO_COMMON_DIR}/vendors/wezterm/ap_wezterm.terminfo"
+    # curl -SL "https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo" >"${HOME}/scripto-common/vendors/wezterm/ap_wezterm.terminfo"
+    # sudo tic -x -o ~/.terminfo "${HOME}/scripto-common/vendors/wezterm/ap_wezterm.terminfo"
     # sudo chown "${USER}" ~/.terminfo
 
     if alias @createdirstructweztermcommon &>/dev/null; then

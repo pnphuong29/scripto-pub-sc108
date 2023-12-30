@@ -1,4 +1,4 @@
-for ap_vendor in "${AP_SCRIPTO_DIR}/vendors"/ap_vendor_*.sh; do
+for ap_vendor in "${HOME}/scripto/vendors"/ap_vendor_*.sh; do
     ap_vendor_name="${ap_vendor##*/}"
     ap_vendor_name="${ap_vendor_name/ap_vendor_/}"
     ap_vendor_name="${ap_vendor_name/\.sh/}"
@@ -6,20 +6,20 @@ for ap_vendor in "${AP_SCRIPTO_DIR}/vendors"/ap_vendor_*.sh; do
 
     # Alias - Vi sc commands
     ap_cmd="alias visc${ap_vendor_name}='vi -p"
-    if [ -f "${AP_SCRIPTO_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    if [ -f "${HOME}/scripto/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
+        ap_cmd="${ap_cmd} \"${HOME}/scripto/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
 
-    if [ -f "${AP_SCRIPTO_SHARE_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_SHARE_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    if [ -f "${HOME}/scripto-share/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
+        ap_cmd="${ap_cmd} \"${HOME}/scripto-share/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
 
-    if [ -f "${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    if [ -f "${HOME}/scripto-common/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
+        ap_cmd="${ap_cmd} \"${HOME}/scripto-common/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
 
-    if [ -f "${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    if [ -f "${HOME}/scripto-main/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
+        ap_cmd="${ap_cmd} \"${HOME}/scripto-main/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
 
     ap_cmd="${ap_cmd}'"
@@ -28,27 +28,27 @@ for ap_vendor in "${AP_SCRIPTO_DIR}/vendors"/ap_vendor_*.sh; do
     eval "$(printf "%s" "${ap_cmd}")"
 done
 
-for ap_vendor in "${AP_SCRIPTO_COMMON_DIR}/vendors"/ap_vendor_*.sh; do
+for ap_vendor in "${HOME}/scripto-common/vendors"/ap_vendor_*.sh; do
     ap_vendor_name="${ap_vendor##*/}"
     ap_vendor_name="${ap_vendor_name/ap_vendor_/}"
     ap_vendor_name="${ap_vendor_name/\.sh/}"
 
     # Alias - Vi sc commands
-    ap_cmd="alias visc${ap_vendor_name}='vi -p \"${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
-    if [ -f "${AP_SCRIPTO_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    ap_cmd="alias visc${ap_vendor_name}='vi -p \"${HOME}/scripto-common/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    if [ -f "${HOME}/scripto/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
+        ap_cmd="${ap_cmd} \"${HOME}/scripto/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
 
-    if [ -f "${AP_SCRIPTO_SHARE_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_SHARE_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    if [ -f "${HOME}/scripto-share/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
+        ap_cmd="${ap_cmd} \"${HOME}/scripto-share/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
 
-    if [ -f "${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    if [ -f "${HOME}/scripto-common/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
+        ap_cmd="${ap_cmd} \"${HOME}/scripto-common/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
 
-    if [ -f "${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    if [ -f "${HOME}/scripto-main/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
+        ap_cmd="${ap_cmd} \"${HOME}/scripto-main/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
 
     ap_cmd="${ap_cmd}'"
@@ -57,27 +57,27 @@ for ap_vendor in "${AP_SCRIPTO_COMMON_DIR}/vendors"/ap_vendor_*.sh; do
     eval "$(printf "%s" "${ap_cmd}")"
 done
 
-for ap_vendor in "${AP_SCRIPTO_SHARE_DIR}/vendors"/ap_vendor_*.sh; do
+for ap_vendor in "${HOME}/scripto-share/vendors"/ap_vendor_*.sh; do
     ap_vendor_name="${ap_vendor##*/}"
     ap_vendor_name="${ap_vendor_name/ap_vendor_/}"
     ap_vendor_name="${ap_vendor_name/\.sh/}"
 
     # Alias - Vi sc commands
-    ap_cmd="alias visc${ap_vendor_name}='vi -p \"${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
-    if [ -f "${AP_SCRIPTO_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    ap_cmd="alias visc${ap_vendor_name}='vi -p \"${HOME}/scripto-common/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    if [ -f "${HOME}/scripto/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
+        ap_cmd="${ap_cmd} \"${HOME}/scripto/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
 
-    if [ -f "${AP_SCRIPTO_SHARE_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_SHARE_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    if [ -f "${HOME}/scripto-share/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
+        ap_cmd="${ap_cmd} \"${HOME}/scripto-share/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
 
-    if [ -f "${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    if [ -f "${HOME}/scripto-common/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
+        ap_cmd="${ap_cmd} \"${HOME}/scripto-common/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
 
-    if [ -f "${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    if [ -f "${HOME}/scripto-main/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
+        ap_cmd="${ap_cmd} \"${HOME}/scripto-main/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
 
     ap_cmd="${ap_cmd}'"
@@ -86,27 +86,27 @@ for ap_vendor in "${AP_SCRIPTO_SHARE_DIR}/vendors"/ap_vendor_*.sh; do
     eval "$(printf "%s" "${ap_cmd}")"
 done
 
-for ap_vendor in "${AP_SCRIPTO_MAIN_DIR}/vendors"/ap_vendor_*.sh; do
+for ap_vendor in "${HOME}/scripto-main/vendors"/ap_vendor_*.sh; do
     ap_vendor_name="${ap_vendor##*/}"
     ap_vendor_name="${ap_vendor_name/ap_vendor_/}"
     ap_vendor_name="${ap_vendor_name/\.sh/}"
 
     # Alias - Vi sc commands
-    ap_cmd="alias visc${ap_vendor_name}='vi -p \"${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
-    if [ -f "${AP_SCRIPTO_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    ap_cmd="alias visc${ap_vendor_name}='vi -p \"${HOME}/scripto-common/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    if [ -f "${HOME}/scripto/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
+        ap_cmd="${ap_cmd} \"${HOME}/scripto/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
 
-    if [ -f "${AP_SCRIPTO_SHARE_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_SHARE_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    if [ -f "${HOME}/scripto-share/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
+        ap_cmd="${ap_cmd} \"${HOME}/scripto-share/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
 
-    if [ -f "${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    if [ -f "${HOME}/scripto-common/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
+        ap_cmd="${ap_cmd} \"${HOME}/scripto-common/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
 
-    if [ -f "${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
-        ap_cmd="${ap_cmd} \"${AP_SCRIPTO_MAIN_DIR}/vendors/ap_vendor_${ap_vendor_name}.sh\""
+    if [ -f "${HOME}/scripto-main/vendors/ap_vendor_${ap_vendor_name}.sh" ]; then
+        ap_cmd="${ap_cmd} \"${HOME}/scripto-main/vendors/ap_vendor_${ap_vendor_name}.sh\""
     fi
 
     ap_cmd="${ap_cmd}'"
@@ -115,7 +115,7 @@ for ap_vendor in "${AP_SCRIPTO_MAIN_DIR}/vendors"/ap_vendor_*.sh; do
     eval "$(printf "%s" "${ap_cmd}")"
 done
 
-for ap_dkc_file in "${AP_SCRIPTO_SHARE_DIR}/dockers"/ap_dkc_*.yml; do
+for ap_dkc_file in "${HOME}/scripto-share/dockers"/ap_dkc_*.yml; do
     ap_dkc_name="${ap_dkc_file##*/}"
     ap_dkc_code="${ap_dkc_name/ap_dkc_/}"
     ap_dkc_code="${ap_dkc_code/\.yml/}"
@@ -129,7 +129,7 @@ for ap_dkc_file in "${AP_SCRIPTO_SHARE_DIR}/dockers"/ap_dkc_*.yml; do
     eval "$(printf "%s" "${ap_cmd}")"
 done
 
-for ap_dkc_file in "${AP_SCRIPTO_COMMON_DIR}/dockers"/ap_dkc_*.yml; do
+for ap_dkc_file in "${HOME}/scripto-common/dockers"/ap_dkc_*.yml; do
     ap_dkc_name="${ap_dkc_file##*/}"
     ap_dkc_code="${ap_dkc_name/ap_dkc_/}"
     ap_dkc_code="${ap_dkc_code/\.yml/}"
@@ -143,7 +143,7 @@ for ap_dkc_file in "${AP_SCRIPTO_COMMON_DIR}/dockers"/ap_dkc_*.yml; do
     eval "$(printf "%s" "${ap_cmd}")"
 done
 
-for ap_dkc_file in "${AP_SCRIPTO_MAIN_DIR}/dockers"/ap_dkc_*.yml; do
+for ap_dkc_file in "${HOME}/scripto-main/dockers"/ap_dkc_*.yml; do
     ap_dkc_name="${ap_dkc_file##*/}"
     ap_dkc_code="${ap_dkc_name/ap_dkc_/}"
     ap_dkc_code="${ap_dkc_code/\.yml/}"
@@ -158,25 +158,25 @@ for ap_dkc_file in "${AP_SCRIPTO_MAIN_DIR}/dockers"/ap_dkc_*.yml; do
 done
 
 # Alias - Vi script test bash commands
-if [ ! -d "${AP_SCRIPTO_SHARE_DIR}/tests" ]; then
-    mkdir -p "${AP_SCRIPTO_SHARE_DIR}/tests"
+if [ ! -d "${HOME}/scripto-share/tests" ]; then
+    mkdir -p "${HOME}/scripto-share/tests"
 fi
 
-if [ ! -d "${AP_SCRIPTO_COMMON_DIR}/tests" ]; then
-    mkdir -p "${AP_SCRIPTO_COMMON_DIR}/tests"
+if [ ! -d "${HOME}/scripto-common/tests" ]; then
+    mkdir -p "${HOME}/scripto-common/tests"
 fi
 
-if [ ! -d "${AP_SCRIPTO_MAIN_DIR}/tests" ]; then
-    mkdir -p "${AP_SCRIPTO_MAIN_DIR}/tests"
+if [ ! -d "${HOME}/scripto-main/tests" ]; then
+    mkdir -p "${HOME}/scripto-main/tests"
 fi
 
 for i in {1..10}; do
-    eval "$(printf "%s" "alias visrtb${i}='vi ${AP_SCRIPTO_SHARE_DIR}/tests/ap_test_bash_${i}.sh'")"
-    eval "$(printf "%s" "alias runsrtb${i}='source ${AP_SCRIPTO_SHARE_DIR}/tests/ap_test_bash_${i}.sh'")"
+    eval "$(printf "%s" "alias visrtb${i}='vi ${HOME}/scripto-share/tests/ap_test_bash_${i}.sh'")"
+    eval "$(printf "%s" "alias runsrtb${i}='source ${HOME}/scripto-share/tests/ap_test_bash_${i}.sh'")"
 
-    eval "$(printf "%s" "alias visctb${i}='vi ${AP_SCRIPTO_COMMON_DIR}/tests/ap_test_bash_${i}.sh'")"
-    eval "$(printf "%s" "alias runsctb${i}='source ${AP_SCRIPTO_COMMON_DIR}/tests/ap_test_bash_${i}.sh'")"
+    eval "$(printf "%s" "alias visctb${i}='vi ${HOME}/scripto-common/tests/ap_test_bash_${i}.sh'")"
+    eval "$(printf "%s" "alias runsctb${i}='source ${HOME}/scripto-common/tests/ap_test_bash_${i}.sh'")"
 
-    eval "$(printf "%s" "alias vistb${i}='vi ${AP_SCRIPTO_MAIN_DIR}/tests/ap_test_bash_${i}.sh'")"
-    eval "$(printf "%s" "alias runstb${i}='source ${AP_SCRIPTO_MAIN_DIR}/tests/ap_test_bash_${i}.sh'")"
+    eval "$(printf "%s" "alias vistb${i}='vi ${HOME}/scripto-main/tests/ap_test_bash_${i}.sh'")"
+    eval "$(printf "%s" "alias runstb${i}='source ${HOME}/scripto-main/tests/ap_test_bash_${i}.sh'")"
 done

@@ -18,8 +18,8 @@ ap_func_setup_tree() {
     rm -rf "${ap_vendors_tree_dir}"
 
     # Install tree
-    if [ -f "${AP_SCRIPTO_COMMON_DIR}/vendors/tree/tree-2.0.2.tgz" ]; then
-        cp -f "${AP_SCRIPTO_COMMON_DIR}/vendors/tree/tree-2.0.2.tgz" "${AP_TMP_DIR}/"
+    if [ -f "${HOME}/scripto-common/vendors/tree/tree-2.0.2.tgz" ]; then
+        cp -f "${HOME}/scripto-common/vendors/tree/tree-2.0.2.tgz" "${AP_TMP_DIR}/"
     else
         curl -LO "ftp://mama.indstate.edu/linux/tree/tree-2.0.2.tgz" # Download very slow, prefer offline file in SC28
     fi

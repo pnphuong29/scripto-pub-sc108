@@ -1,8 +1,8 @@
 alias @createdirstructshellcheck="ap_func_create_dirstruct_shellcheck"
 ap_func_create_dirstruct_shellcheck() {
-    if [ -f "${AP_SCRIPTO_COMMON_DIR}/vendors/shellcheck/ap_shellcheckrc.sh" ]; then
-        @logshow "Create symlink from [${HOME}/.shellcheckrc] to [${AP_SCRIPTO_COMMON_DIR}/vendors/shellcheck/ap_shellcheckrc.sh]\n"
-        ln -sf "${AP_SCRIPTO_COMMON_DIR}/vendors/shellcheck/ap_shellcheckrc.sh" "${HOME}/.shellcheckrc"
+    if [ -f "${HOME}/scripto-common/vendors/shellcheck/ap_shellcheckrc.sh" ]; then
+        @logshow "Create symlink from [${HOME}/.shellcheckrc] to [${HOME}/scripto-common/vendors/shellcheck/ap_shellcheckrc.sh]\n"
+        ln -sf "${HOME}/scripto-common/vendors/shellcheck/ap_shellcheckrc.sh" "${HOME}/.shellcheckrc"
     fi
 }
 

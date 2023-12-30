@@ -9,9 +9,9 @@ alias ztmp="cd \${AP_TMP_DIR}"
 alias zlogs="cd \${AP_LOGS_DIR}"
 alias zprj="cd \${AP_PRJ_DIR}"
 
-alias zsc="cd \${AP_SCRIPTO_COMMON_DIR}"
-alias zs="cd \${AP_SCRIPTO_MAIN_DIR}"
-alias zsr="cd \${AP_SCRIPTO_SHARE_DIR}"
+alias zsc="cd \${HOME}/scripto-common"
+alias zs="cd \${HOME}/scripto-main"
+alias zsr="cd \${HOME}/scripto-share"
 
 alias zdata="cd \${AP_DATA_DIR}"
 alias zdl="cd \${AP_DL_DIR}"

@@ -1,15 +1,15 @@
 alias @initjoshuto="ap_func_init_joshuto"
 ap_func_init_joshuto() {
-    export JOSHUTO_CONFIG_HOME="${AP_SCRIPTO_DIR}/vendors/joshuto/configs"
+    export JOSHUTO_CONFIG_HOME="${HOME}/scripto/vendors/joshuto/configs"
     alias 2joshutodocs="open https://github.com/kamiyaa/joshuto/tree/main/docs"
     alias viscjoshuto="vi -p \
-        \${AP_SCRIPTO_DIR}/vendors/ap_vendor_joshuto.sh \
-        \${AP_SCRIPTO_COMMON_DIR}/vendors/ap_vendor_joshuto.sh \
-        \${AP_SCRIPTO_DIR}/vendors/joshuto/configs/joshuto.toml \
-        \${AP_SCRIPTO_DIR}/vendors/joshuto/configs/keymap.toml \
-        \${AP_SCRIPTO_DIR}/vendors/joshuto/configs/mimetype.toml \
-        \${AP_SCRIPTO_DIR}/vendors/joshuto/configs/bookmarks.toml \
-        \${AP_SCRIPTO_DIR}/vendors/joshuto/configs/preview_file.sh \
+        \${HOME}/scripto/vendors/ap_vendor_joshuto.sh \
+        \${HOME}/scripto-common/vendors/ap_vendor_joshuto.sh \
+        \${HOME}/scripto/vendors/joshuto/configs/joshuto.toml \
+        \${HOME}/scripto/vendors/joshuto/configs/keymap.toml \
+        \${HOME}/scripto/vendors/joshuto/configs/mimetype.toml \
+        \${HOME}/scripto/vendors/joshuto/configs/bookmarks.toml \
+        \${HOME}/scripto/vendors/joshuto/configs/preview_file.sh \
     "
 
     if alias @initjoshutocommon &>/dev/null; then
@@ -23,8 +23,8 @@ ap_func_create_dirstruct_joshuto() {
     @logshow "Create directories [${AP_TMP_DIR}/joshuto/preview-image-cache]\n"
     mkdir -p "${AP_TMP_DIR}/joshuto/preview-image-cache"
 
-    @logshow "Create symlink from [${AP_SOFT_DIR}/bin/joshuto_wrapper] to [${AP_SCRIPTO_DIR}/vendors/joshuto/bin/joshuto_wrapper.sh]\n"
-    ln -sf "${AP_SCRIPTO_DIR}/vendors/joshuto/bin/joshuto_wrapper.sh" "${AP_SOFT_DIR}/bin/joshuto_wrapper"
+    @logshow "Create symlink from [${AP_SOFT_DIR}/bin/joshuto_wrapper] to [${HOME}/scripto/vendors/joshuto/bin/joshuto_wrapper.sh]\n"
+    ln -sf "${HOME}/scripto/vendors/joshuto/bin/joshuto_wrapper.sh" "${AP_SOFT_DIR}/bin/joshuto_wrapper"
 
     if alias @createdirstructjoshutocommon &>/dev/null; then
         @createdirstructjoshutocommon

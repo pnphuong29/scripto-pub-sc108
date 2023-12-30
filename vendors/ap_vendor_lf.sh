@@ -1,9 +1,9 @@
 alias @initlf="ap_func_init_lf"
 ap_func_init_lf() {
     alias visclf="vi -p \
-        \${AP_SCRIPTO_DIR}/ap_vendor_lf.sh \
-        \${AP_SCRIPTO_COMMON_DIR}/ap_vendor_lf.sh \
-        \${AP_SCRIPTO_COMMON_DIR}/vendors/lf/ap_lfrc.conf \
+        \${HOME}/scripto/ap_vendor_lf.sh \
+        \${HOME}/scripto-common/ap_vendor_lf.sh \
+        \${HOME}/scripto-common/vendors/lf/ap_lfrc.conf \
 	"
 }
 
@@ -15,8 +15,8 @@ ap_func_create_dirstruct_lf() {
         @logshow "Create directories [${HOME}/.config/lf]\n"
         mkdir -p "${HOME}/.config/lf"
 
-        @logshow "Create symlink from [${HOME}/.config/lf/lfrc] to [${AP_SCRIPTO_COMMON_DIR}/vendors/lf/ap_lfrc.conf]\n"
-        ln -sf "${AP_SCRIPTO_COMMON_DIR}/vendors/lf/ap_lfrc.conf" "${HOME}/.config/lf/lfrc"
+        @logshow "Create symlink from [${HOME}/.config/lf/lfrc] to [${HOME}/scripto-common/vendors/lf/ap_lfrc.conf]\n"
+        ln -sf "${HOME}/scripto-common/vendors/lf/ap_lfrc.conf" "${HOME}/.config/lf/lfrc"
     fi
 }
 
