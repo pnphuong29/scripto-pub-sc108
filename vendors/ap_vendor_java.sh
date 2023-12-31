@@ -45,8 +45,8 @@ ap_func_setup_java() {
     @initjava
 }
 
-alias @rmjava="ap_func_remove_java"
-ap_func_remove_java() {
+alias @rmjava="ap_func_rm_java"
+ap_func_rm_java() {
     @logshow "Remove [java]\n"
     rm -rf "${AP_SOFT_DIR}/java"
 }

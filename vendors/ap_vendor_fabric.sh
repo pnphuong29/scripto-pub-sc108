@@ -25,8 +25,8 @@ ap_func_create_dirstruct_fabric() {
     fi
 }
 
-alias @rmdirstructfabric="ap_func_remove_dirstruct_fabric"
-ap_func_remove_dirstruct_fabric() {
+alias @rmdirstructfabric="ap_func_rm_dirstruct_fabric"
+ap_func_rm_dirstruct_fabric() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_fabric.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_fabric.bash"
 
@@ -50,8 +50,8 @@ ap_func_setup_fabric() {
     fi
 }
 
-alias @rmfabric="ap_func_remove_fabric"
-ap_func_remove_fabric() {
+alias @rmfabric="ap_func_rm_fabric"
+ap_func_rm_fabric() {
     @logshow "Remove [fabric]\n"
     pip uninstall fabric2
 

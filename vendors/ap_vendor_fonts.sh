@@ -20,8 +20,8 @@ ap_func_create_dirstruct_fonts() {
     fi
 }
 
-alias @rmdirstructfonts="ap_func_remove_dirstruct_fonts"
-ap_func_remove_dirstruct_fonts() {
+alias @rmdirstructfonts="ap_func_rm_dirstruct_fonts"
+ap_func_rm_dirstruct_fonts() {
     if alias @rmdirstructfontsshare &>/dev/null; then
         @rmdirstructfontsshare
     fi
@@ -58,8 +58,8 @@ ap_func_setup_fonts() {
     fi
 }
 
-alias @rmfonts="ap_func_remove_fonts"
-ap_func_remove_fonts() {
+alias @rmfonts="ap_func_rm_fonts"
+ap_func_rm_fonts() {
     @logshow "Remove [icons-in-terminal] fonts\n"
     if [ -d "${AP_SOFT_DIR}/icons-in-terminal" ]; then
         cd "${AP_SOFT_DIR}/icons-in-terminal"

@@ -22,8 +22,8 @@ ap_func_create_dirstruct_gitlabcli() {
     fi
 }
 
-alias @rmdirstructgitlabcli="ap_func_remove_dirstruct_gitlabcli"
-ap_func_remove_dirstruct_gitlabcli() {
+alias @rmdirstructgitlabcli="ap_func_rm_dirstruct_gitlabcli"
+ap_func_rm_dirstruct_gitlabcli() {
     if alias @rmdirstructgitlabclishare &>/dev/null; then
         @rmdirstructgitlabclishare
     fi
@@ -53,8 +53,8 @@ ap_func_setup_gitlabcli() {
     fi
 }
 
-alias @rmgitlabcli="ap_func_remove_gitlabcli"
-ap_func_remove_gitlabcli() {
+alias @rmgitlabcli="ap_func_rm_gitlabcli"
+ap_func_rm_gitlabcli() {
     @logshow "Remove [GitLab cli]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

@@ -14,8 +14,8 @@ ap_func_create_dirstruct_vscode() {
     fi
 }
 
-alias @rmdirstructvscode="ap_func_remove_dirstruct_vscode"
-ap_func_remove_dirstruct_vscode() {
+alias @rmdirstructvscode="ap_func_rm_dirstruct_vscode"
+ap_func_rm_dirstruct_vscode() {
     rm -f "${AP_SOFT_DIR}/bin/code"
     if alias @rmdirstructvscodecommon &>/dev/null; then
         @rmdirstructvscodecommon
@@ -65,8 +65,8 @@ ap_func_setup_vscode() {
     fi
 }
 
-alias @rmvscode="ap_func_remove_vscode"
-ap_func_remove_vscode() {
+alias @rmvscode="ap_func_rm_vscode"
+ap_func_rm_vscode() {
     @logshow "Remove [vscode]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

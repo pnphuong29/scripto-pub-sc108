@@ -75,8 +75,8 @@ ap_func_create_dirstruct_git() {
     fi
 }
 
-alias @rmdirstructgit="ap_func_remove_dirstruct_git"
-ap_func_remove_dirstruct_git() {
+alias @rmdirstructgit="ap_func_rm_dirstruct_git"
+ap_func_rm_dirstruct_git() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_git.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_git.bash"
     rm -f "${HOME}/.gitconfig"
@@ -107,8 +107,8 @@ ap_func_setup_git() {
     fi
 }
 
-alias @rmgit="ap_func_remove_git"
-ap_func_remove_git() {
+alias @rmgit="ap_func_rm_git"
+ap_func_rm_git() {
     @logshow "Remove [git]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

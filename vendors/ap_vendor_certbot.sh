@@ -25,8 +25,8 @@ ap_func_create_dirstruct_certbot() {
     fi
 }
 
-alias @rmdirstructcertbot="ap_func_remove_dirstruct_certbot"
-ap_func_remove_dirstruct_certbot() {
+alias @rmdirstructcertbot="ap_func_rm_dirstruct_certbot"
+ap_func_rm_dirstruct_certbot() {
     if alias @rmdirstructcertbotshare &>/dev/null; then
         @rmdirstructcertbotshare
     fi
@@ -44,8 +44,8 @@ ap_func_create_global_symlink_certbot() {
     fi
 }
 
-alias @rmglobalsymlinkcertbot="ap_func_remove_global_symlink_certbot"
-ap_func_remove_global_symlink_certbot() {
+alias @rmglobalsymlinkcertbot="ap_func_rm_global_symlink_certbot"
+ap_func_rm_global_symlink_certbot() {
     if [ -f "/usr/bin/certbot" ]; then
         @logshow "Remove [/usr/bin/certbot]\n"
         sudo rm -f "/usr/bin/certbot"
@@ -74,8 +74,8 @@ ap_func_setup_certbot() {
     fi
 }
 
-alias @rmcertbot="ap_func_remove_certbot"
-ap_func_remove_certbot() {
+alias @rmcertbot="ap_func_rm_certbot"
+ap_func_rm_certbot() {
     @logshow "Remove [certbot]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then

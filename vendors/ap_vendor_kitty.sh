@@ -28,8 +28,8 @@ ap_func_create_dirstruct_kitty() {
     fi
 }
 
-alias @rmdirstructkitty="ap_func_remove_dirstruct_kitty"
-ap_func_remove_dirstruct_kitty() {
+alias @rmdirstructkitty="ap_func_rm_dirstruct_kitty"
+ap_func_rm_dirstruct_kitty() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         rm -f "${HOME}/.local/bin/kitty"
         rm -f "${HOME}/.local/bin/kitten"
@@ -55,8 +55,8 @@ ap_func_setup_kitty() {
     fi
 }
 
-alias @rmkitty="ap_func_remove_kitty"
-ap_func_remove_kitty() {
+alias @rmkitty="ap_func_rm_kitty"
+ap_func_rm_kitty() {
     @logshow "Remove [kitty]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

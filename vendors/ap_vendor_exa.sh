@@ -42,8 +42,8 @@ ap_func_create_dirstruct_exa() {
 
 }
 
-alias @rmdirstructexa="ap_func_remove_dirstruct_exa"
-ap_func_remove_dirstruct_exa() {
+alias @rmdirstructexa="ap_func_rm_dirstruct_exa"
+ap_func_rm_dirstruct_exa() {
     @logshow "Remove [${AP_SOFT_DIR}/bin/exa]\n"
     rm -f "${AP_SOFT_DIR}/bin/exa"
 
@@ -67,14 +67,14 @@ ap_func_remove_dirstruct_exa() {
 
 alias @createglobalsymlinkexa="ap_func_create_global_symlink_exa"
 ap_func_create_global_symlink_exa() {
-    if [ -f "${AP_SOFT_DIR}/exa/exa" ]; then
-        @logshow "Create symlink from [/usr/local/bin/exa] to [${AP_SOFT_DIR}/exa/exa]\n"
-        sudo ln -sf "${AP_SOFT_DIR}/exa/exa" "/usr/local/bin/exa"
+    if [ -f "${AP_SOFT_DIR}/bin/exa" ]; then
+        @logshow "Create symlink from [/usr/local/bin/exa] to [${AP_SOFT_DIR}/bin/exa]\n"
+        sudo ln -sf "${AP_SOFT_DIR}/bin/exa" "/usr/local/bin/exa"
     fi
 }
 
-alias @rmglobalsymlinkexa="ap_func_remove_global_symlink_exa"
-ap_func_remove_global_symlink_exa() {
+alias @rmglobalsymlinkexa="ap_func_rm_global_symlink_exa"
+ap_func_rm_global_symlink_exa() {
     if [ -f "/usr/local/bin/exa" ]; then
         @logshow "Remove [/usr/local/bin/exa]\n"
         sudo rm -f "/usr/local/bin/exa"
@@ -115,8 +115,8 @@ ap_func_setup_exa() {
     fi
 }
 
-alias @rmexa="ap_func_remove_exa"
-ap_func_remove_exa() {
+alias @rmexa="ap_func_rm_exa"
+ap_func_rm_exa() {
     @logshow "Remove [exa]\n"
     rm -rf "${AP_SOFT_DIR}/exa"
 

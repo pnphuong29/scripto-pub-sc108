@@ -100,8 +100,8 @@ ap_func_create_dirstruct_django() {
     fi
 }
 
-alias @rmdirstructdjango="ap_func_remove_dirstruct_django"
-ap_func_remove_dirstruct_django() {
+alias @rmdirstructdjango="ap_func_rm_dirstruct_django"
+ap_func_rm_dirstruct_django() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_django.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_django.bash"
 
@@ -124,8 +124,8 @@ ap_func_setup_django() {
     fi
 }
 
-alias @rmdjango="ap_func_remove_django"
-ap_func_remove_django() {
+alias @rmdjango="ap_func_rm_django"
+ap_func_rm_django() {
     @logshow "Remove [django]\n"
     pip uninstall django
 

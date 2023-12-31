@@ -52,18 +52,18 @@ ap_func_create_dirstruct_xxx() {
     fi
 }
 
-alias @rmdirstructxxxshare="ap_func_remove_dirstruct_xxx_share"
-ap_func_remove_dirstruct_xxx_share() {
+alias @rmdirstructxxxshare="ap_func_rm_dirstruct_xxx_share"
+ap_func_rm_dirstruct_xxx_share() {
 
 }
 
-alias @rmdirstructxxxcommon="ap_func_remove_dirstruct_xxx_common"
-ap_func_remove_dirstruct_xxx_common() {
+alias @rmdirstructxxxcommon="ap_func_rm_dirstruct_xxx_common"
+ap_func_rm_dirstruct_xxx_common() {
 
 }
 
-alias @rmdirstructxxx="ap_func_remove_dirstruct_xxx"
-ap_func_remove_dirstruct_xxx() {
+alias @rmdirstructxxx="ap_func_rm_dirstruct_xxx"
+ap_func_rm_dirstruct_xxx() {
     @logshow "Remove [${AP_SOFT_DIR}/bin/xxx]\n"
     rm -f "${AP_SOFT_DIR}/bin/xxx"
 
@@ -90,8 +90,8 @@ ap_func_create_global_symlink_xxx() {
     fi
 }
 
-alias @rmglobalsymlinkxxx="ap_func_remove_global_symlink_xxx"
-ap_func_remove_global_symlink_xxx() {
+alias @rmglobalsymlinkxxx="ap_func_rm_global_symlink_xxx"
+ap_func_rm_global_symlink_xxx() {
     if [ -f "/usr/local/bin/xxx" ]; then
         @logshow "Remove [/usr/local/bin/xxx]\n"
         sudo rm -f "/usr/local/bin/xxx"
@@ -156,8 +156,8 @@ ap_func_setup_xxx() {
     fi
 }
 
-alias @rmxxx="ap_func_remove_xxx"
-ap_func_remove_xxx() {
+alias @rmxxx="ap_func_rm_xxx"
+ap_func_rm_xxx() {
     @logshow "Remove [xxx]\n"
     rm -rf "${AP_SOFT_DIR}/xxx"
 

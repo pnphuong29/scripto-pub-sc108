@@ -44,8 +44,8 @@ ap_func_create_dir_struct_fd() {
     fi
 }
 
-alias @rmdirstructfd="ap_func_remove_dirstruct_fd"
-ap_func_remove_dirstruct_fd() {
+alias @rmdirstructfd="ap_func_rm_dirstruct_fd"
+ap_func_rm_dirstruct_fd() {
     @logshow "Remove [${AP_SOFT_DIR}/bin/fd]\n"
     rm -f "${AP_SOFT_DIR}/bin/fd"
 
@@ -72,8 +72,8 @@ ap_func_create_global_symlink_fd() {
     fi
 }
 
-alias @rmglobalsymlinkfd="ap_func_remove_global_symlink_fd"
-ap_func_remove_global_symlink_fd() {
+alias @rmglobalsymlinkfd="ap_func_rm_global_symlink_fd"
+ap_func_rm_global_symlink_fd() {
     if [ -f "/usr/local/bin/fd" ]; then
         @logshow "Remove [/usr/local/bin/fd]\n"
         sudo rm -f "/usr/local/bin/fd"
@@ -113,8 +113,8 @@ ap_func_setup_fd() {
     fi
 }
 
-alias @rmfd="ap_func_remove_fd"
-ap_func_remove_fd() {
+alias @rmfd="ap_func_rm_fd"
+ap_func_rm_fd() {
     @logshow "Remove [fd]\n"
 
     rm -rf "${AP_SOFT_DIR}/fd"

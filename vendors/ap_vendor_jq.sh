@@ -12,8 +12,8 @@ ap_func_setup_jq() {
     chmod +x "${AP_SOFT_DIR}/bin/jq"
 }
 
-alias @rmjq="ap_func_remove_jq"
-ap_func_remove_jq() {
+alias @rmjq="ap_func_rm_jq"
+ap_func_rm_jq() {
     @logshow "Remove [jq]\n"
     rm -f "${AP_SOFT_DIR}/bin/jq"
 }

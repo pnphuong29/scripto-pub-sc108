@@ -42,8 +42,8 @@ ap_func_create_dirstruct_vagrant() {
     fi
 }
 
-alias @rmdirstructvagrant="ap_func_remove_dirstruct_vagrant"
-ap_func_remove_dirstruct_vagrant() {
+alias @rmdirstructvagrant="ap_func_rm_dirstruct_vagrant"
+ap_func_rm_dirstruct_vagrant() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash"
 
@@ -72,8 +72,8 @@ ap_func_setup_vagrant() {
     fi
 }
 
-alias @rmvagrant="ap_func_remove_vagrant"
-ap_func_remove_vagrant() {
+alias @rmvagrant="ap_func_rm_vagrant"
+ap_func_rm_vagrant() {
     @logshow "Remove [vagrant]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

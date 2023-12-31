@@ -12,8 +12,8 @@ ap_func_create_dirstruct_nextclouddesktop() {
     fi
 }
 
-alias @rmdirstructnextclouddesktop="ap_func_remove_dirstruct_nextclouddesktop"
-ap_func_remove_dirstruct_nextclouddesktop() {
+alias @rmdirstructnextclouddesktop="ap_func_rm_dirstruct_nextclouddesktop"
+ap_func_rm_dirstruct_nextclouddesktop() {
     if alias @rmdirstructnextclouddesktopcommon &>/dev/null; then
         @rmdirstructnextclouddesktopcommon
     fi
@@ -47,8 +47,8 @@ ap_func_setup_nextclouddesktop() {
     fi
 }
 
-alias @rmnextclouddesktop="ap_func_remove_nextclouddesktop"
-ap_func_remove_nextclouddesktop() {
+alias @rmnextclouddesktop="ap_func_rm_nextclouddesktop"
+ap_func_rm_nextclouddesktop() {
     @logshow "Remove [nextcloud desktop]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

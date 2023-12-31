@@ -10,8 +10,8 @@ ap_func_create_dirstruct_ripgrepall() {
     # ln -sf "${AP_SOFT_DIR}/ripgrep-all/doc/rga.1" "${AP_MAN_DIR}/man1/rga.1"
 }
 
-alias @rmdirstructripgrepall="ap_func_remove_dirstruct_ripgrepall"
-ap_func_remove_dirstruct_ripgrepall() {
+alias @rmdirstructripgrepall="ap_func_rm_dirstruct_ripgrepall"
+ap_func_rm_dirstruct_ripgrepall() {
     @logshow "Remove [${AP_SOFT_DIR}/bin/rga]\n"
     rm -f "${AP_SOFT_DIR}/bin/rga"
 
@@ -35,8 +35,8 @@ ap_func_create_global_symlink_ripgrepall() {
     fi
 }
 
-alias @rmglobalsymlinkripgrepall="ap_func_remove_global_symlink_ripgrepall"
-ap_func_remove_global_symlink_ripgrepall() {
+alias @rmglobalsymlinkripgrepall="ap_func_rm_global_symlink_ripgrepall"
+ap_func_rm_global_symlink_ripgrepall() {
     if [ -f "/usr/local/bin/rga" ]; then
         @logshow "Remove [/usr/local/bin/rga]\n"
         sudo rm -f "/usr/local/bin/rga"
@@ -78,8 +78,8 @@ ap_func_setup_ripgrepall() {
     @createdirstructripgrepall
 }
 
-alias @rmripgrepall="ap_func_remove_ripgrepall"
-ap_func_remove_ripgrepall() {
+alias @rmripgrepall="ap_func_rm_ripgrepall"
+ap_func_rm_ripgrepall() {
     @logshow "Remove [ripgrepall]\n"
     rm -rf "${AP_SOFT_DIR}/ripgrep-all"
     @rmdirstructripgrepall

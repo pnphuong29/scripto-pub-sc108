@@ -31,8 +31,8 @@ ap_func_create_dirstruct_wezterm() {
     fi
 }
 
-alias @rmdirstructwezterm="ap_func_remove_dirstruct_wezterm"
-ap_func_remove_dirstruct_wezterm() {
+alias @rmdirstructwezterm="ap_func_rm_dirstruct_wezterm"
+ap_func_rm_dirstruct_wezterm() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_wezterm.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_wezterm.bash"
 
@@ -69,8 +69,8 @@ ap_func_setup_wezterm() {
     fi
 }
 
-alias @rmwezterm="ap_func_remove_wezterm"
-ap_func_remove_wezterm() {
+alias @rmwezterm="ap_func_rm_wezterm"
+ap_func_rm_wezterm() {
     @logshow "Remove [wezterm]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

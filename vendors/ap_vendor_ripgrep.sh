@@ -43,8 +43,8 @@ ap_func_create_dirstruct_ripgrep() {
     ln -sf "${AP_SOFT_DIR}/ripgrep/doc/rg.1" "${AP_MAN_DIR}/man1/rg.1"
 }
 
-alias @rmdirstructripgrep="ap_func_remove_dirstruct_ripgrep"
-ap_func_remove_dirstruct_ripgrep() {
+alias @rmdirstructripgrep="ap_func_rm_dirstruct_ripgrep"
+ap_func_rm_dirstruct_ripgrep() {
     @logshow "Remove [${AP_SOFT_DIR}/bin/rg]\n"
     rm -f "${AP_SOFT_DIR}/bin/rg"
 
@@ -63,8 +63,8 @@ ap_func_create_global_symlink_ripgrep() {
     fi
 }
 
-alias @rmglobalsymlinkripgrep="ap_func_remove_global_symlink_ripgrep"
-ap_func_remove_global_symlink_ripgrep() {
+alias @rmglobalsymlinkripgrep="ap_func_rm_global_symlink_ripgrep"
+ap_func_rm_global_symlink_ripgrep() {
     if [ -f "/usr/local/bin/rg" ]; then
         @logshow "Remove [/usr/local/bin/rg]\n"
         sudo rm -f "/usr/local/bin/rg"
@@ -101,8 +101,8 @@ ap_func_setup_ripgrep() {
     @createdirstructripgrep
 }
 
-alias @rmripgrep="ap_func_remove_ripgrep"
-ap_func_remove_ripgrep() {
+alias @rmripgrep="ap_func_rm_ripgrep"
+ap_func_rm_ripgrep() {
     @logshow "Remove [ripgrep]\n"
     rm -rf "${AP_SOFT_DIR}/ripgrep"
     @rmdirstructripgrep

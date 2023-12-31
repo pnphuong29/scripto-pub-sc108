@@ -35,8 +35,8 @@ ap_func_setup_tree() {
     @inittree
 }
 
-alias @rmtree="ap_func_remove_tree"
-ap_func_remove_tree() {
+alias @rmtree="ap_func_rm_tree"
+ap_func_rm_tree() {
     @logshow "Remove [tree]\n"
     rm -rf "${AP_SOFT_DIR}/tree"
     rm -f "${AP_MAN_DIR}/man1/tree.1"

@@ -20,8 +20,8 @@ ap_func_create_dirstruct_lf() {
     fi
 }
 
-alias @rmdirstructlf="ap_func_remove_dirstruct_lf"
-ap_func_remove_dirstruct_lf() {
+alias @rmdirstructlf="ap_func_rm_dirstruct_lf"
+ap_func_rm_dirstruct_lf() {
     @logshow "Remove [${HOME}/.config/lf]\n"
     rm -f "${HOME}/.config/lf"
 }
@@ -36,8 +36,8 @@ ap_func_create_global_symlink_lf() {
     fi
 }
 
-alias @rmglobalsymlinklf="ap_func_remove_global_symlink_lf"
-ap_func_remove_global_symlink_lf() {
+alias @rmglobalsymlinklf="ap_func_rm_global_symlink_lf"
+ap_func_rm_global_symlink_lf() {
     if [ -f "/usr/local/bin/lf" ]; then
         @logshow "Remove [/usr/local/bin/lf]\n"
         sudo rm -f "/usr/local/bin/lf"
@@ -52,8 +52,8 @@ ap_func_setup_lf() {
     @createdirstructlf
 }
 
-alias @rmlf="ap_func_remove_lf"
-ap_func_remove_lf() {
+alias @rmlf="ap_func_rm_lf"
+ap_func_rm_lf() {
     @logshow "Remove [lf]\n"
     local ap_go_path
     ap_go_path="$(go env GOPATH)"

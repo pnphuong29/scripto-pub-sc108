@@ -27,8 +27,8 @@ ap_func_create_dirstruct_chtsh() {
     fi
 }
 
-alias @rmdirstructchtsh="ap_func_remove_dirstruct_chtsh"
-ap_func_remove_dirstruct_chtsh() {
+alias @rmdirstructchtsh="ap_func_rm_dirstruct_chtsh"
+ap_func_rm_dirstruct_chtsh() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_chtsh.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_chtsh.bash"
 
@@ -53,8 +53,8 @@ ap_func_setup_chtsh() {
     fi
 }
 
-alias @rmchtsh="ap_func_remove_chtsh"
-ap_func_remove_chtsh() {
+alias @rmchtsh="ap_func_rm_chtsh"
+ap_func_rm_chtsh() {
     @logshow "Remove [chtsh]\n"
     rm -rf "${AP_SOFT_DIR}/bin/cht.sh"
 

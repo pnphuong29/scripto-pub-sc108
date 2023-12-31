@@ -1,5 +1,5 @@
-alias @rmjust="ap_func_remove_just"
-ap_func_remove_just() {
+alias @rmjust="ap_func_rm_just"
+ap_func_rm_just() {
     @logshow "Remove [just]\n"
     rm -f "${AP_SOFT_DIR}/bin/just"
 }

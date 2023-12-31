@@ -380,17 +380,17 @@ ap_func_add_path_var() {
     @rtn_success
 }
 
-alias @rmpath='ap_func_remove_path_var'
+alias @rmpath='ap_func_rm_path_var'
 
-# @$func $$ ap_func_remove_path_var {
-# ap_func_remove_path_var *<path_var>
+# @$func $$ ap_func_rm_path_var {
+# ap_func_rm_path_var *<path_var>
 # Descriptions
 # 	Remove all occurrences of <path_var> in $PATH
 # Return status
 # 	AP_CODE_SUCCESS
 # 	AP_CODE_ERR_MISSING_ARGUMENT: Missing argument <path_var>
 # }
-ap_func_remove_path_var() {
+ap_func_rm_path_var() {
     local ap_path="$1"
 
     if [[ -z "${ap_path:-}" ]]; then

@@ -32,8 +32,8 @@ ap_func_create_dirstruct_brew() {
     fi
 }
 
-alias @rmdirstructbrew="ap_func_remove_dirstruct_brew"
-ap_func_remove_dirstruct_brew() {
+alias @rmdirstructbrew="ap_func_rm_dirstruct_brew"
+ap_func_rm_dirstruct_brew() {
     if alias @rmdirstructbrewshare &>/dev/null; then
         @rmdirstructbrewshare
     fi
@@ -55,8 +55,8 @@ ap_func_setup_brew() {
     @initbrew
 }
 
-alias @rmbrew="ap_func_remove_brew"
-ap_func_remove_brew() {
+alias @rmbrew="ap_func_rm_brew"
+ap_func_rm_brew() {
     # https://github.com/Homebrew/install/#uninstall-homebrew
     @logshow "Remove [brew]\n"
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"

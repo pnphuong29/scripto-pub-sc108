@@ -39,8 +39,8 @@ ap_func_create_dirstruct_python() {
     fi
 }
 
-alias @rmdirstructpython="ap_func_remove_dirstruct_python"
-ap_func_remove_dirstruct_python() {
+alias @rmdirstructpython="ap_func_rm_dirstruct_python"
+ap_func_rm_dirstruct_python() {
     if alias @rmdirstructpythoncommon &>/dev/null; then
         @rmdirstructpythoncommon
     fi

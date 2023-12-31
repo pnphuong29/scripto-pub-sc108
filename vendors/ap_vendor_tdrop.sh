@@ -12,8 +12,8 @@ ap_func_create_dirstruct_tdrop() {
     fi
 }
 
-alias @rmdirstructtdrop="ap_func_remove_dirstruct_tdrop"
-ap_func_remove_dirstruct_tdrop() {
+alias @rmdirstructtdrop="ap_func_rm_dirstruct_tdrop"
+ap_func_rm_dirstruct_tdrop() {
     if alias @rmdirstructtdropcommon &>/dev/null; then
         @rmdirstructtdropcommon
     fi
@@ -37,8 +37,8 @@ ap_func_setup_tdrop() {
     fi
 }
 
-alias @rmtdrop="ap_func_remove_tdrop"
-ap_func_remove_tdrop() {
+alias @rmtdrop="ap_func_rm_tdrop"
+ap_func_rm_tdrop() {
     @logshow "Remove [tdrop]\n"
 
     cd "${AP_SOFT_DIR}/tdrop"

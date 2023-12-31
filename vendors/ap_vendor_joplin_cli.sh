@@ -17,14 +17,14 @@ ap_func_setup_joplin_cli_bun() {
     bun -g install joplin
 }
 
-alias @rmjoplincli="ap_func_remove_joplin_cli"
-ap_func_remove_joplin_cli() {
+alias @rmjoplincli="ap_func_rm_joplin_cli"
+ap_func_rm_joplin_cli() {
     @logshow "Remove [joplin_cli]\n"
     npm -g uninstall joplin
 }
 
-alias @rmjoplinclibun="ap_func_remove_joplin_cli_bun"
-ap_func_remove_joplin_cli_bun() {
+alias @rmjoplinclibun="ap_func_rm_joplin_cli_bun"
+ap_func_rm_joplin_cli_bun() {
     @logshow "Remove [joplin_cli]\n"
     bun -g uninstall joplin
 }

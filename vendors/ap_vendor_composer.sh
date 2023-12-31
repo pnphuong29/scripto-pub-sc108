@@ -28,8 +28,8 @@ ap_func_create_dirstruct_composer() {
     fi
 }
 
-alias @rmdirstructcomposer="ap_func_remove_dirstruct_composer"
-ap_func_remove_dirstruct_composer() {
+alias @rmdirstructcomposer="ap_func_rm_dirstruct_composer"
+ap_func_rm_dirstruct_composer() {
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_composer.bash"
 
     if alias @rmdirstructcomposershare &>/dev/null; then
@@ -74,8 +74,8 @@ ap_func_setup_composer() {
     fi
 }
 
-alias @rmcomposer="ap_func_remove_composer"
-ap_func_remove_composer() {
+alias @rmcomposer="ap_func_rm_composer"
+ap_func_rm_composer() {
     @logshow "Remove [PHP composer]\n"
     rm -f "${AP_SOFT_DIR}/bin/composer"
     rm -rf "${HOME}/.composer"

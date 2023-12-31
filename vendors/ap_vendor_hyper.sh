@@ -20,8 +20,8 @@ ap_func_create_dirstruct_hyper() {
     fi
 }
 
-alias @rmdirstructhyper="ap_func_remove_dirstruct_hyper"
-ap_func_remove_dirstruct_hyper() {
+alias @rmdirstructhyper="ap_func_rm_dirstruct_hyper"
+ap_func_rm_dirstruct_hyper() {
     if alias @rmdirstructhypershare &>/dev/null; then
         @rmdirstructhypershare
     fi
@@ -59,8 +59,8 @@ ap_func_setup_hyper() {
     fi
 }
 
-alias @rmhyper="ap_func_remove_hyper"
-ap_func_remove_hyper() {
+alias @rmhyper="ap_func_rm_hyper"
+ap_func_rm_hyper() {
     @logshow "Remove [hyper]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

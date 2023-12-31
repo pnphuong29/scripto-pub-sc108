@@ -50,8 +50,8 @@ ap_func_setup_nvm() {
     @initnvm
 }
 
-alias @rmnvm="ap_func_remove_nvm"
-ap_func_remove_nvm() {
+alias @rmnvm="ap_func_rm_nvm"
+ap_func_rm_nvm() {
     @logshow "Remove [nvm]\n"
 
     [ -f /usr/local/bin/node ] && sudo rm -f /usr/local/bin/node

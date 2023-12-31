@@ -22,8 +22,8 @@ ap_func_create_dirstruct_fzf() {
     fi
 }
 
-alias @rmdirstructfzf="ap_func_remove_dirstruct_fzf"
-ap_func_remove_dirstruct_fzf() {
+alias @rmdirstructfzf="ap_func_rm_dirstruct_fzf"
+ap_func_rm_dirstruct_fzf() {
     if alias @rmdirstructfzfshare &>/dev/null; then
         @rmdirstructfzfshare
     fi
@@ -41,8 +41,8 @@ ap_func_create_global_symlink_fzf() {
     fi
 }
 
-alias @rmglobalsymlinkfzf="ap_func_remove_global_symlink_fzf"
-ap_func_remove_global_symlink_fzf() {
+alias @rmglobalsymlinkfzf="ap_func_rm_global_symlink_fzf"
+ap_func_rm_global_symlink_fzf() {
     @logshow "Remove [/usr/local/bin/fzf]\n"
     sudo rm -f "/usr/local/bin/fzf"
 }
@@ -68,8 +68,8 @@ ap_func_setup_fzf() {
     fi
 }
 
-alias @rmfzf="ap_func_remove_fzf"
-ap_func_remove_fzf() {
+alias @rmfzf="ap_func_rm_fzf"
+ap_func_rm_fzf() {
     @logshow "Remove [fzf]\n"
     rm -rf "${HOME}/.fzf"
 

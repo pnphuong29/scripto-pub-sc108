@@ -10,8 +10,8 @@ ap_func_create_dirstruct_nox() {
     fi
 }
 
-alias @rmdirstructnox="ap_func_remove_dirstruct_nox"
-ap_func_remove_dirstruct_nox() {
+alias @rmdirstructnox="ap_func_rm_dirstruct_nox"
+ap_func_rm_dirstruct_nox() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_nox.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_nox.bash"
 

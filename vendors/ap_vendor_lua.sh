@@ -8,8 +8,8 @@ ap_func_create_dirstruct_lua() {
     fi
 }
 
-alias @rmdirstructlua="ap_func_remove_dirstruct_lua"
-ap_func_remove_dirstruct_lua() {
+alias @rmdirstructlua="ap_func_rm_dirstruct_lua"
+ap_func_rm_dirstruct_lua() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_luarocks.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_luarocks.bash"
 
@@ -34,8 +34,8 @@ ap_func_setup_lua() {
     fi
 }
 
-alias @rmlua="ap_func_remove_lua"
-ap_func_remove_lua() {
+alias @rmlua="ap_func_rm_lua"
+ap_func_rm_lua() {
     @logshow "Remove [lua]\n"
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew uninstall lua

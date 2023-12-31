@@ -1,5 +1,9 @@
 alias @initredis="ap_func_init_redis"
 ap_func_init_redis() {
+    if alias @initredisshare &>/dev/null; then
+        @initredisshare
+    fi
+
     if alias @initrediscommon &>/dev/null; then
         @initrediscommon
     fi
@@ -7,13 +11,21 @@ ap_func_init_redis() {
 
 alias @createdirstructredis="ap_func_create_dirstruct_redis"
 ap_func_create_dirstruct_redis() {
+    if alias @createdirstructredisshare &>/dev/null; then
+        @createdirstructredisshare
+    fi
+
     if alias @createdirstructrediscommon &>/dev/null; then
         @createdirstructrediscommon
     fi
 }
 
-alias @rmdirstructredis="ap_func_remove_dirstruct_redis"
-ap_func_remove_dirstruct_redis() {
+alias @rmdirstructredis="ap_func_rm_dirstruct_redis"
+ap_func_rm_dirstruct_redis() {
+    if alias @rmdirstructredisshare &>/dev/null; then
+        @rmdirstructredisshare
+    fi
+
     if alias @rmdirstructrediscommon &>/dev/null; then
         @rmdirstructrediscommon
     fi
@@ -42,13 +54,14 @@ ap_func_setup_redis() {
         sudo systemctl start redis-server
     fi
 
+    @initredis
     if alias @createdirstructredis &>/dev/null; then
         @createdirstructredis
     fi
 }
 
-alias @rmredis="ap_func_remove_redis"
-ap_func_remove_redis() {
+alias @rmredis="ap_func_rm_redis"
+ap_func_rm_redis() {
     @logshow "Remove [redis]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
@@ -64,7 +77,6 @@ ap_func_remove_redis() {
 }
 
 alias showredispasswd='ap_func_get_redis_passwd'
-
 # @$func $$ ap_func_get_redis_passwd
 # ap_func_get_redis_passwd [--]
 # Description

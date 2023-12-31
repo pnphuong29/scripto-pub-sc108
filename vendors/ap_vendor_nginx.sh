@@ -39,8 +39,8 @@ ap_func_create_dirstruct_nginx() {
     fi
 }
 
-alias @rmdirstructnginx="ap_func_remove_dirstruct_nginx"
-ap_func_remove_dirstruct_nginx() {
+alias @rmdirstructnginx="ap_func_rm_dirstruct_nginx"
+ap_func_rm_dirstruct_nginx() {
     if alias @rmdirstructnginxcommon &>/dev/null; then
         @rmdirstructnginxcommon
     fi
@@ -54,8 +54,8 @@ ap_func_create_global_symlink_nginx() {
     fi
 }
 
-alias @rmglobalsymlinknginx="ap_func_remove_global_symlink_nginx"
-ap_func_remove_global_symlink_nginx() {
+alias @rmglobalsymlinknginx="ap_func_rm_global_symlink_nginx"
+ap_func_rm_global_symlink_nginx() {
     if [ -f "/usr/local/bin/nginx" ]; then
         @logshow "Remove [/usr/local/bin/nginx]\n"
         sudo rm -f "/usr/local/bin/nginx"
@@ -99,8 +99,8 @@ ap_func_setup_nginx() {
     fi
 }
 
-alias @rmnginx="ap_func_remove_nginx"
-ap_func_remove_nginx() {
+alias @rmnginx="ap_func_rm_nginx"
+ap_func_rm_nginx() {
     @logshow "Remove [nginx]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

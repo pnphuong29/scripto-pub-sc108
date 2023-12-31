@@ -23,8 +23,8 @@ ap_func_create_dirstruct_bat_extras() {
     fi
 }
 
-alias @rmdirstructbatextras="ap_func_remove_dirstruct_bat_extras"
-ap_func_remove_dirstruct_bat_extras() {
+alias @rmdirstructbatextras="ap_func_rm_dirstruct_bat_extras"
+ap_func_rm_dirstruct_bat_extras() {
     if alias @rmdirstructbatextrasshare &>/dev/null; then
         @rmdirstructbatextrasshare
     fi
@@ -54,8 +54,8 @@ ap_func_setup_bat_extras() {
     fi
 }
 
-alias @rmbatextras="ap_func_remove_bat_extras"
-ap_func_remove_bat_extras() {
+alias @rmbatextras="ap_func_rm_bat_extras"
+ap_func_rm_bat_extras() {
     @logshow "Remove [bat extras]\n"
     rm -rf "${AP_SOFT_DIR}/bat-extras"
 

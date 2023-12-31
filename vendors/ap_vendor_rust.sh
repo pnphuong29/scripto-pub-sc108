@@ -14,8 +14,8 @@ ap_func_create_dirstruct_rust() {
     fi
 }
 
-alias @rmdirstructrust="ap_func_remove_dirstruct_rust"
-ap_func_remove_dirstruct_rust() {
+alias @rmdirstructrust="ap_func_rm_dirstruct_rust"
+ap_func_rm_dirstruct_rust() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_rustup.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_rust.bash"
 
@@ -40,8 +40,8 @@ ap_func_setup_rust() {
     fi
 }
 
-alias @rmrust="ap_func_remove_rust"
-ap_func_remove_rust() {
+alias @rmrust="ap_func_rm_rust"
+ap_func_rm_rust() {
     @logshow "Remove [rust]\n"
     rustup self uninstall
     if alias @rmdirstructrust &>/dev/null; then

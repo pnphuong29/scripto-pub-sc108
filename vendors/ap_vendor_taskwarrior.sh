@@ -29,8 +29,8 @@ ap_func_create_dirstruct_taskwarrior() {
     fi
 }
 
-alias @rmdirstructtaskwarrior="ap_func_remove_dirstruct_taskwarrior"
-ap_func_remove_dirstruct_taskwarrior() {
+alias @rmdirstructtaskwarrior="ap_func_rm_dirstruct_taskwarrior"
+ap_func_rm_dirstruct_taskwarrior() {
     @logshow "Remove [${AP_SOFT_DIR}/bin/task]\n"
     rm -f "${AP_SOFT_DIR}/bin/task"
 
@@ -85,8 +85,8 @@ ap_func_setup_taskwarrior() {
     fi
 }
 
-alias @rmtaskwarrior="ap_func_remove_taskwarrior"
-ap_func_remove_taskwarrior() {
+alias @rmtaskwarrior="ap_func_rm_taskwarrior"
+ap_func_rm_taskwarrior() {
     @logshow "Remove [taskwarrior]\n"
     rm -rf "${AP_SOFT_DIR}/taskwarrior"
 

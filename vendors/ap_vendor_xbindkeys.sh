@@ -12,8 +12,8 @@ ap_func_create_dirstruct_xbindkeys() {
     fi
 }
 
-alias @rmdirstructxbindkeys="ap_func_remove_dirstruct_xbindkeys"
-ap_func_remove_dirstruct_xbindkeys() {
+alias @rmdirstructxbindkeys="ap_func_rm_dirstruct_xbindkeys"
+ap_func_rm_dirstruct_xbindkeys() {
     if alias @rmdirstructxbindkeyscommon &>/dev/null; then
         @rmdirstructxbindkeyscommon
     fi
@@ -33,8 +33,8 @@ ap_func_setup_xbindkeys() {
     fi
 }
 
-alias @rmxbindkeys="ap_func_remove_xbindkeys"
-ap_func_remove_xbindkeys() {
+alias @rmxbindkeys="ap_func_rm_xbindkeys"
+ap_func_rm_xbindkeys() {
     @logshow "Remove [xbindkeys, xautomation, xdotool]\n"
 
     sudo apt purge -y xbindkeys xautomation xdotool

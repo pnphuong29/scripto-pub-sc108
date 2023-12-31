@@ -29,8 +29,8 @@ ap_func_create_dirstruct_github_cli() {
     fi
 }
 
-alias @rmdirstructgithubcli="ap_func_remove_dirstruct_github_cli"
-ap_func_remove_dirstruct_github_cli() {
+alias @rmdirstructgithubcli="ap_func_rm_dirstruct_github_cli"
+ap_func_rm_dirstruct_github_cli() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_github_cli.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_github_cli.bash"
 
@@ -81,8 +81,8 @@ ap_func_setup_github_cli() {
     fi
 }
 
-alias @rmgithubcli="ap_func_remove_github_cli"
-ap_func_remove_github_cli() {
+alias @rmgithubcli="ap_func_rm_github_cli"
+ap_func_rm_github_cli() {
     @logshow "Remove [GitHub cli]\n"
     rm -rf "${AP_SOFT_DIR}/github-cli"
 

@@ -29,8 +29,8 @@ ap_func_create_dirstruct_bat() {
     fi
 }
 
-alias @rmdirstructbat="ap_func_remove_dirstruct_bat"
-ap_func_remove_dirstruct_bat() {
+alias @rmdirstructbat="ap_func_rm_dirstruct_bat"
+ap_func_rm_dirstruct_bat() {
     @logshow "Remove [${AP_SOFT_DIR}/bin/bat]\n"
     rm -f "${AP_SOFT_DIR}/bin/bat"
 
@@ -57,8 +57,8 @@ ap_func_create_global_symlink_bat() {
     fi
 }
 
-alias @rmglobalsymlinkbat="ap_func_remove_global_symlink_bat"
-ap_func_remove_global_symlink_bat() {
+alias @rmglobalsymlinkbat="ap_func_rm_global_symlink_bat"
+ap_func_rm_global_symlink_bat() {
     if [ -f "/usr/local/bin/bat" ]; then
         @logshow "Remove [/usr/local/bin/bat]\n"
         sudo rm -f "/usr/local/bin/bat"
@@ -100,8 +100,8 @@ ap_func_setup_bat() {
     fi
 }
 
-alias @rmbat="ap_func_remove_bat"
-ap_func_remove_bat() {
+alias @rmbat="ap_func_rm_bat"
+ap_func_rm_bat() {
     @logshow "Remove [bat]\n"
     rm -rf "${AP_SOFT_DIR}/bat"
 

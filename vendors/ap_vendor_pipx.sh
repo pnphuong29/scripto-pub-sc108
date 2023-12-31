@@ -8,8 +8,8 @@ ap_func_create_dirstruct_pipx() {
     fi
 }
 
-alias @rmdirstructpipx="ap_func_remove_dirstruct_pipx"
-ap_func_remove_dirstruct_pipx() {
+alias @rmdirstructpipx="ap_func_rm_dirstruct_pipx"
+ap_func_rm_dirstruct_pipx() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_pipx.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_pipx.bash"
 

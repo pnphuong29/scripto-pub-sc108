@@ -25,8 +25,8 @@ ap_func_create_dirstruct_fx() {
     fi
 }
 
-alias @rmdirstructfx="ap_func_remove_dirstruct_fx"
-ap_func_remove_dirstruct_fx() {
+alias @rmdirstructfx="ap_func_rm_dirstruct_fx"
+ap_func_rm_dirstruct_fx() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_fx.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_fx.bash"
 
@@ -56,8 +56,8 @@ ap_func_setup_fx() {
     fi
 }
 
-alias @rmfx="ap_func_remove_fx"
-ap_func_remove_fx() {
+alias @rmfx="ap_func_rm_fx"
+ap_func_rm_fx() {
     @logshow "Remove [fx]\n"
 
     local ap_go_path

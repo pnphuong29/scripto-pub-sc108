@@ -64,8 +64,8 @@ ap_func_create_dirstruct_docker() {
     fi
 }
 
-alias @rmdirstructdocker="ap_func_remove_dirstruct_docker"
-ap_func_remove_dirstruct_docker() {
+alias @rmdirstructdocker="ap_func_rm_dirstruct_docker"
+ap_func_rm_dirstruct_docker() {
     if alias @rmdirstructdockershare &>/dev/null; then
         @rmdirstructdockershare
     fi
@@ -123,8 +123,8 @@ ap_func_setup_docker() {
     fi
 }
 
-alias @rmdocker="ap_func_remove_docker"
-ap_func_remove_docker() {
+alias @rmdocker="ap_func_rm_docker"
+ap_func_rm_docker() {
     @logshow "Remove [docker]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

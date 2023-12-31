@@ -64,8 +64,8 @@ ap_func_setup_go() {
     @addpath -a "${GOPATH}/bin"
 }
 
-alias @rmgo="ap_func_remove_go"
-ap_func_remove_go() {
+alias @rmgo="ap_func_rm_go"
+ap_func_rm_go() {
     @logshow "Remove [go]\n"
 
     local ap_go_path, ap_go_root

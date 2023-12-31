@@ -11,8 +11,8 @@ ap_func_create_dirstruct_pip() {
     fi
 }
 
-alias @rmdirstructpip="ap_func_remove_dirstruct_pip"
-ap_func_remove_dirstruct_pip() {
+alias @rmdirstructpip="ap_func_rm_dirstruct_pip"
+ap_func_rm_dirstruct_pip() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_pip.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_pip.bash"
 

@@ -12,8 +12,8 @@ ap_func_create_dirstruct_sxhkd() {
     fi
 }
 
-alias @rmdirstructsxhkd="ap_func_remove_dirstruct_sxhkd"
-ap_func_remove_dirstruct_sxhkd() {
+alias @rmdirstructsxhkd="ap_func_rm_dirstruct_sxhkd"
+ap_func_rm_dirstruct_sxhkd() {
     if alias @rmdirstructsxhkdcommon &>/dev/null; then
         @rmdirstructsxhkdcommon
     fi
@@ -40,8 +40,8 @@ ap_func_setup_sxhkd() {
     fi
 }
 
-alias @rmsxhkd="ap_func_remove_sxhkd"
-ap_func_remove_sxhkd() {
+alias @rmsxhkd="ap_func_rm_sxhkd"
+ap_func_rm_sxhkd() {
     @logshow "You can remove these libraries manually [libxcb-keysyms1-dev, libxcb-util0-dev, apt-file] if needed\n"
     @logshow "Remove [sxhkd]\n"
     cd "${AP_SOFT_DIR}/sxhkd"

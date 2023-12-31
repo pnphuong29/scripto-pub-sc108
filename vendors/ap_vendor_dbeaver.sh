@@ -26,8 +26,8 @@ ap_func_create_dirstruct_dbeaver() {
     fi
 }
 
-alias @rmdirstructdbeaver="ap_func_remove_dirstruct_dbeaver"
-ap_func_remove_dirstruct_dbeaver() {
+alias @rmdirstructdbeaver="ap_func_rm_dirstruct_dbeaver"
+ap_func_rm_dirstruct_dbeaver() {
     if alias @rmdirstructdbeavershare &>/dev/null; then
         @rmdirstructdbeavershare
     fi
@@ -68,8 +68,8 @@ ap_func_setup_dbeaver() {
     fi
 }
 
-alias @rmdbeaver="ap_func_remove_dbeaver"
-ap_func_remove_dbeaver() {
+alias @rmdbeaver="ap_func_rm_dbeaver"
+ap_func_rm_dbeaver() {
     @logshow "Remove [dbeaver]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

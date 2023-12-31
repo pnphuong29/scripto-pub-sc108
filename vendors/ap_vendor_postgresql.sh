@@ -12,8 +12,8 @@ ap_func_create_dirstruct_postgresql() {
     fi
 }
 
-alias @rmdirstructpostgresql="ap_func_remove_dirstruct_postgresql"
-ap_func_remove_dirstruct_postgresql() {
+alias @rmdirstructpostgresql="ap_func_rm_dirstruct_postgresql"
+ap_func_rm_dirstruct_postgresql() {
     if alias @rmdirstructpostgresqlcommon &>/dev/null; then
         @rmdirstructpostgresqlcommon
     fi
@@ -43,8 +43,8 @@ ap_func_setup_postgresql() {
     fi
 }
 
-alias @rmpostgresql="ap_func_remove_postgresql"
-ap_func_remove_postgresql() {
+alias @rmpostgresql="ap_func_rm_postgresql"
+ap_func_rm_postgresql() {
     @logshow "Remove [PostgreSQL]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

@@ -6,8 +6,8 @@ ap_func_create_dirstruct_shellcheck() {
     fi
 }
 
-alias @rmdirstructshellcheck="ap_func_remove_dirstruct_shellcheck"
-ap_func_remove_dirstruct_shellcheck() {
+alias @rmdirstructshellcheck="ap_func_rm_dirstruct_shellcheck"
+ap_func_rm_dirstruct_shellcheck() {
     rm -f "${HOME}/.shellcheckrc"
 }
 
@@ -43,8 +43,8 @@ ap_func_setup_shellcheck() {
     fi
 }
 
-alias @rmshellcheck="ap_func_remove_shellcheck"
-ap_func_remove_shellcheck() {
+alias @rmshellcheck="ap_func_rm_shellcheck"
+ap_func_rm_shellcheck() {
     @logshow "Remove [shellcheck]\n"
     rm -rf "${AP_SOFT_DIR}/shellcheck"
 

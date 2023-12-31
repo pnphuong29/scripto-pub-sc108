@@ -22,8 +22,8 @@ ap_func_create_dirstruct_nvim() {
     fi
 }
 
-alias @rmdirstructnvim="ap_func_remove_dirstruct_nvim"
-ap_func_remove_dirstruct_nvim() {
+alias @rmdirstructnvim="ap_func_rm_dirstruct_nvim"
+ap_func_rm_dirstruct_nvim() {
     if alias @rmdirstructnvimcommon &>/dev/null; then
         @rmdirstructnvimcommon
     fi
@@ -37,8 +37,8 @@ ap_func_create_global_symlink_nvim() {
     fi
 }
 
-alias @rmglobalsymlinknvim="ap_func_remove_global_symlink_nvim"
-ap_func_remove_global_symlink_nvim() {
+alias @rmglobalsymlinknvim="ap_func_rm_global_symlink_nvim"
+ap_func_rm_global_symlink_nvim() {
     if [ -f "/usr/local/bin/nvim" ]; then
         @logshow "Remove [/usr/local/bin/nvim]\n"
         sudo rm -f "/usr/local/bin/nvim"
@@ -93,8 +93,8 @@ ap_func_setup_nvim() {
     fi
 }
 
-alias @rmnvim="ap_func_remove_nvim"
-ap_func_remove_nvim() {
+alias @rmnvim="ap_func_rm_nvim"
+ap_func_rm_nvim() {
     @logshow "Remove [nvim]\n"
 
     rm -rf "${AP_SOFT_DIR}/nvim"

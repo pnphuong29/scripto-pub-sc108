@@ -13,8 +13,8 @@ ap_func_create_dirstruct_php() {
     fi
 }
 
-alias @rmdirstructphp="ap_func_remove_dirstruct_php"
-ap_func_remove_dirstruct_php() {
+alias @rmdirstructphp="ap_func_rm_dirstruct_php"
+ap_func_rm_dirstruct_php() {
     if alias @rmdirstructphpcommon &>/dev/null; then
         @rmdirstructphpcommon
     fi
@@ -71,8 +71,8 @@ ap_func_setup_php() {
     fi
 }
 
-alias @rmphp="ap_func_remove_php"
-ap_func_remove_php() {
+alias @rmphp="ap_func_rm_php"
+ap_func_rm_php() {
     @logshow "Remove [php 8.1]\n"
     # MySQL should have only 1 version in current system
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

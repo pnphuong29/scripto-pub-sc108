@@ -23,8 +23,8 @@ ap_func_create_dirstruct_ghq() {
     fi
 }
 
-alias @rmdirstructghq="ap_func_remove_dirstruct_ghq"
-ap_func_remove_dirstruct_ghq() {
+alias @rmdirstructghq="ap_func_rm_dirstruct_ghq"
+ap_func_rm_dirstruct_ghq() {
     if alias @rmdirstructghqshare &>/dev/null; then
         @rmdirstructghqshare
     fi
@@ -46,8 +46,8 @@ ap_func_setup_ghq() {
     fi
 }
 
-alias @rmghq="ap_func_remove_ghq"
-ap_func_remove_ghq() {
+alias @rmghq="ap_func_rm_ghq"
+ap_func_rm_ghq() {
     @logshow "Remove [ghq]\n"
 
     local ap_go_path

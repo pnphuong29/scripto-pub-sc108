@@ -20,8 +20,8 @@ ap_func_setup_sqlite() {
     mv "${AP_TMP_DIR}/sqlite" "${AP_SOFT_DIR}/"
 }
 
-alias @rmsqlite="ap_func_remove_sqlite"
-ap_func_remove_sqlite() {
+alias @rmsqlite="ap_func_rm_sqlite"
+ap_func_rm_sqlite() {
     @logshow "Remove [sqlite]\n"
     # https://sqlite.org/download.html
     # brew uninstall sqlite

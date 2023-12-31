@@ -15,8 +15,8 @@ ap_func_create_dirstruct_tig() {
     fi
 }
 
-alias @rmdirstructtig="ap_func_remove_dirstruct_tig"
-ap_func_remove_dirstruct_tig() {
+alias @rmdirstructtig="ap_func_rm_dirstruct_tig"
+ap_func_rm_dirstruct_tig() {
     rm -f "${AP_SOFT_DIR}/bin/tig"
     if alias @rmdirstructtigcommon &>/dev/null; then
         @rmdirstructtigcommon
@@ -60,8 +60,8 @@ ap_func_setup_tig() {
     fi
 }
 
-alias @rmtig="ap_func_remove_tig"
-ap_func_remove_tig() {
+alias @rmtig="ap_func_rm_tig"
+ap_func_rm_tig() {
     @logshow "Remove [tig]\n"
 
     cd "${AP_SOFT_DIR}/tig"

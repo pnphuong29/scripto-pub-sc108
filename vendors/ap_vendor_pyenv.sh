@@ -60,8 +60,8 @@ ap_func_create_dirstruct_pyenv() {
     fi
 }
 
-alias @rmdirstructpyenv="ap_func_remove_dirstruct_pyenv"
-ap_func_remove_dirstruct_pyenv() {
+alias @rmdirstructpyenv="ap_func_rm_dirstruct_pyenv"
+ap_func_rm_dirstruct_pyenv() {
     if alias @rmdirstructpyenvcommon &>/dev/null; then
         @rmdirstructpyenvcommon
     fi
@@ -128,8 +128,8 @@ ap_func_setup_pyenv() {
     fi
 }
 
-alias @rmpyenv="ap_func_remove_pyenv"
-ap_func_remove_pyenv() {
+alias @rmpyenv="ap_func_rm_pyenv"
+ap_func_rm_pyenv() {
     @logshow "Remove [pyenv]\n"
     rm -rf "$(pyenv root)"
 

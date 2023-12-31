@@ -15,8 +15,8 @@ ap_func_create_global_symlink_node() {
     fi
 }
 
-alias @rmglobalsymlinknode="ap_func_remove_global_symlink_node"
-ap_func_remove_global_symlink_node() {
+alias @rmglobalsymlinknode="ap_func_rm_global_symlink_node"
+ap_func_rm_global_symlink_node() {
     if [ -f "/usr/local/bin/node" ]; then
         @logshow "Remove [/usr/local/bin/node]\n"
         sudo rm -f "/usr/local/bin/node"

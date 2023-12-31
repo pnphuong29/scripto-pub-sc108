@@ -16,8 +16,8 @@ ap_func_setup_macports() {
     rm -rf "MacPorts-2.8.1"
 }
 
-alias @rmmacports="ap_func_remove_macports"
-ap_func_remove_macports() {
+alias @rmmacports="ap_func_rm_macports"
+ap_func_rm_macports() {
     # https://guide.macports.org/chunked/installing.macports.uninstalling.html
     @logshow "Remove [Macports]\n"
     sudo port -fp uninstall installed

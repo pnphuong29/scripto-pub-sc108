@@ -19,8 +19,8 @@ ap_func_create_dirstruct_ruby() {
     fi
 }
 
-alias @rmdirstructruby="ap_func_remove_dirstruct_ruby"
-ap_func_remove_dirstruct_ruby() {
+alias @rmdirstructruby="ap_func_rm_dirstruct_ruby"
+ap_func_rm_dirstruct_ruby() {
     @logshow "Remove directories [${AP_SOFT_DIR}/ruby]\n"
     rm -rf "${AP_SOFT_DIR}/ruby"
 

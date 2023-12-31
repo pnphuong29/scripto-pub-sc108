@@ -23,8 +23,8 @@ ap_func_create_dirstruct_vbox() {
     fi
 }
 
-alias @rmdirstructvbox="ap_func_remove_dirstruct_vbox"
-ap_func_remove_dirstruct_vbox() {
+alias @rmdirstructvbox="ap_func_rm_dirstruct_vbox"
+ap_func_rm_dirstruct_vbox() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_vboxmanage.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_vboxmanage.bash"
 
@@ -97,8 +97,8 @@ ap_func_setup_vbox() {
     fi
 }
 
-alias @rmvbox="ap_func_remove_vbox"
-ap_func_remove_vbox() {
+alias @rmvbox="ap_func_rm_vbox"
+ap_func_rm_vbox() {
     @logshow "Remove [VirtualBox]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

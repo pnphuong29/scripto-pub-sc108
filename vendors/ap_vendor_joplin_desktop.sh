@@ -16,8 +16,8 @@ ap_func_setup_joplin_desktop() {
     fi
 }
 
-alias @rmjoplindesktop="ap_func_remove_joplin_desktop"
-ap_func_remove_joplin_desktop() {
+alias @rmjoplindesktop="ap_func_rm_joplin_desktop"
+ap_func_rm_joplin_desktop() {
     @logshow "Remove [Joplin Desktop]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

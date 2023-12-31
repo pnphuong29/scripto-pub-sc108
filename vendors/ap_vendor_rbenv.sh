@@ -26,8 +26,8 @@ ap_func_create_dirstruct_rbenv() {
     fi
 }
 
-alias @rmdirstructrbenv="ap_func_remove_dirstruct_rbenv"
-ap_func_remove_dirstruct_rbenv() {
+alias @rmdirstructrbenv="ap_func_rm_dirstruct_rbenv"
+ap_func_rm_dirstruct_rbenv() {
     @logshow "Remove [${AP_SOFT_DIR}/bin/rbenv]\n"
     rm -f "${AP_SOFT_DIR}/bin/rbenv"
 
@@ -92,8 +92,8 @@ ap_func_setup_rbenv() {
     fi
 }
 
-alias @rmrbenv="ap_func_remove_rbenv"
-ap_func_remove_rbenv() {
+alias @rmrbenv="ap_func_rm_rbenv"
+ap_func_rm_rbenv() {
     @logshow "Remove [rbenv]\n"
     rm -rf "${HOME}/.rbenv"
 
