@@ -1,3 +1,14 @@
+alias @initnode="ap_func_init_node"
+ap_func_init_node() {
+    if alias @initnodeshare &>/dev/null; then
+        @initnodeshare
+    fi
+
+    if alias @initnodecommon &>/dev/null; then
+        @initnodecommon
+    fi
+}
+
 alias @createglobalsymlinknode="ap_func_create_global_symlink_node"
 ap_func_create_global_symlink_node() {
     local ap_path

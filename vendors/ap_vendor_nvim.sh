@@ -1,13 +1,18 @@
 alias @initnvim="ap_func_init_nvim"
 ap_func_init_nvim() {
     alias vi="nvim"
+
     alias znvimswapshare="cd \${HOME}/.local/share/nvim/swap"
     alias znvimswapstate="cd \${HOME}/.local/state/nvim/swap"
     alias rmnvimswapsharefiles="rm -f \${HOME}/.local/share/nvim/swap/\*"
     alias rmnvimswapstatefiles="rm -f \${HOME}/.local/state/nvim/swap/\*"
 
-    if alias @initnvimssetup_hare &>/dev/null; then
-        @initnvimssetup_hare
+    alias znvimconfigs="cd \${HOME}/.config/nvim"
+    alias znvimcoc="cd \${HOME}/.config/coc"
+    alias znvimcocextensions="cd \${HOME}/.config/coc/extensions"
+
+    if alias @initnvimshare &>/dev/null; then
+        @initnvimshare
     fi
 
     if alias @initnvimcommon &>/dev/null; then
@@ -22,8 +27,8 @@ ap_func_create_dirstruct_nvim() {
         sudo ln -sf "${AP_SOFT_DIR}/nvim/bin/nvim" "${AP_SOFT_DIR}/bin/nvim"
     fi
 
-    if alias @createdirstructnvimssetup_hare &>/dev/null; then
-        @createdirstructnvimssetup_hare
+    if alias @createdirstructnvimshare &>/dev/null; then
+        @createdirstructnvimshare
     fi
 
     if alias @createdirstructnvimcommon &>/dev/null; then
@@ -36,8 +41,8 @@ ap_func_rm_dirstruct_nvim() {
     @logshow "Remove [${AP_SOFT_DIR}/bin/nvim]\n"
     rm -f "${AP_SOFT_DIR}/bin/nvim"
 
-    if alias @rmdirstructnvimssetup_hare &>/dev/null; then
-        @rmdirstructnvimssetup_hare
+    if alias @rmdirstructnvimshare &>/dev/null; then
+        @rmdirstructnvimshare
     fi
 
     if alias @rmdirstructnvimcommon &>/dev/null; then
@@ -96,8 +101,8 @@ ap_func_setup_nvim() {
     # sudo apt-get update
     # sudo apt-get install neovim
 
-    # Update PATH
-    @addpath "${AP_SOFT_DIR}/nvim/bin"
+    @logshow "Create symlink from [${AP_SOFT_DIR}/bin/nvim] to [${AP_SOFT_DIR}/nvim/bin/nvim]\n"
+    sudo ln -sf "${AP_SOFT_DIR}/nvim/bin/nvim" "${AP_SOFT_DIR}/bin/nvim"
 
     # Install Vim Plug
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -122,8 +127,6 @@ ap_func_rm_nvim() {
     rm -rf ~/.config/nvim
     rm -rf ~/.config/coc
     rm -rf ~/.local/share/nvim
-    rm -f "${AP_SYMLINKS_DIR}/init.vim"
-    rm -f "${AP_SYMLINKS_DIR}/python3"
 
     if alias @rmdirstructnvim &>/dev/null; then
         @rmdirstructnvim
