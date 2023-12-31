@@ -1,5 +1,4 @@
 alias @xxx="ap_alias_xxx"
-
 # @$func $$ ap_func_xxx {
 # ap_func_xxx [-dp] <domain/ip> <port> [--] *<src_path> <dst_path>
 # Description
@@ -11,7 +10,6 @@ alias @xxx="ap_alias_xxx"
 # Return status
 #	AP_CODE_SUCCESS
 # }
-
 ap_func_xxx() {
     local ap_opts_string=":dp:"
     local ap_opt=""

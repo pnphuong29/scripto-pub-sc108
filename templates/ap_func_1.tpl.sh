@@ -1,5 +1,4 @@
 alias @xxx="ap_alias_xxx"
-
 # @$func $$ ap_func_xxx {
 # ap_func_xxx
 # Description

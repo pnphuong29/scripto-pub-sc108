@@ -1,4 +1,4 @@
-local ap_opts_string=':dp'
+local ap_opts_string=':d:p'
 local ap_opt=''
 local ap_opt_d=0
 local ap_opt_p=0
