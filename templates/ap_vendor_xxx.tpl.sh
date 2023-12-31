@@ -84,9 +84,9 @@ ap_func_rm_dirstruct_xxx() {
 
 alias @createglobalsymlinkxxx="ap_func_create_global_symlink_xxx"
 ap_func_create_global_symlink_xxx() {
-    if [ -f "${AP_SOFT_DIR}/xxx/xxx" ]; then
-        @logshow "Create symlink from [/usr/local/bin/xxx] to [${AP_SOFT_DIR}/xxx/xxx]\n"
-        sudo ln -sf "${AP_SOFT_DIR}/xxx/xxx" "/usr/local/bin/xxx"
+    if [ -f "${AP_SOFT_DIR}/bin/xxx" ]; then
+        @logshow "Create symlink from [/usr/local/bin/xxx] to [${AP_SOFT_DIR}/bin/xxx]\n"
+        sudo ln -sf "${AP_SOFT_DIR}/bin/xxx" "/usr/local/bin/xxx"
     fi
 }
 
@@ -102,9 +102,9 @@ alias @setupxxx="ap_func_setup_xxx"
 ap_func_setup_xxx() {
     @logshow "Install [xxx]\n"
 
-    local ap_xxx_version=''
+    local ap_xxx_setup_version=''
     if [ -n "$1" ]; then
-        ap_xxx_version="$1"
+        ap_xxx_setup_version="$1"
     fi
 
     # Remove old app dir if any

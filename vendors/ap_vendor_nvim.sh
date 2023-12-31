@@ -1,14 +1,14 @@
 alias @initnvim="ap_func_init_nvim"
 ap_func_init_nvim() {
-    # export AP_NVIM_SETUP_VERSION="stable"
-    export AP_NVIM_SETUP_VERSION="latest"
-    @addpath "${AP_SOFT_DIR}/nvim/bin"
-
     alias vi="nvim"
     alias znvimswapshare="cd \${HOME}/.local/share/nvim/swap"
     alias znvimswapstate="cd \${HOME}/.local/state/nvim/swap"
     alias rmnvimswapsharefiles="rm -f \${HOME}/.local/share/nvim/swap/\*"
     alias rmnvimswapstatefiles="rm -f \${HOME}/.local/state/nvim/swap/\*"
+
+    if alias @initnvimssetup_hare &>/dev/null; then
+        @initnvimssetup_hare
+    fi
 
     if alias @initnvimcommon &>/dev/null; then
         @initnvimcommon
@@ -17,6 +17,15 @@ ap_func_init_nvim() {
 
 alias @createdirstructnvim="ap_func_create_dirstruct_nvim"
 ap_func_create_dirstruct_nvim() {
+    if [ ! -f "${AP_SOFT_DIR}/nvim/bin/nvim" ]; then
+        @logshow "Create symlink from [${AP_SOFT_DIR}/bin/nvim] to [${AP_SOFT_DIR}/nvim/bin/nvim]\n"
+        sudo ln -sf "${AP_SOFT_DIR}/nvim/bin/nvim" "${AP_SOFT_DIR}/bin/nvim"
+    fi
+
+    if alias @createdirstructnvimssetup_hare &>/dev/null; then
+        @createdirstructnvimssetup_hare
+    fi
+
     if alias @createdirstructnvimcommon &>/dev/null; then
         @createdirstructnvimcommon
     fi
@@ -24,6 +33,13 @@ ap_func_create_dirstruct_nvim() {
 
 alias @rmdirstructnvim="ap_func_rm_dirstruct_nvim"
 ap_func_rm_dirstruct_nvim() {
+    @logshow "Remove [${AP_SOFT_DIR}/bin/nvim]\n"
+    rm -f "${AP_SOFT_DIR}/bin/nvim"
+
+    if alias @rmdirstructnvimssetup_hare &>/dev/null; then
+        @rmdirstructnvimssetup_hare
+    fi
+
     if alias @rmdirstructnvimcommon &>/dev/null; then
         @rmdirstructnvimcommon
     fi
@@ -31,18 +47,16 @@ ap_func_rm_dirstruct_nvim() {
 
 alias @createglobalsymlinknvim="ap_func_create_global_symlink_nvim"
 ap_func_create_global_symlink_nvim() {
-    if [ ! -f "/usr/local/bin/nvim" ]; then
-        @logshow "Create symlink from [/usr/local/bin/nvim] to [${AP_SOFT_DIR}/nvim/bin/nvim]\n"
-        sudo ln -sf "${AP_SOFT_DIR}/nvim/bin/nvim" "/usr/local/bin/nvim"
+    if [ -f "${AP_SOFT_DIR}/bin/nvim" ]; then
+        @logshow "Create symlink from [/usr/local/bin/nvim] to [${AP_SOFT_DIR}/bin/nvim]\n"
+        sudo ln -sf "${AP_SOFT_DIR}/bin/nvim" "/usr/local/bin/nvim"
     fi
 }
 
 alias @rmglobalsymlinknvim="ap_func_rm_global_symlink_nvim"
 ap_func_rm_global_symlink_nvim() {
-    if [ -f "/usr/local/bin/nvim" ]; then
-        @logshow "Remove [/usr/local/bin/nvim]\n"
-        sudo rm -f "/usr/local/bin/nvim"
-    fi
+    @logshow "Remove [/usr/local/bin/nvim]\n"
+    sudo rm -f "/usr/local/bin/nvim"
 }
 
 alias @setupnvim="ap_func_setup_nvim"
@@ -61,12 +75,18 @@ ap_func_setup_nvim() {
     rm -rf "${AP_SOFT_DIR}/nvim"
 
     # Install nvim
+    # local ap_nvim_setup_version='stable'
+    local ap_nvim_setup_version='latest'
+    if [ -n "$1" ]; then
+        ap_nvim_setup_version="$1"
+    fi
+
     local ap_os="macos"
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         ap_os="linux64"
     fi
 
-    curl -L "https://github.com/neovim/neovim/releases/${AP_NVIM_SETUP_VERSION}/download/{nvim-${ap_os}.tar.gz}" -o "${AP_TMP_DIR}"/#1
+    curl -L "https://github.com/neovim/neovim/releases/${ap_nvim_setup_version}/download/{nvim-${ap_os}.tar.gz}" -o "${AP_TMP_DIR}"/#1
     tar -C "${AP_SOFT_DIR}" -zxf "${AP_TMP_DIR}/nvim-${ap_os}.tar.gz"
     mv "${AP_SOFT_DIR}/nvim-${ap_os}" "${AP_SOFT_DIR}/nvim"
 
@@ -88,6 +108,7 @@ ap_func_setup_nvim() {
     gem install neovim
     npm install -g neovim
 
+    @initnvim
     if alias @createdirstructnvim &>/dev/null; then
         @createdirstructnvim
     fi
@@ -103,7 +124,6 @@ ap_func_rm_nvim() {
     rm -rf ~/.local/share/nvim
     rm -f "${AP_SYMLINKS_DIR}/init.vim"
     rm -f "${AP_SYMLINKS_DIR}/python3"
-    sudo rm -f /usr/local/bin/nvim
 
     if alias @rmdirstructnvim &>/dev/null; then
         @rmdirstructnvim

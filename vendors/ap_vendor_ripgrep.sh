@@ -12,16 +12,16 @@ ap_func_init_ripgrep() {
     "
 
     # Find using vimgrep
-    alias @rgv='rg --color always --heading --smart-case --vimgrep --trim'
-    alias @rgvc='rg --color always --heading --vimgrep --trim --case-sensitive'
-    alias @rgi='rg --no-ignore --ignore-file "${AP_VENDORS_RIPGREP_IGNORE_FILE}" --color always --heading --smart-case --vimgrep --trim'
-    alias @rgic='rg --no-ignore --ignore-file "${AP_VENDORS_RIPGREP_IGNORE_FILE}" --color always --heading --case-sensitive --vimgrep --trim'
+    alias rgv='rg --color always --heading --smart-case --vimgrep --trim'
+    alias rgvc='rg --color always --heading --vimgrep --trim --case-sensitive'
+    alias rgi='rg --no-ignore --ignore-file "${AP_VENDORS_RIPGREP_IGNORE_FILE}" --color always --heading --smart-case --vimgrep --trim'
+    alias rgic='rg --no-ignore --ignore-file "${AP_VENDORS_RIPGREP_IGNORE_FILE}" --color always --heading --case-sensitive --vimgrep --trim'
 
     # Find hidden files
-    alias @rgvh='rg --hidden --color always --heading --smart-case --vimgrep --trim'
-    alias @rgvhc='rg --hidden --color always --heading --case-sensitive --vimgrep --trim'
-    alias @rgih='rg --hidden --no-ignore --ignore-file "${AP_VENDORS_RIPGREP_IGNORE_FILE}" --color always --heading --smart-case --vimgrep --trim'
-    alias @rgihc='rg --hidden --no-ignore --ignore-file "${AP_VENDORS_RIPGREP_IGNORE_FILE}" --color always --heading --case-sensitive --vimgrep --trim'
+    alias rgvh='rg --hidden --color always --heading --smart-case --vimgrep --trim'
+    alias rgvhc='rg --hidden --color always --heading --case-sensitive --vimgrep --trim'
+    alias rgih='rg --hidden --no-ignore --ignore-file "${AP_VENDORS_RIPGREP_IGNORE_FILE}" --color always --heading --smart-case --vimgrep --trim'
+    alias rgihc='rg --hidden --no-ignore --ignore-file "${AP_VENDORS_RIPGREP_IGNORE_FILE}" --color always --heading --case-sensitive --vimgrep --trim'
 
     # Update ripgrep ignore global file path in ripgrep config file
     # export RIPGREP_CONFIG_PATH="${AP_CONFIGS_DIR}/ap_ripgrep.conf"
@@ -29,6 +29,14 @@ ap_func_init_ripgrep() {
     # gsed -i'' "/ap_ripgrep.ignore/d" "${RIPGREP_CONFIG_PATH}"
     # ap_g_pos="$(grep -n "\-\-ignore\-file" "${RIPGREP_CONFIG_PATH}" | cut -d : -f 1)"
     # gsed -i'' "${ap_g_pos}a${AP_VENDORS_RIPGREP_IGNORE_FILE}" "${RIPGREP_CONFIG_PATH}"
+
+    if alias @initripgrepshare &>/dev/null; then
+        @initripgrepshare
+    fi
+
+    if alias @initripgrepcommon &>/dev/null; then
+        @initripgrepcommon
+    fi
 }
 
 alias @createdirstructripgrep="ap_func_create_dirstruct_ripgrep"
@@ -41,6 +49,14 @@ ap_func_create_dirstruct_ripgrep() {
 
     @logshow "Create symlink from [${AP_MAN_DIR}/man1/rg.1] to [${AP_SOFT_DIR}/ripgrep/doc/rg.1]\n"
     ln -sf "${AP_SOFT_DIR}/ripgrep/doc/rg.1" "${AP_MAN_DIR}/man1/rg.1"
+
+    if alias @createdirstructripgrepshare &>/dev/null; then
+        @createdirstructripgrepshare
+    fi
+
+    if alias @createdirstructripgrepcommon &>/dev/null; then
+        @createdirstructripgrepcommon
+    fi
 }
 
 alias @rmdirstructripgrep="ap_func_rm_dirstruct_ripgrep"
@@ -53,13 +69,21 @@ ap_func_rm_dirstruct_ripgrep() {
 
     @logshow "Remove [${AP_MAN_DIR}/man1/rg.1]\n"
     rm -f "${AP_MAN_DIR}/man1/rg.1"
+
+    if alias @rmdirstructripgrepshare &>/dev/null; then
+        @rmdirstructripgrepshare
+    fi
+
+    if alias @rmdirstructripgrepcommon &>/dev/null; then
+        @rmdirstructripgrepcommon
+    fi
 }
 
 alias @createglobalsymlinkripgrep="ap_func_create_global_symlink_ripgrep"
 ap_func_create_global_symlink_ripgrep() {
-    if [ -f "${AP_SOFT_DIR}/ripgrep/rg" ]; then
-        @logshow "Create symlink from [/usr/local/bin/rg] to [${AP_SOFT_DIR}/ripgrep/rg]\n"
-        sudo ln -sf "${AP_SOFT_DIR}/ripgrep/rg" "/usr/local/bin/rg"
+    if [ -f "${AP_SOFT_DIR}/bin/rg" ]; then
+        @logshow "Create symlink from [/usr/local/bin/rg] to [${AP_SOFT_DIR}/bin/rg]\n"
+        sudo ln -sf "${AP_SOFT_DIR}/bin/rg" "/usr/local/bin/rg"
     fi
 }
 
@@ -98,15 +122,24 @@ ap_func_setup_ripgrep() {
     cd "${AP_SOFT_DIR}"
     rm -rf "${AP_TMP_DIR}/ripgrep"
 
-    @createdirstructripgrep
+    @initripgrep
+    if alias @createdirstructripgrep &>/dev/null; then
+        @createdirstructripgrep
+    fi
 }
 
 alias @rmripgrep="ap_func_rm_ripgrep"
 ap_func_rm_ripgrep() {
     @logshow "Remove [ripgrep]\n"
     rm -rf "${AP_SOFT_DIR}/ripgrep"
-    @rmdirstructripgrep
-    @rmglobalsymlinkripgrep
+
+    if alias @rmdirstructripgrep &>/dev/null; then
+        @rmdirstructripgrep
+    fi
+
+    if alias @rmglobalsymlinkripgrep &>/dev/null; then
+        @rmglobalsymlinkripgrep
+    fi
 }
 
 alias @rg="ap_func_ripgrep"
@@ -117,7 +150,6 @@ alias rga20="rgf -i -h -a 20 --"
 alias rga30="rgf -i -h -a 30 --"
 alias rgab10="rgf -i -h -a 10 -b 10 --"
 alias rgab20="rgf -i -h -a 20 -b 20 --"
-
 # @@ap-func $$ ap_func_ripgrep {
 # ap_func_ripgrep [-xabhi] <extra_options> <before_context_rows> <after_context_rows> [--] *<search_string>
 # Description

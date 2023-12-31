@@ -66,9 +66,9 @@ ap_func_rm_dirstruct_fd() {
 
 alias @createglobalsymlinkfd="ap_func_create_global_symlink_fd"
 ap_func_create_global_symlink_fd() {
-    if [ -f "${AP_SOFT_DIR}/fd/fd" ]; then
-        @logshow "Create symlink from [/usr/local/bin/fd] to [${AP_SOFT_DIR}/fd/fd]\n"
-        sudo ln -sf "${AP_SOFT_DIR}/fd/fd" "/usr/local/bin/fd"
+    if [ -f "${AP_SOFT_DIR}/bin/fd" ]; then
+        @logshow "Create symlink from [/usr/local/bin/fd] to [${AP_SOFT_DIR}/bin/fd]\n"
+        sudo ln -sf "${AP_SOFT_DIR}/bin/fd" "/usr/local/bin/fd"
     fi
 }
 
@@ -107,7 +107,6 @@ ap_func_setup_fd() {
     rm -rf "${AP_TMP_DIR}/fd"
 
     @initfd
-
     if alias @createdirstructfd &>/dev/null; then
         @createdirstructfd
     fi

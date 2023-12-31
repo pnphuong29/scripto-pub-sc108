@@ -17,18 +17,12 @@ ap_func_create_global_symlink_node() {
 
 alias @rmglobalsymlinknode="ap_func_rm_global_symlink_node"
 ap_func_rm_global_symlink_node() {
-    if [ -f "/usr/local/bin/node" ]; then
-        @logshow "Remove [/usr/local/bin/node]\n"
-        sudo rm -f "/usr/local/bin/node"
-    fi
+    @logshow "Remove [/usr/local/bin/node]\n"
+    sudo rm -f "/usr/local/bin/node"
 
-    if [ -f "/usr/local/bin/npm" ]; then
-        @logshow "Remove [/usr/local/bin/npm]\n"
-        sudo rm -f "/usr/local/bin/npm"
-    fi
+    @logshow "Remove [/usr/local/bin/npm]\n"
+    sudo rm -f "/usr/local/bin/npm"
 
-    if [ -f "/usr/local/bin/yarn" ]; then
-        @logshow "Remove [/usr/local/bin/yarn]\n"
-        sudo rm -f "/usr/local/bin/yarn"
-    fi
+    @logshow "Remove [/usr/local/bin/yarn]\n"
+    sudo rm -f "/usr/local/bin/yarn"
 }
