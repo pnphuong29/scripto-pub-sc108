@@ -5,11 +5,41 @@ ap_func_init_dbeaver() {
         AP_DBEAVER_WS_DIR="${HOME}/snap/dbeaver-ce/current/.local/share/DBeaverData"
     fi
     export AP_DBEAVER_WS_DIR
+
+    if alias @initdbeavershare &>/dev/null; then
+        @initdbeavershare
+    fi
+
+    if alias @initdbeavercommon &>/dev/null; then
+        @initdbeavercommon
+    fi
+}
+
+alias @createdirstructdbeaver="ap_func_create_dirstruct_dbeaver"
+ap_func_create_dirstruct_dbeaver() {
+    if alias @createdirstructdbeavershare &>/dev/null; then
+        @createdirstructdbeavershare
+    fi
+
+    if alias @createdirstructdbeavercommon &>/dev/null; then
+        @createdirstructdbeavercommon
+    fi
+}
+
+alias @rmdirstructdbeaver="ap_func_remove_dirstruct_dbeaver"
+ap_func_remove_dirstruct_dbeaver() {
+    if alias @rmdirstructdbeavershare &>/dev/null; then
+        @rmdirstructdbeavershare
+    fi
+
+    if alias @rmdirstructdbeavercommon &>/dev/null; then
+        @rmdirstructdbeavercommon
+    fi
 }
 
 alias @setupdbeaver="ap_func_setup_dbeaver"
 ap_func_setup_dbeaver() {
-    @logshow "Install [dbeaver]\n"
+    @logshow "Install [Dbeaver]\n"
 
     # Remove old app dir if any
     rm -rf "${AP_TMP_DIR}/dbeaver"
@@ -31,6 +61,8 @@ ap_func_setup_dbeaver() {
         sudo dpkg -i dbeaver.deb
     fi
 
+    @initdbeaver
+
     if alias @createdirstructdbeaver &>/dev/null; then
         @createdirstructdbeaver
     fi
@@ -48,5 +80,9 @@ ap_func_remove_dbeaver() {
 
     if alias @rmdirstructdbeaver &>/dev/null; then
         @rmdirstructdbeaver
+    fi
+
+    if alias @rmglobalsymlinkdbeaver &>/dev/null; then
+        @rmglobalsymlinkdbeaver
     fi
 }

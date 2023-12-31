@@ -5,6 +5,10 @@ ap_func_init_certbot() {
     alias certbotinstallnginx="sudo certbot --nginx --verbose"
     alias zletsencrypt="cd /etc/letsencrypt"
 
+    if alias @initcertbotshare &>/dev/null; then
+        @initcertbotshare
+    fi
+
     if alias @initcertbotcommon &>/dev/null; then
         @initcertbotcommon
     fi
@@ -12,6 +16,10 @@ ap_func_init_certbot() {
 
 alias @createdirstructcertbot="ap_func_create_dirstruct_certbot"
 ap_func_create_dirstruct_certbot() {
+    if alias @createdirstructcertbotshare &>/dev/null; then
+        @createdirstructcertbotshare
+    fi
+
     if alias @createdirstructcertbotcommon &>/dev/null; then
         @createdirstructcertbotcommon
     fi
@@ -19,6 +27,10 @@ ap_func_create_dirstruct_certbot() {
 
 alias @rmdirstructcertbot="ap_func_remove_dirstruct_certbot"
 ap_func_remove_dirstruct_certbot() {
+    if alias @rmdirstructcertbotshare &>/dev/null; then
+        @rmdirstructcertbotshare
+    fi
+
     if alias @rmdirstructcertbotcommon &>/dev/null; then
         @rmdirstructcertbotcommon
     fi
@@ -79,54 +91,4 @@ ap_func_remove_certbot() {
     if alias @rmglobalsymlinkcertbot &>/dev/null; then
         @rmglobalsymlinkcertbot
     fi
-}
-
-alias gensslcerts="ap_func_certbot_generate_certs"
-# @$func $$ ap_func_certbot_generate_certs {
-# ap_func_certbot_generate_certs
-# Description
-# 	Generate or renew SSL certs
-# Return status
-#	AP_CODE_SUCCESS
-# }
-ap_func_certbot_generate_certs() {
-    sudo rm -rf /etc/letsencrypt.bak
-    sudo cp -R /etc/letsencrypt /etc/letsencrypt.bak
-
-    sudo rm -rf /etc/nginx/conf.d.bak
-    sudo cp -R /etc/nginx/conf.d /etc/nginx/conf.d.bak
-
-    if [ -d "${HOME}/scripto-common/vendors/nginx/renew" ]; then
-        sudo rm -rf /etc/nginx/conf.d
-        sudo mkdir -p /etc/nginx/conf.d
-        sudo cp -f "${HOME}/scripto-common/vendors/nginx/renew"/*.conf /etc/nginx/conf.d/
-    fi
-
-    sudo certbot --nginx
-
-    sudo rm -rf /etc/nginx/conf.d
-    sudo cp -R /etc/nginx/conf.d.bak /etc/nginx/conf.d
-    sudo cp -f "${HOME}/scripto-common/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/
-
-    @ret_success
-}
-
-alias bksslcerts="ap_func_certbot_backup"
-# @$func $$ ap_func_certbot_backup {
-# ap_func_certbot_backup
-# Description
-# 	Backup SSL certs
-# Return status
-#	AP_CODE_SUCCESS
-# }
-ap_func_certbot_backup() {
-    if [ ! -d "${HOME}/scripto-common/sslcerts" ]; then
-        mkdir -p "${HOME}/scripto-common/sslcerts"/{archive,live}
-    fi
-
-    sudo rsync -ar /etc/letsencrypt/archive/ "${HOME}/scripto-common/sslcerts/archive/"
-    sudo rsync -ar /etc/letsencrypt/live/ "${HOME}/scripto-common/sslcerts/live/"
-    sudo chown -R "${USER}:${USER}" "${HOME}/scripto-common/sslcerts"
-
-    @ret_success
 }

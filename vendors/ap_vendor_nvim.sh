@@ -115,7 +115,6 @@ ap_func_remove_nvim() {
 }
 
 alias vibulk='ap_func_nvim_bulk_edit'
-
 # @$func $$ ap_func_nvim_bulk_edit {
 # ap_func_nvim_bulk_edit [--] <file/folder_path...>
 # Description

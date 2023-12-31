@@ -1,3 +1,36 @@
+alias @initfonts="ap_func_init_fonts"
+ap_func_init_fonts() {
+    if alias @initfontsshare &>/dev/null; then
+        @initfontsshare
+    fi
+
+    if alias @initfontscommon &>/dev/null; then
+        @initfontscommon
+    fi
+}
+
+alias @createdirstructfonts="ap_func_create_dirstruct_fonts"
+ap_func_create_dirstruct_fonts() {
+    if alias @createdirstructfontsshare &>/dev/null; then
+        @createdirstructfontsshare
+    fi
+
+    if alias @createdirstructfontscommon &>/dev/null; then
+        @createdirstructfontscommon
+    fi
+}
+
+alias @rmdirstructfonts="ap_func_remove_dirstruct_fonts"
+ap_func_remove_dirstruct_fonts() {
+    if alias @rmdirstructfontsshare &>/dev/null; then
+        @rmdirstructfontsshare
+    fi
+
+    if alias @rmdirstructfontscommon &>/dev/null; then
+        @rmdirstructfontscommon
+    fi
+}
+
 alias @setupfonts="ap_func_setup_fonts"
 ap_func_setup_fonts() {
     @logshow "Install [icons-in-terminal] fonts\n"

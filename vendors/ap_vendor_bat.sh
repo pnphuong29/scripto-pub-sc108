@@ -1,5 +1,9 @@
 alias @initbat="ap_func_init_bat"
 ap_func_init_bat() {
+    if alias @initbatshare &>/dev/null; then
+        @initbatshare
+    fi
+
     if alias @initbatcommon &>/dev/null; then
         @initbatcommon
     fi
@@ -16,6 +20,10 @@ ap_func_create_dirstruct_bat() {
     @logshow "Create symlink from [${AP_MAN_DIR}/man1/bat.1] to [${AP_SOFT_DIR}/bat/bat.1]\n"
     ln -sf "${AP_SOFT_DIR}/bat/bat.1" "${AP_MAN_DIR}/man1/bat.1"
 
+    if alias @createdirstructbatshare &>/dev/null; then
+        @createdirstructbatshare
+    fi
+
     if alias @createdirstructbatcommon &>/dev/null; then
         @createdirstructbatcommon
     fi
@@ -31,6 +39,10 @@ ap_func_remove_dirstruct_bat() {
 
     @logshow "Remove [${AP_MAN_DIR}/man1/bat.1]\n"
     rm -f "${AP_MAN_DIR}/man1/bat.1"
+
+    if alias @rmdirstructbatshare &>/dev/null; then
+        @rmdirstructbatshare
+    fi
 
     if alias @rmdirstructbatcommon &>/dev/null; then
         @rmdirstructbatcommon
@@ -80,6 +92,8 @@ ap_func_setup_bat() {
     mv bat "${AP_SOFT_DIR}/"
     cd "${AP_SOFT_DIR}"
     rm -rf "${AP_TMP_DIR}/bat"
+
+    @initbat
 
     if alias @createdirstructbat &>/dev/null; then
         @createdirstructbat

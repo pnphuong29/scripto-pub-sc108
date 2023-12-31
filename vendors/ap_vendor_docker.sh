@@ -141,7 +141,6 @@ ap_func_remove_docker() {
 }
 
 alias dkrm="ap_func_dk_rm"
-
 # @$func $$ ap_func_dk_rm {
 # ap_func_dk_rm <container_pattern>
 # Description
@@ -153,7 +152,6 @@ ap_func_dk_rm() {
 }
 
 alias dkimgrm="ap_func_dk_img_rm"
-
 # @$func $$ ap_func_dk_img_rm {
 # ap_func_dk_img_rm <img_repo_pattern>
 # Description
@@ -165,7 +163,6 @@ ap_func_dk_img_rm() {
 }
 
 alias dkvolrm="ap_func_dk_vol_rm"
-
 # @$func $$ ap_func_dk_vol_rm {
 # ap_func_dk_vol_rm <volume_pattern>
 # Description
@@ -177,7 +174,6 @@ ap_func_dk_vol_rm() {
 }
 
 alias dkps="ap_func_dk_ps"
-
 # @$func $$ ap_func_dk_ps {
 # ap_func_dk_ps <container_pattern>
 # Description
@@ -188,9 +184,9 @@ ap_func_dk_ps() {
     @rtn_success
 }
 
-alias dkexec="ap_func_dk_exec bash"
+alias dkexec="ap_func_dk_exec"
+alias dkexecbash="ap_func_dk_exec bash"
 alias dkexecsh="ap_func_dk_exec sh"
-
 # @$func $$ ap_func_dk_exec {
 # ap_func_dk_exec <shell> <container>
 # Description
@@ -202,7 +198,6 @@ ap_func_dk_exec() {
 }
 
 alias dkup="ap_func_dkc_up"
-
 # @$func $$ ap_func_dkc_up {
 # ap_func_dkc_up <docker_container_names...>
 # Description
@@ -215,20 +210,21 @@ ap_func_dkc_up() {
     for ap_dk_con_name in "$@"; do
         if [ -f "${HOME}/scripto-common/dockers/ap_dkc_${ap_dk_con_name}.yml" ]; then
             ap_cmd="${ap_cmd} -f ${HOME}/scripto-common/dockers/ap_dkc_${ap_dk_con_name}.yml"
+        elif [ -f "${HOME}/scripto-share/dockers/ap_dkc_${ap_dk_con_name}.yml" ]; then
+            ap_cmd="${ap_cmd} -f ${HOME}/scripto-share/dockers/ap_dkc_${ap_dk_con_name}.yml"
         else
             ap_cmd="${ap_cmd} -f ${HOME}/scripto/dockers/ap_dkc_${ap_dk_con_name}.yml"
         fi
     done
 
     ap_cmd="${ap_cmd} up --build -d"
-    @minfo "${ap_cmd}\n"
+    @minfo "Execute [${ap_cmd}]\n"
     eval "$(printf "%s" "${ap_cmd}")"
     @rtn_success
 }
 
 alias dklogs="ap_func_dk_logs"
 alias dklogsrm="ap_func_dk_logs -t"
-
 # @$func $$ ap_func_dk_logs {
 # ap_func_dk_logs [-t] <container>
 # Description

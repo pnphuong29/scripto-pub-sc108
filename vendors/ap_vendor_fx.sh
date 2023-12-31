@@ -15,12 +15,28 @@ ap_func_create_dirstruct_fx() {
     # It's author has already archived it, maybe it will be deprecated soonly
     @logshow "Generate [fx] bash autocomplete\n"
     fx-completion --bash >"${AP_COMPLETIONS_DIR}/ap_completion_fx.bash"
+
+    if alias @createdirstructfxshare &>/dev/null; then
+        @createdirstructfxshare
+    fi
+
+    if alias @createdirstructfxcommon &>/dev/null; then
+        @createdirstructfxcommon
+    fi
 }
 
 alias @rmdirstructfx="ap_func_remove_dirstruct_fx"
 ap_func_remove_dirstruct_fx() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_fx.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_fx.bash"
+
+    if alias @rmdirstructfxshare &>/dev/null; then
+        @rmdirstructfxshare
+    fi
+
+    if alias @rmdirstructfxcommon &>/dev/null; then
+        @rmdirstructfxcommon
+    fi
 }
 
 alias @setupfx="ap_func_setup_fx"
@@ -34,6 +50,7 @@ ap_func_setup_fx() {
     @logshow "Install [fx-completion]\n"
     npm install --global fx-completion
 
+    @initfx
     if alias @createdirstructfx &>/dev/null; then
         @createdirstructfx
     fi
@@ -51,5 +68,9 @@ ap_func_remove_fx() {
 
     if alias @rmdirstructfx &>/dev/null; then
         @rmdirstructfx
+    fi
+
+    if alias @rmglobalsymlinkfx &>/dev/null; then
+        @rmglobalsymlinkfx
     fi
 }

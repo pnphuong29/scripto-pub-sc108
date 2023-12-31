@@ -1,3 +1,61 @@
+alias @inithttpie="ap_func_init_httpie"
+ap_func_init_httpie() {
+    if alias @inithttpieshare &>/dev/null; then
+        @inithttpieshare
+    fi
+
+    if alias @inithttpiecommon &>/dev/null; then
+        @inithttpiecommon
+    fi
+}
+
+alias @createdirstructhttpie="ap_func_create_dirstruct_httpie"
+ap_func_create_dirstruct_httpie() {
+    if alias @createdirstructhttpieshare &>/dev/null; then
+        @createdirstructhttpieshare
+    fi
+
+    if alias @createdirstructhttpiecommon &>/dev/null; then
+        @createdirstructhttpiecommon
+    fi
+}
+
+alias @rmdirstructhttpie="ap_func_remove_dirstruct_httpie"
+ap_func_remove_dirstruct_httpie() {
+    if alias @rmdirstructhttpieshare &>/dev/null; then
+        @rmdirstructhttpieshare
+    fi
+
+    if alias @rmdirstructhttpiecommon &>/dev/null; then
+        @rmdirstructhttpiecommon
+    fi
+}
+
+alias @setuphttpie="ap_func_setup_httpie"
+ap_func_setup_httpie() {
+    @logshow "Install [httpie]\n"
+    pip install --upgrade httpie
+
+    @inithttpie
+    if alias @createdirstructhttpie &>/dev/null; then
+        @createdirstructhttpie
+    fi
+}
+
+alias @rmhttpie="ap_func_remove_httpie"
+ap_func_remove_httpie() {
+    @logshow "Remove [httpie]\n"
+    pip uninstall httpie
+
+    if alias @rmdirstructhttpie &>/dev/null; then
+        @rmdirstructhttpie
+    fi
+
+    if alias @rmglobalsymlinkhttpie &>/dev/null; then
+        @rmglobalsymlinkhttpie
+    fi
+}
+
 alias @http="ap_func_httpie"
 alias httpget="ap_func_httpie -t GET"
 alias httppost="ap_func_httpie -t POST"
@@ -5,7 +63,6 @@ alias httppostform="ap_func_httpie -f -t POST"
 alias httpput="ap_func_httpie -t PUT"
 alias httppatch="ap_func_httpie -t PATCH"
 alias httpdelete="ap_func_httpie -t DELETE"
-
 # @$func $$ ap_func_httpie {
 # ap_func_httpie [-tf] <request_type> [--] *<api_endpoint> <path> <data>
 # Description
@@ -63,5 +120,6 @@ ap_func_httpie() {
 
     @minfo "Execute [${ap_cmd}]\n"
     eval "${ap_cmd}"
+
     @rtn_success
 }

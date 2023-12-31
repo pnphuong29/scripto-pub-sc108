@@ -13,6 +13,14 @@ ap_func_init_go() {
     alias zgopath="cd \${GOPATH}"
     alias zgomodules="cd \${GOPATH}/pkg/mod"
     alias zgobin="cd \${GOPATH}/bin"
+
+    if alias @initxxxshare &>/dev/null; then
+        @initxxxshare
+    fi
+
+    if alias @initxxxcommon &>/dev/null; then
+        @initxxxcommon
+    fi
 }
 
 alias @setupgo="ap_func_setup_go"
@@ -24,6 +32,10 @@ ap_func_setup_go() {
     local ap_go_version='1.21.4'
     local ap_go_dir_name="go"
     local ap_go_src_file_name="go${ap_go_version}.darwin-amd64.tar.gz"
+
+    if [ -n "$1" ]; then
+        ap_go_version="$1"
+    fi
 
     @logshow "Install [GO v${ap_go_version}]\n"
 

@@ -1,4 +1,14 @@
-# emojify
+alias @iniemojify="ap_func_init_xxx"
+ap_func_init_xxx() {
+    if alias @iniemojifyshare &>/dev/null; then
+        @iniemojifyshare
+    fi
+
+    if alias @iniemojifycommon &>/dev/null; then
+        @iniemojifycommon
+    fi
+}
+
 alias @setupemojify="ap_func_setup_emojify"
 ap_func_setup_emojify() {
     @logshow "Install [emojify]\n"

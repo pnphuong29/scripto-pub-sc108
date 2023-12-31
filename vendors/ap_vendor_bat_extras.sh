@@ -2,6 +2,11 @@ alias @initbatextras="ap_func_init_bat_extras"
 ap_func_init_bat_extras() {
     @addpath "${AP_SOFT_DIR}/bat-extras/bin"
     eval "$(batpipe)"
+
+    if alias @initbatextrasshare &>/dev/null; then
+        @initbatextrasshare
+    fi
+
     if alias @initbatextrascommon &>/dev/null; then
         @initbatextrascommon
     fi
@@ -9,6 +14,10 @@ ap_func_init_bat_extras() {
 
 alias @createdirstructbatextras="ap_func_create_dirstruct_bat_extras"
 ap_func_create_dirstruct_bat_extras() {
+    if alias @createdirstructbatextrasshare &>/dev/null; then
+        @createdirstructbatextrasshare
+    fi
+
     if alias @createdirstructbatextrascommon &>/dev/null; then
         @createdirstructbatextrascommon
     fi
@@ -16,6 +25,10 @@ ap_func_create_dirstruct_bat_extras() {
 
 alias @rmdirstructbatextras="ap_func_remove_dirstruct_bat_extras"
 ap_func_remove_dirstruct_bat_extras() {
+    if alias @rmdirstructbatextrasshare &>/dev/null; then
+        @rmdirstructbatextrasshare
+    fi
+
     if alias @rmdirstructbatextrascommon &>/dev/null; then
         @rmdirstructbatextrascommon
     fi

@@ -3,6 +3,10 @@ ap_func_init_github_cli() {
     @addpath -m "${AP_SOFT_DIR}/github-cli/share/man"
     alias lsghrepos='gh repo list --limit 200'
 
+    if alias @initgithubclishare &>/dev/null; then
+        @initgithubclishare
+    fi
+
     if alias @initgithubclicommon &>/dev/null; then
         @initgithubclicommon
     fi
@@ -16,6 +20,10 @@ ap_func_create_dirstruct_github_cli() {
     @logshow "Generate [github_cli] bash autocomplete\n"
     gh completion --shell bash >"${AP_COMPLETIONS_DIR}/ap_completion_github_cli.bash"
 
+    if alias @createdirstructgithubclishare &>/dev/null; then
+        @createdirstructgithubclishare
+    fi
+
     if alias @createdirstructgithubclicommon &>/dev/null; then
         @createdirstructgithubclicommon
     fi
@@ -28,6 +36,10 @@ ap_func_remove_dirstruct_github_cli() {
 
     @logshow "Remove [${AP_SOFT_DIR}/bin/gh]\n"
     rm -f "${AP_SOFT_DIR}/bin/gh"
+
+    if alias @rmdirstructgithubclishare &>/dev/null; then
+        @rmdirstructgithubclishare
+    fi
 
     if alias @rmdirstructgithubclicommon &>/dev/null; then
         @rmdirstructgithubclicommon
@@ -63,6 +75,7 @@ ap_func_setup_github_cli() {
     cd "${AP_SOFT_DIR}"
     rm -rf "${AP_TMP_DIR}/github-cli"
 
+    @initgithubcli
     if alias @createdirstructgithubcli &>/dev/null; then
         @createdirstructgithubcli
     fi

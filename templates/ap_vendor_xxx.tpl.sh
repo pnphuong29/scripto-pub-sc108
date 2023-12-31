@@ -102,6 +102,11 @@ alias @setupxxx="ap_func_setup_xxx"
 ap_func_setup_xxx() {
     @logshow "Install [xxx]\n"
 
+    local ap_xxx_version=''
+    if [ -n "$1" ]; then
+        ap_xxx_version="$1"
+    fi
+
     # Remove old app dir if any
     rm -rf "${AP_SOFT_DIR}/xxx"
     rm -rf "${AP_TMP_DIR}/xxx"
@@ -145,6 +150,7 @@ ap_func_setup_xxx() {
     cd "${AP_SOFT_DIR}/xxx"
     rm -rf "${AP_TMP_DIR}/xxx"
 
+    @initxxx
     if alias @createdirstructxxx &>/dev/null; then
         @createdirstructxxx
     fi

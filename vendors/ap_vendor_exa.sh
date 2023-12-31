@@ -8,6 +8,14 @@ ap_func_init_exa() {
     alias l3="@exa --tree --level 3"
     alias ld3="@exa --tree --level 3 -D"
     alias lg="@exa --all --git"
+
+    if alias @initexashare &>/dev/null; then
+        @initexashare
+    fi
+
+    if alias @initexacommon &>/dev/null; then
+        @initexacommon
+    fi
 }
 
 alias @createdirstructexa="ap_func_create_dirstruct_exa"
@@ -23,6 +31,15 @@ ap_func_create_dirstruct_exa() {
 
     @logshow "Create symlink from [${AP_MAN_DIR}/man5/exa_colors.5] to [${AP_SOFT_DIR}/exa/man/exa_colors.5]\n"
     ln -sf "${AP_SOFT_DIR}/exa/man/exa_colors.5" "${AP_MAN_DIR}/man5/exa_colors.5"
+
+    if alias @createdirstructexashare &>/dev/null; then
+        @createdirstructexashare
+    fi
+
+    if alias @createdirstructexacommon &>/dev/null; then
+        @createdirstructexacommon
+    fi
+
 }
 
 alias @rmdirstructexa="ap_func_remove_dirstruct_exa"
@@ -38,6 +55,14 @@ ap_func_remove_dirstruct_exa() {
 
     @logshow "Remove [${AP_MAN_DIR}/man5/exa_colors.5]\n"
     rm -f "${AP_MAN_DIR}/man5/exa_colors.5"
+
+    if alias @rmdirstructexashare &>/dev/null; then
+        @rmdirstructexashare
+    fi
+
+    if alias @rmdirstructexacommon &>/dev/null; then
+        @rmdirstructexacommon
+    fi
 }
 
 alias @createglobalsymlinkexa="ap_func_create_global_symlink_exa"
@@ -83,13 +108,23 @@ ap_func_setup_exa() {
     unzip exa.zip
     rm -f exa.zip
 
-    @createdirstructexa
+    @initexa
+
+    if alias @createdirstructexa &>/dev/null; then
+        @createdirstructexa
+    fi
 }
 
 alias @rmexa="ap_func_remove_exa"
 ap_func_remove_exa() {
     @logshow "Remove [exa]\n"
     rm -rf "${AP_SOFT_DIR}/exa"
-    @rmdirstructexa
-    @rmglobalsymlinkexa
+
+    if alias @rmdirstructexa &>/dev/null; then
+        @rmdirstructexa
+    fi
+
+    if alias @rmglobalsymlinkexa &>/dev/null; then
+        @rmglobalsymlinkexa
+    fi
 }

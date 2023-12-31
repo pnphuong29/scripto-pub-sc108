@@ -66,6 +66,10 @@ ap_func_create_dirstruct_git() {
         fi
     fi
 
+    if alias @createdirstructgitshare &>/dev/null; then
+        @createdirstructgitshare
+    fi
+
     if alias @createdirstructgitcommon &>/dev/null; then
         @createdirstructgitcommon
     fi
@@ -77,6 +81,10 @@ ap_func_remove_dirstruct_git() {
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_git.bash"
     rm -f "${HOME}/.gitconfig"
     rm -f "${HOME}/.gitignore_global"
+
+    if alias @rmdirstructgitshare &>/dev/null; then
+        @rmdirstructgitshare
+    fi
 
     if alias @rmdirstructgitcommon &>/dev/null; then
         @rmdirstructgitcommon
@@ -93,6 +101,7 @@ ap_func_setup_git() {
         sudo apt install -y git
     fi
 
+    @initgit
     if alias @createdirstructgit &>/dev/null; then
         @createdirstructgit
     fi
@@ -116,7 +125,7 @@ ap_func_remove_git() {
 alias gcm='ap_func_git_commit'
 ap_func_git_commit() {
     git commit -m "$1"
-    return 0
+    @rtn_success
 }
 
 alias gpl='ap_func_git_pull'
