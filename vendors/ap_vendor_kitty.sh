@@ -1,3 +1,17 @@
+alias @initkitty="ap_func_init_kitty"
+ap_func_init_kitty() {
+    alias zkittyconfigs="cd \${HOME}/.config/kitty"
+    alias zkittythemes="cd \${AP_SOFT_DIR}/kitty/kitty-themes/themes/"
+
+    if alias @initkittyshare &>/dev/null; then
+        @initkittyshare
+    fi
+
+    if alias @initkittycommon &>/dev/null; then
+        @initkittycommon
+    fi
+}
+
 alias @createdirstructkitty="ap_func_create_dirstruct_kitty"
 ap_func_create_dirstruct_kitty() {
     # Install kitty themes
@@ -23,6 +37,10 @@ ap_func_create_dirstruct_kitty() {
         sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
     fi
 
+    if alias @createdirstructkittyshare &>/dev/null; then
+        @createdirstructkittyshare
+    fi
+
     if alias @createdirstructkittycommon &>/dev/null; then
         @createdirstructkittycommon
     fi
@@ -38,6 +56,10 @@ ap_func_rm_dirstruct_kitty() {
 
     rm -rf "${AP_SOFT_DIR}/kitty/kitty-themes"
 
+    if alias @rmdirstructkittyshare &>/dev/null; then
+        @rmdirstructkittyshare
+    fi
+
     if alias @rmdirstructkittycommon &>/dev/null; then
         @rmdirstructkittycommon
     fi
@@ -50,6 +72,7 @@ ap_func_setup_kitty() {
     @logshow "Install [kitty]\n"
     curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
+    @initkitty
     if alias @createdirstructkitty &>/dev/null; then
         @createdirstructkitty
     fi
@@ -65,9 +88,13 @@ ap_func_rm_kitty() {
         rm -rf "${HOME}/.local/kitty.app"
     fi
 
-    rm -f "${HOME}/.config/kitty"
+    rm -rf "${HOME}/.config/kitty"
 
     if alias @rmdirstructkitty &>/dev/null; then
         @rmdirstructkitty
+    fi
+
+    if alias @rmglobalsymlinkkitty &>/dev/null; then
+        @rmglobalsymlinkkitty
     fi
 }

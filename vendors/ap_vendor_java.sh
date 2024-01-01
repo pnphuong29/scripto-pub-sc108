@@ -1,7 +1,7 @@
-export AP_JDK_SETUP_VERSION='21'
-
 alias @initjava="ap_func_init_java"
 ap_func_init_java() {
+    export AP_JDK_SETUP_VERSION='21'
+
     local ap_jdk_dl_dir="jdk-${AP_JDK_SETUP_VERSION}.jdk"
     local ap_vendors_java_dir="${AP_SOFT_DIR}/java/${ap_jdk_dl_dir}"
     local ap_bin_path="${ap_vendors_java_dir}/Contents/Home/bin"
@@ -50,7 +50,7 @@ ap_func_rm_dirstruct_java() {
 alias @setupjava="ap_func_setup_java"
 ap_func_setup_java() {
     # https://www.oracle.com/java/technologies/downloads/
-    @logshow "Install [JDK v${ap_java_setup_version}]\n"
+    @logshow "Install [JDK v${AP_JDK_SETUP_VERSION}]\n"
 
     local ap_os="macos"
     local ap_jdk_dl_dir="jdk-${AP_JDK_SETUP_VERSION}.jdk"

@@ -1,8 +1,6 @@
 alias @initnvm="ap_func_init_nvm"
 ap_func_init_nvm() {
     # https://github.com/nvm-sh/nvm
-    export AP_NODE_VERSION_DEFAULT="16.20.2"
-    # AP_NODE_VERSION_DEFAULT="18.16.1"
     export NVM_DIR="${HOME}/.nvm" # NVM's installation directory
 
     if [ -d "${HOME}/.yarn/bin" ]; then
@@ -25,6 +23,28 @@ ap_func_init_nvm() {
     # export NVM_COLORS='cmgRY'
 }
 
+alias @createdirstructnvm="ap_func_create_dirstruct_nvm"
+ap_func_create_dirstruct_nvm() {
+    if alias @createdirstructnvmshare &>/dev/null; then
+        @createdirstructnvmshare
+    fi
+
+    if alias @createdirstructnvmcommon &>/dev/null; then
+        @createdirstructnvmcommon
+    fi
+}
+
+alias @rmdirstructnvm="ap_func_rm_dirstruct_nvm"
+ap_func_rm_dirstruct_nvm() {
+    if alias @rmdirstructnvmshare &>/dev/null; then
+        @rmdirstructnvmshare
+    fi
+
+    if alias @rmdirstructnvmcommon &>/dev/null; then
+        @rmdirstructnvmcommon
+    fi
+}
+
 alias @setupnvm="ap_func_setup_nvm"
 ap_func_setup_nvm() {
     # https://github.com/nvm-sh/nvm
@@ -42,22 +62,22 @@ ap_func_setup_nvm() {
     [ -s "${NVM_DIR}/nvm.sh" ] && source "${NVM_DIR}/nvm.sh"                   # This loads-nvm
     [ -s "${NVM_DIR}/bash_completion" ] && source "${NVM_DIR}/bash_completion" # This loads nvm bash_completion
 
-    # Install node
-    @logshow "Install [node v${AP_NODE_VERSION_DEFAULT}]\n"
-    nvm install "v${AP_NODE_VERSION_DEFAULT}"
-    npm install -g npm # Update npm to latest version
-
     @initnvm
+    if alias @createdirstructnvm &>/dev/null; then
+        @createdirstructnvm
+    fi
 }
 
 alias @rmnvm="ap_func_rm_nvm"
 ap_func_rm_nvm() {
     @logshow "Remove [nvm]\n"
-
-    [ -f /usr/local/bin/node ] && sudo rm -f /usr/local/bin/node
-    [ -f /usr/local/bin/npm ] && sudo rm -f /usr/local/bin/npm
-    [ -f /usr/local/bin/yarn ] && sudo rm -f /usr/local/bin/yarn
-
     rm -rf "${HOME}/.nvm"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_npm.bash"
+
+    if alias @rmdirstructnvm &>/dev/null; then
+        @rmdirstructnvm
+    fi
+
+    if alias @rmglobalsymlinknvm &>/dev/null; then
+        @rmglobalsymlinknvm
+    fi
 }

@@ -100,12 +100,14 @@ ap_func_rm_global_symlink_xxx() {
 
 alias @setupxxx="ap_func_setup_xxx"
 ap_func_setup_xxx() {
-    @logshow "Install [xxx]\n"
-
     local ap_xxx_setup_version=''
     if [ -n "$1" ]; then
-        ap_xxx_setup_version="$1"
+    ap_xxx_setup_version="$1"
     fi
+
+    @logshow "Install [xxx] v${ap_xxx_setup_version}\n"
+
+    @logshow "Install [xxx]\n"
 
     # Remove old app dir if any
     rm -rf "${AP_SOFT_DIR}/xxx"
@@ -158,6 +160,13 @@ ap_func_setup_xxx() {
 
 alias @rmxxx="ap_func_rm_xxx"
 ap_func_rm_xxx() {
+    local ap_xxx_setup_version=''
+    if [ -n "$1" ]; then
+        ap_xxx_setup_version="$1"
+    fi
+
+    @logshow "Remove [xxx] v${ap_xxx_setup_version}\n"
+
     @logshow "Remove [xxx]\n"
     rm -rf "${AP_SOFT_DIR}/xxx"
 

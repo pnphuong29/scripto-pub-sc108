@@ -31,8 +31,8 @@ ap_func_rm_dirstruct_joplindesktop() {
     fi
 }
 
-alias @setupjoplindesktop="ap_func_setup_joplin_desktop"
-ap_func_setup_joplin_desktop() {
+alias @setupjoplindesktop="ap_func_setup_joplindesktop"
+ap_func_setup_joplindesktop() {
     # https://joplinapp.org/help/install
     @logshow "Install [Joplin Desktop]\n"
 
@@ -50,8 +50,8 @@ ap_func_setup_joplin_desktop() {
     fi
 }
 
-alias @rmjoplindesktop="ap_func_rm_joplin_desktop"
-ap_func_rm_joplin_desktop() {
+alias @rmjoplindesktop="ap_func_rm_joplindesktop"
+ap_func_rm_joplindesktop() {
     @logshow "Remove [Joplin Desktop]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
