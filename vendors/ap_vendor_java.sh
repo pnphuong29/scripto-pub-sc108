@@ -50,12 +50,6 @@ ap_func_rm_dirstruct_java() {
 alias @setupjava="ap_func_setup_java"
 ap_func_setup_java() {
     # https://www.oracle.com/java/technologies/downloads/
-
-    local ap_java_setup_version='21'
-    if [ -n "$1" ]; then
-        ap_java_setup_version="$1"
-    fi
-
     @logshow "Install [JDK v${ap_java_setup_version}]\n"
 
     local ap_os="macos"

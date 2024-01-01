@@ -1,3 +1,36 @@
+alias @initjoplindesktop="ap_func_init_joplindesktop"
+ap_func_init_joplindesktop() {
+    if alias @initjoplindesktopshare &>/dev/null; then
+        @initjoplindesktopshare
+    fi
+
+    if alias @initjoplindesktopcommon &>/dev/null; then
+        @initjoplindesktopcommon
+    fi
+}
+
+alias @createdirstructjoplindesktop="ap_func_create_dirstruct_joplindesktop"
+ap_func_create_dirstruct_joplindesktop() {
+    if alias @createdirstructjoplindesktopshare &>/dev/null; then
+        @createdirstructjoplindesktopshare
+    fi
+
+    if alias @createdirstructjoplindesktopcommon &>/dev/null; then
+        @createdirstructjoplindesktopcommon
+    fi
+}
+
+alias @rmdirstructjoplindesktop="ap_func_rm_dirstruct_joplindesktop"
+ap_func_rm_dirstruct_joplindesktop() {
+    if alias @rmdirstructjoplindesktopshare &>/dev/null; then
+        @rmdirstructjoplindesktopshare
+    fi
+
+    if alias @rmdirstructjoplindesktopcommon &>/dev/null; then
+        @rmdirstructjoplindesktopcommon
+    fi
+}
+
 alias @setupjoplindesktop="ap_func_setup_joplin_desktop"
 ap_func_setup_joplin_desktop() {
     # https://joplinapp.org/help/install
@@ -11,6 +44,7 @@ ap_func_setup_joplin_desktop() {
         fi
     fi
 
+    @initjoplindesktop
     if alias @createdirstructjoplindesktop &>/dev/null; then
         @createdirstructjoplindesktop
     fi
@@ -28,5 +62,9 @@ ap_func_rm_joplin_desktop() {
 
     if alias @rmdirstructjoplindesktop &>/dev/null; then
         @rmdirstructjoplindesktop
+    fi
+
+    if alias @rmglobalsymlinkjoplindesktop &>/dev/null; then
+        @rmglobalsymlinkjoplindesktop
     fi
 }

@@ -30,11 +30,6 @@ ap_func_create_dir_struct_fd() {
         mkdir -p "${HOME}/.config/fd"
     fi
 
-    if [ -f "${HOME}/scripto-common/vendors/fd/fd.ignore" ]; then
-        @logshow "Create symlink from [${HOME}/.config/fd/ignore] to [${HOME}/scripto-common/vendors/fd/fd.ignore]\n"
-        ln -sf "${HOME}/scripto-common/vendors/fd/fd.ignore" "${HOME}/.config/fd/ignore"
-    fi
-
     if alias @createdirstructfdshare &>/dev/null; then
         @createdirstructfdshare
     fi
