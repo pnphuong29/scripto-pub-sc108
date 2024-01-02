@@ -50,10 +50,8 @@ alias @rmghq="ap_func_rm_ghq"
 ap_func_rm_ghq() {
     @logshow "Remove [ghq]\n"
 
-    local ap_go_path
-    ap_go_path="$(go env GOPATH)"
-    rm -rf "${ap_go_path}/pkg/mod/github.com/x-motemen/ghq@"*
-    rm -f "${ap_go_path}/bin/ghq"
+    rm -rf "${GOPATH}/pkg/mod/github.com/x-motemen/ghq@"*
+    rm -f "${GOPATH}/bin/ghq"
 
     if alias @rmdirstructghq &>/dev/null; then
         @rmdirstructghq

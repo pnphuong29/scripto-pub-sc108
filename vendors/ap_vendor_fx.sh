@@ -60,10 +60,8 @@ alias @rmfx="ap_func_rm_fx"
 ap_func_rm_fx() {
     @logshow "Remove [fx]\n"
 
-    local ap_go_path
-    ap_go_path="$(go env GOPATH)"
-    rm -rf "${ap_go_path}/pkg/mod/github.com/antonmedv/fx@"*
-    rm -f "${ap_go_path}/bin/fx"
+    rm -rf "${GOPATH}/pkg/mod/github.com/antonmedv/fx@"*
+    rm -f "${GOPATH}/bin/fx"
     npm uninstall -g fx-completion
 
     if alias @rmdirstructfx &>/dev/null; then
