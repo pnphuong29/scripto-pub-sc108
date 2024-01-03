@@ -1,7 +1,63 @@
-# https://github.com/dbcli/pgcli
+alias @initpgcli="ap_func_init_pgcli"
+ap_func_init_pgcli() {
+    if alias @initpgclishare &>/dev/null; then
+        @initpgclishare
+    fi
+
+    if alias @initpgclicommon &>/dev/null; then
+        @initpgclicommon
+    fi
+}
+
+alias @createdirstructpgcli="ap_func_create_dirstruct_pgcli"
+ap_func_create_dirstruct_pgcli() {
+    if alias @createdirstructpgclishare &>/dev/null; then
+        @createdirstructpgclishare
+    fi
+
+    if alias @createdirstructpgclicommon &>/dev/null; then
+        @createdirstructpgclicommon
+    fi
+}
+
+alias @rmdirstructpgcli="ap_func_rm_dirstruct_pgcli"
+ap_func_rm_dirstruct_pgcli() {
+    if alias @rmdirstructpgclishare &>/dev/null; then
+        @rmdirstructpgclishare
+    fi
+
+    if alias @rmdirstructpgclicommon &>/dev/null; then
+        @rmdirstructpgclicommon
+    fi
+}
+
+alias @setuppgcli="ap_func_setup_pgcli"
+ap_func_setup_pgcli() {
+    # https://github.com/dbcli/pgcli
+    @logshow "Install [pgcli]\n"
+    pip install pgcli
+
+    @initpgcli
+    if alias @createdirstructpgcli &>/dev/null; then
+        @createdirstructpgcli
+    fi
+}
+
+alias @rmpgcli="ap_func_rm_pgcli"
+ap_func_rm_pgcli() {
+    @logshow "Remove [pgcli]\n"
+    pip uninstall pgcli
+
+    if alias @rmdirstructpgcli &>/dev/null; then
+        @rmdirstructpgcli
+    fi
+
+    if alias @rmglobalsymlinkpgcli &>/dev/null; then
+        @rmglobalsymlinkpgcli
+    fi
+}
 
 alias @pgcli='ap_func_pgcli'
-
 # @$func $$ ap_func_pgcli {
 # ap_func_pgcli *<host> *<port> *<user> *<pass> <db>
 # Description

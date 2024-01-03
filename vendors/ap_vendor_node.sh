@@ -88,13 +88,13 @@ ap_func_setup_node() {
 
 alias @rmnode="ap_func_rm_node"
 ap_func_rm_node() {
-    local ap_node_setup_version="${AP_NODE_VERSION_DEFAULT}"
+    local ap_node_remove_version="${AP_NODE_VERSION_DEFAULT}"
     if [ -n "$1" ]; then
-        ap_node_setup_version="$1"
+        ap_node_remove_version="$1"
     fi
 
-    @logshow "Remove [node] v${ap_node_setup_version}\n"
-    nvm uninstall "v${ap_node_setup_version}"
+    @logshow "Remove [node] v${ap_node_remove_version}\n"
+    nvm uninstall "v${ap_node_remove_version}"
 
     if alias @rmdirstructnode &>/dev/null; then
         @rmdirstructnode

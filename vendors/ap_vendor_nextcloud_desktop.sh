@@ -1,5 +1,9 @@
 alias @initnextclouddesktop="ap_func_init_nextclouddesktop"
 ap_func_init_nextclouddesktop() {
+    if alias @initnextclouddesktopshare &>/dev/null; then
+        @initnextclouddesktopshare
+    fi
+
     if alias @initnextclouddesktopcommon &>/dev/null; then
         @initnextclouddesktopcommon
     fi
@@ -7,6 +11,10 @@ ap_func_init_nextclouddesktop() {
 
 alias @createdirstructnextclouddesktop="ap_func_create_dirstruct_nextclouddesktop"
 ap_func_create_dirstruct_nextclouddesktop() {
+    if alias @createdirstructnextclouddesktopshare &>/dev/null; then
+        @createdirstructnextclouddesktopshare
+    fi
+
     if alias @createdirstructnextclouddesktopcommon &>/dev/null; then
         @createdirstructnextclouddesktopcommon
     fi
@@ -14,6 +22,10 @@ ap_func_create_dirstruct_nextclouddesktop() {
 
 alias @rmdirstructnextclouddesktop="ap_func_rm_dirstruct_nextclouddesktop"
 ap_func_rm_dirstruct_nextclouddesktop() {
+    if alias @rmdirstructnextclouddesktopshare &>/dev/null; then
+        @rmdirstructnextclouddesktopshare
+    fi
+
     if alias @rmdirstructnextclouddesktopcommon &>/dev/null; then
         @rmdirstructnextclouddesktopcommon
     fi
@@ -42,6 +54,7 @@ ap_func_setup_nextclouddesktop() {
         fi
     fi
 
+    @initnextclouddesktop
     if alias @createdirstructnextclouddesktop &>/dev/null; then
         @createdirstructnextclouddesktop
     fi
@@ -55,10 +68,8 @@ ap_func_rm_nextclouddesktop() {
         brew uninstall --cask nextcloud
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         sudo apt purge -y nextcloud-desktop
-
         sudo add-apt-repository --yes --remove ppa:nextcloud-devs/client
         sudo apt purge -y nextcloud-client
-
         sudo apt autoremove -y
     fi
 

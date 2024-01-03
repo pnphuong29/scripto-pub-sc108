@@ -39,7 +39,7 @@ ap_func_rm_dirstruct_lua() {
 
 alias @setuplua="ap_func_setup_lua"
 ap_func_setup_lua() {
-    local ap_lua_setup_version=''
+    local ap_lua_setup_version='5.3'
     if [ -n "$1" ]; then
         ap_lua_setup_version="$1"
     fi
@@ -48,7 +48,7 @@ ap_func_setup_lua() {
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         # https://github.com/luarocks/luarocks/wiki/Installation-instructions-for-macOS
-        brew install "luarocks@${ap_lua_setup_version}"
+        brew install "lua@${ap_lua_setup_version}" luarocks
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         # https://github.com/luarocks/luarocks/wiki/Installation-instructions-for-Unix
         sudo apt install -y "lua${ap_lua_setup_version}" luarocks
@@ -62,11 +62,17 @@ ap_func_setup_lua() {
 
 alias @rmlua="ap_func_rm_lua"
 ap_func_rm_lua() {
+    local ap_lua_remove_version='5.3'
+    if [ -n "$1" ]; then
+        ap_lua_remove_version="$1"
+    fi
+
     @logshow "Remove [lua]\n"
+
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        brew uninstall lua
+        brew uninstall "lua@${ap_lua_remove_version}" luarocks
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        sudo apt purge -y lua
+        sudo apt purge -y "lua@${ap_lua_remove_version}" luarocks
         sudo apt autoremove -y
     fi
 

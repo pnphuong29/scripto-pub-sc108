@@ -27,6 +27,10 @@ ap_func_init_nginx() {
         "${HOME}/scripto-common/vendors/nginx/conf.d"/*.conf \
 	'
 
+    if alias @initnginxshare &>/dev/null; then
+        @initnginxshare
+    fi
+
     if alias @initnginxcommon &>/dev/null; then
         @initnginxcommon
     fi
@@ -34,6 +38,10 @@ ap_func_init_nginx() {
 
 alias @createdirstructnginx="ap_func_create_dirstruct_nginx"
 ap_func_create_dirstruct_nginx() {
+    if alias @createdirstructnginxshare &>/dev/null; then
+        @createdirstructnginxshare
+    fi
+
     if alias @createdirstructnginxcommon &>/dev/null; then
         @createdirstructnginxcommon
     fi
@@ -41,24 +49,12 @@ ap_func_create_dirstruct_nginx() {
 
 alias @rmdirstructnginx="ap_func_rm_dirstruct_nginx"
 ap_func_rm_dirstruct_nginx() {
+    if alias @rmdirstructnginxshare &>/dev/null; then
+        @rmdirstructnginxshare
+    fi
+
     if alias @rmdirstructnginxcommon &>/dev/null; then
         @rmdirstructnginxcommon
-    fi
-}
-
-alias @createglobalsymlinknginx="ap_func_create_global_symlink_nginx"
-ap_func_create_global_symlink_nginx() {
-    if [ -f "${AP_SOFT_DIR}/nginx/nginx" ]; then
-        @logshow "Create symlink from [/usr/local/bin/nginx] to [${AP_SOFT_DIR}/nginx/nginx]\n"
-        sudo ln -sf "${AP_SOFT_DIR}/nginx/nginx" "/usr/local/bin/nginx"
-    fi
-}
-
-alias @rmglobalsymlinknginx="ap_func_rm_global_symlink_nginx"
-ap_func_rm_global_symlink_nginx() {
-    if [ -f "/usr/local/bin/nginx" ]; then
-        @logshow "Remove [/usr/local/bin/nginx]\n"
-        sudo rm -f "/usr/local/bin/nginx"
     fi
 }
 
@@ -94,6 +90,7 @@ ap_func_setup_nginx() {
         sudo apt install -y nginx
     fi
 
+    @initnginx
     if alias @createdirstructnginx &>/dev/null; then
         @createdirstructnginx
     fi
