@@ -160,12 +160,12 @@ ap_func_setup_xxx() {
 
 alias @rmxxx="ap_func_rm_xxx"
 ap_func_rm_xxx() {
-    local ap_xxx_setup_version=''
+    local ap_xxx_remove_version=''
     if [ -n "$1" ]; then
-        ap_xxx_setup_version="$1"
+        ap_xxx_remove_version="$1"
     fi
 
-    @logshow "Remove [xxx] v${ap_xxx_setup_version}\n"
+    @logshow "Remove [xxx] v${ap_xxx_remove_version}\n"
 
     @logshow "Remove [xxx]\n"
     rm -rf "${AP_SOFT_DIR}/xxx"
