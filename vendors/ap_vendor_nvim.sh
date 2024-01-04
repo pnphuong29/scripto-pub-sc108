@@ -102,7 +102,7 @@ ap_func_setup_nvim() {
     # sudo apt-get install neovim
 
     @logshow "Create symlink from [${AP_SOFT_DIR}/bin/nvim] to [${AP_SOFT_DIR}/nvim/bin/nvim]\n"
-    sudo ln -sf "${AP_SOFT_DIR}/nvim/bin/nvim" "${AP_SOFT_DIR}/bin/nvim"
+    ln -sf "${AP_SOFT_DIR}/nvim/bin/nvim" "${AP_SOFT_DIR}/bin/nvim"
 
     # Install Vim Plug
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
