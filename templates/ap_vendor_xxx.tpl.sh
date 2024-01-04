@@ -152,6 +152,9 @@ ap_func_setup_xxx() {
     cd "${AP_SOFT_DIR}/xxx"
     rm -rf "${AP_TMP_DIR}/xxx"
 
+    pip install xxx
+    npm install -g xxx
+
     @initxxx
     if alias @createdirstructxxx &>/dev/null; then
         @createdirstructxxx
@@ -168,6 +171,9 @@ ap_func_rm_xxx() {
     @logshow "Remove [xxx] v${ap_xxx_remove_version}\n"
 
     @logshow "Remove [xxx]\n"
+    pip uninstall xxx
+    npm uninstall -g xxx
+
     rm -rf "${AP_SOFT_DIR}/xxx"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

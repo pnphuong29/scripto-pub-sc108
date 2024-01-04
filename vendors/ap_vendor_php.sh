@@ -1,6 +1,11 @@
 alias @initphp="ap_func_init_php"
 ap_func_init_php() {
     # @addpath "/usr/local/opt/php@8.1/bin"
+
+    if alias @initphpshare &>/dev/null; then
+        @initphpshare
+    fi
+
     if alias @initphpcommon &>/dev/null; then
         @initphpcommon
     fi
@@ -8,6 +13,10 @@ ap_func_init_php() {
 
 alias @createdirstructphp="ap_func_create_dirstruct_php"
 ap_func_create_dirstruct_php() {
+    if alias @createdirstructphpshare &>/dev/null; then
+        @createdirstructphpshare
+    fi
+
     if alias @createdirstructphpcommon &>/dev/null; then
         @createdirstructphpcommon
     fi
@@ -15,6 +24,10 @@ ap_func_create_dirstruct_php() {
 
 alias @rmdirstructphp="ap_func_rm_dirstruct_php"
 ap_func_rm_dirstruct_php() {
+    if alias @rmdirstructphpshare &>/dev/null; then
+        @rmdirstructphpshare
+    fi
+
     if alias @rmdirstructphpcommon &>/dev/null; then
         @rmdirstructphpcommon
     fi
@@ -69,11 +82,17 @@ ap_func_setup_php() {
             php8.1-memcached \
             php8.1-imagick
     fi
+
+    @initphp
+    if alias @createdirstructphp &>/dev/null; then
+        @createdirstructphp
+    fi
 }
 
 alias @rmphp="ap_func_rm_php"
 ap_func_rm_php() {
-    @logshow "Remove [php 8.1]\n"
+    @logshow "Remove [PHP 8.1]\n"
+
     # MySQL should have only 1 version in current system
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew uninstall php@8.1
@@ -107,6 +126,14 @@ ap_func_rm_php() {
             php8.1-imagick
 
         sudo apt autoremove -y
+    fi
+
+    if alias @rmdirstructphp &>/dev/null; then
+        @rmdirstructphp
+    fi
+
+    if alias @rmglobalsymlinkphp &>/dev/null; then
+        @rmglobalsymlinkphp
     fi
 }
 

@@ -39,10 +39,6 @@ ap_func_init_pyenv() {
     if alias @initpyenvcommon &>/dev/null; then
         @initpyenvcommon
     fi
-
-    # if alias | grep @initpython= &>/dev/null; then
-    #     @initpython
-    # fi
 }
 
 alias @createdirstructpyenv="ap_func_create_dirstruct_pyenv"

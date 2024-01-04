@@ -21,6 +21,14 @@ ap_func_init_nvm() {
     # export NVM_RC_VERSION
 
     # export NVM_COLORS='cmgRY'
+
+    if alias @initnvmshare &>/dev/null; then
+        @initnvmshare
+    fi
+
+    if alias @initnvmcommon &>/dev/null; then
+        @initnvmcommon
+    fi
 }
 
 alias @createdirstructnvm="ap_func_create_dirstruct_nvm"

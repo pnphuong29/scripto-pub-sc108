@@ -1,5 +1,9 @@
 alias @initpostgresql="ap_func_init_postgresql"
 ap_func_init_postgresql() {
+    if alias @initpostgresqlshare &>/dev/null; then
+        @initpostgresqlshare
+    fi
+
     if alias @initpostgresqlcommon &>/dev/null; then
         @initpostgresqlcommon
     fi
@@ -7,6 +11,10 @@ ap_func_init_postgresql() {
 
 alias @createdirstructpostgresql="ap_func_create_dirstruct_postgresql"
 ap_func_create_dirstruct_postgresql() {
+    if alias @createdirstructpostgresqlshare &>/dev/null; then
+        @createdirstructpostgresqlshare
+    fi
+
     if alias @createdirstructpostgresqlcommon &>/dev/null; then
         @createdirstructpostgresqlcommon
     fi
@@ -14,6 +22,10 @@ ap_func_create_dirstruct_postgresql() {
 
 alias @rmdirstructpostgresql="ap_func_rm_dirstruct_postgresql"
 ap_func_rm_dirstruct_postgresql() {
+    if alias @rmdirstructpostgresqlshare &>/dev/null; then
+        @rmdirstructpostgresqlshare
+    fi
+
     if alias @rmdirstructpostgresqlcommon &>/dev/null; then
         @rmdirstructpostgresqlcommon
     fi
@@ -38,6 +50,7 @@ ap_func_setup_postgresql() {
         sudo apt install -y "postgresql-server-dev-${ap_pgsql_major_version}"
     fi
 
+    @initpostgresql
     if alias @createdirstructpostgresql &>/dev/null; then
         @createdirstructpostgresql
     fi
@@ -57,5 +70,9 @@ ap_func_rm_postgresql() {
 
     if alias @rmdirstructpostgresql &>/dev/null; then
         @rmdirstructpostgresql
+    fi
+
+    if alias @rmglobalsymlinkpostgresql &>/dev/null; then
+        @rmglobalsymlinkpostgresql
     fi
 }
