@@ -214,10 +214,15 @@ ap_func_git_clone() {
 
     for ap_prj_group_code in "$@"; do
         local ap_prj_group_code="${ap_prj_group_code^^}"
+
         local ap_prj_group_name="AP_PRJ_LIST_CODE_${ap_prj_group_code}"
-        eval "$(printf "ap_prj_group=("\${%s[@]}")" "${ap_prj_group_name}")"
-        @minfo "Git clone for projects [${ap_prj_group[@]}]\n"
-        projects+=("${ap_prj_group[@]}")
+        eval "$(printf "ap_prj_codes=("\${%s[@]}")" "${ap_prj_group_code}")"
+
+        local ap_prj_group_url="AP_PRJ_LIST_URL_${ap_prj_group_url}"
+        eval "$(printf "ap_prj_urls=("\${%s[@]}")" "${ap_prj_group_url}")"
+
+        @minfo "Git clone for projects [${ap_prj_codes[@]}]\n"
+        projects+=("${ap_prj_urls[@]}")
     done
 
     for prj in "${projects[@]}"; do
