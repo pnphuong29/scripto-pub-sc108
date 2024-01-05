@@ -15,6 +15,10 @@ ap_func_init_python() {
     alias @venv="python -m venv"
     alias @venvactivate="source \$(find -type f -name activate | head -1)"
 
+    if alias @initpythonshare &>/dev/null; then
+        @initpythonshare
+    fi
+
     if alias @initpythoncommon &>/dev/null; then
         @initpythoncommon
     fi
@@ -34,6 +38,10 @@ ap_func_create_dirstruct_python() {
         ln -sf "${HOME}/.python_history" "${ap_python_history_dir}/.python_history"
     fi
 
+    if alias @createdirstructpythonshare &>/dev/null; then
+        @createdirstructpythonshare
+    fi
+
     if alias @createdirstructpythoncommon &>/dev/null; then
         @createdirstructpythoncommon
     fi
@@ -41,6 +49,10 @@ ap_func_create_dirstruct_python() {
 
 alias @rmdirstructpython="ap_func_rm_dirstruct_python"
 ap_func_rm_dirstruct_python() {
+    if alias @rmdirstructpythonshare &>/dev/null; then
+        @rmdirstructpythonshare
+    fi
+
     if alias @rmdirstructpythoncommon &>/dev/null; then
         @rmdirstructpythoncommon
     fi

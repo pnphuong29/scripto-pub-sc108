@@ -36,6 +36,10 @@ ap_func_init_pyenv() {
 
     alias @unsetpyenvversion="unset PYENV_VERSION"
 
+    if alias @initpyenvshare &>/dev/null; then
+        @initpyenvshare
+    fi
+
     if alias @initpyenvcommon &>/dev/null; then
         @initpyenvcommon
     fi
@@ -43,6 +47,10 @@ ap_func_init_pyenv() {
 
 alias @createdirstructpyenv="ap_func_create_dirstruct_pyenv"
 ap_func_create_dirstruct_pyenv() {
+    if alias @createdirstructpyenvshare &>/dev/null; then
+        @createdirstructpyenvshare
+    fi
+
     if alias @createdirstructpyenvcommon &>/dev/null; then
         @createdirstructpyenvcommon
     fi
@@ -58,6 +66,10 @@ ap_func_create_dirstruct_pyenv() {
 
 alias @rmdirstructpyenv="ap_func_rm_dirstruct_pyenv"
 ap_func_rm_dirstruct_pyenv() {
+    if alias @rmdirstructpyenvshare &>/dev/null; then
+        @rmdirstructpyenvshare
+    fi
+
     if alias @rmdirstructpyenvcommon &>/dev/null; then
         @rmdirstructpyenvcommon
     fi
@@ -119,6 +131,7 @@ ap_func_setup_pyenv() {
     @logshow "Set pyenv global version [${AP_PYTHON_VERSION_DEFAULT}]\n"
     pyenv global "${AP_PYTHON_VERSION_DEFAULT}" # Set default global python
 
+    @initpyenv
     if alias @createdirstructpyenv &>/dev/null; then
         @createdirstructpyenv
     fi
