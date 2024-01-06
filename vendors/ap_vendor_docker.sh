@@ -184,8 +184,7 @@ ap_func_dk_ps() {
     @rtn_success
 }
 
-alias dkexec="ap_func_dk_exec"
-alias dkexecbash="ap_func_dk_exec bash"
+alias dkexec="ap_func_dk_exec bash"
 alias dkexecsh="ap_func_dk_exec sh"
 # @$func $$ ap_func_dk_exec {
 # ap_func_dk_exec <shell> <container>
