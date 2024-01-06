@@ -6,6 +6,10 @@ ap_func_init_rbenv() {
     eval "$("${HOME}/.rbenv/bin/rbenv" init - bash)"
     # eval "$(rbenv init - bash)"
 
+    if alias @initrbenvshare &>/dev/null; then
+        @initrbenvshare
+    fi
+
     if alias @initrbenvcommon &>/dev/null; then
         @initrbenvcommon
     fi
@@ -16,6 +20,10 @@ ap_func_create_dirstruct_rbenv() {
     @logshow "Set rbenv local version [${AP_RUBY_SETUP_VERSION}] at [${HOME}]\n"
     cd "${HOME}"
     rbenv local "${AP_RUBY_SETUP_VERSION}"
+
+    if alias @createdirstructrbenvshare &>/dev/null; then
+        @createdirstructrbenvshare
+    fi
 
     if alias @createdirstructrbenvcommon &>/dev/null; then
         @createdirstructrbenvcommon
@@ -36,6 +44,10 @@ ap_func_rm_dirstruct_rbenv() {
 
     @logshow "Remove [${AP_MAN_DIR}/man1/rbenv.1]\n"
     rm -f "${AP_MAN_DIR}/man1/rbenv.1"
+
+    if alias @rmdirstructrbenvshare &>/dev/null; then
+        @rmdirstructrbenvshare
+    fi
 
     if alias @rmdirstructrbenvcommon &>/dev/null; then
         @rmdirstructrbenvcommon
@@ -87,6 +99,7 @@ ap_func_setup_rbenv() {
         solargraph \
         asciidoctor
 
+    @initrbenv
     if alias @createdirstructrbenv &>/dev/null; then
         @createdirstructrbenv
     fi
