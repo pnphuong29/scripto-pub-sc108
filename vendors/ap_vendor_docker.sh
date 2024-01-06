@@ -118,6 +118,7 @@ ap_func_setup_docker() {
         # chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
     fi
 
+    @initdocker
     if alias @createdirstructdocker &>/dev/null; then
         @createdirstructdocker
     fi
