@@ -1,5 +1,9 @@
 alias @inittdrop="ap_func_init_tdrop"
 ap_func_init_tdrop() {
+    if alias @inittdropshare &>/dev/null; then
+        @inittdropshare
+    fi
+
     if alias @inittdropcommon &>/dev/null; then
         @inittdropcommon
     fi
@@ -7,6 +11,10 @@ ap_func_init_tdrop() {
 
 alias @createdirstructtdrop="ap_func_create_dirstruct_tdrop"
 ap_func_create_dirstruct_tdrop() {
+    if alias @createdirstructtdropshare &>/dev/null; then
+        @createdirstructtdropshare
+    fi
+
     if alias @createdirstructtdropcommon &>/dev/null; then
         @createdirstructtdropcommon
     fi
@@ -14,6 +22,10 @@ ap_func_create_dirstruct_tdrop() {
 
 alias @rmdirstructtdrop="ap_func_rm_dirstruct_tdrop"
 ap_func_rm_dirstruct_tdrop() {
+    if alias @rmdirstructtdropshare &>/dev/null; then
+        @rmdirstructtdropshare
+    fi
+
     if alias @rmdirstructtdropcommon &>/dev/null; then
         @rmdirstructtdropcommon
     fi
@@ -32,6 +44,7 @@ ap_func_setup_tdrop() {
     sudo make
     sudo make install
 
+    @inittdrop
     if alias @createdirstructtdrop &>/dev/null; then
         @createdirstructtdrop
     fi
@@ -44,7 +57,14 @@ ap_func_rm_tdrop() {
     cd "${AP_SOFT_DIR}/tdrop"
     sudo make uninstall
 
+    cd "${AP_SOFT_DIR}"
+    rm -rf "${AP_SOFT_DIR}/tdrop"
+
     if alias @rmdirstructtdrop &>/dev/null; then
         @rmdirstructtdrop
+    fi
+
+    if alias @rmglobalsymlinktdrop &>/dev/null; then
+        @rmglobalsymlinktdrop
     fi
 }

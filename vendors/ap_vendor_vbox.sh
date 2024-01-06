@@ -3,6 +3,10 @@ ap_func_init_vbox() {
     alias dlvboxguestadditions="cd \${AP_SOFT_DIR}/vbox; curl -SOL http://download.virtualbox.org/virtualbox/7.0.12/VBoxGuestAdditions_7.0.12.iso"
     alias dlvboxextpack="cd \${AP_SOFT_DIR}/vbox; curl -SOL http://download.virtualbox.org/virtualbox/7.0.12/Oracle_VM_VirtualBox_Extension_Pack-7.0.12-159484.vbox-extpack"
 
+    if alias @initvboxshare &>/dev/null; then
+        @initvboxshare
+    fi
+
     if alias @initvboxcommon &>/dev/null; then
         @initvboxcommon
     fi
@@ -18,6 +22,10 @@ ap_func_create_dirstruct_vbox() {
         echo "complete -o default -F _VBoxManage vbm # vbm is an alias of VBoxManage" >>"${AP_COMPLETIONS_DIR}/ap_completion_vboxmanage.bash"
     fi
 
+    if alias @createdirstructvboxshare &>/dev/null; then
+        @createdirstructvboxshare
+    fi
+
     if alias @createdirstructvboxcommon &>/dev/null; then
         @createdirstructvboxcommon
     fi
@@ -27,6 +35,10 @@ alias @rmdirstructvbox="ap_func_rm_dirstruct_vbox"
 ap_func_rm_dirstruct_vbox() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_vboxmanage.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_vboxmanage.bash"
+
+    if alias @rmdirstructvboxshare &>/dev/null; then
+        @rmdirstructvboxshare
+    fi
 
     if alias @rmdirstructvboxcommon &>/dev/null; then
         @rmdirstructvboxcommon
@@ -92,6 +104,7 @@ ap_func_setup_vbox() {
     cd "${AP_SOFT_DIR}/vbox"
     curl -SOL http://download.virtualbox.org/virtualbox/7.0.12/Oracle_VM_VirtualBox_Extension_Pack-7.0.12-159484.vbox-extpack
 
+    @initvbox
     if alias @createdirstructvbox &>/dev/null; then
         @createdirstructvbox
     fi
@@ -109,5 +122,9 @@ ap_func_rm_vbox() {
 
     if alias @rmdirstructvbox &>/dev/null; then
         @rmdirstructvbox
+    fi
+
+    if alias @rmglobalsymlinkvbox &>/dev/null; then
+        @rmglobalsymlinkvbox
     fi
 }

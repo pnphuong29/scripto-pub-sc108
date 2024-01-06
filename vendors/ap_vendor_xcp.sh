@@ -1,5 +1,9 @@
 alias @initxcp="ap_func_init_xcp"
 ap_func_init_xcp() {
+    if alias @initxcpshare &>/dev/null; then
+        @initxcpshare
+    fi
+
     if alias @initxcpcommon &>/dev/null; then
         @initxcpcommon
     fi
@@ -7,6 +11,10 @@ ap_func_init_xcp() {
 
 alias @createdirstructxcp="ap_func_create_dirstruct_xcp"
 ap_func_create_dirstruct_xcp() {
+    if alias @createdirstructxcpshare &>/dev/null; then
+        @createdirstructxcpshare
+    fi
+
     if alias @createdirstructxcpcommon &>/dev/null; then
         @createdirstructxcpcommon
     fi
@@ -14,6 +22,10 @@ ap_func_create_dirstruct_xcp() {
 
 alias @rmdirstructxcp="ap_func_rm_dirstruct_xcp"
 ap_func_rm_dirstruct_xcp() {
+    if alias @rmdirstructxcpshare &>/dev/null; then
+        @rmdirstructxcpshare
+    fi
+
     if alias @rmdirstructxcpcommon &>/dev/null; then
         @rmdirstructxcpcommon
     fi
@@ -29,10 +41,8 @@ ap_func_create_global_symlink_xcp() {
 
 alias @rmglobalsymlinkxcp="ap_func_rm_global_symlink_xcp"
 ap_func_rm_global_symlink_xcp() {
-    if [ -f "/usr/local/bin/xcp" ]; then
-        @logshow "Remove [/usr/local/bin/xcp]\n"
-        sudo rm -f "/usr/local/bin/xcp"
-    fi
+    @logshow "Remove [/usr/local/bin/xcp]\n"
+    sudo rm -f "/usr/local/bin/xcp"
 }
 
 alias @setupxcp="ap_func_setup_xcp"
@@ -40,12 +50,9 @@ ap_func_setup_xcp() {
     @logshow "Install [xcp]\n"
     cargo install xcp
 
+    @initxcp
     if alias @createdirstructxcp &>/dev/null; then
         @createdirstructxcp
-    fi
-
-    if alias @createglobalsymlinkxcp &>/dev/null; then
-        @createglobalsymlinkxcp
     fi
 }
 

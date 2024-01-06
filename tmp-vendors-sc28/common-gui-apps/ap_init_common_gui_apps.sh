@@ -1,1 +1,0 @@
-export AP_VENDORS_COMMON_GUIAPPS_SETUP_DIR="${AP_SCRIPTO_COMMON_DIR}/vendors/common-gui-apps"

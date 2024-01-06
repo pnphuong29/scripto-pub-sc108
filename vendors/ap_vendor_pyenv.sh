@@ -43,6 +43,22 @@ ap_func_init_pyenv() {
     if alias @initpyenvcommon &>/dev/null; then
         @initpyenvcommon
     fi
+
+    if alias @initpythonshare &>/dev/null; then
+        @initpythonshare
+    fi
+
+    if alias @initpythoncommon &>/dev/null; then
+        @initpythoncommon
+    fi
+
+    if alias @initpipshare &>/dev/null; then
+        @initpipshare
+    fi
+
+    if alias @initpipcommon &>/dev/null; then
+        @initpipcommon
+    fi
 }
 
 alias @createdirstructpyenv="ap_func_create_dirstruct_pyenv"

@@ -13,6 +13,14 @@ ap_func_init_rbenv() {
     if alias @initrbenvcommon &>/dev/null; then
         @initrbenvcommon
     fi
+
+    if alias @initrubyshare &>/dev/null; then
+        @initrubyshare
+    fi
+
+    if alias @initrubycommon &>/dev/null; then
+        @initrubycommon
+    fi
 }
 
 alias @createdirstructrbenv="ap_func_create_dirstruct_rbenv"

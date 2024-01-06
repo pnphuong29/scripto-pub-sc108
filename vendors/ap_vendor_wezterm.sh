@@ -7,11 +7,14 @@ ap_func_init_wezterm() {
     # export WEZTERM_CONFIG_FILE="${HOME}/scripto-common/vendors/wezterm/ap_wezterm.config.lua"
     # https://wezfurlong.org/wezterm/config/lua/config/term.html
     alias @weztermgenerateterminfo='curl -SL "https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo" >"${HOME}/scripto-common/vendors/wezterm/ap_wezterm.terminfo"'
-    alias viscwezterm="vi -p \
-        \${HOME}/scripto/vendors/ap_vendor_wezterm.sh \
-        \${HOME}/scripto-common/vendors/ap_vendor_wezterm.sh \
-        \${HOME}/scripto-common/vendors/wezterm/ap_wezterm.config.lua \
-	"
+
+    if alias @initweztermshare &>/dev/null; then
+        @initweztermshare
+    fi
+
+    if alias @initweztermcommon &>/dev/null; then
+        @initweztermcommon
+    fi
 }
 
 alias @createdirstructwezterm="ap_func_create_dirstruct_wezterm"
@@ -26,6 +29,10 @@ ap_func_create_dirstruct_wezterm() {
     # sudo tic -x -o ~/.terminfo "${HOME}/scripto-common/vendors/wezterm/ap_wezterm.terminfo"
     # sudo chown "${USER}" ~/.terminfo
 
+    if alias @createdirstructweztermshare &>/dev/null; then
+        @createdirstructweztermshare
+    fi
+
     if alias @createdirstructweztermcommon &>/dev/null; then
         @createdirstructweztermcommon
     fi
@@ -35,6 +42,10 @@ alias @rmdirstructwezterm="ap_func_rm_dirstruct_wezterm"
 ap_func_rm_dirstruct_wezterm() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_wezterm.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_wezterm.bash"
+
+    if alias @rmdirstructweztermshare &>/dev/null; then
+        @rmdirstructweztermshare
+    fi
 
     if alias @rmdirstructweztermcommon &>/dev/null; then
         @rmdirstructweztermcommon
@@ -64,6 +75,7 @@ ap_func_setup_wezterm() {
         sudo dpkg -i wezterm.deb
     fi
 
+    @initwezterm
     if alias @createdirstructwezterm &>/dev/null; then
         @createdirstructwezterm
     fi
@@ -81,5 +93,9 @@ ap_func_rm_wezterm() {
 
     if alias @rmdirstructwezterm &>/dev/null; then
         @rmdirstructwezterm
+    fi
+
+    if alias @rmglobalsymlinkwezterm &>/dev/null; then
+        @rmglobalsymlinkwezterm
     fi
 }

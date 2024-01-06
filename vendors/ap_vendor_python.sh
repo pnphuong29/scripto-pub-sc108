@@ -1,10 +1,5 @@
 alias @initpython="ap_func_init_python"
 ap_func_init_python() {
-    # https://docs.python.org/3/using/cmdline.html
-    if [ -d "${AP_PRJ_LIB1_DIR}" ]; then
-        export PYTHONPATH="${PYTHONPATH}:${AP_PRJ_LIB1_DIR}/python"
-    fi
-
     if [ -f "${HOME}/scripto-common/vendors/python/ap_python_startup.py" ]; then
         export PYTHONSTARTUP="${HOME}/scripto-common/vendors/python/ap_python_startup.py"
     fi
@@ -26,18 +21,6 @@ ap_func_init_python() {
 
 alias @createdirstructpython="ap_func_create_dirstruct_python"
 ap_func_create_dirstruct_python() {
-    local ap_python_history_dir
-    ap_python_history_dir="${HOME}/scripto-main/data/python/$(hostname)"
-    if [ ! -d "${ap_python_history_dir}" ]; then
-        @logshow "Create directory ${ap_python_history_dir}\n"
-        mkdir -p "${ap_python_history_dir}"
-    fi
-
-    if [ -f "${HOME}/.python_history" ]; then
-        @logshow "Link [${ap_python_history_dir}/.python_history] to [${HOME}/.python_history]\n"
-        ln -sf "${HOME}/.python_history" "${ap_python_history_dir}/.python_history"
-    fi
-
     if alias @createdirstructpythonshare &>/dev/null; then
         @createdirstructpythonshare
     fi

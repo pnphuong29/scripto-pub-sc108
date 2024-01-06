@@ -1,8 +1,5 @@
 alias @initvagrant="ap_func_init_vagrant"
 ap_func_init_vagrant() {
-    # This will add aliases to default vagrant commands
-    export VAGRANT_ALIAS_FILE="${HOME}/scripto-common/vendors/vagrant/configs/ap_alias_vagrant.rb"
-
     # If the Vagrant guest is not trusted, you may want to disable symlink globally using below env variable
     export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
     # The above env variable is the same as below config in Vagrantfile
@@ -22,6 +19,10 @@ ap_func_init_vagrant() {
     alias vgrebuild='vgrm; vagrant up'
     alias vgstopall="vagrant stop \$(vagrant global-status | grep running | gawk '{print \$1}' | tr '\n' ' ')"
 
+    if alias @initvagrantshare &>/dev/null; then
+        @initvagrantshare
+    fi
+
     if alias @initvagrantcommon &>/dev/null; then
         @initvagrantcommon
     fi
@@ -37,6 +38,10 @@ ap_func_create_dirstruct_vagrant() {
         echo "complete -o default -F _vagrant vg # vg is an alias of 'vagrant' command" >>"${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash"
     fi
 
+    if alias @createdirstructvagrantshare &>/dev/null; then
+        @createdirstructvagrantshare
+    fi
+
     if alias @createdirstructvagrantcommon &>/dev/null; then
         @createdirstructvagrantcommon
     fi
@@ -46,6 +51,10 @@ alias @rmdirstructvagrant="ap_func_rm_dirstruct_vagrant"
 ap_func_rm_dirstruct_vagrant() {
     @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash"
+
+    if alias @rmdirstructvagrantshare &>/dev/null; then
+        @rmdirstructvagrantshare
+    fi
 
     if alias @rmdirstructvagrantcommon &>/dev/null; then
         @rmdirstructvagrantcommon
@@ -67,6 +76,7 @@ ap_func_setup_vagrant() {
         sudo apt install -y vagrant
     fi
 
+    @initvagrant
     if alias @createdirstructvagrant &>/dev/null; then
         @createdirstructvagrant
     fi
@@ -88,5 +98,9 @@ ap_func_rm_vagrant() {
 
     if alias @rmdirstructvagrant &>/dev/null; then
         @rmdirstructvagrant
+    fi
+
+    if alias @rmglobalsymlinkvagrant &>/dev/null; then
+        @rmglobalsymlinkvagrant
     fi
 }

@@ -1,6 +1,11 @@
 alias @inittig="ap_func_init_tig"
 ap_func_init_tig() {
     @addpath -m "${AP_SOFT_DIR}/tig/share/man"
+
+    if alias @inittigshare &>/dev/null; then
+        @inittigshare
+    fi
+
     if alias @inittigcommon &>/dev/null; then
         @inittigcommon
     fi
@@ -10,6 +15,11 @@ alias @createdirstructtig="ap_func_create_dirstruct_tig"
 ap_func_create_dirstruct_tig() {
     @logshow "Create symlink from [${AP_SOFT_DIR}/bin/tig] to [${AP_SOFT_DIR}/tig/bin/tig]\n"
     ln -sf "${AP_SOFT_DIR}/tig/bin/tig" "${AP_SOFT_DIR}/bin/tig"
+
+    if alias @createdirstructtigshare &>/dev/null; then
+        @createdirstructtigshare
+    fi
+
     if alias @createdirstructtigcommon &>/dev/null; then
         @createdirstructtigcommon
     fi
@@ -17,7 +27,13 @@ ap_func_create_dirstruct_tig() {
 
 alias @rmdirstructtig="ap_func_rm_dirstruct_tig"
 ap_func_rm_dirstruct_tig() {
+    @logshow "Remove [${AP_SOFT_DIR}/bin/tig]\n"
     rm -f "${AP_SOFT_DIR}/bin/tig"
+
+    if alias @rmdirstructtigshare &>/dev/null; then
+        @rmdirstructtigshare
+    fi
+
     if alias @rmdirstructtigcommon &>/dev/null; then
         @rmdirstructtigcommon
     fi
@@ -55,6 +71,7 @@ ap_func_setup_tig() {
     cd "${AP_SOFT_DIR}/tig"
     rm -rf "${AP_TMP_DIR}/tig"
 
+    @inittig
     if alias @createdirstructtig &>/dev/null; then
         @createdirstructtig
     fi
@@ -67,9 +84,15 @@ ap_func_rm_tig() {
     cd "${AP_SOFT_DIR}/tig"
     make
     make uninstall
+
+    cd "${AP_SOFT_DIR}"
     rm -rf "${AP_SOFT_DIR}/tig"
 
     if alias @rmdirstructtig &>/dev/null; then
         @rmdirstructtig
+    fi
+
+    if alias @rmglobalsymlinktig &>/dev/null; then
+        @rmglobalsymlinktig
     fi
 }

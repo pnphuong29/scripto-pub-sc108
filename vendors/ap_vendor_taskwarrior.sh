@@ -1,6 +1,11 @@
 alias @inittaskwarrior="ap_func_init_taskwarrior"
 ap_func_init_taskwarrior() {
     @addpath -m "${AP_SOFT_DIR}/taskwarrior/share/man"
+
+    if alias @inittaskwarriorshare &>/dev/null; then
+        @inittaskwarriorshare
+    fi
+
     if alias @inittaskwarriorcommon &>/dev/null; then
         @inittaskwarriorcommon
     fi
@@ -11,17 +16,8 @@ ap_func_create_dirstruct_taskwarrior() {
     @logshow "Create symlink from [${AP_SOFT_DIR}/bin/task] to [${AP_SOFT_DIR}/taskwarrior/bin/task]\n"
     ln -sf "${AP_SOFT_DIR}/taskwarrior/bin/task" "${AP_SOFT_DIR}/bin/task"
 
-    # configs
-    if [ -f "${HOME}/scripto-common/vendors/taskwarrior/ap_taskwarrior.conf" ]; then
-        @logshow "Create symlink from [${HOME}/.taskrc] to [${HOME}/scripto-common/vendors/taskwarrior/ap_taskwarrior.conf]\n"
-        ln -sf "${HOME}/scripto-common/vendors/taskwarrior/ap_taskwarrior.conf" "${HOME}/.taskrc"
-    fi
-
-    # data
-    if [ -d "${AP_NC_DIR}/ws/.taskwarrior" ]; then
-        @logshow "Create symlink from [${HOME}/.task] to [${AP_NC_DIR}/ws/.taskwarrior]\n"
-        rm -rf "${HOME}/.task"
-        ln -sf "${AP_NC_DIR}/ws/.taskwarrior" "${HOME}/.task"
+    if alias @createdirstructtaskwarriorshare &>/dev/null; then
+        @createdirstructtaskwarriorshare
     fi
 
     if alias @createdirstructtaskwarriorcommon &>/dev/null; then
@@ -34,11 +30,9 @@ ap_func_rm_dirstruct_taskwarrior() {
     @logshow "Remove [${AP_SOFT_DIR}/bin/task]\n"
     rm -f "${AP_SOFT_DIR}/bin/task"
 
-    @logshow "Remove [${HOME}/.taskrc]\n"
-    rm -f "${HOME}/.taskrc"
-
-    @logshow "Remove [${HOME}/.task]\n"
-    rm -rf "${HOME}/.task"
+    if alias @rmdirstructtaskwarriorshare &>/dev/null; then
+        @rmdirstructtaskwarriorshare
+    fi
 
     if alias @rmdirstructtaskwarriorcommon &>/dev/null; then
         @rmdirstructtaskwarriorcommon
@@ -48,7 +42,6 @@ ap_func_rm_dirstruct_taskwarrior() {
 alias @setuptaskwarrior="ap_func_setup_taskwarrior"
 ap_func_setup_taskwarrior() {
     # https://github.com/GothenburgBitFactory/taskwarrior
-
     @logshow "Install required libraries [libgnutls-dev, cmake, make, libuuid]\n"
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install gnutls cmake make libuuid
@@ -80,6 +73,7 @@ ap_func_setup_taskwarrior() {
     # sudo make install
     cd "${AP_SOFT_DIR}/taskwarrior"
 
+    @inittaskwarrior
     if alias @createdirstructtaskwarrior &>/dev/null; then
         @createdirstructtaskwarrior
     fi
@@ -92,5 +86,9 @@ ap_func_rm_taskwarrior() {
 
     if alias @rmdirstructtaskwarrior &>/dev/null; then
         @rmdirstructtaskwarrior
+    fi
+
+    if alias @rmglobalsymlinktaskwarrior &>/dev/null; then
+        @rmglobalsymlinktaskwarrior
     fi
 }

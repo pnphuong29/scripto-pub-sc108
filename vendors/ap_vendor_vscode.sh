@@ -1,5 +1,13 @@
 alias @initvscode="ap_func_init_vscode"
 ap_func_init_vscode() {
+    alias zcodeconf='cd ~/.config/Code'
+    alias zcodeconfuser='cd ~/.config/Code/User'
+    alias zcodeconfsnippets='cd ~/.config/Code/User/snippets'
+
+    if alias @initvscodeshare &>/dev/null; then
+        @initvscodeshare
+    fi
+
     if alias @initvscodecommon &>/dev/null; then
         @initvscodecommon
     fi
@@ -9,6 +17,11 @@ alias @createdirstructvscode="ap_func_create_dirstruct_vscode"
 ap_func_create_dirstruct_vscode() {
     @logshow "Create symlink from [${AP_SOFT_DIR}/bin/code] to [/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code]\n"
     ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" "${AP_SOFT_DIR}/bin/code"
+
+    if alias @createdirstructvscodeshare &>/dev/null; then
+        @createdirstructvscodeshare
+    fi
+
     if alias @createdirstructvscodecommon &>/dev/null; then
         @createdirstructvscodecommon
     fi
@@ -16,7 +29,13 @@ ap_func_create_dirstruct_vscode() {
 
 alias @rmdirstructvscode="ap_func_rm_dirstruct_vscode"
 ap_func_rm_dirstruct_vscode() {
+    @logshow "Remove [${AP_SOFT_DIR}/bin/code]\n"
     rm -f "${AP_SOFT_DIR}/bin/code"
+
+    if alias @rmdirstructvscodeshare &>/dev/null; then
+        @rmdirstructvscodeshare
+    fi
+
     if alias @rmdirstructvscodecommon &>/dev/null; then
         @rmdirstructvscodecommon
     fi
@@ -60,6 +79,7 @@ ap_func_setup_vscode() {
     # sudo apt install code
     # fi
 
+    @initvscode
     if alias @createdirstructvscode &>/dev/null; then
         @createdirstructvscode
     fi
@@ -80,5 +100,9 @@ ap_func_rm_vscode() {
 
     if alias @rmdirstructvscode &>/dev/null; then
         @rmdirstructvscode
+    fi
+
+    if alias @rmglobalsymlinkvscode &>/dev/null; then
+        @rmglobalsymlinkvscode
     fi
 }

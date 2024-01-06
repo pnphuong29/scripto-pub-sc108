@@ -1,3 +1,0 @@
-http://nextcloud.ohmmanipadmehum.xyz:9090 {
-    reverse_proxy localhost:11000
-}

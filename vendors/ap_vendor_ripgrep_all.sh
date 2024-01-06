@@ -1,3 +1,14 @@
+alias @initripgrepall="ap_func_init_ripgrepall"
+ap_func_init_ripgrepall() {
+    if alias @initripgrepallshare &>/dev/null; then
+        @initripgrepallshare
+    fi
+
+    if alias @initripgrepallcommon &>/dev/null; then
+        @initripgrepallcommon
+    fi
+}
+
 alias @createdirstructripgrepall="ap_func_create_dirstruct_ripgrepall"
 ap_func_create_dirstruct_ripgrepall() {
     @logshow "Create symlink from [${AP_SOFT_DIR}/bin/rga] to [${AP_SOFT_DIR}/ripgrep-all/rga]\n"
@@ -8,6 +19,14 @@ ap_func_create_dirstruct_ripgrepall() {
 
     # @logshow "Create symlink from [${AP_MAN_DIR}/man1/rga.1] to [${AP_SOFT_DIR}/ripgrep-all/doc/rga.1]\n"
     # ln -sf "${AP_SOFT_DIR}/ripgrep-all/doc/rga.1" "${AP_MAN_DIR}/man1/rga.1"
+
+    if alias @createdirstructripgrepallshare &>/dev/null; then
+        @createdirstructripgrepallshare
+    fi
+
+    if alias @createdirstructripgrepallcommon &>/dev/null; then
+        @createdirstructripgrepallcommon
+    fi
 }
 
 alias @rmdirstructripgrepall="ap_func_rm_dirstruct_ripgrepall"
@@ -20,6 +39,14 @@ ap_func_rm_dirstruct_ripgrepall() {
 
     # @logshow "Remove [${AP_MAN_DIR}/man1/rga.1]\n"
     # rm -f "${AP_MAN_DIR}/man1/rga.1"
+
+    if alias @rmdirstructripgrepallshare &>/dev/null; then
+        @rmdirstructripgrepallshare
+    fi
+
+    if alias @rmdirstructripgrepallcommon &>/dev/null; then
+        @rmdirstructripgrepallcommon
+    fi
 }
 
 alias @createglobalsymlinkripgrepall="ap_func_create_global_symlink_ripgrepall"
@@ -75,13 +102,22 @@ ap_func_setup_ripgrepall() {
     cd "${AP_SOFT_DIR}"
     rm -rf "${AP_TMP_DIR}/ripgrep-all"
 
-    @createdirstructripgrepall
+    @initripgrepall
+    if alias @createdirstructripgrepall &>/dev/null; then
+        @createdirstructripgrepall
+    fi
 }
 
 alias @rmripgrepall="ap_func_rm_ripgrepall"
 ap_func_rm_ripgrepall() {
     @logshow "Remove [ripgrepall]\n"
     rm -rf "${AP_SOFT_DIR}/ripgrep-all"
-    @rmdirstructripgrepall
-    @rmglobalsymlinkripgrepall
+
+    if alias @rmdirstructripgrepall &>/dev/null; then
+        @rmdirstructripgrepall
+    fi
+
+    if alias @rmglobalsymlinkripgrepall &>/dev/null; then
+        @rmglobalsymlinkripgrepall
+    fi
 }

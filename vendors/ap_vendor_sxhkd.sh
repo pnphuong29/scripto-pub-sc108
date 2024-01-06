@@ -1,5 +1,9 @@
 alias @initsxhkd="ap_func_init_sxhkd"
 ap_func_init_sxhkd() {
+    if alias @initsxhkdshare &>/dev/null; then
+        @initsxhkdshare
+    fi
+
     if alias @initsxhkdcommon &>/dev/null; then
         @initsxhkdcommon
     fi
@@ -7,6 +11,10 @@ ap_func_init_sxhkd() {
 
 alias @createdirstructsxhkd="ap_func_create_dirstruct_sxhkd"
 ap_func_create_dirstruct_sxhkd() {
+    if alias @createdirstructsxhkdshare &>/dev/null; then
+        @createdirstructsxhkdshare
+    fi
+
     if alias @createdirstructsxhkdcommon &>/dev/null; then
         @createdirstructsxhkdcommon
     fi
@@ -14,6 +22,10 @@ ap_func_create_dirstruct_sxhkd() {
 
 alias @rmdirstructsxhkd="ap_func_rm_dirstruct_sxhkd"
 ap_func_rm_dirstruct_sxhkd() {
+    if alias @rmdirstructsxhkdshare &>/dev/null; then
+        @rmdirstructsxhkdshare
+    fi
+
     if alias @rmdirstructsxhkdcommon &>/dev/null; then
         @rmdirstructsxhkdcommon
     fi
@@ -35,6 +47,7 @@ ap_func_setup_sxhkd() {
     sudo make
     sudo make install
 
+    @initsxhkd
     if alias @createdirstructsxhkd &>/dev/null; then
         @createdirstructsxhkd
     fi
@@ -44,6 +57,7 @@ alias @rmsxhkd="ap_func_rm_sxhkd"
 ap_func_rm_sxhkd() {
     @logshow "You can remove these libraries manually [libxcb-keysyms1-dev, libxcb-util0-dev, apt-file] if needed\n"
     @logshow "Remove [sxhkd]\n"
+
     cd "${AP_SOFT_DIR}/sxhkd"
     sudo make uninstall
     cd "${AP_SOFT_DIR}"
@@ -51,5 +65,9 @@ ap_func_rm_sxhkd() {
 
     if alias @rmdirstructsxhkd &>/dev/null; then
         @rmdirstructsxhkd
+    fi
+
+    if alias @rmglobalsymlinksxhkd &>/dev/null; then
+        @rmglobalsymlinksxhkd
     fi
 }

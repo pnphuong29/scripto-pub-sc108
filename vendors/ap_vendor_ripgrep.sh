@@ -1,14 +1,13 @@
 alias @initripgrep="ap_func_init_ripgrep"
 ap_func_init_ripgrep() {
-    if [ -f "${HOME}/scripto-common/vendors/ripgrep/ap_ripgrep.ignore" ]; then
-        export AP_VENDORS_RIPGREP_IGNORE_FILE="${HOME}/scripto-common/vendors/ripgrep/ap_ripgrep.ignore"
+    if [ -f "${HOME}/scripto-share/vendors/ripgrep/ap_ripgrep.ignore" ]; then
+        export AP_VENDORS_RIPGREP_IGNORE_FILE="${HOME}/scripto-share/vendors/ripgrep/ap_ripgrep.ignore"
     fi
 
     alias viscrg="vi -p \
         \${HOME}/scripto/vendors/ap_vendor_ripgrep.sh \
-        \${HOME}/scripto-common/vendors/ap_vendor_ripgrep.sh \
-        \${HOME}/scripto-common/vendors/ripgrep/ap_ripgrep.conf \
-        \${HOME}/scripto-common/vendors/ripgrep/ap_ripgrep.ignore \
+        \${HOME}/scripto-share/vendors/ripgrep/ap_ripgrep.conf \
+        \${HOME}/scripto-share/vendors/ripgrep/ap_ripgrep.ignore \
     "
 
     # Find using vimgrep
@@ -143,13 +142,13 @@ ap_func_rm_ripgrep() {
 }
 
 alias @rg="ap_func_ripgrep"
-alias rgr="rgf -r"
-alias rgrc="rgf -c -r"
-alias rga10="rgf -i -h -a 10 --"
-alias rga20="rgf -i -h -a 20 --"
-alias rga30="rgf -i -h -a 30 --"
-alias rgab10="rgf -i -h -a 10 -b 10 --"
-alias rgab20="rgf -i -h -a 20 -b 20 --"
+alias rgr="ap_func_ripgrep -r"
+alias rgrc="ap_func_ripgrep -c -r"
+alias rga10="ap_func_ripgrep -i -h -a 10 --"
+alias rga20="ap_func_ripgrep -i -h -a 20 --"
+alias rga30="ap_func_ripgrep -i -h -a 30 --"
+alias rgab10="ap_func_ripgrep -i -h -a 10 -b 10 --"
+alias rgab20="ap_func_ripgrep -i -h -a 20 -b 20 --"
 # @@ap-func $$ ap_func_ripgrep {
 # ap_func_ripgrep [-xabhi] <extra_options> <before_context_rows> <after_context_rows> [--] *<search_string>
 # Description
