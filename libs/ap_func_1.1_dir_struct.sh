@@ -2,6 +2,13 @@ alias @createdirstructcore="ap_func_create_dir_struct_core"
 ap_func_create_dir_struct_core() {
     @logshow "Create [core] directories, files and symlinks\n"
 
+    # Logs
+    @logshow "Create directories [${AP_LOGS_DIR}/general] and log files\n"
+    mkdir -p "${AP_LOGS_DIR}/general"
+    [ ! -f "${AP_LOGS_DIR}/general/ap_general.log" ] && touch "${AP_LOGS_DIR}/general/ap_general.log"
+    [ ! -f "${AP_LOGS_DIR}/general/ap_error.log" ] && touch "${AP_LOGS_DIR}/general/ap_error.log"
+    [ ! -f "${AP_LOGS_DIR}/general/ap_debug.log" ] && touch "${AP_LOGS_DIR}/general/ap_debug.log"
+
     # Symlinks
     @logshow "Create directories [${AP_SYMLINKS_DIR}]\n"
     mkdir -p "${AP_SYMLINKS_DIR}"
@@ -29,11 +36,4 @@ ap_func_create_dir_struct_core() {
     # Tmp
     @logshow "Create directories [${AP_TMP_DIR}]\n"
     mkdir -p "${AP_TMP_DIR}"
-
-    # Logs
-    @logshow "Create directories [${AP_LOGS_DIR}/general] and log files\n"
-    mkdir -p "${AP_LOGS_DIR}/general"
-    [ ! -f "${AP_LOGS_DIR}/general/ap_general.log" ] && touch "${AP_LOGS_DIR}/general/ap_general.log"
-    [ ! -f "${AP_LOGS_DIR}/general/ap_error.log" ] && touch "${AP_LOGS_DIR}/general/ap_error.log"
-    [ ! -f "${AP_LOGS_DIR}/general/ap_debug.log" ] && touch "${AP_LOGS_DIR}/general/ap_debug.log"
 }
