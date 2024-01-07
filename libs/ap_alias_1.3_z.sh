@@ -12,6 +12,7 @@ alias zprj="cd \${AP_PRJ_DIR}"
 alias zsc="cd \${HOME}/scripto-common"
 alias zs="cd \${HOME}/scripto-main"
 alias zsr="cd \${HOME}/scripto-share"
+alias zsdata="cd \${HOME}/scripto-data"
 
 alias zdata="cd \${AP_DATA_DIR}"
 alias zdl="cd \${AP_DL_DIR}"
