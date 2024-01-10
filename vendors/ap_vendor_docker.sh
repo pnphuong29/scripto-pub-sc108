@@ -11,6 +11,7 @@ ap_func_init_docker() {
     alias dkbuild="docker build"
     alias dkrun="docker run"
     alias dkrmexistedcontainers="docker rm -f \$(docker ps -a --filter status=exited -q)"
+    alias dkrma="docker rm -f \$(docker ps -aq)"
     alias dkps="docker ps -a"
     alias dksysprune="docker system prune -a" # Remove all system cache, etc.
 
