@@ -19,7 +19,6 @@ alias @minfo="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_GREEN} --"
 alias @merr="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_RED} --"
 alias @mwarn="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_YELLOW} --"
 alias @mlog="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_CYAN} --"
-
 # @$func $$ ap_func_show_msg {
 # ap_func_show_msg [-cfen] [color_scheme] [format_string] [--] *[texts...]
 # Description
@@ -147,7 +146,6 @@ alias showsymhash21='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 21'
 alias showsymhash49='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 49'
 alias showsymhyphen21='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 21'
 alias showsymhyphen49='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 49'
-
 # @$func $$ ap_func_show_symbols {
 # ap_func_show_symbols [-cnf] [format] [--] [symbol] [no_of_times]
 # Description
@@ -237,7 +235,6 @@ alias @logshowdbgln='ap_func_log_msg "debug" 1 "@myellow" "\n"'
 alias @logshow='ap_func_log_msg "general" 1 "@mgreen"'
 alias @logshowpassed='ap_func_log_msg -p "${AP_SYM_PASSED} " -- "general" 1 "@mgreen"'
 alias @logshowfailed='ap_func_log_msg -p "${AP_SYM_FAILED} " -- "general" 1 "@mgreen"'
-
 # @$func $$ ap_func_log_msg {
 # ap_func_log_msg -p [msg_prefix] [--] *<msg_type> *<show_msg_on_terminal> *<cmd_log_msg> *<msg>
 # Description
@@ -312,7 +309,6 @@ ap_func_log_msg() {
 }
 
 alias @addpath="ap_func_add_path_var"
-
 # @$func $$ ap_func_add_path_var {
 # ap_func_add_path_var -[am] *<path_var>
 # Descriptions
@@ -381,7 +377,6 @@ ap_func_add_path_var() {
 }
 
 alias @rmpath='ap_func_rm_path_var'
-
 # @$func $$ ap_func_rm_path_var {
 # ap_func_rm_path_var *<path_var>
 # Descriptions
