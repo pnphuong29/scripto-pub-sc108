@@ -22,10 +22,19 @@ ap_func_init_nvim() {
 
 alias @createdirstructnvim="ap_func_create_dirstruct_nvim"
 ap_func_create_dirstruct_nvim() {
-    if [ ! -f "${AP_SOFT_DIR}/nvim/bin/nvim" ]; then
+    if [ -f "${AP_SOFT_DIR}/nvim/bin/nvim" ]; then
         @logshow "Create symlink from [${AP_SOFT_DIR}/bin/nvim] to [${AP_SOFT_DIR}/nvim/bin/nvim]\n"
         sudo ln -sf "${AP_SOFT_DIR}/nvim/bin/nvim" "${AP_SOFT_DIR}/bin/nvim"
     fi
+
+    # Install Vim Plug
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+    # Install client providers for neovim
+    pip install --upgrade pynvim
+    gem install neovim
+    npm install -g neovim
 
     if alias @createdirstructnvimshare &>/dev/null; then
         @createdirstructnvimshare
@@ -100,18 +109,6 @@ ap_func_setup_nvim() {
     # sudo add-apt-repository ppa:neovim-ppa/stable
     # sudo apt-get update
     # sudo apt-get install neovim
-
-    @logshow "Create symlink from [${AP_SOFT_DIR}/bin/nvim] to [${AP_SOFT_DIR}/nvim/bin/nvim]\n"
-    ln -sf "${AP_SOFT_DIR}/nvim/bin/nvim" "${AP_SOFT_DIR}/bin/nvim"
-
-    # Install Vim Plug
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-    # Install client providers for neovim
-    pip install --upgrade pynvim
-    gem install neovim
-    npm install -g neovim
 
     @initnvim
     if alias @createdirstructnvim &>/dev/null; then
