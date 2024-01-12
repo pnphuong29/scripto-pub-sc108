@@ -10,14 +10,6 @@ ap_func_init_nginx() {
     alias zscnginxconfigs='cd "${HOME}/scripto-common/vendors/nginx/conf.d"'
     alias zscnginxrenewconfigs='cd "${HOME}/scripto-common/vendors/nginx/conf.d"'
 
-    alias nginxupdateconfigs='
-        sudo cp -f "${HOME}/scripto/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/ ; \
-        sudo cp -f "${HOME}/scripto-common/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/ ; \
-    '
-    alias nginxupdaterenewconfigs='
-        sudo cp -f "${HOME}/scripto-common/vendors/nginx/renew"/*.conf /etc/nginx/conf.d/ \
-    '
-
     alias viscnginxrenewconfigs='vi -p \
         "${HOME}/scripto/vendors/ap_vendor_nginx.sh" \
         "${HOME}/scripto-common/vendors/nginx/renew"/*.conf \
@@ -110,4 +102,25 @@ ap_func_rm_nginx() {
     if alias @rmdirstructnginx &>/dev/null; then
         @rmdirstructnginx
     fi
+}
+
+alias nginxupdateconfigs="ap_func_nginx_update_config"
+ap_func_nginx_update_config() {
+    local ap_nginx_config_dir="${HOME}/scripto-common/vendors/nginx/conf.d"
+    if [ -d "${HOME}/scripto-main/vendors/nginx/conf.d" ]; then
+        ap_nginx_config_dir="${HOME}/scripto-main/vendors/nginx/conf.d"
+    fi
+
+    sudo cp -f "${HOME}/scripto/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/
+    sudo cp -f "${ap_nginx_config_dir}"/*.conf /etc/nginx/conf.d/
+}
+
+alias nginxupdaterenewconfigs="ap_func_nginx_renew_config"
+ap_func_nginx_renew_config() {
+    local ap_nginx_renew_dir="${HOME}/scripto-common/vendors/nginx/renew"
+    if [ -d "${HOME}/scripto-main/vendors/nginx/renew" ]; then
+        ap_nginx_renew_dir="${HOME}/scripto-main/vendors/nginx/renew"
+    fi
+
+    sudo cp -f "${ap_nginx_renew_dir}"/*.conf /etc/nginx/conf.d/
 }
