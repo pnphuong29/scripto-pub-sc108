@@ -233,6 +233,11 @@ ap_func_dkc_up() {
     shift $((OPTIND - 1))
 
     local ap_cmd="docker compose"
+
+    if [[ -n "${ap_opt_profile}" ]]; then
+        ap_cmd="${ap_cmd} --profile ${ap_opt_profile}"
+    fi
+
     if [ -f "${HOME}/scripto-common/dockers/ap_dkc_common.yml" ]; then
         ap_cmd="${ap_cmd} -f ${HOME}/scripto-common/dockers/ap_dkc_common.yml"
     fi
@@ -249,9 +254,6 @@ ap_func_dkc_up() {
     done
 
     ap_cmd="${ap_cmd} up --build -d"
-    if [[ -n "${ap_opt_profile}" ]]; then
-        ap_cmd="${ap_cmd} --profile ${ap_opt_profile}"
-    fi
 
     @minfo "Execute [${ap_cmd}]\n"
     eval "$(printf "%s" "${ap_cmd}")"
