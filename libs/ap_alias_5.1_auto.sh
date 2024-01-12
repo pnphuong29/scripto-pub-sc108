@@ -149,7 +149,7 @@ for ap_dkc_file in "${HOME}/scripto-share/dockers"/ap_dkc_*.yml; do
 
     # Alias - Vi docker commands
     ap_cmd="alias vidk${ap_dkc_code}='vi -p \
-        ${AP_SCRIPTO_COMMON_DIR}/dockers/ap_dkc_common.sh \
+        ${HOME}/scripto-common/dockers/ap_dkc_common.sh \
         ${ap_dkc_file} \
 	'"
     # @minfo "Execute command [${ap_cmd}]\n"
@@ -165,7 +165,7 @@ for ap_dkc_file in "${HOME}/scripto-common/dockers"/ap_dkc_*.yml; do
 
     # Alias - Vi docker commands
     ap_cmd="alias vidk${ap_dkc_code}='vi -p \
-        ${AP_SCRIPTO_COMMON_DIR}/dockers/ap_dkc_common.sh \
+        ${HOME}/scripto-common/dockers/ap_dkc_common.sh \
         ${ap_dkc_file} \
 	'"
     # @minfo "Execute command [${ap_cmd}]\n"
@@ -181,7 +181,7 @@ for ap_dkc_file in "${HOME}/scripto-main/dockers"/ap_dkc_*.yml; do
 
     # Alias - Vi docker commands
     ap_cmd="alias vidk${ap_dkc_code}='vi -p \
-        ${AP_SCRIPTO_COMMON_DIR}/dockers/ap_dkc_common.sh \
+        ${HOME}/scripto-common/dockers/ap_dkc_common.sh \
         ${ap_dkc_file} \
 	'"
     # @minfo "Execute command [${ap_cmd}]\n"
