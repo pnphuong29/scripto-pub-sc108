@@ -199,12 +199,39 @@ ap_func_dk_exec() {
 }
 
 alias dkup="ap_func_dkc_up"
+alias dkupdev="ap_func_dkc_up -p dev"
+alias dkuptest="ap_func_dkc_up -p test"
+alias dkupstaging="ap_func_dkc_up -p staging"
 # @$func $$ ap_func_dkc_up {
-# ap_func_dkc_up <docker_container_names...>
+# ap_func_dkc_up [-p] <profile> [--] <docker_container_names...>
 # Description
 # 	Perform `docker compose up --build -d` command for the input docker compose names
+# Options
+# 	-p	Profile
+# Parameters
+# 	docker_container_names	Docker containers
 # }
 ap_func_dkc_up() {
+    local ap_opts_string=":p:"
+    local ap_opt_profile=""
+
+    unset OPTIND
+
+    while getopts "${ap_opts_string}" ap_opt; do
+        case "${ap_opt}" in
+        "p")
+            ap_opt_profile="${OPTARG}"
+            ;;
+        ?)
+            echo "Invalid option [${OPTARG}]"
+            @rtn_err_opt_invalid_option
+            ;;
+        esac
+    done
+
+    # Remove all options in parameter list
+    shift $((OPTIND - 1))
+
     local ap_cmd="docker compose"
     if [ -f "${HOME}/scripto-common/dockers/ap_dkc_common.yml" ]; then
         ap_cmd="${ap_cmd} -f ${HOME}/scripto-common/dockers/ap_dkc_common.yml"
@@ -222,6 +249,10 @@ ap_func_dkc_up() {
     done
 
     ap_cmd="${ap_cmd} up --build -d"
+    if [[ -n "${ap_opt_profile}" ]]; then
+        ap_cmd="${ap_cmd} --profile ${ap_opt_profile}"
+    fi
+
     @minfo "Execute [${ap_cmd}]\n"
     eval "$(printf "%s" "${ap_cmd}")"
 
