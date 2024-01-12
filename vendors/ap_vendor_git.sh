@@ -131,6 +131,7 @@ ap_func_git_commit() {
 alias gpl='ap_func_git_pull'
 alias gplall='ap_func_git_pull all'
 alias gplscall='ap_func_git_pull sc'
+alias gplothers='ap_func_git_pull others'
 alias gplcustom='ap_func_git_pull custom'
 # @$func $$ ap_func_git_pull {
 # ap_func_git_pull [--] <project_group_code...>
@@ -165,6 +166,7 @@ ap_func_git_pull() {
 alias gacp='ap_func_git_commit_push'
 alias gacpall='ap_func_git_commit_push all'
 alias gacpscall='ap_func_git_commit_push sc'
+alias gacpothers='ap_func_git_commit_push others'
 alias gacpcustom='ap_func_git_commit_push custom'
 # @$func $$ ap_func_git_commit_push {
 # ap_func_git_commit_push [--] <project_group_code...>
@@ -201,6 +203,7 @@ ap_func_git_commit_push() {
 alias gcl='ap_func_git_clone'
 alias gcla='ap_func_git_clone all'
 alias gclsc='ap_func_git_clone sc'
+alias gclothers='ap_func_git_clone others'
 alias gclcustom='ap_func_git_clone custom'
 # @$func $$ ap_func_git_clone {
 # ap_func_git_clone [--] <project_group_code...>
