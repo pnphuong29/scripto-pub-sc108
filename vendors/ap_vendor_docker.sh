@@ -206,6 +206,9 @@ alias dkup="ap_func_dkc_up"
 # }
 ap_func_dkc_up() {
     local ap_cmd="docker compose"
+    if [ -f "${HOME}/scripto-common/dockers/ap_dkc_common.yml" ]; then
+        ap_cmd="${ap_cmd} -f ${HOME}/scripto-common/dockers/ap_dkc_common.yml"
+    fi
 
     local ap_dk_con_name
     for ap_dk_con_name in "$@"; do
@@ -221,6 +224,7 @@ ap_func_dkc_up() {
     ap_cmd="${ap_cmd} up --build -d"
     @minfo "Execute [${ap_cmd}]\n"
     eval "$(printf "%s" "${ap_cmd}")"
+
     @rtn_success
 }
 
