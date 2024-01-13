@@ -203,17 +203,19 @@ alias dkupdev="ap_func_dkc_up -p dev"
 alias dkuptest="ap_func_dkc_up -p test"
 alias dkupstaging="ap_func_dkc_up -p staging"
 # @$func $$ ap_func_dkc_up {
-# ap_func_dkc_up [-p] <profile> [--] <docker_container_names...>
+# ap_func_dkc_up [-pn] <profile> [--] <docker_container_names...>
 # Description
 # 	Perform `docker compose up --build -d` command for the input docker compose names
 # Options
+#   -n  No cache when building image
 # 	-p	Profile
 # Parameters
 # 	docker_container_names	Docker containers
 # }
 ap_func_dkc_up() {
-    local ap_opts_string=":p:"
+    local ap_opts_string=":p:n"
     local ap_opt_profile=""
+    local ap_opt_cache=""
 
     unset OPTIND
 
@@ -221,6 +223,9 @@ ap_func_dkc_up() {
         case "${ap_opt}" in
         "p")
             ap_opt_profile="${OPTARG}"
+            ;;
+        "n")
+            ap_opt_cache="--no-cache"
             ;;
         ?)
             echo "Invalid option [${OPTARG}]"
@@ -253,7 +258,7 @@ ap_func_dkc_up() {
         fi
     done
 
-    ap_cmd="${ap_cmd} up --build -d"
+    ap_cmd="${ap_cmd} up --build -d ${ap_opt_cache}"
 
     @minfo "Execute [${ap_cmd}]\n"
     eval "$(printf "%s" "${ap_cmd}")"
