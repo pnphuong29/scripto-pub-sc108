@@ -1,3 +1,5 @@
+# @#IMPORTANT - Changing the loading (sourcing) order of below files may cause unexpected results!!!
+
 # Load scripto environment variables
 if [ -d "${HOME}/scripto/libs" ]; then
     while read -r ap_env; do
