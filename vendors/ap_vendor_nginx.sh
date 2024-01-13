@@ -8,7 +8,12 @@ ap_func_init_nginx() {
     alias znginxlogs="cd /var/log/nginx"
 
     alias zscnginxconfigs='cd "${HOME}/scripto-common/vendors/nginx/conf.d"'
+    alias zsrnginxconfigs='cd "${HOME}/scripto-share/vendors/nginx/conf.d"'
+    alias zsmnginxconfigs='cd "${HOME}/scripto-main/vendors/nginx/conf.d"'
+
+    alias zsrnginxrenewconfigs='cd "${HOME}/scripto-share/vendors/nginx/conf.d"'
     alias zscnginxrenewconfigs='cd "${HOME}/scripto-common/vendors/nginx/conf.d"'
+    alias zsmnginxrenewconfigs='cd "${HOME}/scripto-main/vendors/nginx/conf.d"'
 
     alias viscnginxrenewconfigs='vi -p \
         "${HOME}/scripto/vendors/ap_vendor_nginx.sh" \
