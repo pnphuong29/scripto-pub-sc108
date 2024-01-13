@@ -111,7 +111,7 @@ ap_func_nginx_update_config() {
         ap_nginx_config_dir="${HOME}/scripto-main/vendors/nginx/conf.d"
     fi
 
-    sudo cp -f "${HOME}/scripto/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/
+    sudo cp -f "${HOME}/scripto-share/vendors/nginx/conf.d"/*.conf /etc/nginx/conf.d/
     sudo cp -f "${ap_nginx_config_dir}"/*.conf /etc/nginx/conf.d/
 }
 
