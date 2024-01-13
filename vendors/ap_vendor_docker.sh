@@ -13,7 +13,9 @@ ap_func_init_docker() {
     alias dkrmexistedcontainers="docker rm -f \$(docker ps -a --filter status=exited -q)"
     alias dkrma="docker rm -f \$(docker ps -aq)"
     alias dkps="docker ps -a"
-    alias dksysprune="docker system prune -a" # Remove all system cache, etc.
+    alias dksysprune="docker system prune -a"   # Remove all system cache, etc.
+    alias dkbuilderprune="docker builder prune" # Remove build cache
+    alias dkrmbuildcache="docker builder prune" # Remove build cache
 
     alias dkvol="docker volume"
     alias dkvolls="docker volume ls"
