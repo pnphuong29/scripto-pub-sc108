@@ -22,6 +22,7 @@ alias showcpuinfo="cat /proc/cpuinfo"
 alias settzvn='sudo timedatectl --no-pager set-timezone Asia/Ho_Chi_Minh'
 
 # Aliases - Other commands
+alias root='sudo su'
 alias grep='grep --color'
 alias du1="du -h --max-depth=1"
 alias coveragereport="coverage report"
