@@ -313,18 +313,18 @@ ap_func_rsync() {
 
     # Implementation
     local ap_src_path="${1}"
-    local ap_dst_path="${2:-}" # default empty
+    local ap_dst_path="${2:/tmp}"
 
     if [[ -z "${ap_src_path:-}" ]]; then
         @minfo "Missing source path!\n"
         @rtn_err_missing_argument
     fi
 
-    @minfo "Sync from [${PWD}/${ap_src_path}] to [${ap_rsync_user}@${ap_domain_ip}:/home/${ap_rsync_user}/${ap_dst_path}] via port [${ap_port}]\n"
+    @minfo "Sync from [${PWD}/${ap_src_path}] to [${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}] via port [${ap_port}]\n"
     if [ -n "${ap_rsync_pass}" ]; then
-        sshpass -p "${ap_rsync_pass}" rsync -av -e "ssh -p ${ap_port}" --progress "${PWD}/${ap_src_path}" "${ap_rsync_user}@${ap_domain_ip}:/home/${ap_rsync_user}/${ap_dst_path}"
+        sshpass -p "${ap_rsync_pass}" rsync -avP -e "ssh -p ${ap_port}" "${PWD}/${ap_src_path}" "${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}"
     else
-        rsync -av -e "ssh -p ${ap_port}" --progress "${PWD}/${ap_src_path}" "${ap_rsync_user}@${ap_domain_ip}:/home/${ap_rsync_user}/${ap_dst_path}"
+        rsync -avP -e "ssh -p ${ap_port}" "${PWD}/${ap_src_path}" "${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}"
     fi
 
     @rtn_success
