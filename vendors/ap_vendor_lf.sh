@@ -21,11 +21,11 @@ ap_func_create_dirstruct_lf() {
     if [ ! -d "${HOME}/.config/lf" ]; then
         @logshow "Create directories [${HOME}/.config/lf]\n"
         mkdir -p "${HOME}/.config/lf"
+    fi
 
-        if [ -f "${HOME}/scripto/vendors/lf/ap_lfrc.conf" ]; then
-            @logshow "Create symlink from [${HOME}/.config/lf/lfrc] to [${HOME}/scripto/vendors/lf/ap_lfrc.conf]\n"
-            ln -sf "${HOME}/scripto/vendors/lf/ap_lfrc.conf" "${HOME}/.config/lf/lfrc"
-        fi
+    if [ -f "${HOME}/scripto/vendors/lf/ap_lfrc.conf" ]; then
+        @logshow "Create symlink from [${HOME}/.config/lf/lfrc] to [${HOME}/scripto/vendors/lf/ap_lfrc.conf]\n"
+        ln -sf "${HOME}/scripto/vendors/lf/ap_lfrc.conf" "${HOME}/.config/lf/lfrc"
     fi
 
     if alias @createdirstructlfshare &>/dev/null; then
