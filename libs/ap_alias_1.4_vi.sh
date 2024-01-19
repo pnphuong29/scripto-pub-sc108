@@ -16,3 +16,4 @@ alias vigitconfigs="vi -p \
 	\${HOME}/.gitignore_global \
     "
 alias vichromebm="vi \${AP_CHROME_BOOKMARK_FILE_PATH}"
+alias vitmp='vi "${AP_TMP_DIR}/tmp.txt"'
