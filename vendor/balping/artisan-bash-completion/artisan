@@ -1,0 +1,9 @@
+_artisan()
+{
+        words="${COMP_WORDS[@]}"
+        tmp=$(artisan list:forBash $COMP_CWORD "$COMP_LINE" "$words")
+        COMPREPLY=($tmp)
+        return 0
+}
+complete -F _artisan artisan
+
