@@ -5,6 +5,8 @@ ap_func_init_composer() {
     export COMPOSER_BIN_DIR="${COMPOSER_HOME}/vendor/bin"
     @addpath "${COMPOSER_BIN_DIR}"
 
+    alias zcomposerbin='cd "${HOME}/.composer/vendor/bin"'
+
     if alias @initcomposershare &>/dev/null; then
         @initcomposershare
     fi
@@ -64,8 +66,10 @@ ap_func_setup_composer() {
     @addpath "${COMPOSER_BIN_DIR}"
 
     # Autocomplete
-    @logshow "Installing [symfony-console-autocomplete]\n"
-    composer global require bamarni/symfony-console-autocomplete
+    @logshow "Installing [psysh, symfony-console-autocomplete]\n"
+    composer global require \
+        psy/psysh:@stable \
+        bamarni/symfony-console-autocomplete
 
     @initcomposer
 
