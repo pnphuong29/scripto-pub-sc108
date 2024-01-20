@@ -37,7 +37,7 @@ alias @a="ap_php_artisan"
 alias @ar="ap_php_artisan route"
 alias @arcache="ap_php_artisan route cache"
 alias @arclear="ap_php_artisan route clear"
-alias @arlist="ap_php_artisan route list"
+alias @arls="ap_php_artisan route list"
 ap_php_artisan() {
     php artisan "$1" "$2"
 }
