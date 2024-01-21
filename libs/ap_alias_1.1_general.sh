@@ -7,6 +7,11 @@ fi
 
 alias cpd='pwd | tr -d "\n" | @copy'
 
+alias cpsetupsc7='printf "source <(curl -SL "https://raw.githubusercontent.com/pnphuong29/scripto-setup-pub-sc35/master/ap_setup_sc7.sh")" | @copy'
+alias cpsetupsc21='printf "source <(curl -SL "https://raw.githubusercontent.com/pnphuong29/scripto-setup-pub-sc35/master/ap_setup_sc21.sh")" | @copy'
+alias cpsetupsc49='printf "source <(curl -SL "https://raw.githubusercontent.com/pnphuong29/scripto-setup-pub-sc35/master/ap_setup_sc49.sh")" | @copy'
+alias cpsetupsc84='printf "source <(curl -SL "https://raw.githubusercontent.com/pnphuong29/scripto-setup-pub-sc35/master/ap_setup_sc84.sh")" | @copy'
+
 # Aliases - List commands
 alias lspaths='echo "${PATH}" | tr ":" "\n"'
 alias lsaliases='alias | gsed "s@alias @@" | grep "^[@|1|2]" | sort'
