@@ -33,7 +33,7 @@ ap_func_rm_dirstruct_artisan() {
     fi
 }
 
-alias @a="ap_php_artisan"
+alias @ar="ap_php_artisan"
 alias @ar="ap_php_artisan route"
 alias @arcache="ap_php_artisan route cache"
 alias @arclear="ap_php_artisan route clear"
