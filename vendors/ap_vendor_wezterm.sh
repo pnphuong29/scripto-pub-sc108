@@ -6,7 +6,7 @@ ap_func_init_wezterm() {
 
     # export WEZTERM_CONFIG_FILE="${HOME}/scripto-common/vendors/wezterm/ap_wezterm.config.lua"
     # https://wezfurlong.org/wezterm/config/lua/config/term.html
-    alias @weztermgenerateterminfo='curl -SL "https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo" >"${HOME}/scripto-common/vendors/wezterm/ap_wezterm.terminfo"'
+    alias weztermgenerateterminfo='curl -SL "https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo" >"${HOME}/scripto-common/vendors/wezterm/ap_wezterm.terminfo"'
 
     if alias @initweztermshare &>/dev/null; then
         @initweztermshare

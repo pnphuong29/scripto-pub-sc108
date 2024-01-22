@@ -35,3 +35,4 @@ alias genrandstr="head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32 ; echo ''"
 alias chownuser="sudo chown -R ${USER}.${USER}" # DO NOT use \$USER, because it will be equal to ROOT user
 alias @sysctl="sudo systemctl"
 alias @sysctlstatus="sudo systemctl status"
+alias @sysctlrestart="sudo systemctl restart"

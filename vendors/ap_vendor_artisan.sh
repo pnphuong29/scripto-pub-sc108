@@ -33,11 +33,18 @@ ap_func_rm_dirstruct_artisan() {
     fi
 }
 
-alias @ar="ap_php_artisan"
-alias @ar="ap_php_artisan route"
-alias @arcache="ap_php_artisan route cache"
-alias @arclear="ap_php_artisan route clear"
-alias @arls="ap_php_artisan route list"
+alias artisanroute="ap_php_artisan route"
+alias artisanroutels="ap_php_artisan route list"
+alias artisanrouteclear="ap_php_artisan route clear"
+
+alias artisancache="ap_php_artisan cache"
+alias artisancacheclear="ap_php_artisan cache clear"
+
+alias artisanconfig="ap_php_artisan config"
+alias artisanconfigclear="ap_php_artisan config clear"
+
+alias artisanstorage="ap_php_artisan storage"
+alias artisanstorageclear="ap_php_artisan storage clear"
 ap_php_artisan() {
-    php artisan "$1" "$2"
+    php artisan "${1}:${2}"
 }
