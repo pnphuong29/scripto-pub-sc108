@@ -44,6 +44,7 @@ alias artisanconfig="ap_php_artisan config"
 alias artisanconfigclear="ap_php_artisan config clear"
 
 alias artisanstorage="ap_php_artisan storage"
+alias artisanstoragelink="ap_php_artisan storage link"
 alias artisanstorageclear="ap_php_artisan storage clear"
 ap_php_artisan() {
     php artisan "${1}:${2}"
