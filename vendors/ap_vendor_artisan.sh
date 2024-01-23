@@ -1,5 +1,9 @@
 alias @initartisan="ap_func_init_artisan"
 ap_func_init_artisan() {
+    if [ -f "${HOME}/scripto/vendors/artisan/ap_completion_artisan.sh" ]; then
+        source "${HOME}/scripto/vendors/artisan/ap_completion_artisan.sh"
+    fi
+
     alias artisan="php artisan"
 
     if alias @initartisanshare &>/dev/null; then
