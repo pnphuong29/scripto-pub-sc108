@@ -4,8 +4,9 @@ ap_func_init_artisan() {
         source "${HOME}/scripto/vendors/artisan/ap_completion_artisan.sh"
     fi
 
-    alias zlaravelstoragelogs='cd "${PWD}"/storage/logs'
-    alias chmod777storage="sudo chmod -R 777 storage"
+    alias zlaravellogs='cd "${PWD}"/storage/logs'
+    alias clearlaravellogs='printf "" > "${PWD}"/storage/logs/laralve.log'
+    alias updatelaravelstorageownerperm='sudo chown -R "${USER}.${USER}" storage; sudo chmod -R 777 storage'
 
     alias artisan="php artisan"
     alias artisanupdate="\
