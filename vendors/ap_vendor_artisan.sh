@@ -8,7 +8,7 @@ ap_func_init_artisan() {
     alias clearlaravellogs='printf "" > "${PWD}"/storage/logs/laralve.log'
     alias updatelaravelstoragperm='sudo chmod -R 777 storage'
 
-    alias artisan="php artisan"
+    # alias artisan="php artisan"
     alias artisanupdate="\
         sudo chmod -R 777 storage; \
         php artisan cache:clear; \
