@@ -1,5 +1,4 @@
 alias showostype='ap_func_get_os_type'
-
 # @$func $$ ap_func_get_os_type {
 # ap_func_get_os_type
 # Descriptions
@@ -26,7 +25,6 @@ ap_func_get_os_type() {
 
 alias trim='ap_func_trim'
 alias trimfile='ap_func_trim -f --'
-
 # @$func $$ ap_func_trim {
 # ap_func_trim [-f] [--] [input_text/input_file]
 # Description
@@ -90,7 +88,6 @@ ap_func_trim() {
 
 alias democolorsandformatting='ap_func_demo_colors_and_formatting'
 alias democolorsandformatting256='ap_func_demo_colors_and_formatting 256'
-
 # @$func $$ ap_func_demo_colors_and_formatting {
 # ap_func_demo_colors_and_formatting [--] [no_of_bits]
 # Description
@@ -156,7 +153,6 @@ ap_func_demo_colors_and_formatting() {
 }
 
 alias vidir="ap_func_vim_open_all_files_in_current_dir"
-
 # @$func $$ ap_func_vim_open_all_files_in_current_dir {
 # ap_func_vim_open_all_files_in_current_dir
 # Description
@@ -183,15 +179,16 @@ ap_func_vim_open_all_files_in_current_dir() {
 
 alias @chmod="ap_func_chmod"
 alias chmod777666="ap_func_chmod 777 666"
-alias chmoddir="ap_func_chmod -d"
-alias chmoddir777="ap_func_chmod -d 777"
-alias chmodfile="ap_func_chmod -f"
-alias chmodfile666="ap_func_chmod -f 666"
+alias chmoddir="ap_func_chmod -d -r"
+alias chmoddir777="ap_func_chmod -d -r 777"
+alias chmodfile="ap_func_chmod -f -r"
+alias chmodfile666="ap_func_chmod -f -r 666"
 # @$func $$ ap_func_chmod {
 # ap_func_chmod <dir_mod> <file_mod> <path>
 # Description
 # 	Perform chmod for files and folders in <path> with respective input permissions
 # Options
+#   -r Use sudo permissions
 # 	-d Perform chmod for directories only
 # 	-f Perform chmod for files only
 # Parameters
@@ -200,10 +197,11 @@ alias chmodfile666="ap_func_chmod -f 666"
 #	AP_CODE_SUCCESS
 # }
 ap_func_chmod() {
-    local ap_opts_string='df'
+    local ap_opts_string='dfr'
     local ap_opt=''
     local ap_opt_d=0
     local ap_opt_f=0
+    local ap_opt_r=0
 
     unset OPTIND
 
@@ -214,6 +212,9 @@ ap_func_chmod() {
             ;;
         'f')
             ap_opt_f=1
+            ;;
+        'r')
+            ap_opt_r=1
             ;;
         ?)
             @merr "Invalid option [${OPTARG}]"
@@ -253,15 +254,20 @@ ap_func_chmod() {
     local ap_file_mod="${2:-${ap_default_file_mod}}"
     local ap_path="${3:-${ap_default_path}}"
 
-    find "${ap_path}" -type d -exec chmod "${ap_dir_mod}" {} \;
-    find "${ap_path}" -type f -exec chmod "${ap_file_mod}" {} \;
+    if [[ "${ap_opt_r}" == 1 ]]; then
+        find "${ap_path}" -type d -exec sudo chmod "${ap_dir_mod}" {} \;
+        find "${ap_path}" -type f -exec sudo chmod "${ap_file_mod}" {} \;
+    else
+        find "${ap_path}" -type d -exec chmod "${ap_dir_mod}" {} \;
+        find "${ap_path}" -type f -exec chmod "${ap_file_mod}" {} \;
+    fi
 
     @rtn_success
 }
 
 alias @rsync="ap_func_rsync"
 # @$func $$ ap_func_rsync {
-# ap_func_rsync [-dpuw] <domain/ip> <port> <user> <password> [--] *<src_path> <dst_path>
+# ap_func_rsync [-dpuwr] <domain/ip> <port> <user> <password> [--] *<src_path> <dst_path>
 # Description
 # 	Rsync a file or folder to a remote machine
 # Notes
@@ -270,7 +276,8 @@ alias @rsync="ap_func_rsync"
 # 	-d <domain/ip>	Specify a domain or an IP address to rsync to
 #   -u <user>       Specify user
 #	-p <port>		Specify port number
-#	-w <pass>		rsync user password
+#	-w <pass>		User's password
+#	-r 		        Recursive rsync directories
 # Parameters
 # 	*<src_path>	Path to the file or folder of current machine (source)
 # 	<dst_path>	Path to the folder of the remote machine (destination) (default: `AP_RSYNC_DIR` )
@@ -278,8 +285,9 @@ alias @rsync="ap_func_rsync"
 #	AP_CODE_SUCCESS
 # }
 ap_func_rsync() {
-    local ap_opts_string=':d:p:u:w:'
+    local ap_opts_string=':d:p:u:w:r'
     local ap_opt=''
+    local ap_opt_r=0
     local ap_domain_ip=""
     local ap_port=""
     local ap_rsync_user=""
@@ -289,6 +297,9 @@ ap_func_rsync() {
 
     while getopts "${ap_opts_string}" ap_opt; do
         case "${ap_opt}" in
+        'r')
+            ap_opt_r=1
+            ;;
         'd')
             ap_domain_ip="${OPTARG}"
             ;;
@@ -312,19 +323,18 @@ ap_func_rsync() {
     shift $((OPTIND - 1))
 
     # Implementation
-    local ap_src_path="${1}"
-    local ap_dst_path="${2:/tmp}"
+    local ap_src_path="${1:"${PWD}"}"
+    local ap_dst_path="${2:/tmp/}"
 
-    if [[ -z "${ap_src_path:-}" ]]; then
-        @minfo "Missing source path!\n"
-        @rtn_err_missing_argument
-    fi
-
-    @minfo "Sync from [${PWD}/${ap_src_path}] to [${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}] via port [${ap_port}]\n"
+    @minfo "Sync from [${ap_src_path}] to [${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}] via port [${ap_port}]\n"
     if [ -n "${ap_rsync_pass}" ]; then
-        sshpass -p "${ap_rsync_pass}" rsync -avP -e "ssh -p ${ap_port}" "${PWD}/${ap_src_path}" "${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}"
+        sshpass -p "${ap_rsync_pass}" rsync -avP -e "ssh -p ${ap_port}" "${ap_src_path}" "${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}"
     else
-        rsync -avP -e "ssh -p ${ap_port}" "${PWD}/${ap_src_path}" "${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}"
+        if [[ "${ap_opt_r}" == 1 ]]; then
+            rsync -avrzP -e "ssh -p ${ap_port}" "${ap_src_path}" "${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}"
+        else
+            rsync -avzP -e "ssh -p ${ap_port}" "${ap_src_path}" "${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}"
+        fi
     fi
 
     @rtn_success
