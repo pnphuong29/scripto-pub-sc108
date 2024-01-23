@@ -197,7 +197,7 @@ alias chmodfile666="ap_func_chmod -f -r 666"
 #	AP_CODE_SUCCESS
 # }
 ap_func_chmod() {
-    local ap_opts_string='dfr'
+    local ap_opts_string=':dfr'
     local ap_opt=''
     local ap_opt_d=0
     local ap_opt_f=0
@@ -239,14 +239,26 @@ ap_func_chmod() {
     if [[ $ap_opt_d = 1 ]]; then
         local ap_dir_mod="${1:-${ap_default_dir_mod}}"
         local ap_path="${2:-${ap_default_path}}"
-        find "${ap_path}" -type d -exec chmod "${ap_dir_mod}" {} \;
+
+        if [[ "${ap_opt_r}" == 1 ]]; then
+            find "${ap_path}" -type d -exec sudo chmod "${ap_dir_mod}" {} \;
+        else
+            find "${ap_path}" -type d -exec chmod "${ap_dir_mod}" {} \;
+        fi
+
         @rtn_success
     fi
 
     if [[ $ap_opt_f = 1 ]]; then
         local ap_file_mod="${1:-${ap_default_file_mod}}"
         local ap_path="${2:-${ap_default_path}}"
-        find "${ap_path}" -type f -exec chmod "${ap_file_mod}" {} \;
+
+        if [[ "${ap_opt_r}" == 1 ]]; then
+            find "${ap_path}" -type f -exec sudo chmod "${ap_file_mod}" {} \;
+        else
+            find "${ap_path}" -type f -exec chmod "${ap_file_mod}" {} \;
+        fi
+
         @rtn_success
     fi
 
