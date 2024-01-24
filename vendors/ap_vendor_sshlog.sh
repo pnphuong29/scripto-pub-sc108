@@ -3,6 +3,10 @@ ap_func_init_sshlog() {
     alias @sshlog="sudo sshlog"
     alias lssshsessions="sudo sshlog sessions"
     alias watchsshsessions="sudo sshlog watch"
+    alias zsshlog="cd /var/log/sshlog"
+    alias zsshlogsessions="cd /var/log/sshlog/sessions"
+    alias showsshlogevents="cat /var/log/sshlog/event.log"
+    alias showsshlogdlogs="cat /var/log/sshlog/sshlogd.log"
 
     if alias @initsshlogshare &>/dev/null; then
         @initsshlogshare
@@ -45,6 +49,12 @@ ap_func_setup_sshlog() {
         curl https://repo.sshlog.com/sshlog-ubuntu/public.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/repo-sshlog-ubuntu.gpg
         echo "deb [arch=any signed-by=/usr/share/keyrings/repo-sshlog-ubuntu.gpg] https://repo.sshlog.com/sshlog-ubuntu/ stable main" | sudo tee /etc/apt/sources.list.d/repo-sshlog-ubuntu.list
         sudo apt update && sudo apt install -y sshlog
+
+        @minfo "Append group [sshlog] to current user [${USER}]\n"
+        sudo usermod -aG sshlog "${USER}"
+
+        @minfo "Start [sshlogd] service"
+        sudo systemctl start sshlog
     fi
 
     @initsshlog
