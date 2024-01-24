@@ -1,8 +1,8 @@
 alias @initsshlog="ap_func_init_sshlog"
 ap_func_init_sshlog() {
     alias @sshlog="sudo sshlog"
-    alias lssshsessions="sudo sshlog sessions"
-    alias watchsshsessions="sudo sshlog watch"
+    alias lssshsessions="sshlog sessions"
+    alias watchsshsessions="sshlog watch"
     alias zsshlog="cd /var/log/sshlog"
     alias zsshlogsessions="cd /var/log/sshlog/sessions"
     alias showsshlogevents="cat /var/log/sshlog/event.log"
