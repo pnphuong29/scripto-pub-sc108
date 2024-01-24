@@ -203,7 +203,7 @@ ap_func_dk_exec() {
 alias dkup="ap_func_dkc_up"
 alias dkupdev="ap_func_dkc_up -p dev"
 alias dkuptest="ap_func_dkc_up -p test"
-alias dkupstaging="ap_func_dkc_up -p staging"
+alias dkupuat="ap_func_dkc_up -p uat"
 # @$func $$ ap_func_dkc_up {
 # ap_func_dkc_up [-pn] <profile> [--] <docker_container_names...>
 # Description
