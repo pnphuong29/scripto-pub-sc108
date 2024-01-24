@@ -5,8 +5,8 @@ ap_func_init_sshlog() {
     alias watchsshsessions="sshlog watch"
     alias zsshlog="cd /var/log/sshlog"
     alias zsshlogsessions="cd /var/log/sshlog/sessions"
-    alias showsshlogevents="cat /var/log/sshlog/event.log"
-    alias showsshlogdlogs="cat /var/log/sshlog/sshlogd.log"
+    alias showsshlogevents="sudo cat /var/log/sshlog/event.log"
+    alias showsshlogdlogs="sudo cat /var/log/sshlog/sshlogd.log"
 
     if alias @initsshlogshare &>/dev/null; then
         @initsshlogshare
