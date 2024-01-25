@@ -8,7 +8,6 @@ alias @rtn_err_opt_invalid_option="return \${AP_CODE_ERR_OPT_INVALID_OPTION}"
 alias @rtn_err_file_not_found="return \${AP_CODE_ERR_FILE_NOT_FOUND}"
 alias @rtn_err_unknown="return \${AP_CODE_ERR_UNKNOWN}"
 
-alias @m='ap_func_show_msg'
 alias @mgreen='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_GREEN}" --'
 alias @mred='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_RED}" --'
 alias @myellow='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_YELLOW}" --'

@@ -99,6 +99,50 @@ ap_func_rm_dirstruct_pyenv() {
     fi
 }
 
+alias @createglobalsymlinkpyenv="ap_func_create_global_symlink_pyenv"
+ap_func_create_global_symlink_pyenv() {
+    local ap_path
+
+    if which python | grep shims &>/dev/null; then
+        ap_path="$(which python)"
+        @logshow "Create symlink from [/usr/local/bin/python] to [${ap_path}]\n"
+        sudo ln -sf "${ap_path}" "/usr/local/bin/python"
+    fi
+
+    if which python3 | grep shims &>/dev/null; then
+        ap_path="$(which python3)"
+        @logshow "Create symlink from [/usr/local/bin/python3] to [${ap_path}]\n"
+        sudo ln -sf "${ap_path}" "/usr/local/bin/python3"
+    fi
+
+    if which pip | grep shims &>/dev/null; then
+        ap_path="$(which pip)"
+        @logshow "Create symlink from [/usr/local/bin/pip] to [${ap_path}]\n"
+        sudo ln -sf "${ap_path}" "/usr/local/bin/pip"
+    fi
+
+    if which pip3 | grep shims &>/dev/null; then
+        ap_path="$(which pip3)"
+        @logshow "Create symlink from [/usr/local/bin/pip3] to [${ap_path}]\n"
+        sudo ln -sf "${ap_path}" "/usr/local/bin/pip3"
+    fi
+}
+
+alias @rmglobalsymlinkpyenv="ap_func_rm_global_symlink_pyenv"
+ap_func_rm_global_symlink_pyenv() {
+    @logshow "Remove [/usr/local/bin/python]\n"
+    sudo rm -f "/usr/local/bin/python"
+
+    @logshow "Remove [/usr/local/bin/python3]\n"
+    sudo rm -f "/usr/local/bin/python3"
+
+    @logshow "Remove [/usr/local/bin/pip]\n"
+    sudo rm -f "/usr/local/bin/pip"
+
+    @logshow "Remove [/usr/local/bin/pip3]\n"
+    sudo rm -f "/usr/local/bin/pip3"
+}
+
 alias @setuppyenv="ap_func_setup_pyenv"
 ap_func_setup_pyenv() {
     # https://github.com/pyenv/pyenv
@@ -160,5 +204,9 @@ ap_func_rm_pyenv() {
 
     if alias @rmdirstructpyenv &>/dev/null; then
         @rmdirstructpyenv
+    fi
+
+    if alias @rmglobalsymlinkpyenv &>/dev/null; then
+        @rmglobalsymlinkpyenv
     fi
 }

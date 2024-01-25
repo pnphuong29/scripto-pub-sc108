@@ -71,6 +71,7 @@ ap_func_setup_taskwarrior() {
     make
     make install
     # sudo make install
+
     cd "${AP_SOFT_DIR}/taskwarrior"
 
     @inittaskwarrior
