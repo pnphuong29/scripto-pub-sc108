@@ -16,8 +16,8 @@ alias cpsetupsc84='printf "source <(curl -SL "https://raw.githubusercontent.com/
 alias lspaths='echo "${PATH}" | tr ":" "\n"'
 alias lsaliases='alias | gsed "s@alias @@" | grep "^[@|1|2]" | sort'
 alias lsaliasesfzf='alias | gsed "s@alias @@" | grep "^[@|1|2|3]" | sort | fzf'
-alias lsusers="cat /etc/passwd"
-alias lsgroups="cat /etc/group"
+alias lsusers="getenv passwd"
+alias lsgroups="getenv group"
 
 # Aliases - Show commands
 alias showdt='gdate +"%Y%m%d_%H%M%S"'
@@ -33,6 +33,7 @@ alias du1="du -h --max-depth=1"
 alias coveragereport="coverage report"
 alias genrandstr="head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32 ; echo ''"
 alias chownuser="sudo chown -R ${USER}.${USER}" # DO NOT use \$USER, because it will be equal to ROOT user
+alias psefgrep='ps -ef | grep'
 alias @sysctl="sudo systemctl"
 alias @sysctlstatus="sudo systemctl status"
 alias @sysctlrestart="sudo systemctl restart"
