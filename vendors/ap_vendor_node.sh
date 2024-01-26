@@ -3,6 +3,9 @@ ap_func_init_node() {
     export AP_NODE_VERSION_DEFAULT="16.20.2"
     # AP_NODE_VERSION_DEFAULT="18.16.1"
 
+    alias npmbuild='npm run build'
+    alias npmserve='npm run serve'
+
     if alias @initnodeshare &>/dev/null; then
         @initnodeshare
     fi
