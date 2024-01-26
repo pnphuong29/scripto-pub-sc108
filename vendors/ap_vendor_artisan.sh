@@ -12,9 +12,9 @@ ap_func_init_artisan() {
     alias artisanupdate="\
         sudo chmod -R 777 storage; \
         php artisan cache:clear; \
-        php artisan route:clear; \
         php artisan config:clear; \
         php artisan config:cache; \
+        php artisan route:clear; \
         php artisan route:cache; \
     "
 
