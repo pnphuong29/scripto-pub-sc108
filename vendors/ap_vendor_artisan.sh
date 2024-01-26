@@ -5,7 +5,8 @@ ap_func_init_artisan() {
     fi
 
     alias zlaravellogs='cd "${PWD}"/storage/logs'
-    alias clearlaravellogs='printf "" > "${PWD}"/storage/logs/laralve.log'
+    alias zlaravelstoragepublic='cd "${PWD}"/storage/app/public'
+    alias clearlaravellogs='printf "" > "${PWD}"/storage/logs/laravel.log'
     alias updatelaravelstoragperm='sudo chmod -R 777 storage'
 
     alias artisan="./artisan"

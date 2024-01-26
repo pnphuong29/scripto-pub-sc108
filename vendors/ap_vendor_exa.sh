@@ -2,6 +2,7 @@ alias @initexa="ap_func_init_exa"
 ap_func_init_exa() {
     alias @exa="exa -a --long --header --icons --group --group-directories-first"
     alias l="@exa --all"
+    alias lmodified="@exa --all --sort=modified"
     alias ld="@exa --all -D"
     alias l2="@exa --tree --level 2"
     alias ld2="@exa --tree --level 2 -D"
