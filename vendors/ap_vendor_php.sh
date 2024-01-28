@@ -137,7 +137,7 @@ ap_func_rm_php() {
     fi
 }
 
-alias @php8.1updatesymlinks="ap_func_update_symlinks"
+alias php81updatesymlinks="ap_func_update_symlinks"
 ap_func_update_symlinks() {
     sudo ln -sf /usr/bin/php8.1 /etc/alternatives/php
     sudo ln -sf /usr/share/man/man1/php8.1.1.gz /etc/alternatives/php.1.gz
@@ -150,4 +150,15 @@ ap_func_update_symlinks() {
     sudo ln -sf /usr/bin/phpize8.1 /usr/bin/phpize.default
 
     sudo ln -sf /usr/share/man/man1/phpize8.1.1.gz /usr/share/man/man1/phpize.default.1.gz
+}
+
+alias php81updateconfigs="ap_func_php_fpm_update_config"
+ap_func_php_fpm_update_config() {
+    local ap_php_fpm_config_dir="${HOME}/scripto-common/vendors/php/php-fpm.d"
+    if [ -d "${HOME}/scripto-main/vendors/php/php-fpm.d" ]; then
+        ap_php_fpm_config_dir="${HOME}/scripto-main/vendors/php/php-fpm.d"
+    fi
+
+    sudo cp -f "${HOME}/scripto-share/vendors/php/php-fpm.d"/*.conf /etc/php/8.1/fpm/pool.d/
+    sudo cp -f "${ap_php_fpm_config_dir}"/*.conf /etc/php/8.1/fpm/pool.d/
 }
