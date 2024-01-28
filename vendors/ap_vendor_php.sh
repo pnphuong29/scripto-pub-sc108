@@ -159,6 +159,6 @@ ap_func_php_fpm_update_config() {
         ap_php_fpm_config_dir="${HOME}/scripto-main/vendors/php/php-fpm.d"
     fi
 
-    sudo cp -f "${HOME}/scripto-share/vendors/php/php-fpm.d"/*.conf /etc/php/8.1/fpm/pool.d/
+    # sudo cp -f "${HOME}/scripto-share/vendors/php/php-fpm.d"/*.conf /etc/php/8.1/fpm/pool.d/
     sudo cp -f "${ap_php_fpm_config_dir}"/*.conf /etc/php/8.1/fpm/pool.d/
 }
