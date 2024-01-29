@@ -10,12 +10,14 @@ ap_func_init_docker() {
 
     alias dkbuild="docker build"
     alias dkrun="docker run"
-    alias dkrmexistedcontainers="docker rm -f \$(docker ps -a --filter status=exited -q)"
-    alias dkrma="docker rm -f \$(docker ps -aq)"
     alias dkps="docker ps -a"
     alias dksysprune="docker system prune -a"   # Remove all system cache, etc.
     alias dkbuilderprune="docker builder prune" # Remove build cache
+
+    alias dkrmexistedcontainers="docker rm -f \$(docker ps -a --filter status=exited -q)"
+    alias dkrma="docker rm -f \$(docker ps -aq)"
     alias dkrmbuildcache="docker builder prune" # Remove build cache
+    alias dkrmtmpimages="docker images | grep \"^<none>\" | awk '{ print \$3 }' | xargs docker image rm"
 
     alias dkvol="docker volume"
     alias dkvolls="docker volume ls"
@@ -31,7 +33,6 @@ ap_func_init_docker() {
     alias dkimgbuild="docker image build"
     alias dkimgls="docker images -a"
     alias dkimgrma="docker image rm -f \$(docker images -aq)"
-    alias dkimgrmtmp="docker images | grep \"^<none>\" | awk '{ print \$3 }' | xargs docker image rm"
     alias dkimgprune="docker image prune -a"
 
     alias dklogs="docker logs"
@@ -46,6 +47,7 @@ ap_func_init_docker() {
 
     alias dkinspect="docker inspect"
     alias dkinspectlogpath="docker inspect --format='{{.LogPath}}'"
+    alias dkinspectmounts="docker inspect --format='{{json .Mounts}}'"
 
     if alias @initdockershare &>/dev/null; then
         @initdockershare
@@ -142,6 +144,17 @@ ap_func_rm_docker() {
     if alias @rmdirstructdocker &>/dev/null; then
         @rmdirstructdocker
     fi
+}
+
+alias dkinspectfmt="ap_func_dk_inspect_fmt"
+# @$func $$ ap_func_dk_inspect_fmt {
+# ap_func_dk_inspect_fmt <container>
+# Description
+# 	Perform `docker inspect --format` command for <container>
+# }
+ap_func_dk_inspect_fmt() {
+    docker inspect --format '{{ "$1" }}'
+    @rtn_success
 }
 
 alias dkrm="ap_func_dk_rm"

@@ -11,6 +11,18 @@ ap_func_init_artisan() {
     alias artisan="./artisan"
     alias artisantinker='php artisan tinker'
     alias artisanserve='php artisan serve'
+
+    alias artisanclear="\
+        php artisan cache:clear; \
+        php artisan config:clear; \
+        php artisan route:clear; \
+    "
+
+    alias artisanupdate="\
+        php artisan config:cache; \
+        php artisan route:cache; \
+    "
+
     alias artisanupdate="\
         php artisan cache:clear; \
         php artisan config:clear; \
