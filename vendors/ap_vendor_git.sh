@@ -47,17 +47,17 @@ ap_func_create_dirstruct_git() {
     @logshow "Generate [git] bash autocomplete\n"
     curl -L "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash" -o "${AP_COMPLETIONS_DIR}/ap_completion_git.bash"
 
-    if [ -f "${HOME}/scripto-common/vendors/git/ap_git.conf" ]; then
+    if [ -f "${HOME}/scripto-share/vendors/git/ap_git.conf" ]; then
         # Create .gitconfig symbolic link
-        @logshow "Link [${HOME}/.gitconfig] to [${HOME}/scripto-common/vendors/git/ap_git.conf]\n"
-        ln -sf "${HOME}/scripto-common/vendors/git/ap_git.conf" "${HOME}/.gitconfig"
+        @logshow "Link [${HOME}/.gitconfig] to [${HOME}/scripto-share/vendors/git/ap_git.conf]\n"
+        ln -sf "${HOME}/scripto-share/vendors/git/ap_git.conf" "${HOME}/.gitconfig"
     fi
 
-    if [ -f "${HOME}/scripto-common/vendors/git/ap_gitignore_global" ]; then
+    if [ -f "${HOME}/scripto-share/vendors/git/ap_gitignore_global" ]; then
         # Use git global ignore as a backup solution in case you forgot to add [.gitignore]
         # @#recommend $$ Use [.gitignore] in project whenever possible
-        @logshow "Link [${HOME}/.gitignore_global] to [${HOME}/scripto-common/vendors/git/ap_git.conf]\n"
-        ln -sf "${HOME}/scripto-common/vendors/git/ap_gitignore_global" "${HOME}/.gitignore_global"
+        @logshow "Link [${HOME}/.gitignore_global] to [${HOME}/scripto-share/vendors/git/ap_git.conf]\n"
+        ln -sf "${HOME}/scripto-share/vendors/git/ap_gitignore_global" "${HOME}/.gitignore_global"
 
         # Update global ignore file path in ~/.gitconfig file
         if [ "$(git config --global core.excludesFile)" != "${HOME}/.gitignore_global" ]; then
