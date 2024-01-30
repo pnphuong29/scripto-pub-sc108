@@ -19,8 +19,12 @@ ap_func_init_git() {
     alias gst="git status"
     alias gc="git commit"
     alias gps="git push"
-    alias gb='git branch'
-    alias gba='git branch --all'
+    alias gb='git --no-pager branch'
+    alias gba='git --no-pager branch --all'
+    alias gco='git checkout'
+    alias gcodev='git checkout dev'
+    alias gcotest='git checkout test'
+    alias gcouat='git checkout uat'
     alias gpsupstreamoriginmaster="git push --set-upstream origin master"
     alias gpl="git pull"
     alias gplupstreamoriginmaster="git pull --set-upstream origin master"

@@ -156,6 +156,10 @@ fi
 @addpath "${HOME}/scripto-main/tests"
 @addpath "${HOME}/scripto-main/utils"
 
+@addpath -m /opt/local/share/man
+@addpath /opt/local/bin
+@addpath /opt/local/sbin
+
 # Make executable files
 [ -d "${HOME}/scripto-share/utils" ] && chmod -R +x "${HOME}/scripto-share/utils"
 [ -d "${HOME}/scripto-share/tests" ] && chmod -R +x "${HOME}/scripto-share/tests"

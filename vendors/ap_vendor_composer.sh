@@ -69,7 +69,8 @@ ap_func_setup_composer() {
     @logshow "Installing [psysh, symfony-console-autocomplete]\n"
     composer global require \
         psy/psysh:@stable \
-        bamarni/symfony-console-autocomplete
+        bamarni/symfony-console-autocomplete \
+        friendsofphp/php-cs-fixer
 
     @initcomposer
 

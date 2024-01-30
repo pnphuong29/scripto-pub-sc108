@@ -1,5 +1,7 @@
 alias @initmacport="ap_func_init_macport"
 ap_func_init_macport() {
+    # export DISPLAY=:0.0 # For macOS < 10.5
+
     if alias @initmacportshare &>/dev/null; then
         @initmacportshare
     fi
@@ -37,16 +39,24 @@ ap_func_setup_macports() {
     xcode-select --install
 
     # https://www.macports.org/install.php
-    @logshow "Download [MacPorts v2.8.1]\n"
-    cd "${HOME}/tmp"
-    curl -SOL "https://github.com/macports/macports-base/releases/download/v2.8.1/MacPorts-2.8.1.tar.gz"
-    tar -zxf "MacPorts-2.8.1.tar.gz"
+    @logshow "Download [MacPorts]\n"
+    cd "${AP_TMP_DIR}"
+    curl -SL \
+        "$(curl --silent https://api.github.com/repos/macports/macports-base/releases | jq -r '.[0].assets[].browser_download_url' | grep ".tar.gz" | grep -v asc)" >macports.tar.gz
+    tar -zxf "macports.tar.gz"
 
-    @logshow "Build and install [MacPorts v2.8.1]"
-    cd "MacPorts-2.8.1"
-    ./configure && make && sudo make install
+    @logshow "Build and install [MacPorts]"
+    mv MacPorts* MacPorts
+
+    cd "MacPorts"
+    # Installing MacPorts into /usr/local is not supported.
+    # If you understand this and wish to do so anyway, pass --with-unsupported-prefix to configure.
+    # ./configure --prefix=/usr/local --with-unsupported-prefix
+    ./configure
+    make
+    sudo make install
     cd ../
-    rm -rf "MacPorts-2.8.1"
+    rm -rf "MacPorts"
 
     @initmacport
     if alias @createdirstructmacport &>/dev/null; then

@@ -214,23 +214,29 @@ ap_func_dk_exec() {
 }
 
 alias dkup="ap_func_dkc_up"
+alias dkdn="ap_func_dkc_up -d"
 alias dkupdev="ap_func_dkc_up -p dev"
+alias dkdndev="ap_func_dkc_up -d -p dev"
 alias dkuptest="ap_func_dkc_up -p test"
+alias dkdntest="ap_func_dkc_up -d -p test"
 alias dkupuat="ap_func_dkc_up -p uat"
+alias dkdnuat="ap_func_dkc_up -d -p uat"
 # @$func $$ ap_func_dkc_up {
 # ap_func_dkc_up [-pn] <profile> [--] <docker_container_names...>
 # Description
 # 	Perform `docker compose up --build -d` command for the input docker compose names
 # Options
+#   -d  Perform docker compose down instead
 #   -n  No cache when building image
 # 	-p	Profile
 # Parameters
 # 	docker_container_names	Docker containers
 # }
 ap_func_dkc_up() {
-    local ap_opts_string=":p:n"
+    local ap_opts_string=":p:nd"
     local ap_opt_profile=""
     local ap_opt_cache=""
+    local ap_opt_d=0
 
     unset OPTIND
 
@@ -241,6 +247,9 @@ ap_func_dkc_up() {
             ;;
         "n")
             ap_opt_cache="--no-cache"
+            ;;
+        "d")
+            ap_opt_d=1
             ;;
         ?)
             echo "Invalid option [${OPTARG}]"
@@ -268,12 +277,18 @@ ap_func_dkc_up() {
             ap_cmd="${ap_cmd} -f ${HOME}/scripto-common/dockers/ap_dkc_${ap_dk_con_name}.yml"
         elif [ -f "${HOME}/scripto-share/dockers/ap_dkc_${ap_dk_con_name}.yml" ]; then
             ap_cmd="${ap_cmd} -f ${HOME}/scripto-share/dockers/ap_dkc_${ap_dk_con_name}.yml"
-        else
+        elif [ -f "${PWD}/scripto/dockers/ap_dkc_${ap_dk_con_name}.yml" ]; then
             ap_cmd="${ap_cmd} -f ${HOME}/scripto/dockers/ap_dkc_${ap_dk_con_name}.yml"
+        else
+            ap_cmd="${ap_cmd} -f ${PWD}/ap_dkc_${ap_dk_con_name}.yml"
         fi
     done
 
-    ap_cmd="${ap_cmd} up --build -d ${ap_opt_cache}"
+    if [[ "${ap_opt_d}" == 1 ]]; then
+        ap_cmd="${ap_cmd} down"
+    else
+        ap_cmd="${ap_cmd} up --build -d ${ap_opt_cache}"
+    fi
 
     @minfo "Execute [${ap_cmd}]\n"
     eval "$(printf "%s" "${ap_cmd}")"
