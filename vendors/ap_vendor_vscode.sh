@@ -15,8 +15,10 @@ ap_func_init_vscode() {
 
 alias @createdirstructvscode="ap_func_create_dirstruct_vscode"
 ap_func_create_dirstruct_vscode() {
-    @logshow "Create symlink from [${AP_SOFT_DIR}/bin/code] to [/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code]\n"
-    ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" "${AP_SOFT_DIR}/bin/code"
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        @logshow "Create symlink from [${AP_SOFT_DIR}/bin/code] to [/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code]\n"
+        ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" "${AP_SOFT_DIR}/bin/code"
+    fi
 
     if alias @createdirstructvscodeshare &>/dev/null; then
         @createdirstructvscodeshare
