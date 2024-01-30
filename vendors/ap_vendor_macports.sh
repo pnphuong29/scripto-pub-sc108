@@ -1,35 +1,38 @@
-alias @initmacport="ap_func_init_macport"
-ap_func_init_macport() {
+alias @initmacports="ap_func_init_macports"
+ap_func_init_macports() {
     # export DISPLAY=:0.0 # For macOS < 10.5
+    alias @port='sudo port'
+    alias portselfupdate='sudo port selfupdate'
+    alias portinstall='sudo port install'
 
-    if alias @initmacportshare &>/dev/null; then
-        @initmacportshare
+    if alias @initmacportsshare &>/dev/null; then
+        @initmacportsshare
     fi
 
-    if alias @initmacportcommon &>/dev/null; then
-        @initmacportcommon
-    fi
-}
-
-alias @createdirstructmacport="ap_func_create_dirstruct_macport"
-ap_func_create_dirstruct_macport() {
-    if alias @createdirstructmacportshare &>/dev/null; then
-        @createdirstructmacportshare
-    fi
-
-    if alias @createdirstructmacportcommon &>/dev/null; then
-        @createdirstructmacportcommon
+    if alias @initmacportscommon &>/dev/null; then
+        @initmacportscommon
     fi
 }
 
-alias @rmdirstructmacport="ap_func_rm_dirstruct_macport"
-ap_func_rm_dirstruct_macport() {
-    if alias @rmdirstructmacportshare &>/dev/null; then
-        @rmdirstructmacportshare
+alias @createdirstructmacports="ap_func_create_dirstruct_macports"
+ap_func_create_dirstruct_macports() {
+    if alias @createdirstructmacportsshare &>/dev/null; then
+        @createdirstructmacportsshare
     fi
 
-    if alias @rmdirstructmacportcommon &>/dev/null; then
-        @rmdirstructmacportcommon
+    if alias @createdirstructmacportscommon &>/dev/null; then
+        @createdirstructmacportscommon
+    fi
+}
+
+alias @rmdirstructmacports="ap_func_rm_dirstruct_macports"
+ap_func_rm_dirstruct_macports() {
+    if alias @rmdirstructmacportsshare &>/dev/null; then
+        @rmdirstructmacportsshare
+    fi
+
+    if alias @rmdirstructmacportscommon &>/dev/null; then
+        @rmdirstructmacportscommon
     fi
 }
 
@@ -58,9 +61,9 @@ ap_func_setup_macports() {
     cd ../
     rm -rf "MacPorts"
 
-    @initmacport
-    if alias @createdirstructmacport &>/dev/null; then
-        @createdirstructmacport
+    @initmacports
+    if alias @createdirstructmacports &>/dev/null; then
+        @createdirstructmacports
     fi
 }
 
@@ -89,11 +92,11 @@ ap_func_rm_macports() {
         /Library/Tcl/macports1.0 \
         "${HOME}/.macports"
 
-    if alias @rmdirstructmacport &>/dev/null; then
+    if alias @rmdirstructmacports &>/dev/null; then
         @rmdirstructmacport
     fi
 
-    if alias @rmglobalsymlinkmacport &>/dev/null; then
+    if alias @rmglobalsymlinkmacports &>/dev/null; then
         @rmglobalsymlinkmacport
     fi
 }
