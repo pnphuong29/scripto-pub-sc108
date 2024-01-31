@@ -16,12 +16,13 @@ alias cpsetupsc74='printf "source <(curl -SL "https://raw.githubusercontent.com/
 alias lspaths='echo "${PATH}" | tr ":" "\n"'
 alias lsaliases='alias | gsed "s@alias @@" | grep "^[@|1|2]" | sort'
 alias lsaliasesfzf='alias | gsed "s@alias @@" | grep "^[@|1|2|3]" | sort | fzf'
-alias lsusers="getenv passwd"
-alias lsgroups="getenv group"
+alias lsusers="getent passwd"
+alias lsgroups="getent group"
 
 # Aliases - Show commands
 alias showdt='gdate +"%Y%m%d_%H%M%S"'
-alias showcpuinfo="cat /proc/cpuinfo"
+alias showcpuinfo="sudo cat /proc/cpuinfo"
+alias showcronlogs='sudo cat /var/logs/cron.log'
 
 # Aliases - Set commands
 alias settzvn='sudo timedatectl --no-pager set-timezone Asia/Ho_Chi_Minh'
@@ -34,10 +35,13 @@ alias coveragereport="coverage report"
 alias genrandstr="head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32 ; echo ''"
 alias chownuser="sudo chown -R ${USER}.${USER}" # DO NOT use \$USER, because it will be equal to ROOT user
 alias psgrep='ps -ef | grep'
+alias launchctllist='sudo launchctl list'
+alias launchctllistgrep='sudo launchctl list | grep'
+alias @vi='sudo vi'
 alias @rm='sudo rm'
 alias @mkdir='sudo mkdir'
 alias @chown='sudo chown'
 alias @chmod='sudo chmod'
-alias @sysctl="sudo systemctl"
-alias @sysctlstatus="sudo systemctl status"
-alias @sysctlrestart="sudo systemctl restart"
+alias sys="sudo systemctl"
+alias sysstatus="sudo systemctl status"
+alias sysrestart="sudo systemctl restart"

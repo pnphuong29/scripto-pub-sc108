@@ -5,7 +5,12 @@ ap_func_init_composer() {
     export COMPOSER_BIN_DIR="${COMPOSER_HOME}/vendor/bin"
     @addpath "${COMPOSER_BIN_DIR}"
 
+    alias zcomposer='cd "${HOME}/.composer"'
     alias zcomposerbin='cd "${HOME}/.composer/vendor/bin"'
+    alias composerinstall='composer install'
+    alias composerupdate='composer update'
+    alias lscomposerconfigglobal='composer config --list --global'
+    alias lscomposerconfig='composer config --list'
 
     if alias @initcomposershare &>/dev/null; then
         @initcomposershare

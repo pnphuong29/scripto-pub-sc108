@@ -4,6 +4,22 @@ ap_func_init_macports() {
     alias @port='sudo port'
     alias portselfupdate='sudo port selfupdate'
     alias portinstall='sudo port install'
+    alias portinstallverbose='sudo port -v install'
+    alias portclean='sudo port clean'
+    alias portload='sudo port load'
+    alias portunload='sudo port unload'
+    alias portuninstall='sudo port uninstall'
+    alias portuninstallforce='sudo port uninstall --force'
+    alias portsearch='port search'
+    alias portdeps='port deps'
+    alias portlist='port list'
+    alias portinstalled='port installed'
+    alias portinfo='port info'
+    alias portcontents='port -q contents --size --units KiB'
+
+    if [ -f "/opt/local/etc/profile.d/bash_completion.sh" ]; then
+        source "/opt/local/etc/profile.d/bash_completion.sh"
+    fi
 
     if alias @initmacportsshare &>/dev/null; then
         @initmacportsshare

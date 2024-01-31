@@ -38,6 +38,24 @@ ap_func_rm_dirstruct_php() {
     fi
 }
 
+alias @createglobalsymlinkphp81="ap_func_create_global_symlink_php"
+ap_func_create_global_symlink_php() {
+    if [ -f "/opt/local/bin/php-config81" ]; then
+        @logshow "Create symlink from [/usr/local/bin/php-config] to [/opt/local/bin/php-config81]\n"
+        sudo ln -sf "/opt/local/bin/php-config81" "/usr/local/bin/php-config"
+    fi
+
+    if [ -f "/opt/local/bin/php81" ]; then
+        @logshow "Create symlink from [/usr/local/bin/php] to [/opt/local/bin/php81]\n"
+        sudo ln -sf "/opt/local/bin/php81" "/usr/local/bin/php"
+    fi
+
+    if [ -f "/opt/local/bin/phpize81" ]; then
+        @logshow "Create symlink from [/usr/local/bin/phpize] to [/opt/local/bin/phpize81]\n"
+        sudo ln -sf "/opt/local/bin/phpize81" "/usr/local/bin/phpize"
+    fi
+}
+
 alias @setupphp="ap_func_setup_php"
 ap_func_setup_php() {
     # PHP should be installed after installing
@@ -49,9 +67,30 @@ ap_func_setup_php() {
     @logshow "Install [PHP 8.1]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        brew reinstall gd # Fix bugs "Library not loaded: /opt/homebrew/opt/libavif/lib/libavif.15.dylib"
-        brew install php@8.1
-        # @addpath "/usr/local/opt/php@8.1/bin"
+        # brew has problems with performance especially when running on macOS Catalina
+        # brew reinstall gd # Fix bugs "Library not loaded: /opt/homebrew/opt/libavif/lib/libavif.15.dylib"
+        # brew install php@8.1
+        sudo port install \
+            php81 \
+            php81-fpm \
+            php81-apache2handler \
+            php81-curl \
+            php81-gd \
+            php81-openssl \
+            php81-mbstring \
+            php81-zip \
+            php81-sqlite \
+            php81-mysql \
+            php81-postgresql \
+            php81-intl \
+            php81-iconv \
+            php81-ldap \
+            php81-redis \
+            php81-imap \
+            php81-gmp \
+            php81-APCu \
+            php81-memcached \
+            php81-imagick
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         sudo apt install -y software-properties-common
         sudo add-apt-repository -y ppa:ondrej/php
@@ -100,7 +139,26 @@ ap_func_rm_php() {
 
     # MySQL should have only 1 version in current system
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        brew uninstall php@8.1
+        # brew uninstall php@8.1
+        sudo port uninstall \
+            php81 \
+            php81-fpm \
+            php81-apache2handler \
+            php81-curl \
+            php81-gd \
+            php81-mbstring \
+            php81-zip \
+            php81-sqlite \
+            php81-mysql \
+            php81-postgresql \
+            php81-intl \
+            php81-ldap \
+            php81-redis \
+            php81-imap \
+            php81-gmp \
+            php81-APCu \
+            php81-memcached \
+            php81-imagick
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         sudo apt purge -y \
             php8.1 \
@@ -140,6 +198,12 @@ ap_func_rm_php() {
     if alias @rmglobalsymlinkphp &>/dev/null; then
         @rmglobalsymlinkphp
     fi
+}
+
+alias portloadphp81services="ap_func_port_load_php81_services"
+ap_func_port_load_php81_services() {
+    sudo port load apache2
+    sudo port load php81-fpm
 }
 
 alias php81updatesymlinks="ap_func_update_symlinks"

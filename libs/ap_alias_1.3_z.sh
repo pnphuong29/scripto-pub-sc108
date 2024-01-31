@@ -30,3 +30,4 @@ alias zautostart="cd \${HOME}/.config/autostart"
 alias zusersnap="cd \${HOME}/snap"
 alias zsnap="cd /snap"
 alias zsnapdesktopshortcuts="cd /var/lib/snapd/desktop/applications"
+alias zcrontabs='cd /var/spool/cron/crontabs'

@@ -3,6 +3,8 @@ ap_func_init_node() {
     export AP_NODE_VERSION_DEFAULT="16.20.2"
     # AP_NODE_VERSION_DEFAULT="18.16.1"
 
+    alias npminstall='npm install'
+    alias npmuninstall='npm uninstall'
     alias npmbuild='npm run build'
     alias npmserve='npm run serve'
 

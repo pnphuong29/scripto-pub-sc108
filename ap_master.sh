@@ -159,6 +159,7 @@ fi
 @addpath -m /opt/local/share/man
 @addpath /opt/local/bin
 @addpath /opt/local/sbin
+@addpath /opt/local/libexec/gnubin/
 
 # Make executable files
 [ -d "${HOME}/scripto-share/utils" ] && chmod -R +x "${HOME}/scripto-share/utils"

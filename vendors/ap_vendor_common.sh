@@ -13,27 +13,31 @@ ap_func_setup_common_apps() {
     # Require [brew]
     @logshow "Install common apps\n"
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        brew install \
-            bash-completion@2 \
-            launchctl-completion \
+        # brew install \
+        #     bash-completion@2 \
+        #     launchctl-completion \
+        #     coreutils \
+        #     findutils \
+        #     make \
+        #     cmake \
+        #     gcc \
+        #     gpg2 \
+        #     gnu-sed \
+        #     gawk \
+        #     pandoc \
+        #     tmux \
+        #     unar \
+        #     pgrep \
+        #     poppler \
+        #     exiftool \
+        #     vim \
+        #     curl \
+        #     wget \
+        #     git
+
+        port install \
             coreutils \
-            findutils \
-            make \
-            cmake \
-            gcc \
-            gpg2 \
-            gnu-sed \
-            gawk \
-            pandoc \
-            tmux \
-            unar \
-            pgrep \
-            poppler \
-            exiftool \
-            vim \
-            curl \
-            wget \
-            git
+            findutils
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         # Enable necessary ubuntu software repositories
         sudo apt update
