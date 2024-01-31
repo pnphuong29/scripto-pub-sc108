@@ -22,7 +22,7 @@ alias lsgroups="getent group"
 # Aliases - Show commands
 alias showdt='gdate +"%Y%m%d_%H%M%S"'
 alias showcpuinfo="sudo cat /proc/cpuinfo"
-alias showcronlogs='sudo cat /var/logs/cron.log'
+alias showcronlogs='sudo cat /var/log/cron.log'
 
 # Aliases - Set commands
 alias settzvn='sudo timedatectl --no-pager set-timezone Asia/Ho_Chi_Minh'
