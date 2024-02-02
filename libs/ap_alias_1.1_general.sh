@@ -42,6 +42,7 @@ alias @rm='sudo rm'
 alias @mkdir='sudo mkdir'
 alias @chown='sudo chown'
 alias @chmod='sudo chmod'
+alias @kill='sudo kill'
 alias sys="sudo systemctl"
 alias sysstatus="sudo systemctl status"
 alias sysrestart="sudo systemctl restart"

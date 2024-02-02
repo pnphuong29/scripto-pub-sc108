@@ -4,8 +4,8 @@ ap_func_init_php() {
     alias zphp81fpm='cd /etc/php/8.1/fpm/'
     alias zphp81fpmpoold='cd /etc/php/8.1/fpm/pool.d'
 
-    alias restartphpfpm81='sudo systemctl restart php8.1-fpm.service'
-    alias statusphpfpm81='sudo systemctl status php8.1-fpm.service'
+    alias rrphpfpm81='sudo systemctl restart php8.1-fpm.service'
+    alias ssphpfpm81='sudo systemctl status php8.1-fpm.service'
 
     if alias @initphpshare &>/dev/null; then
         @initphpshare
