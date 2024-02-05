@@ -162,7 +162,7 @@ alias vidir="ap_func_vim_open_all_files_in_current_dir"
 # }
 ap_func_vim_open_all_files_in_current_dir() {
     local ap_file
-    local ap_cmd='nvim -p'
+    local ap_cmd='vi -p'
 
     shopt -s dotglob # Enable listing dot files when globbing
     for ap_file in "${PWD}"/*; do
@@ -170,7 +170,7 @@ ap_func_vim_open_all_files_in_current_dir() {
     done
     shopt -u dotglob # Disable listing dot files when globbing
 
-    if [[ "${ap_cmd}" != "nvim -p" ]]; then
+    if [[ "${ap_cmd}" != "vi -p" ]]; then
         eval "${ap_cmd}"
     fi
 

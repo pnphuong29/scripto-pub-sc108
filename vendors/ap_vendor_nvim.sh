@@ -187,7 +187,7 @@ ap_func_nvim_bulk_edit() {
     if [[ -n "${ap_cmd}" ]]; then
         local ap_log_msg
         ap_log_msg="$(echo "${ap_cmd}" | gsed "s@ @\n@g")"
-        @logdbg "\nnvim -p${ap_log_msg}\n"
-        eval "$(printf "%s" "nvim -p${ap_cmd}")"
+        @logdbg "\nvi -p${ap_log_msg}\n"
+        eval "$(printf "%s" "vi -p${ap_cmd}")"
     fi
 }

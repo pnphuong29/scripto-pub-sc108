@@ -48,7 +48,8 @@ ap_func_rm_dirstruct_node() {
 alias @createglobalsymlinknode="ap_func_create_global_symlink_node"
 ap_func_create_global_symlink_node() {
     local ap_path
-    ap_path="$(nvm which node | cut -d ' ' -f 3)"
+    # ap_path="$(nvm which node | cut -d ' ' -f 3)"
+    ap_path="$(which node | cut -d ' ' -f 3)"
 
     if [ -f "${ap_path}" ]; then
         @logshow "Create symlink from [/usr/local/bin/node] to [${ap_path}]\n"
@@ -82,8 +83,8 @@ ap_func_setup_node() {
     fi
 
     @logshow "Install [node v${ap_node_setup_version}]\n"
-    nvm install "v${ap_node_setup_version}"
-    npm install -g npm # Update npm to latest version
+    # nvm install "v${ap_node_setup_version}"
+    volta install "node@v${ap_node_setup_version}"
 
     @initnode
     if alias @createdirstructnode &>/dev/null; then
@@ -99,7 +100,8 @@ ap_func_rm_node() {
     fi
 
     @logshow "Remove [node] v${ap_node_remove_version}\n"
-    nvm uninstall "v${ap_node_remove_version}"
+    # nvm uninstall "v${ap_node_remove_version}"
+    volta uninstall "node@v${ap_node_remove_version}"
 
     if alias @rmdirstructnode &>/dev/null; then
         @rmdirstructnode
