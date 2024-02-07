@@ -36,6 +36,7 @@ export AP_LOGS_DEBUG_ENABLED=0
 export AP_MARKER_CONFIG_START="@@@AP_START"
 export AP_MARKER_CONFIG_END="@@@AP_END"
 
+# export TERM="xterm"
 export TERM="xterm-256color"
 export AP_UID="$(id -u)"
 export AP_GID="$(id -g)"
