@@ -102,7 +102,7 @@ alias @setupxxx="ap_func_setup_xxx"
 ap_func_setup_xxx() {
     local ap_xxx_setup_version=''
     if [ -n "$1" ]; then
-    ap_xxx_setup_version="$1"
+        ap_xxx_setup_version="$1"
     fi
 
     @logshow "Install [xxx] v${ap_xxx_setup_version}\n"
@@ -118,8 +118,14 @@ ap_func_setup_xxx() {
     cd "${AP_TMP_DIR}/xxx"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        curl -SL \
-            "$(curl --silent https://api.github.com/repos/owner/xxx/releases | jq -r '.[0].assets[].browser_download_url' | grep "macos" | grep x86_64 | grep -v sha256)" >xxx.tar.gz
+        if [[ "$(uname -m)" == 'arm64' ]]; then
+            curl -SL \
+                "$(curl --silent "https://api.github.com/repos/owner/xxx/releases" | jq -r '.[0].assets[].browser_download_url' | grep "macos" | grep arm | grep -v sha256)" >xxx.tar.gz
+        elif [[ "$(uname -m)" == 'x86_64' ]]; then
+            curl -SL \
+                "$(curl --silent "https://api.github.com/repos/owner/xxx/releases" | jq -r '.[0].assets[].browser_download_url' | grep "macos" | grep x86_64 | grep -v sha256)" >xxx.tar.gz
+        fi
+
         unzip xxx.zip
         mv xxx* xxx
         rm -rf "/Applications/xxx"
@@ -128,11 +134,11 @@ ap_func_setup_xxx() {
 
         hdiutil attach -nobrowse xxx.dmg
         cd "/Volumes/xxx"
-        cp -R xxx.app /Applications/
+        cp -R "xxx.app" /Applications/
         hdiutil detach "/Volumes/xxx"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         curl -SL \
-            "$(curl --silent https://api.github.com/repos/owner/xxx/releases | jq -r '.[0].assets[].browser_download_url' | grep "linux" | grep x86_64 | grep -v sha256 | grep "musl")" >xxx.tar.gz
+            "$(curl --silent "https://api.github.com/repos/owner/xxx/releases" | jq -r '.[0].assets[].browser_download_url' | grep "linux" | grep x86_64 | grep -v sha256 | grep musl)" >xxx.tar.gz
         sudo dpkg -i xxx.deb
     fi
 

@@ -2,14 +2,15 @@ alias @initjava="ap_func_init_java"
 ap_func_init_java() {
     export AP_JDK_SETUP_VERSION='21'
 
+    # TODO: Test JAVA installation in macOS
     local ap_jdk_dl_dir="jdk-${AP_JDK_SETUP_VERSION}.jdk"
-    local ap_vendors_java_dir="${AP_SOFT_DIR}/java/${ap_jdk_dl_dir}"
-    local ap_bin_path="${ap_vendors_java_dir}/Contents/Home/bin"
+    local ap_java_dir="${AP_SOFT_DIR}/java/${ap_jdk_dl_dir}"
+    local ap_bin_path="${ap_java_dir}/Contents/Home/bin"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        ap_jdk_dl_dir="jdk-${AP_JDK_SETUP_VERSION}"
-        ap_vendors_java_dir="${AP_SOFT_DIR}/java/${ap_jdk_dl_dir}"
-        ap_bin_path="${ap_vendors_java_dir}/bin"
+        ap_jdk_dl_dir="jdk-${AP_JDK_SETUP_VERSION}.0.2"
+        ap_java_dir="${AP_SOFT_DIR}/java/${ap_jdk_dl_dir}"
+        ap_bin_path="${ap_java_dir}/bin"
     fi
 
     if [ -d "${ap_bin_path}" ]; then
@@ -58,7 +59,7 @@ ap_func_setup_java() {
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         ap_os="linux"
-        ap_jdk_dl_dir="jdk-${AP_JDK_SETUP_VERSION}.0.1"
+        ap_jdk_dl_dir="jdk-${AP_JDK_SETUP_VERSION}.0.2"
         ap_vendors_java_dir="${AP_SOFT_DIR}/java/${ap_jdk_dl_dir}"
     fi
 

@@ -361,9 +361,14 @@ ap_func_add_path_var() {
     echo "${!ap_ref_path}" | grep ":${ap_path}$" &>/dev/null && ap_grep_matched=1
     echo "${!ap_ref_path}" | grep ":${ap_path}:" &>/dev/null && ap_grep_matched=1
 
-    if [[ "${ap_grep_matched}" == 1 ]]; then
-        @mwarn "${ap_path} already existed in ${ap_ref_path} variable!\n"
+    if [ "${ap_grep_matched}" == 1 ]; then
+        # @mwarn "${ap_path} already existed in ${ap_ref_path} variable!\n"
         @rtn_existed
+    fi
+
+    if [ ! -d "${ap_path}" ]; then
+        # @mwarn "Path [${ap_path}] does not exist!\n"
+        @rtn_err_file_not_found
     fi
 
     if [ "${ap_opt_append}" == 0 ]; then

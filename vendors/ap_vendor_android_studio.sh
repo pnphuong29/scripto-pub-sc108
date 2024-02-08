@@ -3,12 +3,16 @@ ap_func_init_androidstudio() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         export ANDROID_HOME="${HOME}/Library/Android/sdk"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        export ANDROID_HOME="${HOME}/Library/Android/sdk"
+        export ANDROID_HOME="${HOME}/Android/Sdk"
+        @addpath "${AP_SOFT_DIR}/android-studio/bin"
     fi
 
     @addpath "${ANDROID_HOME}/tools"
     @addpath "${ANDROID_HOME}/tools/bin"
     @addpath "${ANDROID_HOME}/platform-tools"
+    @addpath "${ANDROID_HOME}/cmdline-tools/latest/bin"
+    @addpath "${ANDROID_HOME}/build-tools/latest"
+    @addpath "${ANDROID_HOME}/emulator"
 
     if alias @initandroidstudioshare &>/dev/null; then
         @initandroidstudioshare
@@ -21,8 +25,14 @@ ap_func_init_androidstudio() {
 
 alias @createdirstructandroidstudio="ap_func_create_dirstruct_androidstudio"
 ap_func_create_dirstruct_androidstudio() {
-    @logshow "Generate [androidstudio] bash autocomplete\n"
-    androidstudio >"${AP_COMPLETIONS_DIR}/ap_completion_androidstudio.bash"
+    # https://github.com/flutter/flutter/issues/118502
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        # TODO: Update configure Android Studio in macOS
+        echo "Fill in codes for [createdirstructandroidstudio]"
+    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+        cd "${AP_SOFT_DIR}/android-studio"
+        ln -s "${AP_SOFT_DIR}/android-studio/jbr" "${AP_SOFT_DIR}/android-studio/jre"
+    fi
 
     if alias @createdirstructandroidstudioshare &>/dev/null; then
         @createdirstructandroidstudioshare
@@ -35,9 +45,6 @@ ap_func_create_dirstruct_androidstudio() {
 
 alias @rmdirstructandroidstudio="ap_func_rm_dirstruct_androidstudio"
 ap_func_rm_dirstruct_androidstudio() {
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_androidstudio.bash]\n"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_androidstudio.bash"
-
     if alias @rmdirstructandroidstudioshare &>/dev/null; then
         @rmdirstructandroidstudioshare
     fi
@@ -49,60 +56,47 @@ ap_func_rm_dirstruct_androidstudio() {
 
 alias @setupandroidstudio="ap_func_setup_androidstudio"
 ap_func_setup_androidstudio() {
-    local ap_androidstudio_setup_version=''
+    # https://developer.android.com/studio/install
+    local ap_android_studio_setup_version='2023.1.1.28'
     if [ -n "$1" ]; then
-        ap_androidstudio_setup_version="$1"
+        ap_android_studio_setup_version="$1"
     fi
 
-    @logshow "Install [androidstudio] v${ap_androidstudio_setup_version}\n"
-
-    @logshow "Install [androidstudio]\n"
+    @logshow "Install [Android Studio] v${ap_android_studio_setup_version}\n"
 
     # Remove old app dir if any
-    rm -rf "${AP_SOFT_DIR}/androidstudio"
-    rm -rf "${AP_TMP_DIR}/androidstudio"
+    rm -rf "${AP_SOFT_DIR}/android-studio"
+    rm -rf "${AP_TMP_DIR}/android-studio"
 
-    # Install androidstudio
-    mkdir -p "${AP_TMP_DIR}/androidstudio"
-    cd "${AP_TMP_DIR}/androidstudio"
+    mkdir -p "${AP_TMP_DIR}/android-studio"
+    cd "${AP_TMP_DIR}/android-studio"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        curl -SL \
-            "$(curl --silent https://api.github.com/repos/owner/androidstudio/releases | jq -r '.[0].assets[].browser_download_url' | grep "macos" | grep x86_64 | grep -v sha256)" >androidstudio.tar.gz
-        unzip androidstudio.zip
-        mv androidstudio* androidstudio
-        rm -rf "/Applications/androidstudio"
-        mv "androidstudio/androidstudio.app" /Applications/
-        cd "/Applications"
+        if [[ "$(uname -m)" == 'arm64' ]]; then
+            curl -SLO "https://redirector.gvt1.com/edgedl/android/studio/install/2023.1.1.28/android-studio-2023.1.1.28-mac_arm.dmg"
+            hdiutil attach -nobrowse android-studio-2023.1.1.28-mac_arm.dmg
+        elif [[ "$(uname -m)" == 'x86_64' ]]; then
+            curl -SLO "https://redirector.gvt1.com/edgedl/android/studio/install/2023.1.1.28/android-studio-2023.1.1.28-mac.dmg"
+            hdiutil attach -nobrowse android-studio-2023.1.1.28-mac.dmg
+        fi
 
-        hdiutil attach -nobrowse androidstudio.dmg
-        cd "/Volumes/androidstudio"
-        cp -R androidstudio.app /Applications/
-        hdiutil detach "/Volumes/androidstudio"
+        # TODO: Update install Android Studio in macOS
+        cd "/Volumes/Android Studio"
+        cp -R "Android Studio.app" /Applications/
+        hdiutil detach "/Volumes/Android Studio"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        curl -SL \
-            "$(curl --silent https://api.github.com/repos/owner/androidstudio/releases | jq -r '.[0].assets[].browser_download_url' | grep "linux" | grep x86_64 | grep -v sha256 | grep "musl")" >androidstudio.tar.gz
-        sudo dpkg -i androidstudio.deb
+        # https://developer.android.com/studio/run/emulator-acceleration?utm_source=android-studio#vm-linux
+        # Install required libraries
+        sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
+
+        # Install Android Studio
+        curl -SLO "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${ap_android_studio_setup_version}/android-studio-${ap_android_studio_setup_version}-linux.tar.gz"
+        tar -zxf android-studio-*.tar.gz
+        rm -f android-studio-*.tar.gz
+        mv android-studio "${AP_SOFT_DIR}/"
+        cd "${AP_SOFT_DIR}/android-studio"
+        rm -rf "${AP_TMP_DIR}/android-studio"
     fi
-
-    local ap_os="macos"
-    local ap_os="darwin"
-    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        ap_os="linux"
-    fi
-
-    curl -SL \
-        "$(curl --silent https://api.github.com/repos/owner/androidstudio/releases | jq -r '.[0].assets[].browser_download_url' | grep "${ap_os}" | grep x86_64 | grep -v sha256)" >androidstudio.tar.gz
-
-    tar -zxf androidstudio.tar.gz
-    rm -f androidstudio.tar.gz
-    mv androidstudio* androidstudio
-    mv androidstudio "${AP_SOFT_DIR}/"
-    cd "${AP_SOFT_DIR}/androidstudio"
-    rm -rf "${AP_TMP_DIR}/androidstudio"
-
-    pip install androidstudio
-    npm install -g androidstudio
 
     @initandroidstudio
     if alias @createdirstructandroidstudio &>/dev/null; then
@@ -112,24 +106,9 @@ ap_func_setup_androidstudio() {
 
 alias @rmandroidstudio="ap_func_rm_androidstudio"
 ap_func_rm_androidstudio() {
-    local ap_androidstudio_remove_version=''
-    if [ -n "$1" ]; then
-        ap_androidstudio_remove_version="$1"
-    fi
-
-    @logshow "Remove [androidstudio] v${ap_androidstudio_remove_version}\n"
-
-    @logshow "Remove [androidstudio]\n"
-    pip uninstall androidstudio
-    npm uninstall -g androidstudio
-
-    rm -rf "${AP_SOFT_DIR}/androidstudio"
-
-    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        brew remove --cask androidstudio
-    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        sudo apt purge -y androidstudio
-    fi
+    @logshow "Remove [Android Studio]\n"
+    rm -rf "${AP_SOFT_DIR}/android-studio"
+    rm -rf "${ANDROID_HOME}"
 
     if alias @rmdirstructandroidstudio &>/dev/null; then
         @rmdirstructandroidstudio

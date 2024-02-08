@@ -38,5 +38,9 @@ export AP_MARKER_CONFIG_END="@@@AP_END"
 
 # export TERM="xterm"
 export TERM="xterm-256color"
-export AP_UID="$(id -u)"
-export AP_GID="$(id -g)"
+
+AP_UID="$(id -u)"
+export AP_UID
+
+AP_GID="$(id -g)"
+export AP_GID

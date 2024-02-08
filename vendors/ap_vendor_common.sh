@@ -64,6 +64,7 @@ ap_func_setup_common_apps() {
             build-essential \
             snapd \
             cmake \
+            clang \
             net-tools \
             iputils \
             curl \
