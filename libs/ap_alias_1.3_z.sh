@@ -17,10 +17,6 @@ alias zsdata="cd \${HOME}/scripto-data"
 
 alias zdata="cd \${AP_DATA_DIR}"
 alias zdl="cd \${AP_DL_DIR}"
-alias zgh="cd \${AP_GH_DIR}"
-alias zgl="cd \${AP_GL_DIR}"
-alias zglp29="cd \${AP_GL_P29_DIR}"
-alias zghp29="cd \${AP_GH_P29_DIR}"
 
 # Aliases - CD - Linux
 alias zlocalshare="cd \${HOME}/.local/share"
