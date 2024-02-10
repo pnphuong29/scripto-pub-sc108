@@ -267,8 +267,16 @@ ap_func_dkc_up() {
         ap_cmd="${ap_cmd} --profile ${ap_opt_profile}"
     fi
 
+    if [ -f "${HOME}/scripto-share/dockers/ap_dkc_common.yml" ]; then
+        ap_cmd="${ap_cmd} -f ${HOME}/scripto-share/dockers/ap_dkc_common.yml"
+    fi
+
     if [ -f "${HOME}/scripto-common/dockers/ap_dkc_common.yml" ]; then
         ap_cmd="${ap_cmd} -f ${HOME}/scripto-common/dockers/ap_dkc_common.yml"
+    fi
+
+    if [ -f "${HOME}/scripto-main/dockers/ap_dkc_common.yml" ]; then
+        ap_cmd="${ap_cmd} -f ${HOME}/scripto-main/dockers/ap_dkc_common.yml"
     fi
 
     local ap_dk_con_name
