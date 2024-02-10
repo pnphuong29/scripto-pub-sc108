@@ -7,6 +7,8 @@ ap_func_init_node() {
     alias npmuninstall='npm uninstall'
     alias npmbuild='npm run build'
     alias npmserve='npm run serve'
+    alias npmdev='npm run dev'
+    alias npmtest='npm run test'
 
     if alias @initnodeshare &>/dev/null; then
         @initnodeshare
