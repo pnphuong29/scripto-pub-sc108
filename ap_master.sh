@@ -1,5 +1,26 @@
 # @#IMPORTANT - Changing the loading (sourcing) order of below files may cause unexpected results!!!
 
+# Load scripto common server environment variables
+if [ -d "${HOME}/scripto-common/libs" ]; then
+    while read -r ap_env; do
+        source "${ap_env}"
+    done < <(gfind "${HOME}/scripto-common/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | sort)
+fi
+
+# Load scripto share server environment variables
+if [ -d "${HOME}/scripto-share/libs" ]; then
+    while read -r ap_env; do
+        source "${ap_env}"
+    done < <(gfind "${HOME}/scripto-share/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | sort)
+fi
+
+# Load scripto main server environment variables
+if [ -d "${HOME}/scripto-main/libs" ]; then
+    while read -r ap_env; do
+        source "${ap_env}"
+    done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | sort)
+fi
+
 # Load scripto environment variables
 if [ -d "${HOME}/scripto/libs" ]; then
     while read -r ap_env; do
@@ -26,27 +47,6 @@ if [ -d "${HOME}/scripto-main/libs" ]; then
     while read -r ap_env; do
         source "${ap_env}"
     done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | sort)
-fi
-
-# Load scripto common server environment variables
-if [ -d "${HOME}/scripto-common/libs" ]; then
-    while read -r ap_env; do
-        source "${ap_env}"
-    done < <(gfind "${HOME}/scripto-common/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | sort)
-fi
-
-# Load scripto share server environment variables
-if [ -d "${HOME}/scripto-share/libs" ]; then
-    while read -r ap_env; do
-        source "${ap_env}"
-    done < <(gfind "${HOME}/scripto-share/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | sort)
-fi
-
-# Load scripto main server environment variables
-if [ -d "${HOME}/scripto-main/libs" ]; then
-    while read -r ap_env; do
-        source "${ap_env}"
-    done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | sort)
 fi
 
 # Load scripto core libraries
