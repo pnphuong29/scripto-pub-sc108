@@ -77,5 +77,14 @@ alias artisanconfigcache="ap_php_artisan config cache"
 alias artisanstorage="ap_php_artisan storage"
 alias artisanstoragelink="ap_php_artisan storage link"
 ap_php_artisan() {
-    php artisan "${1}:${2}"
+    if [ -z "${3}" ]; then
+        php artisan "${1}:${2}"
+    else
+        php artisan "${1}:${2}" "${3}"
+    fi
+}
+
+alias artisandbseed="ap_php_artisan_db_seed"
+ap_php_artisan_db_seed() {
+    php artisan "db:seed" --class="${3}Seeder"
 }
