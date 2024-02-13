@@ -180,6 +180,9 @@ ap_func_rm_xxx() {
     pip uninstall xxx
     npm uninstall -g xxx
 
+    rm -rf "${GOPATH}/pkg/mod/github.com/xxx/xxx@"*
+    rm -f "${GOPATH}/bin/xxx"
+
     rm -rf "${AP_SOFT_DIR}/xxx"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

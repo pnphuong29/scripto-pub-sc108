@@ -8,7 +8,7 @@ ap_func_init_exa() {
     alias ld2="@exa --tree --level 2 -D"
     alias l3="@exa --tree --level 3"
     alias ld3="@exa --tree --level 3 -D"
-    alias lg="@exa --all --git"
+    alias lgit="@exa --all --git"
 
     if alias @initexashare &>/dev/null; then
         @initexashare
