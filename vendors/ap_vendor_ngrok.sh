@@ -64,6 +64,7 @@ ap_func_rm_ngrok() {
         rm -rf "${HOME}/Library/Application Support/ngrok/ngrok.yml"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         sudo apt purge -y ngrok
+        rm -rf "${HOME}/.config/ngrok/ngrok.yml"
     fi
 
     if alias @rmdirstructngrok &>/dev/null; then
@@ -73,4 +74,10 @@ ap_func_rm_ngrok() {
     if alias @rmglobalsymlinkngrok &>/dev/null; then
         @rmglobalsymlinkngrok
     fi
+}
+
+alias ngrokhttp='ap_func_ngrok_http'
+alias ngrokhttplocal='ap_func_ngrok_http localhost'
+ap_func_ngrok_http() {
+    ngrok http "http://${1}:${2}"
 }
