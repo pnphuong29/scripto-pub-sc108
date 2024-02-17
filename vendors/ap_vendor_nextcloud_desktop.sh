@@ -36,12 +36,10 @@ ap_func_setup_nextclouddesktop() {
     # https://github.com/nextcloud/desktop
     # https://nextcloud.com/install/#install-clients
     # https://docs.nextcloud.com/desktop/latest/advancedusage.html#install-nextcloudcmd
-    @logshow "Install [nextcloud desktop]\n"
+    @logshow "Install [Nextcloud Desktop]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        if ! brew list --cask --versions | grep nextcloud &>/dev/null; then
-            brew install --cask nextcloud # This will also install `nextcloudcmd` command
-        fi
+        brew install --cask nextcloud # This will also install `nextcloudcmd` command
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         if [ -n "${XDG_CURRENT_DESKTOP:-}" ]; then
             sudo apt install -y nextcloud-desktop
@@ -62,7 +60,7 @@ ap_func_setup_nextclouddesktop() {
 
 alias @rmnextclouddesktop="ap_func_rm_nextclouddesktop"
 ap_func_rm_nextclouddesktop() {
-    @logshow "Remove [nextcloud desktop]\n"
+    @logshow "Remove [Nextcloud Desktop]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew uninstall --cask nextcloud

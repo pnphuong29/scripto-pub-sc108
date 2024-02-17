@@ -80,10 +80,10 @@ ap_func_setup_androidstudio() {
             hdiutil attach -nobrowse android-studio-2023.1.1.28-mac.dmg
         fi
 
-        # TODO: Update install Android Studio in macOS
-        cd "/Volumes/Android Studio"
+        cd "/Volumes/Android Studio - Hedgehog | 2023.1.1 Patch 2"
         cp -R "Android Studio.app" /Applications/
-        hdiutil detach "/Volumes/Android Studio"
+        cd "/Applications/Android Studio.app"
+        hdiutil detach "/Volumes/Android Studio - Hedgehog | 2023.1.1 Patch 2"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         # https://developer.android.com/studio/run/emulator-acceleration?utm_source=android-studio#vm-linux
         # Install required libraries

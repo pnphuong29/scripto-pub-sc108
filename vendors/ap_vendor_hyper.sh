@@ -46,6 +46,7 @@ ap_func_setup_hyper() {
         curl -SL \
             "$(curl --silent https://api.github.com/repos/vercel/hyper/releases | jq -r '.[].assets[].browser_download_url' | grep -v canary | grep "mac-x64.zip$" | head -1)" >hyper.zip
         unzip hyper.zip
+        rm -rf /Applications/Hyper.app
         mv Hyper.app /Applications/
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         curl -SL \
