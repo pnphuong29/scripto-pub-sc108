@@ -72,10 +72,13 @@ ap_func_setup_androidstudio() {
     cd "${AP_TMP_DIR}/android-studio"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        # TODO: Setup in macos using download file, not hdiutil
         if [[ "$(uname -m)" == 'arm64' ]]; then
+            # curl -SLO "https://redirector.gvt1.com/edgedl/android/studio/install/2023.3.1.10/android-studio-2023.3.1.10-mac_arm.dmg"
             curl -SLO "https://redirector.gvt1.com/edgedl/android/studio/install/2023.1.1.28/android-studio-2023.1.1.28-mac_arm.dmg"
             hdiutil attach -nobrowse android-studio-2023.1.1.28-mac_arm.dmg
         elif [[ "$(uname -m)" == 'x86_64' ]]; then
+            # curl -SLO "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2023.3.1.10/android-studio-2023.3.1.10-mac.zip"
             curl -SLO "https://redirector.gvt1.com/edgedl/android/studio/install/2023.1.1.28/android-studio-2023.1.1.28-mac.dmg"
             hdiutil attach -nobrowse android-studio-2023.1.1.28-mac.dmg
         fi
