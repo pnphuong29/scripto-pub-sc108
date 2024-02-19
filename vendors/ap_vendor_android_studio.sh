@@ -27,8 +27,8 @@ alias @createdirstructandroidstudio="ap_func_create_dirstruct_androidstudio"
 ap_func_create_dirstruct_androidstudio() {
     # https://github.com/flutter/flutter/issues/118502
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        # TODO: Update configure Android Studio in macOS
-        echo "Fill in codes for [createdirstructandroidstudio]"
+        cd "/Applications/Android Studio.app/Contents"
+        ln -s "/Applications/Android Studio.app/Contents/jbr" "/Applications/Android Studio.app/Contents/jre"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         cd "${AP_SOFT_DIR}/android-studio"
         ln -s "${AP_SOFT_DIR}/android-studio/jbr" "${AP_SOFT_DIR}/android-studio/jre"
@@ -72,21 +72,28 @@ ap_func_setup_androidstudio() {
     cd "${AP_TMP_DIR}/android-studio"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        # TODO: Setup in macos using download file, not hdiutil
         if [[ "$(uname -m)" == 'arm64' ]]; then
-            # curl -SLO "https://redirector.gvt1.com/edgedl/android/studio/install/2023.3.1.10/android-studio-2023.3.1.10-mac_arm.dmg"
-            curl -SLO "https://redirector.gvt1.com/edgedl/android/studio/install/2023.1.1.28/android-studio-2023.1.1.28-mac_arm.dmg"
-            hdiutil attach -nobrowse android-studio-2023.1.1.28-mac_arm.dmg
+            curl -SLO "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2023.1.1.26/android-studio-2023.1.1.28-mac_arm.zip"
+            unzip android-studio-2023.1.1.28-mac_arm.zip
+            cd android-studio-2023.1.1.28-mac_arm
+            # curl -SLO "https://redirector.gvt1.com/edgedl/android/studio/install/2023.1.1.28/android-studio-2023.1.1.28-mac_arm.dmg"
+            # hdiutil attach -nobrowse android-studio-2023.1.1.28-mac_arm.dmg
         elif [[ "$(uname -m)" == 'x86_64' ]]; then
-            # curl -SLO "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2023.3.1.10/android-studio-2023.3.1.10-mac.zip"
-            curl -SLO "https://redirector.gvt1.com/edgedl/android/studio/install/2023.1.1.28/android-studio-2023.1.1.28-mac.dmg"
-            hdiutil attach -nobrowse android-studio-2023.1.1.28-mac.dmg
+            curl -SLO "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2023.1.1.26/android-studio-2023.1.1.28-mac.zip"
+            unzip android-studio-2023.1.1.28-mac.zip
+            cd android-studio-2023.1.1.28-mac
+            # curl -SLO "https://redirector.gvt1.com/edgedl/android/studio/install/2023.1.1.28/android-studio-2023.1.1.28-mac.dmg"
+            # hdiutil attach -nobrowse android-studio-2023.1.1.28-mac.dmg
         fi
 
-        cd "/Volumes/Android Studio - Hedgehog | 2023.1.1 Patch 2"
-        cp -R "Android Studio.app" /Applications/
+        mv "Android Studio.app" /Applications/
         cd "/Applications/Android Studio.app"
-        hdiutil detach "/Volumes/Android Studio - Hedgehog | 2023.1.1 Patch 2"
+        rm -rf "${AP_TMP_DIR}/android-studio"
+
+        # cd "/Volumes/Android Studio - Hedgehog | 2023.1.1 Patch 2"
+        # cp -R "Android Studio.app" /Applications/
+        # cd "/Applications/Android Studio.app"
+        # hdiutil detach "/Volumes/Android Studio - Hedgehog | 2023.1.1 Patch 2"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         # https://developer.android.com/studio/run/emulator-acceleration?utm_source=android-studio#vm-linux
         # Install required libraries
