@@ -5,8 +5,6 @@ ap_func_init_joshuto() {
     alias 2joshutodocs="open https://github.com/kamiyaa/joshuto/tree/main/docs"
     alias viscjoshuto="vi -p \
         \${HOME}/scripto/vendors/ap_vendor_joshuto.sh \
-        \${HOME}/scripto-common/vendors/ap_vendor_joshuto.sh \
-        \${HOME}/scripto-common/vendors/ap_vendor_joshuto.sh \
         \${HOME}/scripto/vendors/joshuto/configs/joshuto.toml \
         \${HOME}/scripto/vendors/joshuto/configs/keymap.toml \
         \${HOME}/scripto/vendors/joshuto/configs/mimetype.toml \
