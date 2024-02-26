@@ -1,5 +1,6 @@
 alias @initmicro="ap_func_init_micro"
 ap_func_init_micro() {
+    export MICRO_CONFIG_HOME="${HOME}/.config/micro"
     alias zmicroconf="cd \${HOME}/.config/micro"
 
     if alias @initmicroshare &>/dev/null; then
@@ -13,11 +14,6 @@ ap_func_init_micro() {
 
 alias @createdirstructmicro="ap_func_create_dirstruct_micro"
 ap_func_create_dirstruct_micro() {
-    if [ -f "${HOME}/scripto-share/vendors/micro/bindings.json" ]; then
-        @logshow "Create symlink from [${HOME}/.config/micro/bindings.json] to [${HOME}/scripto-share/vendors/micro/bindings.json]\n"
-        ln -sf "${HOME}/scripto-share/vendors/micro/bindings.json" "${HOME}/.config/micro/bindings.json"
-    fi
-
     if alias @createdirstructmicroshare &>/dev/null; then
         @createdirstructmicroshare
     fi
@@ -29,9 +25,6 @@ ap_func_create_dirstruct_micro() {
 
 alias @rmdirstructmicro="ap_func_rm_dirstruct_micro"
 ap_func_rm_dirstruct_micro() {
-    @logshow "Remove [${HOME}/.config/micro]\n"
-    rm -rf "${HOME}/.config/micro"
-
     if alias @rmdirstructmicroshare &>/dev/null; then
         @rmdirstructmicroshare
     fi
