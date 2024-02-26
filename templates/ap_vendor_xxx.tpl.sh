@@ -34,6 +34,11 @@ ap_func_create_dirstruct_xxx() {
     @logshow "Generate [xxx] bash autocomplete\n"
     xxx >"${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash"
 
+    if [ -f "${HOME}/scripto-share/vendors/xxx/bindings.json" ]; then
+        @logshow "Create symlink from [${HOME}/.config/xxx/bindings.json] to [${HOME}/scripto-share/vendors/xxx/bindings.json]\n"
+        ln -sf "${HOME}/scripto-share/vendors/xxx/bindings.json" "${HOME}/.config/xxx/bindings.json"
+    fi
+
     @logshow "Create symlink from [${AP_SOFT_DIR}/bin/xxx] to [${AP_SOFT_DIR}/xxx/bin/xxx]\n"
     ln -sf "${AP_SOFT_DIR}/xxx/bin/xxx" "${AP_SOFT_DIR}/bin/xxx"
 
@@ -135,6 +140,7 @@ ap_func_setup_xxx() {
         hdiutil attach -nobrowse xxx.dmg
         cd "/Volumes/xxx"
         cp -R "xxx.app" /Applications/
+        cd ~
         hdiutil detach "/Volumes/xxx"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         curl -SL \
@@ -189,6 +195,7 @@ ap_func_rm_xxx() {
         brew remove --cask xxx
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         sudo apt purge -y xxx
+        sudo dpkg --purge xxx
     fi
 
     if alias @rmdirstructxxx &>/dev/null; then
