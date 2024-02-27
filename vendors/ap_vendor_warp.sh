@@ -1,13 +1,9 @@
 alias @initwarp="ap_func_init_warp"
 ap_func_init_warp() {
     if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
-        if [ -d "${HOME}/scripto-share/vendors/warp/macos" ]; then
-            alias zwarpconf="cd \${HOME}/.warp"
-        fi
+        alias zwarpconf="cd \${HOME}/.warp"
     elif [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]]; then
-        if [ -d "${HOME}/scripto-share/vendors/warp/linux" ]; then
-            alias zwarpconf="cd \${HOME}/.config/warp"
-        fi
+        alias zwarpconf="cd \${HOME}/.config/warp-terminal"
     fi
 
     alias zwarpshare="cd \${HOME}/.local/share/warp"
