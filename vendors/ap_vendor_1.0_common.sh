@@ -15,6 +15,7 @@ ap_func_setup_common_apps() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         if [[ "$(uname -m)" == 'arm64' ]]; then
             brew install \
+                bash \
                 bash-completion@2 \
                 launchctl-completion \
                 coreutils \
@@ -35,10 +36,18 @@ ap_func_setup_common_apps() {
                 curl \
                 wget \
                 git
+
+            # Link bash
+            @logshow "Link [${HOME}/scripto-data/software/bin/bash] to [/opt/local/bin/bash]\n"
+            ln -sf /opt/local/bin/bash "${HOME}/scripto-data/software/bin/bash"
         elif [[ "$(uname -m)" == 'x86_64' ]]; then
             port install \
                 coreutils \
                 findutils
+
+            # Link bash
+            @logshow "Link [${HOME}/scripto-data/software/bin/bash] to [/usr/local/bin/bash]\n"
+            ln -sf /usr/local/bin/bash "${HOME}/scripto-data/software/bin/bash"
         fi
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         # Enable necessary ubuntu software repositories
@@ -61,6 +70,7 @@ ap_func_setup_common_apps() {
 
         # Install common apps
         sudo apt install -y \
+            bash \
             ppa-purge \
             apt-file \
             build-essential \
@@ -98,6 +108,10 @@ ap_func_setup_common_apps() {
         @logshow "Install & upgrade [snap core]\n"
         sudo snap install core
         sudo snap refresh core
+
+        # Link bash
+        @logshow "Link [${HOME}/scripto-data/software/bin/bash] to [/bin/bash]\n"
+        ln -sf /bin/bash "${HOME}/scripto-data/software/bin/bash"
     fi
 
     @createdirstructgit
