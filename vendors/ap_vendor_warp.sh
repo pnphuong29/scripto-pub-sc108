@@ -83,6 +83,7 @@ ap_func_rm_warp() {
         defaults delete dev.warp.Warp-Stable
         rm -f "${HOME}/Library/Logs/warp.log"
         rm -rf "${HOME}/Library/Application Support/dev.warp.Warp-Stable"
+        rm -rf "${HOME}/Library/Saved Application State/dev.warp.Warp-Stable.savedState"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         sudo dpkg --purge warp
         rm -rf "${XDG_CONFIG_HOME:-$HOME/.config}/warp-terminal"
