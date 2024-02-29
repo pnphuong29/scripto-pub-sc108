@@ -14,6 +14,9 @@ ap_func_init_micro() {
 
 alias @createdirstructmicro="ap_func_create_dirstruct_micro"
 ap_func_create_dirstruct_micro() {
+    @logshow "Create symlink from [${HOME}/.config/micro]\n"
+    mkdir -p "${HOME}/.config/micro"
+
     if alias @createdirstructmicroshare &>/dev/null; then
         @createdirstructmicroshare
     fi
