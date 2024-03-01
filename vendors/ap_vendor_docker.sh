@@ -283,7 +283,9 @@ ap_func_dkc_up() {
 
     local ap_dk_con_name
     for ap_dk_con_name in "$@"; do
-        if [ -f "${HOME}/scripto-common/dockers/ap_dkc_${ap_dk_con_name}.yml" ]; then
+        if [ -f "${HOME}/scripto-main/dockers/ap_dkc_${ap_dk_con_name}.yml" ]; then
+            ap_cmd="${ap_cmd} -f ${HOME}/scripto-main/dockers/ap_dkc_${ap_dk_con_name}.yml"
+        elif [ -f "${HOME}/scripto-common/dockers/ap_dkc_${ap_dk_con_name}.yml" ]; then
             ap_cmd="${ap_cmd} -f ${HOME}/scripto-common/dockers/ap_dkc_${ap_dk_con_name}.yml"
         elif [ -f "${HOME}/scripto-share/dockers/ap_dkc_${ap_dk_con_name}.yml" ]; then
             ap_cmd="${ap_cmd} -f ${HOME}/scripto-share/dockers/ap_dkc_${ap_dk_con_name}.yml"
