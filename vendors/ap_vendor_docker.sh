@@ -221,6 +221,8 @@ alias dkuptest="ap_func_dkc_up -p test"
 alias dkdntest="ap_func_dkc_up -d -p test"
 alias dkupuat="ap_func_dkc_up -p uat"
 alias dkdnuat="ap_func_dkc_up -d -p uat"
+alias dkupprod="ap_func_dkc_up -p prod"
+alias dkdnprod="ap_func_dkc_up -d -p prod"
 # @$func $$ ap_func_dkc_up {
 # ap_func_dkc_up [-pn] <profile> [--] <docker_container_names...>
 # Description
