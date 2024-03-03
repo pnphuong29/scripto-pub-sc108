@@ -11,6 +11,7 @@ ap_func_init_docker() {
     alias dkbuild="docker build"
     alias dkrun="docker run"
     alias dkps="docker ps -a"
+    alias dkstats="docker stats"
     alias dksysprune="docker system prune -a"   # Remove all system cache, etc.
     alias dkbuilderprune="docker builder prune" # Remove build cache
 
