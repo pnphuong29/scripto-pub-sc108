@@ -1,59 +1,59 @@
-alias @initpgcli="ap_func_init_pgcli"
+alias apinitpgcli="ap_func_init_pgcli"
 ap_func_init_pgcli() {
-    if alias @initpgclishare &>/dev/null; then
-        @initpgclishare
+    if alias apinitpgclishare &>/dev/null; then
+        apinitpgclishare
     fi
 
-    if alias @initpgclicommon &>/dev/null; then
-        @initpgclicommon
+    if alias apinitpgclicommon &>/dev/null; then
+        apinitpgclicommon
     fi
 }
 
-alias @createdirstructpgcli="ap_func_create_dirstruct_pgcli"
+alias apcreatedirstructpgcli="ap_func_create_dirstruct_pgcli"
 ap_func_create_dirstruct_pgcli() {
-    if alias @createdirstructpgclishare &>/dev/null; then
-        @createdirstructpgclishare
+    if alias apcreatedirstructpgclishare &>/dev/null; then
+        apcreatedirstructpgclishare
     fi
 
-    if alias @createdirstructpgclicommon &>/dev/null; then
-        @createdirstructpgclicommon
+    if alias apcreatedirstructpgclicommon &>/dev/null; then
+        apcreatedirstructpgclicommon
     fi
 }
 
-alias @rmdirstructpgcli="ap_func_rm_dirstruct_pgcli"
+alias rmdirstructpgcli="ap_func_rm_dirstruct_pgcli"
 ap_func_rm_dirstruct_pgcli() {
-    if alias @rmdirstructpgclishare &>/dev/null; then
-        @rmdirstructpgclishare
+    if alias rmdirstructpgclishare &>/dev/null; then
+        rmdirstructpgclishare
     fi
 
-    if alias @rmdirstructpgclicommon &>/dev/null; then
-        @rmdirstructpgclicommon
+    if alias rmdirstructpgclicommon &>/dev/null; then
+        rmdirstructpgclicommon
     fi
 }
 
-alias @setuppgcli="ap_func_setup_pgcli"
+alias apsetuppgcli="ap_func_setup_pgcli"
 ap_func_setup_pgcli() {
     # https://github.com/dbcli/pgcli
-    @logshow "Install [pgcli]\n"
+    aplogshow "Install [pgcli]\n"
     pip install pgcli
 
-    @initpgcli
-    if alias @createdirstructpgcli &>/dev/null; then
-        @createdirstructpgcli
+    apinitpgcli
+    if alias apcreatedirstructpgcli &>/dev/null; then
+        apcreatedirstructpgcli
     fi
 }
 
-alias @rmpgcli="ap_func_rm_pgcli"
+alias rmpgcli="ap_func_rm_pgcli"
 ap_func_rm_pgcli() {
-    @logshow "Remove [pgcli]\n"
+    aplogshow "Remove [pgcli]\n"
     pip uninstall pgcli
 
-    if alias @rmdirstructpgcli &>/dev/null; then
-        @rmdirstructpgcli
+    if alias rmdirstructpgcli &>/dev/null; then
+        rmdirstructpgcli
     fi
 
-    if alias @rmglobalsymlinkpgcli &>/dev/null; then
-        @rmglobalsymlinkpgcli
+    if alias rmglobalsymlinkpgcli &>/dev/null; then
+        rmglobalsymlinkpgcli
     fi
 }
 
@@ -67,7 +67,7 @@ alias @pgcli='ap_func_pgcli'
 # }
 ap_func_pgcli() {
     if [ "$#" -lt 4 ]; then
-        @rtn_error_not_enough_arguments
+        rtn_error_not_enough_arguments
     fi
 
     local ap_host="$1"

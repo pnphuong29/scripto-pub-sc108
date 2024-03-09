@@ -1,4 +1,4 @@
-alias @initgo="ap_func_init_go"
+alias apinitgo="ap_func_init_go"
 ap_func_init_go() {
     # https://go.dev/doc/gopath_code
     # https://github.com/golang/go/wiki/SettingGOPATH
@@ -7,23 +7,23 @@ ap_func_init_go() {
     export GOROOT="${AP_SOFT_DIR}/go"
     export GOPATH="${HOME}/go"
 
-    @addpath "${GOROOT}/bin"
-    @addpath "${GOPATH}/bin"
+    apaddpath "${GOROOT}/bin"
+    apaddpath "${GOPATH}/bin"
 
     alias zgopath="cd \${GOPATH}"
     alias zgomodules="cd \${GOPATH}/pkg/mod"
     alias zgobin="cd \${GOPATH}/bin"
 
-    if alias @initxxxshare &>/dev/null; then
-        @initxxxshare
+    if alias apinitxxxshare &>/dev/null; then
+        apinitxxxshare
     fi
 
-    if alias @initxxxcommon &>/dev/null; then
-        @initxxxcommon
+    if alias apinitxxxcommon &>/dev/null; then
+        apinitxxxcommon
     fi
 }
 
-alias @setupgo="ap_func_setup_go"
+alias apsetupgo="ap_func_setup_go"
 ap_func_setup_go() {
     # https://go.dev/doc/install
     # https://go.dev/doc/manage-install
@@ -37,7 +37,7 @@ ap_func_setup_go() {
         ap_go_version="$1"
     fi
 
-    @logshow "Install [GO v${ap_go_version}]\n"
+    aplogshow "Install [GO v${ap_go_version}]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         ap_go_src_file_name="go${ap_go_version}.linux-amd64.tar.gz"
@@ -60,13 +60,13 @@ ap_func_setup_go() {
     cp -R "${ap_go_dir_name}"/. "${ap_vendors_go_dir}/"
     rm -rf "${ap_go_dir_name}"
 
-    @addpath -a "${GOROOT}/bin"
-    @addpath -a "${GOPATH}/bin"
+    apaddpath -a "${GOROOT}/bin"
+    apaddpath -a "${GOPATH}/bin"
 }
 
-alias @rmgo="ap_func_rm_go"
+alias rmgo="ap_func_rm_go"
 ap_func_rm_go() {
-    @logshow "Remove [go]\n"
+    aplogshow "Remove [go]\n"
 
     local ap_go_path, ap_go_root
     ap_go_path="$(go env GOPATH)"

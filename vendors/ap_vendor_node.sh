@@ -1,4 +1,4 @@
-alias @initnode="ap_func_init_node"
+alias apinitnode="ap_func_init_node"
 ap_func_init_node() {
     export AP_NODE_VERSION_DEFAULT="16.20.2"
     # AP_NODE_VERSION_DEFAULT="18.16.1"
@@ -12,40 +12,40 @@ ap_func_init_node() {
     alias npmdev='npm run dev'
     alias npmtest='npm run test'
 
-    if alias @initnodeshare &>/dev/null; then
-        @initnodeshare
+    if alias apinitnodeshare &>/dev/null; then
+        apinitnodeshare
     fi
 
-    if alias @initnodecommon &>/dev/null; then
-        @initnodecommon
+    if alias apinitnodecommon &>/dev/null; then
+        apinitnodecommon
     fi
 }
 
-alias @createdirstructnode="ap_func_create_dirstruct_node"
+alias apcreatedirstructnode="ap_func_create_dirstruct_node"
 ap_func_create_dirstruct_node() {
-    @logshow "Generate [npm] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_npm.bash]\n"
+    aplogshow "Generate [npm] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_npm.bash]\n"
     npm completion >"${AP_COMPLETIONS_DIR}/ap_completion_npm.bash"
 
-    if alias @createdirstructnodeshare &>/dev/null; then
-        @createdirstructnodeshare
+    if alias apcreatedirstructnodeshare &>/dev/null; then
+        apcreatedirstructnodeshare
     fi
 
-    if alias @createdirstructnodecommon &>/dev/null; then
-        @createdirstructnodecommon
+    if alias apcreatedirstructnodecommon &>/dev/null; then
+        apcreatedirstructnodecommon
     fi
 }
 
-alias @rmdirstructnode="ap_func_rm_dirstruct_node"
+alias rmdirstructnode="ap_func_rm_dirstruct_node"
 ap_func_rm_dirstruct_node() {
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_npm.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_npm.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_npm.bash"
 
-    if alias @rmdirstructnodeshare &>/dev/null; then
-        @rmdirstructnodeshare
+    if alias rmdirstructnodeshare &>/dev/null; then
+        rmdirstructnodeshare
     fi
 
-    if alias @rmdirstructnodecommon &>/dev/null; then
-        @rmdirstructnodecommon
+    if alias rmdirstructnodecommon &>/dev/null; then
+        rmdirstructnodecommon
     fi
 }
 
@@ -56,64 +56,64 @@ ap_func_create_global_symlink_node() {
     # ap_path="$(which node | cut -d ' ' -f 3)"
 
     if [ -f "${ap_path}" ]; then
-        @logshow "Create symlink from [/usr/local/bin/node] to [${ap_path}]\n"
+        aplogshow "Create symlink from [/usr/local/bin/node] to [${ap_path}]\n"
         sudo ln -sf "${ap_path}" "/usr/local/bin/node"
 
-        @logshow "Create symlink from [/usr/local/bin/npm] to [${ap_path%/*}/npm]\n"
+        aplogshow "Create symlink from [/usr/local/bin/npm] to [${ap_path%/*}/npm]\n"
         sudo ln -sf "${ap_path%/*}/npm" "/usr/local/bin/npm"
 
-        @logshow "Create symlink from [/usr/local/bin/yarn] to [${ap_path%/*}/yarn]\n"
+        aplogshow "Create symlink from [/usr/local/bin/yarn] to [${ap_path%/*}/yarn]\n"
         sudo ln -sf "${ap_path%/*}/yarn" "/usr/local/bin/yarn"
     fi
 }
 
-alias @rmglobalsymlinknode="ap_func_rm_global_symlink_node"
+alias rmglobalsymlinknode="ap_func_rm_global_symlink_node"
 ap_func_rm_global_symlink_node() {
-    @logshow "Remove [/usr/local/bin/node]\n"
+    aplogshow "Remove [/usr/local/bin/node]\n"
     sudo rm -f "/usr/local/bin/node"
 
-    @logshow "Remove [/usr/local/bin/npm]\n"
+    aplogshow "Remove [/usr/local/bin/npm]\n"
     sudo rm -f "/usr/local/bin/npm"
 
-    @logshow "Remove [/usr/local/bin/yarn]\n"
+    aplogshow "Remove [/usr/local/bin/yarn]\n"
     sudo rm -f "/usr/local/bin/yarn"
 }
 
-alias @setupnode="ap_func_setup_node"
+alias apsetupnode="ap_func_setup_node"
 ap_func_setup_node() {
     local ap_node_setup_version="${AP_NODE_VERSION_DEFAULT}"
     if [ -n "$1" ]; then
         ap_node_setup_version="$1"
     fi
 
-    @logshow "Install [node v${ap_node_setup_version}]\n"
+    aplogshow "Install [node v${ap_node_setup_version}]\n"
     nvm install "v${ap_node_setup_version}"
     nvm install v18.19.1
     nvm install v20.11.1
     # volta install "node@v${ap_node_setup_version}"
 
-    @initnode
-    if alias @createdirstructnode &>/dev/null; then
-        @createdirstructnode
+    apinitnode
+    if alias apcreatedirstructnode &>/dev/null; then
+        apcreatedirstructnode
     fi
 }
 
-alias @rmnode="ap_func_rm_node"
+alias rmnode="ap_func_rm_node"
 ap_func_rm_node() {
     local ap_node_remove_version="${AP_NODE_VERSION_DEFAULT}"
     if [ -n "$1" ]; then
         ap_node_remove_version="$1"
     fi
 
-    @logshow "Remove [node] v${ap_node_remove_version}\n"
+    aplogshow "Remove [node] v${ap_node_remove_version}\n"
     nvm uninstall "v${ap_node_remove_version}"
     # volta uninstall "node@v${ap_node_remove_version}"
 
-    if alias @rmdirstructnode &>/dev/null; then
-        @rmdirstructnode
+    if alias rmdirstructnode &>/dev/null; then
+        rmdirstructnode
     fi
 
-    if alias @rmglobalsymlinknode &>/dev/null; then
-        @rmglobalsymlinknode
+    if alias rmglobalsymlinknode &>/dev/null; then
+        rmglobalsymlinknode
     fi
 }

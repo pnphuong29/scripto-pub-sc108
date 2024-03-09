@@ -1,39 +1,39 @@
-alias @initdart="ap_func_init_dart"
+alias apinitdart="ap_func_init_dart"
 ap_func_init_dart() {
-    @addpath "${AP_SOFT_DIR}/dart/bin"
+    apaddpath "${AP_SOFT_DIR}/dart/bin"
 
-    if alias @initdartshare &>/dev/null; then
-        @initdartshare
+    if alias apinitdartshare &>/dev/null; then
+        apinitdartshare
     fi
 
-    if alias @initdartcommon &>/dev/null; then
-        @initdartcommon
+    if alias apinitdartcommon &>/dev/null; then
+        apinitdartcommon
     fi
 }
 
-alias @createdirstructdart="ap_func_create_dirstruct_dart"
+alias apcreatedirstructdart="ap_func_create_dirstruct_dart"
 ap_func_create_dirstruct_dart() {
-    if alias @createdirstructdartshare &>/dev/null; then
-        @createdirstructdartshare
+    if alias apcreatedirstructdartshare &>/dev/null; then
+        apcreatedirstructdartshare
     fi
 
-    if alias @createdirstructdartcommon &>/dev/null; then
-        @createdirstructdartcommon
+    if alias apcreatedirstructdartcommon &>/dev/null; then
+        apcreatedirstructdartcommon
     fi
 }
 
-alias @rmdirstructdart="ap_func_rm_dirstruct_dart"
+alias rmdirstructdart="ap_func_rm_dirstruct_dart"
 ap_func_rm_dirstruct_dart() {
-    if alias @rmdirstructdartshare &>/dev/null; then
-        @rmdirstructdartshare
+    if alias rmdirstructdartshare &>/dev/null; then
+        rmdirstructdartshare
     fi
 
-    if alias @rmdirstructdartcommon &>/dev/null; then
-        @rmdirstructdartcommon
+    if alias rmdirstructdartcommon &>/dev/null; then
+        rmdirstructdartcommon
     fi
 }
 
-alias @setupdart="ap_func_setup_dart"
+alias apsetupdart="ap_func_setup_dart"
 ap_func_setup_dart() {
     # https://dart.dev/get-dart/archive
     local ap_dart_setup_version='3.2.6'
@@ -41,8 +41,8 @@ ap_func_setup_dart() {
         ap_dart_setup_version="$1"
     fi
 
-    # @logshow "Install [dart]\n"
-    @logshow "Install [Dart] v${ap_dart_setup_version}\n"
+    # aplogshow "Install [dart]\n"
+    aplogshow "Install [Dart] v${ap_dart_setup_version}\n"
 
     # Remove old app dir if any
     rm -rf "${AP_SOFT_DIR}/dart"
@@ -78,15 +78,15 @@ ap_func_setup_dart() {
     mv "${AP_SOFT_DIR}/dart-sdk" "${AP_SOFT_DIR}/dart"
     cd "${AP_SOFT_DIR}/dart"
 
-    @initdart
-    if alias @createdirstructdart &>/dev/null; then
-        @createdirstructdart
+    apinitdart
+    if alias apcreatedirstructdart &>/dev/null; then
+        apcreatedirstructdart
     fi
 }
 
-alias @rmdart="ap_func_rm_dart"
+alias rmdart="ap_func_rm_dart"
 ap_func_rm_dart() {
-    @logshow "Remove [Dart]\n"
+    aplogshow "Remove [Dart]\n"
     rm -rf "${AP_SOFT_DIR}/dart"
 
     # if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
@@ -97,11 +97,11 @@ ap_func_rm_dart() {
     #     sudo apt purge -y dart
     # fi
 
-    if alias @rmdirstructdart &>/dev/null; then
-        @rmdirstructdart
+    if alias rmdirstructdart &>/dev/null; then
+        rmdirstructdart
     fi
 
-    if alias @rmglobalsymlinkdart &>/dev/null; then
-        @rmglobalsymlinkdart
+    if alias rmglobalsymlinkdart &>/dev/null; then
+        rmglobalsymlinkdart
     fi
 }

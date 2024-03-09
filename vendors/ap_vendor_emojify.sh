@@ -9,15 +9,15 @@ ap_func_init_xxx() {
     fi
 }
 
-alias @setupemojify="ap_func_setup_emojify"
+alias apsetupemojify="ap_func_setup_emojify"
 ap_func_setup_emojify() {
-    @logshow "Install [emojify]\n"
+    aplogshow "Install [emojify]\n"
     curl -SL https://raw.githubusercontent.com/mrowa44/emojify/master/emojify -o "${AP_SOFT_DIR}/bin/emojify"
     chmod +x "${AP_SOFT_DIR}/bin/emojify"
 }
 
-alias @rmemojify="ap_func_rm_emojify"
+alias rmemojify="ap_func_rm_emojify"
 ap_func_rm_emojify() {
-    @logshow "Remove [emojify]\n"
+    aplogshow "Remove [emojify]\n"
     rm -f "${AP_SOFT_DIR}/bin/emojify"
 }

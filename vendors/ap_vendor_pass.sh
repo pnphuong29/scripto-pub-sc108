@@ -1,43 +1,43 @@
-alias @initpass="ap_func_init_pass"
+alias apinitpass="ap_func_init_pass"
 ap_func_init_pass() {
     if [ -f "${AP_SOFT_DIR}/pass/share/bash-completion/completions/bash" ]; then
         source "${AP_SOFT_DIR}/pass/share/bash-completion/completions/bash"
     fi
 
-    if alias @initpassshare &>/dev/null; then
-        @initpassshare
+    if alias apinitpassshare &>/dev/null; then
+        apinitpassshare
     fi
 
-    if alias @initpasscommon &>/dev/null; then
-        @initpasscommon
+    if alias apinitpasscommon &>/dev/null; then
+        apinitpasscommon
     fi
 }
 
-alias @createdirstructpass="ap_func_create_dirstruct_pass"
+alias apcreatedirstructpass="ap_func_create_dirstruct_pass"
 ap_func_create_dirstruct_pass() {
-    if alias @createdirstructpassshare &>/dev/null; then
-        @createdirstructpassshare
+    if alias apcreatedirstructpassshare &>/dev/null; then
+        apcreatedirstructpassshare
     fi
 
-    if alias @createdirstructpasscommon &>/dev/null; then
-        @createdirstructpasscommon
+    if alias apcreatedirstructpasscommon &>/dev/null; then
+        apcreatedirstructpasscommon
     fi
 }
 
-alias @rmdirstructpass="ap_func_rm_dirstruct_pass"
+alias rmdirstructpass="ap_func_rm_dirstruct_pass"
 ap_func_rm_dirstruct_pass() {
-    if alias @rmdirstructpassshare &>/dev/null; then
-        @rmdirstructpassshare
+    if alias rmdirstructpassshare &>/dev/null; then
+        rmdirstructpassshare
     fi
 
-    if alias @rmdirstructpasscommon &>/dev/null; then
-        @rmdirstructpasscommon
+    if alias rmdirstructpasscommon &>/dev/null; then
+        rmdirstructpasscommon
     fi
 }
 
-alias @setuppass="ap_func_setup_pass"
+alias apsetuppass="ap_func_setup_pass"
 ap_func_setup_pass() {
-    @logshow "Install [pass]\n"
+    aplogshow "Install [pass]\n"
 
     # Remove old app dir if any
     rm -rf "${AP_SOFT_DIR}/pass"
@@ -58,22 +58,22 @@ ap_func_setup_pass() {
     cd "${AP_SOFT_DIR}/pass"
     rm -rf "${AP_TMP_DIR}/pass"
 
-    @initpass
-    if alias @createdirstructpass &>/dev/null; then
-        @createdirstructpass
+    apinitpass
+    if alias apcreatedirstructpass &>/dev/null; then
+        apcreatedirstructpass
     fi
 }
 
-alias @rmpass="ap_func_rm_pass"
+alias rmpass="ap_func_rm_pass"
 ap_func_rm_pass() {
-    @logshow "Remove [pass]\n"
+    aplogshow "Remove [pass]\n"
     rm -rf "${AP_SOFT_DIR}/pass"
 
-    if alias @rmdirstructpass &>/dev/null; then
-        @rmdirstructpass
+    if alias rmdirstructpass &>/dev/null; then
+        rmdirstructpass
     fi
 
-    if alias @rmglobalsymlinkpass &>/dev/null; then
-        @rmglobalsymlinkpass
+    if alias rmglobalsymlinkpass &>/dev/null; then
+        rmglobalsymlinkpass
     fi
 }

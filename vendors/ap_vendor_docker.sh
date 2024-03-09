@@ -1,4 +1,4 @@
-alias @initdocker="ap_func_init_docker"
+alias apinitdocker="ap_func_init_docker"
 ap_func_init_docker() {
     # https://github.com/docker/compose/tree/master/compose/config
     # https://github.com/docker/cli/tree/master/cli/compose/schema/data
@@ -50,42 +50,42 @@ ap_func_init_docker() {
     alias dkinspectlogpath="docker inspect --format='{{.LogPath}}'"
     alias dkinspectmounts="docker inspect --format='{{json .Mounts}}'"
 
-    if alias @initdockershare &>/dev/null; then
-        @initdockershare
+    if alias apinitdockershare &>/dev/null; then
+        apinitdockershare
     fi
 
-    if alias @initdockercommon &>/dev/null; then
-        @initdockercommon
+    if alias apinitdockercommon &>/dev/null; then
+        apinitdockercommon
     fi
 }
 
-alias @createdirstructdocker="ap_func_create_dirstruct_docker"
+alias apcreatedirstructdocker="ap_func_create_dirstruct_docker"
 ap_func_create_dirstruct_docker() {
-    if alias @createdirstructdockershare &>/dev/null; then
-        @createdirstructdockershare
+    if alias apcreatedirstructdockershare &>/dev/null; then
+        apcreatedirstructdockershare
     fi
 
-    if alias @createdirstructdockercommon &>/dev/null; then
-        @createdirstructdockercommon
+    if alias apcreatedirstructdockercommon &>/dev/null; then
+        apcreatedirstructdockercommon
     fi
 }
 
-alias @rmdirstructdocker="ap_func_rm_dirstruct_docker"
+alias rmdirstructdocker="ap_func_rm_dirstruct_docker"
 ap_func_rm_dirstruct_docker() {
-    if alias @rmdirstructdockershare &>/dev/null; then
-        @rmdirstructdockershare
+    if alias rmdirstructdockershare &>/dev/null; then
+        rmdirstructdockershare
     fi
 
-    if alias @rmdirstructdockercommon &>/dev/null; then
-        @rmdirstructdockercommon
+    if alias rmdirstructdockercommon &>/dev/null; then
+        rmdirstructdockercommon
     fi
 }
 
-alias @setupdocker="ap_func_setup_docker"
+alias apsetupdocker="ap_func_setup_docker"
 ap_func_setup_docker() {
     # https://docs.docker.com/engine/install/ubuntu/
     # https://docs.docker.com/compose/install/
-    @logshow "Install [docker]\n"
+    aplogshow "Install [docker]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install --cask docker
@@ -124,15 +124,15 @@ ap_func_setup_docker() {
         # chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
     fi
 
-    @initdocker
-    if alias @createdirstructdocker &>/dev/null; then
-        @createdirstructdocker
+    apinitdocker
+    if alias apcreatedirstructdocker &>/dev/null; then
+        apcreatedirstructdocker
     fi
 }
 
-alias @rmdocker="ap_func_rm_docker"
+alias rmdocker="ap_func_rm_docker"
 ap_func_rm_docker() {
-    @logshow "Remove [docker]\n"
+    aplogshow "Remove [docker]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew remove --cask docker
@@ -142,8 +142,8 @@ ap_func_rm_docker() {
         sudo rm -rf /var/lib/containerd
     fi
 
-    if alias @rmdirstructdocker &>/dev/null; then
-        @rmdirstructdocker
+    if alias rmdirstructdocker &>/dev/null; then
+        rmdirstructdocker
     fi
 }
 
@@ -155,7 +155,7 @@ alias dkinspectfmt="ap_func_dk_inspect_fmt"
 # }
 ap_func_dk_inspect_fmt() {
     docker inspect --format '{{ "$1" }}'
-    @rtn_success
+    aprtn_success
 }
 
 alias dkrm="ap_func_dk_rm"
@@ -166,7 +166,7 @@ alias dkrm="ap_func_dk_rm"
 # }
 ap_func_dk_rm() {
     docker rm -f $(docker ps -a --filter name="$1" -q)
-    @rtn_success
+    aprtn_success
 }
 
 alias dkimgrm="ap_func_dk_img_rm"
@@ -177,7 +177,7 @@ alias dkimgrm="ap_func_dk_img_rm"
 # }
 ap_func_dk_img_rm() {
     docker rmi -f $(docker images -aq "$1"*)
-    @rtn_success
+    aprtn_success
 }
 
 alias dkvolrm="ap_func_dk_vol_rm"
@@ -188,7 +188,7 @@ alias dkvolrm="ap_func_dk_vol_rm"
 # }
 ap_func_dk_vol_rm() {
     docker volume rm -f $(docker volume ls --filter name="$1" -q)
-    @rtn_success
+    aprtn_success
 }
 
 alias dkps="ap_func_dk_ps"
@@ -199,7 +199,7 @@ alias dkps="ap_func_dk_ps"
 # }
 ap_func_dk_ps() {
     docker ps -a --filter name="$1"
-    @rtn_success
+    aprtn_success
 }
 
 alias dkexec="ap_func_dk_exec bash"
@@ -211,7 +211,7 @@ alias dkexecsh="ap_func_dk_exec sh"
 # }
 ap_func_dk_exec() {
     docker exec -it "$2" "$1"
-    @rtn_success
+    aprtn_success
 }
 
 alias dkup="ap_func_dkc_up"
@@ -256,7 +256,7 @@ ap_func_dkc_up() {
             ;;
         ?)
             echo "Invalid option [${OPTARG}]"
-            @rtn_err_opt_invalid_option
+            aprtn_err_opt_invalid_option
             ;;
         esac
     done
@@ -303,10 +303,10 @@ ap_func_dkc_up() {
         ap_cmd="${ap_cmd} up --build -d ${ap_opt_cache}"
     fi
 
-    @minfo "Execute [${ap_cmd}]\n"
+    apshowmsginfo "Execute [${ap_cmd}]\n"
     eval "$(printf "%s" "${ap_cmd}")"
 
-    @rtn_success
+    aprtn_success
 }
 
 alias dklogs="ap_func_dk_logs"
@@ -335,7 +335,7 @@ ap_func_dk_logs() {
             ;;
         ?)
             echo "Invalid option [${OPTARG}]"
-            @rtn_err_opt_invalid_option
+            aprtn_err_opt_invalid_option
             ;;
         esac
     done
@@ -350,5 +350,5 @@ ap_func_dk_logs() {
         echo "" | sudo tee "$(docker inspect --format='{{.LogPath}}' "${ap_dk_con}")"
     fi
 
-    @rtn_success
+    aprtn_success
 }

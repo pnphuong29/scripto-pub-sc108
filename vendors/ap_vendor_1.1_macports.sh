@@ -1,4 +1,4 @@
-alias @initmacports="ap_func_init_macports"
+alias apinitmacports="ap_func_init_macports"
 ap_func_init_macports() {
     # export DISPLAY=:0.0 # For macOS < 10.5
     alias @port='sudo port'
@@ -21,50 +21,50 @@ ap_func_init_macports() {
         source "/opt/local/etc/profile.d/bash_completion.sh"
     fi
 
-    if alias @initmacportsshare &>/dev/null; then
-        @initmacportsshare
+    if alias apinitmacportsshare &>/dev/null; then
+        apinitmacportsshare
     fi
 
-    if alias @initmacportscommon &>/dev/null; then
-        @initmacportscommon
+    if alias apinitmacportscommon &>/dev/null; then
+        apinitmacportscommon
     fi
 }
 
-alias @createdirstructmacports="ap_func_create_dirstruct_macports"
+alias apcreatedirstructmacports="ap_func_create_dirstruct_macports"
 ap_func_create_dirstruct_macports() {
-    if alias @createdirstructmacportsshare &>/dev/null; then
-        @createdirstructmacportsshare
+    if alias apcreatedirstructmacportsshare &>/dev/null; then
+        apcreatedirstructmacportsshare
     fi
 
-    if alias @createdirstructmacportscommon &>/dev/null; then
-        @createdirstructmacportscommon
+    if alias apcreatedirstructmacportscommon &>/dev/null; then
+        apcreatedirstructmacportscommon
     fi
 }
 
-alias @rmdirstructmacports="ap_func_rm_dirstruct_macports"
+alias rmdirstructmacports="ap_func_rm_dirstruct_macports"
 ap_func_rm_dirstruct_macports() {
-    if alias @rmdirstructmacportsshare &>/dev/null; then
-        @rmdirstructmacportsshare
+    if alias rmdirstructmacportsshare &>/dev/null; then
+        rmdirstructmacportsshare
     fi
 
-    if alias @rmdirstructmacportscommon &>/dev/null; then
-        @rmdirstructmacportscommon
+    if alias rmdirstructmacportscommon &>/dev/null; then
+        rmdirstructmacportscommon
     fi
 }
 
-alias @setupmacports="ap_func_setup_macports"
+alias apsetupmacports="ap_func_setup_macports"
 ap_func_setup_macports() {
-    @logshow "Install [xcode-select]\n"
+    aplogshow "Install [xcode-select]\n"
     xcode-select --install
 
     # https://www.macports.org/install.php
-    @logshow "Download [MacPorts]\n"
+    aplogshow "Download [MacPorts]\n"
     cd "${AP_TMP_DIR}"
     curl -SL \
         "$(curl --silent https://api.github.com/repos/macports/macports-base/releases | jq -r '.[0].assets[].browser_download_url' | grep ".tar.gz" | grep -v asc)" >macports.tar.gz
     tar -zxf "macports.tar.gz"
 
-    @logshow "Build and install [MacPorts]"
+    aplogshow "Build and install [MacPorts]"
     mv MacPorts* MacPorts
 
     cd "MacPorts"
@@ -77,25 +77,25 @@ ap_func_setup_macports() {
     cd ../
     rm -rf "MacPorts"
 
-    @initmacports
-    if alias @createdirstructmacports &>/dev/null; then
-        @createdirstructmacports
+    apinitmacports
+    if alias apcreatedirstructmacports &>/dev/null; then
+        apcreatedirstructmacports
     fi
 }
 
-alias @rmmacports="ap_func_rm_macports"
+alias rmmacports="ap_func_rm_macports"
 ap_func_rm_macports() {
     # https://guide.macports.org/chunked/installing.macports.uninstalling.html
-    @logshow "Remove [Macports]\n"
+    aplogshow "Remove [Macports]\n"
     sudo port -fp uninstall installed
 
     # Remove Users and Groups
-    @logshow "Remove Macports users and groups\n"
+    aplogshow "Remove Macports users and groups\n"
     sudo dscl . -delete /Users/macports
     sudo dscl . -delete /Groups/macports
 
     # Remove the rest of macports
-    @logshow "Remove Macports directories\n"
+    aplogshow "Remove Macports directories\n"
     sudo rm -rf \
         /opt/local \
         /Applications/DarwinPorts \
@@ -108,11 +108,11 @@ ap_func_rm_macports() {
         /Library/Tcl/macports1.0 \
         "${HOME}/.macports"
 
-    if alias @rmdirstructmacports &>/dev/null; then
-        @rmdirstructmacport
+    if alias rmdirstructmacports &>/dev/null; then
+        rmdirstructmacport
     fi
 
-    if alias @rmglobalsymlinkmacports &>/dev/null; then
-        @rmglobalsymlinkmacport
+    if alias rmglobalsymlinkmacports &>/dev/null; then
+        rmglobalsymlinkmacport
     fi
 }

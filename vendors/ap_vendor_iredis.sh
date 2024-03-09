@@ -1,59 +1,59 @@
-alias @initiredis="ap_func_init_iredis"
+alias apinitiredis="ap_func_init_iredis"
 ap_func_init_iredis() {
     alias @iredis="iredis -a \$(showredispasswd)"
 
-    if alias @initiredisshare &>/dev/null; then
-        @initiredisshare
+    if alias apinitiredisshare &>/dev/null; then
+        apinitiredisshare
     fi
 
-    if alias @initirediscommon &>/dev/null; then
-        @initirediscommon
+    if alias apinitirediscommon &>/dev/null; then
+        apinitirediscommon
     fi
 }
 
-alias @createdirstructiredis="ap_func_create_dirstruct_iredis"
+alias apcreatedirstructiredis="ap_func_create_dirstruct_iredis"
 ap_func_create_dirstruct_iredis() {
-    if alias @createdirstructiredisshare &>/dev/null; then
-        @createdirstructiredisshare
+    if alias apcreatedirstructiredisshare &>/dev/null; then
+        apcreatedirstructiredisshare
     fi
 
-    if alias @createdirstructirediscommon &>/dev/null; then
-        @createdirstructirediscommon
+    if alias apcreatedirstructirediscommon &>/dev/null; then
+        apcreatedirstructirediscommon
     fi
 }
 
-alias @rmdirstructiredis="ap_func_rm_dirstruct_iredis"
+alias rmdirstructiredis="ap_func_rm_dirstruct_iredis"
 ap_func_rm_dirstruct_iredis() {
-    if alias @rmdirstructiredisshare &>/dev/null; then
-        @rmdirstructiredisshare
+    if alias rmdirstructiredisshare &>/dev/null; then
+        rmdirstructiredisshare
     fi
 
-    if alias @rmdirstructirediscommon &>/dev/null; then
-        @rmdirstructirediscommon
+    if alias rmdirstructirediscommon &>/dev/null; then
+        rmdirstructirediscommon
     fi
 }
 
-alias @setupiredis="ap_func_setup_iredis"
+alias apsetupiredis="ap_func_setup_iredis"
 ap_func_setup_iredis() {
-    @logshow "Install [iredis]\n"
+    aplogshow "Install [iredis]\n"
     pip install iredis
 
-    @initiredis
-    if alias @createdirstructiredis &>/dev/null; then
-        @createdirstructiredis
+    apinitiredis
+    if alias apcreatedirstructiredis &>/dev/null; then
+        apcreatedirstructiredis
     fi
 }
 
-alias @rmiredis="ap_func_rm_iredis"
+alias rmiredis="ap_func_rm_iredis"
 ap_func_rm_iredis() {
-    @logshow "Remove [iredis]\n"
+    aplogshow "Remove [iredis]\n"
     pip uninstall iredis
 
-    if alias @rmdirstructiredis &>/dev/null; then
-        @rmdirstructiredis
+    if alias rmdirstructiredis &>/dev/null; then
+        rmdirstructiredis
     fi
 
-    if alias @rmglobalsymlinkiredis &>/dev/null; then
-        @rmglobalsymlinkiredis
+    if alias rmglobalsymlinkiredis &>/dev/null; then
+        rmglobalsymlinkiredis
     fi
 }

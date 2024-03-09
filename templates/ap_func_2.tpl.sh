@@ -1,4 +1,4 @@
-alias @xxx="ap_alias_xxx"
+alias apxxx="ap_alias_xxx"
 # @$func $$ ap_func_xxx {
 # ap_func_xxx [-dp] <domain/ip> <port> [--] *<src_path> <dst_path>
 # Description
@@ -43,5 +43,5 @@ ap_func_xxx() {
 
     fi
 
-    @rtn_success
+    aprtn_success
 }

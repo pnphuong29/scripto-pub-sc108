@@ -1,50 +1,50 @@
-alias @initlua="ap_func_init_lua"
+alias apinitlua="ap_func_init_lua"
 ap_func_init_lua() {
-    if alias @initluashare &>/dev/null; then
-        @initluashare
+    if alias apinitluashare &>/dev/null; then
+        apinitluashare
     fi
 
-    if alias @initluacommon &>/dev/null; then
-        @initluacommon
+    if alias apinitluacommon &>/dev/null; then
+        apinitluacommon
     fi
 }
 
-alias @createdirstructlua="ap_func_create_dirstruct_lua"
+alias apcreatedirstructlua="ap_func_create_dirstruct_lua"
 ap_func_create_dirstruct_lua() {
-    @logshow "Generate [lua] bash autocomplete\n"
+    aplogshow "Generate [lua] bash autocomplete\n"
     luarocks completion bash >"${AP_COMPLETIONS_DIR}/ap_completion_luarocks.bash"
 
-    if alias @createdirstructluashare &>/dev/null; then
-        @createdirstructluashare
+    if alias apcreatedirstructluashare &>/dev/null; then
+        apcreatedirstructluashare
     fi
 
-    if alias @createdirstructluacommon &>/dev/null; then
-        @createdirstructluacommon
+    if alias apcreatedirstructluacommon &>/dev/null; then
+        apcreatedirstructluacommon
     fi
 }
 
-alias @rmdirstructlua="ap_func_rm_dirstruct_lua"
+alias rmdirstructlua="ap_func_rm_dirstruct_lua"
 ap_func_rm_dirstruct_lua() {
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_luarocks.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_luarocks.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_luarocks.bash"
 
-    if alias @rmdirstructluashare &>/dev/null; then
-        @rmdirstructluashare
+    if alias rmdirstructluashare &>/dev/null; then
+        rmdirstructluashare
     fi
 
-    if alias @rmdirstructluacommon &>/dev/null; then
-        @rmdirstructluacommon
+    if alias rmdirstructluacommon &>/dev/null; then
+        rmdirstructluacommon
     fi
 }
 
-alias @setuplua="ap_func_setup_lua"
+alias apsetuplua="ap_func_setup_lua"
 ap_func_setup_lua() {
     local ap_lua_setup_version='5.3'
     if [ -n "$1" ]; then
         ap_lua_setup_version="$1"
     fi
 
-    @logshow "Install [lua] v${ap_lua_setup_version}\n"
+    aplogshow "Install [lua] v${ap_lua_setup_version}\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         # https://github.com/luarocks/luarocks/wiki/Installation-instructions-for-macOS
@@ -54,20 +54,20 @@ ap_func_setup_lua() {
         sudo apt install -y "lua${ap_lua_setup_version}" luarocks
     fi
 
-    @initlua
-    if alias @createdirstructlua &>/dev/null; then
-        @createdirstructlua
+    apinitlua
+    if alias apcreatedirstructlua &>/dev/null; then
+        apcreatedirstructlua
     fi
 }
 
-alias @rmlua="ap_func_rm_lua"
+alias rmlua="ap_func_rm_lua"
 ap_func_rm_lua() {
     local ap_lua_remove_version='5.3'
     if [ -n "$1" ]; then
         ap_lua_remove_version="$1"
     fi
 
-    @logshow "Remove [lua]\n"
+    aplogshow "Remove [lua]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew uninstall "lua@${ap_lua_remove_version}" luarocks
@@ -76,7 +76,7 @@ ap_func_rm_lua() {
         sudo apt autoremove -y
     fi
 
-    if alias @rmdirstructlua &>/dev/null; then
-        @rmdirstructlua
+    if alias rmdirstructlua &>/dev/null; then
+        rmdirstructlua
     fi
 }

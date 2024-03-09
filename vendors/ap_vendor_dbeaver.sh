@@ -1,4 +1,4 @@
-alias @initdbeaver="ap_func_init_dbeaver"
+alias apinitdbeaver="ap_func_init_dbeaver"
 ap_func_init_dbeaver() {
     AP_DBEAVER_WS_DIR="${HOME}/Library/DBeaverData"
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
@@ -6,40 +6,40 @@ ap_func_init_dbeaver() {
     fi
     export AP_DBEAVER_WS_DIR
 
-    if alias @initdbeavershare &>/dev/null; then
-        @initdbeavershare
+    if alias apinitdbeavershare &>/dev/null; then
+        apinitdbeavershare
     fi
 
-    if alias @initdbeavercommon &>/dev/null; then
-        @initdbeavercommon
+    if alias apinitdbeavercommon &>/dev/null; then
+        apinitdbeavercommon
     fi
 }
 
-alias @createdirstructdbeaver="ap_func_create_dirstruct_dbeaver"
+alias apcreatedirstructdbeaver="ap_func_create_dirstruct_dbeaver"
 ap_func_create_dirstruct_dbeaver() {
-    if alias @createdirstructdbeavershare &>/dev/null; then
-        @createdirstructdbeavershare
+    if alias apcreatedirstructdbeavershare &>/dev/null; then
+        apcreatedirstructdbeavershare
     fi
 
-    if alias @createdirstructdbeavercommon &>/dev/null; then
-        @createdirstructdbeavercommon
+    if alias apcreatedirstructdbeavercommon &>/dev/null; then
+        apcreatedirstructdbeavercommon
     fi
 }
 
-alias @rmdirstructdbeaver="ap_func_rm_dirstruct_dbeaver"
+alias rmdirstructdbeaver="ap_func_rm_dirstruct_dbeaver"
 ap_func_rm_dirstruct_dbeaver() {
-    if alias @rmdirstructdbeavershare &>/dev/null; then
-        @rmdirstructdbeavershare
+    if alias rmdirstructdbeavershare &>/dev/null; then
+        rmdirstructdbeavershare
     fi
 
-    if alias @rmdirstructdbeavercommon &>/dev/null; then
-        @rmdirstructdbeavercommon
+    if alias rmdirstructdbeavercommon &>/dev/null; then
+        rmdirstructdbeavercommon
     fi
 }
 
-alias @setupdbeaver="ap_func_setup_dbeaver"
+alias apsetupdbeaver="ap_func_setup_dbeaver"
 ap_func_setup_dbeaver() {
-    @logshow "Install [Dbeaver]\n"
+    aplogshow "Install [Dbeaver]\n"
 
     # Remove old app dir if any
     rm -rf "${AP_TMP_DIR}/dbeaver"
@@ -61,16 +61,16 @@ ap_func_setup_dbeaver() {
         sudo dpkg -i dbeaver.deb
     fi
 
-    @initdbeaver
+    apinitdbeaver
 
-    if alias @createdirstructdbeaver &>/dev/null; then
-        @createdirstructdbeaver
+    if alias apcreatedirstructdbeaver &>/dev/null; then
+        apcreatedirstructdbeaver
     fi
 }
 
-alias @rmdbeaver="ap_func_rm_dbeaver"
+alias rmdbeaver="ap_func_rm_dbeaver"
 ap_func_rm_dbeaver() {
-    @logshow "Remove [dbeaver]\n"
+    aplogshow "Remove [dbeaver]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         rm -rf "/Applications/Dbeaver.app"
@@ -78,11 +78,11 @@ ap_func_rm_dbeaver() {
         sudo dpkg --purge dbeaver
     fi
 
-    if alias @rmdirstructdbeaver &>/dev/null; then
-        @rmdirstructdbeaver
+    if alias rmdirstructdbeaver &>/dev/null; then
+        rmdirstructdbeaver
     fi
 
-    if alias @rmglobalsymlinkdbeaver &>/dev/null; then
-        @rmglobalsymlinkdbeaver
+    if alias rmglobalsymlinkdbeaver &>/dev/null; then
+        rmglobalsymlinkdbeaver
     fi
 }

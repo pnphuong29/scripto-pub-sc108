@@ -1,50 +1,50 @@
-alias @initfiglet="ap_func_init_figlet"
+alias apinitfiglet="ap_func_init_figlet"
 ap_func_init_figlet() {
-    if alias @initfigletshare &>/dev/null; then
-        @initfigletshare
+    if alias apinitfigletshare &>/dev/null; then
+        apinitfigletshare
     fi
 
-    if alias @initfigletcommon &>/dev/null; then
-        @initfigletcommon
+    if alias apinitfigletcommon &>/dev/null; then
+        apinitfigletcommon
     fi
 }
 
-alias @createdirstructfiglet="ap_func_create_dirstruct_figlet"
+alias apcreatedirstructfiglet="ap_func_create_dirstruct_figlet"
 ap_func_create_dirstruct_figlet() {
-    if alias @createdirstructfigletshare &>/dev/null; then
-        @createdirstructfigletshare
+    if alias apcreatedirstructfigletshare &>/dev/null; then
+        apcreatedirstructfigletshare
     fi
 
-    if alias @createdirstructfigletcommon &>/dev/null; then
-        @createdirstructfigletcommon
+    if alias apcreatedirstructfigletcommon &>/dev/null; then
+        apcreatedirstructfigletcommon
     fi
 }
 
-alias @rmdirstructfiglet="ap_func_rm_dirstruct_figlet"
+alias rmdirstructfiglet="ap_func_rm_dirstruct_figlet"
 ap_func_rm_dirstruct_figlet() {
-    if alias @rmdirstructfigletshare &>/dev/null; then
-        @rmdirstructfigletshare
+    if alias rmdirstructfigletshare &>/dev/null; then
+        rmdirstructfigletshare
     fi
 
-    if alias @rmdirstructfigletcommon &>/dev/null; then
-        @rmdirstructfigletcommon
+    if alias rmdirstructfigletcommon &>/dev/null; then
+        rmdirstructfigletcommon
     fi
 }
 
-alias @setupfiglet="ap_func_setup_figlet"
+alias apsetupfiglet="ap_func_setup_figlet"
 ap_func_setup_figlet() {
     # https://github.com/cmatsuoka/figlet
-    @logshow "Install [figlet]\n"
+    aplogshow "Install [figlet]\n"
     cd "${AP_TMP_DIR}"
     git clone https://github.com/cmatsuoka/figlet
     cd figlet
     sudo make install
 }
 
-alias @rmfiglet="ap_func_rm_figlet"
+alias rmfiglet="ap_func_rm_figlet"
 ap_func_rm_figlet() {
     # https://github.com/cmatsuoka/figlet
-    @logshow "Remove [figlet]\n"
+    aplogshow "Remove [figlet]\n"
     sudo rm -rf /usr/local/share/figlet
 
     cd /usr/local/bin

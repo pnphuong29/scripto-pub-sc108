@@ -1,71 +1,71 @@
-alias @initxcp="ap_func_init_xcp"
+alias apinitxcp="ap_func_init_xcp"
 ap_func_init_xcp() {
-    if alias @initxcpshare &>/dev/null; then
-        @initxcpshare
+    if alias apinitxcpshare &>/dev/null; then
+        apinitxcpshare
     fi
 
-    if alias @initxcpcommon &>/dev/null; then
-        @initxcpcommon
+    if alias apinitxcpcommon &>/dev/null; then
+        apinitxcpcommon
     fi
 }
 
-alias @createdirstructxcp="ap_func_create_dirstruct_xcp"
+alias apcreatedirstructxcp="ap_func_create_dirstruct_xcp"
 ap_func_create_dirstruct_xcp() {
-    if alias @createdirstructxcpshare &>/dev/null; then
-        @createdirstructxcpshare
+    if alias apcreatedirstructxcpshare &>/dev/null; then
+        apcreatedirstructxcpshare
     fi
 
-    if alias @createdirstructxcpcommon &>/dev/null; then
-        @createdirstructxcpcommon
+    if alias apcreatedirstructxcpcommon &>/dev/null; then
+        apcreatedirstructxcpcommon
     fi
 }
 
-alias @rmdirstructxcp="ap_func_rm_dirstruct_xcp"
+alias rmdirstructxcp="ap_func_rm_dirstruct_xcp"
 ap_func_rm_dirstruct_xcp() {
-    if alias @rmdirstructxcpshare &>/dev/null; then
-        @rmdirstructxcpshare
+    if alias rmdirstructxcpshare &>/dev/null; then
+        rmdirstructxcpshare
     fi
 
-    if alias @rmdirstructxcpcommon &>/dev/null; then
-        @rmdirstructxcpcommon
+    if alias rmdirstructxcpcommon &>/dev/null; then
+        rmdirstructxcpcommon
     fi
 }
 
 alias @createglobalsymlinkxcp="ap_func_create_global_symlink_xcp"
 ap_func_create_global_symlink_xcp() {
     if [ -f "${HOME}/.cargo/bin/xcp" ]; then
-        @logshow "Create symlink from [/usr/local/bin/xcp] to [${HOME}/.cargo/bin/xcp]\n"
+        aplogshow "Create symlink from [/usr/local/bin/xcp] to [${HOME}/.cargo/bin/xcp]\n"
         sudo ln -sf "${HOME}/.cargo/bin/xcp" "/usr/local/bin/xcp"
     fi
 }
 
-alias @rmglobalsymlinkxcp="ap_func_rm_global_symlink_xcp"
+alias rmglobalsymlinkxcp="ap_func_rm_global_symlink_xcp"
 ap_func_rm_global_symlink_xcp() {
-    @logshow "Remove [/usr/local/bin/xcp]\n"
+    aplogshow "Remove [/usr/local/bin/xcp]\n"
     sudo rm -f "/usr/local/bin/xcp"
 }
 
-alias @setupxcp="ap_func_setup_xcp"
+alias apsetupxcp="ap_func_setup_xcp"
 ap_func_setup_xcp() {
-    @logshow "Install [xcp]\n"
+    aplogshow "Install [xcp]\n"
     cargo install xcp
 
-    @initxcp
-    if alias @createdirstructxcp &>/dev/null; then
-        @createdirstructxcp
+    apinitxcp
+    if alias apcreatedirstructxcp &>/dev/null; then
+        apcreatedirstructxcp
     fi
 }
 
-alias @rmxcp="ap_func_rm_xcp"
+alias rmxcp="ap_func_rm_xcp"
 ap_func_rm_xcp() {
-    @logshow "Remove [xcp]\n"
+    aplogshow "Remove [xcp]\n"
     cargo uninstall xcp
 
-    if alias @rmdirstructxcp &>/dev/null; then
-        @rmdirstructxcp
+    if alias rmdirstructxcp &>/dev/null; then
+        rmdirstructxcp
     fi
 
-    if alias @rmglobalsymlinkxcp &>/dev/null; then
-        @rmglobalsymlinkxcp
+    if alias rmglobalsymlinkxcp &>/dev/null; then
+        rmglobalsymlinkxcp
     fi
 }

@@ -1,4 +1,4 @@
-alias @initnginx="ap_func_init_nginx"
+alias apinitnginx="ap_func_init_nginx"
 ap_func_init_nginx() {
     alias rrnginx='sudo systemctl restart nginx'
     alias ssnginx='sudo systemctl status nginx'
@@ -27,47 +27,47 @@ ap_func_init_nginx() {
         "${HOME}/scripto-common/vendors/nginx/conf.d"/*.conf \
 	'
 
-    if alias @initnginxshare &>/dev/null; then
-        @initnginxshare
+    if alias apinitnginxshare &>/dev/null; then
+        apinitnginxshare
     fi
 
-    if alias @initnginxcommon &>/dev/null; then
-        @initnginxcommon
+    if alias apinitnginxcommon &>/dev/null; then
+        apinitnginxcommon
     fi
 }
 
-alias @createdirstructnginx="ap_func_create_dirstruct_nginx"
+alias apcreatedirstructnginx="ap_func_create_dirstruct_nginx"
 ap_func_create_dirstruct_nginx() {
-    if alias @createdirstructnginxshare &>/dev/null; then
-        @createdirstructnginxshare
+    if alias apcreatedirstructnginxshare &>/dev/null; then
+        apcreatedirstructnginxshare
     fi
 
-    if alias @createdirstructnginxcommon &>/dev/null; then
-        @createdirstructnginxcommon
+    if alias apcreatedirstructnginxcommon &>/dev/null; then
+        apcreatedirstructnginxcommon
     fi
 }
 
-alias @rmdirstructnginx="ap_func_rm_dirstruct_nginx"
+alias rmdirstructnginx="ap_func_rm_dirstruct_nginx"
 ap_func_rm_dirstruct_nginx() {
-    if alias @rmdirstructnginxshare &>/dev/null; then
-        @rmdirstructnginxshare
+    if alias rmdirstructnginxshare &>/dev/null; then
+        rmdirstructnginxshare
     fi
 
-    if alias @rmdirstructnginxcommon &>/dev/null; then
-        @rmdirstructnginxcommon
+    if alias rmdirstructnginxcommon &>/dev/null; then
+        rmdirstructnginxcommon
     fi
 }
 
-alias @setupnginx="ap_func_setup_nginx"
+alias apsetupnginx="ap_func_setup_nginx"
 ap_func_setup_nginx() {
     # https://nginx.org/en/linux_packages.html
-    @logshow "Install [nginx]\n"
+    aplogshow "Install [nginx]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install nginx
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         # Install required libraries
-        @logshow "Install required libraries [curl, gnupg2, ca-certificates, lsb-release, ubuntu-keyring]\n"
+        aplogshow "Install required libraries [curl, gnupg2, ca-certificates, lsb-release, ubuntu-keyring]\n"
         sudo apt install -y curl gnupg2 ca-certificates lsb-release ubuntu-keyring
 
         # Import an official nginx signing key so apt could verify the packages authenticity. Fetch the key
@@ -76,8 +76,8 @@ ap_func_setup_nginx() {
         # Verify that the downloaded file contains the proper key
         gpg --dry-run --quiet --no-keyring --import --import-options import-show /usr/share/keyrings/nginx-archive-keyring.gpg
 
-        @minfo "Output should be as followings\n"
-        @minfo "pub   	rsa2048 2011-08-19 [SC] [expires: 2024-06-14]\n
+        apshowmsginfo "Output should be as followings\n"
+        apshowmsginfo "pub   	rsa2048 2011-08-19 [SC] [expires: 2024-06-14]\n
 						573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62\n
 				uid		nginx signing key <signing-keynginx.co\n"
 
@@ -90,15 +90,15 @@ ap_func_setup_nginx() {
         sudo apt install -y nginx
     fi
 
-    @initnginx
-    if alias @createdirstructnginx &>/dev/null; then
-        @createdirstructnginx
+    apinitnginx
+    if alias apcreatedirstructnginx &>/dev/null; then
+        apcreatedirstructnginx
     fi
 }
 
-alias @rmnginx="ap_func_rm_nginx"
+alias rmnginx="ap_func_rm_nginx"
 ap_func_rm_nginx() {
-    @logshow "Remove [nginx]\n"
+    aplogshow "Remove [nginx]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew uninstall nginx
@@ -107,8 +107,8 @@ ap_func_rm_nginx() {
         sudo apt autoremove -y
     fi
 
-    if alias @rmdirstructnginx &>/dev/null; then
-        @rmdirstructnginx
+    if alias rmdirstructnginx &>/dev/null; then
+        rmdirstructnginx
     fi
 }
 

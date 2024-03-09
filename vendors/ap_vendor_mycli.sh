@@ -1,75 +1,75 @@
-alias @initmycli="ap_func_init_mycli"
+alias apinitmycli="ap_func_init_mycli"
 ap_func_init_mycli() {
-    if alias @initmyclishare &>/dev/null; then
-        @initmyclishare
+    if alias apinitmyclishare &>/dev/null; then
+        apinitmyclishare
     fi
 
-    if alias @initmyclicommon &>/dev/null; then
-        @initmyclicommon
+    if alias apinitmyclicommon &>/dev/null; then
+        apinitmyclicommon
     fi
 }
 
-alias @createdirstructmycli="ap_func_create_dirstruct_mycli"
+alias apcreatedirstructmycli="ap_func_create_dirstruct_mycli"
 ap_func_create_dirstruct_mycli() {
-    if alias @createdirstructmyclishare &>/dev/null; then
-        @createdirstructmyclishare
+    if alias apcreatedirstructmyclishare &>/dev/null; then
+        apcreatedirstructmyclishare
     fi
 
-    if alias @createdirstructmyclicommon &>/dev/null; then
-        @createdirstructmyclicommon
+    if alias apcreatedirstructmyclicommon &>/dev/null; then
+        apcreatedirstructmyclicommon
     fi
 }
 
-alias @rmdirstructmycli="ap_func_rm_dirstruct_mycli"
+alias rmdirstructmycli="ap_func_rm_dirstruct_mycli"
 ap_func_rm_dirstruct_mycli() {
-    if alias @rmdirstructmyclishare &>/dev/null; then
-        @rmdirstructmyclishare
+    if alias rmdirstructmyclishare &>/dev/null; then
+        rmdirstructmyclishare
     fi
 
-    if alias @rmdirstructmyclicommon &>/dev/null; then
-        @rmdirstructmyclicommon
+    if alias rmdirstructmyclicommon &>/dev/null; then
+        rmdirstructmyclicommon
     fi
 }
 
 alias @createglobalsymlinkmycli="ap_func_create_global_symlink_mycli"
 ap_func_create_global_symlink_mycli() {
     if [ -f "${AP_SOFT_DIR}/bin/mycli" ]; then
-        @logshow "Create symlink from [/usr/local/bin/mycli] to [${AP_SOFT_DIR}/bin/mycli]\n"
+        aplogshow "Create symlink from [/usr/local/bin/mycli] to [${AP_SOFT_DIR}/bin/mycli]\n"
         sudo ln -sf "${AP_SOFT_DIR}/bin/mycli" "/usr/local/bin/mycli"
     fi
 }
 
-alias @rmglobalsymlinkmycli="ap_func_rm_global_symlink_mycli"
+alias rmglobalsymlinkmycli="ap_func_rm_global_symlink_mycli"
 ap_func_rm_global_symlink_mycli() {
     if [ -f "/usr/local/bin/mycli" ]; then
-        @logshow "Remove [/usr/local/bin/mycli]\n"
+        aplogshow "Remove [/usr/local/bin/mycli]\n"
         sudo rm -f "/usr/local/bin/mycli"
     fi
 }
 
-alias @setupmycli="ap_func_setup_mycli"
+alias apsetupmycli="ap_func_setup_mycli"
 ap_func_setup_mycli() {
     # https://github.com/dbcli/mycli
-    @logshow "Install [mycli]\n"
+    aplogshow "Install [mycli]\n"
     pip install mycli
 
-    @initmycli
-    if alias @createdirstructmycli &>/dev/null; then
-        @createdirstructmycli
+    apinitmycli
+    if alias apcreatedirstructmycli &>/dev/null; then
+        apcreatedirstructmycli
     fi
 }
 
-alias @rmmycli="ap_func_rm_mycli"
+alias rmmycli="ap_func_rm_mycli"
 ap_func_rm_mycli() {
-    @logshow "Remove [mycli]\n"
+    aplogshow "Remove [mycli]\n"
     pip uninstall mycli
 
-    if alias @rmdirstructmycli &>/dev/null; then
-        @rmdirstructmycli
+    if alias rmdirstructmycli &>/dev/null; then
+        rmdirstructmycli
     fi
 
-    if alias @rmglobalsymlinkmycli &>/dev/null; then
-        @rmglobalsymlinkmycli
+    if alias rmglobalsymlinkmycli &>/dev/null; then
+        rmglobalsymlinkmycli
     fi
 }
 
@@ -83,7 +83,7 @@ alias @mycli='ap_func_mycli'
 # }
 ap_func_mycli() {
     if [ "$#" -lt 4 ]; then
-        @rtn_error_not_enough_arguments
+        rtn_error_not_enough_arguments
     fi
 
     local ap_host="$1"
@@ -99,5 +99,5 @@ ap_func_mycli() {
         mycli -h "${ap_host}" -P "${ap_port}" -u "${ap_user}" -p "${ap_pass}"
     fi
 
-    @rtn_success
+    aprtn_success
 }

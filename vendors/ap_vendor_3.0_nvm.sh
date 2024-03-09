@@ -1,10 +1,10 @@
-alias @initnvm="ap_func_init_nvm"
+alias apinitnvm="ap_func_init_nvm"
 ap_func_init_nvm() {
     # https://github.com/nvm-sh/nvm
     export NVM_DIR="${HOME}/.nvm" # NVM's installation directory
 
     if [ -d "${HOME}/.yarn/bin" ]; then
-        @addpath "${HOME}/.yarn/bin"
+        apaddpath "${HOME}/.yarn/bin"
     fi
 
     # Load nvm
@@ -22,41 +22,41 @@ ap_func_init_nvm() {
 
     # export NVM_COLORS='cmgRY'
 
-    if alias @initnvmshare &>/dev/null; then
-        @initnvmshare
+    if alias apinitnvmshare &>/dev/null; then
+        apinitnvmshare
     fi
 
-    if alias @initnvmcommon &>/dev/null; then
-        @initnvmcommon
+    if alias apinitnvmcommon &>/dev/null; then
+        apinitnvmcommon
     fi
 }
 
-alias @createdirstructnvm="ap_func_create_dirstruct_nvm"
+alias apcreatedirstructnvm="ap_func_create_dirstruct_nvm"
 ap_func_create_dirstruct_nvm() {
-    if alias @createdirstructnvmshare &>/dev/null; then
-        @createdirstructnvmshare
+    if alias apcreatedirstructnvmshare &>/dev/null; then
+        apcreatedirstructnvmshare
     fi
 
-    if alias @createdirstructnvmcommon &>/dev/null; then
-        @createdirstructnvmcommon
+    if alias apcreatedirstructnvmcommon &>/dev/null; then
+        apcreatedirstructnvmcommon
     fi
 }
 
-alias @rmdirstructnvm="ap_func_rm_dirstruct_nvm"
+alias rmdirstructnvm="ap_func_rm_dirstruct_nvm"
 ap_func_rm_dirstruct_nvm() {
-    if alias @rmdirstructnvmshare &>/dev/null; then
-        @rmdirstructnvmshare
+    if alias rmdirstructnvmshare &>/dev/null; then
+        rmdirstructnvmshare
     fi
 
-    if alias @rmdirstructnvmcommon &>/dev/null; then
-        @rmdirstructnvmcommon
+    if alias rmdirstructnvmcommon &>/dev/null; then
+        rmdirstructnvmcommon
     fi
 }
 
-alias @setupnvm="ap_func_setup_nvm"
+alias apsetupnvm="ap_func_setup_nvm"
 ap_func_setup_nvm() {
     # https://github.com/nvm-sh/nvm
-    @logshow "Install [nvm]\n"
+    aplogshow "Install [nvm]\n"
     export NVM_DIR="${HOME}/.nvm"
 
     rm -rf "${NVM_DIR}"
@@ -70,22 +70,22 @@ ap_func_setup_nvm() {
     [ -s "${NVM_DIR}/nvm.sh" ] && source "${NVM_DIR}/nvm.sh"                   # This loads-nvm
     [ -s "${NVM_DIR}/bash_completion" ] && source "${NVM_DIR}/bash_completion" # This loads nvm bash_completion
 
-    @initnvm
-    if alias @createdirstructnvm &>/dev/null; then
-        @createdirstructnvm
+    apinitnvm
+    if alias apcreatedirstructnvm &>/dev/null; then
+        apcreatedirstructnvm
     fi
 }
 
-alias @rmnvm="ap_func_rm_nvm"
+alias rmnvm="ap_func_rm_nvm"
 ap_func_rm_nvm() {
-    @logshow "Remove [nvm]\n"
+    aplogshow "Remove [nvm]\n"
     rm -rf "${HOME}/.nvm"
 
-    if alias @rmdirstructnvm &>/dev/null; then
-        @rmdirstructnvm
+    if alias rmdirstructnvm &>/dev/null; then
+        rmdirstructnvm
     fi
 
-    if alias @rmglobalsymlinknvm &>/dev/null; then
-        @rmglobalsymlinknvm
+    if alias rmglobalsymlinknvm &>/dev/null; then
+        rmglobalsymlinknvm
     fi
 }

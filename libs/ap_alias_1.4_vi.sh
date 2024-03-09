@@ -7,6 +7,8 @@ alias vibashrc="vi \${HOME}/.bashrc"
 alias vibashprofile="vi \${HOME}/.bash_profile"
 alias viprofile="vi \${HOME}/.profile"
 
+alias vistmaster='vi "${HOME}/scripto/ap_master.sh"'
+alias visrmaster='vi "${HOME}/scripto-share/ap_master.sh"'
 alias viscmaster='vi "${HOME}/scripto-common/ap_master.sh"'
 alias vismmaster='vi "${HOME}/scripto-main/ap_master.sh"'
 
@@ -16,4 +18,3 @@ alias vigitconfigs="vi -p \
 	\${HOME}/.gitignore_global \
     "
 alias vichromebm="vi \${AP_CHROME_BOOKMARK_FILE_PATH}"
-alias vitmp='vi "${AP_TMP_DIR}/tmp.txt"'

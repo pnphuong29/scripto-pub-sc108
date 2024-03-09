@@ -1,66 +1,66 @@
-alias @initinvoke="ap_func_init_invoke"
+alias apinitinvoke="ap_func_init_invoke"
 ap_func_init_invoke() {
-    if alias @initinvokeshare &>/dev/null; then
-        @initinvokeshare
+    if alias apinitinvokeshare &>/dev/null; then
+        apinitinvokeshare
     fi
 
-    if alias @initinvokecommon &>/dev/null; then
-        @initinvokecommon
+    if alias apinitinvokecommon &>/dev/null; then
+        apinitinvokecommon
     fi
 }
 
-alias @createdirstructinvoke="ap_func_create_dirstruct_invoke"
+alias apcreatedirstructinvoke="ap_func_create_dirstruct_invoke"
 ap_func_create_dirstruct_invoke() {
-    @logshow "Generate [invoke] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_invoke.bash]\n"
+    aplogshow "Generate [invoke] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_invoke.bash]\n"
 
     if type inv &>/dev/null; then
         inv --print-completion-script bash >"${AP_COMPLETIONS_DIR}/ap_completion_invoke.bash"
     fi
 
-    if alias @createdirstructinvokeshare &>/dev/null; then
-        @createdirstructinvokeshare
+    if alias apcreatedirstructinvokeshare &>/dev/null; then
+        apcreatedirstructinvokeshare
     fi
 
-    if alias @createdirstructinvokecommon &>/dev/null; then
-        @createdirstructinvokecommon
+    if alias apcreatedirstructinvokecommon &>/dev/null; then
+        apcreatedirstructinvokecommon
     fi
 }
 
-alias @rmdirstructinvoke="ap_func_rm_dirstruct_invoke"
+alias rmdirstructinvoke="ap_func_rm_dirstruct_invoke"
 ap_func_rm_dirstruct_invoke() {
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_invoke.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_invoke.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_invoke.bash"
 
-    if alias @rmdirstructinvokeshare &>/dev/null; then
-        @rmdirstructinvokeshare
+    if alias rmdirstructinvokeshare &>/dev/null; then
+        rmdirstructinvokeshare
     fi
 
-    if alias @rmdirstructinvokecommon &>/dev/null; then
-        @rmdirstructinvokecommon
+    if alias rmdirstructinvokecommon &>/dev/null; then
+        rmdirstructinvokecommon
     fi
 }
 
-alias @setupinvoke="ap_func_setup_invoke"
+alias apsetupinvoke="ap_func_setup_invoke"
 ap_func_setup_invoke() {
-    @logshow "Install [invoke]\n"
+    aplogshow "Install [invoke]\n"
     pip install invoke
 
-    @initinvoke
-    if alias @createdirstructinvoke &>/dev/null; then
-        @createdirstructinvoke
+    apinitinvoke
+    if alias apcreatedirstructinvoke &>/dev/null; then
+        apcreatedirstructinvoke
     fi
 }
 
-alias @rminvoke="ap_func_rm_invoke"
+alias rminvoke="ap_func_rm_invoke"
 ap_func_rm_invoke() {
-    @logshow "Remove [invoke]\n"
+    aplogshow "Remove [invoke]\n"
     pip uninstall invoke
 
-    if alias @rmdirstructinvoke &>/dev/null; then
-        @rmdirstructinvoke
+    if alias rmdirstructinvoke &>/dev/null; then
+        rmdirstructinvoke
     fi
 
-    if alias @rmglobalsymlinkinvoke &>/dev/null; then
-        @rmglobalsymlinkinvoke
+    if alias rmglobalsymlinkinvoke &>/dev/null; then
+        rmglobalsymlinkinvoke
     fi
 }

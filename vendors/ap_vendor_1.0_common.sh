@@ -1,4 +1,4 @@
-alias @initcommonapps="ap_func_init_common_apps"
+alias apinitcommonapps="ap_func_init_common_apps"
 ap_func_init_common_apps() {
     # Bash prompt
     # https://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html
@@ -8,10 +8,10 @@ ap_func_init_common_apps() {
     export PS1="\[\e[95;49m\]\t \[\e[93;49m\]\u@\h \[\e[32;49m\]\W\[\e[m\]\$ "
 }
 
-alias @setupcommonapps="ap_func_setup_common_apps"
+alias apsetupcommonapps="ap_func_setup_common_apps"
 ap_func_setup_common_apps() {
     # Require [brew]
-    @logshow "Install common apps\n"
+    aplogshow "Install common apps\n"
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         if [[ "$(uname -m)" == 'arm64' ]]; then
             brew install \
@@ -38,7 +38,7 @@ ap_func_setup_common_apps() {
                 git
 
             # Link bash
-            @logshow "Link [${HOME}/scripto-data/software/bin/bash] to [/opt/local/bin/bash]\n"
+            aplogshow "Link [${HOME}/scripto-data/software/bin/bash] to [/opt/local/bin/bash]\n"
             ln -sf /opt/local/bin/bash "${HOME}/scripto-data/software/bin/bash"
         elif [[ "$(uname -m)" == 'x86_64' ]]; then
             port install \
@@ -46,7 +46,7 @@ ap_func_setup_common_apps() {
                 findutils
 
             # Link bash
-            @logshow "Link [${HOME}/scripto-data/software/bin/bash] to [/usr/local/bin/bash]\n"
+            aplogshow "Link [${HOME}/scripto-data/software/bin/bash] to [/usr/local/bin/bash]\n"
             ln -sf /usr/local/bin/bash "${HOME}/scripto-data/software/bin/bash"
         fi
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
@@ -61,7 +61,7 @@ ap_func_setup_common_apps() {
         sudo apt update
 
         # Install locales
-        @logshow "Install [locales] using [apt]\n"
+        aplogshow "Install [locales] using [apt]\n"
         sudo apt install -y locales
         echo "LC_ALL=en_US.UTF-8" | sudo tee -a /etc/environment
         echo "en_US.UTF-8 UTF-8" | sudo tee -a /etc/locale.gen
@@ -105,32 +105,32 @@ ap_func_setup_common_apps() {
             dh-autoreconf
 
         # Install snap core
-        @logshow "Install & upgrade [snap core]\n"
+        aplogshow "Install & upgrade [snap core]\n"
         sudo snap install core
         sudo snap refresh core
 
         # Link bash
-        @logshow "Link [${HOME}/scripto-data/software/bin/bash] to [/bin/bash]\n"
+        aplogshow "Link [${HOME}/scripto-data/software/bin/bash] to [/bin/bash]\n"
         ln -sf /bin/bash "${HOME}/scripto-data/software/bin/bash"
     fi
 
-    @createdirstructgit
+    apcreatedirstructgit
 }
 
 # common server apps
-alias @setupcommonserverapps="ap_func_setup_common_server_apps"
+alias apsetupcommonserverapps="ap_func_setup_common_server_apps"
 ap_func_setup_common_server_apps() {
-    @setupcommonapps
+    apsetupcommonapps
 }
 
 # common desktop apps
-alias @setupcommondesktopapps="ap_func_setup_common_desktop_apps"
+alias apsetupcommondesktopapps="ap_func_setup_common_desktop_apps"
 ap_func_setup_common_desktop_apps() {
-    @setupcommonapps
+    apsetupcommonapps
     sudo apt install -y \
         sshpass
 
-    @logshow "Install common desktop apps\n"
+    aplogshow "Install common desktop apps\n"
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install --cask \
             google-chrome

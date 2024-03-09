@@ -1,39 +1,39 @@
-alias @inithyper="ap_func_init_hyper"
+alias apinithyper="ap_func_init_hyper"
 ap_func_init_hyper() {
-    if alias @inithypershare &>/dev/null; then
-        @inithypershare
+    if alias apinithypershare &>/dev/null; then
+        apinithypershare
     fi
 
-    if alias @inithypercommon &>/dev/null; then
-        @inithypercommon
+    if alias apinithypercommon &>/dev/null; then
+        apinithypercommon
     fi
 }
 
-alias @createdirstructhyper="ap_func_create_dirstruct_hyper"
+alias apcreatedirstructhyper="ap_func_create_dirstruct_hyper"
 ap_func_create_dirstruct_hyper() {
-    if alias @createdirstructhypershare &>/dev/null; then
-        @createdirstructhypershare
+    if alias apcreatedirstructhypershare &>/dev/null; then
+        apcreatedirstructhypershare
     fi
 
-    if alias @createdirstructhypercommon &>/dev/null; then
-        @createdirstructhypercommon
+    if alias apcreatedirstructhypercommon &>/dev/null; then
+        apcreatedirstructhypercommon
     fi
 }
 
-alias @rmdirstructhyper="ap_func_rm_dirstruct_hyper"
+alias rmdirstructhyper="ap_func_rm_dirstruct_hyper"
 ap_func_rm_dirstruct_hyper() {
-    if alias @rmdirstructhypershare &>/dev/null; then
-        @rmdirstructhypershare
+    if alias rmdirstructhypershare &>/dev/null; then
+        rmdirstructhypershare
     fi
 
-    if alias @rmdirstructhypercommon &>/dev/null; then
-        @rmdirstructhypercommon
+    if alias rmdirstructhypercommon &>/dev/null; then
+        rmdirstructhypercommon
     fi
 }
 
-alias @setuphyper="ap_func_setup_hyper"
+alias apsetuphyper="ap_func_setup_hyper"
 ap_func_setup_hyper() {
-    @logshow "Install [hyper]\n"
+    aplogshow "Install [hyper]\n"
 
     # Remove old app dir if any
     rm -rf "${AP_TMP_DIR}/hyper"*
@@ -54,15 +54,15 @@ ap_func_setup_hyper() {
         sudo dpkg -i hyper.deb
     fi
 
-    @inithyper
-    if alias @createdirstructhyper &>/dev/null; then
-        @createdirstructhyper
+    apinithyper
+    if alias apcreatedirstructhyper &>/dev/null; then
+        apcreatedirstructhyper
     fi
 }
 
-alias @rmhyper="ap_func_rm_hyper"
+alias rmhyper="ap_func_rm_hyper"
 ap_func_rm_hyper() {
-    @logshow "Remove [hyper]\n"
+    aplogshow "Remove [hyper]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         rm -rf /Applications/Hyper.app
@@ -70,7 +70,7 @@ ap_func_rm_hyper() {
         sudo dpkg --purge hyper
     fi
 
-    if alias @rmdirstructhyper &>/dev/null; then
-        @rmdirstructhyper
+    if alias rmdirstructhyper &>/dev/null; then
+        rmdirstructhyper
     fi
 }

@@ -1,57 +1,57 @@
-alias @initipython="ap_func_init_ipython"
+alias apinitipython="ap_func_init_ipython"
 ap_func_init_ipython() {
-    if alias @initipythonshare &>/dev/null; then
-        @initipythonshare
+    if alias apinitipythonshare &>/dev/null; then
+        apinitipythonshare
     fi
 
-    if alias @initipythoncommon &>/dev/null; then
-        @initipythoncommon
+    if alias apinitipythoncommon &>/dev/null; then
+        apinitipythoncommon
     fi
 }
 
-alias @createdirstructipython="ap_func_create_dirstruct_ipython"
+alias apcreatedirstructipython="ap_func_create_dirstruct_ipython"
 ap_func_create_dirstruct_ipython() {
-    if alias @createdirstructipythonshare &>/dev/null; then
-        @createdirstructipythonshare
+    if alias apcreatedirstructipythonshare &>/dev/null; then
+        apcreatedirstructipythonshare
     fi
 
-    if alias @createdirstructipythoncommon &>/dev/null; then
-        @createdirstructipythoncommon
+    if alias apcreatedirstructipythoncommon &>/dev/null; then
+        apcreatedirstructipythoncommon
     fi
 }
 
-alias @rmdirstructipython="ap_func_rm_dirstruct_ipython"
+alias rmdirstructipython="ap_func_rm_dirstruct_ipython"
 ap_func_rm_dirstruct_ipython() {
-    if alias @rmdirstructipythonshare &>/dev/null; then
-        @rmdirstructipythonshare
+    if alias rmdirstructipythonshare &>/dev/null; then
+        rmdirstructipythonshare
     fi
 
-    if alias @rmdirstructipythoncommon &>/dev/null; then
-        @rmdirstructipythoncommon
+    if alias rmdirstructipythoncommon &>/dev/null; then
+        rmdirstructipythoncommon
     fi
 }
 
-alias @setupipython="ap_func_setup_ipython"
+alias apsetupipython="ap_func_setup_ipython"
 ap_func_setup_ipython() {
-    @logshow "Install [ipython]\n"
+    aplogshow "Install [ipython]\n"
     pip install ipython
 
-    @initipython
-    if alias @createdirstructipython &>/dev/null; then
-        @createdirstructipython
+    apinitipython
+    if alias apcreatedirstructipython &>/dev/null; then
+        apcreatedirstructipython
     fi
 }
 
-alias @rmipython="ap_func_rm_ipython"
+alias rmipython="ap_func_rm_ipython"
 ap_func_rm_ipython() {
-    @logshow "Remove [ipython]\n"
+    aplogshow "Remove [ipython]\n"
     pip uninstall ipython
 
-    if alias @rmdirstructipython &>/dev/null; then
-        @rmdirstructipython
+    if alias rmdirstructipython &>/dev/null; then
+        rmdirstructipython
     fi
 
-    if alias @rmglobalsymlinkipython &>/dev/null; then
-        @rmglobalsymlinkipython
+    if alias rmglobalsymlinkipython &>/dev/null; then
+        rmglobalsymlinkipython
     fi
 }

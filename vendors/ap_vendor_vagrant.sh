@@ -1,4 +1,4 @@
-alias @initvagrant="ap_func_init_vagrant"
+alias apinitvagrant="ap_func_init_vagrant"
 ap_func_init_vagrant() {
     # If the Vagrant guest is not trusted, you may want to disable symlink globally using below env variable
     export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
@@ -19,18 +19,18 @@ ap_func_init_vagrant() {
     alias vgrebuild='vgrm; vagrant up'
     alias vgstopall="vagrant stop \$(vagrant global-status | grep running | gawk '{print \$1}' | tr '\n' ' ')"
 
-    if alias @initvagrantshare &>/dev/null; then
-        @initvagrantshare
+    if alias apinitvagrantshare &>/dev/null; then
+        apinitvagrantshare
     fi
 
-    if alias @initvagrantcommon &>/dev/null; then
-        @initvagrantcommon
+    if alias apinitvagrantcommon &>/dev/null; then
+        apinitvagrantcommon
     fi
 }
 
-alias @createdirstructvagrant="ap_func_create_dirstruct_vagrant"
+alias apcreatedirstructvagrant="ap_func_create_dirstruct_vagrant"
 ap_func_create_dirstruct_vagrant() {
-    @logshow "Generate [vagrant] bash autocomplete\n"
+    aplogshow "Generate [vagrant] bash autocomplete\n"
     curl -SL "https://raw.githubusercontent.com/hashicorp/vagrant/main/contrib/bash/completion.sh" >"${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash"
 
     if ! grep "complete -o default -F _vagrant vg" "${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash" &>/dev/null; then
@@ -38,33 +38,33 @@ ap_func_create_dirstruct_vagrant() {
         echo "complete -o default -F _vagrant vg # vg is an alias of 'vagrant' command" >>"${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash"
     fi
 
-    if alias @createdirstructvagrantshare &>/dev/null; then
-        @createdirstructvagrantshare
+    if alias apcreatedirstructvagrantshare &>/dev/null; then
+        apcreatedirstructvagrantshare
     fi
 
-    if alias @createdirstructvagrantcommon &>/dev/null; then
-        @createdirstructvagrantcommon
+    if alias apcreatedirstructvagrantcommon &>/dev/null; then
+        apcreatedirstructvagrantcommon
     fi
 }
 
-alias @rmdirstructvagrant="ap_func_rm_dirstruct_vagrant"
+alias rmdirstructvagrant="ap_func_rm_dirstruct_vagrant"
 ap_func_rm_dirstruct_vagrant() {
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash"
 
-    if alias @rmdirstructvagrantshare &>/dev/null; then
-        @rmdirstructvagrantshare
+    if alias rmdirstructvagrantshare &>/dev/null; then
+        rmdirstructvagrantshare
     fi
 
-    if alias @rmdirstructvagrantcommon &>/dev/null; then
-        @rmdirstructvagrantcommon
+    if alias rmdirstructvagrantcommon &>/dev/null; then
+        rmdirstructvagrantcommon
     fi
 }
 
-alias @setupvagrant="ap_func_setup_vagrant"
+alias apsetupvagrant="ap_func_setup_vagrant"
 ap_func_setup_vagrant() {
     # https://developer.hashicorp.com/vagrant/install
-    @logshow "Install [vagrant]\n"
+    aplogshow "Install [vagrant]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew tap hashicorp/tap
@@ -76,15 +76,15 @@ ap_func_setup_vagrant() {
         sudo apt install -y vagrant
     fi
 
-    @initvagrant
-    if alias @createdirstructvagrant &>/dev/null; then
-        @createdirstructvagrant
+    apinitvagrant
+    if alias apcreatedirstructvagrant &>/dev/null; then
+        apcreatedirstructvagrant
     fi
 }
 
-alias @rmvagrant="ap_func_rm_vagrant"
+alias rmvagrant="ap_func_rm_vagrant"
 ap_func_rm_vagrant() {
-    @logshow "Remove [vagrant]\n"
+    aplogshow "Remove [vagrant]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         sudo rm -rf /opt/vagrant /usr/local/bin/vagrant
@@ -96,11 +96,11 @@ ap_func_rm_vagrant() {
 
     rm -rf "${HOME}/.vagrant.d"
 
-    if alias @rmdirstructvagrant &>/dev/null; then
-        @rmdirstructvagrant
+    if alias rmdirstructvagrant &>/dev/null; then
+        rmdirstructvagrant
     fi
 
-    if alias @rmglobalsymlinkvagrant &>/dev/null; then
-        @rmglobalsymlinkvagrant
+    if alias rmglobalsymlinkvagrant &>/dev/null; then
+        rmglobalsymlinkvagrant
     fi
 }

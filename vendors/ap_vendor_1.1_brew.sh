@@ -1,4 +1,4 @@
-alias @initbrew="ap_func_init_brew"
+alias apinitbrew="ap_func_init_brew"
 ap_func_init_brew() {
     # https://docs.brew.sh/Shell-Completion
     # if type brew &>/dev/null; then
@@ -12,53 +12,53 @@ ap_func_init_brew() {
     #     fi
     # fi
 
-    if alias @initbrewshare &>/dev/null; then
-        @initbrewshare
+    if alias apinitbrewshare &>/dev/null; then
+        apinitbrewshare
     fi
 
-    if alias @initbrewcommon &>/dev/null; then
-        @initbrewcommon
+    if alias apinitbrewcommon &>/dev/null; then
+        apinitbrewcommon
     fi
 }
 
-alias @createdirstructbrew="ap_func_create_dirstruct_brew"
+alias apcreatedirstructbrew="ap_func_create_dirstruct_brew"
 ap_func_create_dirstruct_brew() {
-    if alias @createdirstructbrewshare &>/dev/null; then
-        @createdirstructbrewshare
+    if alias apcreatedirstructbrewshare &>/dev/null; then
+        apcreatedirstructbrewshare
     fi
 
-    if alias @createdirstructbrewcommon &>/dev/null; then
-        @createdirstructbrewcommon
+    if alias apcreatedirstructbrewcommon &>/dev/null; then
+        apcreatedirstructbrewcommon
     fi
 }
 
-alias @rmdirstructbrew="ap_func_rm_dirstruct_brew"
+alias rmdirstructbrew="ap_func_rm_dirstruct_brew"
 ap_func_rm_dirstruct_brew() {
-    if alias @rmdirstructbrewshare &>/dev/null; then
-        @rmdirstructbrewshare
+    if alias rmdirstructbrewshare &>/dev/null; then
+        rmdirstructbrewshare
     fi
 
-    if alias @rmdirstructbrewcommon &>/dev/null; then
-        @rmdirstructbrewcommon
+    if alias rmdirstructbrewcommon &>/dev/null; then
+        rmdirstructbrewcommon
     fi
 }
 
-alias @setupbrew="ap_func_setup_brew"
+alias apsetupbrew="ap_func_setup_brew"
 ap_func_setup_brew() {
     # https://brew.sh/
     # https://docs.brew.sh/Homebrew-on-Linux
     # https://github.com/Homebrew/install/#install-homebrew-on-macos-or-linux
-    @logshow "Install [brew]\n"
+    aplogshow "Install [brew]\n"
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    @initbrew
+    apinitbrew
 }
 
-alias @rmbrew="ap_func_rm_brew"
+alias rmbrew="ap_func_rm_brew"
 ap_func_rm_brew() {
     # https://github.com/Homebrew/install/#uninstall-homebrew
-    @logshow "Remove [brew]\n"
+    aplogshow "Remove [brew]\n"
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
     # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
 }

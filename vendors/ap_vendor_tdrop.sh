@@ -1,40 +1,40 @@
-alias @inittdrop="ap_func_init_tdrop"
+alias apinittdrop="ap_func_init_tdrop"
 ap_func_init_tdrop() {
-    if alias @inittdropshare &>/dev/null; then
-        @inittdropshare
+    if alias apinittdropshare &>/dev/null; then
+        apinittdropshare
     fi
 
-    if alias @inittdropcommon &>/dev/null; then
-        @inittdropcommon
+    if alias apinittdropcommon &>/dev/null; then
+        apinittdropcommon
     fi
 }
 
-alias @createdirstructtdrop="ap_func_create_dirstruct_tdrop"
+alias apcreatedirstructtdrop="ap_func_create_dirstruct_tdrop"
 ap_func_create_dirstruct_tdrop() {
-    if alias @createdirstructtdropshare &>/dev/null; then
-        @createdirstructtdropshare
+    if alias apcreatedirstructtdropshare &>/dev/null; then
+        apcreatedirstructtdropshare
     fi
 
-    if alias @createdirstructtdropcommon &>/dev/null; then
-        @createdirstructtdropcommon
+    if alias apcreatedirstructtdropcommon &>/dev/null; then
+        apcreatedirstructtdropcommon
     fi
 }
 
-alias @rmdirstructtdrop="ap_func_rm_dirstruct_tdrop"
+alias rmdirstructtdrop="ap_func_rm_dirstruct_tdrop"
 ap_func_rm_dirstruct_tdrop() {
-    if alias @rmdirstructtdropshare &>/dev/null; then
-        @rmdirstructtdropshare
+    if alias rmdirstructtdropshare &>/dev/null; then
+        rmdirstructtdropshare
     fi
 
-    if alias @rmdirstructtdropcommon &>/dev/null; then
-        @rmdirstructtdropcommon
+    if alias rmdirstructtdropcommon &>/dev/null; then
+        rmdirstructtdropcommon
     fi
 }
 
-alias @setuptdrop="ap_func_setup_tdrop"
+alias apsetuptdrop="ap_func_setup_tdrop"
 ap_func_setup_tdrop() {
     # https://github.com/noctuid/tdrop
-    @logshow "Install [tdrop]\n"
+    aplogshow "Install [tdrop]\n"
 
     rm -rf "${AP_SOFT_DIR}/tdrop"
     cd "${AP_SOFT_DIR}"
@@ -44,15 +44,15 @@ ap_func_setup_tdrop() {
     sudo make
     sudo make install
 
-    @inittdrop
-    if alias @createdirstructtdrop &>/dev/null; then
-        @createdirstructtdrop
+    apinittdrop
+    if alias apcreatedirstructtdrop &>/dev/null; then
+        apcreatedirstructtdrop
     fi
 }
 
-alias @rmtdrop="ap_func_rm_tdrop"
+alias rmtdrop="ap_func_rm_tdrop"
 ap_func_rm_tdrop() {
-    @logshow "Remove [tdrop]\n"
+    aplogshow "Remove [tdrop]\n"
 
     cd "${AP_SOFT_DIR}/tdrop"
     sudo make uninstall
@@ -60,11 +60,11 @@ ap_func_rm_tdrop() {
     cd "${AP_SOFT_DIR}"
     rm -rf "${AP_SOFT_DIR}/tdrop"
 
-    if alias @rmdirstructtdrop &>/dev/null; then
-        @rmdirstructtdrop
+    if alias rmdirstructtdrop &>/dev/null; then
+        rmdirstructtdrop
     fi
 
-    if alias @rmglobalsymlinktdrop &>/dev/null; then
-        @rmglobalsymlinktdrop
+    if alias rmglobalsymlinktdrop &>/dev/null; then
+        rmglobalsymlinktdrop
     fi
 }

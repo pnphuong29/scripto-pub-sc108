@@ -1,29 +1,29 @@
-alias @initandroidstudio="ap_func_init_androidstudio"
+alias apinitandroidstudio="ap_func_init_androidstudio"
 ap_func_init_androidstudio() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         export ANDROID_HOME="${HOME}/Library/Android/sdk"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         export ANDROID_HOME="${HOME}/Android/Sdk"
-        @addpath "${AP_SOFT_DIR}/android-studio/bin"
+        apaddpath "${AP_SOFT_DIR}/android-studio/bin"
     fi
 
-    @addpath "${ANDROID_HOME}/tools"
-    @addpath "${ANDROID_HOME}/tools/bin"
-    @addpath "${ANDROID_HOME}/platform-tools"
-    @addpath "${ANDROID_HOME}/cmdline-tools/latest/bin"
-    @addpath "${ANDROID_HOME}/build-tools/latest"
-    @addpath "${ANDROID_HOME}/emulator"
+    apaddpath "${ANDROID_HOME}/tools"
+    apaddpath "${ANDROID_HOME}/tools/bin"
+    apaddpath "${ANDROID_HOME}/platform-tools"
+    apaddpath "${ANDROID_HOME}/cmdline-tools/latest/bin"
+    apaddpath "${ANDROID_HOME}/build-tools/latest"
+    apaddpath "${ANDROID_HOME}/emulator"
 
-    if alias @initandroidstudioshare &>/dev/null; then
-        @initandroidstudioshare
+    if alias apinitandroidstudioshare &>/dev/null; then
+        apinitandroidstudioshare
     fi
 
-    if alias @initandroidstudiocommon &>/dev/null; then
-        @initandroidstudiocommon
+    if alias apinitandroidstudiocommon &>/dev/null; then
+        apinitandroidstudiocommon
     fi
 }
 
-alias @createdirstructandroidstudio="ap_func_create_dirstruct_androidstudio"
+alias apcreatedirstructandroidstudio="ap_func_create_dirstruct_androidstudio"
 ap_func_create_dirstruct_androidstudio() {
     # https://github.com/flutter/flutter/issues/118502
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
@@ -34,27 +34,27 @@ ap_func_create_dirstruct_androidstudio() {
         ln -s "${AP_SOFT_DIR}/android-studio/jbr" "${AP_SOFT_DIR}/android-studio/jre"
     fi
 
-    if alias @createdirstructandroidstudioshare &>/dev/null; then
-        @createdirstructandroidstudioshare
+    if alias apcreatedirstructandroidstudioshare &>/dev/null; then
+        apcreatedirstructandroidstudioshare
     fi
 
-    if alias @createdirstructandroidstudiocommon &>/dev/null; then
-        @createdirstructandroidstudiocommon
+    if alias apcreatedirstructandroidstudiocommon &>/dev/null; then
+        apcreatedirstructandroidstudiocommon
     fi
 }
 
-alias @rmdirstructandroidstudio="ap_func_rm_dirstruct_androidstudio"
+alias rmdirstructandroidstudio="ap_func_rm_dirstruct_androidstudio"
 ap_func_rm_dirstruct_androidstudio() {
-    if alias @rmdirstructandroidstudioshare &>/dev/null; then
-        @rmdirstructandroidstudioshare
+    if alias rmdirstructandroidstudioshare &>/dev/null; then
+        rmdirstructandroidstudioshare
     fi
 
-    if alias @rmdirstructandroidstudiocommon &>/dev/null; then
-        @rmdirstructandroidstudiocommon
+    if alias rmdirstructandroidstudiocommon &>/dev/null; then
+        rmdirstructandroidstudiocommon
     fi
 }
 
-alias @setupandroidstudio="ap_func_setup_androidstudio"
+alias apsetupandroidstudio="ap_func_setup_androidstudio"
 ap_func_setup_androidstudio() {
     # https://developer.android.com/studio/install
     local ap_android_studio_setup_version='2023.1.1.28'
@@ -62,7 +62,7 @@ ap_func_setup_androidstudio() {
         ap_android_studio_setup_version="$1"
     fi
 
-    @logshow "Install [Android Studio] v${ap_android_studio_setup_version}\n"
+    aplogshow "Install [Android Studio] v${ap_android_studio_setup_version}\n"
 
     # Remove old app dir if any
     rm -rf "${AP_SOFT_DIR}/android-studio"
@@ -108,23 +108,23 @@ ap_func_setup_androidstudio() {
         rm -rf "${AP_TMP_DIR}/android-studio"
     fi
 
-    @initandroidstudio
-    if alias @createdirstructandroidstudio &>/dev/null; then
-        @createdirstructandroidstudio
+    apinitandroidstudio
+    if alias apcreatedirstructandroidstudio &>/dev/null; then
+        apcreatedirstructandroidstudio
     fi
 }
 
-alias @rmandroidstudio="ap_func_rm_androidstudio"
+alias rmandroidstudio="ap_func_rm_androidstudio"
 ap_func_rm_androidstudio() {
-    @logshow "Remove [Android Studio]\n"
+    aplogshow "Remove [Android Studio]\n"
     rm -rf "${AP_SOFT_DIR}/android-studio"
     rm -rf "${ANDROID_HOME}"
 
-    if alias @rmdirstructandroidstudio &>/dev/null; then
-        @rmdirstructandroidstudio
+    if alias rmdirstructandroidstudio &>/dev/null; then
+        rmdirstructandroidstudio
     fi
 
-    if alias @rmglobalsymlinkandroidstudio &>/dev/null; then
-        @rmglobalsymlinkandroidstudio
+    if alias rmglobalsymlinkandroidstudio &>/dev/null; then
+        rmglobalsymlinkandroidstudio
     fi
 }

@@ -1,44 +1,44 @@
-alias @initbatextras="ap_func_init_bat_extras"
+alias apinitbatextras="ap_func_init_bat_extras"
 ap_func_init_bat_extras() {
-    @addpath "${AP_SOFT_DIR}/bat-extras/bin"
+    apaddpath "${AP_SOFT_DIR}/bat-extras/bin"
     eval "$(batpipe)"
 
-    if alias @initbatextrasshare &>/dev/null; then
-        @initbatextrasshare
+    if alias apinitbatextrasshare &>/dev/null; then
+        apinitbatextrasshare
     fi
 
-    if alias @initbatextrascommon &>/dev/null; then
-        @initbatextrascommon
+    if alias apinitbatextrascommon &>/dev/null; then
+        apinitbatextrascommon
     fi
 }
 
-alias @createdirstructbatextras="ap_func_create_dirstruct_bat_extras"
+alias apcreatedirstructbatextras="ap_func_create_dirstruct_bat_extras"
 ap_func_create_dirstruct_bat_extras() {
-    if alias @createdirstructbatextrasshare &>/dev/null; then
-        @createdirstructbatextrasshare
+    if alias apcreatedirstructbatextrasshare &>/dev/null; then
+        apcreatedirstructbatextrasshare
     fi
 
-    if alias @createdirstructbatextrascommon &>/dev/null; then
-        @createdirstructbatextrascommon
+    if alias apcreatedirstructbatextrascommon &>/dev/null; then
+        apcreatedirstructbatextrascommon
     fi
 }
 
-alias @rmdirstructbatextras="ap_func_rm_dirstruct_bat_extras"
+alias rmdirstructbatextras="ap_func_rm_dirstruct_bat_extras"
 ap_func_rm_dirstruct_bat_extras() {
-    if alias @rmdirstructbatextrasshare &>/dev/null; then
-        @rmdirstructbatextrasshare
+    if alias rmdirstructbatextrasshare &>/dev/null; then
+        rmdirstructbatextrasshare
     fi
 
-    if alias @rmdirstructbatextrascommon &>/dev/null; then
-        @rmdirstructbatextrascommon
+    if alias rmdirstructbatextrascommon &>/dev/null; then
+        rmdirstructbatextrascommon
     fi
 }
 
-alias @setupbatextras="ap_func_setup_bat_extras"
+alias apsetupbatextras="ap_func_setup_bat_extras"
 ap_func_setup_bat_extras() {
     # https://github.com/eth-p/bat-extras
     # Dependencies: shfmt, ripgrep, bat, git-delta
-    @logshow "Install [bat_extras]\n"
+    aplogshow "Install [bat_extras]\n"
 
     rm -rf "${AP_SOFT_DIR}/bat-extras"
     cd "${AP_SOFT_DIR}"
@@ -47,23 +47,23 @@ ap_func_setup_bat_extras() {
     ./build.sh --minify=none
     # ./build.sh --minify=none --install --prefix=/usr/local/bin # global install
 
-    @initbatextras
+    apinitbatextras
 
-    if alias @createdirstructbatextras &>/dev/null; then
-        @createdirstructbatextras
+    if alias apcreatedirstructbatextras &>/dev/null; then
+        apcreatedirstructbatextras
     fi
 }
 
-alias @rmbatextras="ap_func_rm_bat_extras"
+alias rmbatextras="ap_func_rm_bat_extras"
 ap_func_rm_bat_extras() {
-    @logshow "Remove [bat extras]\n"
+    aplogshow "Remove [bat extras]\n"
     rm -rf "${AP_SOFT_DIR}/bat-extras"
 
-    if alias @rmdirstructbatextras &>/dev/null; then
-        @rmdirstructbatextras
+    if alias rmdirstructbatextras &>/dev/null; then
+        rmdirstructbatextras
     fi
 
-    if alias @rmglobalsymlinkbatextras &>/dev/null; then
-        @rmglobalsymlinkbatextras
+    if alias rmglobalsymlinkbatextras &>/dev/null; then
+        rmglobalsymlinkbatextras
     fi
 }

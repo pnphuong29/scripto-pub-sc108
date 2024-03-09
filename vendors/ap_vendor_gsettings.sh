@@ -1,32 +1,32 @@
-alias @initgsettings="ap_func_init_gsettings"
+alias apinitgsettings="ap_func_init_gsettings"
 ap_func_init_gsettings() {
-    if alias @initgsettingsshare &>/dev/null; then
-        @initgsettingsshare
+    if alias apinitgsettingsshare &>/dev/null; then
+        apinitgsettingsshare
     fi
 
-    if alias @initgsettingscommon &>/dev/null; then
-        @initgsettingscommon
+    if alias apinitgsettingscommon &>/dev/null; then
+        apinitgsettingscommon
     fi
 }
 
-alias @createdirstructgsettings="ap_func_create_dirstruct_gsettings"
+alias apcreatedirstructgsettings="ap_func_create_dirstruct_gsettings"
 ap_func_create_dirstruct_gsettings() {
-    if alias @createdirstructgsettingsshare &>/dev/null; then
-        @createdirstructgsettingsshare
+    if alias apcreatedirstructgsettingsshare &>/dev/null; then
+        apcreatedirstructgsettingsshare
     fi
 
-    if alias @createdirstructgsettingscommon &>/dev/null; then
-        @createdirstructgsettingscommon
+    if alias apcreatedirstructgsettingscommon &>/dev/null; then
+        apcreatedirstructgsettingscommon
     fi
 }
 
-alias @rmdirstructgsettings="ap_func_rm_dirstruct_gsettings"
+alias rmdirstructgsettings="ap_func_rm_dirstruct_gsettings"
 ap_func_rm_dirstruct_gsettings() {
-    if alias @rmdirstructgsettingsshare &>/dev/null; then
-        @rmdirstructgsettingsshare
+    if alias rmdirstructgsettingsshare &>/dev/null; then
+        rmdirstructgsettingsshare
     fi
 
-    if alias @rmdirstructgsettingscommon &>/dev/null; then
-        @rmdirstructgsettingscommon
+    if alias rmdirstructgsettingscommon &>/dev/null; then
+        rmdirstructgsettingscommon
     fi
 }

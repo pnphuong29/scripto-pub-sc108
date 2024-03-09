@@ -20,7 +20,7 @@ ap_func_get_os_type() {
     fi
 
     printf "%s" "${ap_os_type}"
-    @rtn_success
+    aprtn_success
 }
 
 alias trim='ap_func_trim'
@@ -52,7 +52,7 @@ ap_func_trim() {
             ;;
         ?)
             echo "Invalid option [${OPTARG}]"
-            @rtn_err_opt_invalid_option
+            aprtn_err_opt_invalid_option
             ;;
         esac
     done
@@ -63,7 +63,7 @@ ap_func_trim() {
     # Implementation
     if [ -z "${ap_opt_input_file}" ]; then
         local ap_text="${1:-}"
-        [ -z "${ap_text}" ] && @rtn_success
+        [ -z "${ap_text}" ] && aprtn_success
 
         # trim heading spaces
         ap_text="$(printf "%s" "${ap_text}" | gsed -E 's/^ +//')"
@@ -83,7 +83,7 @@ ap_func_trim() {
         fi
     fi
 
-    @rtn_success
+    aprtn_success
 }
 
 alias democolorsandformatting='ap_func_demo_colors_and_formatting'
@@ -174,10 +174,10 @@ ap_func_vim_open_all_files_in_current_dir() {
         eval "${ap_cmd}"
     fi
 
-    @rtn_success
+    aprtn_success
 }
 
-alias @chmod="ap_func_chmod"
+alias chmodf="ap_func_chmod"
 alias chmod777666="ap_func_chmod 777 666"
 alias chmoddir="ap_func_chmod -d -r"
 alias chmoddir777="ap_func_chmod -d -r 777"
@@ -217,7 +217,7 @@ ap_func_chmod() {
             ap_opt_r=1
             ;;
         ?)
-            @merr "Invalid option [${OPTARG}]"
+            apshowmsgerr "Invalid option [${OPTARG}]"
             reterr_opt_invalid_option
             ;;
         esac
@@ -232,7 +232,7 @@ ap_func_chmod() {
     local ap_default_path="${PWD}"
 
     if [[ $ap_opt_d = 1 && $ap_opt_f = 1 ]]; then
-        @merr "Cannot have both options [d] and [f] at the same time!\n"
+        apshowmsgerr "Cannot have both options [d] and [f] at the same time!\n"
         @reterr_unknown
     fi
 
@@ -246,7 +246,7 @@ ap_func_chmod() {
             find "${ap_path}" -type d -exec chmod "${ap_dir_mod}" {} \;
         fi
 
-        @rtn_success
+        aprtn_success
     fi
 
     if [[ $ap_opt_f = 1 ]]; then
@@ -259,7 +259,7 @@ ap_func_chmod() {
             find "${ap_path}" -type f -exec chmod "${ap_file_mod}" {} \;
         fi
 
-        @rtn_success
+        aprtn_success
     fi
 
     local ap_dir_mod="${1:-${ap_default_dir_mod}}"
@@ -274,10 +274,11 @@ ap_func_chmod() {
         find "${ap_path}" -type f -exec chmod "${ap_file_mod}" {} \;
     fi
 
-    @rtn_success
+    aprtn_success
 }
 
-alias @rsync="ap_func_rsync"
+alias rsyncf="ap_func_rsync"
+alias rsyncr="ap_func_rsync -r"
 # @$func $$ ap_func_rsync {
 # ap_func_rsync [-dpuwr] <domain/ip> <port> <user> <password> [--] *<src_path> <dst_path>
 # Description
@@ -326,7 +327,7 @@ ap_func_rsync() {
             ;;
         ?)
             echo "Invalid option [${OPTARG}]"
-            @rtn_err_opt_invalid_option
+            aprtn_err_opt_invalid_option
             ;;
         esac
     done
@@ -338,7 +339,7 @@ ap_func_rsync() {
     local ap_src_path="${1:"${PWD}"}"
     local ap_dst_path="${2:/tmp/}"
 
-    @minfo "Sync from [${ap_src_path}] to [${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}] via port [${ap_port}]\n"
+    apshowmsginfo "Sync from [${ap_src_path}] to [${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}] via port [${ap_port}]\n"
     if [ -n "${ap_rsync_pass}" ]; then
         sshpass -p "${ap_rsync_pass}" rsync -avP -e "ssh -p ${ap_port}" "${ap_src_path}" "${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}"
     else
@@ -349,5 +350,5 @@ ap_func_rsync() {
         fi
     fi
 
-    @rtn_success
+    aprtn_success
 }

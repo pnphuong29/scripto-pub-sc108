@@ -1,4 +1,4 @@
-alias @initpython="ap_func_init_python"
+alias apinitpython="ap_func_init_python"
 ap_func_init_python() {
     if [ -f "${HOME}/scripto-common/vendors/python/ap_python_startup.py" ]; then
         export PYTHONSTARTUP="${HOME}/scripto-common/vendors/python/ap_python_startup.py"
@@ -10,33 +10,33 @@ ap_func_init_python() {
     alias @venv="python -m venv"
     alias @venvactivate="source \$(find -type f -name activate | head -1)"
 
-    if alias @initpythonshare &>/dev/null; then
-        @initpythonshare
+    if alias apinitpythonshare &>/dev/null; then
+        apinitpythonshare
     fi
 
-    if alias @initpythoncommon &>/dev/null; then
-        @initpythoncommon
+    if alias apinitpythoncommon &>/dev/null; then
+        apinitpythoncommon
     fi
 }
 
-alias @createdirstructpython="ap_func_create_dirstruct_python"
+alias apcreatedirstructpython="ap_func_create_dirstruct_python"
 ap_func_create_dirstruct_python() {
-    if alias @createdirstructpythonshare &>/dev/null; then
-        @createdirstructpythonshare
+    if alias apcreatedirstructpythonshare &>/dev/null; then
+        apcreatedirstructpythonshare
     fi
 
-    if alias @createdirstructpythoncommon &>/dev/null; then
-        @createdirstructpythoncommon
+    if alias apcreatedirstructpythoncommon &>/dev/null; then
+        apcreatedirstructpythoncommon
     fi
 }
 
-alias @rmdirstructpython="ap_func_rm_dirstruct_python"
+alias rmdirstructpython="ap_func_rm_dirstruct_python"
 ap_func_rm_dirstruct_python() {
-    if alias @rmdirstructpythonshare &>/dev/null; then
-        @rmdirstructpythonshare
+    if alias rmdirstructpythonshare &>/dev/null; then
+        rmdirstructpythonshare
     fi
 
-    if alias @rmdirstructpythoncommon &>/dev/null; then
-        @rmdirstructpythoncommon
+    if alias rmdirstructpythoncommon &>/dev/null; then
+        rmdirstructpythoncommon
     fi
 }

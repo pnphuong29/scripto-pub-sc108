@@ -147,13 +147,13 @@ if [ -d "${HOME}/scripto-main/libs" ]; then
 fi
 
 # Update $PATH
-@addpath "${HOME}/scripto/utils"
-@addpath "${HOME}/scripto-share/utils"
-@addpath "${HOME}/scripto-common/utils"
-@addpath "${HOME}/scripto-main/utils"
+apaddpath "${HOME}/scripto/utils"
+apaddpath "${HOME}/scripto-share/utils"
+apaddpath "${HOME}/scripto-common/utils"
+apaddpath "${HOME}/scripto-main/utils"
 
-@addpath "${HOME}/scripto-common/tests"
-@addpath "${HOME}/scripto-main/tests"
+apaddpath "${HOME}/scripto-common/tests"
+apaddpath "${HOME}/scripto-main/tests"
 
 # Make executable files
 [ -d "${HOME}/scripto-share/utils" ] && chmod -R +x "${HOME}/scripto-share/utils"
@@ -167,4 +167,4 @@ fi
 
 # For manpath command to search for man pages located in man directory
 # export MANPATH="${AP_MAN_DIR}:${MANPATH}"
-@addpath -m "${AP_MAN_DIR}"
+apaddpath -m "${AP_MAN_DIR}"

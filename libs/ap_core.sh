@@ -1,23 +1,23 @@
-alias @rtn_success="return \${AP_CODE_SUCCESS}"
-alias @rtn_existed="return \${AP_CODE_EXISTED}"
-alias @rtn_err_missing_argument="return \${AP_CODE_ERR_MISSING_ARGUMENT}"
-alias @rtn_err_missing_info="return \${AP_CODE_ERR_MISSING_INFO}"
-alias @rtn_err_not_enough_arguments="return \${AP_CODE_ERR_NOT_ENOUGH_ARGUMENTS}"
-alias @rtn_err_invalid_argument="return \${AP_CODE_ERR_INVALID_ARGUMENT}"
-alias @rtn_err_opt_invalid_option="return \${AP_CODE_ERR_OPT_INVALID_OPTION}"
-alias @rtn_err_file_not_found="return \${AP_CODE_ERR_FILE_NOT_FOUND}"
-alias @rtn_err_unknown="return \${AP_CODE_ERR_UNKNOWN}"
+alias aprtn_success="return \${AP_CODE_SUCCESS}"
+alias aprtn_existed="return \${AP_CODE_EXISTED}"
+alias aprtn_err_missing_argument="return \${AP_CODE_ERR_MISSING_ARGUMENT}"
+alias aprtn_err_missing_info="return \${AP_CODE_ERR_MISSING_INFO}"
+alias aprtn_err_not_enough_arguments="return \${AP_CODE_ERR_NOT_ENOUGH_ARGUMENTS}"
+alias aprtn_err_invalid_argument="return \${AP_CODE_ERR_INVALID_ARGUMENT}"
+alias aprtn_err_opt_invalid_option="return \${AP_CODE_ERR_OPT_INVALID_OPTION}"
+alias aprtn_err_file_not_found="return \${AP_CODE_ERR_FILE_NOT_FOUND}"
+alias aprtn_err_unknown="return \${AP_CODE_ERR_UNKNOWN}"
 
-alias @mgreen='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_GREEN}" --'
-alias @mred='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_RED}" --'
-alias @myellow='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_YELLOW}" --'
-alias @mcyan='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_CYAN}" --'
-alias @mmegenta='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_MAGENTA}" --'
+alias apshowmsgreen='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_GREEN}" --'
+alias apshowmsgred='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_RED}" --'
+alias apshowmsgyellow='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_YELLOW}" --'
+alias apshowmsgcyan='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_CYAN}" --'
+alias apshowmsgmagenta='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_MAGENTA}" --'
 
-alias @minfo="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_GREEN} --"
-alias @merr="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_RED} --"
-alias @mwarn="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_YELLOW} --"
-alias @mlog="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_CYAN} --"
+alias apshowmsginfo="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_GREEN} --"
+alias apshowmsgerr="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_RED} --"
+alias apshowmsgwarn="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_YELLOW} --"
+alias apshowmsglog="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_CYAN} --"
 # @$func $$ ap_func_show_msg {
 # ap_func_show_msg [-cfen] [color_scheme] [format_string] [--] *[texts...]
 # Description
@@ -130,16 +130,16 @@ ap_func_show_msg() {
         [ "${ap_opt_suppress_new_line}" -eq 0 ] && echo >>"${AP_LOGS_DEBUG_FILE}"
     fi
 
-    @rtn_success
+    aprtn_success
 }
 
-alias @dash='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 49'
-alias @hyphen='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 49'
+alias showdash='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 49'
+alias showhyphen='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 49'
 
-alias showsymred='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" --'
-alias showsymgreen='ap_func_show_symbols -f "${AP_SCHEME_COLOR_GREEN}" --'
-alias showsymyellow='ap_func_show_symbols -f "${AP_SCHEME_COLOR_YELLOW}" --'
-alias showsymcyan='ap_func_show_symbols -f "${AP_SCHEME_COLOR_CYAN}" --'
+alias showsyapshowmsgred='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" --'
+alias showsyapshowmsgreen='ap_func_show_symbols -f "${AP_SCHEME_COLOR_GREEN}" --'
+alias showsyapshowmsgyellow='ap_func_show_symbols -f "${AP_SCHEME_COLOR_YELLOW}" --'
+alias showsyapshowmsgcyan='ap_func_show_symbols -f "${AP_SCHEME_COLOR_CYAN}" --'
 alias showsymmagenta='ap_func_show_symbols -f "${AP_SCHEME_COLOR_MAGENTA}" --'
 alias showsymhash21='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 21'
 alias showsymhash49='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 49'
@@ -207,33 +207,33 @@ ap_func_show_symbols() {
 
     # Display output
     if [ "${ap_opt_suppress_new_line}" -eq 1 ]; then
-        @m -n -c "${ap_opt_color_scheme}" -f "${ap_opt_format_string}" -- "${ap_symbol_string}"
+        ap_func_show_msg -n -c "${ap_opt_color_scheme}" -f "${ap_opt_format_string}" -- "${ap_symbol_string}"
     else
-        @m -c "${ap_opt_color_scheme}" -f "${ap_opt_format_string}" -- "${ap_symbol_string}"
+        ap_func_show_msg -c "${ap_opt_color_scheme}" -f "${ap_opt_format_string}" -- "${ap_symbol_string}"
     fi
 
-    @rtn_success
+    aprtn_success
 }
 
-alias @log='ap_func_log_msg "general" 0 "@mgreen"'
-alias @logerr='ap_func_log_msg "error" 0 "@mred"'
-alias @logdbg='ap_func_log_msg "debug" 0 "@myellow"'
+alias aplog='ap_func_log_msg "general" 0 "apshowmsgreen"'
+alias aplogerr='ap_func_log_msg "error" 0 "apshowmsgred"'
+alias aplogdbg='ap_func_log_msg "debug" 0 "apshowmsgyellow"'
 
-alias @logln='ap_func_log_msg "general" 0 "@mgreen" "\n"'
-alias @logerrln='ap_func_log_msg "error" 0 "@mred" "\n"'
-alias @logdbgln='ap_func_log_msg "debug" 0 "@myellow" "\n"'
+alias aplogln='ap_func_log_msg "general" 0 "apshowmsgreen" "\n"'
+alias aplogerrln='ap_func_log_msg "error" 0 "apshowmsgred" "\n"'
+alias aplogdbgln='ap_func_log_msg "debug" 0 "apshowmsgyellow" "\n"'
 
-alias @logshow='ap_func_log_msg "general" 1 "@mgreen"'
-alias @logshowerr='ap_func_log_msg "error" 1 "@mred"'
-alias @logshowdbg='ap_func_log_msg "debug" 1 "@myellow"'
+alias aplogshow='ap_func_log_msg "general" 1 "apshowmsgreen"'
+alias aplogshowerr='ap_func_log_msg "error" 1 "apshowmsgred"'
+alias aplogshowdbg='ap_func_log_msg "debug" 1 "apshowmsgyellow"'
 
-alias @logshowln='ap_func_log_msg "general" 1 "@mgreen" "\n"'
-alias @logshowerrln='ap_func_log_msg "error" 1 "@mred" "\n"'
-alias @logshowdbgln='ap_func_log_msg "debug" 1 "@myellow" "\n"'
+alias aplogshowln='ap_func_log_msg "general" 1 "apshowmsgreen" "\n"'
+alias aplogshowerrln='ap_func_log_msg "error" 1 "apshowmsgred" "\n"'
+alias aplogshowdbgln='ap_func_log_msg "debug" 1 "apshowmsgyellow" "\n"'
 
-alias @logshow='ap_func_log_msg "general" 1 "@mgreen"'
-alias @logshowpassed='ap_func_log_msg -p "${AP_SYM_PASSED} " -- "general" 1 "@mgreen"'
-alias @logshowfailed='ap_func_log_msg -p "${AP_SYM_FAILED} " -- "general" 1 "@mgreen"'
+alias aplogshow='ap_func_log_msg "general" 1 "apshowmsgreen"'
+alias aplogshowpassed='ap_func_log_msg -p "${AP_SYM_PASSED} " -- "general" 1 "apshowmsgreen"'
+alias aplogshowfailed='ap_func_log_msg -p "${AP_SYM_FAILED} " -- "general" 1 "apshowmsgreen"'
 # @$func $$ ap_func_log_msg {
 # ap_func_log_msg -p [msg_prefix] [--] *<msg_type> *<show_msg_on_terminal> *<cmd_log_msg> *<msg>
 # Description
@@ -304,10 +304,10 @@ ap_func_log_msg() {
     # Show message on terminal
     [[ "${ap_param_show_msg_on_terminal}" == 1 ]] && eval "$(printf "%s" "${ap_param_cmd_show_msg} \"${ap_opt_msg_prefix}${ap_param_msg}\"")"
 
-    @rtn_success
+    aprtn_success
 }
 
-alias @addpath="ap_func_add_path_var"
+alias apaddpath="ap_func_add_path_var"
 # @$func $$ ap_func_add_path_var {
 # ap_func_add_path_var -[am] *<path_var>
 # Descriptions
@@ -335,7 +335,7 @@ ap_func_add_path_var() {
             ;;
         ?)
             echo "Invalid option [${OPTARG}]"
-            @rtn_err_opt_invalid_option
+            aprtn_err_opt_invalid_option
             ;;
         esac
     done
@@ -347,7 +347,7 @@ ap_func_add_path_var() {
 
     if [ -z "${ap_path:-}" ]; then
         echo "Missing argument <PATH_VAR>"
-        @rtn_err_missing_argument
+        aprtn_err_missing_argument
     fi
 
     local ap_ref_path="PATH"
@@ -362,13 +362,13 @@ ap_func_add_path_var() {
     echo "${!ap_ref_path}" | grep ":${ap_path}:" &>/dev/null && ap_grep_matched=1
 
     if [ "${ap_grep_matched}" == 1 ]; then
-        # @mwarn "${ap_path} already existed in ${ap_ref_path} variable!\n"
-        @rtn_existed
+        # apshowmsgwarn "${ap_path} already existed in ${ap_ref_path} variable!\n"
+        aprtn_existed
     fi
 
     if [ ! -d "${ap_path}" ]; then
-        # @mwarn "Path [${ap_path}] does not exist!\n"
-        @rtn_err_file_not_found
+        # apshowmsgwarn "Path [${ap_path}] does not exist!\n"
+        aprtn_err_file_not_found
     fi
 
     if [ "${ap_opt_append}" == 0 ]; then
@@ -377,10 +377,10 @@ ap_func_add_path_var() {
         eval "$(printf "%s" "export ${ap_ref_path}=${!ap_ref_path}:${ap_path}")"
     fi
 
-    @rtn_success
+    aprtn_success
 }
 
-alias @rmpath='ap_func_rm_path_var'
+alias aprmpath='ap_func_rm_path_var'
 # @$func $$ ap_func_rm_path_var {
 # ap_func_rm_path_var *<path_var>
 # Descriptions
@@ -394,7 +394,7 @@ ap_func_rm_path_var() {
 
     if [[ -z "${ap_path:-}" ]]; then
         echo "Missing argument <PATH_VAR>"
-        @rtn_err_missing_argument
+        aprtn_err_missing_argument
     fi
 
     printf "Removing [%s] in PATH variable\n" "${ap_path}"
@@ -403,5 +403,5 @@ ap_func_rm_path_var() {
     ap_new_path="$(echo "${ap_path}" | gsed "s@:${ap_path}@@g" | gsed "s@${ap_path}:@@g")"
     echo "${ap_new_path}"
     export PATH="${ap_new_path}"
-    @rtn_success
+    aprtn_success
 }

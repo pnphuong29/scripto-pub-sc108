@@ -1,63 +1,63 @@
-alias @initxbindkeys="ap_func_init_xbindkeys"
+alias apinitxbindkeys="ap_func_init_xbindkeys"
 ap_func_init_xbindkeys() {
-    if alias @initxbindkeysshare &>/dev/null; then
-        @initxbindkeysshare
+    if alias apinitxbindkeysshare &>/dev/null; then
+        apinitxbindkeysshare
     fi
 
-    if alias @initxbindkeyscommon &>/dev/null; then
-        @initxbindkeyscommon
+    if alias apinitxbindkeyscommon &>/dev/null; then
+        apinitxbindkeyscommon
     fi
 }
 
-alias @createdirstructxbindkeys="ap_func_create_dirstruct_xbindkeys"
+alias apcreatedirstructxbindkeys="ap_func_create_dirstruct_xbindkeys"
 ap_func_create_dirstruct_xbindkeys() {
-    if alias @createdirstructxbindkeysshare &>/dev/null; then
-        @createdirstructxbindkeysshare
+    if alias apcreatedirstructxbindkeysshare &>/dev/null; then
+        apcreatedirstructxbindkeysshare
     fi
 
-    if alias @createdirstructxbindkeyscommon &>/dev/null; then
-        @createdirstructxbindkeyscommon
+    if alias apcreatedirstructxbindkeyscommon &>/dev/null; then
+        apcreatedirstructxbindkeyscommon
     fi
 }
 
-alias @rmdirstructxbindkeys="ap_func_rm_dirstruct_xbindkeys"
+alias rmdirstructxbindkeys="ap_func_rm_dirstruct_xbindkeys"
 ap_func_rm_dirstruct_xbindkeys() {
-    if alias @rmdirstructxbindkeysshare &>/dev/null; then
-        @rmdirstructxbindkeysshare
+    if alias rmdirstructxbindkeysshare &>/dev/null; then
+        rmdirstructxbindkeysshare
     fi
 
-    if alias @rmdirstructxbindkeyscommon &>/dev/null; then
-        @rmdirstructxbindkeyscommon
+    if alias rmdirstructxbindkeyscommon &>/dev/null; then
+        rmdirstructxbindkeyscommon
     fi
 }
 
-alias @setupxbindkeys="ap_func_setup_xbindkeys"
+alias apsetupxbindkeys="ap_func_setup_xbindkeys"
 ap_func_setup_xbindkeys() {
     # https://linux.die.net/man/1/xbindkeys
-    @logshow "Install [xbindkeys, xautomation, xdotool]\n"
+    aplogshow "Install [xbindkeys, xautomation, xdotool]\n"
 
     sudo apt update
     sudo apt install -y xbindkeys xautomation xdotool
     # xbindkeys_autostart
 
-    @initxbindkeys
-    if alias @createdirstructxbindkeys &>/dev/null; then
-        @createdirstructxbindkeys
+    apinitxbindkeys
+    if alias apcreatedirstructxbindkeys &>/dev/null; then
+        apcreatedirstructxbindkeys
     fi
 }
 
-alias @rmxbindkeys="ap_func_rm_xbindkeys"
+alias rmxbindkeys="ap_func_rm_xbindkeys"
 ap_func_rm_xbindkeys() {
-    @logshow "Remove [xbindkeys, xautomation, xdotool]\n"
+    aplogshow "Remove [xbindkeys, xautomation, xdotool]\n"
 
     sudo apt purge -y xbindkeys xautomation xdotool
     sudo apt autoremove -y
 
-    if alias @rmdirstructxbindkeys &>/dev/null; then
-        @rmdirstructxbindkeys
+    if alias rmdirstructxbindkeys &>/dev/null; then
+        rmdirstructxbindkeys
     fi
 
-    if alias @rmglobalsymlinkxbindkeys &>/dev/null; then
-        @rmglobalsymlinkxbindkeys
+    if alias rmglobalsymlinkxbindkeys &>/dev/null; then
+        rmglobalsymlinkxbindkeys
     fi
 }

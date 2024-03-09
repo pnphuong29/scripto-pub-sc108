@@ -1,72 +1,72 @@
-alias @initcertbot="ap_func_init_certbot"
+alias apinitcertbot="ap_func_init_certbot"
 ap_func_init_certbot() {
     alias zsccertbot="cd \${HOME}/scripto-common/vendors/certbot"
     alias certbotinstallapache="sudo certbot --apache --verbose"
     alias certbotinstallnginx="sudo certbot --nginx --verbose"
     alias zletsencrypt="cd /etc/letsencrypt"
 
-    if alias @initcertbotshare &>/dev/null; then
-        @initcertbotshare
+    if alias apinitcertbotshare &>/dev/null; then
+        apinitcertbotshare
     fi
 
-    if alias @initcertbotcommon &>/dev/null; then
-        @initcertbotcommon
+    if alias apinitcertbotcommon &>/dev/null; then
+        apinitcertbotcommon
     fi
 }
 
-alias @createdirstructcertbot="ap_func_create_dirstruct_certbot"
+alias apcreatedirstructcertbot="ap_func_create_dirstruct_certbot"
 ap_func_create_dirstruct_certbot() {
-    if alias @createdirstructcertbotshare &>/dev/null; then
-        @createdirstructcertbotshare
+    if alias apcreatedirstructcertbotshare &>/dev/null; then
+        apcreatedirstructcertbotshare
     fi
 
-    if alias @createdirstructcertbotcommon &>/dev/null; then
-        @createdirstructcertbotcommon
+    if alias apcreatedirstructcertbotcommon &>/dev/null; then
+        apcreatedirstructcertbotcommon
     fi
 }
 
-alias @rmdirstructcertbot="ap_func_rm_dirstruct_certbot"
+alias rmdirstructcertbot="ap_func_rm_dirstruct_certbot"
 ap_func_rm_dirstruct_certbot() {
-    if alias @rmdirstructcertbotshare &>/dev/null; then
-        @rmdirstructcertbotshare
+    if alias rmdirstructcertbotshare &>/dev/null; then
+        rmdirstructcertbotshare
     fi
 
-    if alias @rmdirstructcertbotcommon &>/dev/null; then
-        @rmdirstructcertbotcommon
+    if alias rmdirstructcertbotcommon &>/dev/null; then
+        rmdirstructcertbotcommon
     fi
 }
 
 alias @createglobalsymlinkcertbot="ap_func_create_global_symlink_certbot"
 ap_func_create_global_symlink_certbot() {
     if [ -f "/usr/bin/certbot" ]; then
-        @logshow "Create symlink from [/snap/bin/certbot] to [/usr/bin/certbot]\n"
+        aplogshow "Create symlink from [/snap/bin/certbot] to [/usr/bin/certbot]\n"
         sudo ln -sf "/snap/bin/certbot" "/usr/bin/certbot"
     fi
 }
 
-alias @rmglobalsymlinkcertbot="ap_func_rm_global_symlink_certbot"
+alias rmglobalsymlinkcertbot="ap_func_rm_global_symlink_certbot"
 ap_func_rm_global_symlink_certbot() {
     if [ -f "/usr/bin/certbot" ]; then
-        @logshow "Remove [/usr/bin/certbot]\n"
+        aplogshow "Remove [/usr/bin/certbot]\n"
         sudo rm -f "/usr/bin/certbot"
     fi
 }
 
-alias @setupcertbot="ap_func_setup_certbot"
+alias apsetupcertbot="ap_func_setup_certbot"
 ap_func_setup_certbot() {
     # https://eff-certbot.readthedocs.io/en/stable/install.html
     # https://certbot.eff.org/instructions?ws=apache&os=ubuntufocal
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        @logshow "Install [certbot]\n"
+        aplogshow "Install [certbot]\n"
         sudo snap install core
         sudo snap refresh core
         sudo apt purge -y certbot
         sudo snap install --classic certbot
     fi
 
-    if alias @createdirstructcertbot &>/dev/null; then
-        @createdirstructcertbot
+    if alias apcreatedirstructcertbot &>/dev/null; then
+        apcreatedirstructcertbot
     fi
 
     if alias @createglobalsymlinkcertbot &>/dev/null; then
@@ -74,9 +74,9 @@ ap_func_setup_certbot() {
     fi
 }
 
-alias @rmcertbot="ap_func_rm_certbot"
+alias rmcertbot="ap_func_rm_certbot"
 ap_func_rm_certbot() {
-    @logshow "Remove [certbot]\n"
+    aplogshow "Remove [certbot]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         sudo snap remove --purge certbot
@@ -84,11 +84,11 @@ ap_func_rm_certbot() {
         sudo rm -f /bin/certbot
     fi
 
-    if alias @rmdirstructcertbot &>/dev/null; then
-        @rmdirstructcertbot
+    if alias rmdirstructcertbot &>/dev/null; then
+        rmdirstructcertbot
     fi
 
-    if alias @rmglobalsymlinkcertbot &>/dev/null; then
-        @rmglobalsymlinkcertbot
+    if alias rmglobalsymlinkcertbot &>/dev/null; then
+        rmglobalsymlinkcertbot
     fi
 }

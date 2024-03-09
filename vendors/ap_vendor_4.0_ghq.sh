@@ -1,63 +1,63 @@
-alias @initghq="ap_func_init_ghq"
+alias apinitghq="ap_func_init_ghq"
 ap_func_init_ghq() {
     # https://github.com/x-motemen/ghq
     export GHQ_ROOT="${AP_PRJ_DIR}"
 
-    if alias @initghqshare &>/dev/null; then
-        @initghqshare
+    if alias apinitghqshare &>/dev/null; then
+        apinitghqshare
     fi
 
-    if alias @initghqcommon &>/dev/null; then
-        @initghqcommon
+    if alias apinitghqcommon &>/dev/null; then
+        apinitghqcommon
     fi
 }
 
-alias @createdirstructghq="ap_func_create_dirstruct_ghq"
+alias apcreatedirstructghq="ap_func_create_dirstruct_ghq"
 ap_func_create_dirstruct_ghq() {
-    if alias @createdirstructghqshare &>/dev/null; then
-        @createdirstructghqshare
+    if alias apcreatedirstructghqshare &>/dev/null; then
+        apcreatedirstructghqshare
     fi
 
-    if alias @createdirstructghqcommon &>/dev/null; then
-        @createdirstructghqcommon
+    if alias apcreatedirstructghqcommon &>/dev/null; then
+        apcreatedirstructghqcommon
     fi
 }
 
-alias @rmdirstructghq="ap_func_rm_dirstruct_ghq"
+alias rmdirstructghq="ap_func_rm_dirstruct_ghq"
 ap_func_rm_dirstruct_ghq() {
-    if alias @rmdirstructghqshare &>/dev/null; then
-        @rmdirstructghqshare
+    if alias rmdirstructghqshare &>/dev/null; then
+        rmdirstructghqshare
     fi
 
-    if alias @rmdirstructghqcommon &>/dev/null; then
-        @rmdirstructghqcommon
+    if alias rmdirstructghqcommon &>/dev/null; then
+        rmdirstructghqcommon
     fi
 }
 
-alias @setupghq="ap_func_setup_ghq"
+alias apsetupghq="ap_func_setup_ghq"
 ap_func_setup_ghq() {
     # https://github.com/x-motemen/ghq
-    @logshow "Install [ghq]\n"
+    aplogshow "Install [ghq]\n"
     go install github.com/x-motemen/ghq@latest
 
-    @initghq
-    if alias @createdirstructghq &>/dev/null; then
-        @createdirstructghq
+    apinitghq
+    if alias apcreatedirstructghq &>/dev/null; then
+        apcreatedirstructghq
     fi
 }
 
-alias @rmghq="ap_func_rm_ghq"
+alias rmghq="ap_func_rm_ghq"
 ap_func_rm_ghq() {
-    @logshow "Remove [ghq]\n"
+    aplogshow "Remove [ghq]\n"
 
     rm -rf "${GOPATH}/pkg/mod/github.com/x-motemen/ghq@"*
     rm -f "${GOPATH}/bin/ghq"
 
-    if alias @rmdirstructghq &>/dev/null; then
-        @rmdirstructghq
+    if alias rmdirstructghq &>/dev/null; then
+        rmdirstructghq
     fi
 
-    if alias @rmglobalsymlinkghq &>/dev/null; then
-        @rmglobalsymlinkghq
+    if alias rmglobalsymlinkghq &>/dev/null; then
+        rmglobalsymlinkghq
     fi
 }

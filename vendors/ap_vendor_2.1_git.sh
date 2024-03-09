@@ -1,4 +1,4 @@
-alias @initgit="ap_func_init_git"
+alias apinitgit="ap_func_init_git"
 ap_func_init_git() {
     export AP_GIT_COMMIT_MSG="Auto commit"
     export AP_GIT_COMMIT_FILE="commit_msg.md"
@@ -39,67 +39,67 @@ ap_func_init_git() {
     alias gshow="git --no-pager show --abbrev-commit --name-status"
     alias gcf="git commit --file=\${AP_GIT_COMMIT_FILE}"
 
-    if alias @initgitshare &>/dev/null; then
-        @initgitshare
+    if alias apinitgitshare &>/dev/null; then
+        apinitgitshare
     fi
 
-    if alias @initgitcommon &>/dev/null; then
-        @initgitcommon
+    if alias apinitgitcommon &>/dev/null; then
+        apinitgitcommon
     fi
 }
 
-alias @createdirstructgit="ap_func_create_dirstruct_git"
+alias apcreatedirstructgit="ap_func_create_dirstruct_git"
 ap_func_create_dirstruct_git() {
-    @logshow "Generate [git] bash autocomplete\n"
+    aplogshow "Generate [git] bash autocomplete\n"
     curl -L "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash" -o "${AP_COMPLETIONS_DIR}/ap_completion_git.bash"
 
     if [ -f "${HOME}/scripto-share/vendors/git/ap_git.conf" ]; then
         # Create .gitconfig symbolic link
-        @logshow "Link [${HOME}/.gitconfig] to [${HOME}/scripto-share/vendors/git/ap_git.conf]\n"
+        aplogshow "Link [${HOME}/.gitconfig] to [${HOME}/scripto-share/vendors/git/ap_git.conf]\n"
         ln -sf "${HOME}/scripto-share/vendors/git/ap_git.conf" "${HOME}/.gitconfig"
     fi
 
     if [ -f "${HOME}/scripto-share/vendors/git/ap_gitignore_global" ]; then
         # Use git global ignore as a backup solution in case you forgot to add [.gitignore]
         # @#recommend $$ Use [.gitignore] in project whenever possible
-        @logshow "Link [${HOME}/.gitignore_global] to [${HOME}/scripto-share/vendors/git/ap_git.conf]\n"
+        aplogshow "Link [${HOME}/.gitignore_global] to [${HOME}/scripto-share/vendors/git/ap_git.conf]\n"
         ln -sf "${HOME}/scripto-share/vendors/git/ap_gitignore_global" "${HOME}/.gitignore_global"
 
         # Update global ignore file path in ~/.gitconfig file
         if [ "$(git config --global core.excludesFile)" != "${HOME}/.gitignore_global" ]; then
-            @logshow "Add/update global git ignore config to [${HOME}/.gitconfig] file\n"
+            aplogshow "Add/update global git ignore config to [${HOME}/.gitconfig] file\n"
             git config --global core.excludesFile "${HOME}/.gitignore_global"
         fi
     fi
 
-    if alias @createdirstructgitshare &>/dev/null; then
-        @createdirstructgitshare
+    if alias apcreatedirstructgitshare &>/dev/null; then
+        apcreatedirstructgitshare
     fi
 
-    if alias @createdirstructgitcommon &>/dev/null; then
-        @createdirstructgitcommon
+    if alias apcreatedirstructgitcommon &>/dev/null; then
+        apcreatedirstructgitcommon
     fi
 }
 
-alias @rmdirstructgit="ap_func_rm_dirstruct_git"
+alias rmdirstructgit="ap_func_rm_dirstruct_git"
 ap_func_rm_dirstruct_git() {
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_git.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_git.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_git.bash"
     rm -f "${HOME}/.gitconfig"
     rm -f "${HOME}/.gitignore_global"
 
-    if alias @rmdirstructgitshare &>/dev/null; then
-        @rmdirstructgitshare
+    if alias rmdirstructgitshare &>/dev/null; then
+        rmdirstructgitshare
     fi
 
-    if alias @rmdirstructgitcommon &>/dev/null; then
-        @rmdirstructgitcommon
+    if alias rmdirstructgitcommon &>/dev/null; then
+        rmdirstructgitcommon
     fi
 }
 
-alias @setupgit="ap_func_setup_git"
+alias apsetupgit="ap_func_setup_git"
 ap_func_setup_git() {
-    @logshow "Install [git]\n"
+    aplogshow "Install [git]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install git
@@ -107,15 +107,15 @@ ap_func_setup_git() {
         sudo apt install -y git
     fi
 
-    @initgit
-    if alias @createdirstructgit &>/dev/null; then
-        @createdirstructgit
+    apinitgit
+    if alias apcreatedirstructgit &>/dev/null; then
+        apcreatedirstructgit
     fi
 }
 
-alias @rmgit="ap_func_rm_git"
+alias rmgit="ap_func_rm_git"
 ap_func_rm_git() {
-    @logshow "Remove [git]\n"
+    aplogshow "Remove [git]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew remove git
@@ -123,15 +123,15 @@ ap_func_rm_git() {
         sudo apt purge -y git
     fi
 
-    if alias @rmdirstructgit &>/dev/null; then
-        @rmdirstructgit
+    if alias rmdirstructgit &>/dev/null; then
+        rmdirstructgit
     fi
 }
 
 alias gcm='ap_func_git_commit'
 ap_func_git_commit() {
     git commit -m "$1"
-    @rtn_success
+    aprtn_success
 }
 
 alias gpl='ap_func_git_pull'
@@ -155,7 +155,7 @@ ap_func_git_pull() {
         local ap_prj_group_code="${ap_prj_group_code^^}"
         local ap_prj_group_name="AP_PRJ_LIST_CODE_${ap_prj_group_code}"
         eval "$(printf "ap_prj_group=("\${%s[@]}")" "${ap_prj_group_name}")"
-        @minfo "Git pull for projects [${ap_prj_group[@]}]\n"
+        apshowmsginfo "Git pull for projects [${ap_prj_group[@]}]\n"
         projects+=("${ap_prj_group[@]}")
     done
 
@@ -167,7 +167,7 @@ ap_func_git_pull() {
         echo
     done
 
-    @rtn_success
+    aprtn_success
 }
 
 alias gacp='ap_func_git_commit_push'
@@ -191,7 +191,7 @@ ap_func_git_commit_push() {
         local ap_prj_group_code="${ap_prj_group_code^^}"
         local ap_prj_group_name="AP_PRJ_LIST_CODE_${ap_prj_group_code}"
         eval "$(printf "ap_prj_group=("\${%s[@]}")" "${ap_prj_group_name}")"
-        @minfo "Git push and commit for projects [${ap_prj_group[@]}]\n"
+        apshowmsginfo "Git push and commit for projects [${ap_prj_group[@]}]\n"
         projects+=("${ap_prj_group[@]}")
     done
 
@@ -205,7 +205,7 @@ ap_func_git_commit_push() {
         echo
     done
 
-    @rtn_success
+    aprtn_success
 }
 
 alias gcl='ap_func_git_clone'
@@ -233,7 +233,7 @@ ap_func_git_clone() {
         local ap_prj_group_url="AP_PRJ_LIST_URL_${ap_prj_group_code}"
         eval "$(printf "ap_prj_urls=("\${%s[@]}")" "${ap_prj_group_url}")"
 
-        @minfo "Git clone for projects [${ap_prj_codes[@]}]\n"
+        apshowmsginfo "Git clone for projects [${ap_prj_codes[@]}]\n"
         projects+=("${ap_prj_urls[@]}")
     done
 
@@ -243,5 +243,5 @@ ap_func_git_clone() {
         echo
     done
 
-    @rtn_success
+    aprtn_success
 }

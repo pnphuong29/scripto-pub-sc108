@@ -1,4 +1,4 @@
-alias @initartisan="ap_func_init_artisan"
+alias apinitartisan="ap_func_init_artisan"
 ap_func_init_artisan() {
     if [ -f "${HOME}/scripto/vendors/artisan/ap_completion_artisan.sh" ]; then
         source "${HOME}/scripto/vendors/artisan/ap_completion_artisan.sh"
@@ -31,34 +31,34 @@ ap_func_init_artisan() {
         php artisan route:cache; \
     "
 
-    if alias @initartisanshare &>/dev/null; then
-        @initartisanshare
+    if alias apinitartisanshare &>/dev/null; then
+        apinitartisanshare
     fi
 
-    if alias @initartisancommon &>/dev/null; then
-        @initartisancommon
+    if alias apinitartisancommon &>/dev/null; then
+        apinitartisancommon
     fi
 }
 
-alias @createdirstructartisan="ap_func_create_dirstruct_artisan"
+alias apcreatedirstructartisan="ap_func_create_dirstruct_artisan"
 ap_func_create_dirstruct_artisan() {
-    if alias @createdirstructartisanshare &>/dev/null; then
-        @createdirstructartisanshare
+    if alias apcreatedirstructartisanshare &>/dev/null; then
+        apcreatedirstructartisanshare
     fi
 
-    if alias @createdirstructartisancommon &>/dev/null; then
-        @createdirstructartisancommon
+    if alias apcreatedirstructartisancommon &>/dev/null; then
+        apcreatedirstructartisancommon
     fi
 }
 
-alias @rmdirstructartisan="ap_func_rm_dirstruct_artisan"
+alias rmdirstructartisan="ap_func_rm_dirstruct_artisan"
 ap_func_rm_dirstruct_artisan() {
-    if alias @rmdirstructartisanshare &>/dev/null; then
-        @rmdirstructartisanshare
+    if alias rmdirstructartisanshare &>/dev/null; then
+        rmdirstructartisanshare
     fi
 
-    if alias @rmdirstructartisancommon &>/dev/null; then
-        @rmdirstructartisancommon
+    if alias rmdirstructartisancommon &>/dev/null; then
+        rmdirstructartisancommon
     fi
 }
 

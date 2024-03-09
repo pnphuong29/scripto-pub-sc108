@@ -1,48 +1,48 @@
-alias @inittaskwarrior="ap_func_init_taskwarrior"
+alias apinittaskwarrior="ap_func_init_taskwarrior"
 ap_func_init_taskwarrior() {
-    @addpath -m "${AP_SOFT_DIR}/taskwarrior/share/man"
+    apaddpath -m "${AP_SOFT_DIR}/taskwarrior/share/man"
 
-    if alias @inittaskwarriorshare &>/dev/null; then
-        @inittaskwarriorshare
+    if alias apinittaskwarriorshare &>/dev/null; then
+        apinittaskwarriorshare
     fi
 
-    if alias @inittaskwarriorcommon &>/dev/null; then
-        @inittaskwarriorcommon
+    if alias apinittaskwarriorcommon &>/dev/null; then
+        apinittaskwarriorcommon
     fi
 }
 
-alias @createdirstructtaskwarrior="ap_func_create_dirstruct_taskwarrior"
+alias apcreatedirstructtaskwarrior="ap_func_create_dirstruct_taskwarrior"
 ap_func_create_dirstruct_taskwarrior() {
-    @logshow "Create symlink from [${AP_SOFT_DIR}/bin/task] to [${AP_SOFT_DIR}/taskwarrior/bin/task]\n"
+    aplogshow "Create symlink from [${AP_SOFT_DIR}/bin/task] to [${AP_SOFT_DIR}/taskwarrior/bin/task]\n"
     ln -sf "${AP_SOFT_DIR}/taskwarrior/bin/task" "${AP_SOFT_DIR}/bin/task"
 
-    if alias @createdirstructtaskwarriorshare &>/dev/null; then
-        @createdirstructtaskwarriorshare
+    if alias apcreatedirstructtaskwarriorshare &>/dev/null; then
+        apcreatedirstructtaskwarriorshare
     fi
 
-    if alias @createdirstructtaskwarriorcommon &>/dev/null; then
-        @createdirstructtaskwarriorcommon
+    if alias apcreatedirstructtaskwarriorcommon &>/dev/null; then
+        apcreatedirstructtaskwarriorcommon
     fi
 }
 
-alias @rmdirstructtaskwarrior="ap_func_rm_dirstruct_taskwarrior"
+alias rmdirstructtaskwarrior="ap_func_rm_dirstruct_taskwarrior"
 ap_func_rm_dirstruct_taskwarrior() {
-    @logshow "Remove [${AP_SOFT_DIR}/bin/task]\n"
+    aplogshow "Remove [${AP_SOFT_DIR}/bin/task]\n"
     rm -f "${AP_SOFT_DIR}/bin/task"
 
-    if alias @rmdirstructtaskwarriorshare &>/dev/null; then
-        @rmdirstructtaskwarriorshare
+    if alias rmdirstructtaskwarriorshare &>/dev/null; then
+        rmdirstructtaskwarriorshare
     fi
 
-    if alias @rmdirstructtaskwarriorcommon &>/dev/null; then
-        @rmdirstructtaskwarriorcommon
+    if alias rmdirstructtaskwarriorcommon &>/dev/null; then
+        rmdirstructtaskwarriorcommon
     fi
 }
 
-alias @setuptaskwarrior="ap_func_setup_taskwarrior"
+alias apsetuptaskwarrior="ap_func_setup_taskwarrior"
 ap_func_setup_taskwarrior() {
     # https://github.com/GothenburgBitFactory/taskwarrior
-    @logshow "Install required libraries [libgnutls-dev, cmake, make, libuuid]\n"
+    aplogshow "Install required libraries [libgnutls-dev, cmake, make, libuuid]\n"
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install gnutls cmake make libuuid
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
@@ -50,7 +50,7 @@ ap_func_setup_taskwarrior() {
         sudo apt install -y libgnutls-dev cmake make libuuid1
     fi
 
-    @logshow "Install [taskwarrior]\n"
+    aplogshow "Install [taskwarrior]\n"
     # Remove old app dir if any
     rm -rf "${AP_SOFT_DIR}/taskwarrior"
     rm -rf "${AP_TMP_DIR}/taskwarrior"
@@ -74,22 +74,22 @@ ap_func_setup_taskwarrior() {
 
     cd "${AP_SOFT_DIR}/taskwarrior"
 
-    @inittaskwarrior
-    if alias @createdirstructtaskwarrior &>/dev/null; then
-        @createdirstructtaskwarrior
+    apinittaskwarrior
+    if alias apcreatedirstructtaskwarrior &>/dev/null; then
+        apcreatedirstructtaskwarrior
     fi
 }
 
-alias @rmtaskwarrior="ap_func_rm_taskwarrior"
+alias rmtaskwarrior="ap_func_rm_taskwarrior"
 ap_func_rm_taskwarrior() {
-    @logshow "Remove [taskwarrior]\n"
+    aplogshow "Remove [taskwarrior]\n"
     rm -rf "${AP_SOFT_DIR}/taskwarrior"
 
-    if alias @rmdirstructtaskwarrior &>/dev/null; then
-        @rmdirstructtaskwarrior
+    if alias rmdirstructtaskwarrior &>/dev/null; then
+        rmdirstructtaskwarrior
     fi
 
-    if alias @rmglobalsymlinktaskwarrior &>/dev/null; then
-        @rmglobalsymlinktaskwarrior
+    if alias rmglobalsymlinktaskwarrior &>/dev/null; then
+        rmglobalsymlinktaskwarrior
     fi
 }

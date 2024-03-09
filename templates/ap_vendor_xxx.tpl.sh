@@ -1,118 +1,118 @@
-alias @initxxxshare="ap_func_init_xxx_share"
+alias apinitxxxshare="ap_func_init_xxx_share"
 ap_func_init_xxx_share() {
 
 }
 
-alias @initxxxcommon="ap_func_init_xxx_common"
+alias apinitxxxcommon="ap_func_init_xxx_common"
 ap_func_init_xxx_common() {
 
 }
 
-alias @initxxx="ap_func_init_xxx"
+alias apinitxxx="ap_func_init_xxx"
 ap_func_init_xxx() {
-    if alias @initxxxshare &>/dev/null; then
-        @initxxxshare
+    if alias apinitxxxshare &>/dev/null; then
+        initxxxshare
     fi
 
-    if alias @initxxxcommon &>/dev/null; then
-        @initxxxcommon
+    if alias apinitxxxcommon &>/dev/null; then
+        initxxxcommon
     fi
 }
 
-alias @createdirstructxxxshare="ap_func_create_dirstruct_xxx_share"
+alias apcreatedirstructxxxshare="ap_func_create_dirstruct_xxx_share"
 ap_func_create_dirstruct_xxx_share() {
 
 }
 
-alias @createdirstructxxxcommon="ap_func_create_dirstruct_xxx_common"
+alias apcreatedirstructxxxcommon="ap_func_create_dirstruct_xxx_common"
 ap_func_create_dirstruct_xxx_common() {
 
 }
 
-alias @createdirstructxxx="ap_func_create_dirstruct_xxx"
+alias apcreatedirstructxxx="ap_func_create_dirstruct_xxx"
 ap_func_create_dirstruct_xxx() {
-    @logshow "Generate [xxx] bash autocomplete\n"
+    aplogshow "Generate [xxx] bash autocomplete\n"
     xxx >"${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash"
 
     if [ -f "${HOME}/scripto-share/vendors/xxx/bindings.json" ]; then
-        @logshow "Create symlink from [${HOME}/.config/xxx/bindings.json] to [${HOME}/scripto-share/vendors/xxx/bindings.json]\n"
+        aplogshow "Create symlink from [${HOME}/.config/xxx/bindings.json] to [${HOME}/scripto-share/vendors/xxx/bindings.json]\n"
         ln -sf "${HOME}/scripto-share/vendors/xxx/bindings.json" "${HOME}/.config/xxx/bindings.json"
     fi
 
-    @logshow "Create symlink from [${AP_SOFT_DIR}/bin/xxx] to [${AP_SOFT_DIR}/xxx/bin/xxx]\n"
+    aplogshow "Create symlink from [${AP_SOFT_DIR}/bin/xxx] to [${AP_SOFT_DIR}/xxx/bin/xxx]\n"
     ln -sf "${AP_SOFT_DIR}/xxx/bin/xxx" "${AP_SOFT_DIR}/bin/xxx"
 
-    @logshow "Create symlink from [${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash] to [${AP_SOFT_DIR}/xxx/complete/xxx.bash]\n"
+    aplogshow "Create symlink from [${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash] to [${AP_SOFT_DIR}/xxx/complete/xxx.bash]\n"
     ln -sf "${AP_SOFT_DIR}/xxx/autocomplete/xxx.bash" "${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash"
 
-    @logshow "Create symlink from [${AP_MAN_DIR}/man1/xxx.1] to [${AP_SOFT_DIR}/xxx/xxx.1]\n"
+    aplogshow "Create symlink from [${AP_MAN_DIR}/man1/xxx.1] to [${AP_SOFT_DIR}/xxx/xxx.1]\n"
     ln -sf "${AP_SOFT_DIR}/xxx/xxx.1" "${AP_MAN_DIR}/man1/xxx.1"
 
-    if alias @createdirstructxxxshare &>/dev/null; then
-        @createdirstructxxxshare
+    if alias apcreatedirstructxxxshare &>/dev/null; then
+        createdirstructxxxshare
     fi
 
-    if alias @createdirstructxxxcommon &>/dev/null; then
-        @createdirstructxxxcommon
+    if alias apcreatedirstructxxxcommon &>/dev/null; then
+        createdirstructxxxcommon
     fi
 }
 
-alias @rmdirstructxxxshare="ap_func_rm_dirstruct_xxx_share"
+alias aprmdirstructxxxshare="ap_func_rm_dirstruct_xxx_share"
 ap_func_rm_dirstruct_xxx_share() {
 
 }
 
-alias @rmdirstructxxxcommon="ap_func_rm_dirstruct_xxx_common"
+alias aprmdirstructxxxcommon="ap_func_rm_dirstruct_xxx_common"
 ap_func_rm_dirstruct_xxx_common() {
 
 }
 
-alias @rmdirstructxxx="ap_func_rm_dirstruct_xxx"
+alias aprmdirstructxxx="ap_func_rm_dirstruct_xxx"
 ap_func_rm_dirstruct_xxx() {
-    @logshow "Remove [${AP_SOFT_DIR}/bin/xxx]\n"
+    aplogshow "Remove [${AP_SOFT_DIR}/bin/xxx]\n"
     rm -f "${AP_SOFT_DIR}/bin/xxx"
 
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash"
 
-    @logshow "Remove [${AP_MAN_DIR}/man1/xxx.1]\n"
+    aplogshow "Remove [${AP_MAN_DIR}/man1/xxx.1]\n"
     rm -f "${AP_MAN_DIR}/man1/xxx.1"
 
-    if alias @rmdirstructxxxshare &>/dev/null; then
-        @rmdirstructxxxshare
+    if alias aprmdirstructxxxshare &>/dev/null; then
+        rmdirstructxxxshare
     fi
 
-    if alias @rmdirstructxxxcommon &>/dev/null; then
-        @rmdirstructxxxcommon
+    if alias aprmdirstructxxxcommon &>/dev/null; then
+        rmdirstructxxxcommon
     fi
 }
 
-alias @createglobalsymlinkxxx="ap_func_create_global_symlink_xxx"
+alias apcreateglobalsymlinkxxx="ap_func_create_global_symlink_xxx"
 ap_func_create_global_symlink_xxx() {
     if [ -f "${AP_SOFT_DIR}/bin/xxx" ]; then
-        @logshow "Create symlink from [/usr/local/bin/xxx] to [${AP_SOFT_DIR}/bin/xxx]\n"
+        aplogshow "Create symlink from [/usr/local/bin/xxx] to [${AP_SOFT_DIR}/bin/xxx]\n"
         sudo ln -sf "${AP_SOFT_DIR}/bin/xxx" "/usr/local/bin/xxx"
     fi
 }
 
-alias @rmglobalsymlinkxxx="ap_func_rm_global_symlink_xxx"
+alias aprmglobalsymlinkxxx="ap_func_rm_global_symlink_xxx"
 ap_func_rm_global_symlink_xxx() {
     if [ -f "/usr/local/bin/xxx" ]; then
-        @logshow "Remove [/usr/local/bin/xxx]\n"
+        aplogshow "Remove [/usr/local/bin/xxx]\n"
         sudo rm -f "/usr/local/bin/xxx"
     fi
 }
 
-alias @setupxxx="ap_func_setup_xxx"
+alias apsetupxxx="ap_func_setup_xxx"
 ap_func_setup_xxx() {
     local ap_xxx_setup_version=''
     if [ -n "$1" ]; then
         ap_xxx_setup_version="$1"
     fi
 
-    @logshow "Install [xxx] v${ap_xxx_setup_version}\n"
+    aplogshow "Install [xxx] v${ap_xxx_setup_version}\n"
 
-    @logshow "Install [xxx]\n"
+    aplogshow "Install [xxx]\n"
 
     # Remove old app dir if any
     rm -rf "${AP_SOFT_DIR}/xxx"
@@ -167,22 +167,22 @@ ap_func_setup_xxx() {
     pip install xxx
     npm install -g xxx
 
-    @initxxx
-    if alias @createdirstructxxx &>/dev/null; then
-        @createdirstructxxx
+    initxxx
+    if alias apcreatedirstructxxx &>/dev/null; then
+        createdirstructxxx
     fi
 }
 
-alias @rmxxx="ap_func_rm_xxx"
+alias aprmxxx="ap_func_rm_xxx"
 ap_func_rm_xxx() {
     local ap_xxx_remove_version=''
     if [ -n "$1" ]; then
         ap_xxx_remove_version="$1"
     fi
 
-    @logshow "Remove [xxx] v${ap_xxx_remove_version}\n"
+    aplogshow "Remove [xxx] v${ap_xxx_remove_version}\n"
 
-    @logshow "Remove [xxx]\n"
+    aplogshow "Remove [xxx]\n"
     pip uninstall xxx
     npm uninstall -g xxx
 
@@ -198,11 +198,11 @@ ap_func_rm_xxx() {
         sudo dpkg --purge xxx
     fi
 
-    if alias @rmdirstructxxx &>/dev/null; then
-        @rmdirstructxxx
+    if alias aprmdirstructxxx &>/dev/null; then
+        rmdirstructxxx
     fi
 
-    if alias @rmglobalsymlinkxxx &>/dev/null; then
-        @rmglobalsymlinkxxx
+    if alias aprmglobalsymlinkxxx &>/dev/null; then
+        rmglobalsymlinkxxx
     fi
 }

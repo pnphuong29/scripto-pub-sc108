@@ -1,41 +1,41 @@
-alias @initpostgresql="ap_func_init_postgresql"
+alias apinitpostgresql="ap_func_init_postgresql"
 ap_func_init_postgresql() {
-    if alias @initpostgresqlshare &>/dev/null; then
-        @initpostgresqlshare
+    if alias apinitpostgresqlshare &>/dev/null; then
+        apinitpostgresqlshare
     fi
 
-    if alias @initpostgresqlcommon &>/dev/null; then
-        @initpostgresqlcommon
+    if alias apinitpostgresqlcommon &>/dev/null; then
+        apinitpostgresqlcommon
     fi
 }
 
-alias @createdirstructpostgresql="ap_func_create_dirstruct_postgresql"
+alias apcreatedirstructpostgresql="ap_func_create_dirstruct_postgresql"
 ap_func_create_dirstruct_postgresql() {
-    if alias @createdirstructpostgresqlshare &>/dev/null; then
-        @createdirstructpostgresqlshare
+    if alias apcreatedirstructpostgresqlshare &>/dev/null; then
+        apcreatedirstructpostgresqlshare
     fi
 
-    if alias @createdirstructpostgresqlcommon &>/dev/null; then
-        @createdirstructpostgresqlcommon
+    if alias apcreatedirstructpostgresqlcommon &>/dev/null; then
+        apcreatedirstructpostgresqlcommon
     fi
 }
 
-alias @rmdirstructpostgresql="ap_func_rm_dirstruct_postgresql"
+alias rmdirstructpostgresql="ap_func_rm_dirstruct_postgresql"
 ap_func_rm_dirstruct_postgresql() {
-    if alias @rmdirstructpostgresqlshare &>/dev/null; then
-        @rmdirstructpostgresqlshare
+    if alias rmdirstructpostgresqlshare &>/dev/null; then
+        rmdirstructpostgresqlshare
     fi
 
-    if alias @rmdirstructpostgresqlcommon &>/dev/null; then
-        @rmdirstructpostgresqlcommon
+    if alias rmdirstructpostgresqlcommon &>/dev/null; then
+        rmdirstructpostgresqlcommon
     fi
 }
 
-alias @setuppostgresql="ap_func_setup_postgresql"
+alias apsetuppostgresql="ap_func_setup_postgresql"
 ap_func_setup_postgresql() {
     # https://www.postgresql.org/download/linux/
     # https://www.postgresql.org/download/macosx/
-    @logshow "Install [PostgreSQL]\n"
+    aplogshow "Install [PostgreSQL]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install postgresql@15
@@ -50,15 +50,15 @@ ap_func_setup_postgresql() {
         sudo apt install -y "postgresql-server-dev-${ap_pgsql_major_version}"
     fi
 
-    @initpostgresql
-    if alias @createdirstructpostgresql &>/dev/null; then
-        @createdirstructpostgresql
+    apinitpostgresql
+    if alias apcreatedirstructpostgresql &>/dev/null; then
+        apcreatedirstructpostgresql
     fi
 }
 
-alias @rmpostgresql="ap_func_rm_postgresql"
+alias rmpostgresql="ap_func_rm_postgresql"
 ap_func_rm_postgresql() {
-    @logshow "Remove [PostgreSQL]\n"
+    aplogshow "Remove [PostgreSQL]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew uninstall postgresql
@@ -68,11 +68,11 @@ ap_func_rm_postgresql() {
         sudo apt purge -y postgresql "postgresql-server-dev-${ap_pgsql_major_version}"
     fi
 
-    if alias @rmdirstructpostgresql &>/dev/null; then
-        @rmdirstructpostgresql
+    if alias rmdirstructpostgresql &>/dev/null; then
+        rmdirstructpostgresql
     fi
 
-    if alias @rmglobalsymlinkpostgresql &>/dev/null; then
-        @rmglobalsymlinkpostgresql
+    if alias rmglobalsymlinkpostgresql &>/dev/null; then
+        rmglobalsymlinkpostgresql
     fi
 }

@@ -1,70 +1,70 @@
-alias @initmicro="ap_func_init_micro"
+alias apinitmicro="ap_func_init_micro"
 ap_func_init_micro() {
     export MICRO_CONFIG_HOME="${HOME}/.config/micro"
     alias zmicroconf="cd \${HOME}/.config/micro"
 
-    if alias @initmicroshare &>/dev/null; then
-        @initmicroshare
+    if alias apinitmicroshare &>/dev/null; then
+        apinitmicroshare
     fi
 
-    if alias @initmicrocommon &>/dev/null; then
-        @initmicrocommon
+    if alias apinitmicrocommon &>/dev/null; then
+        apinitmicrocommon
     fi
 }
 
-alias @createdirstructmicro="ap_func_create_dirstruct_micro"
+alias apcreatedirstructmicro="ap_func_create_dirstruct_micro"
 ap_func_create_dirstruct_micro() {
-    @logshow "Create symlink from [${HOME}/.config/micro]\n"
+    aplogshow "Create symlink from [${HOME}/.config/micro]\n"
     mkdir -p "${HOME}/.config/micro"
 
-    if alias @createdirstructmicroshare &>/dev/null; then
-        @createdirstructmicroshare
+    if alias apcreatedirstructmicroshare &>/dev/null; then
+        apcreatedirstructmicroshare
     fi
 
-    if alias @createdirstructmicrocommon &>/dev/null; then
-        @createdirstructmicrocommon
+    if alias apcreatedirstructmicrocommon &>/dev/null; then
+        apcreatedirstructmicrocommon
     fi
 }
 
-alias @rmdirstructmicro="ap_func_rm_dirstruct_micro"
+alias rmdirstructmicro="ap_func_rm_dirstruct_micro"
 ap_func_rm_dirstruct_micro() {
-    if alias @rmdirstructmicroshare &>/dev/null; then
-        @rmdirstructmicroshare
+    if alias rmdirstructmicroshare &>/dev/null; then
+        rmdirstructmicroshare
     fi
 
-    if alias @rmdirstructmicrocommon &>/dev/null; then
-        @rmdirstructmicrocommon
+    if alias rmdirstructmicrocommon &>/dev/null; then
+        rmdirstructmicrocommon
     fi
 }
 
 alias @createglobalsymlinkmicro="ap_func_create_global_symlink_micro"
 ap_func_create_global_symlink_micro() {
     if [ -f "${AP_SOFT_DIR}/bin/micro" ]; then
-        @logshow "Create symlink from [/usr/local/bin/micro] to [${AP_SOFT_DIR}/bin/micro]\n"
+        aplogshow "Create symlink from [/usr/local/bin/micro] to [${AP_SOFT_DIR}/bin/micro]\n"
         sudo ln -sf "${AP_SOFT_DIR}/bin/micro" "/usr/local/bin/micro"
     fi
 }
 
-alias @rmglobalsymlinkmicro="ap_func_rm_global_symlink_micro"
+alias rmglobalsymlinkmicro="ap_func_rm_global_symlink_micro"
 ap_func_rm_global_symlink_micro() {
     if [ -f "/usr/local/bin/micro" ]; then
-        @logshow "Remove [/usr/local/bin/micro]\n"
+        aplogshow "Remove [/usr/local/bin/micro]\n"
         sudo rm -f "/usr/local/bin/micro"
     fi
 }
 
-alias @setupmicro="ap_func_setup_micro"
+alias apsetupmicro="ap_func_setup_micro"
 ap_func_setup_micro() {
     # https://micro-editor.github.io/
-    @logshow "Install [micro]\n"
+    aplogshow "Install [micro]\n"
 
     cd "${AP_TMP_DIR}"
     curl https://getmic.ro | bash
     mv micro "${AP_SOFT_DIR}/bin/"
 
-    @initmicro
-    if alias @createdirstructmicro &>/dev/null; then
-        @createdirstructmicro
+    apinitmicro
+    if alias apcreatedirstructmicro &>/dev/null; then
+        apcreatedirstructmicro
     fi
 
     if alias @createglobalsymlinkmicro &>/dev/null; then
@@ -72,16 +72,16 @@ ap_func_setup_micro() {
     fi
 }
 
-alias @rmmicro="ap_func_rm_micro"
+alias rmmicro="ap_func_rm_micro"
 ap_func_rm_micro() {
-    @logshow "Remove [micro]\n"
+    aplogshow "Remove [micro]\n"
     rm -f "${AP_SOFT_DIR}/bin/micro"
 
-    if alias @rmdirstructmicro &>/dev/null; then
-        @rmdirstructmicro
+    if alias rmdirstructmicro &>/dev/null; then
+        rmdirstructmicro
     fi
 
-    if alias @rmglobalsymlinkmicro &>/dev/null; then
-        @rmglobalsymlinkmicro
+    if alias rmglobalsymlinkmicro &>/dev/null; then
+        rmglobalsymlinkmicro
     fi
 }

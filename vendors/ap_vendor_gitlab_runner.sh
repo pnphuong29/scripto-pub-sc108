@@ -1,43 +1,43 @@
-alias @initgitlabrunner="ap_func_init_gitlabrunner"
+alias apinitgitlabrunner="ap_func_init_gitlabrunner"
 ap_func_init_gitlabrunner() {
     alias glabrunner="gitlab-runner"
 
-    if alias @initgitlabrunnershare &>/dev/null; then
-        @initgitlabrunnershare
+    if alias apinitgitlabrunnershare &>/dev/null; then
+        apinitgitlabrunnershare
     fi
 
-    if alias @initgitlabrunnercommon &>/dev/null; then
-        @initgitlabrunnercommon
+    if alias apinitgitlabrunnercommon &>/dev/null; then
+        apinitgitlabrunnercommon
     fi
 }
 
-alias @createdirstructgitlabrunner="ap_func_create_dirstruct_gitlabrunner"
+alias apcreatedirstructgitlabrunner="ap_func_create_dirstruct_gitlabrunner"
 ap_func_create_dirstruct_gitlabrunner() {
-    if alias @createdirstructgitlabrunnershare &>/dev/null; then
-        @createdirstructgitlabrunnershare
+    if alias apcreatedirstructgitlabrunnershare &>/dev/null; then
+        apcreatedirstructgitlabrunnershare
     fi
 
-    if alias @createdirstructgitlabrunnercommon &>/dev/null; then
-        @createdirstructgitlabrunnercommon
+    if alias apcreatedirstructgitlabrunnercommon &>/dev/null; then
+        apcreatedirstructgitlabrunnercommon
     fi
 }
 
-alias @rmdirstructgitlabrunner="ap_func_rm_dirstruct_gitlabrunner"
+alias rmdirstructgitlabrunner="ap_func_rm_dirstruct_gitlabrunner"
 ap_func_rm_dirstruct_gitlabrunner() {
-    if alias @rmdirstructgitlabrunnershare &>/dev/null; then
-        @rmdirstructgitlabrunnershare
+    if alias rmdirstructgitlabrunnershare &>/dev/null; then
+        rmdirstructgitlabrunnershare
     fi
 
-    if alias @rmdirstructgitlabrunnercommon &>/dev/null; then
-        @rmdirstructgitlabrunnercommon
+    if alias rmdirstructgitlabrunnercommon &>/dev/null; then
+        rmdirstructgitlabrunnercommon
     fi
 }
 
-alias @setupgitlabrunner="ap_func_setup_gitlabrunner"
+alias apsetupgitlabrunner="ap_func_setup_gitlabrunner"
 ap_func_setup_gitlabrunner() {
     # https://docs.gitlab.com/runner/install/linux-manually.html#using-binary-file
     # https://docs.gitlab.com/runner/install/osx.html
-    @logshow "Install [gitlab-runner]\n"
+    aplogshow "Install [gitlab-runner]\n"
 
     # Stop gitlab-runner before upgrading
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
@@ -64,22 +64,22 @@ ap_func_setup_gitlabrunner() {
         sudo gitlab-runner start
     fi
 
-    @initgitlabrunner
-    if alias @createdirstructgitlabrunner &>/dev/null; then
-        @createdirstructgitlabrunner
+    apinitgitlabrunner
+    if alias apcreatedirstructgitlabrunner &>/dev/null; then
+        apcreatedirstructgitlabrunner
     fi
 }
 
-alias @rmgitlabrunner="ap_func_rm_gitlabrunner"
+alias rmgitlabrunner="ap_func_rm_gitlabrunner"
 ap_func_rm_gitlabrunner() {
-    @logshow "Remove [gitlab-runner]\n"
+    aplogshow "Remove [gitlab-runner]\n"
     sudo rm -f /usr/local/bin/gitlab-runner
 
-    if alias @rmdirstructgitlabrunner &>/dev/null; then
-        @rmdirstructgitlabrunner
+    if alias rmdirstructgitlabrunner &>/dev/null; then
+        rmdirstructgitlabrunner
     fi
 
-    if alias @rmglobalsymlinkgitlabrunner &>/dev/null; then
-        @rmglobalsymlinkgitlabrunner
+    if alias rmglobalsymlinkgitlabrunner &>/dev/null; then
+        rmglobalsymlinkgitlabrunner
     fi
 }

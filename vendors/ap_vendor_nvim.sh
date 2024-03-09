@@ -1,4 +1,4 @@
-alias @initnvim="ap_func_init_nvim"
+alias apinitnvim="ap_func_init_nvim"
 ap_func_init_nvim() {
     alias vi="nvim"
 
@@ -11,19 +11,19 @@ ap_func_init_nvim() {
     alias znvimcoc="cd \${HOME}/.config/coc"
     alias znvimcocextensions="cd \${HOME}/.config/coc/extensions"
 
-    if alias @initnvimshare &>/dev/null; then
-        @initnvimshare
+    if alias apinitnvimshare &>/dev/null; then
+        apinitnvimshare
     fi
 
-    if alias @initnvimcommon &>/dev/null; then
-        @initnvimcommon
+    if alias apinitnvimcommon &>/dev/null; then
+        apinitnvimcommon
     fi
 }
 
-alias @createdirstructnvim="ap_func_create_dirstruct_nvim"
+alias apcreatedirstructnvim="ap_func_create_dirstruct_nvim"
 ap_func_create_dirstruct_nvim() {
     if [ -f "${AP_SOFT_DIR}/nvim/bin/nvim" ]; then
-        @logshow "Create symlink from [${AP_SOFT_DIR}/bin/nvim] to [${AP_SOFT_DIR}/nvim/bin/nvim]\n"
+        aplogshow "Create symlink from [${AP_SOFT_DIR}/bin/nvim] to [${AP_SOFT_DIR}/nvim/bin/nvim]\n"
         sudo ln -sf "${AP_SOFT_DIR}/nvim/bin/nvim" "${AP_SOFT_DIR}/bin/nvim"
     fi
 
@@ -36,44 +36,44 @@ ap_func_create_dirstruct_nvim() {
     gem install neovim
     npm install -g neovim
 
-    if alias @createdirstructnvimshare &>/dev/null; then
-        @createdirstructnvimshare
+    if alias apcreatedirstructnvimshare &>/dev/null; then
+        apcreatedirstructnvimshare
     fi
 
-    if alias @createdirstructnvimcommon &>/dev/null; then
-        @createdirstructnvimcommon
+    if alias apcreatedirstructnvimcommon &>/dev/null; then
+        apcreatedirstructnvimcommon
     fi
 }
 
-alias @rmdirstructnvim="ap_func_rm_dirstruct_nvim"
+alias rmdirstructnvim="ap_func_rm_dirstruct_nvim"
 ap_func_rm_dirstruct_nvim() {
-    @logshow "Remove [${AP_SOFT_DIR}/bin/nvim]\n"
+    aplogshow "Remove [${AP_SOFT_DIR}/bin/nvim]\n"
     rm -f "${AP_SOFT_DIR}/bin/nvim"
 
-    if alias @rmdirstructnvimshare &>/dev/null; then
-        @rmdirstructnvimshare
+    if alias rmdirstructnvimshare &>/dev/null; then
+        rmdirstructnvimshare
     fi
 
-    if alias @rmdirstructnvimcommon &>/dev/null; then
-        @rmdirstructnvimcommon
+    if alias rmdirstructnvimcommon &>/dev/null; then
+        rmdirstructnvimcommon
     fi
 }
 
 alias @createglobalsymlinknvim="ap_func_create_global_symlink_nvim"
 ap_func_create_global_symlink_nvim() {
     if [ -f "${AP_SOFT_DIR}/bin/nvim" ]; then
-        @logshow "Create symlink from [/usr/local/bin/nvim] to [${AP_SOFT_DIR}/bin/nvim]\n"
+        aplogshow "Create symlink from [/usr/local/bin/nvim] to [${AP_SOFT_DIR}/bin/nvim]\n"
         sudo ln -sf "${AP_SOFT_DIR}/bin/nvim" "/usr/local/bin/nvim"
     fi
 }
 
-alias @rmglobalsymlinknvim="ap_func_rm_global_symlink_nvim"
+alias rmglobalsymlinknvim="ap_func_rm_global_symlink_nvim"
 ap_func_rm_global_symlink_nvim() {
-    @logshow "Remove [/usr/local/bin/nvim]\n"
+    aplogshow "Remove [/usr/local/bin/nvim]\n"
     sudo rm -f "/usr/local/bin/nvim"
 }
 
-alias @setupnvim="ap_func_setup_nvim"
+alias apsetupnvim="ap_func_setup_nvim"
 ap_func_setup_nvim() {
     # https://github.com/neovim/neovim/wiki/Installing-Neovim
     # https://neovim.io/doc/user/provider.html
@@ -83,7 +83,7 @@ ap_func_setup_nvim() {
     # Notes
     # - All coc extensions will be installed when openning neovim first time
     # - After finishing installing plugins and coc extensions, you should run `:checkhealh` in neovim
-    @logshow "Install [nvim]\n"
+    aplogshow "Install [nvim]\n"
 
     # Remove old nvim dir
     rm -rf "${AP_SOFT_DIR}/nvim"
@@ -110,27 +110,27 @@ ap_func_setup_nvim() {
     # sudo apt-get update
     # sudo apt-get install neovim
 
-    @initnvim
-    if alias @createdirstructnvim &>/dev/null; then
-        @createdirstructnvim
+    apinitnvim
+    if alias apcreatedirstructnvim &>/dev/null; then
+        apcreatedirstructnvim
     fi
 }
 
-alias @rmnvim="ap_func_rm_nvim"
+alias rmnvim="ap_func_rm_nvim"
 ap_func_rm_nvim() {
-    @logshow "Remove [nvim]\n"
+    aplogshow "Remove [nvim]\n"
 
     rm -rf "${AP_SOFT_DIR}/nvim"
     rm -rf ~/.config/nvim
     rm -rf ~/.config/coc
     rm -rf ~/.local/share/nvim
 
-    if alias @rmdirstructnvim &>/dev/null; then
-        @rmdirstructnvim
+    if alias rmdirstructnvim &>/dev/null; then
+        rmdirstructnvim
     fi
 
-    if alias @rmglobalsymlinknvim &>/dev/null; then
-        @rmglobalsymlinknvim
+    if alias rmglobalsymlinknvim &>/dev/null; then
+        rmglobalsymlinknvim
     fi
 }
 
@@ -154,7 +154,7 @@ ap_func_nvim_bulk_edit() {
         ap_input_files=("$@")
     fi
 
-    @logdbg "Input files = [${ap_input_files[*]}]\n"
+    aplogdbg "Input files = [${ap_input_files[*]}]\n"
 
     local ap_cmd
     local ap_file
@@ -162,7 +162,7 @@ ap_func_nvim_bulk_edit() {
 
     for ap_input_file in "${ap_input_files[@]}"; do
         if [[ $(printf %s "${ap_cmd}" | tr -dc ' ' | wc -c) -gt $((ap_max_files - 1)) ]]; then
-            @minfo "Cannot bulk edit more than [${ap_max_files}] files\n"
+            apshowmsginfo "Cannot bulk edit more than [${ap_max_files}] files\n"
             break
         fi
 
@@ -187,7 +187,7 @@ ap_func_nvim_bulk_edit() {
     if [[ -n "${ap_cmd}" ]]; then
         local ap_log_msg
         ap_log_msg="$(echo "${ap_cmd}" | gsed "s@ @\n@g")"
-        @logdbg "\nvi -p${ap_log_msg}\n"
+        aplogdbg "\nvi -p${ap_log_msg}\n"
         eval "$(printf "%s" "vi -p${ap_cmd}")"
     fi
 }

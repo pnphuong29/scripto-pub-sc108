@@ -1,62 +1,62 @@
-alias @initphp="ap_func_init_php"
+alias apinitphp="ap_func_init_php"
 ap_func_init_php() {
-    # @addpath "/usr/local/opt/php@8.1/bin"
+    # apaddpath "/usr/local/opt/php@8.1/bin"
     alias zphp81fpm='cd /etc/php/8.1/fpm/'
     alias zphp81fpmpoold='cd /etc/php/8.1/fpm/pool.d'
 
     alias rrphpfpm81='sudo systemctl restart php8.1-fpm.service'
     alias ssphpfpm81='sudo systemctl status php8.1-fpm.service'
 
-    if alias @initphpshare &>/dev/null; then
-        @initphpshare
+    if alias apinitphpshare &>/dev/null; then
+        apinitphpshare
     fi
 
-    if alias @initphpcommon &>/dev/null; then
-        @initphpcommon
+    if alias apinitphpcommon &>/dev/null; then
+        apinitphpcommon
     fi
 }
 
-alias @createdirstructphp="ap_func_create_dirstruct_php"
+alias apcreatedirstructphp="ap_func_create_dirstruct_php"
 ap_func_create_dirstruct_php() {
-    if alias @createdirstructphpshare &>/dev/null; then
-        @createdirstructphpshare
+    if alias apcreatedirstructphpshare &>/dev/null; then
+        apcreatedirstructphpshare
     fi
 
-    if alias @createdirstructphpcommon &>/dev/null; then
-        @createdirstructphpcommon
+    if alias apcreatedirstructphpcommon &>/dev/null; then
+        apcreatedirstructphpcommon
     fi
 }
 
-alias @rmdirstructphp="ap_func_rm_dirstruct_php"
+alias rmdirstructphp="ap_func_rm_dirstruct_php"
 ap_func_rm_dirstruct_php() {
-    if alias @rmdirstructphpshare &>/dev/null; then
-        @rmdirstructphpshare
+    if alias rmdirstructphpshare &>/dev/null; then
+        rmdirstructphpshare
     fi
 
-    if alias @rmdirstructphpcommon &>/dev/null; then
-        @rmdirstructphpcommon
+    if alias rmdirstructphpcommon &>/dev/null; then
+        rmdirstructphpcommon
     fi
 }
 
 alias @createglobalsymlinkphp81="ap_func_create_global_symlink_php"
 ap_func_create_global_symlink_php() {
     if [ -f "/opt/local/bin/php-config81" ]; then
-        @logshow "Create symlink from [/usr/local/bin/php-config] to [/opt/local/bin/php-config81]\n"
+        aplogshow "Create symlink from [/usr/local/bin/php-config] to [/opt/local/bin/php-config81]\n"
         sudo ln -sf "/opt/local/bin/php-config81" "/usr/local/bin/php-config"
     fi
 
     if [ -f "/opt/local/bin/php81" ]; then
-        @logshow "Create symlink from [/usr/local/bin/php] to [/opt/local/bin/php81]\n"
+        aplogshow "Create symlink from [/usr/local/bin/php] to [/opt/local/bin/php81]\n"
         sudo ln -sf "/opt/local/bin/php81" "/usr/local/bin/php"
     fi
 
     if [ -f "/opt/local/bin/phpize81" ]; then
-        @logshow "Create symlink from [/usr/local/bin/phpize] to [/opt/local/bin/phpize81]\n"
+        aplogshow "Create symlink from [/usr/local/bin/phpize] to [/opt/local/bin/phpize81]\n"
         sudo ln -sf "/opt/local/bin/phpize81" "/usr/local/bin/phpize"
     fi
 }
 
-alias @setupphp="ap_func_setup_php"
+alias apsetupphp="ap_func_setup_php"
 ap_func_setup_php() {
     # PHP should be installed after installing
     # - apache-http
@@ -64,7 +64,7 @@ ap_func_setup_php() {
     # - pgsql
     # - redis
     # - imagemagick
-    @logshow "Install [PHP 8.1]\n"
+    aplogshow "Install [PHP 8.1]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         # brew has problems with performance especially when running on macOS Catalina
@@ -127,15 +127,15 @@ ap_func_setup_php() {
             php8.1-imagick
     fi
 
-    @initphp
-    if alias @createdirstructphp &>/dev/null; then
-        @createdirstructphp
+    apinitphp
+    if alias apcreatedirstructphp &>/dev/null; then
+        apcreatedirstructphp
     fi
 }
 
-alias @rmphp="ap_func_rm_php"
+alias rmphp="ap_func_rm_php"
 ap_func_rm_php() {
-    @logshow "Remove [PHP 8.1]\n"
+    aplogshow "Remove [PHP 8.1]\n"
 
     # MySQL should have only 1 version in current system
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
@@ -191,12 +191,12 @@ ap_func_rm_php() {
         sudo apt autoremove -y
     fi
 
-    if alias @rmdirstructphp &>/dev/null; then
-        @rmdirstructphp
+    if alias rmdirstructphp &>/dev/null; then
+        rmdirstructphp
     fi
 
-    if alias @rmglobalsymlinkphp &>/dev/null; then
-        @rmglobalsymlinkphp
+    if alias rmglobalsymlinkphp &>/dev/null; then
+        rmglobalsymlinkphp
     fi
 }
 

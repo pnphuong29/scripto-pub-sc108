@@ -1,4 +1,4 @@
-alias @xxx="ap_alias_xxx"
+alias apxxx="ap_alias_xxx"
 # @$func $$ ap_func_xxx {
 # ap_func_xxx
 # Description
@@ -9,5 +9,5 @@ alias @xxx="ap_alias_xxx"
 
 ap_func_xxx() {
 
-    @rtn_success
+    aprtn_success
 }

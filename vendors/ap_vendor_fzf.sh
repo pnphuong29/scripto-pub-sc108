@@ -1,56 +1,56 @@
-alias @initfzf="ap_func_init_fzf"
+alias apinitfzf="ap_func_init_fzf"
 ap_func_init_fzf() {
     [ -f "${HOME}/.fzf.bash" ] && source "${HOME}/.fzf.bash"
 
-    if alias @initfzfshare &>/dev/null; then
-        @initfzfshare
+    if alias apinitfzfshare &>/dev/null; then
+        apinitfzfshare
     fi
 
-    if alias @initfzfcommon &>/dev/null; then
-        @initfzfcommon
+    if alias apinitfzfcommon &>/dev/null; then
+        apinitfzfcommon
     fi
 }
 
-alias @createdirstructfzf="ap_func_create_dirstruct_fzf"
+alias apcreatedirstructfzf="ap_func_create_dirstruct_fzf"
 ap_func_create_dirstruct_fzf() {
-    if alias @createdirstructfzfshare &>/dev/null; then
-        @createdirstructfzfshare
+    if alias apcreatedirstructfzfshare &>/dev/null; then
+        apcreatedirstructfzfshare
     fi
 
-    if alias @createdirstructfzfcommon &>/dev/null; then
-        @createdirstructfzfcommon
+    if alias apcreatedirstructfzfcommon &>/dev/null; then
+        apcreatedirstructfzfcommon
     fi
 }
 
-alias @rmdirstructfzf="ap_func_rm_dirstruct_fzf"
+alias rmdirstructfzf="ap_func_rm_dirstruct_fzf"
 ap_func_rm_dirstruct_fzf() {
-    if alias @rmdirstructfzfshare &>/dev/null; then
-        @rmdirstructfzfshare
+    if alias rmdirstructfzfshare &>/dev/null; then
+        rmdirstructfzfshare
     fi
 
-    if alias @rmdirstructfzfcommon &>/dev/null; then
-        @rmdirstructfzfcommon
+    if alias rmdirstructfzfcommon &>/dev/null; then
+        rmdirstructfzfcommon
     fi
 }
 
 alias @createglobalsymlinkfzf="ap_func_create_global_symlink_fzf"
 ap_func_create_global_symlink_fzf() {
     if [ -f "${HOME}/.fzf/bin/fzf" ]; then
-        @logshow "Create symlink from [/usr/local/bin/fzf] to [${HOME}/.fzf/bin/fzf]\n"
+        aplogshow "Create symlink from [/usr/local/bin/fzf] to [${HOME}/.fzf/bin/fzf]\n"
         sudo ln -sf "${HOME}/.fzf/bin/fzf" "/usr/local/bin/fzf"
     fi
 }
 
-alias @rmglobalsymlinkfzf="ap_func_rm_global_symlink_fzf"
+alias rmglobalsymlinkfzf="ap_func_rm_global_symlink_fzf"
 ap_func_rm_global_symlink_fzf() {
-    @logshow "Remove [/usr/local/bin/fzf]\n"
+    aplogshow "Remove [/usr/local/bin/fzf]\n"
     sudo rm -f "/usr/local/bin/fzf"
 }
 
-alias @setupfzf="ap_func_setup_fzf"
+alias apsetupfzf="ap_func_setup_fzf"
 ap_func_setup_fzf() {
     # https://github.com/junegunn/fzf#installation
-    @logshow "Install [fzf]\n"
+    aplogshow "Install [fzf]\n"
 
     # Remove old fzf dir if any
     rm -rf "${HOME}/.fzf"
@@ -62,22 +62,22 @@ ap_func_setup_fzf() {
     # Autocomplete and configure PATH for fzf
     [ -f "${HOME}/.fzf.bash" ] && source "${HOME}/.fzf.bash"
 
-    @initfzf
-    if alias @createdirstructfzf &>/dev/null; then
-        @createdirstructfzf
+    apinitfzf
+    if alias apcreatedirstructfzf &>/dev/null; then
+        apcreatedirstructfzf
     fi
 }
 
-alias @rmfzf="ap_func_rm_fzf"
+alias rmfzf="ap_func_rm_fzf"
 ap_func_rm_fzf() {
-    @logshow "Remove [fzf]\n"
+    aplogshow "Remove [fzf]\n"
     rm -rf "${HOME}/.fzf"
 
-    if alias @rmdirstructfzf &>/dev/null; then
-        @rmdirstructfzf
+    if alias rmdirstructfzf &>/dev/null; then
+        rmdirstructfzf
     fi
 
-    if alias @rmglobalsymlinkfzf &>/dev/null; then
-        @rmglobalsymlinkfzf
+    if alias rmglobalsymlinkfzf &>/dev/null; then
+        rmglobalsymlinkfzf
     fi
 }

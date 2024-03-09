@@ -1,42 +1,42 @@
-alias @initnextclouddesktop="ap_func_init_nextclouddesktop"
+alias apinitnextclouddesktop="ap_func_init_nextclouddesktop"
 ap_func_init_nextclouddesktop() {
-    if alias @initnextclouddesktopshare &>/dev/null; then
-        @initnextclouddesktopshare
+    if alias apinitnextclouddesktopshare &>/dev/null; then
+        apinitnextclouddesktopshare
     fi
 
-    if alias @initnextclouddesktopcommon &>/dev/null; then
-        @initnextclouddesktopcommon
+    if alias apinitnextclouddesktopcommon &>/dev/null; then
+        apinitnextclouddesktopcommon
     fi
 }
 
-alias @createdirstructnextclouddesktop="ap_func_create_dirstruct_nextclouddesktop"
+alias apcreatedirstructnextclouddesktop="ap_func_create_dirstruct_nextclouddesktop"
 ap_func_create_dirstruct_nextclouddesktop() {
-    if alias @createdirstructnextclouddesktopshare &>/dev/null; then
-        @createdirstructnextclouddesktopshare
+    if alias apcreatedirstructnextclouddesktopshare &>/dev/null; then
+        apcreatedirstructnextclouddesktopshare
     fi
 
-    if alias @createdirstructnextclouddesktopcommon &>/dev/null; then
-        @createdirstructnextclouddesktopcommon
+    if alias apcreatedirstructnextclouddesktopcommon &>/dev/null; then
+        apcreatedirstructnextclouddesktopcommon
     fi
 }
 
-alias @rmdirstructnextclouddesktop="ap_func_rm_dirstruct_nextclouddesktop"
+alias rmdirstructnextclouddesktop="ap_func_rm_dirstruct_nextclouddesktop"
 ap_func_rm_dirstruct_nextclouddesktop() {
-    if alias @rmdirstructnextclouddesktopshare &>/dev/null; then
-        @rmdirstructnextclouddesktopshare
+    if alias rmdirstructnextclouddesktopshare &>/dev/null; then
+        rmdirstructnextclouddesktopshare
     fi
 
-    if alias @rmdirstructnextclouddesktopcommon &>/dev/null; then
-        @rmdirstructnextclouddesktopcommon
+    if alias rmdirstructnextclouddesktopcommon &>/dev/null; then
+        rmdirstructnextclouddesktopcommon
     fi
 }
 
-alias @setupnextclouddesktop="ap_func_setup_nextclouddesktop"
+alias apsetupnextclouddesktop="ap_func_setup_nextclouddesktop"
 ap_func_setup_nextclouddesktop() {
     # https://github.com/nextcloud/desktop
     # https://nextcloud.com/install/#install-clients
     # https://docs.nextcloud.com/desktop/latest/advancedusage.html#install-nextcloudcmd
-    @logshow "Install [Nextcloud Desktop]\n"
+    aplogshow "Install [Nextcloud Desktop]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install --cask nextcloud # This will also install `nextcloudcmd` command
@@ -45,22 +45,22 @@ ap_func_setup_nextclouddesktop() {
             sudo apt install -y nextcloud-desktop
 
             # Install nextcloudcmd
-            @logshow "Install [nextcloud cmd]\n"
+            aplogshow "Install [nextcloud cmd]\n"
             sudo add-apt-repository -y ppa:nextcloud-devs/client
             sudo apt update
             sudo apt install -y nextcloud-client
         fi
     fi
 
-    @initnextclouddesktop
-    if alias @createdirstructnextclouddesktop &>/dev/null; then
-        @createdirstructnextclouddesktop
+    apinitnextclouddesktop
+    if alias apcreatedirstructnextclouddesktop &>/dev/null; then
+        apcreatedirstructnextclouddesktop
     fi
 }
 
-alias @rmnextclouddesktop="ap_func_rm_nextclouddesktop"
+alias rmnextclouddesktop="ap_func_rm_nextclouddesktop"
 ap_func_rm_nextclouddesktop() {
-    @logshow "Remove [Nextcloud Desktop]\n"
+    aplogshow "Remove [Nextcloud Desktop]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew uninstall --cask nextcloud
@@ -71,7 +71,7 @@ ap_func_rm_nextclouddesktop() {
         sudo apt autoremove -y
     fi
 
-    if alias @rmdirstructnextclouddesktop &>/dev/null; then
-        @rmdirstructnextclouddesktop
+    if alias rmdirstructnextclouddesktop &>/dev/null; then
+        rmdirstructnextclouddesktop
     fi
 }

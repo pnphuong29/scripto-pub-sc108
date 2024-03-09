@@ -1,4 +1,4 @@
-alias @initpyenv="ap_func_init_pyenv"
+alias apinitpyenv="ap_func_init_pyenv"
 ap_func_init_pyenv() {
     # Defines the directory under which Python versions and shims reside.
     # pyenv root
@@ -25,7 +25,7 @@ ap_func_init_pyenv() {
     # export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
     # Activate python
-    @addpath "${PYENV_ROOT}/bin"
+    apaddpath "${PYENV_ROOT}/bin"
     # eval "$(pyenv init --path)"
     eval "$(pyenv init -)"
     # eval "$(pyenv virtualenv-init -)"
@@ -36,66 +36,66 @@ ap_func_init_pyenv() {
 
     alias @unsetpyenvversion="unset PYENV_VERSION"
 
-    if alias @initpyenvshare &>/dev/null; then
-        @initpyenvshare
+    if alias apinitpyenvshare &>/dev/null; then
+        apinitpyenvshare
     fi
 
-    if alias @initpyenvcommon &>/dev/null; then
-        @initpyenvcommon
+    if alias apinitpyenvcommon &>/dev/null; then
+        apinitpyenvcommon
     fi
 
-    if alias @initpythonshare &>/dev/null; then
-        @initpythonshare
+    if alias apinitpythonshare &>/dev/null; then
+        apinitpythonshare
     fi
 
-    if alias @initpythoncommon &>/dev/null; then
-        @initpythoncommon
+    if alias apinitpythoncommon &>/dev/null; then
+        apinitpythoncommon
     fi
 
-    if alias @initpipshare &>/dev/null; then
-        @initpipshare
+    if alias apinitpipshare &>/dev/null; then
+        apinitpipshare
     fi
 
-    if alias @initpipcommon &>/dev/null; then
-        @initpipcommon
+    if alias apinitpipcommon &>/dev/null; then
+        apinitpipcommon
     fi
 }
 
-alias @createdirstructpyenv="ap_func_create_dirstruct_pyenv"
+alias apcreatedirstructpyenv="ap_func_create_dirstruct_pyenv"
 ap_func_create_dirstruct_pyenv() {
-    if alias @createdirstructpyenvshare &>/dev/null; then
-        @createdirstructpyenvshare
+    if alias apcreatedirstructpyenvshare &>/dev/null; then
+        apcreatedirstructpyenvshare
     fi
 
-    if alias @createdirstructpyenvcommon &>/dev/null; then
-        @createdirstructpyenvcommon
+    if alias apcreatedirstructpyenvcommon &>/dev/null; then
+        apcreatedirstructpyenvcommon
     fi
 
-    if alias @createdirstructpython &>/dev/null; then
-        @createdirstructpython
+    if alias apcreatedirstructpython &>/dev/null; then
+        apcreatedirstructpython
     fi
 
-    if alias @createdirstructpip &>/dev/null; then
-        @createdirstructpip
+    if alias apcreatedirstructpip &>/dev/null; then
+        apcreatedirstructpip
     fi
 }
 
-alias @rmdirstructpyenv="ap_func_rm_dirstruct_pyenv"
+alias rmdirstructpyenv="ap_func_rm_dirstruct_pyenv"
 ap_func_rm_dirstruct_pyenv() {
-    if alias @rmdirstructpyenvshare &>/dev/null; then
-        @rmdirstructpyenvshare
+    if alias rmdirstructpyenvshare &>/dev/null; then
+        rmdirstructpyenvshare
     fi
 
-    if alias @rmdirstructpyenvcommon &>/dev/null; then
-        @rmdirstructpyenvcommon
+    if alias rmdirstructpyenvcommon &>/dev/null; then
+        rmdirstructpyenvcommon
     fi
 
-    if alias @rmdirstructpython &>/dev/null; then
-        @rmdirstructpython
+    if alias rmdirstructpython &>/dev/null; then
+        rmdirstructpython
     fi
 
-    if alias @rmdirstructpip &>/dev/null; then
-        @rmdirstructpip
+    if alias rmdirstructpip &>/dev/null; then
+        rmdirstructpip
     fi
 }
 
@@ -105,50 +105,50 @@ ap_func_create_global_symlink_pyenv() {
 
     if which python | grep shims &>/dev/null; then
         ap_path="$(which python)"
-        @logshow "Create symlink from [/usr/local/bin/python] to [${ap_path}]\n"
+        aplogshow "Create symlink from [/usr/local/bin/python] to [${ap_path}]\n"
         sudo ln -sf "${ap_path}" "/usr/local/bin/python"
     fi
 
     if which python3 | grep shims &>/dev/null; then
         ap_path="$(which python3)"
-        @logshow "Create symlink from [/usr/local/bin/python3] to [${ap_path}]\n"
+        aplogshow "Create symlink from [/usr/local/bin/python3] to [${ap_path}]\n"
         sudo ln -sf "${ap_path}" "/usr/local/bin/python3"
     fi
 
     if which pip | grep shims &>/dev/null; then
         ap_path="$(which pip)"
-        @logshow "Create symlink from [/usr/local/bin/pip] to [${ap_path}]\n"
+        aplogshow "Create symlink from [/usr/local/bin/pip] to [${ap_path}]\n"
         sudo ln -sf "${ap_path}" "/usr/local/bin/pip"
     fi
 
     if which pip3 | grep shims &>/dev/null; then
         ap_path="$(which pip3)"
-        @logshow "Create symlink from [/usr/local/bin/pip3] to [${ap_path}]\n"
+        aplogshow "Create symlink from [/usr/local/bin/pip3] to [${ap_path}]\n"
         sudo ln -sf "${ap_path}" "/usr/local/bin/pip3"
     fi
 }
 
-alias @rmglobalsymlinkpyenv="ap_func_rm_global_symlink_pyenv"
+alias rmglobalsymlinkpyenv="ap_func_rm_global_symlink_pyenv"
 ap_func_rm_global_symlink_pyenv() {
-    @logshow "Remove [/usr/local/bin/python]\n"
+    aplogshow "Remove [/usr/local/bin/python]\n"
     sudo rm -f "/usr/local/bin/python"
 
-    @logshow "Remove [/usr/local/bin/python3]\n"
+    aplogshow "Remove [/usr/local/bin/python3]\n"
     sudo rm -f "/usr/local/bin/python3"
 
-    @logshow "Remove [/usr/local/bin/pip]\n"
+    aplogshow "Remove [/usr/local/bin/pip]\n"
     sudo rm -f "/usr/local/bin/pip"
 
-    @logshow "Remove [/usr/local/bin/pip3]\n"
+    aplogshow "Remove [/usr/local/bin/pip3]\n"
     sudo rm -f "/usr/local/bin/pip3"
 }
 
-alias @setuppyenv="ap_func_setup_pyenv"
+alias apsetuppyenv="ap_func_setup_pyenv"
 ap_func_setup_pyenv() {
     # https://github.com/pyenv/pyenv
     export PYENV_ROOT="${HOME}/.pyenv"
 
-    @logshow "Install dependent libraries before installing [pyenv]\n"
+    aplogshow "Install dependent libraries before installing [pyenv]\n"
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install openssl readline sqlite3 xz zlib
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
@@ -175,38 +175,38 @@ ap_func_setup_pyenv() {
     fi
 
     # Install pyenv
-    @logshow "Installing [pyenv]\n"
+    aplogshow "Installing [pyenv]\n"
     rm -rf "${PYENV_ROOT}" # remove old pyenv dir if any
     curl https://pyenv.run | bash
 
     # Activate pyenv
-    @addpath "${PYENV_ROOT}/bin"
+    apaddpath "${PYENV_ROOT}/bin"
     # eval "$(pyenv init --path)"
     eval "$(pyenv init -)"
 
     # Install Python
-    @logshow "Installing [Python ${AP_PYTHON_VERSION_DEFAULT}]\n"
+    aplogshow "Installing [Python ${AP_PYTHON_VERSION_DEFAULT}]\n"
     pyenv install "${AP_PYTHON_VERSION_DEFAULT}"
 
-    @logshow "Set pyenv global version [${AP_PYTHON_VERSION_DEFAULT}]\n"
+    aplogshow "Set pyenv global version [${AP_PYTHON_VERSION_DEFAULT}]\n"
     pyenv global "${AP_PYTHON_VERSION_DEFAULT}" # Set default global python
 
-    @initpyenv
-    if alias @createdirstructpyenv &>/dev/null; then
-        @createdirstructpyenv
+    apinitpyenv
+    if alias apcreatedirstructpyenv &>/dev/null; then
+        apcreatedirstructpyenv
     fi
 }
 
-alias @rmpyenv="ap_func_rm_pyenv"
+alias rmpyenv="ap_func_rm_pyenv"
 ap_func_rm_pyenv() {
-    @logshow "Remove [pyenv]\n"
+    aplogshow "Remove [pyenv]\n"
     rm -rf "$(pyenv root)"
 
-    if alias @rmdirstructpyenv &>/dev/null; then
-        @rmdirstructpyenv
+    if alias rmdirstructpyenv &>/dev/null; then
+        rmdirstructpyenv
     fi
 
-    if alias @rmglobalsymlinkpyenv &>/dev/null; then
-        @rmglobalsymlinkpyenv
+    if alias rmglobalsymlinkpyenv &>/dev/null; then
+        rmglobalsymlinkpyenv
     fi
 }

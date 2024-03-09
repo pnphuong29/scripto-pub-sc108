@@ -1,4 +1,4 @@
-alias @initwarp="ap_func_init_warp"
+alias apinitwarp="ap_func_init_warp"
 ap_func_init_warp() {
     if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
         alias zwarpconf="cd \${HOME}/.warp"
@@ -9,41 +9,41 @@ ap_func_init_warp() {
     alias zwarpshare="cd \${HOME}/.local/share/warp"
     alias zwarpstate="cd \${HOME}/.local/state/warp"
 
-    if alias @initwarpshare &>/dev/null; then
-        @initwarpshare
+    if alias apinitwarpshare &>/dev/null; then
+        apinitwarpshare
     fi
 
-    if alias @initwarpcommon &>/dev/null; then
-        @initwarpcommon
+    if alias apinitwarpcommon &>/dev/null; then
+        apinitwarpcommon
     fi
 }
 
-alias @createdirstructwarp="ap_func_create_dirstruct_warp"
+alias apcreatedirstructwarp="ap_func_create_dirstruct_warp"
 ap_func_create_dirstruct_warp() {
-    if alias @createdirstructwarpshare &>/dev/null; then
-        @createdirstructwarpshare
+    if alias apcreatedirstructwarpshare &>/dev/null; then
+        apcreatedirstructwarpshare
     fi
 
-    if alias @createdirstructwarpcommon &>/dev/null; then
-        @createdirstructwarpcommon
+    if alias apcreatedirstructwarpcommon &>/dev/null; then
+        apcreatedirstructwarpcommon
     fi
 }
 
-alias @rmdirstructwarp="ap_func_rm_dirstruct_warp"
+alias rmdirstructwarp="ap_func_rm_dirstruct_warp"
 ap_func_rm_dirstruct_warp() {
-    if alias @rmdirstructwarpshare &>/dev/null; then
-        @rmdirstructwarpshare
+    if alias rmdirstructwarpshare &>/dev/null; then
+        rmdirstructwarpshare
     fi
 
-    if alias @rmdirstructwarpcommon &>/dev/null; then
-        @rmdirstructwarpcommon
+    if alias rmdirstructwarpcommon &>/dev/null; then
+        rmdirstructwarpcommon
     fi
 }
 
-alias @setupwarp="ap_func_setup_warp"
+alias apsetupwarp="ap_func_setup_warp"
 ap_func_setup_warp() {
     # https://www.warp.dev/
-    @logshow "Install [Warp]\n"
+    aplogshow "Install [Warp]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install --cask warp
@@ -62,16 +62,16 @@ ap_func_setup_warp() {
     cd ~
     rm -rf "${AP_TMP_DIR}/warp"
 
-    @initwarp
-    if alias @createdirstructwarp &>/dev/null; then
-        @createdirstructwarp
+    apinitwarp
+    if alias apcreatedirstructwarp &>/dev/null; then
+        apcreatedirstructwarp
     fi
 }
 
-alias @rmwarp="ap_func_rm_warp"
+alias rmwarp="ap_func_rm_warp"
 ap_func_rm_warp() {
     # https://docs.warp.dev/help/uninstalling-warp
-    @logshow "Remove [Warp]\n"
+    aplogshow "Remove [Warp]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         # rm -rf /Applications/Warp.app
@@ -89,11 +89,11 @@ ap_func_rm_warp() {
 
     rm -rf "${HOME}/.warp"
 
-    if alias @rmdirstructwarp &>/dev/null; then
-        @rmdirstructwarp
+    if alias rmdirstructwarp &>/dev/null; then
+        rmdirstructwarp
     fi
 
-    if alias @rmglobalsymlinkwarp &>/dev/null; then
-        @rmglobalsymlinkwarp
+    if alias rmglobalsymlinkwarp &>/dev/null; then
+        rmglobalsymlinkwarp
     fi
 }

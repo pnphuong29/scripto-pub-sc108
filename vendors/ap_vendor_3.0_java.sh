@@ -1,4 +1,4 @@
-alias @initjava="ap_func_init_java"
+alias apinitjava="ap_func_init_java"
 ap_func_init_java() {
     export AP_JDK_SETUP_VERSION='21'
 
@@ -14,44 +14,44 @@ ap_func_init_java() {
     fi
 
     if [ -d "${ap_bin_path}" ]; then
-        @addpath "${ap_bin_path}"
+        apaddpath "${ap_bin_path}"
     fi
 
-    if alias @initjavashare &>/dev/null; then
-        @initjavashare
+    if alias apinitjavashare &>/dev/null; then
+        apinitjavashare
     fi
 
-    if alias @initjavacommon &>/dev/null; then
-        @initjavacommon
+    if alias apinitjavacommon &>/dev/null; then
+        apinitjavacommon
     fi
 }
 
-alias @createdirstructjava="ap_func_create_dirstruct_java"
+alias apcreatedirstructjava="ap_func_create_dirstruct_java"
 ap_func_create_dirstruct_java() {
-    if alias @createdirstructjavashare &>/dev/null; then
-        @createdirstructjavashare
+    if alias apcreatedirstructjavashare &>/dev/null; then
+        apcreatedirstructjavashare
     fi
 
-    if alias @createdirstructjavacommon &>/dev/null; then
-        @createdirstructjavacommon
+    if alias apcreatedirstructjavacommon &>/dev/null; then
+        apcreatedirstructjavacommon
     fi
 }
 
-alias @rmdirstructjava="ap_func_rm_dirstruct_java"
+alias rmdirstructjava="ap_func_rm_dirstruct_java"
 ap_func_rm_dirstruct_java() {
-    if alias @rmdirstructjavashare &>/dev/null; then
-        @rmdirstructjavashare
+    if alias rmdirstructjavashare &>/dev/null; then
+        rmdirstructjavashare
     fi
 
-    if alias @rmdirstructjavacommon &>/dev/null; then
-        @rmdirstructjavacommon
+    if alias rmdirstructjavacommon &>/dev/null; then
+        rmdirstructjavacommon
     fi
 }
 
-alias @setupjava="ap_func_setup_java"
+alias apsetupjava="ap_func_setup_java"
 ap_func_setup_java() {
     # https://www.oracle.com/java/technologies/downloads/
-    @logshow "Install [JDK v${AP_JDK_SETUP_VERSION}]\n"
+    aplogshow "Install [JDK v${AP_JDK_SETUP_VERSION}]\n"
 
     local ap_os="macos"
     local ap_jdk_dl_dir="jdk-${AP_JDK_SETUP_VERSION}.jdk"
@@ -72,22 +72,22 @@ ap_func_setup_java() {
     mkdir -p "${AP_SOFT_DIR}/java"
     mv "${ap_jdk_dl_dir}" "${ap_vendors_java_dir}"
 
-    @initjava
-    if alias @createdirstructjava &>/dev/null; then
-        @createdirstructjava
+    apinitjava
+    if alias apcreatedirstructjava &>/dev/null; then
+        apcreatedirstructjava
     fi
 }
 
-alias @rmjava="ap_func_rm_java"
+alias rmjava="ap_func_rm_java"
 ap_func_rm_java() {
-    @logshow "Remove [java]\n"
+    aplogshow "Remove [java]\n"
     rm -rf "${AP_SOFT_DIR}/java"
 
-    if alias @rmdirstructjava &>/dev/null; then
-        @rmdirstructjava
+    if alias rmdirstructjava &>/dev/null; then
+        rmdirstructjava
     fi
 
-    if alias @rmglobalsymlinkjava &>/dev/null; then
-        @rmglobalsymlinkjava
+    if alias rmglobalsymlinkjava &>/dev/null; then
+        rmglobalsymlinkjava
     fi
 }

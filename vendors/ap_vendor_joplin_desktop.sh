@@ -1,40 +1,40 @@
-alias @initjoplindesktop="ap_func_init_joplindesktop"
+alias apinitjoplindesktop="ap_func_init_joplindesktop"
 ap_func_init_joplindesktop() {
-    if alias @initjoplindesktopshare &>/dev/null; then
-        @initjoplindesktopshare
+    if alias apinitjoplindesktopshare &>/dev/null; then
+        apinitjoplindesktopshare
     fi
 
-    if alias @initjoplindesktopcommon &>/dev/null; then
-        @initjoplindesktopcommon
+    if alias apinitjoplindesktopcommon &>/dev/null; then
+        apinitjoplindesktopcommon
     fi
 }
 
-alias @createdirstructjoplindesktop="ap_func_create_dirstruct_joplindesktop"
+alias apcreatedirstructjoplindesktop="ap_func_create_dirstruct_joplindesktop"
 ap_func_create_dirstruct_joplindesktop() {
-    if alias @createdirstructjoplindesktopshare &>/dev/null; then
-        @createdirstructjoplindesktopshare
+    if alias apcreatedirstructjoplindesktopshare &>/dev/null; then
+        apcreatedirstructjoplindesktopshare
     fi
 
-    if alias @createdirstructjoplindesktopcommon &>/dev/null; then
-        @createdirstructjoplindesktopcommon
+    if alias apcreatedirstructjoplindesktopcommon &>/dev/null; then
+        apcreatedirstructjoplindesktopcommon
     fi
 }
 
-alias @rmdirstructjoplindesktop="ap_func_rm_dirstruct_joplindesktop"
+alias rmdirstructjoplindesktop="ap_func_rm_dirstruct_joplindesktop"
 ap_func_rm_dirstruct_joplindesktop() {
-    if alias @rmdirstructjoplindesktopshare &>/dev/null; then
-        @rmdirstructjoplindesktopshare
+    if alias rmdirstructjoplindesktopshare &>/dev/null; then
+        rmdirstructjoplindesktopshare
     fi
 
-    if alias @rmdirstructjoplindesktopcommon &>/dev/null; then
-        @rmdirstructjoplindesktopcommon
+    if alias rmdirstructjoplindesktopcommon &>/dev/null; then
+        rmdirstructjoplindesktopcommon
     fi
 }
 
-alias @setupjoplindesktop="ap_func_setup_joplindesktop"
+alias apsetupjoplindesktop="ap_func_setup_joplindesktop"
 ap_func_setup_joplindesktop() {
     # https://joplinapp.org/help/install
-    @logshow "Install [Joplin Desktop]\n"
+    aplogshow "Install [Joplin Desktop]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install --cask joplin
@@ -44,15 +44,15 @@ ap_func_setup_joplindesktop() {
         fi
     fi
 
-    @initjoplindesktop
-    if alias @createdirstructjoplindesktop &>/dev/null; then
-        @createdirstructjoplindesktop
+    apinitjoplindesktop
+    if alias apcreatedirstructjoplindesktop &>/dev/null; then
+        apcreatedirstructjoplindesktop
     fi
 }
 
-alias @rmjoplindesktop="ap_func_rm_joplindesktop"
+alias rmjoplindesktop="ap_func_rm_joplindesktop"
 ap_func_rm_joplindesktop() {
-    @logshow "Remove [Joplin Desktop]\n"
+    aplogshow "Remove [Joplin Desktop]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew uninstall --cask joplin
@@ -60,11 +60,11 @@ ap_func_rm_joplindesktop() {
         rm -rf "${HOME}/.joplin"
     fi
 
-    if alias @rmdirstructjoplindesktop &>/dev/null; then
-        @rmdirstructjoplindesktop
+    if alias rmdirstructjoplindesktop &>/dev/null; then
+        rmdirstructjoplindesktop
     fi
 
-    if alias @rmglobalsymlinkjoplindesktop &>/dev/null; then
-        @rmglobalsymlinkjoplindesktop
+    if alias rmglobalsymlinkjoplindesktop &>/dev/null; then
+        rmglobalsymlinkjoplindesktop
     fi
 }

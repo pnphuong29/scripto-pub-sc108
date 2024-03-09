@@ -1,21 +1,21 @@
-alias @initkitty="ap_func_init_kitty"
+alias apinitkitty="ap_func_init_kitty"
 ap_func_init_kitty() {
     alias zkittyconfigs="cd \${HOME}/.config/kitty"
     alias zkittythemes="cd \${AP_SOFT_DIR}/kitty/kitty-themes/themes/"
 
-    if alias @initkittyshare &>/dev/null; then
-        @initkittyshare
+    if alias apinitkittyshare &>/dev/null; then
+        apinitkittyshare
     fi
 
-    if alias @initkittycommon &>/dev/null; then
-        @initkittycommon
+    if alias apinitkittycommon &>/dev/null; then
+        apinitkittycommon
     fi
 }
 
-alias @createdirstructkitty="ap_func_create_dirstruct_kitty"
+alias apcreatedirstructkitty="ap_func_create_dirstruct_kitty"
 ap_func_create_dirstruct_kitty() {
     # Install kitty themes
-    @logshow "Install [kitty-themes]\n"
+    aplogshow "Install [kitty-themes]\n"
     rm -rf "${AP_SOFT_DIR}/kitty/kitty-themes"
     git clone --depth 1 "https://github.com/dexpota/kitty-themes.git" "${AP_SOFT_DIR}/kitty/kitty-themes"
     # rm -rf "${AP_SOFT_DIR}/kitty"
@@ -37,16 +37,16 @@ ap_func_create_dirstruct_kitty() {
         sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
     fi
 
-    if alias @createdirstructkittyshare &>/dev/null; then
-        @createdirstructkittyshare
+    if alias apcreatedirstructkittyshare &>/dev/null; then
+        apcreatedirstructkittyshare
     fi
 
-    if alias @createdirstructkittycommon &>/dev/null; then
-        @createdirstructkittycommon
+    if alias apcreatedirstructkittycommon &>/dev/null; then
+        apcreatedirstructkittycommon
     fi
 }
 
-alias @rmdirstructkitty="ap_func_rm_dirstruct_kitty"
+alias rmdirstructkitty="ap_func_rm_dirstruct_kitty"
 ap_func_rm_dirstruct_kitty() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         rm -f "${HOME}/.local/bin/kitty"
@@ -56,31 +56,31 @@ ap_func_rm_dirstruct_kitty() {
 
     rm -rf "${AP_SOFT_DIR}/kitty/kitty-themes"
 
-    if alias @rmdirstructkittyshare &>/dev/null; then
-        @rmdirstructkittyshare
+    if alias rmdirstructkittyshare &>/dev/null; then
+        rmdirstructkittyshare
     fi
 
-    if alias @rmdirstructkittycommon &>/dev/null; then
-        @rmdirstructkittycommon
+    if alias rmdirstructkittycommon &>/dev/null; then
+        rmdirstructkittycommon
     fi
 }
 
-alias @setupkitty="ap_func_setup_kitty"
+alias apsetupkitty="ap_func_setup_kitty"
 ap_func_setup_kitty() {
     # https://sw.kovidgoyal.net/kitty/binary/
     # https://github.com/dexpota/kitty-themes
-    @logshow "Install [kitty]\n"
+    aplogshow "Install [kitty]\n"
     curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
-    @initkitty
-    if alias @createdirstructkitty &>/dev/null; then
-        @createdirstructkitty
+    apinitkitty
+    if alias apcreatedirstructkitty &>/dev/null; then
+        apcreatedirstructkitty
     fi
 }
 
-alias @rmkitty="ap_func_rm_kitty"
+alias rmkitty="ap_func_rm_kitty"
 ap_func_rm_kitty() {
-    @logshow "Remove [kitty]\n"
+    aplogshow "Remove [kitty]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         rm -rf /Applications/kitty.app
@@ -90,11 +90,11 @@ ap_func_rm_kitty() {
 
     rm -rf "${HOME}/.config/kitty"
 
-    if alias @rmdirstructkitty &>/dev/null; then
-        @rmdirstructkitty
+    if alias rmdirstructkitty &>/dev/null; then
+        rmdirstructkitty
     fi
 
-    if alias @rmglobalsymlinkkitty &>/dev/null; then
-        @rmglobalsymlinkkitty
+    if alias rmglobalsymlinkkitty &>/dev/null; then
+        rmglobalsymlinkkitty
     fi
 }

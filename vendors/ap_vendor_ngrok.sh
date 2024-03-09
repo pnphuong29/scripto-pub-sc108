@@ -1,45 +1,45 @@
-alias @initngrok="ap_func_init_ngrok"
+alias apinitngrok="ap_func_init_ngrok"
 ap_func_init_ngrok() {
-    if alias @initngrokshare &>/dev/null; then
-        @initngrokshare
+    if alias apinitngrokshare &>/dev/null; then
+        apinitngrokshare
     fi
 
-    if alias @initngrokcommon &>/dev/null; then
-        @initngrokcommon
+    if alias apinitngrokcommon &>/dev/null; then
+        apinitngrokcommon
     fi
 }
 
-alias @createdirstructngrok="ap_func_create_dirstruct_ngrok"
+alias apcreatedirstructngrok="ap_func_create_dirstruct_ngrok"
 ap_func_create_dirstruct_ngrok() {
-    @logshow "Generate [ngrok] bash autocomplete\n"
+    aplogshow "Generate [ngrok] bash autocomplete\n"
     ngrok completion bash >"${AP_COMPLETIONS_DIR}/ap_completion_ngrok.bash"
 
-    if alias @createdirstructngrokshare &>/dev/null; then
-        @createdirstructngrokshare
+    if alias apcreatedirstructngrokshare &>/dev/null; then
+        apcreatedirstructngrokshare
     fi
 
-    if alias @createdirstructngrokcommon &>/dev/null; then
-        @createdirstructngrokcommon
+    if alias apcreatedirstructngrokcommon &>/dev/null; then
+        apcreatedirstructngrokcommon
     fi
 }
 
-alias @rmdirstructngrok="ap_func_rm_dirstruct_ngrok"
+alias rmdirstructngrok="ap_func_rm_dirstruct_ngrok"
 ap_func_rm_dirstruct_ngrok() {
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_ngrok.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_ngrok.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_ngrok.bash"
 
-    if alias @rmdirstructngrokshare &>/dev/null; then
-        @rmdirstructngrokshare
+    if alias rmdirstructngrokshare &>/dev/null; then
+        rmdirstructngrokshare
     fi
 
-    if alias @rmdirstructngrokcommon &>/dev/null; then
-        @rmdirstructngrokcommon
+    if alias rmdirstructngrokcommon &>/dev/null; then
+        rmdirstructngrokcommon
     fi
 }
 
-alias @setupngrok="ap_func_setup_ngrok"
+alias apsetupngrok="ap_func_setup_ngrok"
 ap_func_setup_ngrok() {
-    @logshow "Install [ngrok]\n"
+    aplogshow "Install [ngrok]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install ngrok/ngrok/ngrok
@@ -49,15 +49,15 @@ ap_func_setup_ngrok() {
             sudo tee /etc/apt/sources.list.d/ngrok.list && sudo apt update && sudo apt install ngrok
     fi
 
-    @initngrok
-    if alias @createdirstructngrok &>/dev/null; then
-        @createdirstructngrok
+    apinitngrok
+    if alias apcreatedirstructngrok &>/dev/null; then
+        apcreatedirstructngrok
     fi
 }
 
-alias @rmngrok="ap_func_rm_ngrok"
+alias rmngrok="ap_func_rm_ngrok"
 ap_func_rm_ngrok() {
-    @logshow "Remove [ngrok]\n"
+    aplogshow "Remove [ngrok]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew remove ngrok
@@ -67,12 +67,12 @@ ap_func_rm_ngrok() {
         rm -rf "${HOME}/.config/ngrok/ngrok.yml"
     fi
 
-    if alias @rmdirstructngrok &>/dev/null; then
-        @rmdirstructngrok
+    if alias rmdirstructngrok &>/dev/null; then
+        rmdirstructngrok
     fi
 
-    if alias @rmglobalsymlinkngrok &>/dev/null; then
-        @rmglobalsymlinkngrok
+    if alias rmglobalsymlinkngrok &>/dev/null; then
+        rmglobalsymlinkngrok
     fi
 }
 

@@ -1,4 +1,4 @@
-alias @initsshlog="ap_func_init_sshlog"
+alias apinitsshlog="ap_func_init_sshlog"
 ap_func_init_sshlog() {
     alias @sshlog="sudo sshlog"
     alias lssshsessions="sshlog sessions"
@@ -8,41 +8,41 @@ ap_func_init_sshlog() {
     alias showsshlogevents="sudo cat /var/log/sshlog/event.log"
     alias showsshlogdlogs="sudo cat /var/log/sshlog/sshlogd.log"
 
-    if alias @initsshlogshare &>/dev/null; then
-        @initsshlogshare
+    if alias apinitsshlogshare &>/dev/null; then
+        apinitsshlogshare
     fi
 
-    if alias @initsshlogcommon &>/dev/null; then
-        @initsshlogcommon
+    if alias apinitsshlogcommon &>/dev/null; then
+        apinitsshlogcommon
     fi
 }
 
-alias @createdirstructsshlog="ap_func_create_dirstruct_sshlog"
+alias apcreatedirstructsshlog="ap_func_create_dirstruct_sshlog"
 ap_func_create_dirstruct_sshlog() {
-    if alias @createdirstructsshlogshare &>/dev/null; then
-        @createdirstructsshlogshare
+    if alias apcreatedirstructsshlogshare &>/dev/null; then
+        apcreatedirstructsshlogshare
     fi
 
-    if alias @createdirstructsshlogcommon &>/dev/null; then
-        @createdirstructsshlogcommon
+    if alias apcreatedirstructsshlogcommon &>/dev/null; then
+        apcreatedirstructsshlogcommon
     fi
 }
 
-alias @rmdirstructsshlog="ap_func_rm_dirstruct_sshlog"
+alias rmdirstructsshlog="ap_func_rm_dirstruct_sshlog"
 ap_func_rm_dirstruct_sshlog() {
-    if alias @rmdirstructsshlogshare &>/dev/null; then
-        @rmdirstructsshlogshare
+    if alias rmdirstructsshlogshare &>/dev/null; then
+        rmdirstructsshlogshare
     fi
 
-    if alias @rmdirstructsshlogcommon &>/dev/null; then
-        @rmdirstructsshlogcommon
+    if alias rmdirstructsshlogcommon &>/dev/null; then
+        rmdirstructsshlogcommon
     fi
 }
 
-alias @setupsshlog="ap_func_setup_sshlog"
+alias apsetupsshlog="ap_func_setup_sshlog"
 ap_func_setup_sshlog() {
     # https://github.com/sshlog/agent
-    @logshow "Install [sshlog]\n"
+    aplogshow "Install [sshlog]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         sudo apt update && sudo apt install -y curl gnupg
@@ -50,33 +50,33 @@ ap_func_setup_sshlog() {
         echo "deb [arch=any signed-by=/usr/share/keyrings/repo-sshlog-ubuntu.gpg] https://repo.sshlog.com/sshlog-ubuntu/ stable main" | sudo tee /etc/apt/sources.list.d/repo-sshlog-ubuntu.list
         sudo apt update && sudo apt install -y sshlog
 
-        @minfo "Append group [sshlog] to current user [${USER}]\n"
+        apshowmsginfo "Append group [sshlog] to current user [${USER}]\n"
         sudo usermod -aG sshlog "${USER}"
 
-        @minfo "Start [sshlogd] service"
+        apshowmsginfo "Start [sshlogd] service"
         sudo systemctl start sshlog
     fi
 
-    @initsshlog
-    if alias @createdirstructsshlog &>/dev/null; then
-        @createdirstructsshlog
+    apinitsshlog
+    if alias apcreatedirstructsshlog &>/dev/null; then
+        apcreatedirstructsshlog
     fi
 }
 
-alias @rmsshlog="ap_func_rm_sshlog"
+alias rmsshlog="ap_func_rm_sshlog"
 ap_func_rm_sshlog() {
-    @logshow "Remove [sshlog]\n"
+    aplogshow "Remove [sshlog]\n"
 
     sudo apt purge -y sshlog
     sudo rm -f /usr/share/keyrings/repo-sshlog-ubuntu.gpg
     sudo rm -f /etc/apt/sources.list.d/repo-sshlog-ubuntu.list
     sudo apt update
 
-    if alias @rmdirstructsshlog &>/dev/null; then
-        @rmdirstructsshlog
+    if alias rmdirstructsshlog &>/dev/null; then
+        rmdirstructsshlog
     fi
 
-    if alias @rmglobalsymlinksshlog &>/dev/null; then
-        @rmglobalsymlinksshlog
+    if alias rmglobalsymlinksshlog &>/dev/null; then
+        rmglobalsymlinksshlog
     fi
 }

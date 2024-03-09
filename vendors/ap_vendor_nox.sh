@@ -1,57 +1,57 @@
-alias @initnox="ap_func_init_nox"
+alias apinitnox="ap_func_init_nox"
 ap_func_init_nox() {
-    if alias @initnoxshare &>/dev/null; then
-        @initnoxshare
+    if alias apinitnoxshare &>/dev/null; then
+        apinitnoxshare
     fi
 
-    if alias @initnoxcommon &>/dev/null; then
-        @initnoxcommon
+    if alias apinitnoxcommon &>/dev/null; then
+        apinitnoxcommon
     fi
 }
 
-alias @createdirstructnox="ap_func_create_dirstruct_nox"
+alias apcreatedirstructnox="ap_func_create_dirstruct_nox"
 ap_func_create_dirstruct_nox() {
-    @logshow "Generate [nox] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_nox.bash]\n"
+    aplogshow "Generate [nox] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_nox.bash]\n"
     if type nox &>/dev/null; then
         register-python-argcomplete nox >"${AP_COMPLETIONS_DIR}/ap_completion_nox.bash"
     fi
 
-    if alias @createdirstructnoxcommon &>/dev/null; then
-        @createdirstructnoxcommon
+    if alias apcreatedirstructnoxcommon &>/dev/null; then
+        apcreatedirstructnoxcommon
     fi
 }
 
-alias @rmdirstructnox="ap_func_rm_dirstruct_nox"
+alias rmdirstructnox="ap_func_rm_dirstruct_nox"
 ap_func_rm_dirstruct_nox() {
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_nox.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_nox.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_nox.bash"
 
-    if alias @rmdirstructnoxcommon &>/dev/null; then
-        @rmdirstructnoxcommon
+    if alias rmdirstructnoxcommon &>/dev/null; then
+        rmdirstructnoxcommon
     fi
 }
 
-alias @setupnox="ap_func_setup_nox"
+alias apsetupnox="ap_func_setup_nox"
 ap_func_setup_nox() {
-    @logshow "Install [nox]\n"
+    aplogshow "Install [nox]\n"
     pip install nox
 
-    @initnox
-    if alias @createdirstructnox &>/dev/null; then
-        @createdirstructnox
+    apinitnox
+    if alias apcreatedirstructnox &>/dev/null; then
+        apcreatedirstructnox
     fi
 }
 
-alias @rmnox="ap_func_rm_nox"
+alias rmnox="ap_func_rm_nox"
 ap_func_rm_nox() {
-    @logshow "Remove [nox]\n"
+    aplogshow "Remove [nox]\n"
     pip uninstall nox
 
-    if alias @rmdirstructnox &>/dev/null; then
-        @rmdirstructnox
+    if alias rmdirstructnox &>/dev/null; then
+        rmdirstructnox
     fi
 
-    if alias @rmglobalsymlinknox &>/dev/null; then
-        @rmglobalsymlinknox
+    if alias rmglobalsymlinknox &>/dev/null; then
+        rmglobalsymlinknox
     fi
 }

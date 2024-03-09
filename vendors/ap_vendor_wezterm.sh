@@ -1,61 +1,61 @@
-alias @initwezterm="ap_func_init_wezterm"
+alias apinitwezterm="ap_func_init_wezterm"
 ap_func_init_wezterm() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        @addpath "/Applications/WezTerm.app/Contents/MacOS"
+        apaddpath "/Applications/WezTerm.app/Contents/MacOS"
     fi
 
     # export WEZTERM_CONFIG_FILE="${HOME}/scripto-common/vendors/wezterm/ap_wezterm.config.lua"
     # https://wezfurlong.org/wezterm/config/lua/config/term.html
-    alias weztermgenerateterminfo='curl -SL "https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo" >"${HOME}/scripto-common/vendors/wezterm/ap_wezterm.terminfo"'
+    alias weztermgenerateterapshowmsginfo='curl -SL "https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terapshowmsginfo" >"${HOME}/scripto-common/vendors/wezterm/ap_wezterm.terapshowmsginfo"'
 
-    if alias @initweztermshare &>/dev/null; then
-        @initweztermshare
+    if alias apinitweztermshare &>/dev/null; then
+        apinitweztermshare
     fi
 
-    if alias @initweztermcommon &>/dev/null; then
-        @initweztermcommon
+    if alias apinitweztermcommon &>/dev/null; then
+        apinitweztermcommon
     fi
 }
 
-alias @createdirstructwezterm="ap_func_create_dirstruct_wezterm"
+alias apcreatedirstructwezterm="ap_func_create_dirstruct_wezterm"
 ap_func_create_dirstruct_wezterm() {
-    @logshow "Generate [wezterm] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_wezterm.bash]\n"
+    aplogshow "Generate [wezterm] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_wezterm.bash]\n"
     wezterm shell-completion --shell bash >"${AP_COMPLETIONS_DIR}/ap_completion_wezterm.bash"
 
     # Term info
     # https://wezfurlong.org/wezterm/config/lua/config/term.html
-    # @logshow "Installing terminfo for wezterm\n"
-    # curl -SL "https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo" >"${HOME}/scripto-common/vendors/wezterm/ap_wezterm.terminfo"
-    # sudo tic -x -o ~/.terminfo "${HOME}/scripto-common/vendors/wezterm/ap_wezterm.terminfo"
-    # sudo chown "${USER}" ~/.terminfo
+    # aplogshow "Installing terapshowmsginfo for wezterm\n"
+    # curl -SL "https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terapshowmsginfo" >"${HOME}/scripto-common/vendors/wezterm/ap_wezterm.terapshowmsginfo"
+    # sudo tic -x -o ~/.terapshowmsginfo "${HOME}/scripto-common/vendors/wezterm/ap_wezterm.terapshowmsginfo"
+    # sudo chown "${USER}" ~/.terapshowmsginfo
 
-    if alias @createdirstructweztermshare &>/dev/null; then
-        @createdirstructweztermshare
+    if alias apcreatedirstructweztermshare &>/dev/null; then
+        apcreatedirstructweztermshare
     fi
 
-    if alias @createdirstructweztermcommon &>/dev/null; then
-        @createdirstructweztermcommon
+    if alias apcreatedirstructweztermcommon &>/dev/null; then
+        apcreatedirstructweztermcommon
     fi
 }
 
-alias @rmdirstructwezterm="ap_func_rm_dirstruct_wezterm"
+alias rmdirstructwezterm="ap_func_rm_dirstruct_wezterm"
 ap_func_rm_dirstruct_wezterm() {
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_wezterm.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_wezterm.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_wezterm.bash"
 
-    if alias @rmdirstructweztermshare &>/dev/null; then
-        @rmdirstructweztermshare
+    if alias rmdirstructweztermshare &>/dev/null; then
+        rmdirstructweztermshare
     fi
 
-    if alias @rmdirstructweztermcommon &>/dev/null; then
-        @rmdirstructweztermcommon
+    if alias rmdirstructweztermcommon &>/dev/null; then
+        rmdirstructweztermcommon
     fi
 }
 
-alias @setupwezterm="ap_func_setup_wezterm"
+alias apsetupwezterm="ap_func_setup_wezterm"
 ap_func_setup_wezterm() {
     # https://wezfurlong.org/wezterm/installation.html
-    @logshow "Install [wezterm]\n"
+    aplogshow "Install [wezterm]\n"
 
     rm -rf "${AP_TMP_DIR}/wezterm"
     mkdir -p "${AP_TMP_DIR}/wezterm"
@@ -75,15 +75,15 @@ ap_func_setup_wezterm() {
         sudo dpkg -i wezterm.deb
     fi
 
-    @initwezterm
-    if alias @createdirstructwezterm &>/dev/null; then
-        @createdirstructwezterm
+    apinitwezterm
+    if alias apcreatedirstructwezterm &>/dev/null; then
+        apcreatedirstructwezterm
     fi
 }
 
-alias @rmwezterm="ap_func_rm_wezterm"
+alias rmwezterm="ap_func_rm_wezterm"
 ap_func_rm_wezterm() {
-    @logshow "Remove [wezterm]\n"
+    aplogshow "Remove [wezterm]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         rm -rf "/Applications/WezTerm.app"
@@ -91,11 +91,11 @@ ap_func_rm_wezterm() {
         sudo dpkg --prune wezterm
     fi
 
-    if alias @rmdirstructwezterm &>/dev/null; then
-        @rmdirstructwezterm
+    if alias rmdirstructwezterm &>/dev/null; then
+        rmdirstructwezterm
     fi
 
-    if alias @rmglobalsymlinkwezterm &>/dev/null; then
-        @rmglobalsymlinkwezterm
+    if alias rmglobalsymlinkwezterm &>/dev/null; then
+        rmglobalsymlinkwezterm
     fi
 }

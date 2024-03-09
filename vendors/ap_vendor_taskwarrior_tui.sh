@@ -1,39 +1,39 @@
-alias @inittaskwarriortui="ap_func_init_taskwarriortui"
+alias apinittaskwarriortui="ap_func_init_taskwarriortui"
 ap_func_init_taskwarriortui() {
-    if alias @inittaskwarriortuishare &>/dev/null; then
-        @inittaskwarriortuishare
+    if alias apinittaskwarriortuishare &>/dev/null; then
+        apinittaskwarriortuishare
     fi
 
-    if alias @inittaskwarriortuicommon &>/dev/null; then
-        @inittaskwarriortuicommon
+    if alias apinittaskwarriortuicommon &>/dev/null; then
+        apinittaskwarriortuicommon
     fi
 }
 
-alias @createdirstructtaskwarriortui="ap_func_create_dirstruct_taskwarriortui"
+alias apcreatedirstructtaskwarriortui="ap_func_create_dirstruct_taskwarriortui"
 ap_func_create_dirstruct_taskwarriortui() {
-    if alias @createdirstructtaskwarriortuishare &>/dev/null; then
-        @createdirstructtaskwarriortuishare
+    if alias apcreatedirstructtaskwarriortuishare &>/dev/null; then
+        apcreatedirstructtaskwarriortuishare
     fi
 
-    if alias @createdirstructtaskwarriortuicommon &>/dev/null; then
-        @createdirstructtaskwarriortuicommon
+    if alias apcreatedirstructtaskwarriortuicommon &>/dev/null; then
+        apcreatedirstructtaskwarriortuicommon
     fi
 }
 
-alias @rmdirstructtaskwarriortui="ap_func_rm_dirstruct_taskwarriortui"
+alias rmdirstructtaskwarriortui="ap_func_rm_dirstruct_taskwarriortui"
 ap_func_rm_dirstruct_taskwarriortui() {
-    if alias @rmdirstructtaskwarriortuishare &>/dev/null; then
-        @rmdirstructtaskwarriortuishare
+    if alias rmdirstructtaskwarriortuishare &>/dev/null; then
+        rmdirstructtaskwarriortuishare
     fi
 
-    if alias @rmdirstructtaskwarriortuicommon &>/dev/null; then
-        @rmdirstructtaskwarriortuicommon
+    if alias rmdirstructtaskwarriortuicommon &>/dev/null; then
+        rmdirstructtaskwarriortuicommon
     fi
 }
 
-alias @setuptaskwarriortui="ap_func_setup_taskwarriortui"
+alias apsetuptaskwarriortui="ap_func_setup_taskwarriortui"
 ap_func_setup_taskwarriortui() {
-    @logshow "Install [taskwarrior-tui]\n"
+    aplogshow "Install [taskwarrior-tui]\n"
 
     cd "${AP_TMP_DIR}"
 
@@ -49,21 +49,21 @@ ap_func_setup_taskwarriortui() {
     rm -f taskwarrior-tui.tar.gz
     mv taskwarrior-tui "${AP_SOFT_DIR}/bin/"
 
-    @inittaskwarriortui
-    if alias @createdirstructtaskwarriortui &>/dev/null; then
-        @createdirstructtaskwarriortui
+    apinittaskwarriortui
+    if alias apcreatedirstructtaskwarriortui &>/dev/null; then
+        apcreatedirstructtaskwarriortui
     fi
 }
 
-alias @rmtaskwarriortui="ap_func_rm_taskwarriortui"
+alias rmtaskwarriortui="ap_func_rm_taskwarriortui"
 ap_func_rm_taskwarriortui() {
     rm -f "${AP_SOFT_DIR}/bin/taskwarrior-tui"
 
-    if alias @rmdirstructtaskwarriortui &>/dev/null; then
-        @rmdirstructtaskwarriortui
+    if alias rmdirstructtaskwarriortui &>/dev/null; then
+        rmdirstructtaskwarriortui
     fi
 
-    if alias @rmglobalsymlinktaskwarriortui &>/dev/null; then
-        @rmglobalsymlinktaskwarriortui
+    if alias rmglobalsymlinktaskwarriortui &>/dev/null; then
+        rmglobalsymlinktaskwarriortui
     fi
 }

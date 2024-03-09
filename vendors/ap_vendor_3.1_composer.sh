@@ -1,9 +1,9 @@
-alias @initcomposer="ap_func_init_composer"
+alias apinitcomposer="ap_func_init_composer"
 ap_func_init_composer() {
     # https://getcomposer.org/doc/03-cli.md
     export COMPOSER_HOME="${HOME}/.composer"
     export COMPOSER_BIN_DIR="${COMPOSER_HOME}/vendor/bin"
-    @addpath "${COMPOSER_BIN_DIR}"
+    apaddpath "${COMPOSER_BIN_DIR}"
 
     alias zcomposer='cd "${HOME}/.composer"'
     alias zcomposerbin='cd "${HOME}/.composer/vendor/bin"'
@@ -12,46 +12,46 @@ ap_func_init_composer() {
     alias lscomposerconfigglobal='composer config --list --global'
     alias lscomposerconfig='composer config --list'
 
-    if alias @initcomposershare &>/dev/null; then
-        @initcomposershare
+    if alias apinitcomposershare &>/dev/null; then
+        apinitcomposershare
     fi
 
-    if alias @initcomposercommon &>/dev/null; then
-        @initcomposercommon
+    if alias apinitcomposercommon &>/dev/null; then
+        apinitcomposercommon
     fi
 }
 
-alias @createdirstructcomposer="ap_func_create_dirstruct_composer"
+alias apcreatedirstructcomposer="ap_func_create_dirstruct_composer"
 ap_func_create_dirstruct_composer() {
-    @logshow "Generate [PHP composer] bash autocomplete\n"
+    aplogshow "Generate [PHP composer] bash autocomplete\n"
     symfony-autocomplete >"${AP_COMPLETIONS_DIR}/ap_completion_composer.bash"
 
-    if alias @createdirstructcomposershare &>/dev/null; then
-        @createdirstructcomposershare
+    if alias apcreatedirstructcomposershare &>/dev/null; then
+        apcreatedirstructcomposershare
     fi
 
-    if alias @createdirstructcomposercommon &>/dev/null; then
-        @createdirstructcomposercommon
+    if alias apcreatedirstructcomposercommon &>/dev/null; then
+        apcreatedirstructcomposercommon
     fi
 }
 
-alias @rmdirstructcomposer="ap_func_rm_dirstruct_composer"
+alias rmdirstructcomposer="ap_func_rm_dirstruct_composer"
 ap_func_rm_dirstruct_composer() {
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_composer.bash"
 
-    if alias @rmdirstructcomposershare &>/dev/null; then
-        @rmdirstructcomposershare
+    if alias rmdirstructcomposershare &>/dev/null; then
+        rmdirstructcomposershare
     fi
 
-    if alias @rmdirstructcomposercommon &>/dev/null; then
-        @rmdirstructcomposercommon
+    if alias rmdirstructcomposercommon &>/dev/null; then
+        rmdirstructcomposercommon
     fi
 }
 
-alias @setupcomposer="ap_func_setup_composer"
+alias apsetupcomposer="ap_func_setup_composer"
 ap_func_setup_composer() {
     # https://getcomposer.org
-    @logshow "Install [PHP composer]\n"
+    aplogshow "Install [PHP composer]\n"
 
     EXPECTED_CHECKSUM="$(php -r 'copy("https://composer.github.io/installer.sig", "php://stdout");')"
     php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -68,33 +68,33 @@ ap_func_setup_composer() {
 
     export COMPOSER_HOME="${HOME}/.composer"
     export COMPOSER_BIN_DIR="${COMPOSER_HOME}/vendor/bin"
-    @addpath "${COMPOSER_BIN_DIR}"
+    apaddpath "${COMPOSER_BIN_DIR}"
 
     # Autocomplete
-    @logshow "Installing [psysh, symfony-console-autocomplete]\n"
+    aplogshow "Installing [psysh, symfony-console-autocomplete]\n"
     composer global require \
         psy/psysh:@stable \
         bamarni/symfony-console-autocomplete \
         friendsofphp/php-cs-fixer
 
-    @initcomposer
+    apinitcomposer
 
-    if alias @createdirstructcomposer &>/dev/null; then
-        @createdirstructcomposer
+    if alias apcreatedirstructcomposer &>/dev/null; then
+        apcreatedirstructcomposer
     fi
 }
 
-alias @rmcomposer="ap_func_rm_composer"
+alias rmcomposer="ap_func_rm_composer"
 ap_func_rm_composer() {
-    @logshow "Remove [PHP composer]\n"
+    aplogshow "Remove [PHP composer]\n"
     rm -f "${AP_SOFT_DIR}/bin/composer"
     rm -rf "${HOME}/.composer"
 
-    if alias @rmdirstructcomposer &>/dev/null; then
-        @rmdirstructcomposer
+    if alias rmdirstructcomposer &>/dev/null; then
+        rmdirstructcomposer
     fi
 
-    if alias @rmglobalsymlinkcomposer &>/dev/null; then
-        @rmglobalsymlinkcomposer
+    if alias rmglobalsymlinkcomposer &>/dev/null; then
+        rmglobalsymlinkcomposer
     fi
 }

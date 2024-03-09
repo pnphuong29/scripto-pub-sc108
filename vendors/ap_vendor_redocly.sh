@@ -1,65 +1,65 @@
-alias @initredocly="ap_func_init_redocly"
+alias apinitredocly="ap_func_init_redocly"
 ap_func_init_redocly() {
-    if alias @initredoclyshare &>/dev/null; then
-        @initredoclyshare
+    if alias apinitredoclyshare &>/dev/null; then
+        apinitredoclyshare
     fi
 
-    if alias @initredoclycommon &>/dev/null; then
-        @initredoclycommon
+    if alias apinitredoclycommon &>/dev/null; then
+        apinitredoclycommon
     fi
 }
 
-alias @createdirstructredocly="ap_func_create_dirstruct_redocly"
+alias apcreatedirstructredocly="ap_func_create_dirstruct_redocly"
 ap_func_create_dirstruct_redocly() {
-    @logshow "Generate [redocly] bash autocomplete\n"
+    aplogshow "Generate [redocly] bash autocomplete\n"
     redocly completion >"${AP_COMPLETIONS_DIR}/ap_completion_redocly.bash"
 
-    if alias @createdirstructredoclyshare &>/dev/null; then
-        @createdirstructredoclyshare
+    if alias apcreatedirstructredoclyshare &>/dev/null; then
+        apcreatedirstructredoclyshare
     fi
 
-    if alias @createdirstructredoclycommon &>/dev/null; then
-        @createdirstructredoclycommon
+    if alias apcreatedirstructredoclycommon &>/dev/null; then
+        apcreatedirstructredoclycommon
     fi
 }
 
-alias @rmdirstructredocly="ap_func_rm_dirstruct_redocly"
+alias rmdirstructredocly="ap_func_rm_dirstruct_redocly"
 ap_func_rm_dirstruct_redocly() {
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_redocly.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_redocly.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_redocly.bash"
 
-    if alias @rmdirstructredoclyshare &>/dev/null; then
-        @rmdirstructredoclyshare
+    if alias rmdirstructredoclyshare &>/dev/null; then
+        rmdirstructredoclyshare
     fi
 
-    if alias @rmdirstructredoclycommon &>/dev/null; then
-        @rmdirstructredoclycommon
+    if alias rmdirstructredoclycommon &>/dev/null; then
+        rmdirstructredoclycommon
     fi
 }
 
-alias @setupredocly="ap_func_setup_redocly"
+alias apsetupredocly="ap_func_setup_redocly"
 ap_func_setup_redocly() {
-    @logshow "Install [redocly]\n"
+    aplogshow "Install [redocly]\n"
     bun install -g redocly
     # npm install -g redocly
 
-    @initredocly
-    if alias @createdirstructredocly &>/dev/null; then
-        @createdirstructredocly
+    apinitredocly
+    if alias apcreatedirstructredocly &>/dev/null; then
+        apcreatedirstructredocly
     fi
 }
 
-alias @rmredocly="ap_func_rm_redocly"
+alias rapshowmsgredocly="ap_func_rm_redocly"
 ap_func_rm_redocly() {
-    @logshow "Remove [redocly]\n"
+    aplogshow "Remove [redocly]\n"
     bun uninstall -g redocly
     # npm uninstall -g redocly
 
-    if alias @rmdirstructredocly &>/dev/null; then
-        @rmdirstructredocly
+    if alias rmdirstructredocly &>/dev/null; then
+        rmdirstructredocly
     fi
 
-    if alias @rmglobalsymlinkredocly &>/dev/null; then
-        @rmglobalsymlinkredocly
+    if alias rmglobalsymlinkredocly &>/dev/null; then
+        rmglobalsymlinkredocly
     fi
 }

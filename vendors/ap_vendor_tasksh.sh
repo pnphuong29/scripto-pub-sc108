@@ -1,46 +1,46 @@
-alias @inittasksh="ap_func_init_tasksh"
+alias apinittasksh="ap_func_init_tasksh"
 ap_func_init_tasksh() {
-    if alias @inittaskshshare &>/dev/null; then
-        @inittaskshshare
+    if alias apinittaskshshare &>/dev/null; then
+        apinittaskshshare
     fi
 
-    if alias @inittaskshcommon &>/dev/null; then
-        @inittaskshcommon
+    if alias apinittaskshcommon &>/dev/null; then
+        apinittaskshcommon
     fi
 }
 
-alias @createdirstructtasksh="ap_func_create_dirstruct_tasksh"
+alias apcreatedirstructtasksh="ap_func_create_dirstruct_tasksh"
 ap_func_create_dirstruct_tasksh() {
-    @logshow "Create symlink from [${AP_SOFT_DIR}/bin/tasksh] to [${AP_SOFT_DIR}/tasksh/bin/tasksh]\n"
+    aplogshow "Create symlink from [${AP_SOFT_DIR}/bin/tasksh] to [${AP_SOFT_DIR}/tasksh/bin/tasksh]\n"
     ln -sf "${AP_SOFT_DIR}/tasksh/bin/tasksh" "${AP_SOFT_DIR}/bin/tasksh"
 
-    if alias @createdirstructtaskshshare &>/dev/null; then
-        @createdirstructtaskshshare
+    if alias apcreatedirstructtaskshshare &>/dev/null; then
+        apcreatedirstructtaskshshare
     fi
 
-    if alias @createdirstructtaskshcommon &>/dev/null; then
-        @createdirstructtaskshcommon
+    if alias apcreatedirstructtaskshcommon &>/dev/null; then
+        apcreatedirstructtaskshcommon
     fi
 }
 
-alias @rmdirstructtasksh="ap_func_rm_dirstruct_tasksh"
+alias rmdirstructtasksh="ap_func_rm_dirstruct_tasksh"
 ap_func_rm_dirstruct_tasksh() {
-    @logshow "Remove [${AP_SOFT_DIR}/bin/tasksh]\n"
+    aplogshow "Remove [${AP_SOFT_DIR}/bin/tasksh]\n"
     rm -f "${AP_SOFT_DIR}/bin/tasksh"
 
-    if alias @rmdirstructtaskshshare &>/dev/null; then
-        @rmdirstructtaskshshare
+    if alias rmdirstructtaskshshare &>/dev/null; then
+        rmdirstructtaskshshare
     fi
 
-    if alias @rmdirstructtaskshcommon &>/dev/null; then
-        @rmdirstructtaskshcommon
+    if alias rmdirstructtaskshcommon &>/dev/null; then
+        rmdirstructtaskshcommon
     fi
 }
 
-alias @setuptasksh="ap_func_setup_tasksh"
+alias apsetuptasksh="ap_func_setup_tasksh"
 ap_func_setup_tasksh() {
     # https://github.com/GothenburgBitFactory/taskshell
-    @logshow "Install [tasksh]\n"
+    aplogshow "Install [tasksh]\n"
 
     mkdir -p "${AP_TMP_DIR}/tasksh"
     cd "${AP_TMP_DIR}/tasksh"
@@ -60,22 +60,22 @@ ap_func_setup_tasksh() {
 
     cd "${AP_SOFT_DIR}/tasksh"
 
-    @inittasksh
-    if alias @createdirstructtasksh &>/dev/null; then
-        @createdirstructtasksh
+    apinittasksh
+    if alias apcreatedirstructtasksh &>/dev/null; then
+        apcreatedirstructtasksh
     fi
 }
 
-alias @rmtasksh="ap_func_rm_tasksh"
+alias rmtasksh="ap_func_rm_tasksh"
 ap_func_rm_tasksh() {
-    @logshow "Remove [tasksh]\n"
+    aplogshow "Remove [tasksh]\n"
     rm -rf "${AP_SOFT_DIR}/tasksh"
 
-    if alias @rmdirstructtasksh &>/dev/null; then
-        @rmdirstructtasksh
+    if alias rmdirstructtasksh &>/dev/null; then
+        rmdirstructtasksh
     fi
 
-    if alias @rmglobalsymlinktasksh &>/dev/null; then
-        @rmglobalsymlinktasksh
+    if alias rmglobalsymlinktasksh &>/dev/null; then
+        rmglobalsymlinktasksh
     fi
 }

@@ -1,4 +1,4 @@
-alias @initdjango="ap_func_init_django"
+alias apinitdjango="ap_func_init_django"
 ap_func_init_django() {
     # https://docs.djangoproject.com/en/4.2/ref/django-admin/#syntax-coloring
     export DJANGO_COLORS="error=white/red,blink;notice=white/magenta;success=white/green;warning=black/yellow"
@@ -77,59 +77,59 @@ ap_func_init_django() {
     alias dgolistmodelinfo="python manage.py list_model_info"
     alias dgolistmodelinfomodel="python manage.py list_model_info --model"
 
-    if alias @initdjangoshare &>/dev/null; then
-        @initdjangoshare
+    if alias apinitdjangoshare &>/dev/null; then
+        apinitdjangoshare
     fi
 
-    if alias @initdjangocommon &>/dev/null; then
-        @initdjangocommon
+    if alias apinitdjangocommon &>/dev/null; then
+        apinitdjangocommon
     fi
 }
 
-alias @createdirstructdjango="ap_func_create_dirstruct_django"
+alias apcreatedirstructdjango="ap_func_create_dirstruct_django"
 ap_func_create_dirstruct_django() {
-    @logshow "Generate [django] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_django.bash]\n"
+    aplogshow "Generate [django] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_django.bash]\n"
     curl -SL "https://raw.githubusercontent.com/django/django/main/extras/django_bash_completion" >"${AP_COMPLETIONS_DIR}/ap_completion_django.bash"
 
-    if alias @createdirstructdjangoshare &>/dev/null; then
-        @createdirstructdjangoshare
+    if alias apcreatedirstructdjangoshare &>/dev/null; then
+        apcreatedirstructdjangoshare
     fi
 
-    if alias @createdirstructdjangocommon &>/dev/null; then
-        @createdirstructdjangocommon
+    if alias apcreatedirstructdjangocommon &>/dev/null; then
+        apcreatedirstructdjangocommon
     fi
 }
 
-alias @rmdirstructdjango="ap_func_rm_dirstruct_django"
+alias rmdirstructdjango="ap_func_rm_dirstruct_django"
 ap_func_rm_dirstruct_django() {
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_django.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_django.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_django.bash"
 
-    if alias @rmdirstructdjangoshare &>/dev/null; then
-        @rmdirstructdjangoshare
+    if alias rmdirstructdjangoshare &>/dev/null; then
+        rmdirstructdjangoshare
     fi
 
-    if alias @rmdirstructdjangocommon &>/dev/null; then
-        @rmdirstructdjangocommon
+    if alias rmdirstructdjangocommon &>/dev/null; then
+        rmdirstructdjangocommon
     fi
 }
 
-alias @setupdjango="ap_func_setup_django"
+alias apsetupdjango="ap_func_setup_django"
 ap_func_setup_django() {
-    @logshow "Install [django]\n"
+    aplogshow "Install [django]\n"
     pip install django
 
-    if alias @createdirstructdjango &>/dev/null; then
-        @createdirstructdjango
+    if alias apcreatedirstructdjango &>/dev/null; then
+        apcreatedirstructdjango
     fi
 }
 
-alias @rmdjango="ap_func_rm_django"
+alias rmdjango="ap_func_rm_django"
 ap_func_rm_django() {
-    @logshow "Remove [django]\n"
+    aplogshow "Remove [django]\n"
     pip uninstall django
 
-    if alias @rmdirstructdjango &>/dev/null; then
-        @rmdirstructdjango
+    if alias rmdirstructdjango &>/dev/null; then
+        rmdirstructdjango
     fi
 }

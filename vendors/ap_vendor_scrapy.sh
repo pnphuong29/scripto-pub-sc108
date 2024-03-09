@@ -1,57 +1,57 @@
-alias @initscrapy="ap_func_init_scrapy"
+alias apinitscrapy="ap_func_init_scrapy"
 ap_func_init_scrapy() {
-    if alias @initscrapyshare &>/dev/null; then
-        @initscrapyshare
+    if alias apinitscrapyshare &>/dev/null; then
+        apinitscrapyshare
     fi
 
-    if alias @initscrapycommon &>/dev/null; then
-        @initscrapycommon
+    if alias apinitscrapycommon &>/dev/null; then
+        apinitscrapycommon
     fi
 }
 
-alias @createdirstructscrapy="ap_func_create_dirstruct_scrapy"
+alias apcreatedirstructscrapy="ap_func_create_dirstruct_scrapy"
 ap_func_create_dirstruct_scrapy() {
-    if alias @createdirstructscrapyshare &>/dev/null; then
-        @createdirstructscrapyshare
+    if alias apcreatedirstructscrapyshare &>/dev/null; then
+        apcreatedirstructscrapyshare
     fi
 
-    if alias @createdirstructscrapycommon &>/dev/null; then
-        @createdirstructscrapycommon
+    if alias apcreatedirstructscrapycommon &>/dev/null; then
+        apcreatedirstructscrapycommon
     fi
 }
 
-alias @rmdirstructscrapy="ap_func_rm_dirstruct_scrapy"
+alias rmdirstructscrapy="ap_func_rm_dirstruct_scrapy"
 ap_func_rm_dirstruct_scrapy() {
-    if alias @rmdirstructscrapyshare &>/dev/null; then
-        @rmdirstructscrapyshare
+    if alias rmdirstructscrapyshare &>/dev/null; then
+        rmdirstructscrapyshare
     fi
 
-    if alias @rmdirstructscrapycommon &>/dev/null; then
-        @rmdirstructscrapycommon
+    if alias rmdirstructscrapycommon &>/dev/null; then
+        rmdirstructscrapycommon
     fi
 }
 
-alias @setupscrapy="ap_func_setup_scrapy"
+alias apsetupscrapy="ap_func_setup_scrapy"
 ap_func_setup_scrapy() {
-    @logshow "Install [scrapy]\n"
+    aplogshow "Install [scrapy]\n"
     pip install scrapy
 
-    @initscrapy
-    if alias @createdirstructscrapy &>/dev/null; then
-        @createdirstructscrapy
+    apinitscrapy
+    if alias apcreatedirstructscrapy &>/dev/null; then
+        apcreatedirstructscrapy
     fi
 }
 
-alias @rmscrapy="ap_func_rm_scrapy"
+alias rmscrapy="ap_func_rm_scrapy"
 ap_func_rm_scrapy() {
-    @logshow "Remove [scrapy]\n"
+    aplogshow "Remove [scrapy]\n"
     pip uninstall scrapy
 
-    if alias @rmdirstructscrapy &>/dev/null; then
-        @rmdirstructscrapy
+    if alias rmdirstructscrapy &>/dev/null; then
+        rmdirstructscrapy
     fi
 
-    if alias @rmglobalsymlinkscrapy &>/dev/null; then
-        @rmglobalsymlinkscrapy
+    if alias rmglobalsymlinkscrapy &>/dev/null; then
+        rmglobalsymlinkscrapy
     fi
 }

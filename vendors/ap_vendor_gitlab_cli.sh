@@ -1,48 +1,48 @@
-alias @initgitlabcli="ap_func_init_gitlabcli"
+alias apinitgitlabcli="ap_func_init_gitlabcli"
 ap_func_init_gitlabcli() {
     # export GLAB_CONFIG_DIR="${HOME}/.config/glab-cli/config.yml"
 
-    if alias @initgitlabclishare &>/dev/null; then
-        @initgitlabclishare
+    if alias apinitgitlabclishare &>/dev/null; then
+        apinitgitlabclishare
     fi
 
-    if alias @initgitlabclicommon &>/dev/null; then
-        @initgitlabclicommon
+    if alias apinitgitlabclicommon &>/dev/null; then
+        apinitgitlabclicommon
     fi
 }
 
-alias @createdirstructgitlabcli="ap_func_create_dirstruct_gitlabcli"
+alias apcreatedirstructgitlabcli="ap_func_create_dirstruct_gitlabcli"
 ap_func_create_dirstruct_gitlabcli() {
-    @logshow "Generate [gitlab cli] bash autocomplete\n"
+    aplogshow "Generate [gitlab cli] bash autocomplete\n"
     glab completion --shell bash >"${AP_COMPLETIONS_DIR}/ap_completion_glab.bash"
 
-    if alias @createdirstructgitlabclishare &>/dev/null; then
-        @createdirstructgitlabclishare
+    if alias apcreatedirstructgitlabclishare &>/dev/null; then
+        apcreatedirstructgitlabclishare
     fi
 
-    if alias @createdirstructgitlabclicommon &>/dev/null; then
-        @createdirstructgitlabclicommon
+    if alias apcreatedirstructgitlabclicommon &>/dev/null; then
+        apcreatedirstructgitlabclicommon
     fi
 }
 
-alias @rmdirstructgitlabcli="ap_func_rm_dirstruct_gitlabcli"
+alias rmdirstructgitlabcli="ap_func_rm_dirstruct_gitlabcli"
 ap_func_rm_dirstruct_gitlabcli() {
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_glab.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_glab.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_glab.bash"
 
-    if alias @rmdirstructgitlabclishare &>/dev/null; then
-        @rmdirstructgitlabclishare
+    if alias rmdirstructgitlabclishare &>/dev/null; then
+        rmdirstructgitlabclishare
     fi
 
-    if alias @rmdirstructgitlabclicommon &>/dev/null; then
-        @rmdirstructgitlabclicommon
+    if alias rmdirstructgitlabclicommon &>/dev/null; then
+        rmdirstructgitlabclicommon
     fi
 }
 
-alias @setupgitlabcli="ap_func_setup_gitlabcli"
+alias apsetupgitlabcli="ap_func_setup_gitlabcli"
 ap_func_setup_gitlabcli() {
     # https://gitlab.com/gitlab-org/cli#installation
-    @logshow "Install [GitLab cli]\n"
+    aplogshow "Install [GitLab cli]\n"
 
     # if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
     #     brew install glab
@@ -56,15 +56,15 @@ ap_func_setup_gitlabcli() {
 
     go install gitlab.com/gitlab-org/cli/cmd/glab@main
 
-    @initgitlabcli
-    if alias @createdirstructgitlabcli &>/dev/null; then
-        @createdirstructgitlabcli
+    apinitgitlabcli
+    if alias apcreatedirstructgitlabcli &>/dev/null; then
+        apcreatedirstructgitlabcli
     fi
 }
 
-alias @rmgitlabcli="ap_func_rm_gitlabcli"
+alias rmgitlabcli="ap_func_rm_gitlabcli"
 ap_func_rm_gitlabcli() {
-    @logshow "Remove [GitLab cli]\n"
+    aplogshow "Remove [GitLab cli]\n"
 
     # if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
     #     brew uninstall glab
@@ -75,7 +75,7 @@ ap_func_rm_gitlabcli() {
     rm -rf "${GOPATH}/pkg/mod/gitlab.com/gitlab-org/cli/cmd/glab@"*
     rm -f "${GOPATH}/bin/glab"
 
-    if alias @rmdirstructgitlabcli &>/dev/null; then
-        @rmdirstructgitlabcli
+    if alias rmdirstructgitlabcli &>/dev/null; then
+        rmdirstructgitlabcli
     fi
 }

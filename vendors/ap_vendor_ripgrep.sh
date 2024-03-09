@@ -1,4 +1,4 @@
-alias @initripgrep="ap_func_init_ripgrep"
+alias apinitripgrep="ap_func_init_ripgrep"
 ap_func_init_ripgrep() {
     if [ -f "${HOME}/scripto-share/vendors/ripgrep/ap_ripgrep.ignore" ]; then
         export AP_VENDORS_RIPGREP_IGNORE_FILE="${HOME}/scripto-share/vendors/ripgrep/ap_ripgrep.ignore"
@@ -29,76 +29,76 @@ ap_func_init_ripgrep() {
     # ap_g_pos="$(grep -n "\-\-ignore\-file" "${RIPGREP_CONFIG_PATH}" | cut -d : -f 1)"
     # gsed -i'' "${ap_g_pos}a${AP_VENDORS_RIPGREP_IGNORE_FILE}" "${RIPGREP_CONFIG_PATH}"
 
-    if alias @initripgrepshare &>/dev/null; then
-        @initripgrepshare
+    if alias apinitripgrepshare &>/dev/null; then
+        apinitripgrepshare
     fi
 
-    if alias @initripgrepcommon &>/dev/null; then
-        @initripgrepcommon
+    if alias apinitripgrepcommon &>/dev/null; then
+        apinitripgrepcommon
     fi
 }
 
-alias @createdirstructripgrep="ap_func_create_dirstruct_ripgrep"
+alias apcreatedirstructripgrep="ap_func_create_dirstruct_ripgrep"
 ap_func_create_dirstruct_ripgrep() {
-    @logshow "Create symlink from [${AP_SOFT_DIR}/bin/rg] to [${AP_SOFT_DIR}/ripgrep/rg]\n"
+    aplogshow "Create symlink from [${AP_SOFT_DIR}/bin/rg] to [${AP_SOFT_DIR}/ripgrep/rg]\n"
     ln -sf "${AP_SOFT_DIR}/ripgrep/rg" "${AP_SOFT_DIR}/bin/rg"
 
-    @logshow "Create symlink from [${AP_COMPLETIONS_DIR}/ap_completion_rg.bash] to [${AP_SOFT_DIR}/ripgrep/complete/rg.bash]\n"
+    aplogshow "Create symlink from [${AP_COMPLETIONS_DIR}/ap_completion_rg.bash] to [${AP_SOFT_DIR}/ripgrep/complete/rg.bash]\n"
     ln -sf "${AP_SOFT_DIR}/ripgrep/complete/rg.bash" "${AP_COMPLETIONS_DIR}/ap_completion_rg.bash"
 
-    @logshow "Create symlink from [${AP_MAN_DIR}/man1/rg.1] to [${AP_SOFT_DIR}/ripgrep/doc/rg.1]\n"
+    aplogshow "Create symlink from [${AP_MAN_DIR}/man1/rg.1] to [${AP_SOFT_DIR}/ripgrep/doc/rg.1]\n"
     ln -sf "${AP_SOFT_DIR}/ripgrep/doc/rg.1" "${AP_MAN_DIR}/man1/rg.1"
 
-    if alias @createdirstructripgrepshare &>/dev/null; then
-        @createdirstructripgrepshare
+    if alias apcreatedirstructripgrepshare &>/dev/null; then
+        apcreatedirstructripgrepshare
     fi
 
-    if alias @createdirstructripgrepcommon &>/dev/null; then
-        @createdirstructripgrepcommon
+    if alias apcreatedirstructripgrepcommon &>/dev/null; then
+        apcreatedirstructripgrepcommon
     fi
 }
 
-alias @rmdirstructripgrep="ap_func_rm_dirstruct_ripgrep"
+alias rmdirstructripgrep="ap_func_rm_dirstruct_ripgrep"
 ap_func_rm_dirstruct_ripgrep() {
-    @logshow "Remove [${AP_SOFT_DIR}/bin/rg]\n"
+    aplogshow "Remove [${AP_SOFT_DIR}/bin/rg]\n"
     rm -f "${AP_SOFT_DIR}/bin/rg"
 
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_rg.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_rg.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_rg.bash"
 
-    @logshow "Remove [${AP_MAN_DIR}/man1/rg.1]\n"
+    aplogshow "Remove [${AP_MAN_DIR}/man1/rg.1]\n"
     rm -f "${AP_MAN_DIR}/man1/rg.1"
 
-    if alias @rmdirstructripgrepshare &>/dev/null; then
-        @rmdirstructripgrepshare
+    if alias rmdirstructripgrepshare &>/dev/null; then
+        rmdirstructripgrepshare
     fi
 
-    if alias @rmdirstructripgrepcommon &>/dev/null; then
-        @rmdirstructripgrepcommon
+    if alias rmdirstructripgrepcommon &>/dev/null; then
+        rmdirstructripgrepcommon
     fi
 }
 
 alias @createglobalsymlinkripgrep="ap_func_create_global_symlink_ripgrep"
 ap_func_create_global_symlink_ripgrep() {
     if [ -f "${AP_SOFT_DIR}/bin/rg" ]; then
-        @logshow "Create symlink from [/usr/local/bin/rg] to [${AP_SOFT_DIR}/bin/rg]\n"
+        aplogshow "Create symlink from [/usr/local/bin/rg] to [${AP_SOFT_DIR}/bin/rg]\n"
         sudo ln -sf "${AP_SOFT_DIR}/bin/rg" "/usr/local/bin/rg"
     fi
 }
 
-alias @rmglobalsymlinkripgrep="ap_func_rm_global_symlink_ripgrep"
+alias rmglobalsymlinkripgrep="ap_func_rm_global_symlink_ripgrep"
 ap_func_rm_global_symlink_ripgrep() {
     if [ -f "/usr/local/bin/rg" ]; then
-        @logshow "Remove [/usr/local/bin/rg]\n"
+        aplogshow "Remove [/usr/local/bin/rg]\n"
         sudo rm -f "/usr/local/bin/rg"
     fi
 }
 
-alias @setupripgrep="ap_func_setup_ripgrep"
+alias apsetupripgrep="ap_func_setup_ripgrep"
 ap_func_setup_ripgrep() {
     # Require [asciidoctor, jq] for generating manpage (use `gem install asciidoctor`)
     # https://github.com/BurntSushi/ripgrep
-    @logshow "Install [ripgrep]\n"
+    aplogshow "Install [ripgrep]\n"
 
     # Remove old app dir if any
     rm -rf "${AP_SOFT_DIR}/ripgrep"
@@ -121,23 +121,23 @@ ap_func_setup_ripgrep() {
     cd "${AP_SOFT_DIR}"
     rm -rf "${AP_TMP_DIR}/ripgrep"
 
-    @initripgrep
-    if alias @createdirstructripgrep &>/dev/null; then
-        @createdirstructripgrep
+    apinitripgrep
+    if alias apcreatedirstructripgrep &>/dev/null; then
+        apcreatedirstructripgrep
     fi
 }
 
-alias @rmripgrep="ap_func_rm_ripgrep"
+alias rmripgrep="ap_func_rm_ripgrep"
 ap_func_rm_ripgrep() {
-    @logshow "Remove [ripgrep]\n"
+    aplogshow "Remove [ripgrep]\n"
     rm -rf "${AP_SOFT_DIR}/ripgrep"
 
-    if alias @rmdirstructripgrep &>/dev/null; then
-        @rmdirstructripgrep
+    if alias rmdirstructripgrep &>/dev/null; then
+        rmdirstructripgrep
     fi
 
-    if alias @rmglobalsymlinkripgrep &>/dev/null; then
-        @rmglobalsymlinkripgrep
+    if alias rmglobalsymlinkripgrep &>/dev/null; then
+        rmglobalsymlinkripgrep
     fi
 }
 
@@ -209,7 +209,7 @@ ap_func_ripgrep() {
             ;;
         ?)
             echo "Invalid option [${OPTARG}]"
-            @rtn_err_opt_invalid_option
+            aprtn_err_opt_invalid_option
             ;;
         esac
     done
@@ -219,7 +219,7 @@ ap_func_ripgrep() {
 
     # Implementation
     local ap_search_string="$1"
-    [ -z "${ap_search_string}" ] && @merr "Missing <search_string>\n" && @rtn_err_missing_argument
+    [ -z "${ap_search_string}" ] && apshowmsgerr "Missing <search_string>\n" && aprtn_err_missing_argument
 
     if [ ${ap_opt_c} -eq 0 ]; then
         ap_cmd="${ap_cmd} --smart-case"
@@ -233,12 +233,12 @@ ap_func_ripgrep() {
 
         eval "$(printf "%s" "${ap_cmd}")" | cut -d : -f 1 | while read -r ap_file_name; do
             ap_file_path="${PWD}/${ap_file_name}"
-            @minfo "Replace [${ap_search_string}] by [${ap_replace_string}] in file [${ap_file_path}]\n"
+            apshowmsginfo "Replace [${ap_search_string}] by [${ap_replace_string}] in file [${ap_file_path}]\n"
             gsed -i'' "s/${ap_search_string}/${ap_replace_string}/g" "${ap_file_path}"
         done
     else
         eval "$(printf "%s" "${ap_cmd}")"
     fi
 
-    @rtn_success
+    aprtn_success
 }

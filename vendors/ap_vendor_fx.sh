@@ -1,74 +1,74 @@
-alias @initfx="ap_func_init_fx"
+alias apinitfx="ap_func_init_fx"
 ap_func_init_fx() {
-    if alias @initfxshare &>/dev/null; then
-        @initfxshare
+    if alias apinitfxshare &>/dev/null; then
+        apinitfxshare
     fi
 
-    if alias @initfxcommon &>/dev/null; then
-        @initfxcommon
+    if alias apinitfxcommon &>/dev/null; then
+        apinitfxcommon
     fi
 }
 
-alias @createdirstructfx="ap_func_create_dirstruct_fx"
+alias apcreatedirstructfx="ap_func_create_dirstruct_fx"
 ap_func_create_dirstruct_fx() {
     # https://github.com/antonmedv/fx-completion
     # It's author has already archived it, maybe it will be deprecated soonly
-    @logshow "Generate [fx] bash autocomplete\n"
+    aplogshow "Generate [fx] bash autocomplete\n"
     fx-completion --bash >"${AP_COMPLETIONS_DIR}/ap_completion_fx.bash"
 
-    if alias @createdirstructfxshare &>/dev/null; then
-        @createdirstructfxshare
+    if alias apcreatedirstructfxshare &>/dev/null; then
+        apcreatedirstructfxshare
     fi
 
-    if alias @createdirstructfxcommon &>/dev/null; then
-        @createdirstructfxcommon
+    if alias apcreatedirstructfxcommon &>/dev/null; then
+        apcreatedirstructfxcommon
     fi
 }
 
-alias @rmdirstructfx="ap_func_rm_dirstruct_fx"
+alias rmdirstructfx="ap_func_rm_dirstruct_fx"
 ap_func_rm_dirstruct_fx() {
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_fx.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_fx.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_fx.bash"
 
-    if alias @rmdirstructfxshare &>/dev/null; then
-        @rmdirstructfxshare
+    if alias rmdirstructfxshare &>/dev/null; then
+        rmdirstructfxshare
     fi
 
-    if alias @rmdirstructfxcommon &>/dev/null; then
-        @rmdirstructfxcommon
+    if alias rmdirstructfxcommon &>/dev/null; then
+        rmdirstructfxcommon
     fi
 }
 
-alias @setupfx="ap_func_setup_fx"
+alias apsetupfx="ap_func_setup_fx"
 ap_func_setup_fx() {
     # https://github.com/antonmedv/fx
     # https://github.com/antonmedv/fx-completion
-    @logshow "Install [fx]\n"
+    aplogshow "Install [fx]\n"
     go install github.com/antonmedv/fx@latest
     # npm install --global fx fx-completion # npm performance is quite slow, should not use this way to install fx
 
-    @logshow "Install [fx-completion]\n"
+    aplogshow "Install [fx-completion]\n"
     npm install --global fx-completion
 
-    @initfx
-    if alias @createdirstructfx &>/dev/null; then
-        @createdirstructfx
+    apinitfx
+    if alias apcreatedirstructfx &>/dev/null; then
+        apcreatedirstructfx
     fi
 }
 
-alias @rmfx="ap_func_rm_fx"
+alias rmfx="ap_func_rm_fx"
 ap_func_rm_fx() {
-    @logshow "Remove [fx]\n"
+    aplogshow "Remove [fx]\n"
 
     rm -rf "${GOPATH}/pkg/mod/github.com/antonmedv/fx@"*
     rm -f "${GOPATH}/bin/fx"
     npm uninstall -g fx-completion
 
-    if alias @rmdirstructfx &>/dev/null; then
-        @rmdirstructfx
+    if alias rmdirstructfx &>/dev/null; then
+        rmdirstructfx
     fi
 
-    if alias @rmglobalsymlinkfx &>/dev/null; then
-        @rmglobalsymlinkfx
+    if alias rmglobalsymlinkfx &>/dev/null; then
+        rmglobalsymlinkfx
     fi
 }

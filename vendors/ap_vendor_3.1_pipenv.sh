@@ -1,4 +1,4 @@
-alias @initpipenv="ap_func_init_pipenv"
+alias apinitpipenv="ap_func_init_pipenv"
 ap_func_init_pipenv() {
     export PIPENV_VENV_IN_PROJECT=1
 
@@ -11,58 +11,58 @@ ap_func_init_pipenv() {
     alias pipenvrun="pipenv run"
     alias pipenvpip="pipenv run pip"
 
-    if alias @initpipenvshare &>/dev/null; then
-        @initpipenvshare
+    if alias apinitpipenvshare &>/dev/null; then
+        apinitpipenvshare
     fi
 
-    if alias @initpipenvcommon &>/dev/null; then
-        @initpipenvcommon
+    if alias apinitpipenvcommon &>/dev/null; then
+        apinitpipenvcommon
     fi
 }
 
-alias @createdirstructpipenv="ap_func_create_dirstruct_pipenv"
+alias apcreatedirstructpipenv="ap_func_create_dirstruct_pipenv"
 ap_func_create_dirstruct_pipenv() {
-    if alias @createdirstructpipenvshare &>/dev/null; then
-        @createdirstructpipenvshare
+    if alias apcreatedirstructpipenvshare &>/dev/null; then
+        apcreatedirstructpipenvshare
     fi
 
-    if alias @createdirstructpipenvcommon &>/dev/null; then
-        @createdirstructpipenvcommon
+    if alias apcreatedirstructpipenvcommon &>/dev/null; then
+        apcreatedirstructpipenvcommon
     fi
 }
 
-alias @rmdirstructpipenv="ap_func_rm_dirstruct_pipenv"
+alias rmdirstructpipenv="ap_func_rm_dirstruct_pipenv"
 ap_func_rm_dirstruct_pipenv() {
-    if alias @rmdirstructpipenvshare &>/dev/null; then
-        @rmdirstructpipenvshare
+    if alias rmdirstructpipenvshare &>/dev/null; then
+        rmdirstructpipenvshare
     fi
 
-    if alias @rmdirstructpipenvcommon &>/dev/null; then
-        @rmdirstructpipenvcommon
+    if alias rmdirstructpipenvcommon &>/dev/null; then
+        rmdirstructpipenvcommon
     fi
 }
 
-alias @setuppipenv="ap_func_setup_pipenv"
+alias apsetuppipenv="ap_func_setup_pipenv"
 ap_func_setup_pipenv() {
-    @logshow "Install [pipenv]\n"
+    aplogshow "Install [pipenv]\n"
     pip install pipenv
 
-    @initpipenv
-    if alias @createdirstructpipenv &>/dev/null; then
-        @createdirstructpipenv
+    apinitpipenv
+    if alias apcreatedirstructpipenv &>/dev/null; then
+        apcreatedirstructpipenv
     fi
 }
 
-alias @rmpipenv="ap_func_rm_pipenv"
+alias rmpipenv="ap_func_rm_pipenv"
 ap_func_rm_pipenv() {
-    @logshow "Remove [pipenv]\n"
+    aplogshow "Remove [pipenv]\n"
     pip uninstall pipenv
 
-    if alias @rmdirstructpipenv &>/dev/null; then
-        @rmdirstructpipenv
+    if alias rmdirstructpipenv &>/dev/null; then
+        rmdirstructpipenv
     fi
 
-    if alias @rmglobalsymlinkpipenv &>/dev/null; then
-        @rmglobalsymlinkpipenv
+    if alias rmglobalsymlinkpipenv &>/dev/null; then
+        rmglobalsymlinkpipenv
     fi
 }

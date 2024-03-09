@@ -1,65 +1,65 @@
-alias @initfabric="ap_func_init_fabric"
+alias apinitfabric="ap_func_init_fabric"
 ap_func_init_fabric() {
-    if alias @initfabricshare &>/dev/null; then
-        @initfabricshare
+    if alias apinitfabricshare &>/dev/null; then
+        apinitfabricshare
     fi
 
-    if alias @initfabriccommon &>/dev/null; then
-        @initfabriccommon
+    if alias apinitfabriccommon &>/dev/null; then
+        apinitfabriccommon
     fi
 }
 
-alias @createdirstructfabric="ap_func_create_dirstruct_fabric"
+alias apcreatedirstructfabric="ap_func_create_dirstruct_fabric"
 ap_func_create_dirstruct_fabric() {
-    @logshow "Generate [fabric] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_fabric.bash]\n"
+    aplogshow "Generate [fabric] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_fabric.bash]\n"
     if type fab &>/dev/null; then
         fab --print-completion-script bash >"${AP_COMPLETIONS_DIR}/ap_completion_fabric.bash"
     fi
 
-    if alias @createdirstructfabricshare &>/dev/null; then
-        @createdirstructfabricshare
+    if alias apcreatedirstructfabricshare &>/dev/null; then
+        apcreatedirstructfabricshare
     fi
 
-    if alias @createdirstructfabriccommon &>/dev/null; then
-        @createdirstructfabriccommon
+    if alias apcreatedirstructfabriccommon &>/dev/null; then
+        apcreatedirstructfabriccommon
     fi
 }
 
-alias @rmdirstructfabric="ap_func_rm_dirstruct_fabric"
+alias rmdirstructfabric="ap_func_rm_dirstruct_fabric"
 ap_func_rm_dirstruct_fabric() {
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_fabric.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_fabric.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_fabric.bash"
 
-    if alias @rmdirstructfabricshare &>/dev/null; then
-        @rmdirstructfabricshare
+    if alias rmdirstructfabricshare &>/dev/null; then
+        rmdirstructfabricshare
     fi
 
-    if alias @rmdirstructfabriccommon &>/dev/null; then
-        @rmdirstructfabriccommon
+    if alias rmdirstructfabriccommon &>/dev/null; then
+        rmdirstructfabriccommon
     fi
 }
 
-alias @setupfabric="ap_func_setup_fabric"
+alias apsetupfabric="ap_func_setup_fabric"
 ap_func_setup_fabric() {
-    @logshow "Install [fabric]\n"
+    aplogshow "Install [fabric]\n"
     pip install fabric2
-    @initfabric
+    apinitfabric
 
-    if alias @createdirstructfabric &>/dev/null; then
-        @createdirstructfabric
+    if alias apcreatedirstructfabric &>/dev/null; then
+        apcreatedirstructfabric
     fi
 }
 
-alias @rmfabric="ap_func_rm_fabric"
+alias rmfabric="ap_func_rm_fabric"
 ap_func_rm_fabric() {
-    @logshow "Remove [fabric]\n"
+    aplogshow "Remove [fabric]\n"
     pip uninstall fabric2
 
-    if alias @rmdirstructfabric &>/dev/null; then
-        @rmdirstructfabric
+    if alias rmdirstructfabric &>/dev/null; then
+        rmdirstructfabric
     fi
 
-    if alias @rmglobalsymlinkfabric &>/dev/null; then
-        @rmglobalsymlinkfabric
+    if alias rmglobalsymlinkfabric &>/dev/null; then
+        rmglobalsymlinkfabric
     fi
 }

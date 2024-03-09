@@ -1,4 +1,4 @@
-alias @initprisma="ap_func_init_prisma"
+alias apinitprisma="ap_func_init_prisma"
 ap_func_init_prisma() {
     alias prisma='npx prisma'
     alias prismaversion='npx prisma version'
@@ -30,59 +30,59 @@ ap_func_init_prisma() {
     alias prismamigrateresolveapplied='npx prisma migrate resolve --applied'
     alias prismamigrateresolverollbacked='npx prisma migrate resolve --rolled-back'
 
-    if alias @initprismashare &>/dev/null; then
-        @initprismashare
+    if alias apinitprismashare &>/dev/null; then
+        apinitprismashare
     fi
 
-    if alias @initprismacommon &>/dev/null; then
-        @initprismacommon
+    if alias apinitprismacommon &>/dev/null; then
+        apinitprismacommon
     fi
 }
 
-alias @createdirstructprisma="ap_func_create_dirstruct_prisma"
+alias apcreatedirstructprisma="ap_func_create_dirstruct_prisma"
 ap_func_create_dirstruct_prisma() {
-    if alias @createdirstructprismashare &>/dev/null; then
-        @createdirstructprismashare
+    if alias apcreatedirstructprismashare &>/dev/null; then
+        apcreatedirstructprismashare
     fi
 
-    if alias @createdirstructprismacommon &>/dev/null; then
-        @createdirstructprismacommon
+    if alias apcreatedirstructprismacommon &>/dev/null; then
+        apcreatedirstructprismacommon
     fi
 }
 
-alias @rmdirstructprisma="ap_func_rm_dirstruct_prisma"
+alias rmdirstructprisma="ap_func_rm_dirstruct_prisma"
 ap_func_rm_dirstruct_prisma() {
-    if alias @rmdirstructprismashare &>/dev/null; then
-        @rmdirstructprismashare
+    if alias rmdirstructprismashare &>/dev/null; then
+        rmdirstructprismashare
     fi
 
-    if alias @rmdirstructprismacommon &>/dev/null; then
-        @rmdirstructprismacommon
+    if alias rmdirstructprismacommon &>/dev/null; then
+        rmdirstructprismacommon
     fi
 }
 
-alias @setupprisma="ap_func_setup_prisma"
+alias apsetupprisma="ap_func_setup_prisma"
 ap_func_setup_prisma() {
-    @logshow "Install [prisma]\n"
+    aplogshow "Install [prisma]\n"
     npm install prisma
 
-    @initprisma
-    if alias @createdirstructprisma &>/dev/null; then
-        @createdirstructprisma
+    apinitprisma
+    if alias apcreatedirstructprisma &>/dev/null; then
+        apcreatedirstructprisma
     fi
 }
 
-alias @rmprisma="ap_func_rm_prisma"
+alias rmprisma="ap_func_rm_prisma"
 ap_func_rm_prisma() {
-    @logshow "Remove [prisma]\n"
+    aplogshow "Remove [prisma]\n"
     npm uninstall -g prisma
 
-    if alias @rmdirstructprisma &>/dev/null; then
-        @rmdirstructprisma
+    if alias rmdirstructprisma &>/dev/null; then
+        rmdirstructprisma
     fi
 
-    if alias @rmglobalsymlinkprisma &>/dev/null; then
-        @rmglobalsymlinkprisma
+    if alias rmglobalsymlinkprisma &>/dev/null; then
+        rmglobalsymlinkprisma
     fi
 }
 

@@ -1,40 +1,40 @@
-alias @initsqlite="ap_func_init_sqlite"
+alias apinitsqlite="ap_func_init_sqlite"
 ap_func_init_sqlite() {
-    if alias @initsqliteshare &>/dev/null; then
-        @initsqliteshare
+    if alias apinitsqliteshare &>/dev/null; then
+        apinitsqliteshare
     fi
 
-    if alias @initsqlitecommon &>/dev/null; then
-        @initsqlitecommon
+    if alias apinitsqlitecommon &>/dev/null; then
+        apinitsqlitecommon
     fi
 }
 
-alias @createdirstructsqlite="ap_func_create_dirstruct_sqlite"
+alias apcreatedirstructsqlite="ap_func_create_dirstruct_sqlite"
 ap_func_create_dirstruct_sqlite() {
-    if alias @createdirstructsqliteshare &>/dev/null; then
-        @createdirstructsqliteshare
+    if alias apcreatedirstructsqliteshare &>/dev/null; then
+        apcreatedirstructsqliteshare
     fi
 
-    if alias @createdirstructsqlitecommon &>/dev/null; then
-        @createdirstructsqlitecommon
+    if alias apcreatedirstructsqlitecommon &>/dev/null; then
+        apcreatedirstructsqlitecommon
     fi
 }
 
-alias @rmdirstructsqlite="ap_func_rm_dirstruct_sqlite"
+alias rmdirstructsqlite="ap_func_rm_dirstruct_sqlite"
 ap_func_rm_dirstruct_sqlite() {
-    if alias @rmdirstructsqliteshare &>/dev/null; then
-        @rmdirstructsqliteshare
+    if alias rmdirstructsqliteshare &>/dev/null; then
+        rmdirstructsqliteshare
     fi
 
-    if alias @rmdirstructsqlitecommon &>/dev/null; then
-        @rmdirstructsqlitecommon
+    if alias rmdirstructsqlitecommon &>/dev/null; then
+        rmdirstructsqlitecommon
     fi
 }
 
-alias @setupsqlite="ap_func_setup_sqlite"
+alias apsetupsqlite="ap_func_setup_sqlite"
 ap_func_setup_sqlite() {
     # https://sqlite.org/download.html
-    @logshow "Install [sqlite]\n"
+    aplogshow "Install [sqlite]\n"
 
     # brew install sqlite
     local ap_os_type="osx"
@@ -53,23 +53,23 @@ ap_func_setup_sqlite() {
     cd "${AP_SOFT_DIR}"
     mv "${AP_TMP_DIR}/sqlite" "${AP_SOFT_DIR}/"
 
-    @initsqlite
-    if alias @createdirstructsqlite &>/dev/null; then
-        @createdirstructsqlite
+    apinitsqlite
+    if alias apcreatedirstructsqlite &>/dev/null; then
+        apcreatedirstructsqlite
     fi
 }
 
-alias @rmsqlite="ap_func_rm_sqlite"
+alias rmsqlite="ap_func_rm_sqlite"
 ap_func_rm_sqlite() {
-    @logshow "Remove [sqlite]\n"
+    aplogshow "Remove [sqlite]\n"
     # brew uninstall sqlite
     rm -rf "${AP_SOFT_DIR}/sqlite"
 
-    if alias @rmdirstructsqlite &>/dev/null; then
-        @rmdirstructsqlite
+    if alias rmdirstructsqlite &>/dev/null; then
+        rmdirstructsqlite
     fi
 
-    if alias @rmglobalsymlinksqlite &>/dev/null; then
-        @rmglobalsymlinksqlite
+    if alias rmglobalsymlinksqlite &>/dev/null; then
+        rmglobalsymlinksqlite
     fi
 }

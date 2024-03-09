@@ -1,4 +1,4 @@
-alias @initexa="ap_func_init_exa"
+alias apinitexa="ap_func_init_exa"
 ap_func_init_exa() {
     alias @exa="exa -a --long --header --icons --group --group-directories-first"
     alias l="@exa --all"
@@ -10,86 +10,86 @@ ap_func_init_exa() {
     alias ld3="@exa --tree --level 3 -D"
     alias lgit="@exa --all --git"
 
-    if alias @initexashare &>/dev/null; then
-        @initexashare
+    if alias apinitexashare &>/dev/null; then
+        apinitexashare
     fi
 
-    if alias @initexacommon &>/dev/null; then
-        @initexacommon
+    if alias apinitexacommon &>/dev/null; then
+        apinitexacommon
     fi
 }
 
-alias @createdirstructexa="ap_func_create_dirstruct_exa"
+alias apcreatedirstructexa="ap_func_create_dirstruct_exa"
 ap_func_create_dirstruct_exa() {
-    @logshow "Create symlink from [${AP_SOFT_DIR}/bin/exa] to [${AP_SOFT_DIR}/exa/bin/exa]\n"
+    aplogshow "Create symlink from [${AP_SOFT_DIR}/bin/exa] to [${AP_SOFT_DIR}/exa/bin/exa]\n"
     ln -sf "${AP_SOFT_DIR}/exa/bin/exa" "${AP_SOFT_DIR}/bin/exa"
 
-    @logshow "Create symlink from [${AP_COMPLETIONS_DIR}/ap_completion_exa.bash] to [${AP_SOFT_DIR}/exa/completions/exa.bash]\n"
+    aplogshow "Create symlink from [${AP_COMPLETIONS_DIR}/ap_completion_exa.bash] to [${AP_SOFT_DIR}/exa/completions/exa.bash]\n"
     ln -sf "${AP_SOFT_DIR}/exa/completions/exa.bash" "${AP_COMPLETIONS_DIR}/ap_completion_exa.bash"
 
-    @logshow "Create symlink from [${AP_MAN_DIR}/man1/exa.1] to [${AP_SOFT_DIR}/exa/exa.1]\n"
+    aplogshow "Create symlink from [${AP_MAN_DIR}/man1/exa.1] to [${AP_SOFT_DIR}/exa/exa.1]\n"
     ln -sf "${AP_SOFT_DIR}/exa/man/exa.1" "${AP_MAN_DIR}/man1/exa.1"
 
-    @logshow "Create symlink from [${AP_MAN_DIR}/man5/exa_colors.5] to [${AP_SOFT_DIR}/exa/man/exa_colors.5]\n"
+    aplogshow "Create symlink from [${AP_MAN_DIR}/man5/exa_colors.5] to [${AP_SOFT_DIR}/exa/man/exa_colors.5]\n"
     ln -sf "${AP_SOFT_DIR}/exa/man/exa_colors.5" "${AP_MAN_DIR}/man5/exa_colors.5"
 
-    if alias @createdirstructexashare &>/dev/null; then
-        @createdirstructexashare
+    if alias apcreatedirstructexashare &>/dev/null; then
+        apcreatedirstructexashare
     fi
 
-    if alias @createdirstructexacommon &>/dev/null; then
-        @createdirstructexacommon
+    if alias apcreatedirstructexacommon &>/dev/null; then
+        apcreatedirstructexacommon
     fi
 
 }
 
-alias @rmdirstructexa="ap_func_rm_dirstruct_exa"
+alias rmdirstructexa="ap_func_rm_dirstruct_exa"
 ap_func_rm_dirstruct_exa() {
-    @logshow "Remove [${AP_SOFT_DIR}/bin/exa]\n"
+    aplogshow "Remove [${AP_SOFT_DIR}/bin/exa]\n"
     rm -f "${AP_SOFT_DIR}/bin/exa"
 
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_exa.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_exa.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_exa.bash"
 
-    @logshow "Remove [${AP_MAN_DIR}/man1/exa.1]\n"
+    aplogshow "Remove [${AP_MAN_DIR}/man1/exa.1]\n"
     rm -f "${AP_MAN_DIR}/man1/exa.1"
 
-    @logshow "Remove [${AP_MAN_DIR}/man5/exa_colors.5]\n"
+    aplogshow "Remove [${AP_MAN_DIR}/man5/exa_colors.5]\n"
     rm -f "${AP_MAN_DIR}/man5/exa_colors.5"
 
-    if alias @rmdirstructexashare &>/dev/null; then
-        @rmdirstructexashare
+    if alias rmdirstructexashare &>/dev/null; then
+        rmdirstructexashare
     fi
 
-    if alias @rmdirstructexacommon &>/dev/null; then
-        @rmdirstructexacommon
+    if alias rmdirstructexacommon &>/dev/null; then
+        rmdirstructexacommon
     fi
 }
 
 alias @createglobalsymlinkexa="ap_func_create_global_symlink_exa"
 ap_func_create_global_symlink_exa() {
     if [ -f "${AP_SOFT_DIR}/bin/exa" ]; then
-        @logshow "Create symlink from [/usr/local/bin/exa] to [${AP_SOFT_DIR}/bin/exa]\n"
+        aplogshow "Create symlink from [/usr/local/bin/exa] to [${AP_SOFT_DIR}/bin/exa]\n"
         sudo ln -sf "${AP_SOFT_DIR}/bin/exa" "/usr/local/bin/exa"
     fi
 }
 
-alias @rmglobalsymlinkexa="ap_func_rm_global_symlink_exa"
+alias rmglobalsymlinkexa="ap_func_rm_global_symlink_exa"
 ap_func_rm_global_symlink_exa() {
     if [ -f "/usr/local/bin/exa" ]; then
-        @logshow "Remove [/usr/local/bin/exa]\n"
+        aplogshow "Remove [/usr/local/bin/exa]\n"
         sudo rm -f "/usr/local/bin/exa"
     fi
 }
 
-alias @setupexa="ap_func_setup_exa"
+alias apsetupexa="ap_func_setup_exa"
 ap_func_setup_exa() {
     # https://github.com/ogham/exa
     # https://pandoc.org
     # https://github.com/rust-lang/git2-rs
     # https://github.com/casey/just
     # Dependencies: just (rust), pandoc, libgit2 (rust), git-delta (rust)
-    @logshow "Install [exa]\n"
+    aplogshow "Install [exa]\n"
 
     # Remove old app dir if any
     rm -rf "${AP_SOFT_DIR}/exa"
@@ -109,23 +109,23 @@ ap_func_setup_exa() {
     unzip exa.zip
     rm -f exa.zip
 
-    @initexa
+    apinitexa
 
-    if alias @createdirstructexa &>/dev/null; then
-        @createdirstructexa
+    if alias apcreatedirstructexa &>/dev/null; then
+        apcreatedirstructexa
     fi
 }
 
-alias @rmexa="ap_func_rm_exa"
+alias rmexa="ap_func_rm_exa"
 ap_func_rm_exa() {
-    @logshow "Remove [exa]\n"
+    aplogshow "Remove [exa]\n"
     rm -rf "${AP_SOFT_DIR}/exa"
 
-    if alias @rmdirstructexa &>/dev/null; then
-        @rmdirstructexa
+    if alias rmdirstructexa &>/dev/null; then
+        rmdirstructexa
     fi
 
-    if alias @rmglobalsymlinkexa &>/dev/null; then
-        @rmglobalsymlinkexa
+    if alias rmglobalsymlinkexa &>/dev/null; then
+        rmglobalsymlinkexa
     fi
 }

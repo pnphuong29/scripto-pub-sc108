@@ -1,42 +1,42 @@
-alias @initredis="ap_func_init_redis"
+alias apinitredis="ap_func_init_redis"
 ap_func_init_redis() {
-    if alias @initredisshare &>/dev/null; then
-        @initredisshare
+    if alias apinitredisshare &>/dev/null; then
+        apinitredisshare
     fi
 
-    if alias @initrediscommon &>/dev/null; then
-        @initrediscommon
+    if alias apinitrediscommon &>/dev/null; then
+        apinitrediscommon
     fi
 }
 
-alias @createdirstructredis="ap_func_create_dirstruct_redis"
+alias apcreatedirstructredis="ap_func_create_dirstruct_redis"
 ap_func_create_dirstruct_redis() {
-    if alias @createdirstructredisshare &>/dev/null; then
-        @createdirstructredisshare
+    if alias apcreatedirstructredisshare &>/dev/null; then
+        apcreatedirstructredisshare
     fi
 
-    if alias @createdirstructrediscommon &>/dev/null; then
-        @createdirstructrediscommon
+    if alias apcreatedirstructrediscommon &>/dev/null; then
+        apcreatedirstructrediscommon
     fi
 }
 
-alias @rmdirstructredis="ap_func_rm_dirstruct_redis"
+alias rmdirstructredis="ap_func_rm_dirstruct_redis"
 ap_func_rm_dirstruct_redis() {
-    if alias @rmdirstructredisshare &>/dev/null; then
-        @rmdirstructredisshare
+    if alias rmdirstructredisshare &>/dev/null; then
+        rmdirstructredisshare
     fi
 
-    if alias @rmdirstructrediscommon &>/dev/null; then
-        @rmdirstructrediscommon
+    if alias rmdirstructrediscommon &>/dev/null; then
+        rmdirstructrediscommon
     fi
 }
 
-alias @setupredis="ap_func_setup_redis"
+alias apsetupredis="ap_func_setup_redis"
 ap_func_setup_redis() {
     # https://redis.io/docs/getting-started/installation/install-redis-on-linux/
     # https://redis.io/docs/getting-started/installation/install-redis-from-source/
     # https://redis.io/docs/getting-started/
-    @logshow "Install [Redis]\n"
+    aplogshow "Install [Redis]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install redis
@@ -54,15 +54,15 @@ ap_func_setup_redis() {
         sudo systemctl start redis-server
     fi
 
-    @initredis
-    if alias @createdirstructredis &>/dev/null; then
-        @createdirstructredis
+    apinitredis
+    if alias apcreatedirstructredis &>/dev/null; then
+        apcreatedirstructredis
     fi
 }
 
-alias @rmredis="ap_func_rm_redis"
+alias rapshowmsgredis="ap_func_rm_redis"
 ap_func_rm_redis() {
-    @logshow "Remove [redis]\n"
+    aplogshow "Remove [redis]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew uninstall redis
@@ -71,8 +71,8 @@ ap_func_rm_redis() {
         sudo apt autoremove -y
     fi
 
-    if alias @rmdirstructredis &>/dev/null; then
-        @rmdirstructredis
+    if alias rmdirstructredis &>/dev/null; then
+        rmdirstructredis
     fi
 }
 
@@ -89,5 +89,5 @@ ap_func_get_redis_passwd() {
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         printf "%s" "$(sudo grep ^requirepass /etc/redis/redis.conf | awk '{print $2}')"
     fi
-    @rtn_success
+    aprtn_success
 }

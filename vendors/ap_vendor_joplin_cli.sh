@@ -1,82 +1,82 @@
-alias @initjoplincli="ap_func_init_joplin_cli"
+alias apinitjoplincli="ap_func_init_joplin_cli"
 ap_func_init_joplin_cli() {
-    if alias @initjoplinclishare &>/dev/null; then
-        @initjoplinclishare
+    if alias apinitjoplinclishare &>/dev/null; then
+        apinitjoplinclishare
     fi
 
-    if alias @initjoplinclicommon &>/dev/null; then
-        @initjoplinclicommon
+    if alias apinitjoplinclicommon &>/dev/null; then
+        apinitjoplinclicommon
     fi
 }
 
-alias @createdirstructjoplincli="ap_func_create_dirstruct_joplincli"
+alias apcreatedirstructjoplincli="ap_func_create_dirstruct_joplincli"
 ap_func_create_dirstruct_joplincli() {
-    if alias @createdirstructjoplinclishare &>/dev/null; then
-        @createdirstructjoplinclishare
+    if alias apcreatedirstructjoplinclishare &>/dev/null; then
+        apcreatedirstructjoplinclishare
     fi
 
-    if alias @createdirstructjoplinclicommon &>/dev/null; then
-        @createdirstructjoplinclicommon
+    if alias apcreatedirstructjoplinclicommon &>/dev/null; then
+        apcreatedirstructjoplinclicommon
     fi
 }
 
-alias @rmdirstructjoplincli="ap_func_rm_dirstruct_joplincli"
+alias rmdirstructjoplincli="ap_func_rm_dirstruct_joplincli"
 ap_func_rm_dirstruct_joplincli() {
-    if alias @rmdirstructjoplinclishare &>/dev/null; then
-        @rmdirstructjoplinclishare
+    if alias rmdirstructjoplinclishare &>/dev/null; then
+        rmdirstructjoplinclishare
     fi
 
-    if alias @rmdirstructjoplinclicommon &>/dev/null; then
-        @rmdirstructjoplinclicommon
+    if alias rmdirstructjoplinclicommon &>/dev/null; then
+        rmdirstructjoplinclicommon
     fi
 }
 
-alias @setupjoplincli="ap_func_setup_joplin_cli"
+alias apsetupjoplincli="ap_func_setup_joplin_cli"
 ap_func_setup_joplin_cli() {
-    @logshow "Install [Joplin cli]\n"
+    aplogshow "Install [Joplin cli]\n"
     npm -g install joplin
 
-    @initjoplincli
-    if alias @createdirstructjoplincli &>/dev/null; then
-        @createdirstructjoplincli
+    apinitjoplincli
+    if alias apcreatedirstructjoplincli &>/dev/null; then
+        apcreatedirstructjoplincli
     fi
 }
 
-alias @setupjoplinclibun="ap_func_setup_joplin_cli_bun"
+alias apsetupjoplinclibun="ap_func_setup_joplin_cli_bun"
 ap_func_setup_joplin_cli_bun() {
-    @logshow "Install [Joplin cli]\n"
+    aplogshow "Install [Joplin cli]\n"
     bun -g install joplin
 
-    @initjoplincli
-    if alias @createdirstructjoplincli &>/dev/null; then
-        @createdirstructjoplincli
+    apinitjoplincli
+    if alias apcreatedirstructjoplincli &>/dev/null; then
+        apcreatedirstructjoplincli
     fi
 }
 
-alias @rmjoplincli="ap_func_rm_joplin_cli"
+alias rmjoplincli="ap_func_rm_joplin_cli"
 ap_func_rm_joplin_cli() {
-    @logshow "Remove [joplin_cli]\n"
+    aplogshow "Remove [joplin_cli]\n"
     npm -g uninstall joplin
 
-    if alias @rmdirstructjoplincli &>/dev/null; then
-        @rmdirstructjoplincli
+    if alias rmdirstructjoplincli &>/dev/null; then
+        rmdirstructjoplincli
     fi
 
-    if alias @rmglobalsymlinkjoplincli &>/dev/null; then
-        @rmglobalsymlinkjoplincli
+    if alias rmglobalsymlinkjoplincli &>/dev/null; then
+        rmglobalsymlinkjoplincli
     fi
 }
 
-alias @rmjoplinclibun="ap_func_rm_joplin_cli_bun"
+alias rmjoplinclibun="ap_func_rm_joplin_cli_bun"
 ap_func_rm_joplin_cli_bun() {
-    @logshow "Remove [joplin_cli]\n"
+    aplogshow "Remove [joplin_cli]\n"
     bun -g uninstall joplin
 
-    if alias @rmdirstructjoplincli &>/dev/null; then
-        @rmdirstructjoplincli
+    if alias rmdirstructjoplincli &>/dev/null; then
+        rmdirstructjoplincli
     fi
 
-    if alias @rmglobalsymlinkjoplincli &>/dev/null; then
-        @rmglobalsymlinkjoplincli
+    if alias rmglobalsymlinkjoplincli &>/dev/null; then
+        rmglobalsymlinkjoplincli
     fi
 }

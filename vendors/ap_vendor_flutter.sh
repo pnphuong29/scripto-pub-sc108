@@ -1,52 +1,52 @@
-alias @initflutter="ap_func_init_flutter"
+alias apinitflutter="ap_func_init_flutter"
 ap_func_init_flutter() {
-    @addpath "${AP_SOFT_DIR}/flutter/bin"
+    apaddpath "${AP_SOFT_DIR}/flutter/bin"
 
-    if alias @initfluttershare &>/dev/null; then
-        @initfluttershare
+    if alias apinitfluttershare &>/dev/null; then
+        apinitfluttershare
     fi
 
-    if alias @initfluttercommon &>/dev/null; then
-        @initfluttercommon
+    if alias apinitfluttercommon &>/dev/null; then
+        apinitfluttercommon
     fi
 }
 
-alias @createdirstructflutter="ap_func_create_dirstruct_flutter"
+alias apcreatedirstructflutter="ap_func_create_dirstruct_flutter"
 ap_func_create_dirstruct_flutter() {
-    @logshow "Generate [Flutter] bash autocomplete\n"
+    aplogshow "Generate [Flutter] bash autocomplete\n"
     flutter bash-completion >"${AP_COMPLETIONS_DIR}/ap_completion_flutter.bash"
 
-    if alias @createdirstructfluttershare &>/dev/null; then
-        @createdirstructfluttershare
+    if alias apcreatedirstructfluttershare &>/dev/null; then
+        apcreatedirstructfluttershare
     fi
 
-    if alias @createdirstructfluttercommon &>/dev/null; then
-        @createdirstructfluttercommon
+    if alias apcreatedirstructfluttercommon &>/dev/null; then
+        apcreatedirstructfluttercommon
     fi
 }
 
-alias @rmdirstructflutter="ap_func_rm_dirstruct_flutter"
+alias rmdirstructflutter="ap_func_rm_dirstruct_flutter"
 ap_func_rm_dirstruct_flutter() {
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_flutter.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_flutter.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_flutter.bash"
 
-    if alias @rmdirstructfluttershare &>/dev/null; then
-        @rmdirstructfluttershare
+    if alias rmdirstructfluttershare &>/dev/null; then
+        rmdirstructfluttershare
     fi
 
-    if alias @rmdirstructfluttercommon &>/dev/null; then
-        @rmdirstructfluttercommon
+    if alias rmdirstructfluttercommon &>/dev/null; then
+        rmdirstructfluttercommon
     fi
 }
 
-alias @setupflutter="ap_func_setup_flutter"
+alias apsetupflutter="ap_func_setup_flutter"
 ap_func_setup_flutter() {
     local ap_flutter_setup_version='3.16.9'
     if [ -n "$1" ]; then
         ap_flutter_setup_version="$1"
     fi
 
-    @logshow "Install [Flutter] v${ap_flutter_setup_version}\n"
+    aplogshow "Install [Flutter] v${ap_flutter_setup_version}\n"
 
     # Remove old app dir if any
     rm -rf "${AP_SOFT_DIR}/flutter"
@@ -72,22 +72,22 @@ ap_func_setup_flutter() {
     cd "${AP_SOFT_DIR}/flutter"
     rm -rf "${AP_TMP_DIR}/flutter"
 
-    @initflutter
-    if alias @createdirstructflutter &>/dev/null; then
-        @createdirstructflutter
+    apinitflutter
+    if alias apcreatedirstructflutter &>/dev/null; then
+        apcreatedirstructflutter
     fi
 }
 
-alias @rmflutter="ap_func_rm_flutter"
+alias rmflutter="ap_func_rm_flutter"
 ap_func_rm_flutter() {
-    @logshow "Remove [flutter]\n"
+    aplogshow "Remove [flutter]\n"
     rm -rf "${AP_SOFT_DIR}/flutter"
 
-    if alias @rmdirstructflutter &>/dev/null; then
-        @rmdirstructflutter
+    if alias rmdirstructflutter &>/dev/null; then
+        rmdirstructflutter
     fi
 
-    if alias @rmglobalsymlinkflutter &>/dev/null; then
-        @rmglobalsymlinkflutter
+    if alias rmglobalsymlinkflutter &>/dev/null; then
+        rmglobalsymlinkflutter
     fi
 }

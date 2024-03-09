@@ -1,45 +1,45 @@
-alias @initpipx="ap_func_init_pipx"
+alias apinitpipx="ap_func_init_pipx"
 ap_func_init_pipx() {
-    if alias @initpipxshare &>/dev/null; then
-        @initpipxshare
+    if alias apinitpipxshare &>/dev/null; then
+        apinitpipxshare
     fi
 
-    if alias @initpipxcommon &>/dev/null; then
-        @initpipxcommon
+    if alias apinitpipxcommon &>/dev/null; then
+        apinitpipxcommon
     fi
 }
 
-alias @createdirstructpipx="ap_func_create_dirstruct_pipx"
+alias apcreatedirstructpipx="ap_func_create_dirstruct_pipx"
 ap_func_create_dirstruct_pipx() {
-    @logshow "Generate [pipx] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_pipx.bash]\n"
+    aplogshow "Generate [pipx] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_pipx.bash]\n"
     register-python-argcomplete pipx >"${AP_COMPLETIONS_DIR}/ap_completion_pipx.bash"
 
-    if alias @createdirstructpipxshare &>/dev/null; then
-        @createdirstructpipxshare
+    if alias apcreatedirstructpipxshare &>/dev/null; then
+        apcreatedirstructpipxshare
     fi
 
-    if alias @createdirstructpipxcommon &>/dev/null; then
-        @createdirstructpipxcommon
+    if alias apcreatedirstructpipxcommon &>/dev/null; then
+        apcreatedirstructpipxcommon
     fi
 }
 
-alias @rmdirstructpipx="ap_func_rm_dirstruct_pipx"
+alias rmdirstructpipx="ap_func_rm_dirstruct_pipx"
 ap_func_rm_dirstruct_pipx() {
-    @logshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_pipx.bash]\n"
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_pipx.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_pipx.bash"
 
-    if alias @rmdirstructpipxshare &>/dev/null; then
-        @rmdirstructpipxshare
+    if alias rmdirstructpipxshare &>/dev/null; then
+        rmdirstructpipxshare
     fi
 
-    if alias @rmdirstructpipxcommon &>/dev/null; then
-        @rmdirstructpipxcommon
+    if alias rmdirstructpipxcommon &>/dev/null; then
+        rmdirstructpipxcommon
     fi
 }
 
-alias @setuppipx="ap_func_setup_pipx"
+alias apsetuppipx="ap_func_setup_pipx"
 ap_func_setup_pipx() {
-    @logshow "Install [pipx]\n"
+    aplogshow "Install [pipx]\n"
 
     # if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
     #     brew install pipx
@@ -51,15 +51,15 @@ ap_func_setup_pipx() {
     pip install --user pipx
     pipx ensurepath
 
-    @initpipx
-    if alias @createdirstructpipx &>/dev/null; then
-        @createdirstructpipx
+    apinitpipx
+    if alias apcreatedirstructpipx &>/dev/null; then
+        apcreatedirstructpipx
     fi
 }
 
-alias @rmpipx="ap_func_rm_pipx"
+alias rmpipx="ap_func_rm_pipx"
 ap_func_rm_pipx() {
-    @logshow "Remove [pipx]\n"
+    aplogshow "Remove [pipx]\n"
 
     # if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
     #     brew remove pipx
@@ -69,11 +69,11 @@ ap_func_rm_pipx() {
 
     pip uninstall --user pipx
 
-    if alias @rmdirstructpipx &>/dev/null; then
-        @rmdirstructpipx
+    if alias rmdirstructpipx &>/dev/null; then
+        rmdirstructpipx
     fi
 
-    if alias @rmglobalsymlinkpipx &>/dev/null; then
-        @rmglobalsymlinkpipx
+    if alias rmglobalsymlinkpipx &>/dev/null; then
+        rmglobalsymlinkpipx
     fi
 }
