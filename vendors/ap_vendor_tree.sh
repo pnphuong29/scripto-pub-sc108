@@ -50,7 +50,7 @@ ap_func_rm_dirstruct_tree() {
     fi
 }
 
-alias @createglobalsymlinktree="ap_func_create_global_symlink_tree"
+alias apcreateglobalsymlinktree="ap_func_create_global_symlink_tree"
 ap_func_create_global_symlink_tree() {
     if [ -f "${AP_SOFT_DIR}/bin/tree" ]; then
         aplogshow "Create symlink from [/usr/local/bin/tree] to [${AP_SOFT_DIR}/bin/tree]\n"

@@ -31,7 +31,7 @@ ap_func_rm_dirstruct_lf() {
     fi
 }
 
-alias @createglobalsymlinklf="ap_func_create_global_symlink_lf"
+alias apcreateglobalsymlinklf="ap_func_create_global_symlink_lf"
 ap_func_create_global_symlink_lf() {
     if [ -f "${GOPATH}/bin/lf" ]; then
         aplogshow "Create symlink from [/usr/local/bin/lf] to [${GOPATH}/bin/lf]\n"

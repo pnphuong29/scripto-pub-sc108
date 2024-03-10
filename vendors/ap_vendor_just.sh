@@ -31,7 +31,7 @@ ap_func_rm_dirstruct_just() {
     fi
 }
 
-alias @createglobalsymlinkjust="ap_func_create_global_symlink_just"
+alias apcreateglobalsymlinkjust="ap_func_create_global_symlink_just"
 ap_func_create_global_symlink_just() {
     if [ -f "${AP_SOFT_DIR}/bin/just" ]; then
         aplogshow "Create symlink from [/usr/local/bin/just] to [${AP_SOFT_DIR}/bin/just]\n"

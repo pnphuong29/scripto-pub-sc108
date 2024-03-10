@@ -49,7 +49,7 @@ ap_func_rm_dirstruct_node() {
     fi
 }
 
-alias @createglobalsymlinknode="ap_func_create_global_symlink_node"
+alias apcreateglobalsymlinknode="ap_func_create_global_symlink_node"
 ap_func_create_global_symlink_node() {
     local ap_path
     ap_path="$(nvm which node | cut -d ' ' -f 3)"

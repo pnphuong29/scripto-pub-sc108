@@ -31,7 +31,7 @@ ap_func_rm_dirstruct_xcp() {
     fi
 }
 
-alias @createglobalsymlinkxcp="ap_func_create_global_symlink_xcp"
+alias apcreateglobalsymlinkxcp="ap_func_create_global_symlink_xcp"
 ap_func_create_global_symlink_xcp() {
     if [ -f "${HOME}/.cargo/bin/xcp" ]; then
         aplogshow "Create symlink from [/usr/local/bin/xcp] to [${HOME}/.cargo/bin/xcp]\n"

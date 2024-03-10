@@ -33,7 +33,7 @@ ap_func_rm_dirstruct_fzf() {
     fi
 }
 
-alias @createglobalsymlinkfzf="ap_func_create_global_symlink_fzf"
+alias apcreateglobalsymlinkfzf="ap_func_create_global_symlink_fzf"
 ap_func_create_global_symlink_fzf() {
     if [ -f "${HOME}/.fzf/bin/fzf" ]; then
         aplogshow "Create symlink from [/usr/local/bin/fzf] to [${HOME}/.fzf/bin/fzf]\n"

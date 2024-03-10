@@ -1,4 +1,4 @@
-alias @createglobalsymlinkdiskus="ap_func_create_global_symlink_diskus"
+alias apcreateglobalsymlinkdiskus="ap_func_create_global_symlink_diskus"
 ap_func_create_global_symlink_diskus() {
     if [ -f "${HOME}/.cargo/bin/diskus" ]; then
         aplogshow "Create symlink from [/usr/local/bin/diskus] to [${HOME}/.cargo/bin/diskus]\n"

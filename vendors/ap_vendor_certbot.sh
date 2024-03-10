@@ -36,7 +36,7 @@ ap_func_rm_dirstruct_certbot() {
     fi
 }
 
-alias @createglobalsymlinkcertbot="ap_func_create_global_symlink_certbot"
+alias apcreateglobalsymlinkcertbot="ap_func_create_global_symlink_certbot"
 ap_func_create_global_symlink_certbot() {
     if [ -f "/usr/bin/certbot" ]; then
         aplogshow "Create symlink from [/snap/bin/certbot] to [/usr/bin/certbot]\n"
@@ -69,8 +69,8 @@ ap_func_setup_certbot() {
         apcreatedirstructcertbot
     fi
 
-    if alias @createglobalsymlinkcertbot &>/dev/null; then
-        @createglobalsymlinkcertbot
+    if alias apcreateglobalsymlinkcertbot &>/dev/null; then
+        apcreateglobalsymlinkcertbot
     fi
 }
 

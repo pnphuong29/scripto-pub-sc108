@@ -31,7 +31,7 @@ ap_func_rm_dirstruct_mycli() {
     fi
 }
 
-alias @createglobalsymlinkmycli="ap_func_create_global_symlink_mycli"
+alias apcreateglobalsymlinkmycli="ap_func_create_global_symlink_mycli"
 ap_func_create_global_symlink_mycli() {
     if [ -f "${AP_SOFT_DIR}/bin/mycli" ]; then
         aplogshow "Create symlink from [/usr/local/bin/mycli] to [${AP_SOFT_DIR}/bin/mycli]\n"

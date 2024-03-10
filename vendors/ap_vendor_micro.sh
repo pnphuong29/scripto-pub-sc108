@@ -37,7 +37,7 @@ ap_func_rm_dirstruct_micro() {
     fi
 }
 
-alias @createglobalsymlinkmicro="ap_func_create_global_symlink_micro"
+alias apcreateglobalsymlinkmicro="ap_func_create_global_symlink_micro"
 ap_func_create_global_symlink_micro() {
     if [ -f "${AP_SOFT_DIR}/bin/micro" ]; then
         aplogshow "Create symlink from [/usr/local/bin/micro] to [${AP_SOFT_DIR}/bin/micro]\n"
@@ -67,8 +67,8 @@ ap_func_setup_micro() {
         apcreatedirstructmicro
     fi
 
-    if alias @createglobalsymlinkmicro &>/dev/null; then
-        @createglobalsymlinkmicro
+    if alias apcreateglobalsymlinkmicro &>/dev/null; then
+        apcreateglobalsymlinkmicro
     fi
 }
 

@@ -59,7 +59,7 @@ ap_func_rm_dirstruct_fd() {
     fi
 }
 
-alias @createglobalsymlinkfd="ap_func_create_global_symlink_fd"
+alias apcreateglobalsymlinkfd="ap_func_create_global_symlink_fd"
 ap_func_create_global_symlink_fd() {
     if [ -f "${AP_SOFT_DIR}/bin/fd" ]; then
         aplogshow "Create symlink from [/usr/local/bin/fd] to [${AP_SOFT_DIR}/bin/fd]\n"

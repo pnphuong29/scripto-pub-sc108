@@ -157,6 +157,18 @@ apaddpath "${HOME}/scripto-main/tests"
 
 apaddpath "${HOME}/scripto-data/software/bin"
 
+# homebrew
+if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
+    if [[ "$(uname -m)" == 'arm64' ]]; then
+        apaddpath /opt/homebrew/bin
+        apaddpath /opt/homebrew/sbin
+    elif [[ "$(uname -m)" == 'x86_64' ]]; then
+        apaddpath /opt/local/bin
+        apaddpath /opt/local/sbin
+        apaddpath /opt/local/libexec/gnubin/
+    fi
+fi
+
 # Make executable files
 [ -d "${HOME}/scripto-share/utils" ] && chmod -R +x "${HOME}/scripto-share/utils"
 [ -d "${HOME}/scripto-share/tests" ] && chmod -R +x "${HOME}/scripto-share/tests"
@@ -169,4 +181,5 @@ apaddpath "${HOME}/scripto-data/software/bin"
 
 # For manpath command to search for man pages located in man directory
 # export MANPATH="${AP_MAN_DIR}:${MANPATH}"
+apaddpath -m /opt/local/share/man
 apaddpath -m "${AP_MAN_DIR}"

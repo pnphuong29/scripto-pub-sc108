@@ -99,7 +99,7 @@ ap_func_rm_dirstruct_pyenv() {
     fi
 }
 
-alias @createglobalsymlinkpyenv="ap_func_create_global_symlink_pyenv"
+alias apcreateglobalsymlinkpyenv="ap_func_create_global_symlink_pyenv"
 ap_func_create_global_symlink_pyenv() {
     local ap_path
 

@@ -59,7 +59,7 @@ ap_func_rm_dirstruct_nvim() {
     fi
 }
 
-alias @createglobalsymlinknvim="ap_func_create_global_symlink_nvim"
+alias apcreateglobalsymlinknvim="ap_func_create_global_symlink_nvim"
 ap_func_create_global_symlink_nvim() {
     if [ -f "${AP_SOFT_DIR}/bin/nvim" ]; then
         aplogshow "Create symlink from [/usr/local/bin/nvim] to [${AP_SOFT_DIR}/bin/nvim]\n"

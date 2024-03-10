@@ -49,7 +49,7 @@ ap_func_rm_dirstruct_ripgrepall() {
     fi
 }
 
-alias @createglobalsymlinkripgrepall="ap_func_create_global_symlink_ripgrepall"
+alias apcreateglobalsymlinkripgrepall="ap_func_create_global_symlink_ripgrepall"
 ap_func_create_global_symlink_ripgrepall() {
     if [ -f "${AP_SOFT_DIR}/ripgrep-all/rga" ]; then
         aplogshow "Create symlink from [/usr/local/bin/rga] to [${AP_SOFT_DIR}/ripgrep-all/rga]\n"

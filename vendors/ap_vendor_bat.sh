@@ -49,7 +49,7 @@ ap_func_rm_dirstruct_bat() {
     fi
 }
 
-alias @createglobalsymlinkbat="ap_func_create_global_symlink_bat"
+alias apcreateglobalsymlinkbat="ap_func_create_global_symlink_bat"
 ap_func_create_global_symlink_bat() {
     if [ -f "${AP_SOFT_DIR}/bat/bat" ]; then
         aplogshow "Create symlink from [/usr/local/bin/bat] to [${AP_SOFT_DIR}/bat/bat]\n"

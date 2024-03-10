@@ -78,7 +78,7 @@ ap_func_rm_dirstruct_ripgrep() {
     fi
 }
 
-alias @createglobalsymlinkripgrep="ap_func_create_global_symlink_ripgrep"
+alias apcreateglobalsymlinkripgrep="ap_func_create_global_symlink_ripgrep"
 ap_func_create_global_symlink_ripgrep() {
     if [ -f "${AP_SOFT_DIR}/bin/rg" ]; then
         aplogshow "Create symlink from [/usr/local/bin/rg] to [${AP_SOFT_DIR}/bin/rg]\n"

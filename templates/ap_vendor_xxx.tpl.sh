@@ -11,11 +11,11 @@ ap_func_init_xxx_common() {
 alias apinitxxx="ap_func_init_xxx"
 ap_func_init_xxx() {
     if alias apinitxxxshare &>/dev/null; then
-        initxxxshare
+        apinitxxxshare
     fi
 
     if alias apinitxxxcommon &>/dev/null; then
-        initxxxcommon
+        apinitxxxcommon
     fi
 }
 
@@ -49,11 +49,11 @@ ap_func_create_dirstruct_xxx() {
     ln -sf "${AP_SOFT_DIR}/xxx/xxx.1" "${AP_MAN_DIR}/man1/xxx.1"
 
     if alias apcreatedirstructxxxshare &>/dev/null; then
-        createdirstructxxxshare
+        apcreatedirstructxxxshare
     fi
 
     if alias apcreatedirstructxxxcommon &>/dev/null; then
-        createdirstructxxxcommon
+        apcreatedirstructxxxcommon
     fi
 }
 
@@ -79,11 +79,11 @@ ap_func_rm_dirstruct_xxx() {
     rm -f "${AP_MAN_DIR}/man1/xxx.1"
 
     if alias aprmdirstructxxxshare &>/dev/null; then
-        rmdirstructxxxshare
+        aprmdirstructxxxshare
     fi
 
     if alias aprmdirstructxxxcommon &>/dev/null; then
-        rmdirstructxxxcommon
+        aprmdirstructxxxcommon
     fi
 }
 
@@ -167,9 +167,9 @@ ap_func_setup_xxx() {
     pip install xxx
     npm install -g xxx
 
-    initxxx
+    apinitxxx
     if alias apcreatedirstructxxx &>/dev/null; then
-        createdirstructxxx
+        apcreatedirstructxxx
     fi
 }
 
@@ -199,10 +199,10 @@ ap_func_rm_xxx() {
     fi
 
     if alias aprmdirstructxxx &>/dev/null; then
-        rmdirstructxxx
+        aprmdirstructxxx
     fi
 
     if alias aprmglobalsymlinkxxx &>/dev/null; then
-        rmglobalsymlinkxxx
+        aprmglobalsymlinkxxx
     fi
 }

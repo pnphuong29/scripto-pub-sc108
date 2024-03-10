@@ -38,7 +38,7 @@ ap_func_rm_dirstruct_php() {
     fi
 }
 
-alias @createglobalsymlinkphp81="ap_func_create_global_symlink_php"
+alias apcreateglobalsymlinkphp81="ap_func_create_global_symlink_php"
 ap_func_create_global_symlink_php() {
     if [ -f "/opt/local/bin/php-config81" ]; then
         aplogshow "Create symlink from [/usr/local/bin/php-config] to [/opt/local/bin/php-config81]\n"

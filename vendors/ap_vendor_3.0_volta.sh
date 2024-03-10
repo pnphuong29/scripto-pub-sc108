@@ -45,7 +45,7 @@ ap_func_rm_dirstruct_volta() {
     fi
 }
 
-alias @createglobalsymlinkvolta="ap_func_create_global_symlink_volta"
+alias apcreateglobalsymlinkvolta="ap_func_create_global_symlink_volta"
 ap_func_create_global_symlink_volta() {
     if [ -f "${AP_SOFT_DIR}/bin/volta" ]; then
         aplogshow "Create symlink from [/usr/local/bin/volta] to [${AP_SOFT_DIR}/bin/volta]\n"

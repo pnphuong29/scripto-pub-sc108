@@ -66,7 +66,7 @@ ap_func_rm_dirstruct_exa() {
     fi
 }
 
-alias @createglobalsymlinkexa="ap_func_create_global_symlink_exa"
+alias apcreateglobalsymlinkexa="ap_func_create_global_symlink_exa"
 ap_func_create_global_symlink_exa() {
     if [ -f "${AP_SOFT_DIR}/bin/exa" ]; then
         aplogshow "Create symlink from [/usr/local/bin/exa] to [${AP_SOFT_DIR}/bin/exa]\n"
