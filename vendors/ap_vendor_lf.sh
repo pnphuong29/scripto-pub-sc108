@@ -1,10 +1,5 @@
 alias apinitlf="ap_func_init_lf"
 ap_func_init_lf() {
-    alias visclf="vi -p \
-        \${HOME}/scripto/ap_vendor_lf.sh \
-        \${HOME}/scripto/vendors/lf/ap_lfrc.conf \
-	"
-
     if alias apinitlfshare &>/dev/null; then
         apinitlfshare
     fi
@@ -16,18 +11,6 @@ ap_func_init_lf() {
 
 alias apcreatedirstructlf="ap_func_create_dirstruct_lf"
 ap_func_create_dirstruct_lf() {
-    # https://github.com/gokcehan/lf/blob/master/doc.md
-    # Link lf config file
-    if [ ! -d "${HOME}/.config/lf" ]; then
-        aplogshow "Create directories [${HOME}/.config/lf]\n"
-        mkdir -p "${HOME}/.config/lf"
-    fi
-
-    if [ -f "${HOME}/scripto/vendors/lf/ap_lfrc.conf" ]; then
-        aplogshow "Create symlink from [${HOME}/.config/lf/lfrc] to [${HOME}/scripto/vendors/lf/ap_lfrc.conf]\n"
-        ln -sf "${HOME}/scripto/vendors/lf/ap_lfrc.conf" "${HOME}/.config/lf/lfrc"
-    fi
-
     if alias apcreatedirstructlfshare &>/dev/null; then
         apcreatedirstructlfshare
     fi
@@ -39,9 +22,6 @@ ap_func_create_dirstruct_lf() {
 
 alias rmdirstructlf="ap_func_rm_dirstruct_lf"
 ap_func_rm_dirstruct_lf() {
-    aplogshow "Remove [${HOME}/.config/lf]\n"
-    rm -rf "${HOME}/.config/lf"
-
     if alias rmdirstructlfshare &>/dev/null; then
         rmdirstructlfshare
     fi

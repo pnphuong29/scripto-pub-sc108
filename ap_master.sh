@@ -155,6 +155,8 @@ apaddpath "${HOME}/scripto-main/utils"
 apaddpath "${HOME}/scripto-common/tests"
 apaddpath "${HOME}/scripto-main/tests"
 
+apaddpath "${HOME}/scripto-data/software/bin"
+
 # Make executable files
 [ -d "${HOME}/scripto-share/utils" ] && chmod -R +x "${HOME}/scripto-share/utils"
 [ -d "${HOME}/scripto-share/tests" ] && chmod -R +x "${HOME}/scripto-share/tests"
