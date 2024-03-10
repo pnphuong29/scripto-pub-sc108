@@ -100,17 +100,17 @@ ap_func_create_dirstruct_django() {
     fi
 }
 
-alias rmdirstructdjango="ap_func_rm_dirstruct_django"
+alias aprmdirstructdjango="ap_func_rm_dirstruct_django"
 ap_func_rm_dirstruct_django() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_django.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_django.bash"
 
-    if alias rmdirstructdjangoshare &>/dev/null; then
-        rmdirstructdjangoshare
+    if alias aprmdirstructdjangoshare &>/dev/null; then
+        aprmdirstructdjangoshare
     fi
 
-    if alias rmdirstructdjangocommon &>/dev/null; then
-        rmdirstructdjangocommon
+    if alias aprmdirstructdjangocommon &>/dev/null; then
+        aprmdirstructdjangocommon
     fi
 }
 
@@ -124,12 +124,12 @@ ap_func_setup_django() {
     fi
 }
 
-alias rmdjango="ap_func_rm_django"
+alias aprmdjango="ap_func_rm_django"
 ap_func_rm_django() {
     aplogshow "Remove [django]\n"
     pip uninstall django
 
-    if alias rmdirstructdjango &>/dev/null; then
-        rmdirstructdjango
+    if alias aprmdirstructdjango &>/dev/null; then
+        aprmdirstructdjango
     fi
 }

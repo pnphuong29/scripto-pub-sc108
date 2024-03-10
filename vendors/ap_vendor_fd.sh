@@ -39,7 +39,7 @@ ap_func_create_dir_struct_fd() {
     fi
 }
 
-alias rmdirstructfd="ap_func_rm_dirstruct_fd"
+alias aprmdirstructfd="ap_func_rm_dirstruct_fd"
 ap_func_rm_dirstruct_fd() {
     aplogshow "Remove [${AP_SOFT_DIR}/bin/fd]\n"
     rm -f "${AP_SOFT_DIR}/bin/fd"
@@ -50,12 +50,12 @@ ap_func_rm_dirstruct_fd() {
     aplogshow "Remove [${AP_MAN_DIR}/man1/fd.1]\n"
     rm -f "${AP_MAN_DIR}/man1/fd.1"
 
-    if alias rmdirstructfdshare &>/dev/null; then
-        rmdirstructfdshare
+    if alias aprmdirstructfdshare &>/dev/null; then
+        aprmdirstructfdshare
     fi
 
-    if alias rmdirstructfdcommon &>/dev/null; then
-        rmdirstructfdcommon
+    if alias aprmdirstructfdcommon &>/dev/null; then
+        aprmdirstructfdcommon
     fi
 }
 
@@ -67,7 +67,7 @@ ap_func_create_global_symlink_fd() {
     fi
 }
 
-alias rmglobalsymlinkfd="ap_func_rm_global_symlink_fd"
+alias aprmglobalsymlinkfd="ap_func_rm_global_symlink_fd"
 ap_func_rm_global_symlink_fd() {
     if [ -f "/usr/local/bin/fd" ]; then
         aplogshow "Remove [/usr/local/bin/fd]\n"
@@ -107,18 +107,18 @@ ap_func_setup_fd() {
     fi
 }
 
-alias rmfd="ap_func_rm_fd"
+alias aprmfd="ap_func_rm_fd"
 ap_func_rm_fd() {
     aplogshow "Remove [fd]\n"
 
     rm -rf "${AP_SOFT_DIR}/fd"
     rm -rf "${HOME}/.config/fd"
 
-    if alias rmdirstructfd &>/dev/null; then
-        rmdirstructfd
+    if alias aprmdirstructfd &>/dev/null; then
+        aprmdirstructfd
     fi
 
-    if alias rmglobalsymlinkfd &>/dev/null; then
+    if alias aprmglobalsymlinkfd &>/dev/null; then
         rmglobalsymlinkfd
     fi
 }

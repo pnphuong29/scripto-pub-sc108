@@ -33,9 +33,9 @@ ap_func_create_dirstruct_vagrant() {
     aplogshow "Generate [vagrant] bash autocomplete\n"
     curl -SL "https://raw.githubusercontent.com/hashicorp/vagrant/main/contrib/bash/completion.sh" >"${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash"
 
-    if ! grep "complete -o default -F _vagrant vg" "${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash" &>/dev/null; then
+    if ! grep "complete -F _vagrant vagrant vg" "${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash" &>/dev/null; then
         echo >>"${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash"
-        echo "complete -o default -F _vagrant vg # vg is an alias of 'vagrant' command" >>"${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash"
+        echo "complete -F _vagrant vagrant vg # vg is an alias of 'vagrant' command" >>"${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash"
     fi
 
     if alias apcreatedirstructvagrantshare &>/dev/null; then
@@ -47,17 +47,17 @@ ap_func_create_dirstruct_vagrant() {
     fi
 }
 
-alias rmdirstructvagrant="ap_func_rm_dirstruct_vagrant"
+alias aprmdirstructvagrant="ap_func_rm_dirstruct_vagrant"
 ap_func_rm_dirstruct_vagrant() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_vagrant.bash"
 
-    if alias rmdirstructvagrantshare &>/dev/null; then
-        rmdirstructvagrantshare
+    if alias aprmdirstructvagrantshare &>/dev/null; then
+        aprmdirstructvagrantshare
     fi
 
-    if alias rmdirstructvagrantcommon &>/dev/null; then
-        rmdirstructvagrantcommon
+    if alias aprmdirstructvagrantcommon &>/dev/null; then
+        aprmdirstructvagrantcommon
     fi
 }
 
@@ -82,7 +82,7 @@ ap_func_setup_vagrant() {
     fi
 }
 
-alias rmvagrant="ap_func_rm_vagrant"
+alias aprmvagrant="ap_func_rm_vagrant"
 ap_func_rm_vagrant() {
     aplogshow "Remove [vagrant]\n"
 
@@ -96,11 +96,11 @@ ap_func_rm_vagrant() {
 
     rm -rf "${HOME}/.vagrant.d"
 
-    if alias rmdirstructvagrant &>/dev/null; then
-        rmdirstructvagrant
+    if alias aprmdirstructvagrant &>/dev/null; then
+        aprmdirstructvagrant
     fi
 
-    if alias rmglobalsymlinkvagrant &>/dev/null; then
+    if alias aprmglobalsymlinkvagrant &>/dev/null; then
         rmglobalsymlinkvagrant
     fi
 }

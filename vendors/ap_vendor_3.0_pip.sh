@@ -26,7 +26,7 @@ ap_func_create_dirstruct_pip() {
     fi
 }
 
-alias rmdirstructpip="ap_func_rm_dirstruct_pip"
+alias aprmdirstructpip="ap_func_rm_dirstruct_pip"
 ap_func_rm_dirstruct_pip() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_pip.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_pip.bash"
@@ -34,11 +34,11 @@ ap_func_rm_dirstruct_pip() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_pip3.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_pip3.bash"
 
-    if alias rmdirstructpipshare &>/dev/null; then
-        rmdirstructpipshare
+    if alias aprmdirstructpipshare &>/dev/null; then
+        aprmdirstructpipshare
     fi
 
-    if alias rmdirstructpipcommon &>/dev/null; then
-        rmdirstructpipcommon
+    if alias aprmdirstructpipcommon &>/dev/null; then
+        aprmdirstructpipcommon
     fi
 }

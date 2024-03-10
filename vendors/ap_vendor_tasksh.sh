@@ -23,17 +23,17 @@ ap_func_create_dirstruct_tasksh() {
     fi
 }
 
-alias rmdirstructtasksh="ap_func_rm_dirstruct_tasksh"
+alias aprmdirstructtasksh="ap_func_rm_dirstruct_tasksh"
 ap_func_rm_dirstruct_tasksh() {
     aplogshow "Remove [${AP_SOFT_DIR}/bin/tasksh]\n"
     rm -f "${AP_SOFT_DIR}/bin/tasksh"
 
-    if alias rmdirstructtaskshshare &>/dev/null; then
-        rmdirstructtaskshshare
+    if alias aprmdirstructtaskshshare &>/dev/null; then
+        aprmdirstructtaskshshare
     fi
 
-    if alias rmdirstructtaskshcommon &>/dev/null; then
-        rmdirstructtaskshcommon
+    if alias aprmdirstructtaskshcommon &>/dev/null; then
+        aprmdirstructtaskshcommon
     fi
 }
 
@@ -66,16 +66,16 @@ ap_func_setup_tasksh() {
     fi
 }
 
-alias rmtasksh="ap_func_rm_tasksh"
+alias aprmtasksh="ap_func_rm_tasksh"
 ap_func_rm_tasksh() {
     aplogshow "Remove [tasksh]\n"
     rm -rf "${AP_SOFT_DIR}/tasksh"
 
-    if alias rmdirstructtasksh &>/dev/null; then
-        rmdirstructtasksh
+    if alias aprmdirstructtasksh &>/dev/null; then
+        aprmdirstructtasksh
     fi
 
-    if alias rmglobalsymlinktasksh &>/dev/null; then
+    if alias aprmglobalsymlinktasksh &>/dev/null; then
         rmglobalsymlinktasksh
     fi
 }

@@ -58,7 +58,7 @@ ap_func_create_dirstruct_ripgrep() {
     fi
 }
 
-alias rmdirstructripgrep="ap_func_rm_dirstruct_ripgrep"
+alias aprmdirstructripgrep="ap_func_rm_dirstruct_ripgrep"
 ap_func_rm_dirstruct_ripgrep() {
     aplogshow "Remove [${AP_SOFT_DIR}/bin/rg]\n"
     rm -f "${AP_SOFT_DIR}/bin/rg"
@@ -69,12 +69,12 @@ ap_func_rm_dirstruct_ripgrep() {
     aplogshow "Remove [${AP_MAN_DIR}/man1/rg.1]\n"
     rm -f "${AP_MAN_DIR}/man1/rg.1"
 
-    if alias rmdirstructripgrepshare &>/dev/null; then
-        rmdirstructripgrepshare
+    if alias aprmdirstructripgrepshare &>/dev/null; then
+        aprmdirstructripgrepshare
     fi
 
-    if alias rmdirstructripgrepcommon &>/dev/null; then
-        rmdirstructripgrepcommon
+    if alias aprmdirstructripgrepcommon &>/dev/null; then
+        aprmdirstructripgrepcommon
     fi
 }
 
@@ -86,7 +86,7 @@ ap_func_create_global_symlink_ripgrep() {
     fi
 }
 
-alias rmglobalsymlinkripgrep="ap_func_rm_global_symlink_ripgrep"
+alias aprmglobalsymlinkripgrep="ap_func_rm_global_symlink_ripgrep"
 ap_func_rm_global_symlink_ripgrep() {
     if [ -f "/usr/local/bin/rg" ]; then
         aplogshow "Remove [/usr/local/bin/rg]\n"
@@ -127,16 +127,16 @@ ap_func_setup_ripgrep() {
     fi
 }
 
-alias rmripgrep="ap_func_rm_ripgrep"
+alias aprmripgrep="ap_func_rm_ripgrep"
 ap_func_rm_ripgrep() {
     aplogshow "Remove [ripgrep]\n"
     rm -rf "${AP_SOFT_DIR}/ripgrep"
 
-    if alias rmdirstructripgrep &>/dev/null; then
-        rmdirstructripgrep
+    if alias aprmdirstructripgrep &>/dev/null; then
+        aprmdirstructripgrep
     fi
 
-    if alias rmglobalsymlinkripgrep &>/dev/null; then
+    if alias aprmglobalsymlinkripgrep &>/dev/null; then
         rmglobalsymlinkripgrep
     fi
 }

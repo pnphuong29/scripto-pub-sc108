@@ -20,14 +20,14 @@ ap_func_create_dirstruct_scrapy() {
     fi
 }
 
-alias rmdirstructscrapy="ap_func_rm_dirstruct_scrapy"
+alias aprmdirstructscrapy="ap_func_rm_dirstruct_scrapy"
 ap_func_rm_dirstruct_scrapy() {
-    if alias rmdirstructscrapyshare &>/dev/null; then
-        rmdirstructscrapyshare
+    if alias aprmdirstructscrapyshare &>/dev/null; then
+        aprmdirstructscrapyshare
     fi
 
-    if alias rmdirstructscrapycommon &>/dev/null; then
-        rmdirstructscrapycommon
+    if alias aprmdirstructscrapycommon &>/dev/null; then
+        aprmdirstructscrapycommon
     fi
 }
 
@@ -42,16 +42,16 @@ ap_func_setup_scrapy() {
     fi
 }
 
-alias rmscrapy="ap_func_rm_scrapy"
+alias aprmscrapy="ap_func_rm_scrapy"
 ap_func_rm_scrapy() {
     aplogshow "Remove [scrapy]\n"
     pip uninstall scrapy
 
-    if alias rmdirstructscrapy &>/dev/null; then
-        rmdirstructscrapy
+    if alias aprmdirstructscrapy &>/dev/null; then
+        aprmdirstructscrapy
     fi
 
-    if alias rmglobalsymlinkscrapy &>/dev/null; then
+    if alias aprmglobalsymlinkscrapy &>/dev/null; then
         rmglobalsymlinkscrapy
     fi
 }

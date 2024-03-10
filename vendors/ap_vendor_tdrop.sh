@@ -20,14 +20,14 @@ ap_func_create_dirstruct_tdrop() {
     fi
 }
 
-alias rmdirstructtdrop="ap_func_rm_dirstruct_tdrop"
+alias aprmdirstructtdrop="ap_func_rm_dirstruct_tdrop"
 ap_func_rm_dirstruct_tdrop() {
-    if alias rmdirstructtdropshare &>/dev/null; then
-        rmdirstructtdropshare
+    if alias aprmdirstructtdropshare &>/dev/null; then
+        aprmdirstructtdropshare
     fi
 
-    if alias rmdirstructtdropcommon &>/dev/null; then
-        rmdirstructtdropcommon
+    if alias aprmdirstructtdropcommon &>/dev/null; then
+        aprmdirstructtdropcommon
     fi
 }
 
@@ -50,7 +50,7 @@ ap_func_setup_tdrop() {
     fi
 }
 
-alias rmtdrop="ap_func_rm_tdrop"
+alias aprmtdrop="ap_func_rm_tdrop"
 ap_func_rm_tdrop() {
     aplogshow "Remove [tdrop]\n"
 
@@ -60,11 +60,11 @@ ap_func_rm_tdrop() {
     cd "${AP_SOFT_DIR}"
     rm -rf "${AP_SOFT_DIR}/tdrop"
 
-    if alias rmdirstructtdrop &>/dev/null; then
-        rmdirstructtdrop
+    if alias aprmdirstructtdrop &>/dev/null; then
+        aprmdirstructtdrop
     fi
 
-    if alias rmglobalsymlinktdrop &>/dev/null; then
+    if alias aprmglobalsymlinktdrop &>/dev/null; then
         rmglobalsymlinktdrop
     fi
 }

@@ -20,14 +20,14 @@ ap_func_create_dirstruct_postgresql() {
     fi
 }
 
-alias rmdirstructpostgresql="ap_func_rm_dirstruct_postgresql"
+alias aprmdirstructpostgresql="ap_func_rm_dirstruct_postgresql"
 ap_func_rm_dirstruct_postgresql() {
-    if alias rmdirstructpostgresqlshare &>/dev/null; then
-        rmdirstructpostgresqlshare
+    if alias aprmdirstructpostgresqlshare &>/dev/null; then
+        aprmdirstructpostgresqlshare
     fi
 
-    if alias rmdirstructpostgresqlcommon &>/dev/null; then
-        rmdirstructpostgresqlcommon
+    if alias aprmdirstructpostgresqlcommon &>/dev/null; then
+        aprmdirstructpostgresqlcommon
     fi
 }
 
@@ -56,7 +56,7 @@ ap_func_setup_postgresql() {
     fi
 }
 
-alias rmpostgresql="ap_func_rm_postgresql"
+alias aprmpostgresql="ap_func_rm_postgresql"
 ap_func_rm_postgresql() {
     aplogshow "Remove [PostgreSQL]\n"
 
@@ -68,11 +68,11 @@ ap_func_rm_postgresql() {
         sudo apt purge -y postgresql "postgresql-server-dev-${ap_pgsql_major_version}"
     fi
 
-    if alias rmdirstructpostgresql &>/dev/null; then
-        rmdirstructpostgresql
+    if alias aprmdirstructpostgresql &>/dev/null; then
+        aprmdirstructpostgresql
     fi
 
-    if alias rmglobalsymlinkpostgresql &>/dev/null; then
+    if alias aprmglobalsymlinkpostgresql &>/dev/null; then
         rmglobalsymlinkpostgresql
     fi
 }

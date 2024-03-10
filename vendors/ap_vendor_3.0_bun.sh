@@ -22,14 +22,14 @@ ap_func_create_dirstruct_bun() {
     fi
 }
 
-alias rmdirstructbun="ap_func_rm_dirstruct_bun"
+alias aprmdirstructbun="ap_func_rm_dirstruct_bun"
 ap_func_rm_dirstruct_bun() {
-    if alias rmdirstructbunshare &>/dev/null; then
-        rmdirstructbunshare
+    if alias aprmdirstructbunshare &>/dev/null; then
+        aprmdirstructbunshare
     fi
 
-    if alias rmdirstructbuncommon &>/dev/null; then
-        rmdirstructbuncommon
+    if alias aprmdirstructbuncommon &>/dev/null; then
+        aprmdirstructbuncommon
     fi
 }
 
@@ -40,7 +40,7 @@ ap_func_setup_bun() {
     curl -fsSL https://bun.sh/install | bash
 }
 
-alias rmbun="ap_func_rm_bun"
+alias aprmbun="ap_func_rm_bun"
 ap_func_rm_bun() {
     # https://bun.sh/docs/installation#uninstall
     aplogshow "Remove [bun]\n"

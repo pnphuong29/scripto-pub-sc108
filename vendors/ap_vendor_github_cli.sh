@@ -29,7 +29,7 @@ ap_func_create_dirstruct_github_cli() {
     fi
 }
 
-alias rmdirstructgithubcli="ap_func_rm_dirstruct_github_cli"
+alias aprmdirstructgithubcli="ap_func_rm_dirstruct_github_cli"
 ap_func_rm_dirstruct_github_cli() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_github_cli.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_github_cli.bash"
@@ -37,12 +37,12 @@ ap_func_rm_dirstruct_github_cli() {
     aplogshow "Remove [${AP_SOFT_DIR}/bin/gh]\n"
     rm -f "${AP_SOFT_DIR}/bin/gh"
 
-    if alias rmdirstructgithubclishare &>/dev/null; then
-        rmdirstructgithubclishare
+    if alias aprmdirstructgithubclishare &>/dev/null; then
+        aprmdirstructgithubclishare
     fi
 
-    if alias rmdirstructgithubclicommon &>/dev/null; then
-        rmdirstructgithubclicommon
+    if alias aprmdirstructgithubclicommon &>/dev/null; then
+        aprmdirstructgithubclicommon
     fi
 }
 
@@ -81,16 +81,16 @@ ap_func_setup_github_cli() {
     fi
 }
 
-alias rmgithubcli="ap_func_rm_github_cli"
+alias aprmgithubcli="ap_func_rm_github_cli"
 ap_func_rm_github_cli() {
     aplogshow "Remove [GitHub cli]\n"
     rm -rf "${AP_SOFT_DIR}/github-cli"
 
-    if alias rmdirstructgithubcli &>/dev/null; then
-        rmdirstructgithubcli
+    if alias aprmdirstructgithubcli &>/dev/null; then
+        aprmdirstructgithubcli
     fi
 
-    if alias rmglobalsymlinkgithubcli &>/dev/null; then
+    if alias aprmglobalsymlinkgithubcli &>/dev/null; then
         rmglobalsymlinkgithubcli
     fi
 }

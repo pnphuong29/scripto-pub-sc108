@@ -28,17 +28,17 @@ ap_func_create_dirstruct_asdf() {
     fi
 }
 
-alias rmdirstructasdf="ap_func_rm_dirstruct_asdf"
+alias aprmdirstructasdf="ap_func_rm_dirstruct_asdf"
 ap_func_rm_dirstruct_asdf() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_asdf.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_asdf.bash"
 
-    if alias rmdirstructasdfshare &>/dev/null; then
-        rmdirstructasdfshare
+    if alias aprmdirstructasdfshare &>/dev/null; then
+        aprmdirstructasdfshare
     fi
 
-    if alias rmdirstructasdfcommon &>/dev/null; then
-        rmdirstructasdfcommon
+    if alias aprmdirstructasdfcommon &>/dev/null; then
+        aprmdirstructasdfcommon
     fi
 }
 
@@ -65,16 +65,16 @@ ap_func_setup_asdf() {
     fi
 }
 
-alias rmasdf="ap_func_rm_asdf"
+alias aprmasdf="ap_func_rm_asdf"
 ap_func_rm_asdf() {
     aplogshow "Remove [asdf]\n"
     rm -rf "${HOME}/.asdf"
 
-    if alias rmdirstructasdf &>/dev/null; then
-        rmdirstructasdf
+    if alias aprmdirstructasdf &>/dev/null; then
+        aprmdirstructasdf
     fi
 
-    if alias rmglobalsymlinkasdf &>/dev/null; then
+    if alias aprmglobalsymlinkasdf &>/dev/null; then
         rmglobalsymlinkasdf
     fi
 }

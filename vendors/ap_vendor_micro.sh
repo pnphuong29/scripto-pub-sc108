@@ -26,14 +26,14 @@ ap_func_create_dirstruct_micro() {
     fi
 }
 
-alias rmdirstructmicro="ap_func_rm_dirstruct_micro"
+alias aprmdirstructmicro="ap_func_rm_dirstruct_micro"
 ap_func_rm_dirstruct_micro() {
-    if alias rmdirstructmicroshare &>/dev/null; then
-        rmdirstructmicroshare
+    if alias aprmdirstructmicroshare &>/dev/null; then
+        aprmdirstructmicroshare
     fi
 
-    if alias rmdirstructmicrocommon &>/dev/null; then
-        rmdirstructmicrocommon
+    if alias aprmdirstructmicrocommon &>/dev/null; then
+        aprmdirstructmicrocommon
     fi
 }
 
@@ -45,7 +45,7 @@ ap_func_create_global_symlink_micro() {
     fi
 }
 
-alias rmglobalsymlinkmicro="ap_func_rm_global_symlink_micro"
+alias aprmglobalsymlinkmicro="ap_func_rm_global_symlink_micro"
 ap_func_rm_global_symlink_micro() {
     if [ -f "/usr/local/bin/micro" ]; then
         aplogshow "Remove [/usr/local/bin/micro]\n"
@@ -72,16 +72,16 @@ ap_func_setup_micro() {
     fi
 }
 
-alias rmmicro="ap_func_rm_micro"
+alias aprmmicro="ap_func_rm_micro"
 ap_func_rm_micro() {
     aplogshow "Remove [micro]\n"
     rm -f "${AP_SOFT_DIR}/bin/micro"
 
-    if alias rmdirstructmicro &>/dev/null; then
-        rmdirstructmicro
+    if alias aprmdirstructmicro &>/dev/null; then
+        aprmdirstructmicro
     fi
 
-    if alias rmglobalsymlinkmicro &>/dev/null; then
+    if alias aprmglobalsymlinkmicro &>/dev/null; then
         rmglobalsymlinkmicro
     fi
 }

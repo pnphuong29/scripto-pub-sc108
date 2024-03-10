@@ -20,14 +20,14 @@ ap_func_create_dirstruct_nextclouddesktop() {
     fi
 }
 
-alias rmdirstructnextclouddesktop="ap_func_rm_dirstruct_nextclouddesktop"
+alias aprmdirstructnextclouddesktop="ap_func_rm_dirstruct_nextclouddesktop"
 ap_func_rm_dirstruct_nextclouddesktop() {
-    if alias rmdirstructnextclouddesktopshare &>/dev/null; then
-        rmdirstructnextclouddesktopshare
+    if alias aprmdirstructnextclouddesktopshare &>/dev/null; then
+        aprmdirstructnextclouddesktopshare
     fi
 
-    if alias rmdirstructnextclouddesktopcommon &>/dev/null; then
-        rmdirstructnextclouddesktopcommon
+    if alias aprmdirstructnextclouddesktopcommon &>/dev/null; then
+        aprmdirstructnextclouddesktopcommon
     fi
 }
 
@@ -58,7 +58,7 @@ ap_func_setup_nextclouddesktop() {
     fi
 }
 
-alias rmnextclouddesktop="ap_func_rm_nextclouddesktop"
+alias aprmnextclouddesktop="ap_func_rm_nextclouddesktop"
 ap_func_rm_nextclouddesktop() {
     aplogshow "Remove [Nextcloud Desktop]\n"
 
@@ -71,7 +71,7 @@ ap_func_rm_nextclouddesktop() {
         sudo apt autoremove -y
     fi
 
-    if alias rmdirstructnextclouddesktop &>/dev/null; then
-        rmdirstructnextclouddesktop
+    if alias aprmdirstructnextclouddesktop &>/dev/null; then
+        aprmdirstructnextclouddesktop
     fi
 }

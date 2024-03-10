@@ -29,14 +29,14 @@ ap_func_create_dirstruct_warp() {
     fi
 }
 
-alias rmdirstructwarp="ap_func_rm_dirstruct_warp"
+alias aprmdirstructwarp="ap_func_rm_dirstruct_warp"
 ap_func_rm_dirstruct_warp() {
-    if alias rmdirstructwarpshare &>/dev/null; then
-        rmdirstructwarpshare
+    if alias aprmdirstructwarpshare &>/dev/null; then
+        aprmdirstructwarpshare
     fi
 
-    if alias rmdirstructwarpcommon &>/dev/null; then
-        rmdirstructwarpcommon
+    if alias aprmdirstructwarpcommon &>/dev/null; then
+        aprmdirstructwarpcommon
     fi
 }
 
@@ -68,7 +68,7 @@ ap_func_setup_warp() {
     fi
 }
 
-alias rmwarp="ap_func_rm_warp"
+alias aprmwarp="ap_func_rm_warp"
 ap_func_rm_warp() {
     # https://docs.warp.dev/help/uninstalling-warp
     aplogshow "Remove [Warp]\n"
@@ -89,11 +89,11 @@ ap_func_rm_warp() {
 
     rm -rf "${HOME}/.warp"
 
-    if alias rmdirstructwarp &>/dev/null; then
-        rmdirstructwarp
+    if alias aprmdirstructwarp &>/dev/null; then
+        aprmdirstructwarp
     fi
 
-    if alias rmglobalsymlinkwarp &>/dev/null; then
+    if alias aprmglobalsymlinkwarp &>/dev/null; then
         rmglobalsymlinkwarp
     fi
 }

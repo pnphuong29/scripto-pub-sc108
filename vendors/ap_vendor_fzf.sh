@@ -22,14 +22,14 @@ ap_func_create_dirstruct_fzf() {
     fi
 }
 
-alias rmdirstructfzf="ap_func_rm_dirstruct_fzf"
+alias aprmdirstructfzf="ap_func_rm_dirstruct_fzf"
 ap_func_rm_dirstruct_fzf() {
-    if alias rmdirstructfzfshare &>/dev/null; then
-        rmdirstructfzfshare
+    if alias aprmdirstructfzfshare &>/dev/null; then
+        aprmdirstructfzfshare
     fi
 
-    if alias rmdirstructfzfcommon &>/dev/null; then
-        rmdirstructfzfcommon
+    if alias aprmdirstructfzfcommon &>/dev/null; then
+        aprmdirstructfzfcommon
     fi
 }
 
@@ -41,7 +41,7 @@ ap_func_create_global_symlink_fzf() {
     fi
 }
 
-alias rmglobalsymlinkfzf="ap_func_rm_global_symlink_fzf"
+alias aprmglobalsymlinkfzf="ap_func_rm_global_symlink_fzf"
 ap_func_rm_global_symlink_fzf() {
     aplogshow "Remove [/usr/local/bin/fzf]\n"
     sudo rm -f "/usr/local/bin/fzf"
@@ -68,16 +68,16 @@ ap_func_setup_fzf() {
     fi
 }
 
-alias rmfzf="ap_func_rm_fzf"
+alias aprmfzf="ap_func_rm_fzf"
 ap_func_rm_fzf() {
     aplogshow "Remove [fzf]\n"
     rm -rf "${HOME}/.fzf"
 
-    if alias rmdirstructfzf &>/dev/null; then
-        rmdirstructfzf
+    if alias aprmdirstructfzf &>/dev/null; then
+        aprmdirstructfzf
     fi
 
-    if alias rmglobalsymlinkfzf &>/dev/null; then
+    if alias aprmglobalsymlinkfzf &>/dev/null; then
         rmglobalsymlinkfzf
     fi
 }

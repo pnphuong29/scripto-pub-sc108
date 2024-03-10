@@ -43,14 +43,14 @@ ap_func_create_dirstruct_androidstudio() {
     fi
 }
 
-alias rmdirstructandroidstudio="ap_func_rm_dirstruct_androidstudio"
+alias aprmdirstructandroidstudio="ap_func_rm_dirstruct_androidstudio"
 ap_func_rm_dirstruct_androidstudio() {
-    if alias rmdirstructandroidstudioshare &>/dev/null; then
-        rmdirstructandroidstudioshare
+    if alias aprmdirstructandroidstudioshare &>/dev/null; then
+        aprmdirstructandroidstudioshare
     fi
 
-    if alias rmdirstructandroidstudiocommon &>/dev/null; then
-        rmdirstructandroidstudiocommon
+    if alias aprmdirstructandroidstudiocommon &>/dev/null; then
+        aprmdirstructandroidstudiocommon
     fi
 }
 
@@ -114,17 +114,17 @@ ap_func_setup_androidstudio() {
     fi
 }
 
-alias rmandroidstudio="ap_func_rm_androidstudio"
+alias aprmandroidstudio="ap_func_rm_androidstudio"
 ap_func_rm_androidstudio() {
     aplogshow "Remove [Android Studio]\n"
     rm -rf "${AP_SOFT_DIR}/android-studio"
     rm -rf "${ANDROID_HOME}"
 
-    if alias rmdirstructandroidstudio &>/dev/null; then
-        rmdirstructandroidstudio
+    if alias aprmdirstructandroidstudio &>/dev/null; then
+        aprmdirstructandroidstudio
     fi
 
-    if alias rmglobalsymlinkandroidstudio &>/dev/null; then
+    if alias aprmglobalsymlinkandroidstudio &>/dev/null; then
         rmglobalsymlinkandroidstudio
     fi
 }

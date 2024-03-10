@@ -22,14 +22,14 @@ ap_func_create_dirstruct_dart() {
     fi
 }
 
-alias rmdirstructdart="ap_func_rm_dirstruct_dart"
+alias aprmdirstructdart="ap_func_rm_dirstruct_dart"
 ap_func_rm_dirstruct_dart() {
-    if alias rmdirstructdartshare &>/dev/null; then
-        rmdirstructdartshare
+    if alias aprmdirstructdartshare &>/dev/null; then
+        aprmdirstructdartshare
     fi
 
-    if alias rmdirstructdartcommon &>/dev/null; then
-        rmdirstructdartcommon
+    if alias aprmdirstructdartcommon &>/dev/null; then
+        aprmdirstructdartcommon
     fi
 }
 
@@ -84,7 +84,7 @@ ap_func_setup_dart() {
     fi
 }
 
-alias rmdart="ap_func_rm_dart"
+alias aprmdart="ap_func_rm_dart"
 ap_func_rm_dart() {
     aplogshow "Remove [Dart]\n"
     rm -rf "${AP_SOFT_DIR}/dart"
@@ -97,11 +97,11 @@ ap_func_rm_dart() {
     #     sudo apt purge -y dart
     # fi
 
-    if alias rmdirstructdart &>/dev/null; then
-        rmdirstructdart
+    if alias aprmdirstructdart &>/dev/null; then
+        aprmdirstructdart
     fi
 
-    if alias rmglobalsymlinkdart &>/dev/null; then
+    if alias aprmglobalsymlinkdart &>/dev/null; then
         rmglobalsymlinkdart
     fi
 }

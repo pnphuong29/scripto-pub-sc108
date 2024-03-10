@@ -20,14 +20,14 @@ ap_func_create_dirstruct_pgcli() {
     fi
 }
 
-alias rmdirstructpgcli="ap_func_rm_dirstruct_pgcli"
+alias aprmdirstructpgcli="ap_func_rm_dirstruct_pgcli"
 ap_func_rm_dirstruct_pgcli() {
-    if alias rmdirstructpgclishare &>/dev/null; then
-        rmdirstructpgclishare
+    if alias aprmdirstructpgclishare &>/dev/null; then
+        aprmdirstructpgclishare
     fi
 
-    if alias rmdirstructpgclicommon &>/dev/null; then
-        rmdirstructpgclicommon
+    if alias aprmdirstructpgclicommon &>/dev/null; then
+        aprmdirstructpgclicommon
     fi
 }
 
@@ -43,16 +43,16 @@ ap_func_setup_pgcli() {
     fi
 }
 
-alias rmpgcli="ap_func_rm_pgcli"
+alias aprmpgcli="ap_func_rm_pgcli"
 ap_func_rm_pgcli() {
     aplogshow "Remove [pgcli]\n"
     pip uninstall pgcli
 
-    if alias rmdirstructpgcli &>/dev/null; then
-        rmdirstructpgcli
+    if alias aprmdirstructpgcli &>/dev/null; then
+        aprmdirstructpgcli
     fi
 
-    if alias rmglobalsymlinkpgcli &>/dev/null; then
+    if alias aprmglobalsymlinkpgcli &>/dev/null; then
         rmglobalsymlinkpgcli
     fi
 }

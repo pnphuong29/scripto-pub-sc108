@@ -20,14 +20,14 @@ ap_func_create_dirstruct_hyper() {
     fi
 }
 
-alias rmdirstructhyper="ap_func_rm_dirstruct_hyper"
+alias aprmdirstructhyper="ap_func_rm_dirstruct_hyper"
 ap_func_rm_dirstruct_hyper() {
-    if alias rmdirstructhypershare &>/dev/null; then
-        rmdirstructhypershare
+    if alias aprmdirstructhypershare &>/dev/null; then
+        aprmdirstructhypershare
     fi
 
-    if alias rmdirstructhypercommon &>/dev/null; then
-        rmdirstructhypercommon
+    if alias aprmdirstructhypercommon &>/dev/null; then
+        aprmdirstructhypercommon
     fi
 }
 
@@ -60,7 +60,7 @@ ap_func_setup_hyper() {
     fi
 }
 
-alias rmhyper="ap_func_rm_hyper"
+alias aprmhyper="ap_func_rm_hyper"
 ap_func_rm_hyper() {
     aplogshow "Remove [hyper]\n"
 
@@ -70,7 +70,7 @@ ap_func_rm_hyper() {
         sudo dpkg --purge hyper
     fi
 
-    if alias rmdirstructhyper &>/dev/null; then
-        rmdirstructhyper
+    if alias aprmdirstructhyper &>/dev/null; then
+        aprmdirstructhyper
     fi
 }

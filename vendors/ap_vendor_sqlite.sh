@@ -20,14 +20,14 @@ ap_func_create_dirstruct_sqlite() {
     fi
 }
 
-alias rmdirstructsqlite="ap_func_rm_dirstruct_sqlite"
+alias aprmdirstructsqlite="ap_func_rm_dirstruct_sqlite"
 ap_func_rm_dirstruct_sqlite() {
-    if alias rmdirstructsqliteshare &>/dev/null; then
-        rmdirstructsqliteshare
+    if alias aprmdirstructsqliteshare &>/dev/null; then
+        aprmdirstructsqliteshare
     fi
 
-    if alias rmdirstructsqlitecommon &>/dev/null; then
-        rmdirstructsqlitecommon
+    if alias aprmdirstructsqlitecommon &>/dev/null; then
+        aprmdirstructsqlitecommon
     fi
 }
 
@@ -59,17 +59,17 @@ ap_func_setup_sqlite() {
     fi
 }
 
-alias rmsqlite="ap_func_rm_sqlite"
+alias aprmsqlite="ap_func_rm_sqlite"
 ap_func_rm_sqlite() {
     aplogshow "Remove [sqlite]\n"
     # brew uninstall sqlite
     rm -rf "${AP_SOFT_DIR}/sqlite"
 
-    if alias rmdirstructsqlite &>/dev/null; then
-        rmdirstructsqlite
+    if alias aprmdirstructsqlite &>/dev/null; then
+        aprmdirstructsqlite
     fi
 
-    if alias rmglobalsymlinksqlite &>/dev/null; then
+    if alias aprmglobalsymlinksqlite &>/dev/null; then
         rmglobalsymlinksqlite
     fi
 }

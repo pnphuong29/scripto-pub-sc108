@@ -42,7 +42,7 @@ ap_func_create_dirstruct_rbenv() {
     fi
 }
 
-alias rmdirstructrbenv="ap_func_rm_dirstruct_rbenv"
+alias aprmdirstructrbenv="ap_func_rm_dirstruct_rbenv"
 ap_func_rm_dirstruct_rbenv() {
     aplogshow "Remove [${AP_SOFT_DIR}/bin/rbenv]\n"
     rm -f "${AP_SOFT_DIR}/bin/rbenv"
@@ -53,16 +53,16 @@ ap_func_rm_dirstruct_rbenv() {
     aplogshow "Remove [${AP_MAN_DIR}/man1/rbenv.1]\n"
     rm -f "${AP_MAN_DIR}/man1/rbenv.1"
 
-    if alias rmdirstructrbenvshare &>/dev/null; then
-        rmdirstructrbenvshare
+    if alias aprmdirstructrbenvshare &>/dev/null; then
+        aprmdirstructrbenvshare
     fi
 
-    if alias rmdirstructrbenvcommon &>/dev/null; then
-        rmdirstructrbenvcommon
+    if alias aprmdirstructrbenvcommon &>/dev/null; then
+        aprmdirstructrbenvcommon
     fi
 
-    if alias rmdirstructruby &>/dev/null; then
-        rmdirstructruby
+    if alias aprmdirstructruby &>/dev/null; then
+        aprmdirstructruby
     fi
 }
 
@@ -113,12 +113,12 @@ ap_func_setup_rbenv() {
     fi
 }
 
-alias rmrbenv="ap_func_rm_rbenv"
+alias aprmrbenv="ap_func_rm_rbenv"
 ap_func_rm_rbenv() {
     aplogshow "Remove [rbenv]\n"
     rm -rf "${HOME}/.rbenv"
 
-    if alias rmdirstructrbenv &>/dev/null; then
-        rmdirstructrbenv
+    if alias aprmdirstructrbenv &>/dev/null; then
+        aprmdirstructrbenv
     fi
 }

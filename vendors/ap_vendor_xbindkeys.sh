@@ -20,14 +20,14 @@ ap_func_create_dirstruct_xbindkeys() {
     fi
 }
 
-alias rmdirstructxbindkeys="ap_func_rm_dirstruct_xbindkeys"
+alias aprmdirstructxbindkeys="ap_func_rm_dirstruct_xbindkeys"
 ap_func_rm_dirstruct_xbindkeys() {
-    if alias rmdirstructxbindkeysshare &>/dev/null; then
-        rmdirstructxbindkeysshare
+    if alias aprmdirstructxbindkeysshare &>/dev/null; then
+        aprmdirstructxbindkeysshare
     fi
 
-    if alias rmdirstructxbindkeyscommon &>/dev/null; then
-        rmdirstructxbindkeyscommon
+    if alias aprmdirstructxbindkeyscommon &>/dev/null; then
+        aprmdirstructxbindkeyscommon
     fi
 }
 
@@ -46,18 +46,18 @@ ap_func_setup_xbindkeys() {
     fi
 }
 
-alias rmxbindkeys="ap_func_rm_xbindkeys"
+alias aprmxbindkeys="ap_func_rm_xbindkeys"
 ap_func_rm_xbindkeys() {
     aplogshow "Remove [xbindkeys, xautomation, xdotool]\n"
 
     sudo apt purge -y xbindkeys xautomation xdotool
     sudo apt autoremove -y
 
-    if alias rmdirstructxbindkeys &>/dev/null; then
-        rmdirstructxbindkeys
+    if alias aprmdirstructxbindkeys &>/dev/null; then
+        aprmdirstructxbindkeys
     fi
 
-    if alias rmglobalsymlinkxbindkeys &>/dev/null; then
+    if alias aprmglobalsymlinkxbindkeys &>/dev/null; then
         rmglobalsymlinkxbindkeys
     fi
 }

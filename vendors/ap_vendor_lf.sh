@@ -20,14 +20,14 @@ ap_func_create_dirstruct_lf() {
     fi
 }
 
-alias rmdirstructlf="ap_func_rm_dirstruct_lf"
+alias aprmdirstructlf="ap_func_rm_dirstruct_lf"
 ap_func_rm_dirstruct_lf() {
-    if alias rmdirstructlfshare &>/dev/null; then
-        rmdirstructlfshare
+    if alias aprmdirstructlfshare &>/dev/null; then
+        aprmdirstructlfshare
     fi
 
-    if alias rmdirstructlfcommon &>/dev/null; then
-        rmdirstructlfcommon
+    if alias aprmdirstructlfcommon &>/dev/null; then
+        aprmdirstructlfcommon
     fi
 }
 
@@ -39,7 +39,7 @@ ap_func_create_global_symlink_lf() {
     fi
 }
 
-alias rmglobalsymlinklf="ap_func_rm_global_symlink_lf"
+alias aprmglobalsymlinklf="ap_func_rm_global_symlink_lf"
 ap_func_rm_global_symlink_lf() {
     if [ -f "/usr/local/bin/lf" ]; then
         aplogshow "Remove [/usr/local/bin/lf]\n"
@@ -59,18 +59,18 @@ ap_func_setup_lf() {
     fi
 }
 
-alias rmlf="ap_func_rm_lf"
+alias aprmlf="ap_func_rm_lf"
 ap_func_rm_lf() {
     aplogshow "Remove [lf]\n"
 
     rm -f "${GOPATH}/bin/lf"
     rm -rf "${GOPATH}/pkg/mod/gokcehan/lf@"*
 
-    if alias rmdirstructlf &>/dev/null; then
-        rmdirstructlf
+    if alias aprmdirstructlf &>/dev/null; then
+        aprmdirstructlf
     fi
 
-    if alias rmglobalsymlinklf &>/dev/null; then
+    if alias aprmglobalsymlinklf &>/dev/null; then
         rmglobalsymlinklf
     fi
 }

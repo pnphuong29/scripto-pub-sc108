@@ -4,8 +4,8 @@ ap_func_init_nvim() {
 
     alias znvimswapshare="cd \${HOME}/.local/share/nvim/swap"
     alias znvimswapstate="cd \${HOME}/.local/state/nvim/swap"
-    alias rmnvimswapsharefiles="rm -f \${HOME}/.local/share/nvim/swap/\*"
-    alias rmnvimswapstatefiles="rm -f \${HOME}/.local/state/nvim/swap/\*"
+    alias aprmnvimswapsharefiles="rm -f \${HOME}/.local/share/nvim/swap/\*"
+    alias aprmnvimswapstatefiles="rm -f \${HOME}/.local/state/nvim/swap/\*"
 
     alias znvimconfigs="cd \${HOME}/.config/nvim"
     alias znvimcoc="cd \${HOME}/.config/coc"
@@ -45,17 +45,17 @@ ap_func_create_dirstruct_nvim() {
     fi
 }
 
-alias rmdirstructnvim="ap_func_rm_dirstruct_nvim"
+alias aprmdirstructnvim="ap_func_rm_dirstruct_nvim"
 ap_func_rm_dirstruct_nvim() {
     aplogshow "Remove [${AP_SOFT_DIR}/bin/nvim]\n"
     rm -f "${AP_SOFT_DIR}/bin/nvim"
 
-    if alias rmdirstructnvimshare &>/dev/null; then
-        rmdirstructnvimshare
+    if alias aprmdirstructnvimshare &>/dev/null; then
+        aprmdirstructnvimshare
     fi
 
-    if alias rmdirstructnvimcommon &>/dev/null; then
-        rmdirstructnvimcommon
+    if alias aprmdirstructnvimcommon &>/dev/null; then
+        aprmdirstructnvimcommon
     fi
 }
 
@@ -67,7 +67,7 @@ ap_func_create_global_symlink_nvim() {
     fi
 }
 
-alias rmglobalsymlinknvim="ap_func_rm_global_symlink_nvim"
+alias aprmglobalsymlinknvim="ap_func_rm_global_symlink_nvim"
 ap_func_rm_global_symlink_nvim() {
     aplogshow "Remove [/usr/local/bin/nvim]\n"
     sudo rm -f "/usr/local/bin/nvim"
@@ -116,7 +116,7 @@ ap_func_setup_nvim() {
     fi
 }
 
-alias rmnvim="ap_func_rm_nvim"
+alias aprmnvim="ap_func_rm_nvim"
 ap_func_rm_nvim() {
     aplogshow "Remove [nvim]\n"
 
@@ -125,11 +125,11 @@ ap_func_rm_nvim() {
     rm -rf ~/.config/coc
     rm -rf ~/.local/share/nvim
 
-    if alias rmdirstructnvim &>/dev/null; then
-        rmdirstructnvim
+    if alias aprmdirstructnvim &>/dev/null; then
+        aprmdirstructnvim
     fi
 
-    if alias rmglobalsymlinknvim &>/dev/null; then
+    if alias aprmglobalsymlinknvim &>/dev/null; then
         rmglobalsymlinknvim
     fi
 }

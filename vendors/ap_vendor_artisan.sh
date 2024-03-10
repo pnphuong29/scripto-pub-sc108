@@ -47,14 +47,14 @@ ap_func_create_dirstruct_artisan() {
     fi
 }
 
-alias rmdirstructartisan="ap_func_rm_dirstruct_artisan"
+alias aprmdirstructartisan="ap_func_rm_dirstruct_artisan"
 ap_func_rm_dirstruct_artisan() {
-    if alias rmdirstructartisanshare &>/dev/null; then
-        rmdirstructartisanshare
+    if alias aprmdirstructartisanshare &>/dev/null; then
+        aprmdirstructartisanshare
     fi
 
-    if alias rmdirstructartisancommon &>/dev/null; then
-        rmdirstructartisancommon
+    if alias aprmdirstructartisancommon &>/dev/null; then
+        aprmdirstructartisancommon
     fi
 }
 

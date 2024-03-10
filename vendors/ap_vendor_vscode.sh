@@ -29,17 +29,17 @@ ap_func_create_dirstruct_vscode() {
     fi
 }
 
-alias rmdirstructvscode="ap_func_rm_dirstruct_vscode"
+alias aprmdirstructvscode="ap_func_rm_dirstruct_vscode"
 ap_func_rm_dirstruct_vscode() {
     aplogshow "Remove [${AP_SOFT_DIR}/bin/code]\n"
     rm -f "${AP_SOFT_DIR}/bin/code"
 
-    if alias rmdirstructvscodeshare &>/dev/null; then
-        rmdirstructvscodeshare
+    if alias aprmdirstructvscodeshare &>/dev/null; then
+        aprmdirstructvscodeshare
     fi
 
-    if alias rmdirstructvscodecommon &>/dev/null; then
-        rmdirstructvscodecommon
+    if alias aprmdirstructvscodecommon &>/dev/null; then
+        aprmdirstructvscodecommon
     fi
 }
 
@@ -87,7 +87,7 @@ ap_func_setup_vscode() {
     fi
 }
 
-alias rmvscode="ap_func_rm_vscode"
+alias aprmvscode="ap_func_rm_vscode"
 ap_func_rm_vscode() {
     aplogshow "Remove [vscode]\n"
 
@@ -100,11 +100,11 @@ ap_func_rm_vscode() {
         # sudo apt purge --yes code
     fi
 
-    if alias rmdirstructvscode &>/dev/null; then
-        rmdirstructvscode
+    if alias aprmdirstructvscode &>/dev/null; then
+        aprmdirstructvscode
     fi
 
-    if alias rmglobalsymlinkvscode &>/dev/null; then
+    if alias aprmglobalsymlinkvscode &>/dev/null; then
         rmglobalsymlinkvscode
     fi
 }

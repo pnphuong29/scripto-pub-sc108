@@ -20,14 +20,14 @@ ap_func_create_dirstruct_imagemagick() {
     fi
 }
 
-alias rmdirstructimagemagick="ap_func_rm_dirstruct_imagemagick"
+alias aprmdirstructimagemagick="ap_func_rm_dirstruct_imagemagick"
 ap_func_rm_dirstruct_imagemagick() {
-    if alias rmdirstructimagemagickshare &>/dev/null; then
-        rmdirstructimagemagickshare
+    if alias aprmdirstructimagemagickshare &>/dev/null; then
+        aprmdirstructimagemagickshare
     fi
 
-    if alias rmdirstructimagemagickcommon &>/dev/null; then
-        rmdirstructimagemagickcommon
+    if alias aprmdirstructimagemagickcommon &>/dev/null; then
+        aprmdirstructimagemagickcommon
     fi
 }
 
@@ -49,7 +49,7 @@ ap_func_setup_imagemagick() {
     fi
 }
 
-alias rmimagemagick="ap_func_rm_imagemagick"
+alias aprmimagemagick="ap_func_rm_imagemagick"
 ap_func_rm_imagemagick() {
     # https://imagemagick.org/script/download.php
     aplogshow "Remove [imagemagick]\n"
@@ -61,11 +61,11 @@ ap_func_rm_imagemagick() {
         sudo apt autoremove -y
     fi
 
-    if alias rmdirstructimagemagick &>/dev/null; then
-        rmdirstructimagemagick
+    if alias aprmdirstructimagemagick &>/dev/null; then
+        aprmdirstructimagemagick
     fi
 
-    if alias rmglobalsymlinkimagemagick &>/dev/null; then
+    if alias aprmglobalsymlinkimagemagick &>/dev/null; then
         rmglobalsymlinkimagemagick
     fi
 }

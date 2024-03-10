@@ -23,14 +23,14 @@ ap_func_create_dirstruct_bat_extras() {
     fi
 }
 
-alias rmdirstructbatextras="ap_func_rm_dirstruct_bat_extras"
+alias aprmdirstructbatextras="ap_func_rm_dirstruct_bat_extras"
 ap_func_rm_dirstruct_bat_extras() {
-    if alias rmdirstructbatextrasshare &>/dev/null; then
-        rmdirstructbatextrasshare
+    if alias aprmdirstructbatextrasshare &>/dev/null; then
+        aprmdirstructbatextrasshare
     fi
 
-    if alias rmdirstructbatextrascommon &>/dev/null; then
-        rmdirstructbatextrascommon
+    if alias aprmdirstructbatextrascommon &>/dev/null; then
+        aprmdirstructbatextrascommon
     fi
 }
 
@@ -54,16 +54,16 @@ ap_func_setup_bat_extras() {
     fi
 }
 
-alias rmbatextras="ap_func_rm_bat_extras"
+alias aprmbatextras="ap_func_rm_bat_extras"
 ap_func_rm_bat_extras() {
     aplogshow "Remove [bat extras]\n"
     rm -rf "${AP_SOFT_DIR}/bat-extras"
 
-    if alias rmdirstructbatextras &>/dev/null; then
-        rmdirstructbatextras
+    if alias aprmdirstructbatextras &>/dev/null; then
+        aprmdirstructbatextras
     fi
 
-    if alias rmglobalsymlinkbatextras &>/dev/null; then
+    if alias aprmglobalsymlinkbatextras &>/dev/null; then
         rmglobalsymlinkbatextras
     fi
 }

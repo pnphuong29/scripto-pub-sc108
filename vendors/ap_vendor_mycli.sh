@@ -20,14 +20,14 @@ ap_func_create_dirstruct_mycli() {
     fi
 }
 
-alias rmdirstructmycli="ap_func_rm_dirstruct_mycli"
+alias aprmdirstructmycli="ap_func_rm_dirstruct_mycli"
 ap_func_rm_dirstruct_mycli() {
-    if alias rmdirstructmyclishare &>/dev/null; then
-        rmdirstructmyclishare
+    if alias aprmdirstructmyclishare &>/dev/null; then
+        aprmdirstructmyclishare
     fi
 
-    if alias rmdirstructmyclicommon &>/dev/null; then
-        rmdirstructmyclicommon
+    if alias aprmdirstructmyclicommon &>/dev/null; then
+        aprmdirstructmyclicommon
     fi
 }
 
@@ -39,7 +39,7 @@ ap_func_create_global_symlink_mycli() {
     fi
 }
 
-alias rmglobalsymlinkmycli="ap_func_rm_global_symlink_mycli"
+alias aprmglobalsymlinkmycli="ap_func_rm_global_symlink_mycli"
 ap_func_rm_global_symlink_mycli() {
     if [ -f "/usr/local/bin/mycli" ]; then
         aplogshow "Remove [/usr/local/bin/mycli]\n"
@@ -59,16 +59,16 @@ ap_func_setup_mycli() {
     fi
 }
 
-alias rmmycli="ap_func_rm_mycli"
+alias aprmmycli="ap_func_rm_mycli"
 ap_func_rm_mycli() {
     aplogshow "Remove [mycli]\n"
     pip uninstall mycli
 
-    if alias rmdirstructmycli &>/dev/null; then
-        rmdirstructmycli
+    if alias aprmdirstructmycli &>/dev/null; then
+        aprmdirstructmycli
     fi
 
-    if alias rmglobalsymlinkmycli &>/dev/null; then
+    if alias aprmglobalsymlinkmycli &>/dev/null; then
         rmglobalsymlinkmycli
     fi
 }

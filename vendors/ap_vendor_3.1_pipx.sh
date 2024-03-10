@@ -23,17 +23,17 @@ ap_func_create_dirstruct_pipx() {
     fi
 }
 
-alias rmdirstructpipx="ap_func_rm_dirstruct_pipx"
+alias aprmdirstructpipx="ap_func_rm_dirstruct_pipx"
 ap_func_rm_dirstruct_pipx() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_pipx.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_pipx.bash"
 
-    if alias rmdirstructpipxshare &>/dev/null; then
-        rmdirstructpipxshare
+    if alias aprmdirstructpipxshare &>/dev/null; then
+        aprmdirstructpipxshare
     fi
 
-    if alias rmdirstructpipxcommon &>/dev/null; then
-        rmdirstructpipxcommon
+    if alias aprmdirstructpipxcommon &>/dev/null; then
+        aprmdirstructpipxcommon
     fi
 }
 
@@ -57,7 +57,7 @@ ap_func_setup_pipx() {
     fi
 }
 
-alias rmpipx="ap_func_rm_pipx"
+alias aprmpipx="ap_func_rm_pipx"
 ap_func_rm_pipx() {
     aplogshow "Remove [pipx]\n"
 
@@ -69,11 +69,11 @@ ap_func_rm_pipx() {
 
     pip uninstall --user pipx
 
-    if alias rmdirstructpipx &>/dev/null; then
-        rmdirstructpipx
+    if alias aprmdirstructpipx &>/dev/null; then
+        aprmdirstructpipx
     fi
 
-    if alias rmglobalsymlinkpipx &>/dev/null; then
+    if alias aprmglobalsymlinkpipx &>/dev/null; then
         rmglobalsymlinkpipx
     fi
 }

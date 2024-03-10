@@ -33,7 +33,7 @@ ap_func_create_dirstruct_tree() {
     fi
 }
 
-alias rmdirstructtree="ap_func_rm_dirstruct_tree"
+alias aprmdirstructtree="ap_func_rm_dirstruct_tree"
 ap_func_rm_dirstruct_tree() {
     aplogshow "Remove [${AP_SOFT_DIR}/bin/tree]\n"
     rm -f "${AP_SOFT_DIR}/bin/tree"
@@ -41,12 +41,12 @@ ap_func_rm_dirstruct_tree() {
     aplogshow "Remove [${AP_MAN_DIR}/man1/tree.1]\n"
     rm -f "${AP_MAN_DIR}/man1/tree.1"
 
-    if alias rmdirstructtreeshare &>/dev/null; then
-        rmdirstructtreeshare
+    if alias aprmdirstructtreeshare &>/dev/null; then
+        aprmdirstructtreeshare
     fi
 
-    if alias rmdirstructtreecommon &>/dev/null; then
-        rmdirstructtreecommon
+    if alias aprmdirstructtreecommon &>/dev/null; then
+        aprmdirstructtreecommon
     fi
 }
 
@@ -58,7 +58,7 @@ ap_func_create_global_symlink_tree() {
     fi
 }
 
-alias rmglobalsymlinktree="ap_func_rm_global_symlink_tree"
+alias aprmglobalsymlinktree="ap_func_rm_global_symlink_tree"
 ap_func_rm_global_symlink_tree() {
     if [ -f "/usr/local/bin/tree" ]; then
         aplogshow "Remove [/usr/local/bin/tree]\n"
@@ -95,18 +95,18 @@ ap_func_setup_tree() {
     fi
 }
 
-alias rmtree="ap_func_rm_tree"
+alias aprmtree="ap_func_rm_tree"
 ap_func_rm_tree() {
     aplogshow "Remove [tree]\n"
 
     rm -rf "${AP_SOFT_DIR}/tree"
     rm -f "${AP_MAN_DIR}/man1/tree.1"
 
-    if alias rmdirstructtree &>/dev/null; then
-        rmdirstructtree
+    if alias aprmdirstructtree &>/dev/null; then
+        aprmdirstructtree
     fi
 
-    if alias rmglobalsymlinktree &>/dev/null; then
+    if alias aprmglobalsymlinktree &>/dev/null; then
         rmglobalsymlinktree
     fi
 }

@@ -70,14 +70,14 @@ ap_func_create_dirstruct_docker() {
     fi
 }
 
-alias rmdirstructdocker="ap_func_rm_dirstruct_docker"
+alias aprmdirstructdocker="ap_func_rm_dirstruct_docker"
 ap_func_rm_dirstruct_docker() {
-    if alias rmdirstructdockershare &>/dev/null; then
-        rmdirstructdockershare
+    if alias aprmdirstructdockershare &>/dev/null; then
+        aprmdirstructdockershare
     fi
 
-    if alias rmdirstructdockercommon &>/dev/null; then
-        rmdirstructdockercommon
+    if alias aprmdirstructdockercommon &>/dev/null; then
+        aprmdirstructdockercommon
     fi
 }
 
@@ -130,7 +130,7 @@ ap_func_setup_docker() {
     fi
 }
 
-alias rmdocker="ap_func_rm_docker"
+alias aprmdocker="ap_func_rm_docker"
 ap_func_rm_docker() {
     aplogshow "Remove [docker]\n"
 
@@ -142,8 +142,8 @@ ap_func_rm_docker() {
         sudo rm -rf /var/lib/containerd
     fi
 
-    if alias rmdirstructdocker &>/dev/null; then
-        rmdirstructdocker
+    if alias aprmdirstructdocker &>/dev/null; then
+        aprmdirstructdocker
     fi
 }
 

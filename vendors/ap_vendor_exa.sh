@@ -43,7 +43,7 @@ ap_func_create_dirstruct_exa() {
 
 }
 
-alias rmdirstructexa="ap_func_rm_dirstruct_exa"
+alias aprmdirstructexa="ap_func_rm_dirstruct_exa"
 ap_func_rm_dirstruct_exa() {
     aplogshow "Remove [${AP_SOFT_DIR}/bin/exa]\n"
     rm -f "${AP_SOFT_DIR}/bin/exa"
@@ -57,12 +57,12 @@ ap_func_rm_dirstruct_exa() {
     aplogshow "Remove [${AP_MAN_DIR}/man5/exa_colors.5]\n"
     rm -f "${AP_MAN_DIR}/man5/exa_colors.5"
 
-    if alias rmdirstructexashare &>/dev/null; then
-        rmdirstructexashare
+    if alias aprmdirstructexashare &>/dev/null; then
+        aprmdirstructexashare
     fi
 
-    if alias rmdirstructexacommon &>/dev/null; then
-        rmdirstructexacommon
+    if alias aprmdirstructexacommon &>/dev/null; then
+        aprmdirstructexacommon
     fi
 }
 
@@ -74,7 +74,7 @@ ap_func_create_global_symlink_exa() {
     fi
 }
 
-alias rmglobalsymlinkexa="ap_func_rm_global_symlink_exa"
+alias aprmglobalsymlinkexa="ap_func_rm_global_symlink_exa"
 ap_func_rm_global_symlink_exa() {
     if [ -f "/usr/local/bin/exa" ]; then
         aplogshow "Remove [/usr/local/bin/exa]\n"
@@ -116,16 +116,16 @@ ap_func_setup_exa() {
     fi
 }
 
-alias rmexa="ap_func_rm_exa"
+alias aprmexa="ap_func_rm_exa"
 ap_func_rm_exa() {
     aplogshow "Remove [exa]\n"
     rm -rf "${AP_SOFT_DIR}/exa"
 
-    if alias rmdirstructexa &>/dev/null; then
-        rmdirstructexa
+    if alias aprmdirstructexa &>/dev/null; then
+        aprmdirstructexa
     fi
 
-    if alias rmglobalsymlinkexa &>/dev/null; then
+    if alias aprmglobalsymlinkexa &>/dev/null; then
         rmglobalsymlinkexa
     fi
 }

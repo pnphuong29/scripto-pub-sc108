@@ -42,14 +42,14 @@ ap_func_create_dirstruct_nvm() {
     fi
 }
 
-alias rmdirstructnvm="ap_func_rm_dirstruct_nvm"
+alias aprmdirstructnvm="ap_func_rm_dirstruct_nvm"
 ap_func_rm_dirstruct_nvm() {
-    if alias rmdirstructnvmshare &>/dev/null; then
-        rmdirstructnvmshare
+    if alias aprmdirstructnvmshare &>/dev/null; then
+        aprmdirstructnvmshare
     fi
 
-    if alias rmdirstructnvmcommon &>/dev/null; then
-        rmdirstructnvmcommon
+    if alias aprmdirstructnvmcommon &>/dev/null; then
+        aprmdirstructnvmcommon
     fi
 }
 
@@ -76,16 +76,16 @@ ap_func_setup_nvm() {
     fi
 }
 
-alias rmnvm="ap_func_rm_nvm"
+alias aprmnvm="ap_func_rm_nvm"
 ap_func_rm_nvm() {
     aplogshow "Remove [nvm]\n"
     rm -rf "${HOME}/.nvm"
 
-    if alias rmdirstructnvm &>/dev/null; then
-        rmdirstructnvm
+    if alias aprmdirstructnvm &>/dev/null; then
+        aprmdirstructnvm
     fi
 
-    if alias rmglobalsymlinknvm &>/dev/null; then
+    if alias aprmglobalsymlinknvm &>/dev/null; then
         rmglobalsymlinknvm
     fi
 }

@@ -20,14 +20,14 @@ ap_func_create_dirstruct_sxhkd() {
     fi
 }
 
-alias rmdirstructsxhkd="ap_func_rm_dirstruct_sxhkd"
+alias aprmdirstructsxhkd="ap_func_rm_dirstruct_sxhkd"
 ap_func_rm_dirstruct_sxhkd() {
-    if alias rmdirstructsxhkdshare &>/dev/null; then
-        rmdirstructsxhkdshare
+    if alias aprmdirstructsxhkdshare &>/dev/null; then
+        aprmdirstructsxhkdshare
     fi
 
-    if alias rmdirstructsxhkdcommon &>/dev/null; then
-        rmdirstructsxhkdcommon
+    if alias aprmdirstructsxhkdcommon &>/dev/null; then
+        aprmdirstructsxhkdcommon
     fi
 }
 
@@ -53,7 +53,7 @@ ap_func_setup_sxhkd() {
     fi
 }
 
-alias rmsxhkd="ap_func_rm_sxhkd"
+alias aprmsxhkd="ap_func_rm_sxhkd"
 ap_func_rm_sxhkd() {
     aplogshow "You can remove these libraries manually [libxcb-keysyms1-dev, libxcb-util0-dev, apt-file] if needed\n"
     aplogshow "Remove [sxhkd]\n"
@@ -63,11 +63,11 @@ ap_func_rm_sxhkd() {
     cd "${AP_SOFT_DIR}"
     rm -rf "${AP_SOFT_DIR}/sxhkd"
 
-    if alias rmdirstructsxhkd &>/dev/null; then
-        rmdirstructsxhkd
+    if alias aprmdirstructsxhkd &>/dev/null; then
+        aprmdirstructsxhkd
     fi
 
-    if alias rmglobalsymlinksxhkd &>/dev/null; then
+    if alias aprmglobalsymlinksxhkd &>/dev/null; then
         rmglobalsymlinksxhkd
     fi
 }

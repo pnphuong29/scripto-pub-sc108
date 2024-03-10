@@ -27,14 +27,14 @@ ap_func_create_dirstruct_php() {
     fi
 }
 
-alias rmdirstructphp="ap_func_rm_dirstruct_php"
+alias aprmdirstructphp="ap_func_rm_dirstruct_php"
 ap_func_rm_dirstruct_php() {
-    if alias rmdirstructphpshare &>/dev/null; then
-        rmdirstructphpshare
+    if alias aprmdirstructphpshare &>/dev/null; then
+        aprmdirstructphpshare
     fi
 
-    if alias rmdirstructphpcommon &>/dev/null; then
-        rmdirstructphpcommon
+    if alias aprmdirstructphpcommon &>/dev/null; then
+        aprmdirstructphpcommon
     fi
 }
 
@@ -133,7 +133,7 @@ ap_func_setup_php() {
     fi
 }
 
-alias rmphp="ap_func_rm_php"
+alias aprmphp="ap_func_rm_php"
 ap_func_rm_php() {
     aplogshow "Remove [PHP 8.1]\n"
 
@@ -191,11 +191,11 @@ ap_func_rm_php() {
         sudo apt autoremove -y
     fi
 
-    if alias rmdirstructphp &>/dev/null; then
-        rmdirstructphp
+    if alias aprmdirstructphp &>/dev/null; then
+        aprmdirstructphp
     fi
 
-    if alias rmglobalsymlinkphp &>/dev/null; then
+    if alias aprmglobalsymlinkphp &>/dev/null; then
         rmglobalsymlinkphp
     fi
 }

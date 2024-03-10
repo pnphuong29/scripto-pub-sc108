@@ -34,7 +34,7 @@ ap_func_create_dirstruct_ruby() {
     fi
 }
 
-alias rmdirstructruby="ap_func_rm_dirstruct_ruby"
+alias aprmdirstructruby="ap_func_rm_dirstruct_ruby"
 ap_func_rm_dirstruct_ruby() {
     aplogshow "Remove directories [${AP_SOFT_DIR}/ruby]\n"
     rm -rf "${AP_SOFT_DIR}/ruby"
@@ -48,11 +48,11 @@ ap_func_rm_dirstruct_ruby() {
     # rm -f "${AP_COMPLETIONS_DIR}/ap_completion_jruby.bash"
     # rm -f "${AP_COMPLETIONS_DIR}/ap_completion_ruby_all.bash"
 
-    if alias rmdirstructrubyshare &>/dev/null; then
-        rmdirstructrubyshare
+    if alias aprmdirstructrubyshare &>/dev/null; then
+        aprmdirstructrubyshare
     fi
 
-    if alias rmdirstructrubycommon &>/dev/null; then
-        rmdirstructrubycommon
+    if alias aprmdirstructrubycommon &>/dev/null; then
+        aprmdirstructrubycommon
     fi
 }

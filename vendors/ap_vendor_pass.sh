@@ -24,14 +24,14 @@ ap_func_create_dirstruct_pass() {
     fi
 }
 
-alias rmdirstructpass="ap_func_rm_dirstruct_pass"
+alias aprmdirstructpass="ap_func_rm_dirstruct_pass"
 ap_func_rm_dirstruct_pass() {
-    if alias rmdirstructpassshare &>/dev/null; then
-        rmdirstructpassshare
+    if alias aprmdirstructpassshare &>/dev/null; then
+        aprmdirstructpassshare
     fi
 
-    if alias rmdirstructpasscommon &>/dev/null; then
-        rmdirstructpasscommon
+    if alias aprmdirstructpasscommon &>/dev/null; then
+        aprmdirstructpasscommon
     fi
 }
 
@@ -64,16 +64,16 @@ ap_func_setup_pass() {
     fi
 }
 
-alias rmpass="ap_func_rm_pass"
+alias aprmpass="ap_func_rm_pass"
 ap_func_rm_pass() {
     aplogshow "Remove [pass]\n"
     rm -rf "${AP_SOFT_DIR}/pass"
 
-    if alias rmdirstructpass &>/dev/null; then
-        rmdirstructpass
+    if alias aprmdirstructpass &>/dev/null; then
+        aprmdirstructpass
     fi
 
-    if alias rmglobalsymlinkpass &>/dev/null; then
+    if alias aprmglobalsymlinkpass &>/dev/null; then
         rmglobalsymlinkpass
     fi
 }

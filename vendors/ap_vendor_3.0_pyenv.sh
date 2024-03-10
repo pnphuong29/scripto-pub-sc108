@@ -80,22 +80,22 @@ ap_func_create_dirstruct_pyenv() {
     fi
 }
 
-alias rmdirstructpyenv="ap_func_rm_dirstruct_pyenv"
+alias aprmdirstructpyenv="ap_func_rm_dirstruct_pyenv"
 ap_func_rm_dirstruct_pyenv() {
-    if alias rmdirstructpyenvshare &>/dev/null; then
-        rmdirstructpyenvshare
+    if alias aprmdirstructpyenvshare &>/dev/null; then
+        aprmdirstructpyenvshare
     fi
 
-    if alias rmdirstructpyenvcommon &>/dev/null; then
-        rmdirstructpyenvcommon
+    if alias aprmdirstructpyenvcommon &>/dev/null; then
+        aprmdirstructpyenvcommon
     fi
 
-    if alias rmdirstructpython &>/dev/null; then
-        rmdirstructpython
+    if alias aprmdirstructpython &>/dev/null; then
+        aprmdirstructpython
     fi
 
-    if alias rmdirstructpip &>/dev/null; then
-        rmdirstructpip
+    if alias aprmdirstructpip &>/dev/null; then
+        aprmdirstructpip
     fi
 }
 
@@ -128,7 +128,7 @@ ap_func_create_global_symlink_pyenv() {
     fi
 }
 
-alias rmglobalsymlinkpyenv="ap_func_rm_global_symlink_pyenv"
+alias aprmglobalsymlinkpyenv="ap_func_rm_global_symlink_pyenv"
 ap_func_rm_global_symlink_pyenv() {
     aplogshow "Remove [/usr/local/bin/python]\n"
     sudo rm -f "/usr/local/bin/python"
@@ -197,16 +197,16 @@ ap_func_setup_pyenv() {
     fi
 }
 
-alias rmpyenv="ap_func_rm_pyenv"
+alias aprmpyenv="ap_func_rm_pyenv"
 ap_func_rm_pyenv() {
     aplogshow "Remove [pyenv]\n"
     rm -rf "$(pyenv root)"
 
-    if alias rmdirstructpyenv &>/dev/null; then
-        rmdirstructpyenv
+    if alias aprmdirstructpyenv &>/dev/null; then
+        aprmdirstructpyenv
     fi
 
-    if alias rmglobalsymlinkpyenv &>/dev/null; then
+    if alias aprmglobalsymlinkpyenv &>/dev/null; then
         rmglobalsymlinkpyenv
     fi
 }

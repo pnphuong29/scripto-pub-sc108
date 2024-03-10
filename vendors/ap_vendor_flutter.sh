@@ -25,17 +25,17 @@ ap_func_create_dirstruct_flutter() {
     fi
 }
 
-alias rmdirstructflutter="ap_func_rm_dirstruct_flutter"
+alias aprmdirstructflutter="ap_func_rm_dirstruct_flutter"
 ap_func_rm_dirstruct_flutter() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_flutter.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_flutter.bash"
 
-    if alias rmdirstructfluttershare &>/dev/null; then
-        rmdirstructfluttershare
+    if alias aprmdirstructfluttershare &>/dev/null; then
+        aprmdirstructfluttershare
     fi
 
-    if alias rmdirstructfluttercommon &>/dev/null; then
-        rmdirstructfluttercommon
+    if alias aprmdirstructfluttercommon &>/dev/null; then
+        aprmdirstructfluttercommon
     fi
 }
 
@@ -78,16 +78,16 @@ ap_func_setup_flutter() {
     fi
 }
 
-alias rmflutter="ap_func_rm_flutter"
+alias aprmflutter="ap_func_rm_flutter"
 ap_func_rm_flutter() {
     aplogshow "Remove [flutter]\n"
     rm -rf "${AP_SOFT_DIR}/flutter"
 
-    if alias rmdirstructflutter &>/dev/null; then
-        rmdirstructflutter
+    if alias aprmdirstructflutter &>/dev/null; then
+        aprmdirstructflutter
     fi
 
-    if alias rmglobalsymlinkflutter &>/dev/null; then
+    if alias aprmglobalsymlinkflutter &>/dev/null; then
         rmglobalsymlinkflutter
     fi
 }

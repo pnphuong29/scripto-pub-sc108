@@ -30,13 +30,13 @@ ap_func_create_dirstruct_python() {
     fi
 }
 
-alias rmdirstructpython="ap_func_rm_dirstruct_python"
+alias aprmdirstructpython="ap_func_rm_dirstruct_python"
 ap_func_rm_dirstruct_python() {
-    if alias rmdirstructpythonshare &>/dev/null; then
-        rmdirstructpythonshare
+    if alias aprmdirstructpythonshare &>/dev/null; then
+        aprmdirstructpythonshare
     fi
 
-    if alias rmdirstructpythoncommon &>/dev/null; then
-        rmdirstructpythoncommon
+    if alias aprmdirstructpythoncommon &>/dev/null; then
+        aprmdirstructpythoncommon
     fi
 }

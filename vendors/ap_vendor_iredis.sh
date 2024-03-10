@@ -22,14 +22,14 @@ ap_func_create_dirstruct_iredis() {
     fi
 }
 
-alias rmdirstructiredis="ap_func_rm_dirstruct_iredis"
+alias aprmdirstructiredis="ap_func_rm_dirstruct_iredis"
 ap_func_rm_dirstruct_iredis() {
-    if alias rmdirstructiredisshare &>/dev/null; then
-        rmdirstructiredisshare
+    if alias aprmdirstructiredisshare &>/dev/null; then
+        aprmdirstructiredisshare
     fi
 
-    if alias rmdirstructirediscommon &>/dev/null; then
-        rmdirstructirediscommon
+    if alias aprmdirstructirediscommon &>/dev/null; then
+        aprmdirstructirediscommon
     fi
 }
 
@@ -44,16 +44,16 @@ ap_func_setup_iredis() {
     fi
 }
 
-alias rmiredis="ap_func_rm_iredis"
+alias aprmiredis="ap_func_rm_iredis"
 ap_func_rm_iredis() {
     aplogshow "Remove [iredis]\n"
     pip uninstall iredis
 
-    if alias rmdirstructiredis &>/dev/null; then
-        rmdirstructiredis
+    if alias aprmdirstructiredis &>/dev/null; then
+        aprmdirstructiredis
     fi
 
-    if alias rmglobalsymlinkiredis &>/dev/null; then
+    if alias aprmglobalsymlinkiredis &>/dev/null; then
         rmglobalsymlinkiredis
     fi
 }

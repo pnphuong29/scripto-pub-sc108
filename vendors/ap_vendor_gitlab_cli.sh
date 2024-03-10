@@ -25,17 +25,17 @@ ap_func_create_dirstruct_gitlabcli() {
     fi
 }
 
-alias rmdirstructgitlabcli="ap_func_rm_dirstruct_gitlabcli"
+alias aprmdirstructgitlabcli="ap_func_rm_dirstruct_gitlabcli"
 ap_func_rm_dirstruct_gitlabcli() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_glab.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_glab.bash"
 
-    if alias rmdirstructgitlabclishare &>/dev/null; then
-        rmdirstructgitlabclishare
+    if alias aprmdirstructgitlabclishare &>/dev/null; then
+        aprmdirstructgitlabclishare
     fi
 
-    if alias rmdirstructgitlabclicommon &>/dev/null; then
-        rmdirstructgitlabclicommon
+    if alias aprmdirstructgitlabclicommon &>/dev/null; then
+        aprmdirstructgitlabclicommon
     fi
 }
 
@@ -62,7 +62,7 @@ ap_func_setup_gitlabcli() {
     fi
 }
 
-alias rmgitlabcli="ap_func_rm_gitlabcli"
+alias aprmgitlabcli="ap_func_rm_gitlabcli"
 ap_func_rm_gitlabcli() {
     aplogshow "Remove [GitLab cli]\n"
 
@@ -75,7 +75,7 @@ ap_func_rm_gitlabcli() {
     rm -rf "${GOPATH}/pkg/mod/gitlab.com/gitlab-org/cli/cmd/glab@"*
     rm -f "${GOPATH}/bin/glab"
 
-    if alias rmdirstructgitlabcli &>/dev/null; then
-        rmdirstructgitlabcli
+    if alias aprmdirstructgitlabcli &>/dev/null; then
+        aprmdirstructgitlabcli
     fi
 }

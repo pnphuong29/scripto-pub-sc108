@@ -20,14 +20,14 @@ ap_func_create_dirstruct_xcp() {
     fi
 }
 
-alias rmdirstructxcp="ap_func_rm_dirstruct_xcp"
+alias aprmdirstructxcp="ap_func_rm_dirstruct_xcp"
 ap_func_rm_dirstruct_xcp() {
-    if alias rmdirstructxcpshare &>/dev/null; then
-        rmdirstructxcpshare
+    if alias aprmdirstructxcpshare &>/dev/null; then
+        aprmdirstructxcpshare
     fi
 
-    if alias rmdirstructxcpcommon &>/dev/null; then
-        rmdirstructxcpcommon
+    if alias aprmdirstructxcpcommon &>/dev/null; then
+        aprmdirstructxcpcommon
     fi
 }
 
@@ -39,7 +39,7 @@ ap_func_create_global_symlink_xcp() {
     fi
 }
 
-alias rmglobalsymlinkxcp="ap_func_rm_global_symlink_xcp"
+alias aprmglobalsymlinkxcp="ap_func_rm_global_symlink_xcp"
 ap_func_rm_global_symlink_xcp() {
     aplogshow "Remove [/usr/local/bin/xcp]\n"
     sudo rm -f "/usr/local/bin/xcp"
@@ -56,16 +56,16 @@ ap_func_setup_xcp() {
     fi
 }
 
-alias rmxcp="ap_func_rm_xcp"
+alias aprmxcp="ap_func_rm_xcp"
 ap_func_rm_xcp() {
     aplogshow "Remove [xcp]\n"
     cargo uninstall xcp
 
-    if alias rmdirstructxcp &>/dev/null; then
-        rmdirstructxcp
+    if alias aprmdirstructxcp &>/dev/null; then
+        aprmdirstructxcp
     fi
 
-    if alias rmglobalsymlinkxcp &>/dev/null; then
+    if alias aprmglobalsymlinkxcp &>/dev/null; then
         rmglobalsymlinkxcp
     fi
 }

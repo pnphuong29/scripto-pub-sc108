@@ -22,14 +22,14 @@ ap_func_create_dirstruct_joshuto() {
     fi
 }
 
-alias rmdirstructjoshuto="ap_func_rm_dirstruct_joshuto"
+alias aprmdirstructjoshuto="ap_func_rm_dirstruct_joshuto"
 ap_func_rm_dirstruct_joshuto() {
-    if alias rmdirstructjoshutoshare &>/dev/null; then
-        rmdirstructjoshutoshare
+    if alias aprmdirstructjoshutoshare &>/dev/null; then
+        aprmdirstructjoshutoshare
     fi
 
-    if alias rmdirstructjoshutocommon &>/dev/null; then
-        rmdirstructjoshutocommon
+    if alias aprmdirstructjoshutocommon &>/dev/null; then
+        aprmdirstructjoshutocommon
     fi
 }
 
@@ -67,17 +67,17 @@ ap_func_setup_joshuto() {
     fi
 }
 
-alias rmjoshuto="ap_func_rm_joshuto"
+alias aprmjoshuto="ap_func_rm_joshuto"
 ap_func_rm_joshuto() {
     aplogshow "Remove [joshuto]\n"
 
     rm -f "${AP_SOFT_DIR}/bin/joshuto"
 
-    if alias rmdirstructjoshuto &>/dev/null; then
-        rmdirstructjoshuto
+    if alias aprmdirstructjoshuto &>/dev/null; then
+        aprmdirstructjoshuto
     fi
 
-    if alias rmglobalsymlinkjoshuto &>/dev/null; then
+    if alias aprmglobalsymlinkjoshuto &>/dev/null; then
         rmglobalsymlinkjoshuto
     fi
 }

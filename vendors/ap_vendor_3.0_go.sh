@@ -64,7 +64,7 @@ ap_func_setup_go() {
     apaddpath -a "${GOPATH}/bin"
 }
 
-alias rmgo="ap_func_rm_go"
+alias aprmgo="ap_func_rm_go"
 ap_func_rm_go() {
     aplogshow "Remove [go]\n"
 

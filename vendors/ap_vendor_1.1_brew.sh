@@ -32,14 +32,14 @@ ap_func_create_dirstruct_brew() {
     fi
 }
 
-alias rmdirstructbrew="ap_func_rm_dirstruct_brew"
+alias aprmdirstructbrew="ap_func_rm_dirstruct_brew"
 ap_func_rm_dirstruct_brew() {
-    if alias rmdirstructbrewshare &>/dev/null; then
-        rmdirstructbrewshare
+    if alias aprmdirstructbrewshare &>/dev/null; then
+        aprmdirstructbrewshare
     fi
 
-    if alias rmdirstructbrewcommon &>/dev/null; then
-        rmdirstructbrewcommon
+    if alias aprmdirstructbrewcommon &>/dev/null; then
+        aprmdirstructbrewcommon
     fi
 }
 
@@ -55,7 +55,7 @@ ap_func_setup_brew() {
     apinitbrew
 }
 
-alias rmbrew="ap_func_rm_brew"
+alias aprmbrew="ap_func_rm_brew"
 ap_func_rm_brew() {
     # https://github.com/Homebrew/install/#uninstall-homebrew
     aplogshow "Remove [brew]\n"

@@ -41,16 +41,16 @@ ap_func_setup_jq() {
     fi
 }
 
-alias rmjq="ap_func_rm_jq"
+alias aprmjq="ap_func_rm_jq"
 ap_func_rm_jq() {
     aplogshow "Remove [jq]\n"
     rm -f "${AP_SOFT_DIR}/bin/jq"
 
-    if alias rmdirstructjq &>/dev/null; then
-        rmdirstructjq
+    if alias aprmdirstructjq &>/dev/null; then
+        aprmdirstructjq
     fi
 
-    if alias rmglobalsymlinkjq &>/dev/null; then
+    if alias aprmglobalsymlinkjq &>/dev/null; then
         rmglobalsymlinkjq
     fi
 }

@@ -20,14 +20,14 @@ ap_func_create_dirstruct_httpie() {
     fi
 }
 
-alias rmdirstructhttpie="ap_func_rm_dirstruct_httpie"
+alias aprmdirstructhttpie="ap_func_rm_dirstruct_httpie"
 ap_func_rm_dirstruct_httpie() {
-    if alias rmdirstructhttpieshare &>/dev/null; then
-        rmdirstructhttpieshare
+    if alias aprmdirstructhttpieshare &>/dev/null; then
+        aprmdirstructhttpieshare
     fi
 
-    if alias rmdirstructhttpiecommon &>/dev/null; then
-        rmdirstructhttpiecommon
+    if alias aprmdirstructhttpiecommon &>/dev/null; then
+        aprmdirstructhttpiecommon
     fi
 }
 
@@ -42,16 +42,16 @@ ap_func_setup_httpie() {
     fi
 }
 
-alias rmhttpie="ap_func_rm_httpie"
+alias aprmhttpie="ap_func_rm_httpie"
 ap_func_rm_httpie() {
     aplogshow "Remove [httpie]\n"
     pip uninstall httpie
 
-    if alias rmdirstructhttpie &>/dev/null; then
-        rmdirstructhttpie
+    if alias aprmdirstructhttpie &>/dev/null; then
+        aprmdirstructhttpie
     fi
 
-    if alias rmglobalsymlinkhttpie &>/dev/null; then
+    if alias aprmglobalsymlinkhttpie &>/dev/null; then
         rmglobalsymlinkhttpie
     fi
 }

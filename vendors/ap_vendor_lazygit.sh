@@ -22,14 +22,14 @@ ap_func_create_dirstruct_lazygit() {
     fi
 }
 
-alias rmdirstructlazygit="ap_func_rm_dirstruct_lazygit"
+alias aprmdirstructlazygit="ap_func_rm_dirstruct_lazygit"
 ap_func_rm_dirstruct_lazygit() {
-    if alias rmdirstructlazygitshare &>/dev/null; then
-        rmdirstructlazygitshare
+    if alias aprmdirstructlazygitshare &>/dev/null; then
+        aprmdirstructlazygitshare
     fi
 
-    if alias rmdirstructlazygitcommon &>/dev/null; then
-        rmdirstructlazygitcommon
+    if alias aprmdirstructlazygitcommon &>/dev/null; then
+        aprmdirstructlazygitcommon
     fi
 }
 
@@ -44,17 +44,17 @@ ap_func_setup_lazygit() {
     fi
 }
 
-alias rmlazygit="ap_func_rm_lazygit"
+alias aprmlazygit="ap_func_rm_lazygit"
 ap_func_rm_lazygit() {
     aplogshow "Remove [lazygit]\n"
     rm -rf "${GOPATH}/pkg/mod/github.com/jesseduffield/lazygit@"*
     rm -f "${GOPATH}/bin/lazygit"
 
-    if alias rmdirstructlazygit &>/dev/null; then
-        rmdirstructlazygit
+    if alias aprmdirstructlazygit &>/dev/null; then
+        aprmdirstructlazygit
     fi
 
-    if alias rmglobalsymlinklazygit &>/dev/null; then
+    if alias aprmglobalsymlinklazygit &>/dev/null; then
         rmglobalsymlinklazygit
     fi
 }

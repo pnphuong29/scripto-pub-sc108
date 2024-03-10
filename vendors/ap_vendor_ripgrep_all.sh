@@ -29,7 +29,7 @@ ap_func_create_dirstruct_ripgrepall() {
     fi
 }
 
-alias rmdirstructripgrepall="ap_func_rm_dirstruct_ripgrepall"
+alias aprmdirstructripgrepall="ap_func_rm_dirstruct_ripgrepall"
 ap_func_rm_dirstruct_ripgrepall() {
     aplogshow "Remove [${AP_SOFT_DIR}/bin/rga]\n"
     rm -f "${AP_SOFT_DIR}/bin/rga"
@@ -40,12 +40,12 @@ ap_func_rm_dirstruct_ripgrepall() {
     # aplogshow "Remove [${AP_MAN_DIR}/man1/rga.1]\n"
     # rm -f "${AP_MAN_DIR}/man1/rga.1"
 
-    if alias rmdirstructripgrepallshare &>/dev/null; then
-        rmdirstructripgrepallshare
+    if alias aprmdirstructripgrepallshare &>/dev/null; then
+        aprmdirstructripgrepallshare
     fi
 
-    if alias rmdirstructripgrepallcommon &>/dev/null; then
-        rmdirstructripgrepallcommon
+    if alias aprmdirstructripgrepallcommon &>/dev/null; then
+        aprmdirstructripgrepallcommon
     fi
 }
 
@@ -62,7 +62,7 @@ ap_func_create_global_symlink_ripgrepall() {
     fi
 }
 
-alias rmglobalsymlinkripgrepall="ap_func_rm_global_symlink_ripgrepall"
+alias aprmglobalsymlinkripgrepall="ap_func_rm_global_symlink_ripgrepall"
 ap_func_rm_global_symlink_ripgrepall() {
     if [ -f "/usr/local/bin/rga" ]; then
         aplogshow "Remove [/usr/local/bin/rga]\n"
@@ -108,16 +108,16 @@ ap_func_setup_ripgrepall() {
     fi
 }
 
-alias rmripgrepall="ap_func_rm_ripgrepall"
+alias aprmripgrepall="ap_func_rm_ripgrepall"
 ap_func_rm_ripgrepall() {
     aplogshow "Remove [ripgrepall]\n"
     rm -rf "${AP_SOFT_DIR}/ripgrep-all"
 
-    if alias rmdirstructripgrepall &>/dev/null; then
-        rmdirstructripgrepall
+    if alias aprmdirstructripgrepall &>/dev/null; then
+        aprmdirstructripgrepall
     fi
 
-    if alias rmglobalsymlinkripgrepall &>/dev/null; then
+    if alias aprmglobalsymlinkripgrepall &>/dev/null; then
         rmglobalsymlinkripgrepall
     fi
 }

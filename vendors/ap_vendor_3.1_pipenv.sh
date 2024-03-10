@@ -31,14 +31,14 @@ ap_func_create_dirstruct_pipenv() {
     fi
 }
 
-alias rmdirstructpipenv="ap_func_rm_dirstruct_pipenv"
+alias aprmdirstructpipenv="ap_func_rm_dirstruct_pipenv"
 ap_func_rm_dirstruct_pipenv() {
-    if alias rmdirstructpipenvshare &>/dev/null; then
-        rmdirstructpipenvshare
+    if alias aprmdirstructpipenvshare &>/dev/null; then
+        aprmdirstructpipenvshare
     fi
 
-    if alias rmdirstructpipenvcommon &>/dev/null; then
-        rmdirstructpipenvcommon
+    if alias aprmdirstructpipenvcommon &>/dev/null; then
+        aprmdirstructpipenvcommon
     fi
 }
 
@@ -53,16 +53,16 @@ ap_func_setup_pipenv() {
     fi
 }
 
-alias rmpipenv="ap_func_rm_pipenv"
+alias aprmpipenv="ap_func_rm_pipenv"
 ap_func_rm_pipenv() {
     aplogshow "Remove [pipenv]\n"
     pip uninstall pipenv
 
-    if alias rmdirstructpipenv &>/dev/null; then
-        rmdirstructpipenv
+    if alias aprmdirstructpipenv &>/dev/null; then
+        aprmdirstructpipenv
     fi
 
-    if alias rmglobalsymlinkpipenv &>/dev/null; then
+    if alias aprmglobalsymlinkpipenv &>/dev/null; then
         rmglobalsymlinkpipenv
     fi
 }

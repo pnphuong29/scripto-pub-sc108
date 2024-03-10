@@ -35,17 +35,17 @@ ap_func_create_dirstruct_node() {
     fi
 }
 
-alias rmdirstructnode="ap_func_rm_dirstruct_node"
+alias aprmdirstructnode="ap_func_rm_dirstruct_node"
 ap_func_rm_dirstruct_node() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_npm.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_npm.bash"
 
-    if alias rmdirstructnodeshare &>/dev/null; then
-        rmdirstructnodeshare
+    if alias aprmdirstructnodeshare &>/dev/null; then
+        aprmdirstructnodeshare
     fi
 
-    if alias rmdirstructnodecommon &>/dev/null; then
-        rmdirstructnodecommon
+    if alias aprmdirstructnodecommon &>/dev/null; then
+        aprmdirstructnodecommon
     fi
 }
 
@@ -67,7 +67,7 @@ ap_func_create_global_symlink_node() {
     fi
 }
 
-alias rmglobalsymlinknode="ap_func_rm_global_symlink_node"
+alias aprmglobalsymlinknode="ap_func_rm_global_symlink_node"
 ap_func_rm_global_symlink_node() {
     aplogshow "Remove [/usr/local/bin/node]\n"
     sudo rm -f "/usr/local/bin/node"
@@ -98,7 +98,7 @@ ap_func_setup_node() {
     fi
 }
 
-alias rmnode="ap_func_rm_node"
+alias aprmnode="ap_func_rm_node"
 ap_func_rm_node() {
     local ap_node_remove_version="${AP_NODE_VERSION_DEFAULT}"
     if [ -n "$1" ]; then
@@ -109,11 +109,11 @@ ap_func_rm_node() {
     nvm uninstall "v${ap_node_remove_version}"
     # volta uninstall "node@v${ap_node_remove_version}"
 
-    if alias rmdirstructnode &>/dev/null; then
-        rmdirstructnode
+    if alias aprmdirstructnode &>/dev/null; then
+        aprmdirstructnode
     fi
 
-    if alias rmglobalsymlinknode &>/dev/null; then
+    if alias aprmglobalsymlinknode &>/dev/null; then
         rmglobalsymlinknode
     fi
 }

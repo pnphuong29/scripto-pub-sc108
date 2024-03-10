@@ -46,7 +46,7 @@ ap_func_create_dirstruct_kitty() {
     fi
 }
 
-alias rmdirstructkitty="ap_func_rm_dirstruct_kitty"
+alias aprmdirstructkitty="ap_func_rm_dirstruct_kitty"
 ap_func_rm_dirstruct_kitty() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         rm -f "${HOME}/.local/bin/kitty"
@@ -56,12 +56,12 @@ ap_func_rm_dirstruct_kitty() {
 
     rm -rf "${AP_SOFT_DIR}/kitty/kitty-themes"
 
-    if alias rmdirstructkittyshare &>/dev/null; then
-        rmdirstructkittyshare
+    if alias aprmdirstructkittyshare &>/dev/null; then
+        aprmdirstructkittyshare
     fi
 
-    if alias rmdirstructkittycommon &>/dev/null; then
-        rmdirstructkittycommon
+    if alias aprmdirstructkittycommon &>/dev/null; then
+        aprmdirstructkittycommon
     fi
 }
 
@@ -78,7 +78,7 @@ ap_func_setup_kitty() {
     fi
 }
 
-alias rmkitty="ap_func_rm_kitty"
+alias aprmkitty="ap_func_rm_kitty"
 ap_func_rm_kitty() {
     aplogshow "Remove [kitty]\n"
 
@@ -90,11 +90,11 @@ ap_func_rm_kitty() {
 
     rm -rf "${HOME}/.config/kitty"
 
-    if alias rmdirstructkitty &>/dev/null; then
-        rmdirstructkitty
+    if alias aprmdirstructkitty &>/dev/null; then
+        aprmdirstructkitty
     fi
 
-    if alias rmglobalsymlinkkitty &>/dev/null; then
+    if alias aprmglobalsymlinkkitty &>/dev/null; then
         rmglobalsymlinkkitty
     fi
 }

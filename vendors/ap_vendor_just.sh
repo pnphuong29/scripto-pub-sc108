@@ -20,14 +20,14 @@ ap_func_create_dirstruct_just() {
     fi
 }
 
-alias rmdirstructjust="ap_func_rm_dirstruct_just"
+alias aprmdirstructjust="ap_func_rm_dirstruct_just"
 ap_func_rm_dirstruct_just() {
-    if alias rmdirstructjustshare &>/dev/null; then
-        rmdirstructjustshare
+    if alias aprmdirstructjustshare &>/dev/null; then
+        aprmdirstructjustshare
     fi
 
-    if alias rmdirstructjustcommon &>/dev/null; then
-        rmdirstructjustcommon
+    if alias aprmdirstructjustcommon &>/dev/null; then
+        aprmdirstructjustcommon
     fi
 }
 
@@ -39,7 +39,7 @@ ap_func_create_global_symlink_just() {
     fi
 }
 
-alias rmglobalsymlinkjust="ap_func_rm_global_symlink_just"
+alias aprmglobalsymlinkjust="ap_func_rm_global_symlink_just"
 ap_func_rm_global_symlink_just() {
     if [ -f "/usr/local/bin/just" ]; then
         aplogshow "Remove [/usr/local/bin/just]\n"
@@ -59,16 +59,16 @@ ap_func_setup_just() {
     fi
 }
 
-alias rmjust="ap_func_rm_just"
+alias aprmjust="ap_func_rm_just"
 ap_func_rm_just() {
     aplogshow "Remove [just]\n"
     rm -f "${AP_SOFT_DIR}/bin/just"
 
-    if alias rmdirstructjust &>/dev/null; then
-        rmdirstructjust
+    if alias aprmdirstructjust &>/dev/null; then
+        aprmdirstructjust
     fi
 
-    if alias rmglobalsymlinkjust &>/dev/null; then
+    if alias aprmglobalsymlinkjust &>/dev/null; then
         rmglobalsymlinkjust
     fi
 }

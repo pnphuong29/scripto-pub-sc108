@@ -20,14 +20,14 @@ ap_func_create_dirstruct_redis() {
     fi
 }
 
-alias rmdirstructredis="ap_func_rm_dirstruct_redis"
+alias aprmdirstructredis="ap_func_rm_dirstruct_redis"
 ap_func_rm_dirstruct_redis() {
-    if alias rmdirstructredisshare &>/dev/null; then
-        rmdirstructredisshare
+    if alias aprmdirstructredisshare &>/dev/null; then
+        aprmdirstructredisshare
     fi
 
-    if alias rmdirstructrediscommon &>/dev/null; then
-        rmdirstructrediscommon
+    if alias aprmdirstructrediscommon &>/dev/null; then
+        aprmdirstructrediscommon
     fi
 }
 
@@ -71,8 +71,8 @@ ap_func_rm_redis() {
         sudo apt autoremove -y
     fi
 
-    if alias rmdirstructredis &>/dev/null; then
-        rmdirstructredis
+    if alias aprmdirstructredis &>/dev/null; then
+        aprmdirstructredis
     fi
 }
 

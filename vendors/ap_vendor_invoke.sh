@@ -26,17 +26,17 @@ ap_func_create_dirstruct_invoke() {
     fi
 }
 
-alias rmdirstructinvoke="ap_func_rm_dirstruct_invoke"
+alias aprmdirstructinvoke="ap_func_rm_dirstruct_invoke"
 ap_func_rm_dirstruct_invoke() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_invoke.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_invoke.bash"
 
-    if alias rmdirstructinvokeshare &>/dev/null; then
-        rmdirstructinvokeshare
+    if alias aprmdirstructinvokeshare &>/dev/null; then
+        aprmdirstructinvokeshare
     fi
 
-    if alias rmdirstructinvokecommon &>/dev/null; then
-        rmdirstructinvokecommon
+    if alias aprmdirstructinvokecommon &>/dev/null; then
+        aprmdirstructinvokecommon
     fi
 }
 
@@ -51,16 +51,16 @@ ap_func_setup_invoke() {
     fi
 }
 
-alias rminvoke="ap_func_rm_invoke"
+alias aprminvoke="ap_func_rm_invoke"
 ap_func_rm_invoke() {
     aplogshow "Remove [invoke]\n"
     pip uninstall invoke
 
-    if alias rmdirstructinvoke &>/dev/null; then
-        rmdirstructinvoke
+    if alias aprmdirstructinvoke &>/dev/null; then
+        aprmdirstructinvoke
     fi
 
-    if alias rmglobalsymlinkinvoke &>/dev/null; then
+    if alias aprmglobalsymlinkinvoke &>/dev/null; then
         rmglobalsymlinkinvoke
     fi
 }

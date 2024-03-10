@@ -47,14 +47,14 @@ ap_func_create_dirstruct_nginx() {
     fi
 }
 
-alias rmdirstructnginx="ap_func_rm_dirstruct_nginx"
+alias aprmdirstructnginx="ap_func_rm_dirstruct_nginx"
 ap_func_rm_dirstruct_nginx() {
-    if alias rmdirstructnginxshare &>/dev/null; then
-        rmdirstructnginxshare
+    if alias aprmdirstructnginxshare &>/dev/null; then
+        aprmdirstructnginxshare
     fi
 
-    if alias rmdirstructnginxcommon &>/dev/null; then
-        rmdirstructnginxcommon
+    if alias aprmdirstructnginxcommon &>/dev/null; then
+        aprmdirstructnginxcommon
     fi
 }
 
@@ -96,7 +96,7 @@ ap_func_setup_nginx() {
     fi
 }
 
-alias rmnginx="ap_func_rm_nginx"
+alias aprmnginx="ap_func_rm_nginx"
 ap_func_rm_nginx() {
     aplogshow "Remove [nginx]\n"
 
@@ -107,8 +107,8 @@ ap_func_rm_nginx() {
         sudo apt autoremove -y
     fi
 
-    if alias rmdirstructnginx &>/dev/null; then
-        rmdirstructnginx
+    if alias aprmdirstructnginx &>/dev/null; then
+        aprmdirstructnginx
     fi
 }
 

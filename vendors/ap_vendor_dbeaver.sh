@@ -26,14 +26,14 @@ ap_func_create_dirstruct_dbeaver() {
     fi
 }
 
-alias rmdirstructdbeaver="ap_func_rm_dirstruct_dbeaver"
+alias aprmdirstructdbeaver="ap_func_rm_dirstruct_dbeaver"
 ap_func_rm_dirstruct_dbeaver() {
-    if alias rmdirstructdbeavershare &>/dev/null; then
-        rmdirstructdbeavershare
+    if alias aprmdirstructdbeavershare &>/dev/null; then
+        aprmdirstructdbeavershare
     fi
 
-    if alias rmdirstructdbeavercommon &>/dev/null; then
-        rmdirstructdbeavercommon
+    if alias aprmdirstructdbeavercommon &>/dev/null; then
+        aprmdirstructdbeavercommon
     fi
 }
 
@@ -68,7 +68,7 @@ ap_func_setup_dbeaver() {
     fi
 }
 
-alias rmdbeaver="ap_func_rm_dbeaver"
+alias aprmdbeaver="ap_func_rm_dbeaver"
 ap_func_rm_dbeaver() {
     aplogshow "Remove [dbeaver]\n"
 
@@ -78,11 +78,11 @@ ap_func_rm_dbeaver() {
         sudo dpkg --purge dbeaver
     fi
 
-    if alias rmdirstructdbeaver &>/dev/null; then
-        rmdirstructdbeaver
+    if alias aprmdirstructdbeaver &>/dev/null; then
+        aprmdirstructdbeaver
     fi
 
-    if alias rmglobalsymlinkdbeaver &>/dev/null; then
+    if alias aprmglobalsymlinkdbeaver &>/dev/null; then
         rmglobalsymlinkdbeaver
     fi
 }

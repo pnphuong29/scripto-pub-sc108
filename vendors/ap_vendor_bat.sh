@@ -29,7 +29,7 @@ ap_func_create_dirstruct_bat() {
     fi
 }
 
-alias rmdirstructbat="ap_func_rm_dirstruct_bat"
+alias aprmdirstructbat="ap_func_rm_dirstruct_bat"
 ap_func_rm_dirstruct_bat() {
     aplogshow "Remove [${AP_SOFT_DIR}/bin/bat]\n"
     rm -f "${AP_SOFT_DIR}/bin/bat"
@@ -40,12 +40,12 @@ ap_func_rm_dirstruct_bat() {
     aplogshow "Remove [${AP_MAN_DIR}/man1/bat.1]\n"
     rm -f "${AP_MAN_DIR}/man1/bat.1"
 
-    if alias rmdirstructbatshare &>/dev/null; then
-        rmdirstructbatshare
+    if alias aprmdirstructbatshare &>/dev/null; then
+        aprmdirstructbatshare
     fi
 
-    if alias rmdirstructbatcommon &>/dev/null; then
-        rmdirstructbatcommon
+    if alias aprmdirstructbatcommon &>/dev/null; then
+        aprmdirstructbatcommon
     fi
 }
 
@@ -57,7 +57,7 @@ ap_func_create_global_symlink_bat() {
     fi
 }
 
-alias rmglobalsymlinkbat="ap_func_rm_global_symlink_bat"
+alias aprmglobalsymlinkbat="ap_func_rm_global_symlink_bat"
 ap_func_rm_global_symlink_bat() {
     if [ -f "/usr/local/bin/bat" ]; then
         aplogshow "Remove [/usr/local/bin/bat]\n"
@@ -100,16 +100,16 @@ ap_func_setup_bat() {
     fi
 }
 
-alias rmbat="ap_func_rm_bat"
+alias aprmbat="ap_func_rm_bat"
 ap_func_rm_bat() {
     aplogshow "Remove [bat]\n"
     rm -rf "${AP_SOFT_DIR}/bat"
 
-    if alias rmdirstructbat &>/dev/null; then
-        rmdirstructbat
+    if alias aprmdirstructbat &>/dev/null; then
+        aprmdirstructbat
     fi
 
-    if alias rmglobalsymlinkbat &>/dev/null; then
+    if alias aprmglobalsymlinkbat &>/dev/null; then
         rmglobalsymlinkbat
     fi
 }

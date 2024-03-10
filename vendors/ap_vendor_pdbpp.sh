@@ -22,17 +22,17 @@ ap_func_create_dir_struct_pdbpp() {
     fi
 }
 
-alias rmdirstructpdbpp="ap_func_rm_dirstruct_pdbpp"
+alias aprmdirstructpdbpp="ap_func_rm_dirstruct_pdbpp"
 ap_func_rm_dirstruct_pdbpp() {
     aplogshow "Remove [${HOME}/.pdbrc.py]\n"
     rm -f "${HOME}/.pdbrc.py"
 
-    if alias rmdirstructpdbppshare &>/dev/null; then
-        rmdirstructpdbppshare
+    if alias aprmdirstructpdbppshare &>/dev/null; then
+        aprmdirstructpdbppshare
     fi
 
-    if alias rmdirstructpdbppcommon &>/dev/null; then
-        rmdirstructpdbppcommon
+    if alias aprmdirstructpdbppcommon &>/dev/null; then
+        aprmdirstructpdbppcommon
     fi
 }
 
@@ -47,16 +47,16 @@ ap_func_setup_pdbpp() {
     fi
 }
 
-alias rmpdbpp="ap_func_rm_pdbpp"
+alias aprmpdbpp="ap_func_rm_pdbpp"
 ap_func_rm_pdbpp() {
     aplogshow "Remove [pdbpp]\n"
     pip uninstall pdbpp
 
-    if alias rmdirstructpdbpp &>/dev/null; then
-        rmdirstructpdbpp
+    if alias aprmdirstructpdbpp &>/dev/null; then
+        aprmdirstructpdbpp
     fi
 
-    if alias rmglobalsymlinkpdbpp &>/dev/null; then
+    if alias aprmglobalsymlinkpdbpp &>/dev/null; then
         rmglobalsymlinkpdbpp
     fi
 }

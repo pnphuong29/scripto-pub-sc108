@@ -16,7 +16,7 @@ ap_func_setup_emojify() {
     chmod +x "${AP_SOFT_DIR}/bin/emojify"
 }
 
-alias rmemojify="ap_func_rm_emojify"
+alias aprmemojify="ap_func_rm_emojify"
 ap_func_rm_emojify() {
     aplogshow "Remove [emojify]\n"
     rm -f "${AP_SOFT_DIR}/bin/emojify"

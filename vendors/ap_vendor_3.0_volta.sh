@@ -31,17 +31,17 @@ ap_func_create_dirstruct_volta() {
     fi
 }
 
-alias rmdirstructvolta="ap_func_rm_dirstruct_volta"
+alias aprmdirstructvolta="ap_func_rm_dirstruct_volta"
 ap_func_rm_dirstruct_volta() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_volta.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_volta.bash"
 
-    if alias rmdirstructvoltashare &>/dev/null; then
-        rmdirstructvoltashare
+    if alias aprmdirstructvoltashare &>/dev/null; then
+        aprmdirstructvoltashare
     fi
 
-    if alias rmdirstructvoltacommon &>/dev/null; then
-        rmdirstructvoltacommon
+    if alias aprmdirstructvoltacommon &>/dev/null; then
+        aprmdirstructvoltacommon
     fi
 }
 
@@ -53,7 +53,7 @@ ap_func_create_global_symlink_volta() {
     fi
 }
 
-alias rmglobalsymlinkvolta="ap_func_rm_global_symlink_volta"
+alias aprmglobalsymlinkvolta="ap_func_rm_global_symlink_volta"
 ap_func_rm_global_symlink_volta() {
     if [ -f "/usr/local/bin/volta" ]; then
         aplogshow "Remove [/usr/local/bin/volta]\n"
@@ -76,18 +76,18 @@ ap_func_setup_volta() {
     fi
 }
 
-alias rmvolta="ap_func_rm_volta"
+alias aprmvolta="ap_func_rm_volta"
 ap_func_rm_volta() {
     aplogshow "Remove [volta]\n"
 
     # volta modified `~/.profile`, please remove unnecessary lines related to volta
     rm -rf ~/.volta
 
-    if alias rmdirstructvolta &>/dev/null; then
-        rmdirstructvolta
+    if alias aprmdirstructvolta &>/dev/null; then
+        aprmdirstructvolta
     fi
 
-    if alias rmglobalsymlinkvolta &>/dev/null; then
+    if alias aprmglobalsymlinkvolta &>/dev/null; then
         rmglobalsymlinkvolta
     fi
 }

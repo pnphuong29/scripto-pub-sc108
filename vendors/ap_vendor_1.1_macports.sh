@@ -41,14 +41,14 @@ ap_func_create_dirstruct_macports() {
     fi
 }
 
-alias rmdirstructmacports="ap_func_rm_dirstruct_macports"
+alias aprmdirstructmacports="ap_func_rm_dirstruct_macports"
 ap_func_rm_dirstruct_macports() {
-    if alias rmdirstructmacportsshare &>/dev/null; then
-        rmdirstructmacportsshare
+    if alias aprmdirstructmacportsshare &>/dev/null; then
+        aprmdirstructmacportsshare
     fi
 
-    if alias rmdirstructmacportscommon &>/dev/null; then
-        rmdirstructmacportscommon
+    if alias aprmdirstructmacportscommon &>/dev/null; then
+        aprmdirstructmacportscommon
     fi
 }
 
@@ -83,7 +83,7 @@ ap_func_setup_macports() {
     fi
 }
 
-alias rmmacports="ap_func_rm_macports"
+alias aprmmacports="ap_func_rm_macports"
 ap_func_rm_macports() {
     # https://guide.macports.org/chunked/installing.macports.uninstalling.html
     aplogshow "Remove [Macports]\n"
@@ -108,11 +108,11 @@ ap_func_rm_macports() {
         /Library/Tcl/macports1.0 \
         "${HOME}/.macports"
 
-    if alias rmdirstructmacports &>/dev/null; then
-        rmdirstructmacport
+    if alias aprmdirstructmacports &>/dev/null; then
+        aprmdirstructmacport
     fi
 
-    if alias rmglobalsymlinkmacports &>/dev/null; then
+    if alias aprmglobalsymlinkmacports &>/dev/null; then
         rmglobalsymlinkmacport
     fi
 }

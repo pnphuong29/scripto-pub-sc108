@@ -23,14 +23,14 @@ ap_func_create_dirstruct_ghq() {
     fi
 }
 
-alias rmdirstructghq="ap_func_rm_dirstruct_ghq"
+alias aprmdirstructghq="ap_func_rm_dirstruct_ghq"
 ap_func_rm_dirstruct_ghq() {
-    if alias rmdirstructghqshare &>/dev/null; then
-        rmdirstructghqshare
+    if alias aprmdirstructghqshare &>/dev/null; then
+        aprmdirstructghqshare
     fi
 
-    if alias rmdirstructghqcommon &>/dev/null; then
-        rmdirstructghqcommon
+    if alias aprmdirstructghqcommon &>/dev/null; then
+        aprmdirstructghqcommon
     fi
 }
 
@@ -46,18 +46,18 @@ ap_func_setup_ghq() {
     fi
 }
 
-alias rmghq="ap_func_rm_ghq"
+alias aprmghq="ap_func_rm_ghq"
 ap_func_rm_ghq() {
     aplogshow "Remove [ghq]\n"
 
     rm -rf "${GOPATH}/pkg/mod/github.com/x-motemen/ghq@"*
     rm -f "${GOPATH}/bin/ghq"
 
-    if alias rmdirstructghq &>/dev/null; then
-        rmdirstructghq
+    if alias aprmdirstructghq &>/dev/null; then
+        aprmdirstructghq
     fi
 
-    if alias rmglobalsymlinkghq &>/dev/null; then
+    if alias aprmglobalsymlinkghq &>/dev/null; then
         rmglobalsymlinkghq
     fi
 }

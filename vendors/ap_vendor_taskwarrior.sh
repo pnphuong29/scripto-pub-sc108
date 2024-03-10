@@ -25,17 +25,17 @@ ap_func_create_dirstruct_taskwarrior() {
     fi
 }
 
-alias rmdirstructtaskwarrior="ap_func_rm_dirstruct_taskwarrior"
+alias aprmdirstructtaskwarrior="ap_func_rm_dirstruct_taskwarrior"
 ap_func_rm_dirstruct_taskwarrior() {
     aplogshow "Remove [${AP_SOFT_DIR}/bin/task]\n"
     rm -f "${AP_SOFT_DIR}/bin/task"
 
-    if alias rmdirstructtaskwarriorshare &>/dev/null; then
-        rmdirstructtaskwarriorshare
+    if alias aprmdirstructtaskwarriorshare &>/dev/null; then
+        aprmdirstructtaskwarriorshare
     fi
 
-    if alias rmdirstructtaskwarriorcommon &>/dev/null; then
-        rmdirstructtaskwarriorcommon
+    if alias aprmdirstructtaskwarriorcommon &>/dev/null; then
+        aprmdirstructtaskwarriorcommon
     fi
 }
 
@@ -80,16 +80,16 @@ ap_func_setup_taskwarrior() {
     fi
 }
 
-alias rmtaskwarrior="ap_func_rm_taskwarrior"
+alias aprmtaskwarrior="ap_func_rm_taskwarrior"
 ap_func_rm_taskwarrior() {
     aplogshow "Remove [taskwarrior]\n"
     rm -rf "${AP_SOFT_DIR}/taskwarrior"
 
-    if alias rmdirstructtaskwarrior &>/dev/null; then
-        rmdirstructtaskwarrior
+    if alias aprmdirstructtaskwarrior &>/dev/null; then
+        aprmdirstructtaskwarrior
     fi
 
-    if alias rmglobalsymlinktaskwarrior &>/dev/null; then
+    if alias aprmglobalsymlinktaskwarrior &>/dev/null; then
         rmglobalsymlinktaskwarrior
     fi
 }

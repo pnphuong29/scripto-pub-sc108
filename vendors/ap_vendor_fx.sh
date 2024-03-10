@@ -25,17 +25,17 @@ ap_func_create_dirstruct_fx() {
     fi
 }
 
-alias rmdirstructfx="ap_func_rm_dirstruct_fx"
+alias aprmdirstructfx="ap_func_rm_dirstruct_fx"
 ap_func_rm_dirstruct_fx() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_fx.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_fx.bash"
 
-    if alias rmdirstructfxshare &>/dev/null; then
-        rmdirstructfxshare
+    if alias aprmdirstructfxshare &>/dev/null; then
+        aprmdirstructfxshare
     fi
 
-    if alias rmdirstructfxcommon &>/dev/null; then
-        rmdirstructfxcommon
+    if alias aprmdirstructfxcommon &>/dev/null; then
+        aprmdirstructfxcommon
     fi
 }
 
@@ -56,7 +56,7 @@ ap_func_setup_fx() {
     fi
 }
 
-alias rmfx="ap_func_rm_fx"
+alias aprmfx="ap_func_rm_fx"
 ap_func_rm_fx() {
     aplogshow "Remove [fx]\n"
 
@@ -64,11 +64,11 @@ ap_func_rm_fx() {
     rm -f "${GOPATH}/bin/fx"
     npm uninstall -g fx-completion
 
-    if alias rmdirstructfx &>/dev/null; then
-        rmdirstructfx
+    if alias aprmdirstructfx &>/dev/null; then
+        aprmdirstructfx
     fi
 
-    if alias rmglobalsymlinkfx &>/dev/null; then
+    if alias aprmglobalsymlinkfx &>/dev/null; then
         rmglobalsymlinkfx
     fi
 }

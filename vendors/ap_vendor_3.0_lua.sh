@@ -23,17 +23,17 @@ ap_func_create_dirstruct_lua() {
     fi
 }
 
-alias rmdirstructlua="ap_func_rm_dirstruct_lua"
+alias aprmdirstructlua="ap_func_rm_dirstruct_lua"
 ap_func_rm_dirstruct_lua() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_luarocks.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_luarocks.bash"
 
-    if alias rmdirstructluashare &>/dev/null; then
-        rmdirstructluashare
+    if alias aprmdirstructluashare &>/dev/null; then
+        aprmdirstructluashare
     fi
 
-    if alias rmdirstructluacommon &>/dev/null; then
-        rmdirstructluacommon
+    if alias aprmdirstructluacommon &>/dev/null; then
+        aprmdirstructluacommon
     fi
 }
 
@@ -60,7 +60,7 @@ ap_func_setup_lua() {
     fi
 }
 
-alias rmlua="ap_func_rm_lua"
+alias aprmlua="ap_func_rm_lua"
 ap_func_rm_lua() {
     local ap_lua_remove_version='5.3'
     if [ -n "$1" ]; then
@@ -76,7 +76,7 @@ ap_func_rm_lua() {
         sudo apt autoremove -y
     fi
 
-    if alias rmdirstructlua &>/dev/null; then
-        rmdirstructlua
+    if alias aprmdirstructlua &>/dev/null; then
+        aprmdirstructlua
     fi
 }

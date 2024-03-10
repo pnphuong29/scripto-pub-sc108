@@ -20,14 +20,14 @@ ap_func_create_dirstruct_ipython() {
     fi
 }
 
-alias rmdirstructipython="ap_func_rm_dirstruct_ipython"
+alias aprmdirstructipython="ap_func_rm_dirstruct_ipython"
 ap_func_rm_dirstruct_ipython() {
-    if alias rmdirstructipythonshare &>/dev/null; then
-        rmdirstructipythonshare
+    if alias aprmdirstructipythonshare &>/dev/null; then
+        aprmdirstructipythonshare
     fi
 
-    if alias rmdirstructipythoncommon &>/dev/null; then
-        rmdirstructipythoncommon
+    if alias aprmdirstructipythoncommon &>/dev/null; then
+        aprmdirstructipythoncommon
     fi
 }
 
@@ -42,16 +42,16 @@ ap_func_setup_ipython() {
     fi
 }
 
-alias rmipython="ap_func_rm_ipython"
+alias aprmipython="ap_func_rm_ipython"
 ap_func_rm_ipython() {
     aplogshow "Remove [ipython]\n"
     pip uninstall ipython
 
-    if alias rmdirstructipython &>/dev/null; then
-        rmdirstructipython
+    if alias aprmdirstructipython &>/dev/null; then
+        aprmdirstructipython
     fi
 
-    if alias rmglobalsymlinkipython &>/dev/null; then
+    if alias aprmglobalsymlinkipython &>/dev/null; then
         rmglobalsymlinkipython
     fi
 }

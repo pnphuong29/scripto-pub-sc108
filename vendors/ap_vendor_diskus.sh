@@ -6,7 +6,7 @@ ap_func_create_global_symlink_diskus() {
     fi
 }
 
-alias rmglobalsymlinkdiskus="ap_func_rm_global_symlink_diskus"
+alias aprmglobalsymlinkdiskus="ap_func_rm_global_symlink_diskus"
 ap_func_rm_global_symlink_diskus() {
     if [ -f "/usr/local/bin/diskus" ]; then
         aplogshow "Remove [/usr/local/bin/diskus]\n"

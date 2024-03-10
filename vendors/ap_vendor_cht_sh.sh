@@ -23,17 +23,17 @@ ap_func_create_dirstruct_chtsh() {
     fi
 }
 
-alias rmdirstructchtsh="ap_func_rm_dirstruct_chtsh"
+alias aprmdirstructchtsh="ap_func_rm_dirstruct_chtsh"
 ap_func_rm_dirstruct_chtsh() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_chtsh.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_chtsh.bash"
 
-    if alias rmdirstructchtshshare &>/dev/null; then
-        rmdirstructchtshshare
+    if alias aprmdirstructchtshshare &>/dev/null; then
+        aprmdirstructchtshshare
     fi
 
-    if alias rmdirstructchtshcommon &>/dev/null; then
-        rmdirstructchtshcommon
+    if alias aprmdirstructchtshcommon &>/dev/null; then
+        aprmdirstructchtshcommon
     fi
 }
 
@@ -49,16 +49,16 @@ ap_func_setup_chtsh() {
     fi
 }
 
-alias rmchtsh="ap_func_rm_chtsh"
+alias aprmchtsh="ap_func_rm_chtsh"
 ap_func_rm_chtsh() {
     aplogshow "Remove [chtsh]\n"
     rm -rf "${AP_SOFT_DIR}/bin/cht.sh"
 
-    if alias rmdirstructchtsh &>/dev/null; then
-        rmdirstructchtsh
+    if alias aprmdirstructchtsh &>/dev/null; then
+        aprmdirstructchtsh
     fi
 
-    if alias rmglobalsymlinkchtsh &>/dev/null; then
+    if alias aprmglobalsymlinkchtsh &>/dev/null; then
         rmglobalsymlinkchtsh
     fi
 }

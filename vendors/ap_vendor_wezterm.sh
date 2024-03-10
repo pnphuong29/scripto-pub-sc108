@@ -38,17 +38,17 @@ ap_func_create_dirstruct_wezterm() {
     fi
 }
 
-alias rmdirstructwezterm="ap_func_rm_dirstruct_wezterm"
+alias aprmdirstructwezterm="ap_func_rm_dirstruct_wezterm"
 ap_func_rm_dirstruct_wezterm() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_wezterm.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_wezterm.bash"
 
-    if alias rmdirstructweztermshare &>/dev/null; then
-        rmdirstructweztermshare
+    if alias aprmdirstructweztermshare &>/dev/null; then
+        aprmdirstructweztermshare
     fi
 
-    if alias rmdirstructweztermcommon &>/dev/null; then
-        rmdirstructweztermcommon
+    if alias aprmdirstructweztermcommon &>/dev/null; then
+        aprmdirstructweztermcommon
     fi
 }
 
@@ -81,7 +81,7 @@ ap_func_setup_wezterm() {
     fi
 }
 
-alias rmwezterm="ap_func_rm_wezterm"
+alias aprmwezterm="ap_func_rm_wezterm"
 ap_func_rm_wezterm() {
     aplogshow "Remove [wezterm]\n"
 
@@ -91,11 +91,11 @@ ap_func_rm_wezterm() {
         sudo dpkg --prune wezterm
     fi
 
-    if alias rmdirstructwezterm &>/dev/null; then
-        rmdirstructwezterm
+    if alias aprmdirstructwezterm &>/dev/null; then
+        aprmdirstructwezterm
     fi
 
-    if alias rmglobalsymlinkwezterm &>/dev/null; then
+    if alias aprmglobalsymlinkwezterm &>/dev/null; then
         rmglobalsymlinkwezterm
     fi
 }

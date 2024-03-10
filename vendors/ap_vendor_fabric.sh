@@ -25,17 +25,17 @@ ap_func_create_dirstruct_fabric() {
     fi
 }
 
-alias rmdirstructfabric="ap_func_rm_dirstruct_fabric"
+alias aprmdirstructfabric="ap_func_rm_dirstruct_fabric"
 ap_func_rm_dirstruct_fabric() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_fabric.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_fabric.bash"
 
-    if alias rmdirstructfabricshare &>/dev/null; then
-        rmdirstructfabricshare
+    if alias aprmdirstructfabricshare &>/dev/null; then
+        aprmdirstructfabricshare
     fi
 
-    if alias rmdirstructfabriccommon &>/dev/null; then
-        rmdirstructfabriccommon
+    if alias aprmdirstructfabriccommon &>/dev/null; then
+        aprmdirstructfabriccommon
     fi
 }
 
@@ -50,16 +50,16 @@ ap_func_setup_fabric() {
     fi
 }
 
-alias rmfabric="ap_func_rm_fabric"
+alias aprmfabric="ap_func_rm_fabric"
 ap_func_rm_fabric() {
     aplogshow "Remove [fabric]\n"
     pip uninstall fabric2
 
-    if alias rmdirstructfabric &>/dev/null; then
-        rmdirstructfabric
+    if alias aprmdirstructfabric &>/dev/null; then
+        aprmdirstructfabric
     fi
 
-    if alias rmglobalsymlinkfabric &>/dev/null; then
+    if alias aprmglobalsymlinkfabric &>/dev/null; then
         rmglobalsymlinkfabric
     fi
 }

@@ -23,17 +23,17 @@ ap_func_create_dirstruct_redocly() {
     fi
 }
 
-alias rmdirstructredocly="ap_func_rm_dirstruct_redocly"
+alias aprmdirstructredocly="ap_func_rm_dirstruct_redocly"
 ap_func_rm_dirstruct_redocly() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_redocly.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_redocly.bash"
 
-    if alias rmdirstructredoclyshare &>/dev/null; then
-        rmdirstructredoclyshare
+    if alias aprmdirstructredoclyshare &>/dev/null; then
+        aprmdirstructredoclyshare
     fi
 
-    if alias rmdirstructredoclycommon &>/dev/null; then
-        rmdirstructredoclycommon
+    if alias aprmdirstructredoclycommon &>/dev/null; then
+        aprmdirstructredoclycommon
     fi
 }
 
@@ -55,11 +55,11 @@ ap_func_rm_redocly() {
     bun uninstall -g redocly
     # npm uninstall -g redocly
 
-    if alias rmdirstructredocly &>/dev/null; then
-        rmdirstructredocly
+    if alias aprmdirstructredocly &>/dev/null; then
+        aprmdirstructredocly
     fi
 
-    if alias rmglobalsymlinkredocly &>/dev/null; then
+    if alias aprmglobalsymlinkredocly &>/dev/null; then
         rmglobalsymlinkredocly
     fi
 }

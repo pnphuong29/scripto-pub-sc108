@@ -25,14 +25,14 @@ ap_func_create_dirstruct_certbot() {
     fi
 }
 
-alias rmdirstructcertbot="ap_func_rm_dirstruct_certbot"
+alias aprmdirstructcertbot="ap_func_rm_dirstruct_certbot"
 ap_func_rm_dirstruct_certbot() {
-    if alias rmdirstructcertbotshare &>/dev/null; then
-        rmdirstructcertbotshare
+    if alias aprmdirstructcertbotshare &>/dev/null; then
+        aprmdirstructcertbotshare
     fi
 
-    if alias rmdirstructcertbotcommon &>/dev/null; then
-        rmdirstructcertbotcommon
+    if alias aprmdirstructcertbotcommon &>/dev/null; then
+        aprmdirstructcertbotcommon
     fi
 }
 
@@ -44,7 +44,7 @@ ap_func_create_global_symlink_certbot() {
     fi
 }
 
-alias rmglobalsymlinkcertbot="ap_func_rm_global_symlink_certbot"
+alias aprmglobalsymlinkcertbot="ap_func_rm_global_symlink_certbot"
 ap_func_rm_global_symlink_certbot() {
     if [ -f "/usr/bin/certbot" ]; then
         aplogshow "Remove [/usr/bin/certbot]\n"
@@ -74,7 +74,7 @@ ap_func_setup_certbot() {
     fi
 }
 
-alias rmcertbot="ap_func_rm_certbot"
+alias aprmcertbot="ap_func_rm_certbot"
 ap_func_rm_certbot() {
     aplogshow "Remove [certbot]\n"
 
@@ -84,11 +84,11 @@ ap_func_rm_certbot() {
         sudo rm -f /bin/certbot
     fi
 
-    if alias rmdirstructcertbot &>/dev/null; then
-        rmdirstructcertbot
+    if alias aprmdirstructcertbot &>/dev/null; then
+        aprmdirstructcertbot
     fi
 
-    if alias rmglobalsymlinkcertbot &>/dev/null; then
+    if alias aprmglobalsymlinkcertbot &>/dev/null; then
         rmglobalsymlinkcertbot
     fi
 }

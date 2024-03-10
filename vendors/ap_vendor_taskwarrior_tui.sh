@@ -20,14 +20,14 @@ ap_func_create_dirstruct_taskwarriortui() {
     fi
 }
 
-alias rmdirstructtaskwarriortui="ap_func_rm_dirstruct_taskwarriortui"
+alias aprmdirstructtaskwarriortui="ap_func_rm_dirstruct_taskwarriortui"
 ap_func_rm_dirstruct_taskwarriortui() {
-    if alias rmdirstructtaskwarriortuishare &>/dev/null; then
-        rmdirstructtaskwarriortuishare
+    if alias aprmdirstructtaskwarriortuishare &>/dev/null; then
+        aprmdirstructtaskwarriortuishare
     fi
 
-    if alias rmdirstructtaskwarriortuicommon &>/dev/null; then
-        rmdirstructtaskwarriortuicommon
+    if alias aprmdirstructtaskwarriortuicommon &>/dev/null; then
+        aprmdirstructtaskwarriortuicommon
     fi
 }
 
@@ -55,15 +55,15 @@ ap_func_setup_taskwarriortui() {
     fi
 }
 
-alias rmtaskwarriortui="ap_func_rm_taskwarriortui"
+alias aprmtaskwarriortui="ap_func_rm_taskwarriortui"
 ap_func_rm_taskwarriortui() {
     rm -f "${AP_SOFT_DIR}/bin/taskwarrior-tui"
 
-    if alias rmdirstructtaskwarriortui &>/dev/null; then
-        rmdirstructtaskwarriortui
+    if alias aprmdirstructtaskwarriortui &>/dev/null; then
+        aprmdirstructtaskwarriortui
     fi
 
-    if alias rmglobalsymlinktaskwarriortui &>/dev/null; then
+    if alias aprmglobalsymlinktaskwarriortui &>/dev/null; then
         rmglobalsymlinktaskwarriortui
     fi
 }

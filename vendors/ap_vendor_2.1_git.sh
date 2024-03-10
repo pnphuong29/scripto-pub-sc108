@@ -81,19 +81,19 @@ ap_func_create_dirstruct_git() {
     fi
 }
 
-alias rmdirstructgit="ap_func_rm_dirstruct_git"
+alias aprmdirstructgit="ap_func_rm_dirstruct_git"
 ap_func_rm_dirstruct_git() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_git.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_git.bash"
     rm -f "${HOME}/.gitconfig"
     rm -f "${HOME}/.gitignore_global"
 
-    if alias rmdirstructgitshare &>/dev/null; then
-        rmdirstructgitshare
+    if alias aprmdirstructgitshare &>/dev/null; then
+        aprmdirstructgitshare
     fi
 
-    if alias rmdirstructgitcommon &>/dev/null; then
-        rmdirstructgitcommon
+    if alias aprmdirstructgitcommon &>/dev/null; then
+        aprmdirstructgitcommon
     fi
 }
 
@@ -113,7 +113,7 @@ ap_func_setup_git() {
     fi
 }
 
-alias rmgit="ap_func_rm_git"
+alias aprmgit="ap_func_rm_git"
 ap_func_rm_git() {
     aplogshow "Remove [git]\n"
 
@@ -123,8 +123,8 @@ ap_func_rm_git() {
         sudo apt purge -y git
     fi
 
-    if alias rmdirstructgit &>/dev/null; then
-        rmdirstructgit
+    if alias aprmdirstructgit &>/dev/null; then
+        aprmdirstructgit
     fi
 }
 

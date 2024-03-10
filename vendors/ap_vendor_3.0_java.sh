@@ -37,14 +37,14 @@ ap_func_create_dirstruct_java() {
     fi
 }
 
-alias rmdirstructjava="ap_func_rm_dirstruct_java"
+alias aprmdirstructjava="ap_func_rm_dirstruct_java"
 ap_func_rm_dirstruct_java() {
-    if alias rmdirstructjavashare &>/dev/null; then
-        rmdirstructjavashare
+    if alias aprmdirstructjavashare &>/dev/null; then
+        aprmdirstructjavashare
     fi
 
-    if alias rmdirstructjavacommon &>/dev/null; then
-        rmdirstructjavacommon
+    if alias aprmdirstructjavacommon &>/dev/null; then
+        aprmdirstructjavacommon
     fi
 }
 
@@ -78,16 +78,16 @@ ap_func_setup_java() {
     fi
 }
 
-alias rmjava="ap_func_rm_java"
+alias aprmjava="ap_func_rm_java"
 ap_func_rm_java() {
     aplogshow "Remove [java]\n"
     rm -rf "${AP_SOFT_DIR}/java"
 
-    if alias rmdirstructjava &>/dev/null; then
-        rmdirstructjava
+    if alias aprmdirstructjava &>/dev/null; then
+        aprmdirstructjava
     fi
 
-    if alias rmglobalsymlinkjava &>/dev/null; then
+    if alias aprmglobalsymlinkjava &>/dev/null; then
         rmglobalsymlinkjava
     fi
 }

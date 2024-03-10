@@ -20,14 +20,14 @@ ap_func_create_dirstruct_joplindesktop() {
     fi
 }
 
-alias rmdirstructjoplindesktop="ap_func_rm_dirstruct_joplindesktop"
+alias aprmdirstructjoplindesktop="ap_func_rm_dirstruct_joplindesktop"
 ap_func_rm_dirstruct_joplindesktop() {
-    if alias rmdirstructjoplindesktopshare &>/dev/null; then
-        rmdirstructjoplindesktopshare
+    if alias aprmdirstructjoplindesktopshare &>/dev/null; then
+        aprmdirstructjoplindesktopshare
     fi
 
-    if alias rmdirstructjoplindesktopcommon &>/dev/null; then
-        rmdirstructjoplindesktopcommon
+    if alias aprmdirstructjoplindesktopcommon &>/dev/null; then
+        aprmdirstructjoplindesktopcommon
     fi
 }
 
@@ -50,7 +50,7 @@ ap_func_setup_joplindesktop() {
     fi
 }
 
-alias rmjoplindesktop="ap_func_rm_joplindesktop"
+alias aprmjoplindesktop="ap_func_rm_joplindesktop"
 ap_func_rm_joplindesktop() {
     aplogshow "Remove [Joplin Desktop]\n"
 
@@ -60,11 +60,11 @@ ap_func_rm_joplindesktop() {
         rm -rf "${HOME}/.joplin"
     fi
 
-    if alias rmdirstructjoplindesktop &>/dev/null; then
-        rmdirstructjoplindesktop
+    if alias aprmdirstructjoplindesktop &>/dev/null; then
+        aprmdirstructjoplindesktop
     fi
 
-    if alias rmglobalsymlinkjoplindesktop &>/dev/null; then
+    if alias aprmglobalsymlinkjoplindesktop &>/dev/null; then
         rmglobalsymlinkjoplindesktop
     fi
 }

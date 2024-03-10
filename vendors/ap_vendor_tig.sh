@@ -25,17 +25,17 @@ ap_func_create_dirstruct_tig() {
     fi
 }
 
-alias rmdirstructtig="ap_func_rm_dirstruct_tig"
+alias aprmdirstructtig="ap_func_rm_dirstruct_tig"
 ap_func_rm_dirstruct_tig() {
     aplogshow "Remove [${AP_SOFT_DIR}/bin/tig]\n"
     rm -f "${AP_SOFT_DIR}/bin/tig"
 
-    if alias rmdirstructtigshare &>/dev/null; then
-        rmdirstructtigshare
+    if alias aprmdirstructtigshare &>/dev/null; then
+        aprmdirstructtigshare
     fi
 
-    if alias rmdirstructtigcommon &>/dev/null; then
-        rmdirstructtigcommon
+    if alias aprmdirstructtigcommon &>/dev/null; then
+        aprmdirstructtigcommon
     fi
 }
 
@@ -77,7 +77,7 @@ ap_func_setup_tig() {
     fi
 }
 
-alias rmtig="ap_func_rm_tig"
+alias aprmtig="ap_func_rm_tig"
 ap_func_rm_tig() {
     aplogshow "Remove [tig]\n"
 
@@ -88,11 +88,11 @@ ap_func_rm_tig() {
     cd "${AP_SOFT_DIR}"
     rm -rf "${AP_SOFT_DIR}/tig"
 
-    if alias rmdirstructtig &>/dev/null; then
-        rmdirstructtig
+    if alias aprmdirstructtig &>/dev/null; then
+        aprmdirstructtig
     fi
 
-    if alias rmglobalsymlinktig &>/dev/null; then
+    if alias aprmglobalsymlinktig &>/dev/null; then
         rmglobalsymlinktig
     fi
 }

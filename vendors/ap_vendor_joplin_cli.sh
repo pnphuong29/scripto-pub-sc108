@@ -20,14 +20,14 @@ ap_func_create_dirstruct_joplincli() {
     fi
 }
 
-alias rmdirstructjoplincli="ap_func_rm_dirstruct_joplincli"
+alias aprmdirstructjoplincli="ap_func_rm_dirstruct_joplincli"
 ap_func_rm_dirstruct_joplincli() {
-    if alias rmdirstructjoplinclishare &>/dev/null; then
-        rmdirstructjoplinclishare
+    if alias aprmdirstructjoplinclishare &>/dev/null; then
+        aprmdirstructjoplinclishare
     fi
 
-    if alias rmdirstructjoplinclicommon &>/dev/null; then
-        rmdirstructjoplinclicommon
+    if alias aprmdirstructjoplinclicommon &>/dev/null; then
+        aprmdirstructjoplinclicommon
     fi
 }
 
@@ -53,30 +53,30 @@ ap_func_setup_joplin_cli_bun() {
     fi
 }
 
-alias rmjoplincli="ap_func_rm_joplin_cli"
+alias aprmjoplincli="ap_func_rm_joplin_cli"
 ap_func_rm_joplin_cli() {
     aplogshow "Remove [joplin_cli]\n"
     npm -g uninstall joplin
 
-    if alias rmdirstructjoplincli &>/dev/null; then
-        rmdirstructjoplincli
+    if alias aprmdirstructjoplincli &>/dev/null; then
+        aprmdirstructjoplincli
     fi
 
-    if alias rmglobalsymlinkjoplincli &>/dev/null; then
+    if alias aprmglobalsymlinkjoplincli &>/dev/null; then
         rmglobalsymlinkjoplincli
     fi
 }
 
-alias rmjoplinclibun="ap_func_rm_joplin_cli_bun"
+alias aprmjoplinclibun="ap_func_rm_joplin_cli_bun"
 ap_func_rm_joplin_cli_bun() {
     aplogshow "Remove [joplin_cli]\n"
     bun -g uninstall joplin
 
-    if alias rmdirstructjoplincli &>/dev/null; then
-        rmdirstructjoplincli
+    if alias aprmdirstructjoplincli &>/dev/null; then
+        aprmdirstructjoplincli
     fi
 
-    if alias rmglobalsymlinkjoplincli &>/dev/null; then
+    if alias aprmglobalsymlinkjoplincli &>/dev/null; then
         rmglobalsymlinkjoplincli
     fi
 }

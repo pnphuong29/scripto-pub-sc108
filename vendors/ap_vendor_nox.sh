@@ -21,13 +21,13 @@ ap_func_create_dirstruct_nox() {
     fi
 }
 
-alias rmdirstructnox="ap_func_rm_dirstruct_nox"
+alias aprmdirstructnox="ap_func_rm_dirstruct_nox"
 ap_func_rm_dirstruct_nox() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_nox.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_nox.bash"
 
-    if alias rmdirstructnoxcommon &>/dev/null; then
-        rmdirstructnoxcommon
+    if alias aprmdirstructnoxcommon &>/dev/null; then
+        aprmdirstructnoxcommon
     fi
 }
 
@@ -42,16 +42,16 @@ ap_func_setup_nox() {
     fi
 }
 
-alias rmnox="ap_func_rm_nox"
+alias aprmnox="ap_func_rm_nox"
 ap_func_rm_nox() {
     aplogshow "Remove [nox]\n"
     pip uninstall nox
 
-    if alias rmdirstructnox &>/dev/null; then
-        rmdirstructnox
+    if alias aprmdirstructnox &>/dev/null; then
+        aprmdirstructnox
     fi
 
-    if alias rmglobalsymlinknox &>/dev/null; then
+    if alias aprmglobalsymlinknox &>/dev/null; then
         rmglobalsymlinknox
     fi
 }

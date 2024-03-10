@@ -31,17 +31,17 @@ ap_func_create_dirstruct_vbox() {
     fi
 }
 
-alias rmdirstructvbox="ap_func_rm_dirstruct_vbox"
+alias aprmdirstructvbox="ap_func_rm_dirstruct_vbox"
 ap_func_rm_dirstruct_vbox() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_vboxmanage.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_vboxmanage.bash"
 
-    if alias rmdirstructvboxshare &>/dev/null; then
-        rmdirstructvboxshare
+    if alias aprmdirstructvboxshare &>/dev/null; then
+        aprmdirstructvboxshare
     fi
 
-    if alias rmdirstructvboxcommon &>/dev/null; then
-        rmdirstructvboxcommon
+    if alias aprmdirstructvboxcommon &>/dev/null; then
+        aprmdirstructvboxcommon
     fi
 }
 
@@ -110,7 +110,7 @@ ap_func_setup_vbox() {
     fi
 }
 
-alias rmvbox="ap_func_rm_vbox"
+alias aprmvbox="ap_func_rm_vbox"
 ap_func_rm_vbox() {
     aplogshow "Remove [VirtualBox]\n"
 
@@ -120,11 +120,11 @@ ap_func_rm_vbox() {
         sudo dpkg --prune virtualbox
     fi
 
-    if alias rmdirstructvbox &>/dev/null; then
-        rmdirstructvbox
+    if alias aprmdirstructvbox &>/dev/null; then
+        aprmdirstructvbox
     fi
 
-    if alias rmglobalsymlinkvbox &>/dev/null; then
+    if alias aprmglobalsymlinkvbox &>/dev/null; then
         rmglobalsymlinkvbox
     fi
 }

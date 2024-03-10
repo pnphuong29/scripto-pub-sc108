@@ -50,14 +50,14 @@ ap_func_create_dirstruct_prisma() {
     fi
 }
 
-alias rmdirstructprisma="ap_func_rm_dirstruct_prisma"
+alias aprmdirstructprisma="ap_func_rm_dirstruct_prisma"
 ap_func_rm_dirstruct_prisma() {
-    if alias rmdirstructprismashare &>/dev/null; then
-        rmdirstructprismashare
+    if alias aprmdirstructprismashare &>/dev/null; then
+        aprmdirstructprismashare
     fi
 
-    if alias rmdirstructprismacommon &>/dev/null; then
-        rmdirstructprismacommon
+    if alias aprmdirstructprismacommon &>/dev/null; then
+        aprmdirstructprismacommon
     fi
 }
 
@@ -72,16 +72,16 @@ ap_func_setup_prisma() {
     fi
 }
 
-alias rmprisma="ap_func_rm_prisma"
+alias aprmprisma="ap_func_rm_prisma"
 ap_func_rm_prisma() {
     aplogshow "Remove [prisma]\n"
     npm uninstall -g prisma
 
-    if alias rmdirstructprisma &>/dev/null; then
-        rmdirstructprisma
+    if alias aprmdirstructprisma &>/dev/null; then
+        aprmdirstructprisma
     fi
 
-    if alias rmglobalsymlinkprisma &>/dev/null; then
+    if alias aprmglobalsymlinkprisma &>/dev/null; then
         rmglobalsymlinkprisma
     fi
 }

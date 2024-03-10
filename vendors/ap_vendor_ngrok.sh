@@ -23,17 +23,17 @@ ap_func_create_dirstruct_ngrok() {
     fi
 }
 
-alias rmdirstructngrok="ap_func_rm_dirstruct_ngrok"
+alias aprmdirstructngrok="ap_func_rm_dirstruct_ngrok"
 ap_func_rm_dirstruct_ngrok() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_ngrok.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_ngrok.bash"
 
-    if alias rmdirstructngrokshare &>/dev/null; then
-        rmdirstructngrokshare
+    if alias aprmdirstructngrokshare &>/dev/null; then
+        aprmdirstructngrokshare
     fi
 
-    if alias rmdirstructngrokcommon &>/dev/null; then
-        rmdirstructngrokcommon
+    if alias aprmdirstructngrokcommon &>/dev/null; then
+        aprmdirstructngrokcommon
     fi
 }
 
@@ -55,7 +55,7 @@ ap_func_setup_ngrok() {
     fi
 }
 
-alias rmngrok="ap_func_rm_ngrok"
+alias aprmngrok="ap_func_rm_ngrok"
 ap_func_rm_ngrok() {
     aplogshow "Remove [ngrok]\n"
 
@@ -67,11 +67,11 @@ ap_func_rm_ngrok() {
         rm -rf "${HOME}/.config/ngrok/ngrok.yml"
     fi
 
-    if alias rmdirstructngrok &>/dev/null; then
-        rmdirstructngrok
+    if alias aprmdirstructngrok &>/dev/null; then
+        aprmdirstructngrok
     fi
 
-    if alias rmglobalsymlinkngrok &>/dev/null; then
+    if alias aprmglobalsymlinkngrok &>/dev/null; then
         rmglobalsymlinkngrok
     fi
 }

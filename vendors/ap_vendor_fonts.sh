@@ -20,14 +20,14 @@ ap_func_create_dirstruct_fonts() {
     fi
 }
 
-alias rmdirstructfonts="ap_func_rm_dirstruct_fonts"
+alias aprmdirstructfonts="ap_func_rm_dirstruct_fonts"
 ap_func_rm_dirstruct_fonts() {
-    if alias rmdirstructfontsshare &>/dev/null; then
-        rmdirstructfontsshare
+    if alias aprmdirstructfontsshare &>/dev/null; then
+        aprmdirstructfontsshare
     fi
 
-    if alias rmdirstructfontscommon &>/dev/null; then
-        rmdirstructfontscommon
+    if alias aprmdirstructfontscommon &>/dev/null; then
+        aprmdirstructfontscommon
     fi
 }
 
@@ -58,7 +58,7 @@ ap_func_setup_fonts() {
     fi
 }
 
-alias rmfonts="ap_func_rm_fonts"
+alias aprmfonts="ap_func_rm_fonts"
 ap_func_rm_fonts() {
     aplogshow "Remove [icons-in-terminal] fonts\n"
     if [ -d "${AP_SOFT_DIR}/icons-in-terminal" ]; then

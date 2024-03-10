@@ -26,7 +26,7 @@ ap_func_create_dirstruct_rust() {
     fi
 }
 
-alias rmdirstructrust="ap_func_rm_dirstruct_rust"
+alias aprmdirstructrust="ap_func_rm_dirstruct_rust"
 ap_func_rm_dirstruct_rust() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_rustup.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_rust.bash"
@@ -34,12 +34,12 @@ ap_func_rm_dirstruct_rust() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_cargo.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_cargo.bash"
 
-    if alias rmdirstructrustshare &>/dev/null; then
-        rmdirstructrustshare
+    if alias aprmdirstructrustshare &>/dev/null; then
+        aprmdirstructrustshare
     fi
 
-    if alias rmdirstructrustcommon &>/dev/null; then
-        rmdirstructrustcommon
+    if alias aprmdirstructrustcommon &>/dev/null; then
+        aprmdirstructrustcommon
     fi
 }
 
@@ -57,12 +57,12 @@ ap_func_setup_rust() {
     fi
 }
 
-alias rmrust="ap_func_rm_rust"
+alias aprmrust="ap_func_rm_rust"
 ap_func_rm_rust() {
     aplogshow "Remove [rust]\n"
     rustup self uninstall
 
-    if alias rmdirstructrust &>/dev/null; then
-        rmdirstructrust
+    if alias aprmdirstructrust &>/dev/null; then
+        aprmdirstructrust
     fi
 }

@@ -35,16 +35,16 @@ ap_func_create_dirstruct_composer() {
     fi
 }
 
-alias rmdirstructcomposer="ap_func_rm_dirstruct_composer"
+alias aprmdirstructcomposer="ap_func_rm_dirstruct_composer"
 ap_func_rm_dirstruct_composer() {
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_composer.bash"
 
-    if alias rmdirstructcomposershare &>/dev/null; then
-        rmdirstructcomposershare
+    if alias aprmdirstructcomposershare &>/dev/null; then
+        aprmdirstructcomposershare
     fi
 
-    if alias rmdirstructcomposercommon &>/dev/null; then
-        rmdirstructcomposercommon
+    if alias aprmdirstructcomposercommon &>/dev/null; then
+        aprmdirstructcomposercommon
     fi
 }
 
@@ -84,17 +84,17 @@ ap_func_setup_composer() {
     fi
 }
 
-alias rmcomposer="ap_func_rm_composer"
+alias aprmcomposer="ap_func_rm_composer"
 ap_func_rm_composer() {
     aplogshow "Remove [PHP composer]\n"
     rm -f "${AP_SOFT_DIR}/bin/composer"
     rm -rf "${HOME}/.composer"
 
-    if alias rmdirstructcomposer &>/dev/null; then
-        rmdirstructcomposer
+    if alias aprmdirstructcomposer &>/dev/null; then
+        aprmdirstructcomposer
     fi
 
-    if alias rmglobalsymlinkcomposer &>/dev/null; then
+    if alias aprmglobalsymlinkcomposer &>/dev/null; then
         rmglobalsymlinkcomposer
     fi
 }

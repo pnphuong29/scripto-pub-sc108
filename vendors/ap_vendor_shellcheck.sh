@@ -25,17 +25,17 @@ ap_func_create_dirstruct_shellcheck() {
     fi
 }
 
-alias rmdirstructshellcheck="ap_func_rm_dirstruct_shellcheck"
+alias aprmdirstructshellcheck="ap_func_rm_dirstruct_shellcheck"
 ap_func_rm_dirstruct_shellcheck() {
     aplogshow "Remove [${HOME}/.shellcheckrc]\n"
     rm -f "${HOME}/.shellcheckrc"
 
-    if alias rmdirstructshellcheckshare &>/dev/null; then
-        rmdirstructshellcheckshare
+    if alias aprmdirstructshellcheckshare &>/dev/null; then
+        aprmdirstructshellcheckshare
     fi
 
-    if alias rmdirstructshellcheckcommon &>/dev/null; then
-        rmdirstructshellcheckcommon
+    if alias aprmdirstructshellcheckcommon &>/dev/null; then
+        aprmdirstructshellcheckcommon
     fi
 }
 
@@ -72,12 +72,12 @@ ap_func_setup_shellcheck() {
     fi
 }
 
-alias rmshellcheck="ap_func_rm_shellcheck"
+alias aprmshellcheck="ap_func_rm_shellcheck"
 ap_func_rm_shellcheck() {
     aplogshow "Remove [shellcheck]\n"
     rm -rf "${AP_SOFT_DIR}/shellcheck"
 
-    if alias rmdirstructshellcheck &>/dev/null; then
-        rmdirstructshellcheck
+    if alias aprmdirstructshellcheck &>/dev/null; then
+        aprmdirstructshellcheck
     fi
 }

@@ -20,13 +20,13 @@ ap_func_create_dirstruct_gsettings() {
     fi
 }
 
-alias rmdirstructgsettings="ap_func_rm_dirstruct_gsettings"
+alias aprmdirstructgsettings="ap_func_rm_dirstruct_gsettings"
 ap_func_rm_dirstruct_gsettings() {
-    if alias rmdirstructgsettingsshare &>/dev/null; then
-        rmdirstructgsettingsshare
+    if alias aprmdirstructgsettingsshare &>/dev/null; then
+        aprmdirstructgsettingsshare
     fi
 
-    if alias rmdirstructgsettingscommon &>/dev/null; then
-        rmdirstructgsettingscommon
+    if alias aprmdirstructgsettingscommon &>/dev/null; then
+        aprmdirstructgsettingscommon
     fi
 }

@@ -28,14 +28,14 @@ ap_func_create_dirstruct_sshlog() {
     fi
 }
 
-alias rmdirstructsshlog="ap_func_rm_dirstruct_sshlog"
+alias aprmdirstructsshlog="ap_func_rm_dirstruct_sshlog"
 ap_func_rm_dirstruct_sshlog() {
-    if alias rmdirstructsshlogshare &>/dev/null; then
-        rmdirstructsshlogshare
+    if alias aprmdirstructsshlogshare &>/dev/null; then
+        aprmdirstructsshlogshare
     fi
 
-    if alias rmdirstructsshlogcommon &>/dev/null; then
-        rmdirstructsshlogcommon
+    if alias aprmdirstructsshlogcommon &>/dev/null; then
+        aprmdirstructsshlogcommon
     fi
 }
 
@@ -63,7 +63,7 @@ ap_func_setup_sshlog() {
     fi
 }
 
-alias rmsshlog="ap_func_rm_sshlog"
+alias aprmsshlog="ap_func_rm_sshlog"
 ap_func_rm_sshlog() {
     aplogshow "Remove [sshlog]\n"
 
@@ -72,11 +72,11 @@ ap_func_rm_sshlog() {
     sudo rm -f /etc/apt/sources.list.d/repo-sshlog-ubuntu.list
     sudo apt update
 
-    if alias rmdirstructsshlog &>/dev/null; then
-        rmdirstructsshlog
+    if alias aprmdirstructsshlog &>/dev/null; then
+        aprmdirstructsshlog
     fi
 
-    if alias rmglobalsymlinksshlog &>/dev/null; then
+    if alias aprmglobalsymlinksshlog &>/dev/null; then
         rmglobalsymlinksshlog
     fi
 }

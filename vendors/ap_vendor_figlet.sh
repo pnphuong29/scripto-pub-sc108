@@ -20,14 +20,14 @@ ap_func_create_dirstruct_figlet() {
     fi
 }
 
-alias rmdirstructfiglet="ap_func_rm_dirstruct_figlet"
+alias aprmdirstructfiglet="ap_func_rm_dirstruct_figlet"
 ap_func_rm_dirstruct_figlet() {
-    if alias rmdirstructfigletshare &>/dev/null; then
-        rmdirstructfigletshare
+    if alias aprmdirstructfigletshare &>/dev/null; then
+        aprmdirstructfigletshare
     fi
 
-    if alias rmdirstructfigletcommon &>/dev/null; then
-        rmdirstructfigletcommon
+    if alias aprmdirstructfigletcommon &>/dev/null; then
+        aprmdirstructfigletcommon
     fi
 }
 
@@ -41,7 +41,7 @@ ap_func_setup_figlet() {
     sudo make install
 }
 
-alias rmfiglet="ap_func_rm_figlet"
+alias aprmfiglet="ap_func_rm_figlet"
 ap_func_rm_figlet() {
     # https://github.com/cmatsuoka/figlet
     aplogshow "Remove [figlet]\n"

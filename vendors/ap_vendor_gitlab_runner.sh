@@ -22,14 +22,14 @@ ap_func_create_dirstruct_gitlabrunner() {
     fi
 }
 
-alias rmdirstructgitlabrunner="ap_func_rm_dirstruct_gitlabrunner"
+alias aprmdirstructgitlabrunner="ap_func_rm_dirstruct_gitlabrunner"
 ap_func_rm_dirstruct_gitlabrunner() {
-    if alias rmdirstructgitlabrunnershare &>/dev/null; then
-        rmdirstructgitlabrunnershare
+    if alias aprmdirstructgitlabrunnershare &>/dev/null; then
+        aprmdirstructgitlabrunnershare
     fi
 
-    if alias rmdirstructgitlabrunnercommon &>/dev/null; then
-        rmdirstructgitlabrunnercommon
+    if alias aprmdirstructgitlabrunnercommon &>/dev/null; then
+        aprmdirstructgitlabrunnercommon
     fi
 }
 
@@ -70,16 +70,16 @@ ap_func_setup_gitlabrunner() {
     fi
 }
 
-alias rmgitlabrunner="ap_func_rm_gitlabrunner"
+alias aprmgitlabrunner="ap_func_rm_gitlabrunner"
 ap_func_rm_gitlabrunner() {
     aplogshow "Remove [gitlab-runner]\n"
     sudo rm -f /usr/local/bin/gitlab-runner
 
-    if alias rmdirstructgitlabrunner &>/dev/null; then
-        rmdirstructgitlabrunner
+    if alias aprmdirstructgitlabrunner &>/dev/null; then
+        aprmdirstructgitlabrunner
     fi
 
-    if alias rmglobalsymlinkgitlabrunner &>/dev/null; then
+    if alias aprmglobalsymlinkgitlabrunner &>/dev/null; then
         rmglobalsymlinkgitlabrunner
     fi
 }
