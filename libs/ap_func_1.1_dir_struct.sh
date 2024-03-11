@@ -29,10 +29,6 @@ ap_func_create_dir_struct_core() {
     aplogshow "Create directories [${AP_COMPLETIONS_DIR}]\n"
     mkdir -p "${AP_COMPLETIONS_DIR}"
 
-    # VMS
-    aplogshow "Create directories [${AP_VMS_DIR}]\n"
-    mkdir -p "${AP_VMS_DIR}"
-
     # Projects
     aplogshow "Create directories [${AP_PRJ_DIR}]\n"
     mkdir -p "${AP_PRJ_DIR}"

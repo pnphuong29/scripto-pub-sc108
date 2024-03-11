@@ -16,9 +16,6 @@ export AP_SYMLINKS_DIR="${HOME}/scripto-data/symlinks"
 # Sofware
 export AP_SOFT_DIR="${HOME}/scripto-data/software"
 
-# VMS
-export AP_VMS_DIR="${HOME}/scripto-data/vms"
-
 # Configs
 export AP_CONFIGS_DIR="${HOME}/scripto-data/configs"
 

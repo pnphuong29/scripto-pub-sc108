@@ -155,8 +155,6 @@ apaddpath "${HOME}/scripto-main/utils"
 apaddpath "${HOME}/scripto-common/tests"
 apaddpath "${HOME}/scripto-main/tests"
 
-apaddpath "${HOME}/scripto-data/software/bin"
-
 # homebrew
 if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
     if [[ "$(uname -m)" == 'arm64' ]]; then
