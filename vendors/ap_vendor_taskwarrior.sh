@@ -90,6 +90,6 @@ ap_func_rm_taskwarrior() {
     fi
 
     if alias aprmglobalsymlinktaskwarrior &>/dev/null; then
-        rmglobalsymlinktaskwarrior
+        aprmglobalsymlinktaskwarrior
     fi
 }

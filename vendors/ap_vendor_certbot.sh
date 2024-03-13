@@ -89,6 +89,6 @@ ap_func_rm_certbot() {
     fi
 
     if alias aprmglobalsymlinkcertbot &>/dev/null; then
-        rmglobalsymlinkcertbot
+        aprmglobalsymlinkcertbot
     fi
 }

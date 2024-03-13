@@ -73,6 +73,6 @@ ap_func_rm_postgresql() {
     fi
 
     if alias aprmglobalsymlinkpostgresql &>/dev/null; then
-        rmglobalsymlinkpostgresql
+        aprmglobalsymlinkpostgresql
     fi
 }

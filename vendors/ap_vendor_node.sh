@@ -114,6 +114,6 @@ ap_func_rm_node() {
     fi
 
     if alias aprmglobalsymlinknode &>/dev/null; then
-        rmglobalsymlinknode
+        aprmglobalsymlinknode
     fi
 }

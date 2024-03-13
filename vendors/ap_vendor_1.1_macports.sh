@@ -113,6 +113,6 @@ ap_func_rm_macports() {
     fi
 
     if alias aprmglobalsymlinkmacports &>/dev/null; then
-        rmglobalsymlinkmacport
+        aprmglobalsymlinkmacport
     fi
 }

@@ -64,6 +64,6 @@ ap_func_rm_bat_extras() {
     fi
 
     if alias aprmglobalsymlinkbatextras &>/dev/null; then
-        rmglobalsymlinkbatextras
+        aprmglobalsymlinkbatextras
     fi
 }

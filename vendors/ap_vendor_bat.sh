@@ -110,6 +110,6 @@ ap_func_rm_bat() {
     fi
 
     if alias aprmglobalsymlinkbat &>/dev/null; then
-        rmglobalsymlinkbat
+        aprmglobalsymlinkbat
     fi
 }

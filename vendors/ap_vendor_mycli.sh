@@ -69,7 +69,7 @@ ap_func_rm_mycli() {
     fi
 
     if alias aprmglobalsymlinkmycli &>/dev/null; then
-        rmglobalsymlinkmycli
+        aprmglobalsymlinkmycli
     fi
 }
 

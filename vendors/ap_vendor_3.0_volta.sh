@@ -88,6 +88,6 @@ ap_func_rm_volta() {
     fi
 
     if alias aprmglobalsymlinkvolta &>/dev/null; then
-        rmglobalsymlinkvolta
+        aprmglobalsymlinkvolta
     fi
 }

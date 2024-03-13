@@ -63,6 +63,6 @@ ap_func_rm_pipenv() {
     fi
 
     if alias aprmglobalsymlinkpipenv &>/dev/null; then
-        rmglobalsymlinkpipenv
+        aprmglobalsymlinkpipenv
     fi
 }

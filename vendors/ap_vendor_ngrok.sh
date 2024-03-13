@@ -72,7 +72,7 @@ ap_func_rm_ngrok() {
     fi
 
     if alias aprmglobalsymlinkngrok &>/dev/null; then
-        rmglobalsymlinkngrok
+        aprmglobalsymlinkngrok
     fi
 }
 

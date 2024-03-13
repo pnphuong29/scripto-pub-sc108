@@ -95,6 +95,6 @@ ap_func_rm_kitty() {
     fi
 
     if alias aprmglobalsymlinkkitty &>/dev/null; then
-        rmglobalsymlinkkitty
+        aprmglobalsymlinkkitty
     fi
 }

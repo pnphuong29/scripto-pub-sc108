@@ -107,6 +107,6 @@ ap_func_rm_tree() {
     fi
 
     if alias aprmglobalsymlinktree &>/dev/null; then
-        rmglobalsymlinktree
+        aprmglobalsymlinktree
     fi
 }

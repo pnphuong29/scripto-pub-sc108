@@ -52,6 +52,6 @@ ap_func_rm_nox() {
     fi
 
     if alias aprmglobalsymlinknox &>/dev/null; then
-        rmglobalsymlinknox
+        aprmglobalsymlinknox
     fi
 }

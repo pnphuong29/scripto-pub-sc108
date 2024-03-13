@@ -137,7 +137,7 @@ ap_func_rm_ripgrep() {
     fi
 
     if alias aprmglobalsymlinkripgrep &>/dev/null; then
-        rmglobalsymlinkripgrep
+        aprmglobalsymlinkripgrep
     fi
 }
 

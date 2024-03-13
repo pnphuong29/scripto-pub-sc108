@@ -78,6 +78,6 @@ ap_func_rm_fzf() {
     fi
 
     if alias aprmglobalsymlinkfzf &>/dev/null; then
-        rmglobalsymlinkfzf
+        aprmglobalsymlinkfzf
     fi
 }

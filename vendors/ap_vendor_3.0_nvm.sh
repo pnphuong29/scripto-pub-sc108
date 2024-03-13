@@ -86,6 +86,6 @@ ap_func_rm_nvm() {
     fi
 
     if alias aprmglobalsymlinknvm &>/dev/null; then
-        rmglobalsymlinknvm
+        aprmglobalsymlinknvm
     fi
 }

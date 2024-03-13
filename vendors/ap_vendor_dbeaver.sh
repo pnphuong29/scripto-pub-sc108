@@ -83,6 +83,6 @@ ap_func_rm_dbeaver() {
     fi
 
     if alias aprmglobalsymlinkdbeaver &>/dev/null; then
-        rmglobalsymlinkdbeaver
+        aprmglobalsymlinkdbeaver
     fi
 }

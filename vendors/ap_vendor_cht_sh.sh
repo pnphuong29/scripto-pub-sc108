@@ -59,6 +59,6 @@ ap_func_rm_chtsh() {
     fi
 
     if alias aprmglobalsymlinkchtsh &>/dev/null; then
-        rmglobalsymlinkchtsh
+        aprmglobalsymlinkchtsh
     fi
 }

@@ -80,6 +80,6 @@ ap_func_rm_gitlabrunner() {
     fi
 
     if alias aprmglobalsymlinkgitlabrunner &>/dev/null; then
-        rmglobalsymlinkgitlabrunner
+        aprmglobalsymlinkgitlabrunner
     fi
 }

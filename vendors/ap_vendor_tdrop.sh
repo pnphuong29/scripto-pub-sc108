@@ -65,6 +65,6 @@ ap_func_rm_tdrop() {
     fi
 
     if alias aprmglobalsymlinktdrop &>/dev/null; then
-        rmglobalsymlinktdrop
+        aprmglobalsymlinktdrop
     fi
 }

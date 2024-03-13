@@ -52,6 +52,6 @@ ap_func_rm_scrapy() {
     fi
 
     if alias aprmglobalsymlinkscrapy &>/dev/null; then
-        rmglobalsymlinkscrapy
+        aprmglobalsymlinkscrapy
     fi
 }

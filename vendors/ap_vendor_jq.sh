@@ -51,6 +51,6 @@ ap_func_rm_jq() {
     fi
 
     if alias aprmglobalsymlinkjq &>/dev/null; then
-        rmglobalsymlinkjq
+        aprmglobalsymlinkjq
     fi
 }

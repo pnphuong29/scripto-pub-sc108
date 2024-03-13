@@ -74,6 +74,6 @@ ap_func_rm_pass() {
     fi
 
     if alias aprmglobalsymlinkpass &>/dev/null; then
-        rmglobalsymlinkpass
+        aprmglobalsymlinkpass
     fi
 }

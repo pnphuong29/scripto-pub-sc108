@@ -61,6 +61,6 @@ ap_func_rm_invoke() {
     fi
 
     if alias aprmglobalsymlinkinvoke &>/dev/null; then
-        rmglobalsymlinkinvoke
+        aprmglobalsymlinkinvoke
     fi
 }

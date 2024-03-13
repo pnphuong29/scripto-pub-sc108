@@ -96,6 +96,6 @@ ap_func_rm_wezterm() {
     fi
 
     if alias aprmglobalsymlinkwezterm &>/dev/null; then
-        rmglobalsymlinkwezterm
+        aprmglobalsymlinkwezterm
     fi
 }

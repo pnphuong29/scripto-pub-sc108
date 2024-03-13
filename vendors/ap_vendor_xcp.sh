@@ -66,6 +66,6 @@ ap_func_rm_xcp() {
     fi
 
     if alias aprmglobalsymlinkxcp &>/dev/null; then
-        rmglobalsymlinkxcp
+        aprmglobalsymlinkxcp
     fi
 }

@@ -68,6 +68,6 @@ ap_func_rm_sxhkd() {
     fi
 
     if alias aprmglobalsymlinksxhkd &>/dev/null; then
-        rmglobalsymlinksxhkd
+        aprmglobalsymlinksxhkd
     fi
 }

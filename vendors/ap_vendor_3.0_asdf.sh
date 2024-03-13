@@ -75,6 +75,6 @@ ap_func_rm_asdf() {
     fi
 
     if alias aprmglobalsymlinkasdf &>/dev/null; then
-        rmglobalsymlinkasdf
+        aprmglobalsymlinkasdf
     fi
 }

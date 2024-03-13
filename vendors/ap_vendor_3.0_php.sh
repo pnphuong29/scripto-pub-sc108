@@ -196,7 +196,7 @@ ap_func_rm_php() {
     fi
 
     if alias aprmglobalsymlinkphp &>/dev/null; then
-        rmglobalsymlinkphp
+        aprmglobalsymlinkphp
     fi
 }
 

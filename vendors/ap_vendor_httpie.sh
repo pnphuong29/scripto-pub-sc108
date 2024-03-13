@@ -52,7 +52,7 @@ ap_func_rm_httpie() {
     fi
 
     if alias aprmglobalsymlinkhttpie &>/dev/null; then
-        rmglobalsymlinkhttpie
+        aprmglobalsymlinkhttpie
     fi
 }
 

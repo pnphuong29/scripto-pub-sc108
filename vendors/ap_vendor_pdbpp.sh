@@ -57,6 +57,6 @@ ap_func_rm_pdbpp() {
     fi
 
     if alias aprmglobalsymlinkpdbpp &>/dev/null; then
-        rmglobalsymlinkpdbpp
+        aprmglobalsymlinkpdbpp
     fi
 }

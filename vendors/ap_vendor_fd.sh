@@ -119,6 +119,6 @@ ap_func_rm_fd() {
     fi
 
     if alias aprmglobalsymlinkfd &>/dev/null; then
-        rmglobalsymlinkfd
+        aprmglobalsymlinkfd
     fi
 }

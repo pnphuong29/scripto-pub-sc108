@@ -130,7 +130,7 @@ ap_func_rm_nvim() {
     fi
 
     if alias aprmglobalsymlinknvim &>/dev/null; then
-        rmglobalsymlinknvim
+        aprmglobalsymlinknvim
     fi
 }
 

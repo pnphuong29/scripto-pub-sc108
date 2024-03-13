@@ -94,6 +94,6 @@ ap_func_rm_warp() {
     fi
 
     if alias aprmglobalsymlinkwarp &>/dev/null; then
-        rmglobalsymlinkwarp
+        aprmglobalsymlinkwarp
     fi
 }

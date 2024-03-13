@@ -52,6 +52,6 @@ ap_func_rm_ipython() {
     fi
 
     if alias aprmglobalsymlinkipython &>/dev/null; then
-        rmglobalsymlinkipython
+        aprmglobalsymlinkipython
     fi
 }

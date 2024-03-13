@@ -55,6 +55,6 @@ ap_func_rm_lazygit() {
     fi
 
     if alias aprmglobalsymlinklazygit &>/dev/null; then
-        rmglobalsymlinklazygit
+        aprmglobalsymlinklazygit
     fi
 }

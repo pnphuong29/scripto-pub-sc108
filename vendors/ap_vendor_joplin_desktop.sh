@@ -65,6 +65,6 @@ ap_func_rm_joplindesktop() {
     fi
 
     if alias aprmglobalsymlinkjoplindesktop &>/dev/null; then
-        rmglobalsymlinkjoplindesktop
+        aprmglobalsymlinkjoplindesktop
     fi
 }

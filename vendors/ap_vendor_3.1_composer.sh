@@ -95,6 +95,6 @@ ap_func_rm_composer() {
     fi
 
     if alias aprmglobalsymlinkcomposer &>/dev/null; then
-        rmglobalsymlinkcomposer
+        aprmglobalsymlinkcomposer
     fi
 }

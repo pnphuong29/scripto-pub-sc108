@@ -1,12 +1,12 @@
 alias apinitminio="ap_func_init_minio"
 ap_func_init_minio() {
+    local ap_mc_path
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        local ap_mc_path
         ap_mc_path="$(brew --prefix)/bin/mc"
-        complete -C "${ap_mc_path}" mc
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        complete -C "${AP_SOFT_DIR}/bin/mc" mc
+        ap_mc_path="${AP_SOFT_DIR}/bin/mc"
     fi
+    complete -C "${ap_mc_path}" mc
 
     if alias apinitminioshare &>/dev/null; then
         apinitminioshare

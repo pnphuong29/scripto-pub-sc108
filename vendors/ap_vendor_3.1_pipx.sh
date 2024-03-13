@@ -74,6 +74,6 @@ ap_func_rm_pipx() {
     fi
 
     if alias aprmglobalsymlinkpipx &>/dev/null; then
-        rmglobalsymlinkpipx
+        aprmglobalsymlinkpipx
     fi
 }

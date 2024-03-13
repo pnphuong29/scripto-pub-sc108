@@ -66,6 +66,6 @@ ap_func_rm_imagemagick() {
     fi
 
     if alias aprmglobalsymlinkimagemagick &>/dev/null; then
-        rmglobalsymlinkimagemagick
+        aprmglobalsymlinkimagemagick
     fi
 }

@@ -118,6 +118,6 @@ ap_func_rm_ripgrepall() {
     fi
 
     if alias aprmglobalsymlinkripgrepall &>/dev/null; then
-        rmglobalsymlinkripgrepall
+        aprmglobalsymlinkripgrepall
     fi
 }

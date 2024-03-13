@@ -70,6 +70,6 @@ ap_func_rm_sqlite() {
     fi
 
     if alias aprmglobalsymlinksqlite &>/dev/null; then
-        rmglobalsymlinksqlite
+        aprmglobalsymlinksqlite
     fi
 }

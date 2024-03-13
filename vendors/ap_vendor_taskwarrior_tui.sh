@@ -64,6 +64,6 @@ ap_func_rm_taskwarriortui() {
     fi
 
     if alias aprmglobalsymlinktaskwarriortui &>/dev/null; then
-        rmglobalsymlinktaskwarriortui
+        aprmglobalsymlinktaskwarriortui
     fi
 }

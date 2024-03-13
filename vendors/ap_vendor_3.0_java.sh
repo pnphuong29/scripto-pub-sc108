@@ -88,6 +88,6 @@ ap_func_rm_java() {
     fi
 
     if alias aprmglobalsymlinkjava &>/dev/null; then
-        rmglobalsymlinkjava
+        aprmglobalsymlinkjava
     fi
 }

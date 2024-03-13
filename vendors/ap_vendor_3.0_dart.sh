@@ -102,6 +102,6 @@ ap_func_rm_dart() {
     fi
 
     if alias aprmglobalsymlinkdart &>/dev/null; then
-        rmglobalsymlinkdart
+        aprmglobalsymlinkdart
     fi
 }

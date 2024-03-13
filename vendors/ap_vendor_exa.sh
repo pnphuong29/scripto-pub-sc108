@@ -126,6 +126,6 @@ ap_func_rm_exa() {
     fi
 
     if alias aprmglobalsymlinkexa &>/dev/null; then
-        rmglobalsymlinkexa
+        aprmglobalsymlinkexa
     fi
 }

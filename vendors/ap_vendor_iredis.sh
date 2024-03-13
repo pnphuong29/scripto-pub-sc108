@@ -54,6 +54,6 @@ ap_func_rm_iredis() {
     fi
 
     if alias aprmglobalsymlinkiredis &>/dev/null; then
-        rmglobalsymlinkiredis
+        aprmglobalsymlinkiredis
     fi
 }

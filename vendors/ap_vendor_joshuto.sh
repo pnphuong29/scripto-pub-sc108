@@ -78,6 +78,6 @@ ap_func_rm_joshuto() {
     fi
 
     if alias aprmglobalsymlinkjoshuto &>/dev/null; then
-        rmglobalsymlinkjoshuto
+        aprmglobalsymlinkjoshuto
     fi
 }

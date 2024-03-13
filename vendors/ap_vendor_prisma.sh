@@ -82,7 +82,7 @@ ap_func_rm_prisma() {
     fi
 
     if alias aprmglobalsymlinkprisma &>/dev/null; then
-        rmglobalsymlinkprisma
+        aprmglobalsymlinkprisma
     fi
 }
 

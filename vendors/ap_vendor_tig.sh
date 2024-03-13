@@ -93,6 +93,6 @@ ap_func_rm_tig() {
     fi
 
     if alias aprmglobalsymlinktig &>/dev/null; then
-        rmglobalsymlinktig
+        aprmglobalsymlinktig
     fi
 }

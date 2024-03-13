@@ -76,6 +76,6 @@ ap_func_rm_tasksh() {
     fi
 
     if alias aprmglobalsymlinktasksh &>/dev/null; then
-        rmglobalsymlinktasksh
+        aprmglobalsymlinktasksh
     fi
 }

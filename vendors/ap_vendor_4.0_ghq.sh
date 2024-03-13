@@ -58,6 +58,6 @@ ap_func_rm_ghq() {
     fi
 
     if alias aprmglobalsymlinkghq &>/dev/null; then
-        rmglobalsymlinkghq
+        aprmglobalsymlinkghq
     fi
 }

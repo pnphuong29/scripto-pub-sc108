@@ -82,6 +82,6 @@ ap_func_rm_micro() {
     fi
 
     if alias aprmglobalsymlinkmicro &>/dev/null; then
-        rmglobalsymlinkmicro
+        aprmglobalsymlinkmicro
     fi
 }

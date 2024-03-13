@@ -63,7 +63,7 @@ ap_func_rm_joplin_cli() {
     fi
 
     if alias aprmglobalsymlinkjoplincli &>/dev/null; then
-        rmglobalsymlinkjoplincli
+        aprmglobalsymlinkjoplincli
     fi
 }
 
@@ -77,6 +77,6 @@ ap_func_rm_joplin_cli_bun() {
     fi
 
     if alias aprmglobalsymlinkjoplincli &>/dev/null; then
-        rmglobalsymlinkjoplincli
+        aprmglobalsymlinkjoplincli
     fi
 }

@@ -101,6 +101,6 @@ ap_func_rm_vagrant() {
     fi
 
     if alias aprmglobalsymlinkvagrant &>/dev/null; then
-        rmglobalsymlinkvagrant
+        aprmglobalsymlinkvagrant
     fi
 }

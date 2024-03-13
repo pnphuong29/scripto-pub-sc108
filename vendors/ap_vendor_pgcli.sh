@@ -53,7 +53,7 @@ ap_func_rm_pgcli() {
     fi
 
     if alias aprmglobalsymlinkpgcli &>/dev/null; then
-        rmglobalsymlinkpgcli
+        aprmglobalsymlinkpgcli
     fi
 }
 

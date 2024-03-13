@@ -60,6 +60,6 @@ ap_func_rm_redocly() {
     fi
 
     if alias aprmglobalsymlinkredocly &>/dev/null; then
-        rmglobalsymlinkredocly
+        aprmglobalsymlinkredocly
     fi
 }

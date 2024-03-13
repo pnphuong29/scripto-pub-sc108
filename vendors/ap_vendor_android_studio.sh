@@ -125,6 +125,6 @@ ap_func_rm_androidstudio() {
     fi
 
     if alias aprmglobalsymlinkandroidstudio &>/dev/null; then
-        rmglobalsymlinkandroidstudio
+        aprmglobalsymlinkandroidstudio
     fi
 }

@@ -69,6 +69,6 @@ ap_func_rm_just() {
     fi
 
     if alias aprmglobalsymlinkjust &>/dev/null; then
-        rmglobalsymlinkjust
+        aprmglobalsymlinkjust
     fi
 }

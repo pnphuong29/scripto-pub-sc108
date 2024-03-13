@@ -117,7 +117,7 @@ ap_func_rm_vbox() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         sudo rm -rf "/Applications/VirtualBox.app"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        sudo dpkg --purge virtualbox
+        sudo dpkg --purge virtualbox-7.0
     fi
 
     if alias aprmdirstructvbox &>/dev/null; then
@@ -125,6 +125,6 @@ ap_func_rm_vbox() {
     fi
 
     if alias aprmglobalsymlinkvbox &>/dev/null; then
-        rmglobalsymlinkvbox
+        aprmglobalsymlinkvbox
     fi
 }

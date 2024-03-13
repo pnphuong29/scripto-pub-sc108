@@ -71,6 +71,6 @@ ap_func_rm_lf() {
     fi
 
     if alias aprmglobalsymlinklf &>/dev/null; then
-        rmglobalsymlinklf
+        aprmglobalsymlinklf
     fi
 }

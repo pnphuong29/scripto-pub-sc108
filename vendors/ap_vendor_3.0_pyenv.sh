@@ -207,6 +207,6 @@ ap_func_rm_pyenv() {
     fi
 
     if alias aprmglobalsymlinkpyenv &>/dev/null; then
-        rmglobalsymlinkpyenv
+        aprmglobalsymlinkpyenv
     fi
 }

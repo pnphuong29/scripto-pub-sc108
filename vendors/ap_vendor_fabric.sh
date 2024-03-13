@@ -60,6 +60,6 @@ ap_func_rm_fabric() {
     fi
 
     if alias aprmglobalsymlinkfabric &>/dev/null; then
-        rmglobalsymlinkfabric
+        aprmglobalsymlinkfabric
     fi
 }

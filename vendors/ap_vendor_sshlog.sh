@@ -77,6 +77,6 @@ ap_func_rm_sshlog() {
     fi
 
     if alias aprmglobalsymlinksshlog &>/dev/null; then
-        rmglobalsymlinksshlog
+        aprmglobalsymlinksshlog
     fi
 }

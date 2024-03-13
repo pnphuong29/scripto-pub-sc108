@@ -105,6 +105,6 @@ ap_func_rm_vscode() {
     fi
 
     if alias aprmglobalsymlinkvscode &>/dev/null; then
-        rmglobalsymlinkvscode
+        aprmglobalsymlinkvscode
     fi
 }

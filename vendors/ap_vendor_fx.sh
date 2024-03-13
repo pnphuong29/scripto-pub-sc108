@@ -69,6 +69,6 @@ ap_func_rm_fx() {
     fi
 
     if alias aprmglobalsymlinkfx &>/dev/null; then
-        rmglobalsymlinkfx
+        aprmglobalsymlinkfx
     fi
 }

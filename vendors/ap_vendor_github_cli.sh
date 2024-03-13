@@ -91,6 +91,6 @@ ap_func_rm_github_cli() {
     fi
 
     if alias aprmglobalsymlinkgithubcli &>/dev/null; then
-        rmglobalsymlinkgithubcli
+        aprmglobalsymlinkgithubcli
     fi
 }

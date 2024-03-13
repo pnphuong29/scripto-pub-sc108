@@ -88,6 +88,6 @@ ap_func_rm_flutter() {
     fi
 
     if alias aprmglobalsymlinkflutter &>/dev/null; then
-        rmglobalsymlinkflutter
+        aprmglobalsymlinkflutter
     fi
 }

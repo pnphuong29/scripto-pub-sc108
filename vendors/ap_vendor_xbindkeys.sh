@@ -58,6 +58,6 @@ ap_func_rm_xbindkeys() {
     fi
 
     if alias aprmglobalsymlinkxbindkeys &>/dev/null; then
-        rmglobalsymlinkxbindkeys
+        aprmglobalsymlinkxbindkeys
     fi
 }
