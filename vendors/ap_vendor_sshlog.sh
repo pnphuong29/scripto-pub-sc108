@@ -53,7 +53,7 @@ ap_func_setup_sshlog() {
         apshowmsginfo "Append group [sshlog] to current user [${USER}]\n"
         sudo usermod -aG sshlog "${USER}"
 
-        apshowmsginfo "Start [sshlogd] service"
+        apshowmsginfo "Start [sshlogd] service\n"
         sudo systemctl start sshlog
     fi
 
