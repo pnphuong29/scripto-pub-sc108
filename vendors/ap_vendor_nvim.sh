@@ -28,8 +28,12 @@ ap_func_create_dirstruct_nvim() {
     fi
 
     # Install Vim Plug
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+    sh -c 'curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+    # For root user
+    sudo mkdir -p /root/.local/share/nvim/site/autoload
+    sudo cp -f "${HOME}/.local/share/nvim/site/autoload/plug.vim" /root/.local/share/nvim/site/autoload/
 
     # Install client providers for neovim
     pip install --upgrade pynvim

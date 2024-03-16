@@ -4,6 +4,9 @@ ap_func_create_dir_struct_core() {
 
     # Logs
     aplogshow "Create directories [${AP_LOGS_DIR}/general] and log files\n"
+    mkdir -p "${AP_LOGS_DIR}/crontabs"
+    [ ! -f "${AP_LOGS_DIR}/crontabs/ap_crontab_test.log" ] && touch "${AP_LOGS_DIR}/crontabs/ap_crontab_test.log"
+
     mkdir -p "${AP_LOGS_DIR}/general"
     [ ! -f "${AP_LOGS_DIR}/general/ap_general.log" ] && touch "${AP_LOGS_DIR}/general/ap_general.log"
     [ ! -f "${AP_LOGS_DIR}/general/ap_error.log" ] && touch "${AP_LOGS_DIR}/general/ap_error.log"
@@ -13,13 +16,13 @@ ap_func_create_dir_struct_core() {
     aplogshow "Create directories [${AP_SYMLINKS_DIR}]\n"
     mkdir -p "${AP_SYMLINKS_DIR}"
 
-    # Sofware
-    aplogshow "Create directories [${AP_SOFT_DIR}/bin]\n"
-    mkdir -p "${AP_SOFT_DIR}/bin"
-
     # Configs
     aplogshow "Create directories [${AP_CONFIGS_DIR}]\n"
     mkdir -p "${AP_CONFIGS_DIR}"
+
+    # Sofware
+    aplogshow "Create directories [${AP_SOFT_DIR}/bin]\n"
+    mkdir -p "${AP_SOFT_DIR}/bin"
 
     # Man pages
     aplogshow "Create directories [${AP_MAN_DIR}/man{1..8}]\n"
@@ -36,4 +39,27 @@ ap_func_create_dir_struct_core() {
     # Tmp
     aplogshow "Create directories [${AP_TMP_DIR}]\n"
     mkdir -p "${AP_TMP_DIR}"
+}
+
+alias apcreatedirstructglobal="ap_func_create_dir_struct_global"
+ap_func_create_dir_struct_global() {
+    aplogshow "Create directories [/scripto-data]\n"
+    sudo mkdir -p /scripto-data
+    sudo chown -R "${USER}:${USER}" "/scripto-data"
+
+    aplogshow "Create directories [/scripto-share]\n"
+    sudo mkdir -p /scripto-share
+    sudo chown -R "${USER}:${USER}" "/scripto-share"
+
+    aplogshow "Create directories [/scripto-data/symlinks]\n"
+    mkdir -p /scripto-data/symlinks
+
+    aplogshow "Create directories [/scripto-data/softwares]\n"
+    mkdir -p /scripto-data/softwares
+
+    aplogshow "Create directories [/scripto-data/configs]\n"
+    mkdir -p /scripto-data/configs
+
+    aplogshow "Create directories [/scripto-data/logs]\n"
+    mkdir -p /scripto-data/logs
 }

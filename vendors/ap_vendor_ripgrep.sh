@@ -23,7 +23,7 @@ ap_func_init_ripgrep() {
     alias rgihc='rg --hidden --no-ignore --ignore-file "${AP_VENDORS_RIPGREP_IGNORE_FILE}" --color always --heading --case-sensitive --vimgrep --trim'
 
     # Update ripgrep ignore global file path in ripgrep config file
-    # export RIPGREP_CONFIG_PATH="${AP_CONFIGS_DIR}/ap_ripgrep.conf"
+    # export RIPGREP_CONFIG_PATH="/ap-symlinks/ripgrep/ap_ripgrep.conf"
 
     # gsed -i'' "/ap_ripgrep.ignore/d" "${RIPGREP_CONFIG_PATH}"
     # ap_g_pos="$(grep -n "\-\-ignore\-file" "${RIPGREP_CONFIG_PATH}" | cut -d : -f 1)"
