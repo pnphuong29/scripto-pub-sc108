@@ -43,23 +43,25 @@ ap_func_create_dir_struct_core() {
 
 alias apcreatedirstructglobal="ap_func_create_dir_struct_global"
 ap_func_create_dir_struct_global() {
-    aplogshow "Create directories [/scripto-data]\n"
-    sudo mkdir -p /scripto-data
-    sudo chown -R "${USER}:${USER}" "/scripto-data"
+    if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]]; then
+        aplogshow "Create directories [/scripto-data]\n"
+        sudo mkdir -p /scripto-data
+        sudo chown -R "${USER}:${USER}" "/scripto-data"
 
-    aplogshow "Create directories [/scripto-share]\n"
-    sudo mkdir -p /scripto-share
-    sudo chown -R "${USER}:${USER}" "/scripto-share"
+        aplogshow "Create directories [/scripto-share]\n"
+        sudo mkdir -p /scripto-share
+        sudo chown -R "${USER}:${USER}" "/scripto-share"
 
-    aplogshow "Create directories [/scripto-data/symlinks]\n"
-    mkdir -p /scripto-data/symlinks
+        aplogshow "Create directories [/scripto-data/symlinks]\n"
+        mkdir -p /scripto-data/symlinks
 
-    aplogshow "Create directories [/scripto-data/softwares]\n"
-    mkdir -p /scripto-data/softwares
+        aplogshow "Create directories [/scripto-data/softwares]\n"
+        mkdir -p /scripto-data/softwares
 
-    aplogshow "Create directories [/scripto-data/configs]\n"
-    mkdir -p /scripto-data/configs
+        aplogshow "Create directories [/scripto-data/configs]\n"
+        mkdir -p /scripto-data/configs
 
-    aplogshow "Create directories [/scripto-data/logs]\n"
-    mkdir -p /scripto-data/logs
+        aplogshow "Create directories [/scripto-data/logs]\n"
+        mkdir -p /scripto-data/logs
+    fi
 }
