@@ -66,6 +66,44 @@ ap_func_rm_dirstruct_rbenv() {
     fi
 }
 
+alias apcreateglobalsymlinkrbenv="ap_func_create_global_symlink_rbenv"
+ap_func_create_global_symlink_rbenv() {
+    if [ -f "${HOME}/.rbenv/bin/ruby" ]; then
+        aplogshow "Create symlink from [/usr/local/bin/ruby] to [${HOME}/.rbenv/bin/ruby]\n"
+        sudo ln -sf "${HOME}/.rbenv/bin/ruby" "/usr/local/bin/ruby"
+    fi
+
+    if [ -f "${HOME}/.rbenv/bin/gem" ]; then
+        aplogshow "Create symlink from [/usr/local/bin/gem] to [${HOME}/.rbenv/bin/gem]\n"
+        sudo ln -sf "${HOME}/.rbenv/bin/gem" "/usr/local/bin/gem"
+    fi
+
+    if [ -f "${HOME}/.rbenv/bin/bundle" ]; then
+        aplogshow "Create symlink from [/usr/local/bin/bundle] to [${HOME}/.rbenv/bin/bundle]\n"
+        sudo ln -sf "${HOME}/.rbenv/bin/bundle" "/usr/local/bin/bundle"
+    fi
+
+    if [ -f "${HOME}/.rbenv/bin/bundler" ]; then
+        aplogshow "Create symlink from [/usr/local/bin/bundler] to [${HOME}/.rbenv/bin/bundler]\n"
+        sudo ln -sf "${HOME}/.rbenv/bin/bundler" "/usr/local/bin/bundler"
+    fi
+}
+
+alias aprmglobalsymlinkrbenv="ap_func_rm_global_symlink_rbenv"
+ap_func_rm_global_symlink_rbenv() {
+    aplogshow "Remove [/usr/local/bin/ruby]\n"
+    sudo rm -f "/usr/local/bin/ruby"
+
+    aplogshow "Remove [/usr/local/bin/gem]\n"
+    sudo rm -f "/usr/local/bin/gem"
+
+    aplogshow "Remove [/usr/local/bin/bundle]\n"
+    sudo rm -f "/usr/local/bin/bundle"
+
+    aplogshow "Remove [/usr/local/bin/bundler]\n"
+    sudo rm -f "/usr/local/bin/bundler"
+}
+
 alias apsetuprbenv="ap_func_setup_rbenv"
 ap_func_setup_rbenv() {
     # https://github.com/rbenv/rbenv

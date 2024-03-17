@@ -16,7 +16,7 @@ ap_func_create_dirstruct_ruby() {
     cd "${AP_SOFT_DIR}/ruby"
     git clone "https://github.com/mernen/completion-ruby"
 
-    aplogshow "Create symlinks for [ruby, gem, rails, rake, bundle, jruby]\n"
+    aplogshow "Create symlinks for [ruby, gem, rails, rake, bundle, jruby] completions\n"
     ln -sf "${AP_SOFT_DIR}/ruby/completion-ruby/completion-ruby" "${AP_COMPLETIONS_DIR}/ap_completion_ruby.bash"
     ln -sf "${AP_SOFT_DIR}/ruby/completion-ruby/completion-gem" "${AP_COMPLETIONS_DIR}/ap_completion_gem.bash"
     ln -sf "${AP_SOFT_DIR}/ruby/completion-ruby/completion-rails" "${AP_COMPLETIONS_DIR}/ap_completion_rails.bash"
