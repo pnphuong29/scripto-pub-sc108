@@ -68,24 +68,24 @@ ap_func_rm_dirstruct_rbenv() {
 
 alias apcreateglobalsymlinkrbenv="ap_func_create_global_symlink_rbenv"
 ap_func_create_global_symlink_rbenv() {
-    if [ -f "${HOME}/.rbenv/bin/ruby" ]; then
-        aplogshow "Create symlink from [/usr/local/bin/ruby] to [${HOME}/.rbenv/bin/ruby]\n"
-        sudo ln -sf "${HOME}/.rbenv/bin/ruby" "/usr/local/bin/ruby"
+    if [ -f "${HOME}/.rbenv/shims/ruby" ]; then
+        aplogshow "Create symlink from [/usr/local/bin/ruby] to [${HOME}/.rbenv/shims/ruby]\n"
+        sudo ln -sf "${HOME}/.rbenv/shims/ruby" "/usr/local/bin/ruby"
     fi
 
-    if [ -f "${HOME}/.rbenv/bin/gem" ]; then
-        aplogshow "Create symlink from [/usr/local/bin/gem] to [${HOME}/.rbenv/bin/gem]\n"
-        sudo ln -sf "${HOME}/.rbenv/bin/gem" "/usr/local/bin/gem"
+    if [ -f "${HOME}/.rbenv/shims/gem" ]; then
+        aplogshow "Create symlink from [/usr/local/bin/gem] to [${HOME}/.rbenv/shims/gem]\n"
+        sudo ln -sf "${HOME}/.rbenv/shims/gem" "/usr/local/bin/gem"
     fi
 
-    if [ -f "${HOME}/.rbenv/bin/bundle" ]; then
-        aplogshow "Create symlink from [/usr/local/bin/bundle] to [${HOME}/.rbenv/bin/bundle]\n"
-        sudo ln -sf "${HOME}/.rbenv/bin/bundle" "/usr/local/bin/bundle"
+    if [ -f "${HOME}/.rbenv/shims/bundle" ]; then
+        aplogshow "Create symlink from [/usr/local/bin/bundle] to [${HOME}/.rbenv/shims/bundle]\n"
+        sudo ln -sf "${HOME}/.rbenv/shims/bundle" "/usr/local/bin/bundle"
     fi
 
-    if [ -f "${HOME}/.rbenv/bin/bundler" ]; then
-        aplogshow "Create symlink from [/usr/local/bin/bundler] to [${HOME}/.rbenv/bin/bundler]\n"
-        sudo ln -sf "${HOME}/.rbenv/bin/bundler" "/usr/local/bin/bundler"
+    if [ -f "${HOME}/.rbenv/shims/bundler" ]; then
+        aplogshow "Create symlink from [/usr/local/bin/bundler] to [${HOME}/.rbenv/shims/bundler]\n"
+        sudo ln -sf "${HOME}/.rbenv/shims/bundler" "/usr/local/bin/bundler"
     fi
 }
 
