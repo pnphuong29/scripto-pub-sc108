@@ -295,14 +295,14 @@ ap_func_log_msg() {
     if [[ "${ap_param_msg_type}" == "debug" ]]; then
         # Only write debug log if enabled
         if [[ "${AP_LOGS_DEBUG_ENABLED}" == 1 ]]; then
-            printf "%s" "${ap_msg}" >>"${ap_log_file_path}"
+            printf "%b" "${ap_msg}" >>"${ap_log_file_path}"
         fi
     else
-        printf "%s" "${ap_msg}" >>"${ap_log_file_path}"
+        printf "%b" "${ap_msg}" >>"${ap_log_file_path}"
     fi
 
     # Show message on terminal
-    [[ "${ap_param_show_msg_on_terminal}" == 1 ]] && eval "$(printf "%s" "${ap_param_cmd_show_msg} \"${ap_opt_msg_prefix}${ap_param_msg}\"")"
+    [[ "${ap_param_show_msg_on_terminal}" == 1 ]] && eval "$(printf "%b" "${ap_param_cmd_show_msg} \"${ap_opt_msg_prefix}${ap_param_msg}\"")"
 
     aprtn_success
 }

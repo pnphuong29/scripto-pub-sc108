@@ -15,6 +15,12 @@ alias zsm="cd \${HOME}/scripto-main"
 alias zsr="cd \${HOME}/scripto-share"
 alias zsdata="cd \${HOME}/scripto-data"
 
+alias zgsc="cd /scripto-common"
+alias zgsm="cd /scripto-main"
+alias zgsr="cd /scripto-share"
+alias zgsdata="cd /scripto-data"
+alias zglogs="cd /scripto-data/logs"
+
 alias zdata="cd \${AP_DATA_DIR}"
 alias zdl="cd \${AP_DL_DIR}"
 
