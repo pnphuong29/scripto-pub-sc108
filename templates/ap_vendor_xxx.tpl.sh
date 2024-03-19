@@ -1,13 +1,3 @@
-alias apinitxxxshare="ap_func_init_xxx_share"
-ap_func_init_xxx_share() {
-
-}
-
-alias apinitxxxcommon="ap_func_init_xxx_common"
-ap_func_init_xxx_common() {
-
-}
-
 alias apinitxxx="ap_func_init_xxx"
 ap_func_init_xxx() {
     if alias apinitxxxshare &>/dev/null; then
@@ -17,16 +7,10 @@ ap_func_init_xxx() {
     if alias apinitxxxcommon &>/dev/null; then
         apinitxxxcommon
     fi
-}
 
-alias apcreatedirstructxxxshare="ap_func_create_dirstruct_xxx_share"
-ap_func_create_dirstruct_xxx_share() {
-
-}
-
-alias apcreatedirstructxxxcommon="ap_func_create_dirstruct_xxx_common"
-ap_func_create_dirstruct_xxx_common() {
-
+    if alias apinitxxxmain &>/dev/null; then
+        apinitxxxmain
+    fi
 }
 
 alias apcreatedirstructxxx="ap_func_create_dirstruct_xxx"
@@ -55,16 +39,10 @@ ap_func_create_dirstruct_xxx() {
     if alias apcreatedirstructxxxcommon &>/dev/null; then
         apcreatedirstructxxxcommon
     fi
-}
 
-alias aprmdirstructxxxshare="ap_func_rm_dirstruct_xxx_share"
-ap_func_rm_dirstruct_xxx_share() {
-
-}
-
-alias aprmdirstructxxxcommon="ap_func_rm_dirstruct_xxx_common"
-ap_func_rm_dirstruct_xxx_common() {
-
+    if alias apcreatedirstructxxxmain &>/dev/null; then
+        apcreatedirstructxxxmain
+    fi
 }
 
 alias aprmdirstructxxx="ap_func_rm_dirstruct_xxx"
@@ -84,6 +62,10 @@ ap_func_rm_dirstruct_xxx() {
 
     if alias aprmdirstructxxxcommon &>/dev/null; then
         aprmdirstructxxxcommon
+    fi
+
+    if alias aprmdirstructxxxmain &>/dev/null; then
+        aprmdirstructxxxmain
     fi
 }
 

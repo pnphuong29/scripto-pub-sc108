@@ -352,3 +352,25 @@ ap_func_rsync() {
 
     aprtn_success
 }
+
+alias newvendor="ap_func_create_vendor_from_template"
+alias newsrvendor="ap_func_create_vendor_from_template share"
+alias newscvendor="ap_func_create_vendor_from_template common"
+alias newsmvendor="ap_func_create_vendor_from_template main"
+ap_func_create_vendor_from_template() {
+    local ap_dir='scripto'
+    local ap_app_name="$1"
+    local ap_tpl=''
+    if [ "$#" -eq 2 ]; then
+        ap_dir="scripto-${1}"
+        ap_app_name="$2"
+        ap_tpl=".$1"
+    fi
+
+    apshowmsginfo "Create file [${HOME}/${ap_dir}/vendors/ap_vendor_${ap_app_name}.sh]\n"
+    cp -f "${HOME}/scripto/templates/ap_vendor_xxx${ap_tpl}.tpl.sh" "${HOME}/${ap_dir}/vendors/ap_vendor_${ap_app_name}.sh"
+    gsed -i "s@xxx@${ap_app_name}@g" "${HOME}/${ap_dir}/vendors/ap_vendor_${ap_app_name}.sh"
+    nvim "${HOME}/${ap_dir}/vendors/ap_vendor_${ap_app_name}.sh"
+
+    aprtn_success
+}
