@@ -3,11 +3,12 @@ ap_func_init_node() {
     export AP_NODE_VERSION_DEFAULT="16.20.2"
     # AP_NODE_VERSION_DEFAULT="18.16.1"
 
-    alias npminstall='npm install'
-    alias npminstalllegacypeerdeps='npm install --legacy-peer-deps'
-    alias npmuninstall='npm uninstall'
-    alias npmbuild='npm run build'
-    alias npmbuildlegacypeerdeps='npm run build --legacy-peer-deps'
+    alias npmi='npm install'
+    alias npmig='npm install --global'
+    alias npmilegacypeerdeps='npm install --legacy-peer-deps'
+    alias npmrm='npm uninstall'
+    alias npmbld='npm run build'
+    alias npmbldlegacypeerdeps='npm run build --legacy-peer-deps'
     alias npmserve='npm run serve'
     alias npmdev='npm run dev'
     alias npmtest='npm run test'
