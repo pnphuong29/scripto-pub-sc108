@@ -1,7 +1,5 @@
 alias apinitjoshuto="ap_func_init_joshuto"
 ap_func_init_joshuto() {
-    alias 2joshutodocs="open https://github.com/kamiyaa/joshuto/tree/main/docs"
-
     if alias apinitjoshutoshare &>/dev/null; then
         apinitjoshutoshare
     fi
