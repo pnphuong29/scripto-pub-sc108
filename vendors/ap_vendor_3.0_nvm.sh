@@ -2,6 +2,7 @@ alias apinitnvm="ap_func_init_nvm"
 ap_func_init_nvm() {
     # https://github.com/nvm-sh/nvm
     export NVM_DIR="${HOME}/.nvm" # NVM's installation directory
+    alias nvmuse='nvm use'
 
     if [ -d "${HOME}/.yarn/bin" ]; then
         apaddpath "${HOME}/.yarn/bin"
