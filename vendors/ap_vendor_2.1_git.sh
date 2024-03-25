@@ -26,10 +26,10 @@ ap_func_init_git() {
     alias gcotest='git checkout test'
     alias gcouat='git checkout uat'
     alias gpsupstreamoriginmaster="git push --set-upstream origin master"
-    alias gpl="git pull"
+    # alias gpl="git pull"
     alias gplupstreamoriginmaster="git pull --set-upstream origin master"
     alias ga="git add ."
-    alias gacp="git add .; git commit -m \"\${AP_GIT_COMMIT_MSG}\"; git push"
+    # alias gacp="git add .; git commit -m \"\${AP_GIT_COMMIT_MSG}\"; git push"
     alias gacpf="git add .; git commit --file=\"\${AP_GIT_COMMIT_FILE}\"; git push"
     alias gl="git log --all --oneline --graph --decorate"
     alias glt="git ls-tree -r -t --full-tree --full-name --abbrev --long"
