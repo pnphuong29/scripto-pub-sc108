@@ -13,6 +13,8 @@ alias lsaliases='alias | gsed "s@alias @@" | grep "^[@|1|2]" | sort'
 alias lsaliasesfzf='alias | gsed "s@alias @@" | grep "^[@|1|2|3]" | sort | fzf'
 alias lsusers="type getent &>/dev/null && getent passwd || cat /etc/passwd"
 alias lsgroups="type getent &>/dev/null && getent group || cat /etc/groups"
+alias lservices='sudo launchctl list'
+alias lservicesgrep='sudo launchctl list | grep'
 
 # Aliases - Show commands
 alias showdt='gdate +"%Y%m%d_%H%M%S"'
@@ -28,7 +30,5 @@ alias grep='grep --color'
 alias du1="du -h --max-depth=1"
 alias chownuser="sudo chown -R ${USER}.${USER}" # DO NOT use \$USER, because it will be equal to ROOT user
 alias psgrep='ps -ef | grep'
-alias launchctllist='sudo launchctl list'
-alias launchctllistgrep='sudo launchctl list | grep'
 alias sssysctl="sudo systemctl status"
 alias rrsysctl="sudo systemctl restart"

@@ -42,12 +42,12 @@ ap_func_rm_dirstruct_taskwarrior() {
 alias apsetuptaskwarrior="ap_func_setup_taskwarrior"
 ap_func_setup_taskwarrior() {
     # https://github.com/GothenburgBitFactory/taskwarrior
-    aplogshow "Install required libraries [libgnutls-dev, cmake, make, libuuid]\n"
+    aplogshow "Install required libraries [libgnutls-dev, cmake, make]\n"
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        brew install gnutls cmake make libuuid
+        brew install gnutls cmake make
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         sudo apt update
-        sudo apt install -y libgnutls-dev cmake make libuuid1
+        sudo apt install -y libgnutls30 libgnutls28-dev cmake make libuuid1
     fi
 
     aplogshow "Install [taskwarrior]\n"
@@ -59,8 +59,11 @@ ap_func_setup_taskwarrior() {
     mkdir -p "${AP_TMP_DIR}/taskwarrior"
     cd "${AP_TMP_DIR}/taskwarrior"
 
-    curl -SL \
-        "$(curl --silent https://api.github.com/repos/GothenburgBitFactory/taskwarrior/releases | jq -r '.[0].assets[].browser_download_url' | grep "task-")" >taskwarrior.tar.gz
+    # Latest version (3.0) which cannot be installed properly in Ubuntu???
+    # curl -SL \
+    #     "$(curl --silent https://api.github.com/repos/GothenburgBitFactory/taskwarrior/releases | jq -r '.[0].assets[].browser_download_url' | grep "task-")" >taskwarrior.tar.gz
+
+    curl -SL "https://github.com/GothenburgBitFactory/taskwarrior/releases/download/v2.6.2/task-2.6.2.tar.gz" >taskwarrior.tar.gz
 
     tar -zxf taskwarrior.tar.gz
     rm -f taskwarrior.tar.gz
