@@ -6,9 +6,13 @@ ap_func_init_node() {
     alias npmi='npm install'
     alias npmig='npm install --global'
     alias npmilegacypeerdeps='npm install --legacy-peer-deps'
+
     alias npmrm='npm uninstall'
+
     alias npmbld='npm run build'
     alias npmbldlegacypeerdeps='npm run build --legacy-peer-deps'
+
+    alias npmrun='npm run'
     alias npmserve='npm run serve'
     alias npmdev='npm run dev'
     alias npmtest='npm run test'
