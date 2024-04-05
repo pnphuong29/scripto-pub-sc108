@@ -6,3 +6,4 @@ alias lsusers="type getent &>/dev/null && getent passwd || cat /etc/passwd"
 alias lsgroups="type getent &>/dev/null && getent group || cat /etc/groups"
 alias lservices='sudo launchctl list'
 alias lservicesgrep='sudo launchctl list | grep'
+alias lsmonitors='hwinfo --monitor'
