@@ -149,6 +149,7 @@ ap_func_setup_common_desktop_apps() {
             usb-creator-gtk \
             dconf-editor \
             gnome-shell-extensions \
+            gnome-shell-extension-manager \
             gnome-tweaks \
             chrome-gnome-shell \
             flatpak \
