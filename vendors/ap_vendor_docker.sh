@@ -222,6 +222,8 @@ alias dkuptest="ap_func_dkc_up -p test"
 alias dkdntest="ap_func_dkc_up -d -p test"
 alias dkupuat="ap_func_dkc_up -p uat"
 alias dkdnuat="ap_func_dkc_up -d -p uat"
+alias dkupstaging="ap_func_dkc_up -p staging"
+alias dkdnstaging="ap_func_dkc_up -d -p staging"
 alias dkupprod="ap_func_dkc_up -p prod"
 alias dkdnprod="ap_func_dkc_up -d -p prod"
 # @$func $$ ap_func_dkc_up {
@@ -284,7 +286,9 @@ ap_func_dkc_up() {
 
     local ap_dk_con_name
     for ap_dk_con_name in "$@"; do
-        if [ -f "${HOME}/scripto-main/dockers/ap_dkc_${ap_dk_con_name}.yml" ]; then
+        if [ -f "${PWD}/ap_dkc_${ap_dk_con_name}.yml" ]; then
+            ap_cmd="${ap_cmd} -f ${PWD}/ap_dkc_${ap_dk_con_name}.yml"
+        elif [ -f "${HOME}/scripto-main/dockers/ap_dkc_${ap_dk_con_name}.yml" ]; then
             ap_cmd="${ap_cmd} -f ${HOME}/scripto-main/dockers/ap_dkc_${ap_dk_con_name}.yml"
         elif [ -f "${HOME}/scripto-common/dockers/ap_dkc_${ap_dk_con_name}.yml" ]; then
             ap_cmd="${ap_cmd} -f ${HOME}/scripto-common/dockers/ap_dkc_${ap_dk_con_name}.yml"
@@ -292,8 +296,6 @@ ap_func_dkc_up() {
             ap_cmd="${ap_cmd} -f ${HOME}/scripto-share/dockers/ap_dkc_${ap_dk_con_name}.yml"
         elif [ -f "${PWD}/scripto/dockers/ap_dkc_${ap_dk_con_name}.yml" ]; then
             ap_cmd="${ap_cmd} -f ${HOME}/scripto/dockers/ap_dkc_${ap_dk_con_name}.yml"
-        else
-            ap_cmd="${ap_cmd} -f ${PWD}/ap_dkc_${ap_dk_con_name}.yml"
         fi
     done
 
