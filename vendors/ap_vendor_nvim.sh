@@ -104,9 +104,25 @@ ap_func_setup_nvim() {
         ap_os="linux64"
     fi
 
-    curl -L "https://github.com/neovim/neovim/releases/${ap_nvim_setup_version}/download/{nvim-${ap_os}.tar.gz}" -o "${AP_TMP_DIR}"/#1
-    tar -C "${AP_SOFT_DIR}" -zxf "${AP_TMP_DIR}/nvim-${ap_os}.tar.gz"
-    mv "${AP_SOFT_DIR}/nvim-${ap_os}" "${AP_SOFT_DIR}/nvim"
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        if [[ "$(uname -m)" == 'arm64' ]]; then
+            curl -SL \
+                "$(curl --silent "https://api.github.com/repos/neovim/neovim/releases" | jq -r '.[0].assets[].browser_download_url' | grep "macos" | grep arm | grep -v sha256)" >neovim.tar.gz
+        elif [[ "$(uname -m)" == 'x86_64' ]]; then
+            curl -SL \
+                "$(curl --silent "https://api.github.com/repos/neovim/neovim/releases" | jq -r '.[0].assets[].browser_download_url' | grep "macos" | grep x86_64 | grep -v sha256)" >neovim.tar.gz
+        fi
+    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+        curl -SL \
+            "$(curl --silent "https://api.github.com/repos/neovim/neovim/releases" | jq -r '.[0].assets[].browser_download_url' | grep "linux" | grep x86_64 | grep -v sha256 | grep musl)" >neovim.tar.gz
+    fi
+
+    tar -zxf neovim.tar.gz
+    rm -f neovim.tar.gz
+    mv nvim* nvim
+    mv nvim "${AP_SOFT_DIR}/"
+    cd "${AP_SOFT_DIR}/nvim"
+    rm -rf "${AP_TMP_DIR}/neovim"
 
     # Use [apt] to install nvim
     # sudo apt-get install python-dev python-pip python3-dev python3-pip # Require python (use pyenv to install)
