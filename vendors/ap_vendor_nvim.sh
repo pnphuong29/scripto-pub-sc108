@@ -93,17 +93,6 @@ ap_func_setup_nvim() {
     rm -rf "${AP_SOFT_DIR}/nvim"
 
     # Install nvim
-    # local ap_nvim_setup_version='stable'
-    local ap_nvim_setup_version='latest'
-    if [ -n "$1" ]; then
-        ap_nvim_setup_version="$1"
-    fi
-
-    local ap_os="macos"
-    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        ap_os="linux64"
-    fi
-
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         if [[ "$(uname -m)" == 'arm64' ]]; then
             curl -SL \
