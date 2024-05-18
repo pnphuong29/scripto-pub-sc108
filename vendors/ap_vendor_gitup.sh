@@ -74,7 +74,7 @@ ap_func_setup_gitup() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         curl -SLO "https://s3-us-west-2.amazonaws.com/gitup-builds/stable/GitUp.zip"
         unzip GitUp.zip
-        mv -r GitUp.app /Applications/
+        cp -R GitUp.app /Applications/
         cd /Applications
         rm -rf "${AP_TMP_DIR}/gitup"
     fi
