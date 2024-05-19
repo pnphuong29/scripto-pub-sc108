@@ -59,7 +59,7 @@ ap_func_setup_java() {
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         ap_os="linux"
-        ap_jdk_dl_dir="jdk-${AP_JDK_SETUP_VERSION}.0.2"
+        ap_jdk_dl_dir="jdk-${AP_JDK_SETUP_VERSION}.0.3"
         ap_vendors_java_dir="${AP_SOFT_DIR}/java/${ap_jdk_dl_dir}"
     fi
 
