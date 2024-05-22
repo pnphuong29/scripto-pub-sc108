@@ -18,7 +18,7 @@ ap_func_create_dirstruct_github_cli() {
     ln -sf "${AP_SOFT_DIR}/github-cli/bin/gh" "${AP_SOFT_DIR}/bin/gh"
 
     aplogshow "Generate [github_cli] bash autocomplete\n"
-    gh completion --shell bash >"${AP_COMPLETIONS_DIR}/ap_completion_github_cli.bash"
+    "${AP_SOFT_DIR}/bin/gh" completion --shell bash >"${AP_COMPLETIONS_DIR}/ap_completion_github_cli.bash"
 
     if alias apcreatedirstructgithubclishare &>/dev/null; then
         apcreatedirstructgithubclishare
