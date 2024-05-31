@@ -93,7 +93,7 @@ ap_func_setup_node() {
 
     aplogshow "Install [node v${ap_node_setup_version}]\n"
     nvm install "v${ap_node_setup_version}"
-    nvm install v18.19.1
+    nvm install v18.20.2
     nvm install v20.11.1
     # volta install "node@v${ap_node_setup_version}"
 

@@ -58,11 +58,17 @@ ap_func_setup_java() {
     cd "${AP_TMP_DIR}"
     rm -rf "jdk-${AP_JDK_SETUP_VERSION}_${ap_os}-x64_bin.tar.gz" "jdk-${AP_JDK_SETUP_VERSION}"*.jdk
     curl -SOL "https://download.oracle.com/java/${AP_JDK_SETUP_VERSION}/latest/jdk-${AP_JDK_SETUP_VERSION}_${ap_os}-x64_bin.tar.gz"
-    tar -zxf jdk-${AP_JDK_SETUP_VERSION}_${ap_os}-x64_bin.tar.gz
+    tar -zxf "jdk-${AP_JDK_SETUP_VERSION}_${ap_os}-x64_bin.tar.gz"
 
     rm -rf "${ap_vendors_java_dir}"
     mkdir -p "${AP_SOFT_DIR}/java"
-    mv "jdk-${AP_JDK_SETUP_VERSION}"*.jdk "jdk-${AP_JDK_SETUP_VERSION}.jdk"
+
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        mv "jdk-${AP_JDK_SETUP_VERSION}"*.jdk "jdk-${AP_JDK_SETUP_VERSION}.jdk"
+    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+        mv "jdk-${AP_JDK_SETUP_VERSION}"* "jdk-${AP_JDK_SETUP_VERSION}.jdk"
+    fi
+
     mv "jdk-${AP_JDK_SETUP_VERSION}.jdk" "${ap_vendors_java_dir}"
 
     apinitjava
