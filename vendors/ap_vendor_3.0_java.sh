@@ -62,6 +62,7 @@ ap_func_setup_java() {
 
     rm -rf "${ap_vendors_java_dir}"
     mkdir -p "${AP_SOFT_DIR}/java"
+    rm -f "jdk-${AP_JDK_SETUP_VERSION}_${ap_os}-x64_bin.tar.gz"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         mv "jdk-${AP_JDK_SETUP_VERSION}"*.jdk "jdk-${AP_JDK_SETUP_VERSION}.jdk"
