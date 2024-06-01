@@ -152,6 +152,7 @@ apaddpath "${HOME}/scripto-share/utils"
 apaddpath "${HOME}/scripto-common/utils"
 apaddpath "${HOME}/scripto-main/utils"
 
+apaddpath "${HOME}/scripto-share/tests"
 apaddpath "${HOME}/scripto-common/tests"
 apaddpath "${HOME}/scripto-main/tests"
 
