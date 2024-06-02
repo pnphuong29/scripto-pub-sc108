@@ -15,15 +15,6 @@ ap_func_init_insomnia() {
 
 alias apcreatedirstructinsomnia="ap_func_create_dirstruct_insomnia"
 ap_func_create_dirstruct_insomnia() {
-    if [ -f "${AP_NC_DIR}/apps/insomnia" ]; then
-        local ap_insomnia_data_dir="${HOME}/Library/Application Support/Insomnia"
-        if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-            ap_insomnia_data_dir="${HOME}/.config/Insomnia"
-        fi
-        aplogshow "Create symlink from [] to [${AP_NC_DIR}/apps/insomnia]\n"
-        ln -sf "${AP_NC_DIR}/apps/insomnia" "${ap_insomnia_data_dir}"
-    fi
-
     if alias apcreatedirstructinsomniashare &>/dev/null; then
         apcreatedirstructinsomniashare
     fi
