@@ -177,6 +177,7 @@ ap_func_rm_xxx() {
         brew remove --cask xxx
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         sudo apt purge -y xxx
+        sudo snap remove --purge xxx
         sudo dpkg --purge xxx
     fi
 
