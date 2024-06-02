@@ -18,7 +18,7 @@ ap_func_create_dirstruct_postman() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         # Create a symbolic link to the Postman executable
         aplogshow "Creating symbolic link from [${AP_SOFT_DIR}/bin/postman] to [${AP_SOFT_DIR}/postman/Postman]\n"
-        ln -sf "${AP_SOFT_DIR}/Postman" "${AP_SOFT_DIR}/bin/postman"
+        ln -sf "${AP_SOFT_DIR}/postman/Postman" "${AP_SOFT_DIR}/bin/postman"
 
         # Create a desktop entry for Postman
         aplogshow "Creating desktop entry at [${HOME}/.local/share/applications/postman.desktop]\n"
@@ -110,13 +110,13 @@ ap_func_setup_postman() {
             rm -rf "${AP_SOFT_DIR}/postman"
         fi
 
-        # Create the target directory
-        aplogshow "Creating target directory [${AP_SOFT_DIR}/postman]\n"
-        mkdir -p "${AP_SOFT_DIR}/postman"
-
         # Extract the tarball to the target directory
         aplogshow "Extracting Postman...\n"
         tar -xzvf "${AP_TMP_DIR}/postman.tar.gz" -C "${AP_SOFT_DIR}"
+
+        # Rename target dir
+        aplogshow "Rename [${AP_SOFT_DIR}/Postman] to [${AP_SOFT_DIR}/postman\n"
+        mv "${AP_SOFT_DIR}/Postman" "${AP_SOFT_DIR}/postman"
 
         # Clean up the tarball
         aplogshow "Cleaning up...\n"

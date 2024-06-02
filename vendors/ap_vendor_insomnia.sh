@@ -51,7 +51,6 @@ ap_func_setup_insomnia() {
     cd "${AP_TMP_DIR}/insomnia"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        # TODO: Test installation on macOS
         brew install --cask insomnia
         curl -SOL https://github.com/Kong/insomnia/releases/download/lib%409.2.0/inso-macos-9.2.0.zip
         unzip inso-macos-9.2.0.zip
