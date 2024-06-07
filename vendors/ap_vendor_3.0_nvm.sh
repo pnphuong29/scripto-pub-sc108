@@ -23,6 +23,10 @@ ap_func_init_nvm() {
 
     # export NVM_COLORS='cmgRY'
 
+    alias nvmuse16='nvm use 16'
+    alias nvmuse18='nvm use 18'
+    alias nvmuse20='nvm use 20'
+
     if alias apinitnvmshare &>/dev/null; then
         apinitnvmshare
     fi
