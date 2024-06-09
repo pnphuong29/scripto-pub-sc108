@@ -196,7 +196,7 @@ for ap_dkc_file in "${HOME}/scripto-main/dockers"/ap_dkc_*.yml; do
     eval "$(printf "%s" "${ap_cmd}")"
 done
 
-# Alias - Vi script test bash commands
+# Alias - Vi script test scripts
 if [ ! -d "${HOME}/scripto-share/tests" ]; then
     mkdir -p "${HOME}/scripto-share/tests"
 fi
@@ -209,7 +209,7 @@ if [ ! -d "${HOME}/scripto-main/tests" ]; then
     mkdir -p "${HOME}/scripto-main/tests"
 fi
 
-for i in {1..10}; do
+for i in {1..7}; do
     eval "$(printf "%s" "alias visrtb${i}='vi ${HOME}/scripto-share/tests/ap_test_bash_${i}.sh'")"
     eval "$(printf "%s" "alias runsrtb${i}='source ${HOME}/scripto-share/tests/ap_test_bash_${i}.sh'")"
 
@@ -218,4 +218,26 @@ for i in {1..10}; do
 
     eval "$(printf "%s" "alias vismtb${i}='vi ${HOME}/scripto-main/tests/ap_test_bash_${i}.sh'")"
     eval "$(printf "%s" "alias runsmtb${i}='source ${HOME}/scripto-main/tests/ap_test_bash_${i}.sh'")"
+done
+
+for i in {1..7}; do
+    eval "$(printf "%s" "alias visrtts${i}='vi ${HOME}/scripto-share/tests/ap_test_ts_${i}.ts'")"
+    eval "$(printf "%s" "alias runsrtts${i}='source ${HOME}/scripto-share/tests/ap_test_ts_${i}.ts'")"
+
+    eval "$(printf "%s" "alias visctts${i}='vi ${HOME}/scripto-common/tests/ap_test_ts_${i}.ts'")"
+    eval "$(printf "%s" "alias runsctts${i}='source ${HOME}/scripto-common/tests/ap_test_ts_${i}.ts'")"
+
+    eval "$(printf "%s" "alias vismtts${i}='vi ${HOME}/scripto-main/tests/ap_test_ts_${i}.ts'")"
+    eval "$(printf "%s" "alias runsmtts${i}='source ${HOME}/scripto-main/tests/ap_test_ts_${i}.ts'")"
+done
+
+for i in {1..7}; do
+    eval "$(printf "%s" "alias visrtpy${i}='vi ${HOME}/scripto-share/tests/ap_test_py_${i}.py'")"
+    eval "$(printf "%s" "alias runsrtpy${i}='source ${HOME}/scripto-share/tests/ap_test_py_${i}.py'")"
+
+    eval "$(printf "%s" "alias visctpy${i}='vi ${HOME}/scripto-common/tests/ap_test_py_${i}.py'")"
+    eval "$(printf "%s" "alias runsctpy${i}='source ${HOME}/scripto-common/tests/ap_test_py_${i}.py'")"
+
+    eval "$(printf "%s" "alias vismtpy${i}='vi ${HOME}/scripto-main/tests/ap_test_py_${i}.py'")"
+    eval "$(printf "%s" "alias runsmtpy${i}='source ${HOME}/scripto-main/tests/ap_test_py_${i}.py'")"
 done
