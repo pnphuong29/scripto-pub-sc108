@@ -232,11 +232,11 @@ for i in {1..7}; do
 done
 
 for i in {1..10}; do
-    eval "$(printf "%s" "alias videvpy${i}='vi ${AP_DEV_DEV1}/py/test_py_${i}.py'")"
-    eval "$(printf "%s" "alias rundevpy${i}='source ${AP_DEV_DEV1}/py/test_py_${i}.py'")"
+    eval "$(printf "%s" "alias videvpy${i}='vi ${AP_PRJ_DEV1_DIR}/py/test_py_${i}.py'")"
+    eval "$(printf "%s" "alias rundevpy${i}='source ${AP_PRJ_DEV1_DIR}/py/test_py_${i}.py'")"
 done
 
 for i in {1..10}; do
-    eval "$(printf "%s" "alias videvts${i}='vi ${AP_DEV_DEV1}/ts/test_ts_${i}.ts'")"
-    eval "$(printf "%s" "alias rundevts${i}='source ${AP_DEV_DEV1}/ts/test_ts_${i}.ts'")"
+    eval "$(printf "%s" "alias videvts${i}='vi ${AP_PRJ_DEV1_DIR}/ts/test_ts_${i}.ts'")"
+    eval "$(printf "%s" "alias rundevts${i}='source ${AP_PRJ_DEV1_DIR}/ts/test_ts_${i}.ts'")"
 done
