@@ -221,17 +221,6 @@ for i in {1..7}; do
 done
 
 for i in {1..7}; do
-    eval "$(printf "%s" "alias visrtts${i}='vi ${HOME}/scripto-share/tests/ap_test_ts_${i}.ts'")"
-    eval "$(printf "%s" "alias runsrtts${i}='source ${HOME}/scripto-share/tests/ap_test_ts_${i}.ts'")"
-
-    eval "$(printf "%s" "alias visctts${i}='vi ${HOME}/scripto-common/tests/ap_test_ts_${i}.ts'")"
-    eval "$(printf "%s" "alias runsctts${i}='source ${HOME}/scripto-common/tests/ap_test_ts_${i}.ts'")"
-
-    eval "$(printf "%s" "alias vismtts${i}='vi ${HOME}/scripto-main/tests/ap_test_ts_${i}.ts'")"
-    eval "$(printf "%s" "alias runsmtts${i}='source ${HOME}/scripto-main/tests/ap_test_ts_${i}.ts'")"
-done
-
-for i in {1..7}; do
     eval "$(printf "%s" "alias visrtpy${i}='vi ${HOME}/scripto-share/tests/ap_test_py_${i}.py'")"
     eval "$(printf "%s" "alias runsrtpy${i}='source ${HOME}/scripto-share/tests/ap_test_py_${i}.py'")"
 
@@ -240,4 +229,14 @@ for i in {1..7}; do
 
     eval "$(printf "%s" "alias vismtpy${i}='vi ${HOME}/scripto-main/tests/ap_test_py_${i}.py'")"
     eval "$(printf "%s" "alias runsmtpy${i}='source ${HOME}/scripto-main/tests/ap_test_py_${i}.py'")"
+done
+
+for i in {1..10}; do
+    eval "$(printf "%s" "alias videvpy${i}='vi ${AP_DEV_DEV1}/py/test_py_${i}.py'")"
+    eval "$(printf "%s" "alias rundevpy${i}='source ${AP_DEV_DEV1}/py/test_py_${i}.py'")"
+done
+
+for i in {1..10}; do
+    eval "$(printf "%s" "alias videvts${i}='vi ${AP_DEV_DEV1}/ts/test_ts_${i}.ts'")"
+    eval "$(printf "%s" "alias rundevts${i}='source ${AP_DEV_DEV1}/ts/test_ts_${i}.ts'")"
 done
