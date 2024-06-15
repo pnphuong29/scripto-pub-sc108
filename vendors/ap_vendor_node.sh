@@ -4,6 +4,7 @@ ap_func_init_node() {
     # AP_NODE_VERSION_DEFAULT="18.16.1"
 
     alias npmi='npm install'
+    alias npmid='npm install --save-dev'
     alias npmig='npm install --global'
     alias npmilegacypeerdeps='npm install --legacy-peer-deps'
 
