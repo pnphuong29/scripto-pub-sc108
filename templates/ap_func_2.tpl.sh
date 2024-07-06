@@ -39,7 +39,13 @@ ap_func_xxx() {
     shift $((OPTIND - 1))
 
     # Implementation
-    if [ ${ap_opt_p} == 1 ]; then
+    local ap_input_file="$2"
+
+    if [ "${ap_opt_p}" == 1 ]; then
+
+    elif [ "${ap_opt_p}" == 1 ]; then
+
+    else
 
     fi
 

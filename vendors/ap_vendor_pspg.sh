@@ -1,7 +1,5 @@
 alias apinitpspg="ap_func_init_pspg"
 ap_func_init_pspg() {
-    export PSQL_PAGER='pspg -X -b'
-
     if alias apinitpspgshare &>/dev/null; then
         apinitpspgshare
     fi
@@ -47,12 +45,13 @@ ap_func_rm_dirstruct_pspg() {
 
 alias apsetuppspg="ap_func_setup_pspg"
 ap_func_setup_pspg() {
+    # https://github.com/okbob/pspg
     aplogshow "Install [pspg]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install pspg
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        sudo apt-get install pspg
+        sudo apt-get install -y pspg
     fi
 
     apinitpspg
@@ -68,7 +67,7 @@ ap_func_rm_pspg() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew remove pspg
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        sudo apt purge -y pspg
+        sudo apt-get purge -y pspg
     fi
 
     if alias aprmdirstructpspg &>/dev/null; then

@@ -36,6 +36,7 @@ ap_func_setup_pgcli() {
     # https://github.com/dbcli/pgcli
     aplogshow "Install [pgcli]\n"
     pip install pgcli
+    # pip install ipython-sql # you can call pgcli if using old ipython
 
     apinitpgcli
     if alias apcreatedirstructpgcli &>/dev/null; then
@@ -47,6 +48,7 @@ alias aprmpgcli="ap_func_rm_pgcli"
 ap_func_rm_pgcli() {
     aplogshow "Remove [pgcli]\n"
     pip uninstall pgcli
+    # pip uninstall ipython-sql
 
     if alias aprmdirstructpgcli &>/dev/null; then
         aprmdirstructpgcli
