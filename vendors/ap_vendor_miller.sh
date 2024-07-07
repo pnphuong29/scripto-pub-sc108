@@ -90,56 +90,26 @@ ap_func_rm_miller() {
     fi
 }
 
-alias millercsv='ap_alias_miller_view'
+alias millercsv='ap_alias_miller_view csv'
 alias millertsv='ap_alias_miller_view tsv'
 alias millerjson='ap_alias_miller_view json'
+alias ap_alias_miller_view='ap_func_miller_view'
 # @$func $$ ap_func_miller_view {
-# ap_func_miller_view [-dp] <domain/ip> <port> [--] *<src_path> <dst_path>
+# ap_func_miller_view *<file_type> *<input_file>
 # Description
-#
-# Options
-#   -d
-# Parameters
-#   <dst>   dest
+#   Use miller and pspg to view CSV, TSV and JSON file
 # Return status
 #   AP_CODE_SUCCESS
 # }
 ap_func_miller_view() {
-    local ap_opts_string=":tj"
-    local ap_opt=""
-    local ap_opt_t=0
-    local ap_opt_j=0
-
-    unset OPTIND
-
-    while getopts "${ap_opts_string}" ap_opt; do
-        case "${ap_opt}" in
-        "t")
-            ap_opt_t=1
-            ;;
-        "j")
-            ap_opt_j=1
-            ;;
-        ?)
-            echo "Invalid option [${OPTARG}]"
-            @reterr_opt_invalid_option
-            ;;
-        esac
-    done
-
-    # Remove all options in parameter list
-    shift $((OPTIND - 1))
-
-    # Implementation
+    local ap_file_type="$1"
     local ap_input_file="$2"
+    local ap_cmd
 
-    if [ "${ap_opt_t}" == 1 ]; then
-        mlr --tsv --opprint --barred put '' "${ap_input_file}" | pspg --force-uniborder
-    elif [ "${ap_opt_j}" == 1 ]; then
-        mlr --json --opprint --barred put '' "${ap_input_file}" | pspg --force-uniborder
-    else
-        mlr --csv --opprint --barred put '' "${ap_input_file}" | pspg --force-uniborder
-    fi
+    ap_cmd="mlr --${ap_file_type} --opprint --barred put '' \"${ap_input_file}\" | pspg --force-uniborder"
+
+    aplogshow "Execute [${ap_cmd}]\n"
+    eval "${ap_cmd}"
 
     aprtn_success
 }

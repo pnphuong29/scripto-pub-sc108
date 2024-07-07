@@ -29,7 +29,7 @@ ap_func_setup_go() {
     # https://go.dev/doc/manage-install
     # https://stackoverflow.com/questions/1210664/no-module-named-sqlite3
 
-    local ap_go_version='1.21.4'
+    local ap_go_version='1.22.5'
     local ap_go_dir_name="go"
     local ap_go_src_file_name="go${ap_go_version}.darwin-amd64.tar.gz"
 
