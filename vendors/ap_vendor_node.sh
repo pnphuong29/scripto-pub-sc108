@@ -10,8 +10,8 @@ ap_func_init_node() {
 
     alias npmrm='npm uninstall'
 
-    alias npmbld='npm run build'
-    alias npmbldlegacypeerdeps='npm run build --legacy-peer-deps'
+    alias npmbuild='npm run build'
+    alias npmbuildlegacypeerdeps='npm run build --legacy-peer-deps'
 
     alias npmrun='npm run'
     alias npmserve='npm run serve'

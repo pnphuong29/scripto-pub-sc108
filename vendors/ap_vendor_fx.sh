@@ -1,5 +1,7 @@
 alias apinitfx="ap_func_init_fx"
 ap_func_init_fx() {
+    alias fxthemes='fx --themes'
+
     if alias apinitfxshare &>/dev/null; then
         apinitfxshare
     fi
@@ -13,8 +15,8 @@ alias apcreatedirstructfx="ap_func_create_dirstruct_fx"
 ap_func_create_dirstruct_fx() {
     # https://github.com/antonmedv/fx-completion
     # It's author has already archived it, maybe it will be deprecated soonly
-    aplogshow "Generate [fx] bash autocomplete\n"
-    fx-completion --bash >"${AP_COMPLETIONS_DIR}/ap_completion_fx.bash"
+    # aplogshow "Generate [fx] bash autocomplete\n"
+    # fx-completion --bash >"${AP_COMPLETIONS_DIR}/ap_completion_fx.bash"
 
     if alias apcreatedirstructfxshare &>/dev/null; then
         apcreatedirstructfxshare
@@ -45,10 +47,10 @@ ap_func_setup_fx() {
     # https://github.com/antonmedv/fx-completion
     aplogshow "Install [fx]\n"
     go install github.com/antonmedv/fx@latest
-    # npm install --global fx fx-completion # npm performance is quite slow, should not use this way to install fx
+    # npm install --global fx # npm performance is quite slow, should not use this way to install fx
 
-    aplogshow "Install [fx-completion]\n"
-    npm install --global fx-completion
+    # aplogshow "Install [fx-completion]\n"
+    # npm install --global fx-completion
 
     apinitfx
     if alias apcreatedirstructfx &>/dev/null; then
@@ -62,7 +64,7 @@ ap_func_rm_fx() {
 
     rm -rf "${GOPATH}/pkg/mod/github.com/antonmedv/fx@"*
     rm -f "${GOPATH}/bin/fx"
-    npm uninstall -g fx-completion
+    # npm uninstall -g fx-completion
 
     if alias aprmdirstructfx &>/dev/null; then
         aprmdirstructfx
