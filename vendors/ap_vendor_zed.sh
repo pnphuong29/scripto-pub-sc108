@@ -1,5 +1,7 @@
 alias apinitzed="ap_func_init_zed"
 ap_func_init_zed() {
+    alias zzedconfig="cd ${HOME}/.config/zed"
+
     if alias apinitzedshare &>/dev/null; then
         apinitzedshare
     fi
