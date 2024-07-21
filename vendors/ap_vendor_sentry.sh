@@ -56,7 +56,7 @@ ap_func_setup_sentry() {
     aplogshow "Install [sentry]\n"
 
     # curl -sL https://sentry.io/get-cli/ | sh
-    sudo npm install -g @sentry/cli --unsafe-perm
+    npm install -g @sentry/cli --unsafe-perm
 
     apinitsentry
     if alias apcreatedirstructsentry &>/dev/null; then
@@ -68,7 +68,7 @@ alias aprmsentry="ap_func_rm_sentry"
 ap_func_rm_sentry() {
     aplogshow "Remove [sentry]\n"
 
-    sudo npm uninstall -g @sentry/cli --unsafe-perm
+    npm uninstall -g @sentry/cli --unsafe-perm
 
     if alias aprmdirstructsentry &>/dev/null; then
         aprmdirstructsentry
