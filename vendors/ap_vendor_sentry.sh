@@ -1,5 +1,7 @@
 alias apinitsentry="ap_func_init_sentry"
 ap_func_init_sentry() {
+    alias sentrycli='sentry-cli'
+
     if alias apinitsentryshare &>/dev/null; then
         apinitsentryshare
     fi
