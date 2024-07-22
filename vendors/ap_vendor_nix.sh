@@ -1,6 +1,6 @@
 alias apinitnix="ap_func_init_nix"
 ap_func_init_nix() {
-    alias nx='nix-shell'
+    alias nix='nix-shell'
 
     if alias apinitnixshare &>/dev/null; then
         apinitnixshare
