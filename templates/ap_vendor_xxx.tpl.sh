@@ -122,7 +122,7 @@ ap_func_setup_xxx() {
         hdiutil attach -nobrowse xxx.dmg
         cd "/Volumes/xxx"
         cp -R "xxx.app" /Applications/
-        cd ~
+        cd /Applications
         hdiutil detach "/Volumes/xxx"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         curl -SL \
@@ -174,6 +174,7 @@ ap_func_rm_xxx() {
     rm -rf "${AP_SOFT_DIR}/xxx"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        rm -rf "/Applications/xxx"
         brew remove --cask xxx
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         sudo apt purge -y xxx
