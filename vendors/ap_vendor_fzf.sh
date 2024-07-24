@@ -2,6 +2,8 @@ alias apinitfzf="ap_func_init_fzf"
 ap_func_init_fzf() {
     [ -f "${HOME}/.fzf.bash" ] && source "${HOME}/.fzf.bash"
 
+    alias historyf='history | fzf'
+
     if alias apinitfzfshare &>/dev/null; then
         apinitfzfshare
     fi

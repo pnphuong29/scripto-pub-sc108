@@ -1,7 +1,7 @@
 alias apinitgithubcli="ap_func_init_github_cli"
 ap_func_init_github_cli() {
     apaddpath -m "${AP_SOFT_DIR}/github-cli/share/man"
-    alias lsghrepos='gh repo list --limit 200'
+    alias lsghrepos='gh repo list --limit 500'
 
     if alias apinitgithubclishare &>/dev/null; then
         apinitgithubclishare

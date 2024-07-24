@@ -42,28 +42,3 @@ ap_func_rm_dirstruct_nextjs() {
         aprmdirstructnextjsmain
     fi
 }
-
-alias apsetupnextjs="ap_func_setup_nextjs"
-ap_func_setup_nextjs() {
-    aplogshow "Install [nextjs]\n"
-    # npm install -g nextjs
-
-    apinitnextjs
-    if alias apcreatedirstructnextjs &>/dev/null; then
-        apcreatedirstructnextjs
-    fi
-}
-
-alias aprmnextjs="ap_func_rm_nextjs"
-ap_func_rm_nextjs() {
-    aplogshow "Remove [nextjs]\n"
-    # npm uninstall -g nextjs
-
-    if alias aprmdirstructnextjs &>/dev/null; then
-        aprmdirstructnextjs
-    fi
-
-    if alias aprmglobalsymlinknextjs &>/dev/null; then
-        aprmglobalsymlinknextjs
-    fi
-}
