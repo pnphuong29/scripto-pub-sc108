@@ -141,7 +141,7 @@ ap_func_rm_ripgrep() {
     fi
 }
 
-alias @rg="ap_func_ripgrep"
+alias rgf="ap_func_ripgrep"
 alias rgr="ap_func_ripgrep -r"
 alias rgrc="ap_func_ripgrep -c -r"
 alias rga10="ap_func_ripgrep -i -h -a 10 --"

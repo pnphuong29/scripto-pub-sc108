@@ -1,11 +1,11 @@
-alias @iniemojify="ap_func_init_xxx"
-ap_func_init_xxx() {
-    if alias @iniemojifyshare &>/dev/null; then
-        @iniemojifyshare
+alias initemojify="ap_func_init_emojify"
+ap_func_init_emojify() {
+    if alias iniemojifyshare &>/dev/null; then
+        iniemojifyshare
     fi
 
-    if alias @iniemojifycommon &>/dev/null; then
-        @iniemojifycommon
+    if alias iniemojifycommon &>/dev/null; then
+        iniemojifycommon
     fi
 }
 

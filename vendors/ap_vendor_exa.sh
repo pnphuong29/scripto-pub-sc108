@@ -1,14 +1,14 @@
 alias apinitexa="ap_func_init_exa"
 ap_func_init_exa() {
-    alias @exa="exa -a --long --header --icons --group --group-directories-first"
-    alias l="@exa --all"
-    alias lmodified="@exa --all --sort=modified"
-    alias ld="@exa --all -D"
-    alias l2="@exa --tree --level 2"
-    alias ld2="@exa --tree --level 2 -D"
-    alias l3="@exa --tree --level 3"
-    alias ld3="@exa --tree --level 3 -D"
-    alias lgit="@exa --all --git"
+    alias exa1="exa -a --long --header --icons --group --group-directories-first"
+    alias l="exa1 --all"
+    alias lmodified="exa1 --all --sort=modified"
+    alias ld="exa1 --all -D"
+    alias l2="exa1 --tree --level 2"
+    alias ld2="exa1 --tree --level 2 -D"
+    alias l3="exa1 --tree --level 3"
+    alias ld3="exa1 --tree --level 3 -D"
+    alias lgit="exa1 --all --git"
 
     if alias apinitexashare &>/dev/null; then
         apinitexashare

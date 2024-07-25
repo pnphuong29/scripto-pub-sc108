@@ -1,6 +1,6 @@
 alias apinitiredis="ap_func_init_iredis"
 ap_func_init_iredis() {
-    alias @iredis="iredis -a \$(showredispasswd)"
+    alias iredis1="iredis -a \$(showredispasswd)"
 
     if alias apinitiredisshare &>/dev/null; then
         apinitiredisshare

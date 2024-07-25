@@ -56,7 +56,7 @@ ap_func_rm_httpie() {
     fi
 }
 
-alias @http="ap_func_httpie"
+alias httpf="ap_func_httpie"
 alias httpget="ap_func_httpie -t GET"
 alias httppost="ap_func_httpie -t POST"
 alias httppostform="ap_func_httpie -f -t POST"

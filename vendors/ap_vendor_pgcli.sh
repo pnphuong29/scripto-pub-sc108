@@ -59,7 +59,7 @@ ap_func_rm_pgcli() {
     fi
 }
 
-alias @pgcli='ap_func_pgcli'
+alias pgclif='ap_func_pgcli'
 # @$func $$ ap_func_pgcli {
 # ap_func_pgcli *<host> *<port> *<user> *<pass> <db>
 # Description

@@ -34,7 +34,7 @@ ap_func_init_pyenv() {
         source "${PYENV_ROOT}/completions/pyenv.bash"
     fi
 
-    alias @unsetpyenvversion="unset PYENV_VERSION"
+    alias unsetpyenvversion="unset PYENV_VERSION"
 
     if alias apinitpyenvshare &>/dev/null; then
         apinitpyenvshare

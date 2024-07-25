@@ -73,7 +73,7 @@ ap_func_rm_mycli() {
     fi
 }
 
-alias @mycli='ap_func_mycli'
+alias myclif='ap_func_mycli'
 # @$func $$ ap_func_mycli {
 # ap_func_mycli *<host> *<port> *<user> *<pass> <db>
 # Description

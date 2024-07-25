@@ -7,8 +7,8 @@ ap_func_init_python() {
     alias pipupgrade="pip install --upgrade pip"
     alias pipirequirementsdev="pip install --upgrade pip -r requirements_dev.txt"
     alias pipirequirements="pip install --upgrade pip -r requirements.txt"
-    alias @venv="python -m venv"
-    alias @venvactivate="source \$(find -type f -name activate | head -1)"
+    alias venv="python -m venv"
+    alias venvactivate="source \$(find -type f -name activate | head -1)"
 
     if alias apinitpythonshare &>/dev/null; then
         apinitpythonshare
