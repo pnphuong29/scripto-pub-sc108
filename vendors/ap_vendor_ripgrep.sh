@@ -225,7 +225,7 @@ ap_func_ripgrep() {
         ap_cmd="${ap_cmd} --smart-case"
     fi
 
-    ap_cmd="${ap_cmd} ${ap_search_string}"
+    ap_cmd="${ap_cmd} \"${ap_search_string}\""
 
     if [ "${ap_opt_r}" -eq 1 ] && [ -n "${ap_replace_string}" ]; then
         local ap_file_name
@@ -234,7 +234,7 @@ ap_func_ripgrep() {
         eval "$(printf "%s" "${ap_cmd}")" | cut -d : -f 1 | while read -r ap_file_name; do
             ap_file_path="${PWD}/${ap_file_name}"
             apshowmsginfo "Replace [${ap_search_string}] by [${ap_replace_string}] in file [${ap_file_path}]\n"
-            gsed -i'' "s/${ap_search_string}/${ap_replace_string}/g" "${ap_file_path}"
+            gsed -i'' "s@${ap_search_string}@${ap_replace_string}@g" "${ap_file_path}"
         done
     else
         eval "$(printf "%s" "${ap_cmd}")"
