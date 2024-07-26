@@ -146,6 +146,7 @@ ap_func_setup_xxx() {
     cd "${AP_SOFT_DIR}/xxx"
     rm -rf "${AP_TMP_DIR}/xxx"
 
+    cargo install xxx
     pip install xxx
     npm install -g xxx
 
@@ -165,6 +166,7 @@ ap_func_rm_xxx() {
     aplogshow "Remove [xxx] v${ap_xxx_remove_version}\n"
 
     aplogshow "Remove [xxx]\n"
+    cargo remove xxx
     pip uninstall xxx
     npm uninstall -g xxx
 
