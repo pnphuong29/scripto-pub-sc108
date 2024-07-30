@@ -15,6 +15,14 @@ ap_func_init_inkscape() {
 
 alias apcreatedirstructinkscape="ap_func_create_dirstruct_inkscape"
 ap_func_create_dirstruct_inkscape() {
+    if [ -d "${HOME}/scripto-common/vendors/inkscape/configs" ]; then
+        aplogshow "Backup current inkscape settings from [${HOME}/.config/inkscape] to [${HOME}/.config/inkscape.bak] \n"
+        mv "${HOME}/.config/inkscape" "${HOME}/.config/inkscape.bak"
+
+        aplogshow "Create symlink from [${HOME}/.config/inkscape] to [${HOME}/scripto-common/vendors/inkscape/configs]\n"
+        ln -s "${HOME}/scripto-common/vendors/inkscape/configs" "${HOME}/.config/inkscape"
+    fi
+
     if alias apcreatedirstructinkscapeshare &>/dev/null; then
         apcreatedirstructinkscapeshare
     fi
@@ -30,6 +38,14 @@ ap_func_create_dirstruct_inkscape() {
 
 alias aprmdirstructinkscape="ap_func_rm_dirstruct_inkscape"
 ap_func_rm_dirstruct_inkscape() {
+    aplogshow "Remove inkscape settings at [${HOME}/.config/inkscape]\n"
+    rm -rf "${HOME}/.config/inkscape"
+
+    if [ -d "${HOME}/.config/inkscape.bak" ]; then
+        aplogshow "Restore original inkscape settings from [${HOME}/.config/inkscape.bak]\n"
+        mv "${HOME}/.config/inkscape.bak" "${HOME}/.config/inkscape"
+    fi
+
     if alias aprmdirstructinkscapeshare &>/dev/null; then
         aprmdirstructinkscapeshare
     fi

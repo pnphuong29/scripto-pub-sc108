@@ -129,6 +129,7 @@ ap_func_setup_xxx() {
         curl -SL \
             "$(curl --silent "https://api.github.com/repos/owner/xxx/releases" | jq -r '.[0].assets[].browser_download_url' | grep "linux" | grep x86_64 | grep -v sha256 | grep musl)" >xxx.tar.gz
         sudo dpkg -i xxx.deb
+        sudo snap install -y xxx
     fi
 
     local ap_os="macos"
