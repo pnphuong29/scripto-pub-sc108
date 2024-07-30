@@ -105,6 +105,7 @@ ap_func_setup_xxx() {
     cd "${AP_TMP_DIR}/xxx"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        brew install xxx
         if [[ "$(uname -m)" == 'arm64' ]]; then
             curl -SL \
                 "$(curl --silent "https://api.github.com/repos/owner/xxx/releases" | jq -r '.[0].assets[].browser_download_url' | grep "macos" | grep arm | grep -v sha256)" >xxx.tar.gz
