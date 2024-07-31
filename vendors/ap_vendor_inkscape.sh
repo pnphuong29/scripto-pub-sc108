@@ -1,7 +1,7 @@
 alias apinitinkscape="ap_func_init_inkscape"
 ap_func_init_inkscape() {
     if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
-        alias zinkscapeconfigs="cd \${HOME}/Library/Application Support/org.inkscape.Inkscape/config/inkscape"
+        alias zinkscapeconfigs="cd \"\${HOME}/Library/Application Support/org.inkscape.Inkscape/config/inkscape\""
     elif [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]]; then
         alias zinkscapeconfigs="cd \${HOME}/.config/inkscape"
 
