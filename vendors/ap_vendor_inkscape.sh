@@ -16,7 +16,7 @@ ap_func_init_inkscape() {
 alias apcreatedirstructinkscape="ap_func_create_dirstruct_inkscape"
 ap_func_create_dirstruct_inkscape() {
     if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
-        if [ -d "${HOME}/scripto-common/vendors/inkscape/configs" ]; then
+        if [ -d "${HOME}/scripto-common/vendors/inkscape/macos" ]; then
             aplogshow "Backup current inkscape settings from [${HOME}/Library/Application Support/org.inkscape.Inkscape/config/inkscape] to [${HOME}/Library/Application Support/org.inkscape.Inkscape/config/inkscape.bak] \n"
             mv "${HOME}/Library/Application Support/org.inkscape.Inkscape/config/inkscape" "${HOME}/Library/Application Support/org.inkscape.Inkscape/config/inkscape.bak"
 
