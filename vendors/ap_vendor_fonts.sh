@@ -1,5 +1,11 @@
 alias apinitfonts="ap_func_init_fonts"
 ap_func_init_fonts() {
+    if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]]; then
+        alias showfontconfig="cat /etc/fonts/fonts.conf"
+        alias zfonts="cd \${HOME}/.fonts"
+        alias rebuildfontinfo='sudo fc-cache -f -v'
+    fi
+
     if alias apinitfontsshare &>/dev/null; then
         apinitfontsshare
     fi
@@ -11,6 +17,12 @@ ap_func_init_fonts() {
 
 alias apcreatedirstructfonts="ap_func_create_dirstruct_fonts"
 ap_func_create_dirstruct_fonts() {
+    if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" && -d "${AP_NC_DIR}/design/fonts" ]]; then
+        aplogshow "Create symlink from [\${HOME}/.fonts] to [\${AP_NC_DIR}/design/fonts]\n"
+        rm -rf "${HOME}/.fonts"
+        ln -s "${AP_NC_DIR}/design/fonts" "${HOME}/.fonts"
+    fi
+
     if alias apcreatedirstructfontsshare &>/dev/null; then
         apcreatedirstructfontsshare
     fi
