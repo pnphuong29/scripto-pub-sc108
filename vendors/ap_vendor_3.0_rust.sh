@@ -1,6 +1,8 @@
 alias apinitrust="ap_func_init_rust"
 ap_func_init_rust() {
     source "${HOME}/.cargo/env"
+    alias zcargo="cd \${HOME}/.cargo"
+    alias zcargobin="cd \${HOME}/.cargo/bin"
 
     if alias apinitrustshare &>/dev/null; then
         apinitrustshare
