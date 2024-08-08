@@ -16,3 +16,13 @@ alias viscmaster='vi -p \
 '
 
 alias vichromebm="vi \${AP_CHROME_BOOKMARK_FILE_PATH}"
+
+alias visc35='vibulk "${AP_PRJ_SC35_DIR}"'
+alias vitmp='vi "${AP_TMP_DIR}/tmp.txt"'
+alias vipackagejson="vi package.json"
+alias vipipfile="vi Pipfile"
+alias virequirements="vi requirements.txt"
+alias virequirementsdev="vi requirements-dev.txt"
+alias vienv="vi .env"
+alias vitsconfig='vi tsconfig.json'
+alias vitsconfigbase='vi tsconfig.base.json'
