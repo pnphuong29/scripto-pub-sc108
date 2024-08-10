@@ -3,11 +3,14 @@ ap_func_init_pipenv() {
     export PIPENV_VENV_IN_PROJECT=1
 
     alias pipenvi="pipenv install"
+    alias pipenvrm="pipenv uninstall"
     alias pipenvidev="pipenv install --dev"
+    alias pipenvrmdev="pipenv uninstall --dev"
     alias pipenvrequirements="pipenv requirements > requirements.txt"
     alias pipenvrequirementsdev="pipenv requirements --dev > requirements_dev.txt"
     alias pipenvverify="pipenv verify" # Check if Pipfile.lock is out-of-date?
-    alias pipenvlock="pipenv lock"     # Generate Pipfile.lock
+    alias pipenvlock="pipenv lock"     # Update all dependencies of Pipfile.lock to their latest resolved versions based on your Pipfile specification
+    alias pipenvsync="pipenv sync"     # Install dependencies from the Pipfile.lock without any alteration to the lockfile.
     alias pipenvrun="pipenv run"
     alias pipenvpip="pipenv run pip"
 
