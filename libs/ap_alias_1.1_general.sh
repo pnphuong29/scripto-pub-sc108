@@ -1,10 +1,10 @@
 # Aliases - Copy commands
 if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
     alias apcopy='pbcopy'
-    alias apopen=open
+    alias apopen='open'
 elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
     alias apcopy='xclip -selection clipboard'
-    alias apopen=xdg-open
+    alias apopen='xdg-open'
 fi
 
 alias cpd='pwd | tr -d "\n" | apcopy'
