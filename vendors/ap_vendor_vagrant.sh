@@ -8,6 +8,8 @@ ap_func_init_vagrant() {
     alias vg='vagrant'
     alias vggs='vagrant global-status'
     alias vggsp='vagrant global-status --prune'
+    alias vgglobalstatus='vagrant global-status'
+    alias vgglobalstatusprune='vagrant global-status --prune'
     alias vgssh='vagrant ssh'
     alias vgstart='vagrant up'
     alias vgstop='vagrant halt'
