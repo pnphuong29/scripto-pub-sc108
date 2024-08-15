@@ -58,7 +58,7 @@ ap_func_setup_vbox() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         # Use brew to install VirtualBox
         # brew install virtualbox virtualbox-extension-pack
-        curl -SL https://download.virtualbox.org/virtualbox/7.0.14/VirtualBox-7.0.14-161095-OSX.dmg -o virtualbox.dmg
+        curl -SL https://download.virtualbox.org/virtualbox/7.0.20/VirtualBox-7.0_7.0.20-163906-OSX.dmg -o virtualbox.dmg
         hdiutil attach -nobrowse virtualbox.dmg
         cd "/Volumes/VirtualBox"
         sudo installer -pkg VirtualBox.pkg -target "/Applications"
@@ -68,14 +68,14 @@ ap_func_setup_vbox() {
         # Use apt to install VirtualBox, usually results in old version
         # sudo apt update
         # sudo apt install -y virtualbox
-        curl -SL https://download.virtualbox.org/virtualbox/7.0.14/virtualbox-7.0_7.0.14-161095~Ubuntu~jammy_amd64.deb -o virtualbox.deb
+        curl -SL https://download.virtualbox.org/virtualbox/7.0.20/virtualbox-7.0_7.0.20-163906~Ubuntu~jammy_amd64.deb -o virtualbox.deb
         sudo dpkg -i virtualbox.deb
     fi
 
-    apshowmsginfo "VirtualBox GuestAdditions iso file will be downloaded for later use at [${AP_SOFT_DIR}/vbox/VBoxGuestAdditions_7.0.14.iso]\n"
+    apshowmsginfo "VirtualBox GuestAdditions iso file will be downloaded for later use at [${AP_SOFT_DIR}/vbox/VBoxGuestAdditions_7.0.20.iso]\n"
     mkdir -p "${AP_SOFT_DIR}/vbox"
     cd "${AP_SOFT_DIR}/vbox"
-    curl -SOL "http://download.virtualbox.org/virtualbox/7.0.14/VBoxGuestAdditions_7.0.14.iso"
+    curl -SOL "http://download.virtualbox.org/virtualbox/7.0.20/VBoxGuestAdditions_7.0.20.iso"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         aplogshow "Install [VirtualBox GuestAdditions]\n"
@@ -86,7 +86,7 @@ ap_func_setup_vbox() {
         # Install Guest Additions
         sudo mkdir -p "/media/guestadditions"
         cd "${AP_SOFT_DIR}/vbox"
-        mount -o loop,ro "VBoxGuestAdditions_7.0.14.iso" "/media/guestadditions"
+        mount -o loop,ro "VBoxGuestAdditions_7.0.20.iso" "/media/guestadditions"
         cd "/media/guestadditions"
         ./VBoxLinuxAdditions.run --nox11
 
@@ -100,9 +100,9 @@ ap_func_setup_vbox() {
     fi
 
     # You should open VirtualBox to install this extension pack
-    apshowmsginfo "You should open VirtualBox to install the extension pack at [${AP_SOFT_DIR}/vbox/Oracle_VM_VirtualBox_Extension_Pack-7.0.14-161095.vbox-extpack]\n"
+    apshowmsginfo "You should open VirtualBox to install the extension pack at [${AP_SOFT_DIR}/vbox/Oracle_VM_VirtualBox_Extension_Pack-7.0.20.vbox-extpack]\n"
     cd "${AP_SOFT_DIR}/vbox"
-    curl -SOL http://download.virtualbox.org/virtualbox/7.0.14/Oracle_VM_VirtualBox_Extension_Pack-7.0.14-161095.vbox-extpack
+    curl -SOL http://download.virtualbox.org/virtualbox/7.0.20/Oracle_VM_VirtualBox_Extension_Pack-7.0.20.vbox-extpack
 
     apinitvbox
     if alias apcreatedirstructvbox &>/dev/null; then
