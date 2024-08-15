@@ -20,6 +20,7 @@ ap_func_init_vagrant() {
     alias vgrm='vagrant destroy -f; rm -rf .vagrant logs'
     alias vgrebuild='vgrm; vagrant up'
     alias vgstopall="vagrant stop \$(vagrant global-status | grep running | gawk '{print \$1}' | tr '\n' ' ')"
+    alias vivagrantfile='vi Vagrantfile'
 
     if alias apinitvagrantshare &>/dev/null; then
         apinitvagrantshare
