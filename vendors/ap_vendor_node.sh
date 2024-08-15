@@ -8,8 +8,8 @@ ap_func_init_node() {
     alias npmig='npm install --global'
     alias npmilegacypeerdeps='npm install --legacy-peer-deps'
 
-    alias lsnpmpkgg='npm ls -g'
-    alias lsnpmpkg='npm ls'
+    alias npmls='npm ls'
+    alias npmlsg='npm ls -g'
 
     alias npmrm='npm uninstall'
     alias npmrmg='npm uninstall -g'
