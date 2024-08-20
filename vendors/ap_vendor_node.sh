@@ -17,6 +17,7 @@ ap_func_init_node() {
     alias npmbuild='npm run build'
     alias npmbuildlegacypeerdeps='npm run build --legacy-peer-deps'
 
+    alias npmcreate='npm create'
     alias npmrun='npm run'
     alias npmserve='npm run serve'
     alias npmdev='npm run dev'
