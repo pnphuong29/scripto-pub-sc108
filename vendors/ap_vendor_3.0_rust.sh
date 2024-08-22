@@ -4,6 +4,9 @@ ap_func_init_rust() {
     alias zcargo="cd \${HOME}/.cargo"
     alias zcargobin="cd \${HOME}/.cargo/bin"
     alias rustupdatestable="rustup update stable"
+    alias cargobuild="cargo build"
+    alias cargobuildrelease="cargo build --releasse"
+    alias cargorun="cargo run"
 
     if alias apinitrustshare &>/dev/null; then
         apinitrustshare
