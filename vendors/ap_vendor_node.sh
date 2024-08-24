@@ -3,6 +3,9 @@ ap_func_init_node() {
     export AP_NODE_VERSION_DEFAULT="16.20.2"
     # AP_NODE_VERSION_DEFAULT="18.16.1"
 
+    export PNPM_HOME="${HOME}/.local/share/pnpm"
+    apaddpath "${PNPM_HOME}"
+
     alias npmi='npm install'
     alias npmid='npm install --save-dev'
     alias npmig='npm install --global'
@@ -22,6 +25,18 @@ ap_func_init_node() {
     alias npmserve='npm run serve'
     alias npmdev='npm run dev'
     alias npmtest='npm run test'
+
+    alias pn='pnpm'
+    alias pnupdate='pnpm self-update'
+    alias pni='pnpm install'
+    alias pna='pnpm add'
+    alias pnad='pnpm add -D'
+    alias pnig='pnpm install --global'
+    alias pnls='pnpm ls'
+    alias pnlsg='pnpm ls --global'
+    alias pnrm='pnpm rm'
+    alias pnrmg='pnpm rm --global'
+    alias pnx='pnpm dlx'
 
     if alias apinitnodeshare &>/dev/null; then
         apinitnodeshare

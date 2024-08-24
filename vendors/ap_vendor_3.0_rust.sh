@@ -3,7 +3,12 @@ ap_func_init_rust() {
     source "${HOME}/.cargo/env"
     alias zcargo="cd \${HOME}/.cargo"
     alias zcargobin="cd \${HOME}/.cargo/bin"
+
     alias rustupdatestable="rustup update stable"
+    alias rustdoc="rustup doc" # local documentation
+
+    alias cargonew="cargo new"
+    alias cargocheck="cargo check" # check codes to make sure it compiles but doesn't produce an executable
     alias cargobuild="cargo build"
     alias cargobuildrelease="cargo build --releasse"
     alias cargorun="cargo run"
