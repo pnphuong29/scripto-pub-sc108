@@ -18,7 +18,7 @@ fi
 if [ -d "${HOME}/scripto-main/libs" ]; then
     while read -r ap_env; do
         source "${ap_env}"
-    done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | sort)
+    done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | grep -v "7s" | sort)
 fi
 
 # Load scripto environment variables
