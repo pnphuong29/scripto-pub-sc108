@@ -18,6 +18,7 @@ alias viscmaster='vi -p \
 alias vichromebm="vi \${AP_CHROME_BOOKMARK_FILE_PATH}"
 
 alias visc35='vibulk "${AP_PRJ_SC35_DIR}"'
+alias vikb1='vi "${AP_NC_DIR}/obsidian/ap-kb-obsidian-kb1"'
 alias vitmp='vi "${AP_TMP_DIR}/tmp.txt"'
 alias vipackagejson="vi package.json"
 alias vipipfile="vi Pipfile"
