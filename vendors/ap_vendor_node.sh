@@ -52,6 +52,9 @@ ap_func_create_dirstruct_node() {
     aplogshow "Generate [npm] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_npm.bash]\n"
     npm completion >"${AP_COMPLETIONS_DIR}/ap_completion_npm.bash"
 
+    aplogshow "Generate [pnpm] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_pnpm.bash]\n"
+    pnpm completion bash >"${AP_COMPLETIONS_DIR}/ap_completion_pnpm.bash"
+
     if alias apcreatedirstructnodeshare &>/dev/null; then
         apcreatedirstructnodeshare
     fi
@@ -65,6 +68,9 @@ alias aprmdirstructnode="ap_func_rm_dirstruct_node"
 ap_func_rm_dirstruct_node() {
     aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_npm.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_npm.bash"
+
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_pnpm.bash]\n"
+    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_pnpm.bash"
 
     if alias aprmdirstructnodeshare &>/dev/null; then
         aprmdirstructnodeshare
@@ -116,6 +122,9 @@ ap_func_setup_node() {
     nvm install "v${ap_node_setup_version}"
     nvm install v18.20.2
     nvm install v20.11.1
+
+    nvm use v18.20.2
+    npm install -g pnpm
     # volta install "node@v${ap_node_setup_version}"
 
     apinitnode
