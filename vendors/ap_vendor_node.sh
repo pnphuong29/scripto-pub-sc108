@@ -29,6 +29,7 @@ ap_func_init_node() {
     alias pn='pnpm'
     alias pnupdate='pnpm self-update'
     alias pnfilter='pnpm --filter'
+    alias pnrun='pnpm run'
     alias pni='pnpm install'
     alias pna='pnpm add'
     alias pnad='pnpm add -D'
