@@ -38,7 +38,8 @@ ap_func_init_node() {
     alias pnlsg='pnpm ls --global'
     alias pnrm='pnpm rm'
     alias pnrmg='pnpm rm --global'
-    alias pnx='pnpm dlx'
+    alias pnx='pnpm exec'
+    alias pndl='pnpm dlx'
 
     if alias apinitnodeshare &>/dev/null; then
         apinitnodeshare

@@ -150,11 +150,12 @@ alias rga30="ap_func_ripgrep -i -h -a 30 --"
 alias rgab10="ap_func_ripgrep -i -h -a 10 -b 10 --"
 alias rgab20="ap_func_ripgrep -i -h -a 20 -b 20 --"
 # @@ap-func $$ ap_func_ripgrep {
-# ap_func_ripgrep [-xabhi] <extra_options> <before_context_rows> <after_context_rows> [--] *<search_string>
+# ap_func_ripgrep [-xabhiv] <extra_options> <before_context_rows> <after_context_rows> [--] *<search_string>
 # Description
 # 	Perform custom `ripgrep` commands
 # Options
 #	-c 							Case sensitive
+#	-v 							Vimgrep
 #	-x <extra_options>			Append extra options to ripgrep
 # 	-a <after_context_rows>		Specify number of rows after found row to include in search results
 #	-b <before_context_rows>	Specify number of rows before found row to include in search results
@@ -175,7 +176,7 @@ ap_func_ripgrep() {
     local ap_lines_before_context=0
     local ap_lines_after_context=0
     local ap_replace_string=''
-    local ap_cmd='rg --no-ignore --line-number --heading --vimgrep --trim'
+    local ap_cmd='rg --color always --no-ignore --line-number --heading --vimgrep --trim'
 
     unset OPTIND
 
@@ -199,6 +200,7 @@ ap_func_ripgrep() {
         'i')
             ap_cmd="${ap_cmd} --ignore-file \"${AP_VENDORS_RIPGREP_IGNORE_FILE}\""
             ;;
+
         'r')
             ap_opt_r=1
             ap_replace_string="${OPTARG}"
@@ -218,7 +220,7 @@ ap_func_ripgrep() {
     shift $((OPTIND - 1))
 
     # Implementation
-    local ap_search_string="$1"
+    local ap_search_string="$*"
     [ -z "${ap_search_string}" ] && apshowmsgerr "Missing <search_string>\n" && aprtn_err_missing_argument
 
     if [ ${ap_opt_c} -eq 0 ]; then

@@ -1,7 +1,5 @@
 alias apinithusky="ap_func_init_husky"
 ap_func_init_husky() {
-    alias vihuskyconfig='vi .husky/pre-commit'
-
     if alias apinithuskyshare &>/dev/null; then
         apinithuskyshare
     fi
