@@ -31,7 +31,9 @@ ap_func_init_node() {
     alias npmbuildlegacypeerdeps='npm run build --legacy-peer-deps'
     alias npmbuildtypes='npm run buildTypes'
     alias npmbuildnode='npm run buildNode'
+    alias npmbuildnodeswc='npm run buildNodeSwc'
     alias npmbuildesm='npm run buildEsm'
+    alias npmbuildesmswc='npm run buildEsmSwc'
 
     alias npmcreate='npm create'
 
@@ -64,7 +66,9 @@ ap_func_init_node() {
     alias pnbuildlegacypeerdeps='pnpm run build --legacy-peer-deps'
     alias pnbuildtypes='pnpm run buildTypes'
     alias pnbuildnode='pnpm run buildNode'
+    alias pnbuildnodeswc='pnpm run buildNodeSwc'
     alias pnbuildesm='pnpm run buildEsm'
+    alias pnbuildesmswc='pnpm run buildEsmSwc'
 
     if alias apinitnodeshare &>/dev/null; then
         apinitnodeshare
