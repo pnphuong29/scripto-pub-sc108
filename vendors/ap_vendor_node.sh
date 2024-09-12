@@ -6,10 +6,14 @@ ap_func_init_node() {
     export PNPM_HOME="${HOME}/.local/share/pnpm"
     apaddpath "${PNPM_HOME}"
 
+    # npm
     alias npmi='npm install'
     alias npmid='npm install --save-dev'
     alias npmig='npm install --global'
     alias npmilegacypeerdeps='npm install --legacy-peer-deps'
+
+    alias npmu='npm upgrade'
+    alias npmug='npm upgrade --global'
 
     alias npmls='npm ls'
     alias npmlsg='npm ls -g'
@@ -17,29 +21,50 @@ ap_func_init_node() {
     alias npmrm='npm uninstall'
     alias npmrmg='npm uninstall -g'
 
-    alias npmbuild='npm run build'
-    alias npmbuildlegacypeerdeps='npm run build --legacy-peer-deps'
-
-    alias npmcreate='npm create'
     alias npmrun='npm run'
+    alias npmclean='npm run clean'
+    alias npmlint='npm run lint'
+    alias npmtest='npm run test'
     alias npmserve='npm run serve'
     alias npmdev='npm run dev'
-    alias npmtest='npm run test'
+    alias npmbuild='npm run build'
+    alias npmbuildlegacypeerdeps='npm run build --legacy-peer-deps'
+    alias npmbuildtypes='npm run buildTypes'
+    alias npmbuildnode='npm run buildNode'
+    alias npmbuildesm='npm run buildEsm'
 
+    alias npmcreate='npm create'
+
+    # pnpm
     alias pn='pnpm'
     alias pnupdate='pnpm self-update'
     alias pnfilter='pnpm --filter'
-    alias pnrun='pnpm run'
-    alias pni='pnpm install'
-    alias pna='pnpm add'
-    alias pnad='pnpm add -D'
-    alias pnig='pnpm install --global'
-    alias pnls='pnpm ls'
-    alias pnlsg='pnpm ls --global'
-    alias pnrm='pnpm rm'
-    alias pnrmg='pnpm rm --global'
     alias pnx='pnpm exec'
     alias pndl='pnpm dlx'
+
+    alias pni='pnpm install'
+    alias pnig='pnpm install --global'
+
+    alias pna='pnpm add'
+    alias pnad='pnpm add -D'
+
+    alias pnls='pnpm ls'
+    alias pnlsg='pnpm ls --global'
+
+    alias pnrm='pnpm rm'
+    alias pnrmg='pnpm rm --global'
+
+    alias pnrun='pnpm run'
+    alias pnclean='pnpm run clean'
+    alias pnlint='pnpm run lint'
+    alias pntest='pnpm run test'
+    alias pnserve='pnpm run serve'
+    alias pndev='pnpm run dev'
+    alias pnbuild='pnpm run build'
+    alias pnbuildlegacypeerdeps='pnpm run build --legacy-peer-deps'
+    alias pnbuildtypes='pnpm run buildTypes'
+    alias pnbuildnode='pnpm run buildNode'
+    alias pnbuildesm='pnpm run buildEsm'
 
     if alias apinitnodeshare &>/dev/null; then
         apinitnodeshare
