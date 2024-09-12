@@ -336,8 +336,8 @@ ap_func_rsync() {
     shift $((OPTIND - 1))
 
     # Implementation
-    local ap_src_path="${1:"${PWD}"}"
-    local ap_dst_path="${2:/tmp/}"
+    local ap_src_path="${1:="${PWD}"}"
+    local ap_dst_path="${2:=/tmp/}"
 
     apshowmsginfo "Sync from [${ap_src_path}] to [${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}] via port [${ap_port}]\n"
     if [ -n "${ap_rsync_pass}" ]; then
