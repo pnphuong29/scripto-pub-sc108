@@ -40,6 +40,7 @@ ap_func_init_node() {
     # pnpm
     alias pn='pnpm'
     alias pnupdate='pnpm self-update'
+    alias pnversion='pnpm --version'
     alias pnfilter='pnpm --filter'
     alias pnx='pnpm exec'
     alias pndl='pnpm dlx'
