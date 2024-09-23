@@ -71,7 +71,7 @@ ap_func_setup_kitty() {
     # https://github.com/dexpota/kitty-themes
     aplogshow "Install [kitty]\n"
     curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-    # curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin installer=version-0.36.2
+    # curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin installer=version-0.35.2 # for macOS intel chip
     apinitkitty
     if alias apcreatedirstructkitty &>/dev/null; then
         apcreatedirstructkitty
