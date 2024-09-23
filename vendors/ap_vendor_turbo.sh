@@ -1,7 +1,15 @@
 alias apinitturbo="ap_func_init_turbo"
 ap_func_init_turbo() {
-    alias turborun='turbo run'
     alias turbofilter='turbo --filter'
+    alias turboversion='turbo --version'
+    alias turbohelp='turbo --help'
+    alias npxturboupdate='npx @turbo/codemod@latest update'
+
+    alias turborun='turbo run'
+    alias turboclean='turbo run clean'
+    alias turbolint='turbo run lint'
+    alias turbobuild='turbo run build'
+    alias turbodev='turbo run dev'
 
     if alias apinitturboshare &>/dev/null; then
         apinitturboshare
