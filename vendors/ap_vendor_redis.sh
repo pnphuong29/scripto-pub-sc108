@@ -1,5 +1,7 @@
 alias apinitredis="ap_func_init_redis"
 ap_func_init_redis() {
+    alias rds='redis-cli'
+
     if alias apinitredisshare &>/dev/null; then
         apinitredisshare
     fi
@@ -39,7 +41,8 @@ ap_func_setup_redis() {
     aplogshow "Install [Redis]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        brew install redis
+        brew tap redis-stack/redis-stack
+        brew install redis-stack
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         sudo apt install -y lsb-release
         curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
