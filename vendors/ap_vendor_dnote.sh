@@ -47,7 +47,16 @@ alias apsetupdnote="ap_func_setup_dnote"
 ap_func_setup_dnote() {
     aplogshow "Install [dnote]\n"
 
-    curl -s https://www.getdnote.com/install | sh
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        if [[ "$(uname -m)" == 'arm64' ]]; then
+            brew tap dnote/dnote
+            brew install dnote
+        elif [[ "$(uname -m)" == 'x86_64' ]]; then
+            curl -s https://www.getdnote.com/install | sh
+        fi
+    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+        curl -s https://www.getdnote.com/install | sh
+    fi
 
     apinitdnote
     if alias apcreatedirstructdnote &>/dev/null; then
