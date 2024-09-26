@@ -15,6 +15,9 @@ ap_func_init_dnote() {
 
 alias apcreatedirstructdnote="ap_func_create_dirstruct_dnote"
 ap_func_create_dirstruct_dnote() {
+    aplogshow "Generate [dnote] bash autocomplete\n"
+    curl -SL "https://raw.githubusercontent.com/dnote/dnote/b47c792d5fcf610db103ab49c57862e49333e13f/pkg/cli/dnote-completion.bash" >"${AP_COMPLETIONS_DIR}/ap_completion_dnote.bash"
+
     if alias apcreatedirstructdnoteshare &>/dev/null; then
         apcreatedirstructdnoteshare
     fi
