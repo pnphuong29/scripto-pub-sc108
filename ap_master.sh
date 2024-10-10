@@ -158,14 +158,23 @@ apaddpath "${HOME}/scripto-main/tests"
 
 # homebrew
 if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
-    if [[ "$(uname -m)" == 'arm64' ]]; then
-        apaddpath /opt/homebrew/bin
-        apaddpath /opt/homebrew/sbin
-    elif [[ "$(uname -m)" == 'x86_64' ]]; then
-        apaddpath /opt/local/bin
-        apaddpath /opt/local/sbin
-        apaddpath /opt/local/libexec/gnubin/
-    fi
+    # Hyper terminal cannot detech macOS intel chip correctly
+    # if [[ "$(uname -m)" == 'arm64' ]]; then
+    #     apaddpath /opt/homebrew/bin
+    #     apaddpath /opt/homebrew/sbin
+    # elif [[ "$(uname -m)" == 'x86_64' ]]; then
+    #     apaddpath /opt/local/bin
+    #     apaddpath /opt/local/sbin
+    #     apaddpath /opt/local/libexec/gnubin/
+    # fi
+
+    # Due to incorrect CPU detection of Hyper terminal, we need to addpath as
+    # below
+    apaddpath /opt/homebrew/bin
+    apaddpath /opt/homebrew/sbin
+    apaddpath /opt/local/bin
+    apaddpath /opt/local/sbin
+    apaddpath /opt/local/libexec/gnubin/
 fi
 
 # Make executable files
