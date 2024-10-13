@@ -3,12 +3,12 @@ ap_func_init_pyenv() {
     # Defines the directory under which Python versions and shims reside.
     # pyenv root
     export PYENV_ROOT="${HOME}/.pyenv"
-    export AP_PYTHON_VERSION_DEFAULT="3.10.0"
+    export AP_PYTHON_VERSION_DEFAULT="3.12.2"
 
     # Sets a shell-specific Python version.
     # This version overrides application-specific versions and the global version.
     # pyenv shell
-    # export PYENV_VERSION="3.10.0"
+    # export PYENV_VERSION="3.12.2"
 
     # Outputs debug information.
     # Also as: pyenv --debug <subcommand>
