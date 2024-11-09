@@ -336,16 +336,27 @@ ap_func_rsync() {
     shift $((OPTIND - 1))
 
     # Implementation
-    local ap_src_path="${1:="${PWD}"}"
-    local ap_dst_path="${2:="/tmp/"}"
+    local ap_src_path="${PWD}"
+    local ap_dst_path="/tmp/"
+
+    if [ -n "${1}" ]; then
+        ap_src_path="${1}"
+    fi
+
+    if [ -n "${2}" ]; then
+        ap_dst_path="${2}"
+    fi
 
     apshowmsginfo "Sync from [${ap_src_path}] to [${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}] via port [${ap_port}]\n"
     if [ -n "${ap_rsync_pass}" ]; then
+        apshowmsginfo "Execute [sshpass -p \"***\" rsync -avP -e \"ssh -p ${ap_port}\" \"${ap_src_path}\" \"${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}\"]"
         sshpass -p "${ap_rsync_pass}" rsync -avP -e "ssh -p ${ap_port}" "${ap_src_path}" "${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}"
     else
         if [[ "${ap_opt_r}" == 1 ]]; then
+            apshowmsginfo "Execute [rsync -avrzP -e \"ssh -p ${ap_port}\" \"${ap_src_path}\" \"${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}\"]"
             rsync -avrzP -e "ssh -p ${ap_port}" "${ap_src_path}" "${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}"
         else
+            apshowmsginfo "Execute [rsync -avzP -e \"ssh -p ${ap_port}\" \"${ap_src_path}\" \"${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}\"]"
             rsync -avzP -e "ssh -p ${ap_port}" "${ap_src_path}" "${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}"
         fi
     fi
