@@ -103,7 +103,7 @@ ap_func_setup_nvim() {
         fi
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         curl -SL \
-            "$(curl --silent "https://api.github.com/repos/neovim/neovim/releases" | jq -r '.[0].assets[].browser_download_url' | grep "linux" | grep x86_64 | grep -v sha256 | grep musl)" >neovim.tar.gz
+            "$(curl --silent "https://api.github.com/repos/neovim/neovim/releases" | jq -r '.[0].assets[].browser_download_url' | grep "linux" | grep -v sha256)" >neovim.tar.gz
     fi
 
     tar -zxf neovim.tar.gz
