@@ -45,7 +45,7 @@ ap_func_rm_dirstruct_pik() {
 
 alias apcreateglobalsymlinkpik="ap_func_create_global_symlink_pik"
 ap_func_create_global_symlink_pik() {
-    if [ -f "${AP_SOFT_DIR}/bin/pik" ]; then
+    if [ -f "${HOME}/.cargo/bin/pik" ]; then
         aplogshow "Create symlink from [/usr/local/bin/pik] to [${HOME}/.cargo/bin/pik]\n"
         sudo ln -sf "${HOME}/.cargo/bin/pik" "/usr/local/bin/pik"
     fi
