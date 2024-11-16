@@ -78,6 +78,7 @@ ap_func_setup_vbox() {
     apshowmsginfo "VirtualBox GuestAdditions iso file will be downloaded for later use at [${AP_SOFT_DIR}/vbox/VBoxGuestAdditions_${AP_VBOX_VERSION}.iso]\n"
     mkdir -p "${AP_SOFT_DIR}/vbox"
     cd "${AP_SOFT_DIR}/vbox"
+    # https://download.virtualbox.org/virtualbox/7.1.4/Oracle_VirtualBox_Extension_Pack-7.1.4.vbox-extpack
     curl -SOL "http://download.virtualbox.org/virtualbox/${AP_VBOX_VERSION}/VBoxGuestAdditions_${AP_VBOX_VERSION}.iso"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
@@ -105,7 +106,8 @@ ap_func_setup_vbox() {
     # You should open VirtualBox to install this extension pack
     apshowmsginfo "You should open VirtualBox to install the extension pack at [${AP_SOFT_DIR}/vbox/Oracle_VM_VirtualBox_Extension_Pack-${AP_VBOX_VERSION}.vbox-extpack]\n"
     cd "${AP_SOFT_DIR}/vbox"
-    curl -SOL http://download.virtualbox.org/virtualbox/\${AP_VBOX_VERSION}/Oracle_VM_VirtualBox_Extension_Pack-\${AP_VBOX_VERSION}.vbox-extpack
+    # https://download.virtualbox.org/virtualbox/7.1.4/Oracle_VirtualBox_Extension_Pack-7.1.4.vbox-extpack
+    curl -SOL "http://download.virtualbox.org/virtualbox/${AP_VBOX_VERSION}/Oracle_VM_VirtualBox_Extension_Pack-${AP_VBOX_VERSION}.vbox-extpack"
 
     apinitvbox
     if alias apcreatedirstructvbox &>/dev/null; then
