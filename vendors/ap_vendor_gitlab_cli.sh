@@ -1,6 +1,6 @@
 alias apinitgitlabcli="ap_func_init_gitlabcli"
 ap_func_init_gitlabcli() {
-    # export GLAB_CONFIG_DIR="${HOME}/.config/glab-cli/config.yml"
+    alias zglabconfig="cd ${HOME}/.config/glab-cli"
 
     if alias apinitgitlabclishare &>/dev/null; then
         apinitgitlabclishare
