@@ -65,6 +65,7 @@ ap_func_setup_diskus() {
     cargo install diskus
 
     apinitdiskus
+    apcreateglobalsymlinkdiskus
     if alias apcreatedirstructdiskus &>/dev/null; then
         apcreatedirstructdiskus
     fi
