@@ -35,26 +35,28 @@ ap_func_rm_dirstruct_redis() {
 
 alias apsetupredis="ap_func_setup_redis"
 ap_func_setup_redis() {
-    # https://redis.io/docs/getting-started/installation/install-redis-on-linux/
-    # https://redis.io/docs/getting-started/installation/install-redis-from-source/
-    # https://redis.io/docs/getting-started/
+    # https://redis.io/docs/latest/operate/oss_and_stack/install/install-stack/docker/
+    # https://redis.io/docs/latest/operate/oss_and_stack/install/install-stack/linux/
+    # https://redis.io/docs/latest/operate/oss_and_stack/install/install-stack/mac-os/
     aplogshow "Install [Redis]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew tap redis-stack/redis-stack
         brew install redis-stack
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        sudo apt install -y lsb-release
+        sudo apt install -y lsb-release curl gpg
         curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
-
+        sudo chmod 644 /usr/share/keyrings/redis-archive-keyring.gpg
         echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
-
         sudo apt-get update
-        sudo apt-get install -y redis redis-server redis-tools
-        # sudo snap install redis
+        sudo apt-get install -y redis-stack-server
+        # sudo apt-get install -y redis redis-server redis-tools # old method
+        # sudo snap install redis # obsolete
 
-        sudo systemctl enable redis-server
-        sudo systemctl start redis-server
+        sudo systemctl enable redis-stack-server
+        sudo systemctl start redis-stack-server
+        # sudo systemctl enable redis-server
+        # sudo systemctl start redis-server
     fi
 
     apinitredis
@@ -70,7 +72,8 @@ ap_func_rm_redis() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew uninstall redis
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        sudo apt purge -y redis redis-server redis-tools
+        sudo apt purge -y redis-stack-server
+        # sudo apt purge -y redis redis-server redis-tools
         sudo apt autoremove -y
     fi
 

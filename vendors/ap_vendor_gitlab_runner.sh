@@ -56,7 +56,7 @@ ap_func_setup_gitlabrunner() {
         sudo chmod +x /usr/local/bin/gitlab-runner
         gitlab-runner install
         gitlab-runner start
-    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+    elif [ ${AP_OS_TYPE} == ${AP_OS_TYPE_UBUNTU} ]; then
         curl -SL https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64 >/usr/local/bin/gitlab-runner"
         sudo chmod +x /usr/local/bin/gitlab-runner
         sudo useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash
