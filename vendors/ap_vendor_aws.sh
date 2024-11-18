@@ -49,21 +49,21 @@ ap_func_rm_dirstruct_aws() {
     fi
 }
 
-alias apcreateglobalsymlinkaws="ap_func_create_global_symlink_aws"
-ap_func_create_global_symlink_aws() {
-    if [ -f "${AP_SOFT_DIR}/bin/aws" ]; then
-        aplogshow "Create symlink from [/usr/local/bin/aws] to [${AP_SOFT_DIR}/bin/aws]\n"
-        sudo ln -sf "${AP_SOFT_DIR}/bin/aws" "/usr/local/bin/aws"
-    fi
-}
+# alias apcreateglobalsymlinkaws="ap_func_create_global_symlink_aws"
+# ap_func_create_global_symlink_aws() {
+#     if [ -f "${AP_SOFT_DIR}/bin/aws" ]; then
+#         aplogshow "Create symlink from [/usr/local/bin/aws] to [${AP_SOFT_DIR}/bin/aws]\n"
+#         sudo ln -sf "${AP_SOFT_DIR}/bin/aws" "/usr/local/bin/aws"
+#     fi
+# }
 
-alias aprmglobalsymlinkaws="ap_func_rm_global_symlink_aws"
-ap_func_rm_global_symlink_aws() {
-    if [ -f "/usr/local/bin/aws" ]; then
-        aplogshow "Remove [/usr/local/bin/aws]\n"
-        sudo rm -f "/usr/local/bin/aws"
-    fi
-}
+# alias aprmglobalsymlinkaws="ap_func_rm_global_symlink_aws"
+# ap_func_rm_global_symlink_aws() {
+#     if [ -f "/usr/local/bin/aws" ]; then
+#         aplogshow "Remove [/usr/local/bin/aws]\n"
+#         sudo rm -f "/usr/local/bin/aws"
+#     fi
+# }
 
 alias apsetupaws="ap_func_setup_aws"
 ap_func_setup_aws() {
@@ -83,7 +83,7 @@ ap_func_setup_aws() {
     cd "${AP_TMP_DIR}/aws"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        curl "https://aws.amazonaws.com/AWSCLIV2.pkg" -o "awsV2.pkg"
+        curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "awsV2.pkg"
         sudo installer -pkg AWSCLIV2.pkg -target /
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         curl "https://aws.amazonaws.com/aws-exe-linux-x86_64.zip" -o "awsv2.zip"
