@@ -1,6 +1,7 @@
 alias apinitjava="ap_func_init_java"
 ap_func_init_java() {
     export AP_JDK_SETUP_VERSION='21'
+    export JAVA_HOME="${AP_SOFT_DIR}/java/jdk-${AP_JDK_SETUP_VERSION}.jdk/Contents/Home"
 
     local ap_java_dir="${AP_SOFT_DIR}/java/jdk-${AP_JDK_SETUP_VERSION}.jdk"
     local ap_bin_path="${ap_java_dir}/Contents/Home/bin"

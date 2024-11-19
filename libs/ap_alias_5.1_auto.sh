@@ -1,7 +1,7 @@
 ap_vendor_name_arr=()
 
 # Scripto - Copy setup script in sc35
-ap_script_codes=(sc7 sc21 sc49 sc74)
+ap_script_codes=(sc7 sc21 sc49)
 for ap_script_code in "${ap_script_codes[@]}"; do
     ap_cmd="alias cpsetup${ap_script_code}='printf \"source <(curl -SL \"https://raw.githubusercontent.com/pnphuong29/scripto-setup-pub-sc35/master/ap_setup_${ap_script_code}.sh\")\" | apcopy'"
     # apshowmsginfo "Execute command [${ap_cmd}]\n"

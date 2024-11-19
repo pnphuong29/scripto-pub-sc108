@@ -83,10 +83,10 @@ ap_func_setup_aws() {
     cd "${AP_TMP_DIR}/aws"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "awsV2.pkg"
+        curl -OL "https://awscli.amazonaws.com/AWSCLIV2.pkg"
         sudo installer -pkg AWSCLIV2.pkg -target /
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        curl "https://aws.amazonaws.com/aws-exe-linux-x86_64.zip" -o "awsv2.zip"
+        curl -L "https://aws.amazonaws.com/aws-exe-linux-x86_64.zip" -o "awsv2.zip"
         unzip -u awsv2.zip
         # sudo ./aws/install --bin-dir "${AP_SOFT_DIR}/bin" --install-dir "${AP_SOFT_DIR}/aws-cli"
         ./aws/install --bin-dir "${AP_SOFT_DIR}/bin" --install-dir "${AP_SOFT_DIR}/aws-cli" --update
