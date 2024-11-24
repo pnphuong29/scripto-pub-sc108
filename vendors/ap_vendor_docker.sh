@@ -72,6 +72,9 @@ ap_func_create_dirstruct_docker() {
 
 alias aprmdirstructdocker="ap_func_rm_dirstruct_docker"
 ap_func_rm_dirstruct_docker() {
+    aplogshow "Generate [docker] bash autocomplete\n"
+    docker completion bash > "${AP_COMPLETIONS_DIR}/ap_completion_docker.bash"
+
     if alias aprmdirstructdockershare &>/dev/null; then
         aprmdirstructdockershare
     fi

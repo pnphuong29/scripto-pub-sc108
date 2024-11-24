@@ -74,9 +74,9 @@ ap_func_setup_aws() {
     rm -rf "${AP_SOFT_DIR}/aws"
     rm -rf "${AP_TMP_DIR}/aws"
 
-    # Install aws-cli using python
-    # pip install aws
-    pip install aws-shell
+    # Install aws-cli using python (not recommended due to dependencies conflicts with other python libraries)
+    # pip install awscli
+    # pip install aws-shell
 
     # Install aws-cli using bundled installer
     mkdir -p "${AP_TMP_DIR}/aws"

@@ -71,6 +71,7 @@ ap_func_setup_common_apps() {
         # Install common apps
         sudo apt install -y \
             bash \
+            bash-completion \
             ppa-purge \
             apt-file \
             build-essential \
