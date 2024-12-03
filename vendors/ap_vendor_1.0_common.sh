@@ -82,6 +82,7 @@ ap_func_setup_common_apps() {
             iputils \
             curl \
             wget \
+            sshpass \
             fontconfig \
             file \
             git \
@@ -128,9 +129,6 @@ ap_func_setup_common_server_apps() {
 alias apsetupcommondesktopapps="ap_func_setup_common_desktop_apps"
 ap_func_setup_common_desktop_apps() {
     apsetupcommonapps
-    sudo apt install -y \
-        sshpass
-
     aplogshow "Install common desktop apps\n"
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install --cask \

@@ -1,6 +1,6 @@
 alias apinitjmeter="ap_func_init_jmeter"
 ap_func_init_jmeter() {
-    addpath "${AP_SOFT_DIR}/jmeter/bin"
+    apaddpath "${AP_SOFT_DIR}/jmeter/bin"
 
     if alias apinitjmetershare &>/dev/null; then
         apinitjmetershare
@@ -56,7 +56,7 @@ ap_func_setup_jmeter() {
 
     # Remove old app dir if any
     rm -rf "${AP_SOFT_DIR}/jmeter"
-    rm -rf "${AP_TMP_DIR}/jmeter"
+    rm -rf "${AP_TMP_DIR}/apache-jmeter-*"
 
     # Install jmeter
     mkdir -p "${AP_TMP_DIR}/jmeter"
@@ -64,8 +64,8 @@ ap_func_setup_jmeter() {
 
     curl -SL "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-${ap_jmeter_setup_version}.tgz" >jmeter.tgz
     tar -zxf jmeter.tgz
-    rm -f jmeter.tar.gz
-    mv jmeter* jmeter
+    rm -f jmeter.tgz
+    mv apache-jmeter-* jmeter
     mv jmeter "${AP_SOFT_DIR}/"
     cd "${AP_SOFT_DIR}/jmeter"
     rm -rf "${AP_TMP_DIR}/jmeter"

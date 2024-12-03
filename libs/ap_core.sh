@@ -8,7 +8,7 @@ alias aprtn_err_opt_invalid_option="return \${AP_CODE_ERR_OPT_INVALID_OPTION}"
 alias aprtn_err_file_not_found="return \${AP_CODE_ERR_FILE_NOT_FOUND}"
 alias aprtn_err_unknown="return \${AP_CODE_ERR_UNKNOWN}"
 
-alias apshowmsgreen='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_GREEN}" --'
+alias apshowmsggreen='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_GREEN}" --'
 alias apshowmsgred='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_RED}" --'
 alias apshowmsgyellow='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_YELLOW}" --'
 alias apshowmsgcyan='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_CYAN}" --'
