@@ -85,6 +85,21 @@ ap_func_setup_aws() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         curl -OL "https://awscli.amazonaws.com/AWSCLIV2.pkg"
         sudo installer -pkg AWSCLIV2.pkg -target /
+
+        # Install plugin session manager
+        if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
+            if [[ "$(uname -m)" == 'arm64' ]]; then
+                curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac_arm64/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
+            elif [[ "$(uname -m)" == 'x86_64' ]]; then
+                curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
+            fi
+            unzip sessionmanager-bundle.zip
+            sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin
+        elif [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]]; then
+            curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
+            sudo dpkg -i session-manager-plugin.deb
+        fi
+
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         curl -L "https://aws.amazonaws.com/aws-exe-linux-x86_64.zip" -o "awsv2.zip"
         unzip -u awsv2.zip
@@ -92,6 +107,9 @@ ap_func_setup_aws() {
         ./aws/install --bin-dir "${AP_SOFT_DIR}/bin" --install-dir "${AP_SOFT_DIR}/aws-cli" --update
     fi
 
+
+
+    cd "${AP_TMP_DIR}"
     rm -rf "${AP_TMP_DIR}/aws"
     apinitaws
     if alias apcreatedirstructaws &>/dev/null; then
@@ -105,9 +123,12 @@ ap_func_rm_aws() {
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         sudo rm -rf /usr/local/aws-cli
+        sudo rm -rf /usr/local/sessionmanagerplugin
+        sudo rm -f /usr/local/bin/session-manager-plugin
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         rm -rf "${AP_SOFT_DIR}/aws-cli"
         rm -rf "${AP_SOFT_DIR}/bin/aws"
+        sudo dpkg -r session-manager-plugin
     fi
 
     if alias aprmdirstructaws &>/dev/null; then
