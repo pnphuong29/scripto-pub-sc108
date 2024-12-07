@@ -137,7 +137,7 @@ alias showdash='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 49'
 alias showhyphen='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 49'
 
 alias showsyapshowmsgred='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" --'
-alias showsyapshowmsgreen='ap_func_show_symbols -f "${AP_SCHEME_COLOR_GREEN}" --'
+alias showsyapshowmsggreen='ap_func_show_symbols -f "${AP_SCHEME_COLOR_GREEN}" --'
 alias showsyapshowmsgyellow='ap_func_show_symbols -f "${AP_SCHEME_COLOR_YELLOW}" --'
 alias showsyapshowmsgcyan='ap_func_show_symbols -f "${AP_SCHEME_COLOR_CYAN}" --'
 alias showsymmagenta='ap_func_show_symbols -f "${AP_SCHEME_COLOR_MAGENTA}" --'
@@ -215,25 +215,25 @@ ap_func_show_symbols() {
     aprtn_success
 }
 
-alias aplog='ap_func_log_msg "general" 0 "apshowmsgreen"'
+alias aplog='ap_func_log_msg "general" 0 "apshowmsggreen"'
 alias aplogerr='ap_func_log_msg "error" 0 "apshowmsgred"'
 alias aplogdbg='ap_func_log_msg "debug" 0 "apshowmsgyellow"'
 
-alias aplogln='ap_func_log_msg "general" 0 "apshowmsgreen" "\n"'
+alias aplogln='ap_func_log_msg "general" 0 "apshowmsggreen" "\n"'
 alias aplogerrln='ap_func_log_msg "error" 0 "apshowmsgred" "\n"'
 alias aplogdbgln='ap_func_log_msg "debug" 0 "apshowmsgyellow" "\n"'
 
-alias aplogshow='ap_func_log_msg "general" 1 "apshowmsgreen"'
+alias aplogshow='ap_func_log_msg "general" 1 "apshowmsggreen"'
 alias aplogshowerr='ap_func_log_msg "error" 1 "apshowmsgred"'
 alias aplogshowdbg='ap_func_log_msg "debug" 1 "apshowmsgyellow"'
 
-alias aplogshowln='ap_func_log_msg "general" 1 "apshowmsgreen" "\n"'
+alias aplogshowln='ap_func_log_msg "general" 1 "apshowmsggreen" "\n"'
 alias aplogshowerrln='ap_func_log_msg "error" 1 "apshowmsgred" "\n"'
 alias aplogshowdbgln='ap_func_log_msg "debug" 1 "apshowmsgyellow" "\n"'
 
-alias aplogshow='ap_func_log_msg "general" 1 "apshowmsgreen"'
-alias aplogshowpassed='ap_func_log_msg -p "${AP_SYM_PASSED} " -- "general" 1 "apshowmsgreen"'
-alias aplogshowfailed='ap_func_log_msg -p "${AP_SYM_FAILED} " -- "general" 1 "apshowmsgreen"'
+alias aplogshow='ap_func_log_msg "general" 1 "apshowmsggreen"'
+alias aplogshowpassed='ap_func_log_msg -p "${AP_SYM_PASSED} " -- "general" 1 "apshowmsggreen"'
+alias aplogshowfailed='ap_func_log_msg -p "${AP_SYM_FAILED} " -- "general" 1 "apshowmsggreen"'
 # @$func $$ ap_func_log_msg {
 # ap_func_log_msg -p [msg_prefix] [--] *<msg_type> *<show_msg_on_terminal> *<cmd_log_msg> *<msg>
 # Description

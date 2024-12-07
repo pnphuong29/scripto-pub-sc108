@@ -238,6 +238,7 @@ ap_func_ripgrep() {
             apshowmsginfo "Replace [${ap_search_string}] by [${ap_replace_string}] in file [${ap_file_path}]\n"
             gsed -i'' "s@${ap_search_string}@${ap_replace_string}@g" "${ap_file_path}"
         done
+        # rg -r "${ap_replace_string}" "${ap_search_string}" "${PWD}"
     else
         eval "$(printf "%s" "${ap_cmd}")"
     fi
