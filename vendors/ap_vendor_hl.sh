@@ -15,6 +15,9 @@ ap_func_init_hl() {
 
 alias apcreatedirstructhl="ap_func_create_dirstruct_hl"
 ap_func_create_dirstruct_hl() {
+    aplogshow "Generate [hl] bash autocomplete\n"
+    hl --shell-completions bash >"${AP_COMPLETIONS_DIR}/ap_completion_hl.bash"
+
     if alias apcreatedirstructhlshare &>/dev/null; then
         apcreatedirstructhlshare
     fi
@@ -30,6 +33,9 @@ ap_func_create_dirstruct_hl() {
 
 alias aprmdirstructhl="ap_func_rm_dirstruct_hl"
 ap_func_rm_dirstruct_hl() {
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_hl.bash]\n"
+    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_hl.bash"
+
     if alias aprmdirstructhlshare &>/dev/null; then
         aprmdirstructhlshare
     fi
