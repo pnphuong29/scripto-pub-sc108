@@ -28,6 +28,12 @@ ap_func_init_nvm() {
     alias nvmuse16='nvm use 16'
     alias nvmuse18='nvm use 18'
     alias nvmuse20='nvm use 20'
+    alias nvmuse22='nvm use 22'
+
+    alias nvmdefault16='nvm alias default v20.11.1'
+    alias nvmdefault18='nvm alias default v20.11.1'
+    alias nvmdefault20='nvm alias default v20.11.1'
+    alias nvmdefault22='nvm alias default v20.11.1'
 
     if alias apinitnvmshare &>/dev/null; then
         apinitnvmshare
