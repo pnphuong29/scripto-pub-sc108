@@ -1,5 +1,6 @@
 alias apinitjmeter="ap_func_init_jmeter"
 ap_func_init_jmeter() {
+    export AP_JMETER_VERSION='5.6.3'
     apaddpath "${AP_SOFT_DIR}/jmeter/bin"
 
     if alias apinitjmetershare &>/dev/null; then
@@ -47,12 +48,7 @@ ap_func_rm_dirstruct_jmeter() {
 
 alias apsetupjmeter="ap_func_setup_jmeter"
 ap_func_setup_jmeter() {
-    local ap_jmeter_setup_version='5.6.3'
-    if [ -n "$1" ]; then
-        ap_jmeter_setup_version="$1"
-    fi
-
-    aplogshow "Install [jmeter] v${ap_jmeter_setup_version}\n"
+    aplogshow "Install [jmeter] v${AP_JMETER_VERSION}\n"
 
     # Remove old app dir if any
     rm -rf "${AP_SOFT_DIR}/jmeter"
@@ -62,13 +58,13 @@ ap_func_setup_jmeter() {
     mkdir -p "${AP_TMP_DIR}/jmeter"
     cd "${AP_TMP_DIR}/jmeter"
 
-    curl -SL "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-${ap_jmeter_setup_version}.tgz" >jmeter.tgz
+    curl -SL "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-${AP_JMETER_VERSION}.tgz" >jmeter.tgz
     tar -zxf jmeter.tgz
     rm -f jmeter.tgz
     mv apache-jmeter-* jmeter
     mv jmeter "${AP_SOFT_DIR}/"
     cd "${AP_SOFT_DIR}/jmeter"
-    rm -rf "${AP_TMP_DIR}/jmeter"
+    rm -rf "${AP_TMP_DIR}/apache-jmeter-*"
 
     apinitjmeter
     if alias apcreatedirstructjmeter &>/dev/null; then
@@ -78,12 +74,8 @@ ap_func_setup_jmeter() {
 
 alias aprmjmeter="ap_func_rm_jmeter"
 ap_func_rm_jmeter() {
-    local ap_jmeter_remove_version='5.6.3'
-    if [ -n "$1" ]; then
-        ap_jmeter_remove_version="$1"
-    fi
-
-    aplogshow "Remove [jmeter] v${ap_jmeter_remove_version}\n"
+    aplogshow "Remove [jmeter] v${AP_JMETER_VERSION}\n"
+    rm -rf "${AP_SOFT_DIR}/jmeter"
 
     if alias aprmdirstructjmeter &>/dev/null; then
         aprmdirstructjmeter
