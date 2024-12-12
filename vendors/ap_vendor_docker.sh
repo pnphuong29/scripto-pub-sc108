@@ -73,7 +73,7 @@ ap_func_create_dirstruct_docker() {
 alias aprmdirstructdocker="ap_func_rm_dirstruct_docker"
 ap_func_rm_dirstruct_docker() {
     aplogshow "Generate [docker] bash autocomplete\n"
-    docker completion bash > "${AP_COMPLETIONS_DIR}/ap_completion_docker.bash"
+    docker completion bash >"${AP_COMPLETIONS_DIR}/ap_completion_docker.bash"
 
     if alias aprmdirstructdockershare &>/dev/null; then
         aprmdirstructdockershare
@@ -349,10 +349,10 @@ ap_func_dk_logs() {
     shift $((OPTIND - 1))
 
     # Implementation
-    local ap_dk_con="$1"
+    local ap_dk_container="$1"
 
     if [ ${ap_opt_t} == 1 ]; then
-        echo "" | sudo tee "$(docker inspect --format='{{.LogPath}}' "${ap_dk_con}")"
+        echo "" | sudo tee "$(docker inspect --format='{{.LogPath}}' "${ap_dk_container}")"
     fi
 
     aprtn_success
