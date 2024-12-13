@@ -6,7 +6,9 @@ ap_func_init_docker() {
     export DOCKER_CONFIG="${DOCKER_CONFIG:-${HOME}/.docker}"
 
     alias dk='docker'
+
     alias dkc="docker compose"
+    alias dkcconfig="docker compose config"
 
     alias dkbuild="docker build"
     alias dkrun="docker run"
@@ -269,12 +271,30 @@ ap_func_dkc_up() {
     # Remove all options in parameter list
     shift $((OPTIND - 1))
 
-    local ap_cmd="docker compose"
+    local ap_cmd
+    ap_cmd="docker compose"
 
+    # Environments
+    for ap_dk_con_name in "$@"; do
+        if [ -f "${HOME}/scripto-share/dockers/environments/${ap_dk_con_name}.env" ]; then
+            ap_cmd="${ap_cmd} --env-file ${HOME}/scripto-share/dockers/environments/${ap_dk_con_name}.env"
+        fi
+
+        if [ -f "${HOME}/scripto-common/dockers/environments/${ap_dk_con_name}.env" ]; then
+            ap_cmd="${ap_cmd} --env-file ${HOME}/scripto-common/dockers/environments/${ap_dk_con_name}.env"
+        fi
+
+        if [ -f "${HOME}/scripto-main/dockers/environments/${ap_dk_con_name}.env" ]; then
+            ap_cmd="${ap_cmd} --env-file ${HOME}/scripto-main/dockers/environments/${ap_dk_con_name}.env"
+        fi
+    done
+
+    # profile
     if [[ -n "${ap_opt_profile}" ]]; then
         ap_cmd="${ap_cmd} --profile ${ap_opt_profile}"
     fi
 
+    # common
     if [ -f "${HOME}/scripto-share/dockers/ap_dkc_common.yml" ]; then
         ap_cmd="${ap_cmd} -f ${HOME}/scripto-share/dockers/ap_dkc_common.yml"
     fi
@@ -287,6 +307,7 @@ ap_func_dkc_up() {
         ap_cmd="${ap_cmd} -f ${HOME}/scripto-main/dockers/ap_dkc_common.yml"
     fi
 
+    # specific
     local ap_dk_con_name
     for ap_dk_con_name in "$@"; do
         if [ -f "${PWD}/ap_dkc_${ap_dk_con_name}.yml" ]; then
