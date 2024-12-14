@@ -6,9 +6,7 @@ ap_func_init_docker() {
     export DOCKER_CONFIG="${DOCKER_CONFIG:-${HOME}/.docker}"
 
     alias dk='docker'
-
     alias dkc="docker compose"
-    alias dkcconfig="docker compose config"
 
     alias dkbuild="docker build"
     alias dkrun="docker run"
