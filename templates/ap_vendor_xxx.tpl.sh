@@ -1,5 +1,6 @@
 alias apinitxxx="ap_func_init_xxx"
 ap_func_init_xxx() {
+    export AP_XXX_SETUP_VERSION=''
     if alias apinitxxxshare &>/dev/null; then
         apinitxxxshare
     fi
@@ -87,7 +88,7 @@ ap_func_rm_global_symlink_xxx() {
 
 alias apsetupxxx="ap_func_setup_xxx"
 ap_func_setup_xxx() {
-    local ap_xxx_setup_version=''
+    local ap_xxx_setup_version="${AP_XXX_SETUP_VERSION}"
     if [ -n "$1" ]; then
         ap_xxx_setup_version="$1"
     fi

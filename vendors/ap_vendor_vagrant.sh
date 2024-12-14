@@ -80,6 +80,10 @@ ap_func_setup_vagrant() {
     fi
 
     apinitvagrant
+
+    aplogshow "Install plugin [vagrant-vmware-desktop]\n"
+    vagrant plugin install vagrant-vmware-desktop
+
     if alias apcreatedirstructvagrant &>/dev/null; then
         apcreatedirstructvagrant
     fi
@@ -90,6 +94,7 @@ ap_func_rm_vagrant() {
     aplogshow "Remove [vagrant]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        brew uninstall vagrant
         sudo rm -rf /opt/vagrant /usr/local/bin/vagrant
         sudo pkgutil --forget com.vagrant.vagrant
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
