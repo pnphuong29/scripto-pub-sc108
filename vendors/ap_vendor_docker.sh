@@ -10,10 +10,10 @@ ap_func_init_docker() {
 
     alias dkbuild="docker build"
     alias dkrun="docker run"
-    alias dkps="docker ps -a"
     alias dkstats="docker stats"
     alias dksysprune="docker system prune -a"   # Remove all system cache, etc.
     alias dkbuilderprune="docker builder prune" # Remove build cache
+    alias dkps="docker ps -a"
 
     alias dkrmexistedcontainers="docker rm -f \$(docker ps -a --filter status=exited -q)"
     alias dkrma="docker rm -f \$(docker ps -aq)"
@@ -151,84 +151,51 @@ ap_func_rm_docker() {
 }
 
 alias dkinspectfmt="ap_func_dk_inspect_fmt"
-# @$func $$ ap_func_dk_inspect_fmt {
-# ap_func_dk_inspect_fmt <container>
-# Description
-# 	Perform `docker inspect --format` command for <container>
-# }
 ap_func_dk_inspect_fmt() {
     docker inspect --format '{{ "$1" }}'
     aprtn_success
 }
 
 alias dkrm="ap_func_dk_rm"
-# @$func $$ ap_func_dk_rm {
-# ap_func_dk_rm <container_pattern>
-# Description
-# 	Perform `docker rm -f` command for <container_pattern>
-# }
 ap_func_dk_rm() {
-    docker rm -f $(docker ps -a --filter name="$1" -q)
+    docker rm -f $(docker ps -aq --filter "name=${1}")
     aprtn_success
 }
 
 alias dkimgrm="ap_func_dk_img_rm"
-# @$func $$ ap_func_dk_img_rm {
-# ap_func_dk_img_rm <img_repo_pattern>
-# Description
-# 	Perform `docker rmi -f` command for <img_repo_pattern>
-# }
 ap_func_dk_img_rm() {
-    docker rmi -f $(docker images -aq "$1"*)
+    docker rmi -f $(docker images -aq "${1}"*)
     aprtn_success
 }
 
 alias dkvolrm="ap_func_dk_vol_rm"
-# @$func $$ ap_func_dk_vol_rm {
-# ap_func_dk_vol_rm <volume_pattern>
-# Description
-# 	Perform `docker volume rm -f` command for <volume_pattern>
-# }
 ap_func_dk_vol_rm() {
-    docker volume rm -f $(docker volume ls --filter name="$1" -q)
-    aprtn_success
+    docker volume rm -f $(docker volume ls -q --filter "name=${1}")
 }
 
-alias dkps="ap_func_dk_ps"
-# @$func $$ ap_func_dk_ps {
-# ap_func_dk_ps <container_pattern>
-# Description
-# 	Perform `docker ps --filter name=` command for <container_pattern>
-# }
+alias dkpsfiltername="ap_func_dk_ps"
 ap_func_dk_ps() {
-    docker ps -a --filter name="$1"
-    aprtn_success
+    docker ps -a --filter "name=${1}"
 }
 
 alias dkexec="ap_func_dk_exec bash"
 alias dkexecsh="ap_func_dk_exec sh"
-# @$func $$ ap_func_dk_exec {
-# ap_func_dk_exec <shell> <container>
-# Description
-# 	Perform `docker compose up --build` command for the input container
-# }
 ap_func_dk_exec() {
     docker exec -it "$2" "$1"
-    aprtn_success
 }
 
-alias dkup="ap_func_dkc_up"
-alias dkdn="ap_func_dkc_up -d"
-alias dkupdev="ap_func_dkc_up -p dev"
-alias dkdndev="ap_func_dkc_up -d -p dev"
-alias dkuptest="ap_func_dkc_up -p test"
-alias dkdntest="ap_func_dkc_up -d -p test"
-alias dkupuat="ap_func_dkc_up -p uat"
-alias dkdnuat="ap_func_dkc_up -d -p uat"
-alias dkupstaging="ap_func_dkc_up -p staging"
-alias dkdnstaging="ap_func_dkc_up -d -p staging"
-alias dkupprod="ap_func_dkc_up -p prod"
-alias dkdnprod="ap_func_dkc_up -d -p prod"
+alias dkcup="ap_func_dkc_up"
+alias dkcdown="ap_func_dkc_up -d"
+alias dkcupdev="ap_func_dkc_up -p dev"
+alias dkcdowndev="ap_func_dkc_up -d -p dev"
+alias dkcuptest="ap_func_dkc_up -p test"
+alias dkcdowntest="ap_func_dkc_up -d -p test"
+alias dkcupuat="ap_func_dkc_up -p uat"
+alias dkcdownuat="ap_func_dkc_up -d -p uat"
+alias dkcupstaging="ap_func_dkc_up -p staging"
+alias dkcdownstaging="ap_func_dkc_up -d -p staging"
+alias dkcupprod="ap_func_dkc_up -p prod"
+alias dkcdownprod="ap_func_dkc_up -d -p prod"
 # @$func $$ ap_func_dkc_up {
 # ap_func_dkc_up [-pn] <profile> [--] <docker_container_names...>
 # Description
@@ -333,7 +300,6 @@ ap_func_dkc_up() {
     aprtn_success
 }
 
-alias dklogs="ap_func_dk_logs"
 alias dklogsrm="ap_func_dk_logs -t"
 # @$func $$ ap_func_dk_logs {
 # ap_func_dk_logs [-t] <container>
