@@ -13,6 +13,7 @@ ap_func_init_docker() {
     alias dkstats="docker stats"
     alias dksysprune="docker system prune -a"   # Remove all system cache, etc.
     alias dkbuilderprune="docker builder prune" # Remove build cache
+
     alias dkps="docker ps -a"
 
     alias dkrmexistedcontainers="docker rm -f \$(docker ps -a --filter status=exited -q)"
@@ -173,9 +174,15 @@ ap_func_dk_vol_rm() {
     docker volume rm -f $(docker volume ls -q --filter "name=${1}")
 }
 
-alias dkpsfiltername="ap_func_dk_ps"
-ap_func_dk_ps() {
+alias dkpsfiltername="ap_func_dk_ps_filter_name"
+ap_func_dk_ps_filter_name() {
     docker ps -a --filter "name=${1}"
+}
+
+alias dkpsfilterstatusexited="ap_func_dk_ps_filter_status exited"
+alias dkpsfilterstatus="ap_func_dk_ps_filter_status"
+ap_func_dk_ps_filter_status() {
+    docker ps -a --filter "status=${1}"
 }
 
 alias dkexec="ap_func_dk_exec bash"
