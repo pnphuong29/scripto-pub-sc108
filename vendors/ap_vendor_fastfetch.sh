@@ -15,6 +15,9 @@ ap_func_init_fastfetch() {
 
 alias apcreatedirstructfastfetch="ap_func_create_dirstruct_fastfetch"
 ap_func_create_dirstruct_fastfetch() {
+    aplogshow "Create directory [${HOME}/.config/fastfetch]\n"
+    mkdir -p "${HOME}/.config/fastfetch"
+
     if alias apcreatedirstructfastfetchshare &>/dev/null; then
         apcreatedirstructfastfetchshare
     fi
@@ -30,6 +33,9 @@ ap_func_create_dirstruct_fastfetch() {
 
 alias aprmdirstructfastfetch="ap_func_rm_dirstruct_fastfetch"
 ap_func_rm_dirstruct_fastfetch() {
+    aplogshow "Remove directory [${HOME}/.config/fastfetch]\n"
+    rm -rf "${HOME}/.config/fastfetch"
+
     if alias aprmdirstructfastfetchshare &>/dev/null; then
         aprmdirstructfastfetchshare
     fi
@@ -47,6 +53,7 @@ alias apsetupfastfetch="ap_func_setup_fastfetch"
 ap_func_setup_fastfetch() {
     aplogshow "Install [fastfetch]\n"
 
+    # TODO: Build from source is better
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install fastfetch
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
