@@ -1,5 +1,7 @@
 alias apinitandroidstudio="ap_func_init_androidstudio"
 ap_func_init_androidstudio() {
+    export AP_ANDROID_STUDIO_SETUP_VERSION='2024.2.1.12'
+
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         export ANDROID_HOME="${HOME}/Library/Android/sdk"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
@@ -57,7 +59,7 @@ ap_func_rm_dirstruct_androidstudio() {
 alias apsetupandroidstudio="ap_func_setup_androidstudio"
 ap_func_setup_androidstudio() {
     # https://developer.android.com/studio/install
-    local ap_android_studio_setup_version='2024.1.1.13'
+    local ap_android_studio_setup_version="${AP_ANDROID_STUDIO_SETUP_VERSION}"
     if [ -n "$1" ]; then
         ap_android_studio_setup_version="$1"
     fi
@@ -90,10 +92,10 @@ ap_func_setup_androidstudio() {
         # cd "/Applications/Android Studio.app"
         # rm -rf "${AP_TMP_DIR}/android-studio"
 
-        cd "/Volumes/Android Studio - Koala | 2024.1.1 Patch 2"
+        cd "/Volumes/Android Studio - Ladybug | 2024.2.1 Patch 3"
         cp -R "Android Studio.app" /Applications/
         cd "/Applications/Android Studio.app"
-        hdiutil detach "/Volumes/Android Studio - Koala | 2024.1.1 Patch 2"
+        hdiutil detach "/Volumes/Android Studio - Ladybug | 2024.2.1 Patch 3"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         # https://developer.android.com/studio/run/emulator-acceleration?utm_source=android-studio#vm-linux
         # Install required libraries
@@ -116,7 +118,12 @@ ap_func_setup_androidstudio() {
 
 alias aprmandroidstudio="ap_func_rm_androidstudio"
 ap_func_rm_androidstudio() {
-    aplogshow "Remove [Android Studio]\n"
+    local ap_android_studio_setup_version="${AP_ANDROID_STUDIO_SETUP_VERSION}"
+    if [ -n "$1" ]; then
+        ap_android_studio_setup_version="$1"
+    fi
+
+    aplogshow "Remove [Android Studio] v[${ap_android_studio_setup_version}]\n"
     rm -rf "${AP_SOFT_DIR}/android-studio"
     rm -rf "${ANDROID_HOME}"
 
