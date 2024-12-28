@@ -1,5 +1,7 @@
 alias apinituv="ap_func_init_uv"
 ap_func_init_uv() {
+    alias uvupdate='uv self update'
+
     if alias apinituvshare &>/dev/null; then
         apinituvshare
     fi
