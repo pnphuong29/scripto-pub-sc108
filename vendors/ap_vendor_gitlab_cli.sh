@@ -1,6 +1,8 @@
 alias apinitgitlabcli="ap_func_init_gitlabcli"
 ap_func_init_gitlabcli() {
     alias zglabconfig="cd ${HOME}/.config/glab-cli"
+    alias glabauthstatus='glab auth status'
+    alias glabversion='glab version'
 
     if alias apinitgitlabclishare &>/dev/null; then
         apinitgitlabclishare
