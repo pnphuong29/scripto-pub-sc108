@@ -8,22 +8,28 @@ const config = {
     singleQuote: true,
     semi: true,
     tabWidth: 4,
-    trailingComma: "all",
+    trailingComma: 'all',
     bracketSpacing: true,
     insert_final_newline: true,
     trim_trailing_whitespace: true,
     max_line_length: 80,
     overrides: [
         {
-            files: ["*.html", "*.tsx", "*.jsx"],
+            files: ['*.html', '*.tsx', '*.jsx'],
             options: {
                 tabWidth: 2,
             },
         },
         {
-            files: "*.md",
+            files: ['*.md'],
             options: {
-                parser: "mdx",
+                parser: 'mdx',
+            },
+        },
+        {
+            files: ['*.yml', '*.yaml'],
+            options: {
+                singleQuote: false,
             },
         },
     ],
