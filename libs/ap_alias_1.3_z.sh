@@ -1,4 +1,5 @@
 # Aliases - CD - Common locations
+alias zdl="cd \${AP_DL_DIR}"
 alias zsymlinks="cd \${AP_SYMLINKS_DIR}"
 alias zsoft="cd \${AP_SOFT_DIR}"
 alias zsoftbin="cd \${AP_SOFT_DIR}/bin"
@@ -15,14 +16,17 @@ alias zsm="cd \${HOME}/scripto-main"
 alias zsr="cd \${HOME}/scripto-share"
 alias zsdata="cd \${HOME}/scripto-data"
 
-alias zgsc="cd /scripto-common"
-alias zgsm="cd /scripto-main"
-alias zgsr="cd /scripto-share"
-alias zgsdata="cd /scripto-data"
-alias zglogs="cd /scripto-data/logs"
+# alias zgsc="cd /scripto-common"
+# alias zgsm="cd /scripto-main"
+# alias zgsr="cd /scripto-share"
+# alias zgsdata="cd /scripto-data"
+# alias zglogs="cd /scripto-data/logs"
 
 alias zdata="cd \${AP_DATA_DIR}"
-alias zdl="cd \${AP_DL_DIR}"
+alias zwww="cd \${AP_WWW_DIR}"
+alias zwww2="cd \${AP_WWW_DIR}/www"
+alias zwwwtest="cd \${AP_WWW_DIR}/test"
+alias zwwwtmp="cd \${AP_WWW_DIR}/tmp"
 
 # Aliases - CD - Linux
 alias zlocalshare="cd \${HOME}/.local/share"

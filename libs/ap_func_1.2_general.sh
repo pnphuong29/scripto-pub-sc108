@@ -350,7 +350,7 @@ ap_func_rsync() {
     apshowmsginfo "Sync from [${ap_src_path}] to [${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}] via port [${ap_port}]\n"
     if [ -n "${ap_rsync_pass}" ]; then
         apshowmsginfo "Execute [sshpass -p \"***\" rsync -avP -e \"ssh -p ${ap_port}\" \"${ap_src_path}\" \"${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}\"]"
-        sshpass -p "${ap_rsync_pass}" rsync -avP -e "ssh -p ${ap_port}" "${ap_src_path}" "${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}"
+        sshpass -p "${ap_rsync_pass}" rsync -avzP -e "ssh -p ${ap_port}" "${ap_src_path}" "${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}"
     else
         if [[ "${ap_opt_r}" == 1 ]]; then
             apshowmsginfo "Execute [rsync -avrzP -e \"ssh -p ${ap_port}\" \"${ap_src_path}\" \"${ap_rsync_user}@${ap_domain_ip}:${ap_dst_path}\"]"
