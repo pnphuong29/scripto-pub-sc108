@@ -225,15 +225,15 @@ for i in {1..7}; do
     eval "$(printf "%s" "alias runsrtpy${i}='source ${HOME}/scripto-share/tests/ap_test_py_${i}.py'")"
 
     eval "$(printf "%s" "alias visctpy${i}='vi ${HOME}/scripto-common/tests/ap_test_py_${i}.py'")"
-    eval "$(printf "%s" "alias runsctpy${i}='source ${HOME}/scripto-common/tests/ap_test_py_${i}.py'")"
+    eval "$(printf "%s" "alias runsctpy${i}='python ${HOME}/scripto-common/tests/ap_test_py_${i}.py'")"
 
     eval "$(printf "%s" "alias vismtpy${i}='vi ${HOME}/scripto-main/tests/ap_test_py_${i}.py'")"
-    eval "$(printf "%s" "alias runsmtpy${i}='source ${HOME}/scripto-main/tests/ap_test_py_${i}.py'")"
+    eval "$(printf "%s" "alias runsmtpy${i}='python ${HOME}/scripto-main/tests/ap_test_py_${i}.py'")"
 done
 
 for i in {1..10}; do
     eval "$(printf "%s" "alias videvpy${i}='vi ${AP_PRJ_DEV1_DIR}/py/test_py_${i}.py'")"
-    eval "$(printf "%s" "alias rundevpy${i}='source ${AP_PRJ_DEV1_DIR}/py/test_py_${i}.py'")"
+    eval "$(printf "%s" "alias rundevpy${i}='python ${AP_PRJ_DEV1_DIR}/py/test_py_${i}.py'")"
 done
 
 for i in {1..10}; do
