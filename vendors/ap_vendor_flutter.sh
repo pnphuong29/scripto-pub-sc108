@@ -41,7 +41,7 @@ ap_func_rm_dirstruct_flutter() {
 
 alias apsetupflutter="ap_func_setup_flutter"
 ap_func_setup_flutter() {
-    local ap_flutter_setup_version='3.16.9'
+    local ap_flutter_setup_version='3.27.2'
     if [ -n "$1" ]; then
         ap_flutter_setup_version="$1"
     fi
@@ -57,8 +57,15 @@ ap_func_setup_flutter() {
     cd "${AP_TMP_DIR}/flutter"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        # Some Flutter components require the Rosetta 2 translation process on Macs running Apple silicon.
+        # To run all Flutter components on Apple silicon, install Rosetta 2.
+        sudo softwareupdate --install-rosetta --agree-to-license
         curl -SLO "https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_${ap_flutter_setup_version}-stable.zip"
         unzip flutter_macos_*.zip
+
+        # Install and configure Xcode
+        sudo sh -c 'xcode-select -s /Applications/Xcode.app/Contents/Developer && xcodebuild -runFirstLaunch'
+        sudo xcodebuild -license
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         # Install required libraries for Flutter development
         sudo apt install -y clang ninja-build libgtk-3-dev

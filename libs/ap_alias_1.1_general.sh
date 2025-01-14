@@ -34,3 +34,5 @@ alias chownuser="sudo chown -R ${USER}.${USER}" # DO NOT use \$USER, because it 
 alias psgrep='ps -ef | grep'
 alias sssysctl="sudo systemctl status"
 alias rrsysctl="sudo systemctl restart"
+alias gensecretkey='python -c "import secrets; print(secrets.token_urlsafe(32))"'
+alias cpsecretkey='python -c "import secrets; print(secrets.token_urlsafe(32))"  | tr -d "\n" | apcopy'
