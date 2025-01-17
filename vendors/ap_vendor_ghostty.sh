@@ -1,5 +1,19 @@
 alias apinitghostty="ap_func_init_ghostty"
 ap_func_init_ghostty() {
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        if [ -d "${XDG_CONFIG_HOME}" ]; then
+            alias zghosttyconfdir="cd \${XDG_CONFIG_HOME}/ghostty"
+        else
+            alias zghosttyconfdir="cd \"\${HOME}/Library/Application Support/com.mitchellh.ghostty\""
+        fi
+    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+        if [ -d "${XDG_CONFIG_HOME}" ]; then
+            alias zghosttyconfdir="cd \${XDG_CONFIG_HOME}/ghostty"
+        else
+            alias zghosttyconfdir="cd \${HOME}/.config/ghostty"
+        fi
+    fi
+
     if alias apinitghosttyshare &>/dev/null; then
         apinitghosttyshare
     fi
@@ -15,20 +29,39 @@ ap_func_init_ghostty() {
 
 alias apcreatedirstructghostty="ap_func_create_dirstruct_ghostty"
 ap_func_create_dirstruct_ghostty() {
-    if [ -f "${HOME}/scripto-common/vendors/ghostty/bindings.json" ]; then
-        if [ -d "${XDG_CONFIG_HOME}" ]; then
-            aplogshow "Create symlink from [${XDG_CONFIG_HOME}/ghostty/config] to [${HOME}/scripto-common/vendors/ghostty/config.env]\n"
-            mkdir -p "${XDG_CONFIG_HOME}/ghostty"
-            ln -sf "${HOME}/scripto-common/vendors/ghostty/config.env" "${XDG_CONFIG_HOME}/ghostty/config"
-        else
-            if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-                aplogshow "Create symlink from [${HOME}/Library/Application Support/com.mitchellh.ghostty/config] to [${HOME}/scripto-common/vendors/ghostty/config.env]\n"
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        aplogshow "Create symlink from [${AP_SOFT_DIR}/bin/ghostty] to [/Applications/Ghostty.app/Contents/MacOS/ghostty]\n"
+        ln -sf "/Applications/Ghostty.app/Contents/MacOS/ghostty" "${AP_SOFT_DIR}/bin/ghostty"
+
+        if [ -f "${HOME}/scripto-common/vendors/ghostty/config.mac.env" ]; then
+            if [ -d "${XDG_CONFIG_HOME}" ]; then
+                # aplogshow "Create symlink from [${XDG_CONFIG_HOME}/ghostty/config] to [${HOME}/scripto-common/vendors/ghostty/config.mac.env]\n"
+                mkdir -p "${XDG_CONFIG_HOME}/ghostty"
+                ln -sf "${HOME}/scripto-common/vendors/ghostty/config.base.env" "${XDG_CONFIG_HOME}/ghostty/config.base.env"
+                ln -sf "${HOME}/scripto-common/vendors/ghostty/config.key.mac.env" "${XDG_CONFIG_HOME}/ghostty/config.key.mac.env"
+                ln -sf "${HOME}/scripto-common/vendors/ghostty/config.mac.env" "${XDG_CONFIG_HOME}/ghostty/config"
+            else
+                # aplogshow "Create symlink from [${HOME}/Library/Application Support/com.mitchellh.ghostty/config] to [${HOME}/scripto-common/vendors/ghostty/config.mac.env]\n"
                 mkdir -p "${HOME}/Library/Application Support/com.mitchellh.ghostty"
-                ln -sf "${HOME}/scripto-common/vendors/ghostty/config.env" "${HOME}/Library/Application Support/com.mitchellh.ghostty/config"
-            elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-                aplogshow "Create symlink from [${HOME}/.config/ghostty/config] to [${HOME}/scripto-common/vendors/ghostty/config.env]\n"
+                ln -sf "${HOME}/scripto-common/vendors/ghostty/config.base.env" "${HOME}/Library/Application Support/com.mitchellh.ghostty/config.base.env"
+                ln -sf "${HOME}/scripto-common/vendors/ghostty/config.key.mac.env" "${HOME}/Library/Application Support/com.mitchellh.ghostty/config.key.mac.env"
+                ln -sf "${HOME}/scripto-common/vendors/ghostty/config.mac.env" "${HOME}/Library/Application Support/com.mitchellh.ghostty/config"
+            fi
+        fi
+    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+        if [ -f "${HOME}/scripto-common/vendors/ghostty/config.linux.env" ]; then
+            if [ -d "${XDG_CONFIG_HOME}" ]; then
+                # aplogshow "Create symlink from [${XDG_CONFIG_HOME}/ghostty/config] to [${HOME}/scripto-common/vendors/ghostty/config.linux.env]\n"
+                mkdir -p "${XDG_CONFIG_HOME}/ghostty"
+                ln -sf "${HOME}/scripto-common/vendors/ghostty/config.base.env" "${XDG_CONFIG_HOME}/ghostty/config.base.env"
+                ln -sf "${HOME}/scripto-common/vendors/ghostty/config.key.linux.env" "${XDG_CONFIG_HOME}/ghostty/config.key.linux.env"
+                ln -sf "${HOME}/scripto-common/vendors/ghostty/config.linux.env" "${XDG_CONFIG_HOME}/ghostty/config"
+            else
+                # aplogshow "Create symlink from [${HOME}/.config/ghostty/config] to [${HOME}/scripto-common/vendors/ghostty/config.linux.env]\n"
                 mkdir -p "${HOME}/.config/ghostty"
-                ln -sf "${HOME}/scripto-common/vendors/ghostty/config.env" "${HOME}/.config/ghostty/config"
+                ln -sf "${HOME}/scripto-common/vendors/ghostty/config.base.env" "${HOME}/.config/ghostty/config.base.env"
+                ln -sf "${HOME}/scripto-common/vendors/ghostty/config.key.linux.env" "${HOME}/.config/ghostty/config.key.linux.env"
+                ln -sf "${HOME}/scripto-common/vendors/ghostty/config.linux.env" "${HOME}/.config/ghostty/config"
             fi
         fi
     fi
@@ -51,12 +84,6 @@ ap_func_rm_dirstruct_ghostty() {
     aplogshow "Remove [${AP_SOFT_DIR}/bin/ghostty]\n"
     rm -f "${AP_SOFT_DIR}/bin/ghostty"
 
-    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_ghostty.bash]\n"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_ghostty.bash"
-
-    aplogshow "Remove [${AP_MAN_DIR}/man1/ghostty.1]\n"
-    rm -f "${AP_MAN_DIR}/man1/ghostty.1"
-
     if alias aprmdirstructghosttyshare &>/dev/null; then
         aprmdirstructghosttyshare
     fi
@@ -74,31 +101,42 @@ alias apsetupghostty="ap_func_setup_ghostty"
 ap_func_setup_ghostty() {
     aplogshow "Install [ghostty]\n"
 
-    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        brew install --cask ghostty
-    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        sudo dpkg -i ghostty_*.deb
+    # Check zig is installed
+    if ! command -v zig &>/dev/null; then
+        aplogshow "zig is not installed\n"
     fi
 
-    local ap_os="macos"
-    local ap_os="darwin"
-    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        ap_os="linux"
-    fi
-
-    curl -SL \
-        "$(curl --silent https://api.github.com/repos/owner/ghostty/releases | jq -r '.[0].assets[].browser_download_url' | grep "${ap_os}" | grep x86_64 | grep -v sha256)" >ghostty.tar.gz
-
-    tar -zxf ghostty.tar.gz
-    rm -f ghostty.tar.gz
-    mv ghostty* ghostty
-    mv ghostty "${AP_SOFT_DIR}/"
-    cd "${AP_SOFT_DIR}/ghostty"
+    # Remove old app dir if any
+    rm -rf "${AP_SOFT_DIR}/ghostty"
     rm -rf "${AP_TMP_DIR}/ghostty"
 
-    cargo install ghostty
-    pip install ghostty
-    npm install -g ghostty
+    # Install ghostty
+    mkdir -p "${AP_TMP_DIR}/ghostty"
+    cd "${AP_TMP_DIR}/ghostty"
+
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+        # Install required libraries
+        sudo apt install libgtk-4-dev libadwaita-1-dev git
+    fi
+
+    git clone https://github.com/ghostty-org/ghostty
+    cd ghostty
+    zig build -Doptimize=ReleaseFast
+
+    # Update latest share files to common scripts ghostty vendor configs
+    if [ -d zig-out/share ]; then
+        rm -rf "${HOME}/scripto-common/vendors/ghostty/share"
+        cp -R zig-out/share "${HOME}/scripto-common/vendors/ghostty/"
+    fi
+
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        cd macos && xcodebuild
+        mv build/ReleaseLocal/Ghostty.app /Applications/
+    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+        mv zig-out/bin/ghostty "${AP_SOFT_DIR}/bin/"
+    fi
+
+    cd "${AP_SOFT_DIR}/bin"
 
     apinitghostty
     if alias apcreatedirstructghostty &>/dev/null; then
@@ -108,30 +146,13 @@ ap_func_setup_ghostty() {
 
 alias aprmghostty="ap_func_rm_ghostty"
 ap_func_rm_ghostty() {
-    local ap_ghostty_remove_version=''
-    if [ -n "$1" ]; then
-        ap_ghostty_remove_version="$1"
-    fi
-
-    aplogshow "Remove [ghostty] v${ap_ghostty_remove_version}\n"
-
     aplogshow "Remove [ghostty]\n"
-    cargo remove ghostty
-    pip uninstall ghostty
-    npm uninstall -g ghostty
-
-    rm -rf "${GOPATH}/pkg/mod/github.com/ghostty/ghostty@"*
-    rm -f "${GOPATH}/bin/ghostty"
-
-    rm -rf "${AP_SOFT_DIR}/ghostty"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        rm -rf "/Applications/ghostty"
+        rm -rf "/Applications/Ghostty.app"
         brew remove --cask ghostty
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        sudo apt purge -y ghostty
-        sudo snap remove --purge ghostty
-        sudo dpkg --purge ghostty
+        rm -rf "${AP_SOFT_DIR}/ghostty"
     fi
 
     if alias aprmdirstructghostty &>/dev/null; then

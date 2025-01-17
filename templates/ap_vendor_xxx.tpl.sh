@@ -105,6 +105,8 @@ ap_func_setup_xxx() {
     mkdir -p "${AP_TMP_DIR}/xxx"
     cd "${AP_TMP_DIR}/xxx"
 
+    aplogshow "Download [xxx] version [${ap_xxx_setup_version}] from [https://ziglang.org/download/${ap_xxx_setup_version}/zig-${ap_os}-${ap_xxx_setup_version}.tar.xz]\n"
+
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install xxx
         if [[ "$(uname -m)" == 'arm64' ]]; then

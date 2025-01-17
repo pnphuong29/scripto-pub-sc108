@@ -1,6 +1,7 @@
 alias apinitzig="ap_func_init_zig"
 ap_func_init_zig() {
-    export AP_ZIG_SETUP_VERSION='x86_64-0.14.0-dev.2649+77273103a'
+    # export AP_ZIG_SETUP_VERSION='0.14.0-dev.2649+77273103a'
+    export AP_ZIG_SETUP_VERSION='0.13.0'
 
     if alias apinitzigshare &>/dev/null; then
         apinitzigshare
@@ -66,11 +67,18 @@ ap_func_setup_zig() {
     cd "${AP_TMP_DIR}/zig"
 
     local ap_os="macos"
-    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+    local ap_arch="x86_64"
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        if [[ "$(uname -m)" == 'arm64' ]]; then
+            ap_arch="aarch64"
+        fi
+    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         ap_os="linux"
     fi
 
-    curl -SL "https://ziglang.org/builds/zig-${ap_os}-${ap_zig_setup_version}.tar.xz" >zig.tar.xz
+    aplogshow "Download [zig] version [${ap_zig_setup_version}] from [https://ziglang.org/download/${ap_zig_setup_version}/zig-${ap_os}-${ap_arch}-${ap_zig_setup_version}.tar.xz]\n"
+    # curl -SL "https://ziglang.org/builds/zig-${ap_os}-${ap_arch}-${ap_zig_setup_version}.tar.xz" >zig.tar.xz
+    curl -SL "https://ziglang.org/download/${ap_zig_setup_version}/zig-${ap_os}-${ap_arch}-${ap_zig_setup_version}.tar.xz" >zig.tar.xz
 
     tar -Jxf zig.tar.xz
     rm -f zig.tar.xz
