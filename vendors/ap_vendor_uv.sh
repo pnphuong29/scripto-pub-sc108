@@ -63,6 +63,8 @@ ap_func_setup_uv() {
     # cargo install --git https://github.com/astral-sh/uv uv # Take long time to install
     # pipx install uv
 
+    uv python install 3.13 3.12
+
     apinituv
     if alias apcreatedirstructuv &>/dev/null; then
         apcreatedirstructuv
@@ -73,7 +75,11 @@ alias aprmuv="ap_func_rm_uv"
 ap_func_rm_uv() {
     aplogshow "Remove [uv]\n"
 
-    rm ~/.local/bin/uv ~/.local/bin/uvx
+    uv cache clean
+    rm -r "$(uv python dir)"
+    rm -r "$(uv tool dir)"
+    rm -f "${HOME}/.local/bin/uv"
+    rm -f "${HOME}/.local/bin/uvx"
     # cargo remove uv
     # pipx uninstall uv
 

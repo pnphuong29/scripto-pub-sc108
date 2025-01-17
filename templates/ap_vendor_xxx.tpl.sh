@@ -93,7 +93,7 @@ ap_func_setup_xxx() {
         ap_xxx_setup_version="$1"
     fi
 
-    aplogshow "Install [xxx] v${ap_xxx_setup_version}\n"
+    aplogshow "Install [xxx] version [${ap_xxx_setup_version}]\n"
 
     aplogshow "Install [xxx]\n"
 
@@ -147,7 +147,7 @@ ap_func_setup_xxx() {
     mv xxx* xxx
     mv xxx "${AP_SOFT_DIR}/"
     cd "${AP_SOFT_DIR}/xxx"
-    rm -rf "${AP_TMP_DIR}/xxx"
+    # rm -rf "${AP_TMP_DIR}/xxx"
 
     cargo install xxx
     pip install xxx
@@ -161,7 +161,7 @@ ap_func_setup_xxx() {
 
 alias aprmxxx="ap_func_rm_xxx"
 ap_func_rm_xxx() {
-    local ap_xxx_remove_version=''
+    local ap_xxx_remove_version="${AP_XXX_SETUP_VERSION}"
     if [ -n "$1" ]; then
         ap_xxx_remove_version="$1"
     fi

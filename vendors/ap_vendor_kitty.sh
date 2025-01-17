@@ -23,7 +23,10 @@ ap_func_create_dirstruct_kitty() {
     # cd "${AP_SOFT_DIR}/kitty"
     # git clone "https://github.com/dexpota/kitty-themes"
 
-    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        ln -s /Applications/kitty.app/Contents/MacOS/kitty ~/.local/bin/
+        ln -s /Applications/kitty.app/Contents/MacOS/kitten ~/.local/bin/
+    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         # Create a symbolic link to add kitty to PATH (assuming ~/.local/bin is in
         # your system-wide PATH)
         ln -s ~/.local/kitty.app/bin/kitty ~/.local/bin/
