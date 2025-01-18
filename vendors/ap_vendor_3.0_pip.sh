@@ -1,5 +1,7 @@
 alias apinitpip="ap_func_init_pip"
 ap_func_init_pip() {
+    alias pipupgrade='pip install --upgrade pip'
+
     if alias apinitpipshare &>/dev/null; then
         apinitpipshare
     fi

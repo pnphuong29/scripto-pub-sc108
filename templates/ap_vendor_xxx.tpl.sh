@@ -33,6 +33,36 @@ ap_func_create_dirstruct_xxx() {
     aplogshow "Create symlink from [${AP_MAN_DIR}/man1/xxx.1] to [${AP_SOFT_DIR}/xxx/xxx.1]\n"
     ln -sf "${AP_SOFT_DIR}/xxx/xxx.1" "${AP_MAN_DIR}/man1/xxx.1"
 
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        if [ -f "${HOME}/scripto-common/vendors/xxx/config.mac.env" ]; then
+            if [ -d "${XDG_CONFIG_HOME}" ]; then
+                mkdir -p "${XDG_CONFIG_HOME}/xxx"
+                ln -sf "${HOME}/scripto-common/vendors/xxx/config.base.env" "${XDG_CONFIG_HOME}/xxx/config.base.env"
+                ln -sf "${HOME}/scripto-common/vendors/xxx/config.key.mac.env" "${XDG_CONFIG_HOME}/xxx/config.key.mac.env"
+                ln -sf "${HOME}/scripto-common/vendors/xxx/config.mac.env" "${XDG_CONFIG_HOME}/xxx/config"
+            else
+                mkdir -p "${HOME}/Library/Application Support/com.mitchellh.xxx"
+                ln -sf "${HOME}/scripto-common/vendors/xxx/config.base.env" "${HOME}/Library/Application Support/com.mitchellh.xxx/config.base.env"
+                ln -sf "${HOME}/scripto-common/vendors/xxx/config.key.mac.env" "${HOME}/Library/Application Support/com.mitchellh.xxx/config.key.mac.env"
+                ln -sf "${HOME}/scripto-common/vendors/xxx/config.mac.env" "${HOME}/Library/Application Support/com.mitchellh.xxx/config"
+            fi
+        fi
+    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+        if [ -f "${HOME}/scripto-common/vendors/xxx/config.linux.env" ]; then
+            if [ -d "${XDG_CONFIG_HOME}" ]; then
+                mkdir -p "${XDG_CONFIG_HOME}/xxx"
+                ln -sf "${HOME}/scripto-common/vendors/xxx/config.base.env" "${XDG_CONFIG_HOME}/xxx/config.base.env"
+                ln -sf "${HOME}/scripto-common/vendors/xxx/config.key.linux.env" "${XDG_CONFIG_HOME}/xxx/config.key.linux.env"
+                ln -sf "${HOME}/scripto-common/vendors/xxx/config.linux.env" "${XDG_CONFIG_HOME}/xxx/config"
+            else
+                mkdir -p "${HOME}/.config/xxx"
+                ln -sf "${HOME}/scripto-common/vendors/xxx/config.base.env" "${HOME}/.config/xxx/config.base.env"
+                ln -sf "${HOME}/scripto-common/vendors/xxx/config.key.linux.env" "${HOME}/.config/xxx/config.key.linux.env"
+                ln -sf "${HOME}/scripto-common/vendors/xxx/config.linux.env" "${HOME}/.config/xxx/config"
+            fi
+        fi
+    fi
+
     if alias apcreatedirstructxxxshare &>/dev/null; then
         apcreatedirstructxxxshare
     fi
