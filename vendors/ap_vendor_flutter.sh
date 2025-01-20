@@ -1,6 +1,9 @@
 alias apinitflutter="ap_func_init_flutter"
 ap_func_init_flutter() {
+    export AP_DART_SDK_DIR="${AP_SOFT_DIR}/flutter/bin/cache/dart-sdk"
+
     apaddpath "${AP_SOFT_DIR}/flutter/bin"
+    apaddpath "${AP_SOFT_DIR}/flutter/bin/cache/dart-sdk/bin"
 
     if alias apinitfluttershare &>/dev/null; then
         apinitfluttershare

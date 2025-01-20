@@ -1,5 +1,6 @@
 alias apinitdart="ap_func_init_dart"
 ap_func_init_dart() {
+    export AP_DART_SETUP_VERSION='3.6.1'
     apaddpath "${AP_SOFT_DIR}/dart/bin"
 
     if alias apinitdartshare &>/dev/null; then
@@ -36,7 +37,7 @@ ap_func_rm_dirstruct_dart() {
 alias apsetupdart="ap_func_setup_dart"
 ap_func_setup_dart() {
     # https://dart.dev/get-dart/archive
-    local ap_dart_setup_version='3.2.6'
+    local ap_dart_setup_version="${AP_DART_SETUP_VERSION}"
     if [ -n "$1" ]; then
         ap_dart_setup_version="$1"
     fi

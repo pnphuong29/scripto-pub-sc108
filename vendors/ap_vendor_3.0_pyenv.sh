@@ -3,7 +3,6 @@ ap_func_init_pyenv() {
     # Defines the directory under which Python versions and shims reside.
     # pyenv root
     export PYENV_ROOT="${HOME}/.pyenv"
-    export AP_PYTHON_VERSION_DEFAULT="3.12.2"
 
     # Sets a shell-specific Python version.
     # This version overrides application-specific versions and the global version.
@@ -190,6 +189,7 @@ ap_func_setup_pyenv() {
 
     aplogshow "Set pyenv global version [${AP_PYTHON_VERSION_DEFAULT}]\n"
     pyenv global "${AP_PYTHON_VERSION_DEFAULT}" # Set default global python
+    pyenv local "${AP_PYTHON_VERSION_DEFAULT}"  # Create and set .python-version file
 
     apinitpyenv
     if alias apcreatedirstructpyenv &>/dev/null; then

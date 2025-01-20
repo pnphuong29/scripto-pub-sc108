@@ -1,12 +1,19 @@
 alias apinitnode="ap_func_init_node"
 ap_func_init_node() {
-    # export AP_NODE_VERSION_DEFAULT="16.20.2"
-    # export AP_NODE_VERSION_DEFAULT="18.20.2"
-    export AP_NODE_VERSION_DEFAULT="20.11.1"
-    # export AP_NODE_VERSION_DEFAULT="22.12.0"
+    export AP_NODE_VERSION_16="16.20.2"
+    export AP_NODE_VERSION_18="18.20.5"
+    export AP_NODE_VERSION_20="20.18.1"
+    export AP_NODE_VERSION_22="22.13.0"
+    export AP_NODE_VERSION_DEFAULT="${AP_NODE_VERSION_20}"
 
-    export PNPM_HOME="${HOME}/.local/share/pnpm"
-    apaddpath "${PNPM_HOME}"
+    if [ -d "${HOME}/.local/share/pnpm" ]; then
+        export PNPM_HOME="${HOME}/.local/share/pnpm"
+        apaddpath "${PNPM_HOME}"
+    fi
+
+    if [ -d "${HOME}/.yarn/bin" ]; then
+        apaddpath "${HOME}/.yarn/bin"
+    fi
 
     # npm
     alias npmi='npm install'
@@ -148,14 +155,33 @@ ap_func_rm_global_symlink_node() {
 
 alias apsetupnode="ap_func_setup_node"
 ap_func_setup_node() {
-    aplogshow "Install [node v16.20.2, v18.20.2, v20.11.1, v22.12.0]\n"
-    nvm install v16.20.2
-    nvm install v18.20.2
-    nvm install v20.11.1
-    nvm install v22.12.0
+    aplogshow "Install node version [${AP_NODE_VERSION_16}]\n"
+    # nvm install "${AP_NODE_VERSION_16}"
+    fnm install "${AP_NODE_VERSION_16}"
 
-    nvm use "${AP_NODE_VERSION_DEFAULT}"
+    aplogshow "Install node version [${AP_NODE_VERSION_18}]\n"
+    # nvm install "${AP_NODE_VERSION_18}"
+    fnm install "${AP_NODE_VERSION_18}"
+
+    aplogshow "Install node version [${AP_NODE_VERSION_20}]\n"
+    # nvm install "${AP_NODE_VERSION_20}"
+    fnm install "${AP_NODE_VERSION_20}"
+
+    aplogshow "Install node version [${AP_NODE_VERSION_22}]\n"
+    # nvm install "${AP_NODE_VERSION_22}"
+    fnm install "${AP_NODE_VERSION_22}"
+
+    aplogshow "Set default node version [${AP_NODE_VERSION_DEFAULT}]\n"
+    # nvm alias default "${AP_NODE_VERSION_DEFAULT}"
+    fnm default "${AP_NODE_VERSION_DEFAULT}"
+
+    # nvm use "${AP_NODE_VERSION_DEFAULT}"
+    fnm use "${AP_NODE_VERSION_DEFAULT}"
+
     npm install -g pnpm
+
+    echo "${AP_NODE_VERSION_DEFAULT}" >"${HOME}/.node-version"
+
     # volta install "node@v${ap_node_setup_version}"
 
     apinitnode
@@ -166,11 +192,18 @@ ap_func_setup_node() {
 
 alias aprmnode="ap_func_rm_node"
 ap_func_rm_node() {
-    aplogshow "Remove [node] v16.20.2, v18.20.2, v20.11.1, v22.12.0\n"
-    nvm uninstall v16.20.2
-    nvm uninstall v18.20.2
-    nvm uninstall v20.11.1
-    nvm uninstall v22.12.0
+    aplogshow "Remove node version [${AP_NODE_VERSION_18}]\n"
+    # nvm uninstall "${AP_NODE_VERSION_18}"
+    fnm uninstall "${AP_NODE_VERSION_18}"
+
+    aplogshow "Remove node version [${AP_NODE_VERSION_20}]\n"
+    # nvm uninstall "${AP_NODE_VERSION_20}"
+    fnm uninstall "${AP_NODE_VERSION_20}"
+
+    aplogshow "Remove node version [${AP_NODE_VERSION_22}]\n"
+    # nvm uninstall "${AP_NODE_VERSION_22}"
+    fnm uninstall "${AP_NODE_VERSION_22}"
+
     # volta uninstall "node@v${ap_node_remove_version}"
 
     if alias aprmdirstructnode &>/dev/null; then

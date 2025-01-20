@@ -1,6 +1,7 @@
 alias apinitandroidstudio="ap_func_init_androidstudio"
 ap_func_init_androidstudio() {
-    export AP_ANDROID_STUDIO_SETUP_VERSION='2024.2.1.12'
+    export AP_ANDROID_STUDIO_SETUP_VERSION='2024.2.2.13'
+    source "${HOME}/scripto/vendors/android-studio/adb_completion.bash"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         export ANDROID_HOME="${HOME}/Library/Android/sdk"
@@ -27,6 +28,11 @@ ap_func_init_androidstudio() {
 
 alias apcreatedirstructandroidstudio="ap_func_create_dirstruct_androidstudio"
 ap_func_create_dirstruct_androidstudio() {
+    # https://github.com/mbrubeck/android-completion # Old repo, command completion not up to date
+    # aplogshow "Generate bash autocomplete for [adb] commands\n"
+    # curl -SL "https://raw.githubusercontent.com/mbrubeck/android-completion/refs/heads/master/android" >"${AP_COMPLETIONS_DIR}/ap_completion_android_emulator.bash"
+    # curl -SL "https://raw.githubusercontent.com/mbrubeck/android-completion/refs/heads/master/repo" >"${AP_COMPLETIONS_DIR}/ap_completion_android_repo.bash"
+
     # https://github.com/flutter/flutter/issues/118502
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         cd "/Applications/Android Studio.app/Contents"

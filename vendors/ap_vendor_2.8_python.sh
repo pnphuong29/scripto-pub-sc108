@@ -1,5 +1,7 @@
 alias apinitpython="ap_func_init_python"
 ap_func_init_python() {
+    export AP_PYTHON_VERSION_DEFAULT="3.13.1"
+
     if [ -f "${HOME}/scripto-common/vendors/python/ap_python_startup.py" ]; then
         export PYTHONSTARTUP="${HOME}/scripto-common/vendors/python/ap_python_startup.py"
     fi
@@ -7,7 +9,7 @@ ap_func_init_python() {
     alias pipupgrade="pip install --upgrade pip"
     alias pipirequirementsdev="pip install --upgrade pip -r requirements_dev.txt"
     alias pipirequirements="pip install --upgrade pip -r requirements.txt"
-    alias venv="python -m venv"
+    # alias venv="python -m venv"
     alias venvactivate="source \$(find -type f -name activate | head -1)"
 
     if alias apinitpythonshare &>/dev/null; then

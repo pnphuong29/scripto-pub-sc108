@@ -63,7 +63,9 @@ ap_func_setup_uv() {
     # cargo install --git https://github.com/astral-sh/uv uv # Take long time to install
     # pipx install uv
 
-    uv python install 3.13 3.12
+    # Install python executable files at $(uv python dir)
+    uv python install "${AP_PYTHON_VERSION_DEFAULT}"
+    apcreatedirstructpip
 
     apinituv
     if alias apcreatedirstructuv &>/dev/null; then
