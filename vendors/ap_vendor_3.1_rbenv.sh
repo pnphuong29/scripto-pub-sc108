@@ -1,7 +1,5 @@
 alias apinitrbenv="ap_func_init_rbenv"
 ap_func_init_rbenv() {
-    export AP_RUBY_SETUP_VERSION="3.1.4"
-
     apaddpath "${HOME}/.rbenv/bin"
     eval "$("${HOME}/.rbenv/bin/rbenv" init - bash)"
     # eval "$(rbenv init - bash)"
@@ -25,9 +23,9 @@ ap_func_init_rbenv() {
 
 alias apcreatedirstructrbenv="ap_func_create_dirstruct_rbenv"
 ap_func_create_dirstruct_rbenv() {
-    aplogshow "Set rbenv local version [${AP_RUBY_SETUP_VERSION}] at [${HOME}]\n"
+    aplogshow "Set rbenv local version [${AP_RUBY_VERSION_DEFAULT}] at [${HOME}]\n"
     cd "${HOME}"
-    rbenv local "${AP_RUBY_SETUP_VERSION}"
+    rbenv local "${AP_RUBY_VERSION_DEFAULT}"
 
     if alias apcreatedirstructrbenvshare &>/dev/null; then
         apcreatedirstructrbenvshare
@@ -131,12 +129,12 @@ ap_func_setup_rbenv() {
     git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
 
     # Install ruby
-    aplogshow "Install [ruby v${AP_RUBY_SETUP_VERSION}]\n"
-    rbenv install "${AP_RUBY_SETUP_VERSION}"
+    aplogshow "Install [ruby v${AP_RUBY_VERSION_DEFAULT}]\n"
+    rbenv install "${AP_RUBY_VERSION_DEFAULT}"
 
     # Set default global ruby version
-    aplogshow "Set rbenv global version [${AP_RUBY_SETUP_VERSION}]\n"
-    rbenv global "${AP_RUBY_SETUP_VERSION}"
+    aplogshow "Set rbenv global version [${AP_RUBY_VERSION_DEFAULT}]\n"
+    rbenv global "${AP_RUBY_VERSION_DEFAULT}"
 
     # Install gems
     aplogshow "Installing [neovim, solargraph, asciidoctor]\n"

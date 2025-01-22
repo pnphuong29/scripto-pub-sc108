@@ -1,5 +1,8 @@
 alias apinitruby="ap_func_init_ruby"
 ap_func_init_ruby() {
+    export AP_RUBY_VERSION_3="3.1.4"
+    export AP_RUBY_VERSION_DEFAULT="${AP_RUBY_VERSION_3}"
+
     if alias apinitrubyshare &>/dev/null; then
         apinitrubyshare
     fi
