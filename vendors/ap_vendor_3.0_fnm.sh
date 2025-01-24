@@ -3,8 +3,8 @@ ap_func_init_fnm() {
     export FNM_PATH="${HOME}/.fnm"
     apaddpath "${FNM_PATH}"
 
-    if type fnm &>/dev/null; then
-        eval "$(fnm env --use-on-cd --version-file-strategy=recursive --shell bash)"
+    if [ -f "${HOME}/.cargo/bin/fnm" ]; then
+        eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"
     fi
 
     if alias apinitfnmshare &>/dev/null; then
