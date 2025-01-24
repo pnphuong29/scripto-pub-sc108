@@ -67,6 +67,7 @@ ap_func_setup_fnm() {
     aplogshow "Set default node version [${AP_NODE_VERSION_DEFAULT}]\n"
     fnm default "${AP_NODE_VERSION_DEFAULT}"
 
+    eval "$(fnm env --use-on-cd --version-file-strategy=recursive --shell bash)"
     npm install -g pnpm
 
     apinitfnm
