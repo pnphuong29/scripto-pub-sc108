@@ -6,14 +6,11 @@ ap_func_init_fnm() {
     alias zfnmnodeversions="cd \${FNM_DIR}/node-versions"
 
     if [ -f "${HOME}/.cargo/bin/fnm" ]; then
-        "${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash
-        eval "$(
-            echo "echo ${HOME}/.cargo/bin/fnm"
-        )"
+        # "${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash
         eval "$(
             "${HOME}/.cargo/bin/fnm" env
         )"
-        eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"
+        # eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"
     fi
 
     if alias apinitfnmshare &>/dev/null; then
