@@ -7,7 +7,7 @@ ap_func_init_fnm() {
 
     if [ -f "${HOME}/.cargo/bin/fnm" ]; then
         eval "$(
-            "${HOME}/.cargo/bin/fnm" env --use-on-cd
+            "${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive
         )"
         # eval "$(
         #     "${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash
