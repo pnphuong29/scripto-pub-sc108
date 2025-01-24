@@ -5,7 +5,10 @@ ap_func_init_fnm() {
 
     if [ -f "${HOME}/.cargo/bin/fnm" ]; then
         echo "123"
-        eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"
+        eval "$(
+            echo $HOME
+            "${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash
+        )"
     fi
 
     if alias apinitfnmshare &>/dev/null; then
