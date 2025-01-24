@@ -4,6 +4,7 @@ ap_func_init_fnm() {
     # apaddpath "${FNM_PATH}"
 
     if [ -f "${HOME}/.cargo/bin/fnm" ]; then
+        echo "123"
         eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"
     fi
 
