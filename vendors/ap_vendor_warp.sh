@@ -1,5 +1,7 @@
 alias apinitwarp="ap_func_init_warp"
 ap_func_init_warp() {
+    export AP_WARP_VERSION='v0.2025.01.22.08.02'
+
     if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
         alias zwarpconf="cd \${HOME}/.warp"
     elif [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]]; then
@@ -46,16 +48,16 @@ ap_func_setup_warp() {
     aplogshow "Install [Warp]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        brew install --cask warp
-        # curl -SL "https://releases.warp.dev/stable/v0.2024.02.13.08.02.stable_00/Warp.dmg" >warp.dmg
-        # hdiutil attach -nobrowse warp.dmg
-        # cd "/Volumes/Warp"
-        # cp -R "Warp.app" /Applications/
-        # cd ~
-        # hdiutil detach "/Volumes/Warp"
+        # brew install --cask warp # Error when install using this way
+        curl -SL "https://releases.warp.dev/stable/v${AP_WARP_VERSION}.stable_02/Warp.dmg" >warp.dmg
+        hdiutil attach -nobrowse warp.dmg
+        cd "/Volumes/Warp"
+        cp -R "Warp.app" /Applications/
+        cd ~
+        hdiutil detach "/Volumes/Warp"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         cd "${AP_TMP_DIR}"
-        curl -SL "https://releases.warp.dev/stable/v0.2024.02.20.08.01.stable_02/warp-terminal_0.2024.02.20.08.01.stable.02_amd64.deb" >warp.deb
+        curl -SL "https://releases.warp.dev/stable/v${AP_WARP_VERSION}.stable_02/warp-terminal_${AP_WARP_VERSION}.stable.02_amd64.deb" >warp.deb
         sudo dpkg -i warp.deb
     fi
 

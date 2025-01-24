@@ -1,7 +1,7 @@
 alias apinitfnm="ap_func_init_fnm"
 ap_func_init_fnm() {
-    export FNM_PATH="${HOME}/.fnm"
-    apaddpath "${FNM_PATH}"
+    # export FNM_PATH="${HOME}/.fnm"
+    # apaddpath "${FNM_PATH}"
 
     if [ -f "${HOME}/.cargo/bin/fnm" ]; then
         eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"
