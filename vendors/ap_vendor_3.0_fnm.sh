@@ -5,6 +5,7 @@ ap_func_init_fnm() {
     alias zfnm="cd \${FNM_DIR}"
     alias zfnmnodeversions="cd \${FNM_DIR}/node-versions"
 
+    # Below codes will not work in case using ssh into pc7 for example, append codes into bashrc file instead
     # if [ -f "${HOME}/.cargo/bin/fnm" ]; then
     #     eval "$(
     #         "${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash
@@ -28,6 +29,14 @@ alias apcreatedirstructfnm="ap_func_create_dirstruct_fnm"
 ap_func_create_dirstruct_fnm() {
     aplogshow "Generate [fnm] bash autocomplete\n"
     fnm completions --shell bash >"${AP_COMPLETIONS_DIR}/ap_completion_fnm.bash"
+
+    if [ -f "${HOME}/.cargo/bin/fnm" ]; then
+        if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ] && grep fnm "${HOME}/.bashrc" &>/dev/null; then
+            echo 'eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"' >>"${HOME}/.profile"
+        fi
+    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ] && grep fnm "${HOME}/.bashrc" &>/dev/null; then
+        echo 'eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"' >>"${HOME}/.bashrc"
+    fi
 
     if alias apcreatedirstructfnmshare &>/dev/null; then
         apcreatedirstructfnmshare
