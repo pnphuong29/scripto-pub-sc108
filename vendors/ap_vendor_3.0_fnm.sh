@@ -6,11 +6,11 @@ ap_func_init_fnm() {
     alias zfnmnodeversions="cd \${FNM_DIR}/node-versions"
 
     # Below codes will not work in case using ssh into pc7 for example, append codes into bashrc file instead
-    # if [ -f "${HOME}/.cargo/bin/fnm" ]; then
-    #     eval "$(
-    #         "${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash
-    #     )"
-    # fi
+    if [ -f "${HOME}/.cargo/bin/fnm" ]; then
+        eval "$(
+            "${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash
+        )"
+    fi
 
     if alias apinitfnmshare &>/dev/null; then
         apinitfnmshare
@@ -31,26 +31,16 @@ ap_func_create_dirstruct_fnm() {
     fnm completions --shell bash >"${AP_COMPLETIONS_DIR}/ap_completion_fnm.bash"
 
     if [ -f "${HOME}/.cargo/bin/fnm" ]; then
-        # Define the code to be inserted
-        CODE_TO_INSERT='eval "$(
-            "${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash
-        )"'
-
-        # Define the target line to search for
-        TARGET_LINE='source ~/scripto-main/ap_master.sh'
-
+        TARGET_LINE='--version-file-strategy=recursive'
+        MASTER_LINE='time source ~/scripto-main/ap_master.sh'
         if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ] && ! grep fnm "${HOME}/.profile" &>/dev/null; then
-            # Use sed to insert the code above the target line
-            sed -i "/$TARGET_LINE/i $CODE_TO_INSERT" "${HOME}/.profile"
-
-            # Notify the user
-            echo "Code has been inserted into ${HOME}/.profile."
+            gsed -i "\|${MASTER_LINE}|d" "${HOME}/.profile"
+            echo 'eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"' >>"${HOME}/.profile"
+            gsed -i "/${TARGET_LINE}/i ${MASTER_LINE}" ~/.profile
         elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ] && ! grep fnm "${HOME}/.bashrc" &>/dev/null; then
-            # Use sed to insert the code above the target line
-            sed -i "/$TARGET_LINE/i $CODE_TO_INSERT" "${HOME}/.bashrc"
-
-            # Notify the user
-            echo "Code has been inserted into ${HOME}/.bashrc."
+            gsed -i "\|${MASTER_LINE}|d" "${HOME}/.bashrc"
+            echo 'eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"' >>"${HOME}/.bashrc"
+            gsed -i "/${TARGET_LINE}/i ${MASTER_LINE}" ~/.bashrc
         fi
     fi
 
