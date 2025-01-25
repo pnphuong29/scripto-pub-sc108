@@ -5,8 +5,11 @@ ap_func_init_fnm() {
     alias zfnm="cd \${FNM_DIR}"
     alias zfnmnodeversions="cd \${FNM_DIR}/node-versions"
 
-    # Below codes will not work in case using ssh into pc7 for example, append codes into bashrc file instead
+    # Below codes will not work (recursive mode) when using ssh into pc7, so use `local` mode
     if [ -f "${HOME}/.cargo/bin/fnm" ]; then
+        eval "$(
+            "${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=local --shell bash
+        )"
         eval "$(
             "${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash
         )"
@@ -30,19 +33,19 @@ ap_func_create_dirstruct_fnm() {
     aplogshow "Generate [fnm] bash autocomplete\n"
     fnm completions --shell bash >"${AP_COMPLETIONS_DIR}/ap_completion_fnm.bash"
 
-    if [ -f "${HOME}/.cargo/bin/fnm" ]; then
-        TARGET_LINE='--version-file-strategy=recursive'
-        MASTER_LINE='time source ~/scripto-main/ap_master.sh'
-        if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ] && ! grep fnm "${HOME}/.profile" &>/dev/null; then
-            gsed -i "\|${MASTER_LINE}|d" "${HOME}/.profile"
-            echo 'eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"' >>"${HOME}/.profile"
-            gsed -i "/${TARGET_LINE}/i ${MASTER_LINE}" ~/.profile
-        elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ] && ! grep fnm "${HOME}/.bashrc" &>/dev/null; then
-            gsed -i "\|${MASTER_LINE}|d" "${HOME}/.bashrc"
-            echo 'eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"' >>"${HOME}/.bashrc"
-            gsed -i "/${TARGET_LINE}/i ${MASTER_LINE}" ~/.bashrc
-        fi
-    fi
+    # if [ -f "${HOME}/.cargo/bin/fnm" ]; then
+    #     TARGET_LINE='--version-file-strategy=recursive'
+    #     MASTER_LINE='time source ~/scripto-main/ap_master.sh'
+    #     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ] && ! grep fnm "${HOME}/.profile" &>/dev/null; then
+    #         gsed -i "\|${MASTER_LINE}|d" "${HOME}/.profile"
+    #         echo 'eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"' >>"${HOME}/.profile"
+    #         gsed -i "/${TARGET_LINE}/i ${MASTER_LINE}" ~/.profile
+    #     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ] && ! grep fnm "${HOME}/.bashrc" &>/dev/null; then
+    #         gsed -i "\|${MASTER_LINE}|d" "${HOME}/.bashrc"
+    #         echo 'eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"' >>"${HOME}/.bashrc"
+    #         gsed -i "/${TARGET_LINE}/i ${MASTER_LINE}" ~/.bashrc
+    #     fi
+    # fi
 
     if alias apcreatedirstructfnmshare &>/dev/null; then
         apcreatedirstructfnmshare
