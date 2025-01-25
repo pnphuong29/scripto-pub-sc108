@@ -62,10 +62,11 @@ ap_func_rm_global_symlink_diskus() {
 alias apsetupdiskus="ap_func_setup_diskus"
 ap_func_setup_diskus() {
     aplogshow "Install [diskus]\n"
-    cargo install diskus
 
+    cargo install diskus
     apinitdiskus
     apcreateglobalsymlinkdiskus
+
     if alias apcreatedirstructdiskus &>/dev/null; then
         apcreatedirstructdiskus
     fi
@@ -74,7 +75,7 @@ ap_func_setup_diskus() {
 alias aprmdiskus="ap_func_rm_diskus"
 ap_func_rm_diskus() {
     aplogshow "Remove [diskus]\n"
-    cargo remove diskus
+    cargo uninstall diskus
 
     if alias aprmdirstructdiskus &>/dev/null; then
         aprmdirstructdiskus
