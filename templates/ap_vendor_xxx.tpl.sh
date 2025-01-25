@@ -78,6 +78,9 @@ ap_func_create_dirstruct_xxx() {
 
 alias aprmdirstructxxx="ap_func_rm_dirstruct_xxx"
 ap_func_rm_dirstruct_xxx() {
+    aplogshow "Remove [${HOME}/.config/xxx/]\n"
+    rm -f "${HOME}/.config/xxx/"
+
     aplogshow "Remove [${AP_SOFT_DIR}/bin/xxx]\n"
     rm -f "${AP_SOFT_DIR}/bin/xxx"
 
@@ -201,7 +204,7 @@ ap_func_rm_xxx() {
     aplogshow "Remove [xxx] v${ap_xxx_remove_version}\n"
 
     aplogshow "Remove [xxx]\n"
-    cargo remove xxx
+    cargo uninstall xxx
     pip uninstall xxx
     npm uninstall -g xxx
 
