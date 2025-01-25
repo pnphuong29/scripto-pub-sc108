@@ -5,7 +5,7 @@ ap_func_init_fnm() {
     alias zfnm="cd \${FNM_DIR}"
     alias zfnmnodeversions="cd \${FNM_DIR}/node-versions"
 
-    # Below codes will not work (recursive mode) when using ssh into pc7, so use `local` mode
+    # Below codes will not work (recursive mode) when using ssh into pc7, so run `local` mode, then run `recursive` to fix
     if [ -f "${HOME}/.cargo/bin/fnm" ]; then
         eval "$(
             "${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=local --shell bash
