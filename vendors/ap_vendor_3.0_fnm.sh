@@ -31,11 +31,11 @@ ap_func_create_dirstruct_fnm() {
     fnm completions --shell bash >"${AP_COMPLETIONS_DIR}/ap_completion_fnm.bash"
 
     if [ -f "${HOME}/.cargo/bin/fnm" ]; then
-        if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ] && grep fnm "${HOME}/.bashrc" &>/dev/null; then
+        if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ] && grep fnm "${HOME}/.profile" &>/dev/null; then
             echo 'eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"' >>"${HOME}/.profile"
+        elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ] && grep fnm "${HOME}/.bashrc" &>/dev/null; then
+            echo 'eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"' >>"${HOME}/.bashrc"
         fi
-    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ] && grep fnm "${HOME}/.bashrc" &>/dev/null; then
-        echo 'eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"' >>"${HOME}/.bashrc"
     fi
 
     if alias apcreatedirstructfnmshare &>/dev/null; then
