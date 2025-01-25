@@ -65,9 +65,10 @@ ap_func_setup_uv() {
 
     # Install python executable files at $(uv python dir)
     uv python install "${AP_PYTHON_VERSION_DEFAULT}"
-    apcreatedirstructpip
 
     apinituv
+    apcreatedirstructpip
+
     if alias apcreatedirstructuv &>/dev/null; then
         apcreatedirstructuv
     fi
