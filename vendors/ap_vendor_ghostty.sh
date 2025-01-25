@@ -1,16 +1,29 @@
 alias apinitghostty="ap_func_init_ghostty"
 ap_func_init_ghostty() {
+    alias lsghosttythemes='ghostty +list-themes'
+    alias lsghosttycolors='ghostty +list-colors'
+    alias lsghosttyfonts='ghostty +list-fonts'
+    alias lsghosttykeybinds='ghostty +list-keybinds'
+    alias lsghosttyactions='ghostty +list-actions'
+
+    alias ghosttyshowconfig='ghostty +show-config'
+    alias ghosttyvalidateconfig='ghostty +validate-config'
+
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         if [ -d "${XDG_CONFIG_HOME}" ]; then
-            alias zghosttyconfdir="cd \${XDG_CONFIG_HOME}/ghostty"
+            alias zghostty="cd \${XDG_CONFIG_HOME}/ghostty"
+            alias zghosttythemes="cd \${XDG_CONFIG_HOME}/ghostty/themes"
         else
-            alias zghosttyconfdir="cd \"\${HOME}/Library/Application Support/com.mitchellh.ghostty\""
+            alias zghostty="cd \"\${HOME}/Library/Application Support/com.mitchellh.ghostty\""
+            alias zghosttythemes="cd /Applications/Ghostty.app/Contents/Resources/ghostty/themes"
         fi
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         if [ -d "${XDG_CONFIG_HOME}" ]; then
-            alias zghosttyconfdir="cd \${XDG_CONFIG_HOME}/ghostty"
+            alias zghostty="cd \${XDG_CONFIG_HOME}/ghostty"
+            alias zghosttythemes="cd \${XDG_CONFIG_HOME}/.config/ghostty/themes"
         else
-            alias zghosttyconfdir="cd \${HOME}/.config/ghostty"
+            alias zghostty="cd \${HOME}/.config/ghostty"
+            alias zghosttythemes="cd \${HOME}/.config/ghostty/themes"
         fi
     fi
 
