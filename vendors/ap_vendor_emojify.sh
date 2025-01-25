@@ -1,7 +1,7 @@
-alias initemojify="ap_func_init_emojify"
+alias apinitemojify="ap_func_init_emojify"
 ap_func_init_emojify() {
-    if alias iniemojifyshare &>/dev/null; then
-        iniemojifyshare
+    if alias apiniemojifyshare &>/dev/null; then
+        apiniemojifyshare
     fi
 
     if alias iniemojifycommon &>/dev/null; then

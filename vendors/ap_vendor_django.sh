@@ -2,10 +2,10 @@ alias apinitdjango="ap_func_init_django"
 ap_func_init_django() {
     # https://docs.djangoproject.com/en/4.2/ref/django-admin/#syntax-coloring
     export DJANGO_COLORS="error=white/red,blink;notice=white/magenta;success=white/green;warning=black/yellow"
-    AP_DJANGO_DIR=$(python -c "import django; print(django.__path__);")
-    export AP_DJANGO_DIR="${AP_DJANGO_DIR:2:-2}"
 
-    alias zdgolib="cd \${AP_DJANGO_DIR}"
+    # AP_DJANGO_DIR=$(python -c "import django; print(django.__path__);")
+    # export AP_DJANGO_DIR="${AP_DJANGO_DIR:2:-2}"
+    # alias zdgolib="cd \${AP_DJANGO_DIR}"
 
     # django-admin
     alias dga="django-admin"

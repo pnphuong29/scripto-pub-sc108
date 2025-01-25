@@ -192,6 +192,8 @@ ap_func_setup_pyenv() {
     pyenv local "${AP_PYTHON_VERSION_DEFAULT}"  # Create and set .python-version file
 
     apinitpyenv
+    apcreatedirstructpip
+
     if alias apcreatedirstructpyenv &>/dev/null; then
         apcreatedirstructpyenv
     fi

@@ -15,6 +15,9 @@ ap_func_init_fnm() {
         )"
     fi
 
+    NODE_PATH="$(npm root -g)"
+    export NODE_PATH
+
     if alias apinitfnmshare &>/dev/null; then
         apinitfnmshare
     fi

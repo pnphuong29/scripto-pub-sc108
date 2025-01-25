@@ -168,8 +168,7 @@ if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
     #     apaddpath /opt/local/libexec/gnubin/
     # fi
 
-    # Due to incorrect CPU detection of Hyper terminal, we need to addpath as
-    # below
+    # Due to incorrect CPU detection of Hyper terminal, we need to addpath as below
     apaddpath /opt/homebrew/bin
     apaddpath /opt/homebrew/sbin
     apaddpath /opt/local/bin
