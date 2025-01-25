@@ -31,10 +31,26 @@ ap_func_create_dirstruct_fnm() {
     fnm completions --shell bash >"${AP_COMPLETIONS_DIR}/ap_completion_fnm.bash"
 
     if [ -f "${HOME}/.cargo/bin/fnm" ]; then
+        # Define the code to be inserted
+        CODE_TO_INSERT='eval "$(
+            "${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash
+        )"'
+
+        # Define the target line to search for
+        TARGET_LINE='source ~/scripto-main/ap_master.sh'
+
         if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ] && ! grep fnm "${HOME}/.profile" &>/dev/null; then
-            echo 'eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"' >>"${HOME}/.profile"
+            # Use sed to insert the code above the target line
+            sed -i "/$TARGET_LINE/i $CODE_TO_INSERT" "${HOME}/.profile"
+
+            # Notify the user
+            echo "Code has been inserted into ${HOME}/.profile."
         elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ] && ! grep fnm "${HOME}/.bashrc" &>/dev/null; then
-            echo 'eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"' >>"${HOME}/.bashrc"
+            # Use sed to insert the code above the target line
+            sed -i "/$TARGET_LINE/i $CODE_TO_INSERT" "${HOME}/.bashrc"
+
+            # Notify the user
+            echo "Code has been inserted into ${HOME}/.bashrc."
         fi
     fi
 
