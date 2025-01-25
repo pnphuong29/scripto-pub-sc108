@@ -20,6 +20,22 @@ ap_func_create_dirstruct_jq() {
     fi
 }
 
+alias apcreateglobalsymlinkjq="ap_func_create_global_symlink_jq"
+ap_func_create_global_symlink_jq() {
+    if [ -f "${AP_SOFT_DIR}/bin/jq" ]; then
+        aplogshow "Create symlink from [/usr/local/bin/jq] to [${AP_SOFT_DIR}/bin/jq]\n"
+        sudo ln -sf "${AP_SOFT_DIR}/bin/jq" "/usr/local/bin/jq"
+    fi
+}
+
+alias aprmglobalsymlinkjq="ap_func_rm_global_symlink_jq"
+ap_func_rm_global_symlink_jq() {
+    if [ -f "/usr/local/bin/jq" ]; then
+        aplogshow "Remove [/usr/local/bin/jq]\n"
+        sudo rm -f "/usr/local/bin/jq"
+    fi
+}
+
 alias apsetupjq="ap_func_setup_jq"
 ap_func_setup_jq() {
     # https://github.com/stedolan/jq
