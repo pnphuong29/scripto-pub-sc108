@@ -48,21 +48,21 @@ ap_func_rm_dirstruct_x() {
     fi
 }
 
-alias apcreateglobalsymlinkx="ap_func_create_global_symlink_x"
-ap_func_create_global_symlink_x() {
-    if [ -f "${AP_X_DIR}/bin/x" ]; then
-        aplogshow "Create symlink from [/usr/local/bin/x] to [${AP_X_DIR}/bin/x]\n"
-        sudo ln -sf "${AP_X_DIR}/bin/x" "/usr/local/bin/x"
-    fi
-}
+# alias apcreateglobalsymlinkx="ap_func_create_global_symlink_x"
+# ap_func_create_global_symlink_x() {
+#     if [ -f "${AP_X_DIR}/bin/x" ]; then
+#         aplogshow "Create symlink from [/usr/local/bin/x] to [${AP_X_DIR}/bin/x]\n"
+#         sudo ln -sf "${AP_X_DIR}/bin/x" "/usr/local/bin/x"
+#     fi
+# }
 
-alias aprmglobalsymlinkx="ap_func_rm_global_symlink_x"
-ap_func_rm_global_symlink_x() {
-    if [ -f "/usr/local/bin/x" ]; then
-        aplogshow "Remove [/usr/local/bin/x]\n"
-        sudo rm -f "/usr/local/bin/x"
-    fi
-}
+# alias aprmglobalsymlinkx="ap_func_rm_global_symlink_x"
+# ap_func_rm_global_symlink_x() {
+#     if [ -f "/usr/local/bin/x" ]; then
+#         aplogshow "Remove [/usr/local/bin/x]\n"
+#         sudo rm -f "/usr/local/bin/x"
+#     fi
+# }
 
 alias apsetupx="ap_func_setup_x"
 ap_func_setup_x() {
@@ -70,7 +70,7 @@ ap_func_setup_x() {
     eval "$(curl https://get.x-cmd.com)"
 
     apinitx
-    apcreateglobalsymlinkx
+    # apcreateglobalsymlinkx
 
     if alias apcreatedirstructx &>/dev/null; then
         apcreatedirstructx
@@ -80,6 +80,8 @@ ap_func_setup_x() {
 alias aprmx="ap_func_rm_x"
 ap_func_rm_x() {
     aplogshow "Remove [x]\n"
+
+    x boot clear
     rm -rf "${AP_X_DIR}"
 
     if alias aprmdirstructx &>/dev/null; then
