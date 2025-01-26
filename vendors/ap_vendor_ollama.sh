@@ -3,11 +3,13 @@ ap_func_init_ollama() {
     export AP_OLLAMA_DIR="${HOME}/.ollama"
 
     alias zollama="cd ${AP_OLLAMA_DIR}"
+
     alias lsollamacurrentmodels='ollama ls'
+    alias startollama='nohup ollama serve &'
+    alias startollamafg='ollama serve'
 
     alias ollamaps='ollama ps'
     alias ollamaserve='ollama serve'
-    alias ollamastartbg='nohup ollama serve &'
     alias ollamarundeepseek-coder-v2-latest='ollama run deepseek-coder-v2:latest'
 
     if alias apinitollamashare &>/dev/null; then
