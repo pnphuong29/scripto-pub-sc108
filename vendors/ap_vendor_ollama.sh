@@ -1,7 +1,13 @@
 alias apinitollama="ap_func_init_ollama"
 ap_func_init_ollama() {
+    export AP_OLLAMA_DIR="${HOME}/.ollama"
+
+    alias zollama="cd ${AP_OLLAMA_DIR}"
     alias lsollamacurrentmodels='ollama ls'
+
     alias ollamaps='ollama ps'
+    alias ollamaserve='ollama serve'
+    alias ollamastartbg='nohup ollama serve &'
     alias ollamarundeepseek-coder-v2-latest='ollama run deepseek-coder-v2:latest'
 
     if alias apinitollamashare &>/dev/null; then
@@ -60,13 +66,15 @@ ap_func_setup_ollama() {
     cd "${AP_TMP_DIR}/ollama"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        curl -SL \
-            "$(curl --silent "https://api.github.com/repos/ollama/ollama/releases" | jq -r '.[0].assets[].browser_download_url' | grep "darwin" | grep zip)" >ollama.zip
+        # GUI app
+        # curl -SL \
+        #     "$(curl --silent "https://api.github.com/repos/ollama/ollama/releases" | jq -r '.[0].assets[].browser_download_url' | grep "darwin" | grep zip)" >ollama.zip
 
-        unzip ollama.zip
-        rm -rf "/Applications/Ollama"
-        mv Ollama.app /Applications/
+        # unzip ollama.zip
+        # rm -rf "/Applications/Ollama"
+        # mv Ollama.app /Applications/
 
+        # CLI app
         curl -SL \
             "$(curl --silent "https://api.github.com/repos/ollama/ollama/releases" | jq -r '.[0].assets[].browser_download_url' | grep "darwin" | grep -v zip)" >ollama
 
