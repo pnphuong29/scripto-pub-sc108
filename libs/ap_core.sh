@@ -133,18 +133,13 @@ ap_func_show_msg() {
     aprtn_success
 }
 
-alias showdash='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 49'
-alias showhyphen='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 49'
-
-alias showsyapshowmsgred='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" --'
-alias showsyapshowmsggreen='ap_func_show_symbols -f "${AP_SCHEME_COLOR_GREEN}" --'
-alias showsyapshowmsgyellow='ap_func_show_symbols -f "${AP_SCHEME_COLOR_YELLOW}" --'
-alias showsyapshowmsgcyan='ap_func_show_symbols -f "${AP_SCHEME_COLOR_CYAN}" --'
-alias showsymmagenta='ap_func_show_symbols -f "${AP_SCHEME_COLOR_MAGENTA}" --'
-alias showsymhash21='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 21'
-alias showsymhash49='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 49'
-alias showsymhyphen21='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 21'
-alias showsymhyphen49='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 49'
+alias apshowdash='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 49'
+alias apshowhyphen='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 49'
+alias apshowsymmagenta='ap_func_show_symbols -f "${AP_SCHEME_COLOR_MAGENTA}" --'
+alias apshowsymhash21='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 21'
+alias apshowsymhash49='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 49'
+alias apshowsymhyphen21='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 21'
+alias apshowsymhyphen49='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 49'
 # @$func $$ ap_func_show_symbols {
 # ap_func_show_symbols [-cnf] [format] [--] [symbol] [no_of_times]
 # Description
@@ -207,9 +202,9 @@ ap_func_show_symbols() {
 
     # Display output
     if [ "${ap_opt_suppress_new_line}" -eq 1 ]; then
-        ap_func_show_msg -n -c "${ap_opt_color_scheme}" -f "${ap_opt_format_string}" -- "${ap_symbol_string}"
+        ap_func_show_msg -e -n -c "${ap_opt_color_scheme}" -f "${ap_opt_format_string}" -- "${ap_symbol_string}"
     else
-        ap_func_show_msg -c "${ap_opt_color_scheme}" -f "${ap_opt_format_string}" -- "${ap_symbol_string}"
+        ap_func_show_msg -e -c "${ap_opt_color_scheme}" -f "${ap_opt_format_string}" -- "${ap_symbol_string}"
     fi
 
     aprtn_success

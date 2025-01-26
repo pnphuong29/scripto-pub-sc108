@@ -3,7 +3,6 @@ ap_func_init_ollama() {
     export AP_OLLAMA_DIR="${HOME}/.ollama"
 
     alias zollama="cd ${AP_OLLAMA_DIR}"
-
     alias lsollamacurrentmodels='ollama ls'
     alias startollama='ollama serve &'
     alias startollamanohup='nohup ollama serve &'
