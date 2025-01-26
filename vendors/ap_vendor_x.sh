@@ -1,7 +1,9 @@
 alias apinitx="ap_func_init_x"
 ap_func_init_x() {
-    export AP_X_DIR="${AP_X_DIR}"
+    export AP_X_DIR="${HOME}/.x-cmd.root"
     alias zx="cd ${AP_X_DIR}"
+
+    source "${AP_X_DIR}/X"
 
     if alias apinitxshare &>/dev/null; then
         apinitxshare
@@ -68,6 +70,8 @@ ap_func_setup_x() {
     eval "$(curl https://get.x-cmd.com)"
 
     apinitx
+    apcreateglobalsymlinkx
+
     if alias apcreatedirstructx &>/dev/null; then
         apcreatedirstructx
     fi
