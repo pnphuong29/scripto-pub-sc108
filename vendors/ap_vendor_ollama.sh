@@ -4,8 +4,8 @@ ap_func_init_ollama() {
 
     alias zollama="cd ${AP_OLLAMA_DIR}"
     alias lsollamacurrentmodels='ollama ls'
-    alias startollama='ollama serve &'
-    alias startollamanohup='nohup ollama serve &'
+    alias startollama='nohup ollama serve &>/dev/null &'
+    alias startollamabg='ollama serve &>/dev/null &'
     alias startollamafg='ollama serve'
 
     alias ollamaps='ollama ps'
