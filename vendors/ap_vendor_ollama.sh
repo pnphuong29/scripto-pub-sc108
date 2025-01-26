@@ -5,7 +5,8 @@ ap_func_init_ollama() {
     alias zollama="cd ${AP_OLLAMA_DIR}"
 
     alias lsollamacurrentmodels='ollama ls'
-    alias startollama='nohup ollama serve &'
+    alias startollama='ollama serve &'
+    alias startollamanohup='nohup ollama serve &'
     alias startollamafg='ollama serve'
 
     alias ollamaps='ollama ps'
@@ -81,6 +82,7 @@ ap_func_setup_ollama() {
             "$(curl --silent "https://api.github.com/repos/ollama/ollama/releases" | jq -r '.[0].assets[].browser_download_url' | grep "darwin" | grep -v zip)" >ollama
 
         rm -f "${AP_SOFT_DIR}/bin/ollama"
+        chmod +x ollama
         mv ollama "${AP_SOFT_DIR}/bin/"
         cd "/Applications"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
