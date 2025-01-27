@@ -1,13 +1,6 @@
 alias apinitgithubcli="ap_func_init_github_cli"
 ap_func_init_github_cli() {
     apaddpath -m "${AP_SOFT_DIR}/github-cli/share/man"
-    alias lsghreposall='gh repo list --limit 500'
-    alias lsghrepospublic='gh repo list --limit 500 --visibility public'
-    alias lsghrepos='gh repo list --no-archived --limit 500'
-    alias lsghreposarchived='gh repo list --archived --limit 500'
-
-    # alias gharchiverepo='gh repo archive --yes'
-    # alias ghunarchiverepo='gh repo unarchive --yes'
 
     if alias apinitgithubclishare &>/dev/null; then
         apinitgithubclishare
