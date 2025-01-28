@@ -18,6 +18,8 @@ ap_func_init_ghostty() {
             alias zghosttythemes="cd /Applications/Ghostty.app/Contents/Resources/ghostty/themes"
         fi
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+        export GHOSTTY_RESOURCES_DIR="${HOME}/scripto-common/vendors/ghostty/share/ghostty"
+
         if [ -d "${XDG_CONFIG_HOME}" ]; then
             alias zghostty="cd \${XDG_CONFIG_HOME}/ghostty"
             alias zghosttythemes="cd \${XDG_CONFIG_HOME}/.config/ghostty/themes"
@@ -43,6 +45,18 @@ ap_func_init_ghostty() {
 alias apcreatedirstructghostty="ap_func_create_dirstruct_ghostty"
 ap_func_create_dirstruct_ghostty() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        if [ -f "${HOME}/scripto-common/vendors/ghostty/share/macos/bash-completion/completions/ghostty.bash" ]; then
+            aplogshow "Create symlink from [${AP_COMPLETIONS_DIR}/ap_completion_ghostty.bash] to [${HOME}/scripto-common/vendors/ghostty/share/macos/bash-completion/completions/ghostty.bash]\n"
+            rm -f "${AP_COMPLETIONS_DIR}/ap_completion_ghostty.bash" # Remove old completion if any
+            ln -sf "${HOME}/scripto-common/vendors/ghostty/share/macos/bash-completion/completions/ghostty.bash" "${AP_COMPLETIONS_DIR}/ap_completion_ghostty.bash"
+        fi
+
+        aplogshow "Create symlink from [${AP_MAN_DIR}/man1/ghostty.1] to [${HOME}/scripto-common/vendors/ghostty/share/macos/man/man1/ghostty.1]\n"
+        ln -sf "${HOME}/scripto-common/vendors/ghostty/share/macos/man/man1/ghostty.1" "${AP_MAN_DIR}/man1/ghostty.1"
+
+        aplogshow "Create symlink from [${AP_MAN_DIR}/man5/ghostty.5] to [${HOME}/scripto-common/vendors/ghostty/share/macos/man/man5/ghostty.5]\n"
+        ln -sf "${HOME}/scripto-common/vendors/ghostty/share/macos/man/man5/ghostty.5" "${AP_MAN_DIR}/man5/ghostty.5"
+
         aplogshow "Create symlink from [${AP_SOFT_DIR}/bin/ghostty] to [/Applications/Ghostty.app/Contents/MacOS/ghostty]\n"
         ln -sf "/Applications/Ghostty.app/Contents/MacOS/ghostty" "${AP_SOFT_DIR}/bin/ghostty"
 
@@ -62,6 +76,18 @@ ap_func_create_dirstruct_ghostty() {
             fi
         fi
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+        if [ -f "${HOME}/scripto-common/vendors/ghostty/share/linux/bash-completion/completions/ghostty.bash" ]; then
+            aplogshow "Create symlink from [${AP_COMPLETIONS_DIR}/ap_completion_ghostty.bash] to [${HOME}/scripto-common/vendors/ghostty/share/linux/bash-completion/completions/ghostty.bash]\n"
+            rm -f "${AP_COMPLETIONS_DIR}/ap_completion_ghostty.bash" # Remove old completion if any
+            ln -sf "${HOME}/scripto-common/vendors/ghostty/share/linux/bash-completion/completions/ghostty.bash" "${AP_COMPLETIONS_DIR}/ap_completion_ghostty.bash"
+        fi
+
+        aplogshow "Create symlink from [${AP_MAN_DIR}/man1/ghostty.1] to [${HOME}/scripto-common/vendors/ghostty/share/linux/man/man1/ghostty.1]\n"
+        ln -sf "${HOME}/scripto-common/vendors/ghostty/share/linux/man/man1/ghostty.1" "${AP_MAN_DIR}/man1/ghostty.1"
+
+        aplogshow "Create symlink from [${AP_MAN_DIR}/man5/ghostty.5] to [${HOME}/scripto-common/vendors/ghostty/share/linux/man/man5/ghostty.5]\n"
+        ln -sf "${HOME}/scripto-common/vendors/ghostty/share/linux/man/man5/ghostty.5" "${AP_MAN_DIR}/man5/ghostty.5"
+
         if [ -f "${HOME}/scripto-common/vendors/ghostty/config.linux.env" ]; then
             if [ -d "${XDG_CONFIG_HOME}" ]; then
                 # aplogshow "Create symlink from [${XDG_CONFIG_HOME}/ghostty/config] to [${HOME}/scripto-common/vendors/ghostty/config.linux.env]\n"
@@ -96,6 +122,15 @@ alias aprmdirstructghostty="ap_func_rm_dirstruct_ghostty"
 ap_func_rm_dirstruct_ghostty() {
     aplogshow "Remove [${AP_SOFT_DIR}/bin/ghostty]\n"
     rm -f "${AP_SOFT_DIR}/bin/ghostty"
+
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_ghostty.bash]\n"
+    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_ghostty.bash"
+
+    aplogshow "Remove [${AP_MAN_DIR}/man1/ghostty.1]\n"
+    rm -f "${AP_MAN_DIR}/man1/ghostty.1"
+
+    aplogshow "Remove [${AP_MAN_DIR}/man5/ghostty.5]\n"
+    rm -f "${AP_MAN_DIR}/man5/ghostty.5"
 
     if alias aprmdirstructghosttyshare &>/dev/null; then
         aprmdirstructghosttyshare
@@ -136,16 +171,24 @@ ap_func_setup_ghostty() {
     cd ghostty
     zig build -Doptimize=ReleaseFast
 
-    # Update latest share files to common scripts ghostty vendor configs
-    if [ -d zig-out/share ]; then
-        rm -rf "${HOME}/scripto-common/vendors/ghostty/share"
-        cp -R zig-out/share "${HOME}/scripto-common/vendors/ghostty/"
-    fi
-
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        # Update latest share files to common scripts ghostty vendor configs
+        if [ -d zig-out/share ]; then
+            rm -rf "${HOME}/scripto-common/vendors/ghostty/share/macos"
+            cp -R zig-out/share "${HOME}/scripto-common/vendors/ghostty/share/"
+            mv "${HOME}/scripto-common/vendors/ghostty/share/share" "${HOME}/scripto-common/vendors/ghostty/share/macos"
+        fi
+
         cd macos && xcodebuild
         mv build/ReleaseLocal/Ghostty.app /Applications/
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+        # Update latest share files to common scripts ghostty vendor configs
+        if [ -d zig-out/share ]; then
+            rm -rf "${HOME}/scripto-common/vendors/ghostty/share/linux"
+            cp -R zig-out/share "${HOME}/scripto-common/vendors/ghostty/share/"
+            mv "${HOME}/scripto-common/vendors/ghostty/share/share" "${HOME}/scripto-common/vendors/ghostty/share/linux"
+        fi
+
         mv zig-out/bin/ghostty "${AP_SOFT_DIR}/bin/"
     fi
 
