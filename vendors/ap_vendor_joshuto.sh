@@ -36,28 +36,36 @@ ap_func_setup_joshuto() {
     # https://github.com/kamiyaa/joshuto
     aplogshow "Install [joshuto]\n"
 
-    # Remove old app dir if any
-    rm -rf "${AP_SOFT_DIR}/joshuto"
-    rm -rf "${AP_TMP_DIR}/joshuto"
+    # Failed to install joshto using the following command
+    # INSTALL_PREFIX="/usr/local/bin" bash <(curl -s https://raw.githubusercontent.com/kamiyaa/joshuto/master/utils/install.sh)
 
-    # Install joshuto
+    # Install manually
+    rm -rf "${AP_TMP_DIR}/joshuto"
     mkdir -p "${AP_TMP_DIR}/joshuto"
     cd "${AP_TMP_DIR}/joshuto"
 
-    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        curl -SL \
-            "$(curl --silent https://api.github.com/repos/kamiyaa/joshuto/releases | jq -r '.[0].assets[].browser_download_url' | grep "darwin" | grep x86_64 | grep -v sha256)" >joshuto.tar.gz
-    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        curl -SL \
-            "$(curl --silent https://api.github.com/repos/kamiyaa/joshuto/releases | jq -r '.[0].assets[].browser_download_url' | grep "linux" | grep x86_64 | grep -v sha256 | grep "musl")" >joshuto.tar.gz
-    fi
+    # Failed to install joshto using below way
+    # if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+    #     curl -SL \
+    #         "$(curl --silent https://api.github.com/repos/kamiyaa/joshuto/releases | jq -r '.[0].assets[].browser_download_url' | grep "darwin" | grep x86_64 | grep -v sha256)" >joshuto.tar.gz
+    # elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+    #     curl -SL \
+    #         "$(curl --silent https://api.github.com/repos/kamiyaa/joshuto/releases | jq -r '.[0].assets[].browser_download_url' | grep "linux" | grep x86_64 | grep -v sha256 | grep "musl")" >joshuto.tar.gz
+    # fi
 
-    tar -zxf joshuto.tar.gz
-    rm -f joshuto.tar.gz
-    mv joshuto* joshuto
-    mv joshuto/joshuto "${AP_SOFT_DIR}/bin/"
-    cd "${AP_SOFT_DIR}"
-    rm -rf "${AP_TMP_DIR}/joshuto"
+    # tar -zxf joshuto.tar.gz
+    # rm -f joshuto.tar.gz
+    # mv joshuto* joshuto
+    # mv joshuto/joshuto "${AP_SOFT_DIR}/bin/"
+
+    # Need to build source code
+    git clone https://github.com/kamiyaa/joshuto
+    cd joshuto
+    cargo build --release
+    mv target/release/joshuto "${AP_SOFT_DIR}/bin/"
+
+    cd "${AP_SOFT_DIR}/bin"
+    # rm -rf "${AP_TMP_DIR}/joshuto"
 
     apinitjoshuto
     if alias apcreatedirstructjoshuto &>/dev/null; then
@@ -69,7 +77,8 @@ alias aprmjoshuto="ap_func_rm_joshuto"
 ap_func_rm_joshuto() {
     aplogshow "Remove [joshuto]\n"
 
-    rm -f "${AP_SOFT_DIR}/bin/joshuto"
+    # rm -f "${AP_SOFT_DIR}/bin/joshuto"
+    sudo rm -f "/usr/local/bin/joshuto"
 
     if alias aprmdirstructjoshuto &>/dev/null; then
         aprmdirstructjoshuto
