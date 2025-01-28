@@ -18,7 +18,7 @@ ap_func_init_ghostty() {
             alias zghosttythemes="cd /Applications/Ghostty.app/Contents/Resources/ghostty/themes"
         fi
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        export GHOSTTY_RESOURCES_DIR="${HOME}/scripto-common/vendors/ghostty/share/ghostty"
+        export GHOSTTY_RESOURCES_DIR="${HOME}/scripto-common/vendors/ghostty/share/linux/ghostty"
 
         if [ -d "${XDG_CONFIG_HOME}" ]; then
             alias zghostty="cd \${XDG_CONFIG_HOME}/ghostty"
