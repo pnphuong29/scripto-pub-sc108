@@ -21,7 +21,7 @@ ap_func_create_dirstruct_syncthing() {
     ln -sf "${AP_SOFT_DIR}/syncthing/syncthing" "${AP_SOFT_DIR}/bin/syncthing"
 
     aplogshow "Generate [syncthing] bash autocomplete\n"
-    syncthing install-completions >"${AP_COMPLETIONS_DIR}/ap_completion_syncthing.bash"
+    printf "%s" "$(syncthing install-completions) st" >"${AP_COMPLETIONS_DIR}/ap_completion_syncthing.bash" # Add alias `st` for `syncthing`
 
     if alias apcreatedirstructsyncthingshare &>/dev/null; then
         apcreatedirstructsyncthingshare
