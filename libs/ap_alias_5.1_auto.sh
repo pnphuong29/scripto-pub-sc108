@@ -209,7 +209,7 @@ if [ ! -d "${HOME}/scripto-main/tests" ]; then
     mkdir -p "${HOME}/scripto-main/tests"
 fi
 
-for i in {1..7}; do
+for i in {1..14}; do
     eval "$(printf "%s" "alias visrtb${i}='vi ${HOME}/scripto-share/tests/ap_test_bash_${i}.sh'")"
     eval "$(printf "%s" "alias codesrtb${i}='code ${HOME}/scripto-share/tests/ap_test_bash_${i}.sh'")"
     eval "$(printf "%s" "alias zedsrtb${i}='zed ${HOME}/scripto-share/tests/ap_test_bash_${i}.sh'")"
@@ -226,7 +226,7 @@ for i in {1..7}; do
     eval "$(printf "%s" "alias runsmtb${i}='source ${HOME}/scripto-main/tests/ap_test_bash_${i}.sh'")"
 done
 
-for i in {1..7}; do
+for i in {1..14}; do
     eval "$(printf "%s" "alias visrtpy${i}='vi ${HOME}/scripto-share/tests/ap_test_py_${i}.py'")"
     eval "$(printf "%s" "alias codesrtpy${i}='code ${HOME}/scripto-share/tests/ap_test_py_${i}.py'")"
     eval "$(printf "%s" "alias zedsrtpy${i}='zed ${HOME}/scripto-share/tests/ap_test_py_${i}.py'")"
@@ -243,14 +243,14 @@ for i in {1..7}; do
     eval "$(printf "%s" "alias runsmtpy${i}='python ${HOME}/scripto-main/tests/ap_test_py_${i}.py'")"
 done
 
-for i in {1..10}; do
+for i in {1..14}; do
     eval "$(printf "%s" "alias videvpy${i}='vi ${AP_PRJ_DEV1_DIR}/py/test_py_${i}.py'")"
     eval "$(printf "%s" "alias codedevpy${i}='code ${AP_PRJ_DEV1_DIR}/py/test_py_${i}.py'")"
     eval "$(printf "%s" "alias zeddevpy${i}='zed ${AP_PRJ_DEV1_DIR}/py/test_py_${i}.py'")"
     eval "$(printf "%s" "alias rundevpy${i}='python ${AP_PRJ_DEV1_DIR}/py/test_py_${i}.py'")"
 done
 
-for i in {1..10}; do
+for i in {1..14}; do
     eval "$(printf "%s" "alias videvts${i}='vi ${AP_PRJ_DEV1_DIR}/ts/test_ts_${i}.ts'")"
     eval "$(printf "%s" "alias codedevts${i}='code ${AP_PRJ_DEV1_DIR}/ts/test_ts_${i}.ts'")"
     eval "$(printf "%s" "alias zeddevts${i}='zed ${AP_PRJ_DEV1_DIR}/ts/test_ts_${i}.ts'")"
