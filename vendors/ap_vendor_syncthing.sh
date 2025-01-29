@@ -17,6 +17,9 @@ ap_func_init_syncthing() {
 
 alias apcreatedirstructsyncthing="ap_func_create_dirstruct_syncthing"
 ap_func_create_dirstruct_syncthing() {
+    aplogshow "Create symlink from [${AP_SOFT_DIR}/bin/syncthing] to [${AP_SOFT_DIR}/syncthing/syncthing]\n"
+    ln -sf "${AP_SOFT_DIR}/syncthing/syncthing" "${AP_SOFT_DIR}/bin/syncthing"
+
     aplogshow "Generate [syncthing] bash autocomplete\n"
     syncthing install-completions >"${AP_COMPLETIONS_DIR}/ap_completion_syncthing.bash"
 
@@ -24,9 +27,6 @@ ap_func_create_dirstruct_syncthing() {
     #     aplogshow "Create symlink from [${HOME}/.config/syncthing/bindings.json] to [${HOME}/scripto-share/vendors/syncthing/bindings.json]\n"
     #     ln -sf "${HOME}/scripto-share/vendors/syncthing/bindings.json" "${HOME}/.config/syncthing/bindings.json"
     # fi
-
-    aplogshow "Create symlink from [${AP_SOFT_DIR}/bin/syncthing] to [${AP_SOFT_DIR}/syncthing/syncthing]\n"
-    ln -sf "${AP_SOFT_DIR}/syncthing/syncthing" "${AP_SOFT_DIR}/bin/syncthing"
 
     # aplogshow "Create symlink from [${AP_COMPLETIONS_DIR}/ap_completion_syncthing.bash] to [${AP_SOFT_DIR}/syncthing/complete/syncthing.bash]\n"
     # ln -sf "${AP_SOFT_DIR}/syncthing/autocomplete/syncthing.bash" "${AP_COMPLETIONS_DIR}/ap_completion_syncthing.bash"
