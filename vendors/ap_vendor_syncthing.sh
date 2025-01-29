@@ -95,10 +95,10 @@ ap_func_setup_syncthing() {
         fi
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         curl -SL \
-            "$(curl --silent "https://api.github.com/repos/syncthing/syncthing/releases" | jq -r '.[0].assets[].browser_download_url' | grep "linux" | grep "amd64")" >syncthing.zip
+            "$(curl --silent "https://api.github.com/repos/syncthing/syncthing/releases" | jq -r '.[0].assets[].browser_download_url' | grep "linux" | grep "amd64")" >syncthing.tar.gz
     fi
 
-    unzip syncthing.zip
+    tar -zxf syncthing.tar.gz
     mv syncthing-* syncthing
     mv syncthing "${AP_SOFT_DIR}/"
 
