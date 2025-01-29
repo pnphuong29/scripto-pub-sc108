@@ -157,8 +157,7 @@ ap_func_setup_xxx() {
         cd "/Applications"
 
         hdiutil attach -nobrowse xxx.dmg
-        cd "/Volumes/xxx"
-        cp -R "xxx.app" /Applications/
+        cp -R "/Volumes/xxx/xxx.app" /Applications/
         cd /Applications
         hdiutil detach "/Volumes/xxx"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
