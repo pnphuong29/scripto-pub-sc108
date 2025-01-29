@@ -23,47 +23,6 @@ ap_func_create_dirstruct_syncthing() {
     aplogshow "Generate [syncthing] bash autocomplete\n"
     syncthing install-completions >"${AP_COMPLETIONS_DIR}/ap_completion_syncthing.bash"
 
-    # if [ -f "${HOME}/scripto-share/vendors/syncthing/bindings.json" ]; then
-    #     aplogshow "Create symlink from [${HOME}/.config/syncthing/bindings.json] to [${HOME}/scripto-share/vendors/syncthing/bindings.json]\n"
-    #     ln -sf "${HOME}/scripto-share/vendors/syncthing/bindings.json" "${HOME}/.config/syncthing/bindings.json"
-    # fi
-
-    # aplogshow "Create symlink from [${AP_COMPLETIONS_DIR}/ap_completion_syncthing.bash] to [${AP_SOFT_DIR}/syncthing/complete/syncthing.bash]\n"
-    # ln -sf "${AP_SOFT_DIR}/syncthing/autocomplete/syncthing.bash" "${AP_COMPLETIONS_DIR}/ap_completion_syncthing.bash"
-
-    # aplogshow "Create symlink from [${AP_MAN_DIR}/man1/syncthing.1] to [${AP_SOFT_DIR}/syncthing/syncthing.1]\n"
-    # ln -sf "${AP_SOFT_DIR}/syncthing/syncthing.1" "${AP_MAN_DIR}/man1/syncthing.1"
-
-    # if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-    #     if [ -f "${HOME}/scripto-common/vendors/syncthing/config.mac.env" ]; then
-    #         if [ -d "${XDG_CONFIG_HOME}" ]; then
-    #             mkdir -p "${XDG_CONFIG_HOME}/syncthing"
-    #             ln -sf "${HOME}/scripto-common/vendors/syncthing/config.base.env" "${XDG_CONFIG_HOME}/syncthing/config.base.env"
-    #             ln -sf "${HOME}/scripto-common/vendors/syncthing/config.key.mac.env" "${XDG_CONFIG_HOME}/syncthing/config.key.mac.env"
-    #             ln -sf "${HOME}/scripto-common/vendors/syncthing/config.mac.env" "${XDG_CONFIG_HOME}/syncthing/config"
-    #         else
-    #             mkdir -p "${HOME}/Library/Application Support/com.mitchellh.syncthing"
-    #             ln -sf "${HOME}/scripto-common/vendors/syncthing/config.base.env" "${HOME}/Library/Application Support/com.mitchellh.syncthing/config.base.env"
-    #             ln -sf "${HOME}/scripto-common/vendors/syncthing/config.key.mac.env" "${HOME}/Library/Application Support/com.mitchellh.syncthing/config.key.mac.env"
-    #             ln -sf "${HOME}/scripto-common/vendors/syncthing/config.mac.env" "${HOME}/Library/Application Support/com.mitchellh.syncthing/config"
-    #         fi
-    #     fi
-    # elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-    #     if [ -f "${HOME}/scripto-common/vendors/syncthing/config.linux.env" ]; then
-    #         if [ -d "${XDG_CONFIG_HOME}" ]; then
-    #             mkdir -p "${XDG_CONFIG_HOME}/syncthing"
-    #             ln -sf "${HOME}/scripto-common/vendors/syncthing/config.base.env" "${XDG_CONFIG_HOME}/syncthing/config.base.env"
-    #             ln -sf "${HOME}/scripto-common/vendors/syncthing/config.key.linux.env" "${XDG_CONFIG_HOME}/syncthing/config.key.linux.env"
-    #             ln -sf "${HOME}/scripto-common/vendors/syncthing/config.linux.env" "${XDG_CONFIG_HOME}/syncthing/config"
-    #         else
-    #             mkdir -p "${HOME}/.config/syncthing"
-    #             ln -sf "${HOME}/scripto-common/vendors/syncthing/config.base.env" "${HOME}/.config/syncthing/config.base.env"
-    #             ln -sf "${HOME}/scripto-common/vendors/syncthing/config.key.linux.env" "${HOME}/.config/syncthing/config.key.linux.env"
-    #             ln -sf "${HOME}/scripto-common/vendors/syncthing/config.linux.env" "${HOME}/.config/syncthing/config"
-    #         fi
-    #     fi
-    # fi
-
     if alias apcreatedirstructsyncthingshare &>/dev/null; then
         apcreatedirstructsyncthingshare
     fi
@@ -79,9 +38,6 @@ ap_func_create_dirstruct_syncthing() {
 
 alias aprmdirstructsyncthing="ap_func_rm_dirstruct_syncthing"
 ap_func_rm_dirstruct_syncthing() {
-    aplogshow "Remove [${HOME}/.config/syncthing/]\n"
-    rm -f "${HOME}/.config/syncthing/"
-
     aplogshow "Remove [${AP_SOFT_DIR}/bin/syncthing]\n"
     rm -f "${AP_SOFT_DIR}/bin/syncthing"
 

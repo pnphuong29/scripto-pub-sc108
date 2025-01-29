@@ -221,9 +221,10 @@ ap_func_rm_xxx() {
         rm -rf "/Applications/xxx"
         brew remove --cask xxx
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        sudo apt purge -y xxx
+        sudo apt-get remove --purge -y xxx
         sudo snap remove --purge xxx
         sudo dpkg --purge xxx
+        sudo apt-get autoremove --purge -y
     fi
 
     if alias aprmdirstructxxx &>/dev/null; then

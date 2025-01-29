@@ -1,6 +1,6 @@
 alias apinitsyncthingapp="ap_func_init_syncthingapp"
 ap_func_init_syncthingapp() {
-    alias zsyncthingapp="cd /Applications/Syncthing.app/Contents/MacOS"
+    alias zsyncthingapp="cd /Applications/Syncthing.app/Contents/Resources/syncthing"
 
     if alias apinitsyncthingappshare &>/dev/null; then
         apinitsyncthingappshare
@@ -90,12 +90,17 @@ ap_func_setup_syncthingapp() {
 
 alias aprmsyncthingapp="ap_func_rm_syncthingapp"
 ap_func_rm_syncthingapp() {
-    aplogshow "Remove [syncthingapp]\n"
+    aplogshow "Remove [syncthing gui app]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         rm -rf "/Applications/Syncthing.app"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        sudo apt purge -y syncthing
+        sudo apt-get remove --purge -y syncthing
+        sudo rm -f /etc/apt/sources.list.d/syncthing.list
+        sudo rm -f /etc/apt/keyrings/syncthing-archive-keyring.gpg
+        sudo rm -f /etc/apt/preferences.d/syncthing.pref
+        sudo apt-get update
+        sudo apt-get autoremove --purge -y
     fi
 
     if alias aprmdirstructsyncthingapp &>/dev/null; then
