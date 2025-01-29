@@ -1,6 +1,11 @@
 alias apinitxxx="ap_func_init_xxx"
 ap_func_init_xxx() {
     export AP_XXX_SETUP_VERSION=''
+
+    alias zxxx="cd /Applications/xxx.app/Contents/MacOS"
+    alias zxxx="cd \${HOME}/.xxx"
+    alias zxxx="cd \${HOME}/.config/xxx"
+
     if alias apinitxxxshare &>/dev/null; then
         apinitxxxshare
     fi

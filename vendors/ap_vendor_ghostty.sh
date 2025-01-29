@@ -152,6 +152,22 @@ ap_func_rm_dirstruct_ghostty() {
     fi
 }
 
+alias apcreateglobalsymlinkghostty="ap_func_create_global_symlink_ghostty"
+ap_func_create_global_symlink_ghostty() {
+    if [ -f "${AP_SOFT_DIR}/bin/ghostty" ]; then
+        aplogshow "Create symlink from [/usr/local/bin/ghostty] to [${AP_SOFT_DIR}/bin/ghostty]\n"
+        sudo ln -sf "${AP_SOFT_DIR}/bin/ghostty" "/usr/local/bin/ghostty"
+    fi
+}
+
+alias aprmglobalsymlinkghostty="ap_func_rm_global_symlink_ghostty"
+ap_func_rm_global_symlink_ghostty() {
+    if [ -f "/usr/local/bin/ghostty" ]; then
+        aplogshow "Remove [/usr/local/bin/ghostty]\n"
+        sudo rm -f "/usr/local/bin/ghostty"
+    fi
+}
+
 alias apsetupghostty="ap_func_setup_ghostty"
 ap_func_setup_ghostty() {
     aplogshow "Install [ghostty]\n"
@@ -202,6 +218,8 @@ ap_func_setup_ghostty() {
     cd "${AP_SOFT_DIR}/bin"
 
     apinitghostty
+    apcreateglobalsymlinkghostty
+
     if alias apcreatedirstructghostty &>/dev/null; then
         apcreatedirstructghostty
     fi

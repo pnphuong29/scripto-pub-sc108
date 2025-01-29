@@ -16,12 +16,6 @@ alias zsm="cd \${HOME}/scripto-main"
 alias zsr="cd \${HOME}/scripto-share"
 alias zsdata="cd \${HOME}/scripto-data"
 
-# alias zgsc="cd /scripto-common"
-# alias zgsm="cd /scripto-main"
-# alias zgsr="cd /scripto-share"
-# alias zgsdata="cd /scripto-data"
-# alias zglogs="cd /scripto-data/logs"
-
 alias zdata="cd \${AP_DATA_DIR}"
 alias zwww="cd \${AP_WWW_DIR}"
 alias zwww2="cd \${AP_WWW_DIR}/www"
@@ -30,6 +24,7 @@ alias zwwwtmp="cd \${AP_WWW_DIR}/tmp"
 
 # Aliases - CD - Linux
 alias zlocalshare="cd \${HOME}/.local/share"
+alias zlocalstate="cd \${HOME}/.local/state"
 alias zdesktopshortcuts="cd \${HOME}/.local/share/applications"
 alias zconfig="cd \${HOME}/.config"
 alias zautostart="cd \${HOME}/.config/autostart"

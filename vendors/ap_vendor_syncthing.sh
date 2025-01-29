@@ -1,5 +1,7 @@
 alias apinitsyncthing="ap_func_init_syncthing"
 ap_func_init_syncthing() {
+    alias zsyncthing="cd \${AP_SOFT_DIR}/syncthing"
+
     if alias apinitsyncthingshare &>/dev/null; then
         apinitsyncthingshare
     fi

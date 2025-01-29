@@ -1,5 +1,7 @@
 alias apinitsyncthingapp="ap_func_init_syncthingapp"
 ap_func_init_syncthingapp() {
+    alias zsyncthingapp="cd /Applications/Syncthing.app/Contents/MacOS"
+
     if alias apinitsyncthingappshare &>/dev/null; then
         apinitsyncthingappshare
     fi
