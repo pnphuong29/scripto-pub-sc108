@@ -72,7 +72,11 @@ ap_func_setup_github_cli() {
     mv gh* github-cli
     mv github-cli "${AP_SOFT_DIR}/"
     cd "${AP_SOFT_DIR}"
-    rm -rf "${AP_TMP_DIR}/github-cli"
+    # rm -rf "${AP_TMP_DIR}/github-cli"
+
+    # Install GitHub cli extensions
+    aplogshow "Install GitHub cli extensions\n"
+    gh extension install github/gh-copilot
 
     apinitgithubcli
     if alias apcreatedirstructgithubcli &>/dev/null; then

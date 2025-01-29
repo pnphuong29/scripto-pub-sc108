@@ -211,40 +211,48 @@ fi
 
 for i in {1..7}; do
     eval "$(printf "%s" "alias visrtb${i}='vi ${HOME}/scripto-share/tests/ap_test_bash_${i}.sh'")"
+    eval "$(printf "%s" "alias codesrtb${i}='code ${HOME}/scripto-share/tests/ap_test_bash_${i}.sh'")"
     eval "$(printf "%s" "alias zedsrtb${i}='zed ${HOME}/scripto-share/tests/ap_test_bash_${i}.sh'")"
     eval "$(printf "%s" "alias runsrtb${i}='source ${HOME}/scripto-share/tests/ap_test_bash_${i}.sh'")"
 
     eval "$(printf "%s" "alias visctb${i}='vi ${HOME}/scripto-common/tests/ap_test_bash_${i}.sh'")"
+    eval "$(printf "%s" "alias codesctb${i}='code ${HOME}/scripto-common/tests/ap_test_bash_${i}.sh'")"
     eval "$(printf "%s" "alias zedsctb${i}='zed ${HOME}/scripto-common/tests/ap_test_bash_${i}.sh'")"
     eval "$(printf "%s" "alias runsctb${i}='source ${HOME}/scripto-common/tests/ap_test_bash_${i}.sh'")"
 
     eval "$(printf "%s" "alias vismtb${i}='vi ${HOME}/scripto-main/tests/ap_test_bash_${i}.sh'")"
+    eval "$(printf "%s" "alias codesmtb${i}='code ${HOME}/scripto-main/tests/ap_test_bash_${i}.sh'")"
     eval "$(printf "%s" "alias zedsmtb${i}='zed ${HOME}/scripto-main/tests/ap_test_bash_${i}.sh'")"
     eval "$(printf "%s" "alias runsmtb${i}='source ${HOME}/scripto-main/tests/ap_test_bash_${i}.sh'")"
 done
 
 for i in {1..7}; do
     eval "$(printf "%s" "alias visrtpy${i}='vi ${HOME}/scripto-share/tests/ap_test_py_${i}.py'")"
+    eval "$(printf "%s" "alias codesrtpy${i}='code ${HOME}/scripto-share/tests/ap_test_py_${i}.py'")"
     eval "$(printf "%s" "alias zedsrtpy${i}='zed ${HOME}/scripto-share/tests/ap_test_py_${i}.py'")"
     eval "$(printf "%s" "alias runsrtpy${i}='source ${HOME}/scripto-share/tests/ap_test_py_${i}.py'")"
 
     eval "$(printf "%s" "alias visctpy${i}='vi ${HOME}/scripto-common/tests/ap_test_py_${i}.py'")"
+    eval "$(printf "%s" "alias codesctpy${i}='code ${HOME}/scripto-common/tests/ap_test_py_${i}.py'")"
     eval "$(printf "%s" "alias zedsctpy${i}='zed ${HOME}/scripto-common/tests/ap_test_py_${i}.py'")"
     eval "$(printf "%s" "alias runsctpy${i}='python ${HOME}/scripto-common/tests/ap_test_py_${i}.py'")"
 
     eval "$(printf "%s" "alias vismtpy${i}='vi ${HOME}/scripto-main/tests/ap_test_py_${i}.py'")"
+    eval "$(printf "%s" "alias codesmtpy${i}='code ${HOME}/scripto-main/tests/ap_test_py_${i}.py'")"
     eval "$(printf "%s" "alias zedsmtpy${i}='zed ${HOME}/scripto-main/tests/ap_test_py_${i}.py'")"
     eval "$(printf "%s" "alias runsmtpy${i}='python ${HOME}/scripto-main/tests/ap_test_py_${i}.py'")"
 done
 
 for i in {1..10}; do
     eval "$(printf "%s" "alias videvpy${i}='vi ${AP_PRJ_DEV1_DIR}/py/test_py_${i}.py'")"
+    eval "$(printf "%s" "alias codedevpy${i}='code ${AP_PRJ_DEV1_DIR}/py/test_py_${i}.py'")"
     eval "$(printf "%s" "alias zeddevpy${i}='zed ${AP_PRJ_DEV1_DIR}/py/test_py_${i}.py'")"
     eval "$(printf "%s" "alias rundevpy${i}='python ${AP_PRJ_DEV1_DIR}/py/test_py_${i}.py'")"
 done
 
 for i in {1..10}; do
     eval "$(printf "%s" "alias videvts${i}='vi ${AP_PRJ_DEV1_DIR}/ts/test_ts_${i}.ts'")"
+    eval "$(printf "%s" "alias codedevts${i}='code ${AP_PRJ_DEV1_DIR}/ts/test_ts_${i}.ts'")"
     eval "$(printf "%s" "alias zeddevts${i}='zed ${AP_PRJ_DEV1_DIR}/ts/test_ts_${i}.ts'")"
     eval "$(printf "%s" "alias rundevts${i}='source ${AP_PRJ_DEV1_DIR}/ts/test_ts_${i}.ts'")"
 done

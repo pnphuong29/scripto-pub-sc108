@@ -12,6 +12,8 @@ ap_func_init_brew() {
     #     fi
     # fi
 
+    alias brewcleanup="brew cleanup"
+
     if alias apinitbrewshare &>/dev/null; then
         apinitbrewshare
     fi

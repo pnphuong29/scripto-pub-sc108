@@ -53,6 +53,16 @@ ap_func_setup_xcode() {
 
         # Configure your iOS simulator
         # xcodebuild -downloadPlatform iOS
+
+        # Install GitHub Copilot
+        aplogshow "Install GitHub Copilot extension\n"
+        # brew install --cask github-copilot-for-xcode # if no choice then use this method to install
+        curl -SL "https://github.com/github/CopilotForXcode/releases/latest/download/GitHubCopilotForXcode.dmg" >"${AP_TMP_DIR}/GitHubCopilotForXcode.dmg"
+        cd "${AP_TMP_DIR}"
+        hdiutil attach -nobrowse GitHubCopilotForXcode.dmg
+        cp -R "/Volumes/GitHub Copilot for Xcode/GitHub Copilot for Xcode.app" "/Applications/"
+        hdiutil detach "/Volumes/GitHub Copilot for Xcode"
+        # rm -f GitHubCopilotForXcode.dmg
     fi
 
     apinitxcode

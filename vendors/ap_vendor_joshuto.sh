@@ -11,6 +11,9 @@ ap_func_init_joshuto() {
 
 alias apcreatedirstructjoshuto="ap_func_create_dirstruct_joshuto"
 ap_func_create_dirstruct_joshuto() {
+    aplogshow "Generate [joshuto] bash autocomplete\n"
+    joshuto completions bash >"${AP_COMPLETIONS_DIR}/ap_completion_joshuto.bash"
+
     if alias apcreatedirstructjoshutoshare &>/dev/null; then
         apcreatedirstructjoshutoshare
     fi
@@ -22,6 +25,9 @@ ap_func_create_dirstruct_joshuto() {
 
 alias aprmdirstructjoshuto="ap_func_rm_dirstruct_joshuto"
 ap_func_rm_dirstruct_joshuto() {
+    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_joshuto.bash]\n"
+    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_joshuto.bash"
+
     if alias aprmdirstructjoshutoshare &>/dev/null; then
         aprmdirstructjoshutoshare
     fi
@@ -77,8 +83,7 @@ alias aprmjoshuto="ap_func_rm_joshuto"
 ap_func_rm_joshuto() {
     aplogshow "Remove [joshuto]\n"
 
-    # rm -f "${AP_SOFT_DIR}/bin/joshuto"
-    sudo rm -f "/usr/local/bin/joshuto"
+    rm -f "${AP_SOFT_DIR}/bin/joshuto"
 
     if alias aprmdirstructjoshuto &>/dev/null; then
         aprmdirstructjoshuto
