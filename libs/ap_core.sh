@@ -15,7 +15,7 @@ alias apshowmsgcyan='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_CYAN}" --'
 alias apshowmsgmagenta='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_MAGENTA}" --'
 
 alias apshowmsginfo="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_GREEN} --"
-alias apshowmsgerr="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_RED} --"
+alias apshowmsgerror="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_RED} --"
 alias apshowmsgwarn="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_YELLOW} --"
 alias apshowmsglog="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_CYAN} --"
 # @$func $$ ap_func_show_msg {
@@ -211,20 +211,12 @@ ap_func_show_symbols() {
 }
 
 alias aplog='ap_func_log_msg "general" 0 "apshowmsggreen"'
-alias aplogerr='ap_func_log_msg "error" 0 "apshowmsgred"'
-alias aplogdbg='ap_func_log_msg "debug" 0 "apshowmsgyellow"'
-
-alias aplogln='ap_func_log_msg "general" 0 "apshowmsggreen" "\n"'
-alias aplogerrln='ap_func_log_msg "error" 0 "apshowmsgred" "\n"'
-alias aplogdbgln='ap_func_log_msg "debug" 0 "apshowmsgyellow" "\n"'
+alias aplogerror='ap_func_log_msg "error" 0 "apshowmsgred"'
+alias aplogdebug='ap_func_log_msg "debug" 0 "apshowmsgyellow"'
 
 alias aplogshow='ap_func_log_msg "general" 1 "apshowmsggreen"'
-alias aplogshowerr='ap_func_log_msg "error" 1 "apshowmsgred"'
-alias aplogshowdbg='ap_func_log_msg "debug" 1 "apshowmsgyellow"'
-
-alias aplogshowln='ap_func_log_msg "general" 1 "apshowmsggreen" "\n"'
-alias aplogshowerrln='ap_func_log_msg "error" 1 "apshowmsgred" "\n"'
-alias aplogshowdbgln='ap_func_log_msg "debug" 1 "apshowmsgyellow" "\n"'
+alias aplogshowerror='ap_func_log_msg "error" 1 "apshowmsgred"'
+alias aplogshowdebug='ap_func_log_msg "debug" 1 "apshowmsgyellow"'
 
 alias aplogshow='ap_func_log_msg "general" 1 "apshowmsggreen"'
 alias aplogshowpassed='ap_func_log_msg -p "${AP_SYM_PASSED} " -- "general" 1 "apshowmsggreen"'
@@ -345,6 +337,11 @@ ap_func_add_path_var() {
         aprtn_err_missing_argument
     fi
 
+    if [ ! -d "${ap_path}" ]; then
+        # apshowmsgwarn "Path [${ap_path}] does not exist!\n"
+        aprtn_err_file_not_found
+    fi
+
     local ap_ref_path="PATH"
     if [ "${ap_opt_manpath}" == 1 ]; then
         ap_ref_path="MANPATH"
@@ -356,14 +353,20 @@ ap_func_add_path_var() {
     echo "${!ap_ref_path}" | grep ":${ap_path}$" &>/dev/null && ap_grep_matched=1
     echo "${!ap_ref_path}" | grep ":${ap_path}:" &>/dev/null && ap_grep_matched=1
 
-    if [ "${ap_grep_matched}" == 1 ]; then
-        # apshowmsgwarn "${ap_path} already existed in ${ap_ref_path} variable!\n"
-        aprtn_existed
-    fi
+    # Exit if ap_path already existed in ap_ref_path
+    # if [ "${ap_grep_matched}" == 1 ]; then
+    #     # apshowmsgwarn "${ap_path} already existed in ${ap_ref_path} variable!\n"
+    #     aprtn_existed
+    # fi
 
-    if [ ! -d "${ap_path}" ]; then
-        # apshowmsgwarn "Path [${ap_path}] does not exist!\n"
-        aprtn_err_file_not_found
+    # Remove all occurrences of ap_path in ap_ref_path
+    # This to make sure there is only one occurrence of ap_path in ap_ref_path after prepending or appending
+    if [ "${ap_grep_matched}" == 1 ]; then
+        local ap_ref_path_new
+        ap_ref_path_new="$(printf "%s" "${!ap_ref_path}" | gsed "s@:${ap_path}@@g" | gsed "s@${ap_path}:@@g" | gsed "s@:${ap_path}:@@g")"
+        # aplogdebug "Old ref path = [${!ap_ref_path}\n\n]"
+        eval "$(printf "%s" "export ${ap_ref_path}=${ap_ref_path_new}")"
+        # aplogdebug "New ref path = [${ap_ref_path_new}\n]"
     fi
 
     if [ "${ap_opt_append}" == 0 ]; then

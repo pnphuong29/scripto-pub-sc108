@@ -163,7 +163,7 @@ ap_func_nvim_bulk_edit() {
         ap_input_files=("$@")
     fi
 
-    aplogdbg "Input files = [${ap_input_files[*]}]\n"
+    # aplogdebug "Input files = [${ap_input_files[*]}]\n"
 
     local ap_cmd
     local ap_file
@@ -194,9 +194,9 @@ ap_func_nvim_bulk_edit() {
     done
 
     if [[ -n "${ap_cmd}" ]]; then
-        local ap_log_msg
-        ap_log_msg="$(echo "${ap_cmd}" | gsed "s@ @\n@g")"
-        aplogdbg "\nvi -p${ap_log_msg}\n"
+        # local ap_log_msg
+        # ap_log_msg="$(echo "${ap_cmd}" | gsed "s@ @\n@g")"
+        # aplogdebug "\nvi -p${ap_log_msg}\n"
         eval "$(printf "%s" "vi -p${ap_cmd}")"
     fi
 }

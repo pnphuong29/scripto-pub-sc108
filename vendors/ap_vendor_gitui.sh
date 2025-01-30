@@ -1,5 +1,7 @@
 alias apinitgitui="ap_func_init_gitui"
 ap_func_init_gitui() {
+    alias g='gitui'
+
     if alias apinitgituishare &>/dev/null; then
         apinitgituishare
     fi

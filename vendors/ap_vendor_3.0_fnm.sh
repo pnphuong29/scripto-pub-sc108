@@ -104,7 +104,7 @@ ap_func_setup_fnm() {
 alias aprmfnm="ap_func_rm_fnm"
 ap_func_rm_fnm() {
     aplogshow "Remove [fnm]\n"
-    cargo remove fnm
+    cargo uninstall fnm
 
     if alias aprmdirstructfnm &>/dev/null; then
         aprmdirstructfnm

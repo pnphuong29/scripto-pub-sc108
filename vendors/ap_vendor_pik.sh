@@ -71,7 +71,7 @@ ap_func_setup_pik() {
 
 alias aprmpik="ap_func_rm_pik"
 ap_func_rm_pik() {
-    cargo remove pik
+    cargo uninstall pik
 
     if alias aprmdirstructpik &>/dev/null; then
         aprmdirstructpik

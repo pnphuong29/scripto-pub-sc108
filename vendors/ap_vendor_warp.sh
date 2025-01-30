@@ -2,15 +2,6 @@ alias apinitwarp="ap_func_init_warp"
 ap_func_init_warp() {
     export AP_WARP_VERSION='v0.2025.01.22.08.02'
 
-    if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
-        alias zwarpconf="cd \${HOME}/.warp"
-    elif [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]]; then
-        alias zwarpconf="cd \${HOME}/.config/warp-terminal"
-    fi
-
-    alias zwarpshare="cd \${HOME}/.local/share/warp"
-    alias zwarpstate="cd \${HOME}/.local/state/warp"
-
     if alias apinitwarpshare &>/dev/null; then
         apinitwarpshare
     fi
@@ -45,7 +36,7 @@ ap_func_rm_dirstruct_warp() {
 alias apsetupwarp="ap_func_setup_warp"
 ap_func_setup_warp() {
     # https://www.warp.dev/
-    aplogshow "Install [Warp]\n"
+    aplogshow "Install [Warp v${AP_WARP_VERSION}]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         # brew install --cask warp # Error when install using this way
@@ -61,8 +52,8 @@ ap_func_setup_warp() {
         sudo dpkg -i warp.deb
     fi
 
-    cd ~
-    rm -rf "${AP_TMP_DIR}/warp"
+    # cd ~
+    # rm -rf "${AP_TMP_DIR}/warp"
 
     apinitwarp
     if alias apcreatedirstructwarp &>/dev/null; then

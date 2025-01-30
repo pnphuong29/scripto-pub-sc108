@@ -221,7 +221,7 @@ ap_func_ripgrep() {
 
     # Implementation
     local ap_search_string="$*"
-    [ -z "${ap_search_string}" ] && apshowmsgerr "Missing <search_string>\n" && aprtn_err_missing_argument
+    [ -z "${ap_search_string}" ] && apshowmsgerror "Missing <search_string>\n" && aprtn_err_missing_argument
 
     if [ ${ap_opt_c} -eq 0 ]; then
         ap_cmd="${ap_cmd} --smart-case"

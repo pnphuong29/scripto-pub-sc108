@@ -64,7 +64,8 @@ ap_func_setup_nginx() {
     aplogshow "Install [nginx]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        brew install nginx
+        # brew install nginx
+        sudo port install nginx
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         # Install required libraries
         aplogshow "Install required libraries [curl, gnupg2, ca-certificates, lsb-release, ubuntu-keyring]\n"

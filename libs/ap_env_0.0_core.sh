@@ -22,11 +22,12 @@ if type brew &>/dev/null; then
     PATH="$(brew --prefix)/sbin:${PATH}"
     export PATH
 fi
+
 export PATH="${HOME}/.local/bin:${PATH}"
 export PATH="${HOME}/bin:${PATH}"
 
 # Turn on/off debug mode (for writing to debug log files)
-export AP_LOGS_DEBUG_ENABLED=0
+export AP_LOGS_DEBUG_ENABLED=1
 
 # Enable/disable error messages in [getopts] command
 # export OPTERR=0
@@ -44,3 +45,6 @@ export AP_UID
 
 AP_GID="$(id -g)"
 export AP_GID
+
+# Common editors
+export AP_EDITOR_ARR=("vi" "code" "zed")

@@ -30,3 +30,5 @@ export AP_PRJ_DIR="${HOME}/scripto-data/projects"
 
 # Tmp
 export AP_TMP_DIR="${HOME}/scripto-data/tmp"
+
+export PATH="${AP_SOFT_DIR}/bin:${PATH}"

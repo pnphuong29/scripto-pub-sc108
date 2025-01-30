@@ -74,7 +74,7 @@ ap_func_setup_glim() {
 alias aprmglim="ap_func_rm_glim"
 ap_func_rm_glim() {
     aplogshow "Remove [glim]\n"
-    cargo remove glim
+    cargo uninstall glim
 
     if alias aprmdirstructglim &>/dev/null; then
         aprmdirstructglim

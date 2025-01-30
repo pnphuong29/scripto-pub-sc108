@@ -81,7 +81,7 @@ ap_func_rm_uv() {
     rm -r "$(uv tool dir)"
     rm -f "${HOME}/.local/bin/uv"
     rm -f "${HOME}/.local/bin/uvx"
-    # cargo remove uv
+    # cargo uninstall uv
     # pipx uninstall uv
 
     if alias aprmdirstructuv &>/dev/null; then

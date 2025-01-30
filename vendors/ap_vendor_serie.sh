@@ -1,7 +1,5 @@
 alias apinitserie="ap_func_init_serie"
 ap_func_init_serie() {
-    alias seriek='serie --protocol kitty'
-
     if alias apinitserieshare &>/dev/null; then
         apinitserieshare
     fi
@@ -61,7 +59,7 @@ alias aprmserie="ap_func_rm_serie"
 ap_func_rm_serie() {
     aplogshow "Remove [serie]\n"
 
-    cargo remove serie
+    cargo uninstall serie
 
     if alias aprmdirstructserie &>/dev/null; then
         aprmdirstructserie

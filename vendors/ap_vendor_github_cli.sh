@@ -75,7 +75,7 @@ ap_func_setup_github_cli() {
     # rm -rf "${AP_TMP_DIR}/github-cli"
 
     # Install GitHub cli extensions
-    aplogshow "Install GitHub cli extensions\n"
+    aplogshow "Install GitHub Cli Extensions\n"
     gh extension install github/gh-copilot
 
     apinitgithubcli

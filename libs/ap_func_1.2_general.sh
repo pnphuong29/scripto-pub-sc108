@@ -217,7 +217,7 @@ ap_func_chmod() {
             ap_opt_r=1
             ;;
         ?)
-            apshowmsgerr "Invalid option [${OPTARG}]"
+            apshowmsgerror "Invalid option [${OPTARG}]"
             reterr_opt_invalid_option
             ;;
         esac
@@ -232,7 +232,7 @@ ap_func_chmod() {
     local ap_default_path="${PWD}"
 
     if [[ $ap_opt_d = 1 && $ap_opt_f = 1 ]]; then
-        apshowmsgerr "Cannot have both options [d] and [f] at the same time!\n"
+        apshowmsgerror "Cannot have both options [d] and [f] at the same time!\n"
         @reterr_unknown
     fi
 

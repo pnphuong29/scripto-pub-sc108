@@ -73,7 +73,7 @@ ap_func_setup_rnr() {
 alias aprmrnr="ap_func_rm_rnr"
 ap_func_rm_rnr() {
     aplogshow "Remove [rnr]\n"
-    cargo remove rnr
+    cargo uninstall rnr
 
     if alias aprmdirstructrnr &>/dev/null; then
         aprmdirstructrnr

@@ -179,7 +179,7 @@ ap_func_init_turbo() {
 #     aplogshow "Remove [turbo] v${ap_turbo_remove_version}\n"
 
 #     aplogshow "Remove [turbo]\n"
-#     cargo remove turbo
+#     cargo uninstall turbo
 #     pip uninstall turbo
 #     npm uninstall -g turbo
 
