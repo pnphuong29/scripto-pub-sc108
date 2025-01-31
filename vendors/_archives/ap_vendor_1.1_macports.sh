@@ -20,6 +20,7 @@ ap_func_init_macports() {
 
     apaddpath "/opt/local/bin"
     apaddpath "/opt/local/sbin"
+    apaddpath -m /opt/local/share/man
 
     if [ -f "/opt/local/etc/profile.d/bash_completion.sh" ]; then
         source "/opt/local/etc/profile.d/bash_completion.sh"

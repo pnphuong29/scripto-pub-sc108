@@ -1,52 +1,123 @@
 # @#IMPORTANT - Changing the loading (sourcing) order of below files may cause unexpected results!!!
 
-# Load scripto common server environment variables
-if [ -d "${HOME}/scripto-common/libs" ]; then
-    while read -r ap_env; do
-        source "${ap_env}"
-    done < <(gfind "${HOME}/scripto-common/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | grep -v -e "7s" | sort)
+# Core functions
+alias showdeviceid="ap_func_get_device_id"
+ap_func_get_device_id() {
+    local ap_device_id=""
+    if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
+        ap_device_id="$(system_profiler SPHardwareDataType | grep 'Serial Number (system)' | cut -d: -f2 | gsed 's/ //g' | tr -d '\n')"
+    elif [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]]; then
+        ap_device_id="$(cat /etc/machine-id | tr -d '\n')"
+    fi
+    printf "%s" "${ap_device_id}"
+}
+
+alias showdevicename="ap_func_device_name"
+alias cpdevicename="ap_func_device_name | tr -d '\n' | apcopy"
+ap_func_device_name() {
+    local ap_device_id
+    local ap_device_name
+
+    ap_device_id="$(showdeviceid)"
+    # echo "ap_device_id = [${ap_device_id}]"
+
+    ap_device_name="$(grep "${ap_device_id}" ~/scripto-main/devices.env | cut -d= -f2 | tr -d '\n')"
+    if [ -n "${ap_device_name}" ]; then
+        echo "${ap_device_name}"
+    else
+        aplogerror "Device name not found"
+        aprtn_err_unknown
+    fi
+}
+
+# Configs
+export AP_CONFIGS_DIR="${HOME}/scripto-data/configs"
+export AP_CONF_DEVICE_NAME_FILE="${AP_CONFIGS_DIR}/.device-name"
+export AP_CONF_GENERATE_CACHE_FILE="${AP_CONFIGS_DIR}/.generate-cache-files"
+
+if [ ! -d "${AP_CONFIGS_DIR}" ]; then
+    mkdir -p "${AP_CONFIGS_DIR}"
 fi
 
-# Load scripto share server environment variables
-if [ -d "${HOME}/scripto-share/libs" ]; then
-    while read -r ap_env; do
-        source "${ap_env}"
-    done < <(gfind "${HOME}/scripto-share/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | grep -v -e "7s" | sort)
+# Create ${AP_CONF_DEVICE_NAME_FILE} file if not existed
+if [ ! -s "${AP_CONF_DEVICE_NAME_FILE}" ]; then
+    ap_device_id="$(showdeviceid)"
+    if [ -n "${ap_device_id}" ]; then
+        ap_device_name="$(grep "${ap_device_id}" ~/scripto-main/devices.env | cut -d= -f2 | tr -d '\n')"
+        printf "%s" "${ap_device_name}" >"${AP_CONF_DEVICE_NAME_FILE}"
+    fi
 fi
 
-# Load scripto main server environment variables
-if [ -d "${HOME}/scripto-main/libs" ]; then
-    while read -r ap_env; do
-        source "${ap_env}"
-    done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | grep -v -e "7s" | sort)
+# Create ${AP_CONF_GENERATE_CACHE_FILE} file if not existed
+if [ ! -s "${AP_CONF_GENERATE_CACHE_FILE}" ]; then
+    printf "1" >"${AP_CONF_GENERATE_CACHE_FILE}"
 fi
 
-# Load scripto environment variables
-if [ -d "${HOME}/scripto/libs" ]; then
-    while read -r ap_env; do
-        source "${ap_env}"
-    done < <(gfind "${HOME}/scripto/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | grep -v -e "7s" | sort)
+alias enablecache="printf '1' >\${AP_CONF_GENERATE_CACHE_FILE}"
+alias disablecache="printf '0' >\${AP_CONF_GENERATE_CACHE_FILE}"
+
+# Cache
+export AP_CACHE_DIR="${HOME}/scripto-data/cache"
+if [ ! -d "${AP_CACHE_DIR}" ]; then
+    mkdir -p "${AP_CACHE_DIR}"
 fi
 
-# Load scripto share environment variables
-if [ -d "${HOME}/scripto-share/libs" ]; then
-    while read -r ap_env; do
-        source "${ap_env}"
-    done < <(gfind "${HOME}/scripto-share/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | grep -v -e "7s" | sort)
-fi
+if [ -s "${AP_CACHE_ENV_FILE}" ] && [[ "$(cat "${AP_CONF_GENERATE_CACHE_FILE}")" == '0' ]]; then
+    source "${AP_CACHE_ENV_FILE}"
+else
+    # Renew cache
+    printf "1" >"${AP_CONF_GENERATE_CACHE_FILE}"
+    true >"${AP_CACHE_ENV_FILE}" # Truncate or create file
 
-# Load scripto common environment variables
-if [ -d "${HOME}/scripto-common/libs" ]; then
-    while read -r ap_env; do
-        source "${ap_env}"
-    done < <(gfind "${HOME}/scripto-common/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | grep -v -e "7s" | sort)
-fi
+    # Load scripto common server environment variables
+    if [ -d "${HOME}/scripto-common/libs" ]; then
+        while read -r ap_env; do
+            # source "${ap_env}"
+            cat "${ap_env}" >>"${AP_CACHE_ENV_FILE}"
+        done < <(gfind "${HOME}/scripto-common/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | grep -v -e "7s" | sort)
+    fi
 
-# Load scripto main environment variables
-if [ -d "${HOME}/scripto-main/libs" ]; then
-    while read -r ap_env; do
-        source "${ap_env}"
-    done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | grep -v -e "7s" | sort)
+    # Load scripto share server environment variables
+    if [ -d "${HOME}/scripto-share/libs" ]; then
+        while read -r ap_env; do
+            source "${ap_env}"
+        done < <(gfind "${HOME}/scripto-share/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | grep -v -e "7s" | sort)
+    fi
+
+    # Load scripto main server environment variables
+    if [ -d "${HOME}/scripto-main/libs" ]; then
+        while read -r ap_env; do
+            source "${ap_env}"
+        done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | grep -v -e "7s" | sort)
+    fi
+
+    # Load scripto environment variables
+    if [ -d "${HOME}/scripto/libs" ]; then
+        while read -r ap_env; do
+            source "${ap_env}"
+        done < <(gfind "${HOME}/scripto/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | grep -v -e "7s" | sort)
+    fi
+
+    # Load scripto share environment variables
+    if [ -d "${HOME}/scripto-share/libs" ]; then
+        while read -r ap_env; do
+            source "${ap_env}"
+        done < <(gfind "${HOME}/scripto-share/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | grep -v -e "7s" | sort)
+    fi
+
+    # Load scripto common environment variables
+    if [ -d "${HOME}/scripto-common/libs" ]; then
+        while read -r ap_env; do
+            source "${ap_env}"
+        done < <(gfind "${HOME}/scripto-common/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | grep -v -e "7s" | sort)
+    fi
+
+    # Load scripto main environment variables
+    if [ -d "${HOME}/scripto-main/libs" ]; then
+        while read -r ap_env; do
+            source "${ap_env}"
+        done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | grep -v -e "7s" | sort)
+    fi
 fi
 
 # Load scripto core libraries
@@ -168,5 +239,4 @@ apaddpath "${HOME}/scripto-main/tests"
 
 # For manpath command to search for man pages located in man directory
 # export MANPATH="${AP_MAN_DIR}:${MANPATH}"
-apaddpath -m /opt/local/share/man
 apaddpath -m "${AP_MAN_DIR}"
