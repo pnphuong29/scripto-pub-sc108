@@ -385,3 +385,8 @@ ap_func_create_vendor_from_template() {
 
     aprtn_success
 }
+
+alias isgitrepo="ap_func_is_in_git_repo"
+ap_func_is_in_git_repo() {
+    git rev-parse HEAD >/dev/null 2>&1
+}

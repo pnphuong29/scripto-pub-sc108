@@ -19,7 +19,7 @@ export PATH="${AP_SOFT_DIR}/bin:${PATH}"
 
 # Configs
 export AP_CONFIGS_DIR="${HOME}/scripto-data/configs"
-export AP_CONF_DEVICE_NAME_FILE="${AP_CONF_DEVICE_NAME_FILE}"
+export AP_CONF_DEVICE_NAME_FILE="${AP_CONFIGS_DIR}/.device-name"
 export AP_CONF_GENERATE_CACHE_FILES="${AP_CONFIGS_DIR}/.generate-cache-files"
 
 # Man pages

@@ -33,6 +33,20 @@ ap_func_create_dir_struct_core() {
     aplogshow "Create directories [${AP_CONFIGS_DIR}]\n"
     mkdir -p "${AP_CONFIGS_DIR}"
 
+    # Create ${AP_CONF_DEVICE_NAME_FILE} file if not existed
+    if [ ! -f "${AP_CONF_DEVICE_NAME_FILE}" ]; then
+        ap_device_id="$(showdeviceid)"
+        if [ -n "${ap_device_id}" ]; then
+            ap_device_name="$(json5 ~/scripto-common/devices.json | jq -r --arg device_id "${ap_device_id}" '.[] | select(.id == $device_id) | ."device-name"')"
+            printf "%s" "${ap_device_name}" >"${AP_CONF_DEVICE_NAME_FILE}"
+        fi
+    fi
+
+    # Create ${AP_CONF_GENERATE_CACHE_FILES} file if not existed
+    if [ ! -f "${AP_CONF_GENERATE_CACHE_FILES}" ]; then
+        printf "%s" "1" >"${AP_CONF_GENERATE_CACHE_FILES}"
+    fi
+
     # Sofware
     aplogshow "Create directories [${AP_SOFT_DIR}/bin]\n"
     mkdir -p "${AP_SOFT_DIR}/bin"
