@@ -1,7 +1,11 @@
 # Debug
-alias enabledebug='export AP_LOGS_DEBUG_ENABLED=1'
-alias disabledebug='export AP_LOGS_DEBUG_ENABLED=0'
-alias isdebugenabled='echo "AP_LOGS_DEBUG_ENABLED=${AP_LOGS_DEBUG_ENABLED}"'
+alias enablelogdebug='export AP_LOGS_DEBUG_ENABLED=1'
+alias disablelogdebug='export AP_LOGS_DEBUG_ENABLED=0'
+alias islogdebugenabled='echo "AP_LOGS_DEBUG_ENABLED=${AP_LOGS_DEBUG_ENABLED}"'
+
+alias enableloggeneral='export AP_LOGS_GENERAL_ENABLED=1'
+alias disableloggeneral='export AP_LOGS_GENERAL_ENABLED=0'
+alias isloggeneralenabled='echo "AP_LOGS_GENERAL_ENABLED=${AP_LOGS_GENERAL_ENABLED}"'
 
 # Copy commands
 if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then

@@ -125,6 +125,11 @@ ap_func_show_msg() {
     printf "${ap_format_prefix}${ap_opt_format_string}m%s${AP_ESCAPE_RESET_ALL}" "${ap_param_text_escaped}"
     [ "${ap_opt_suppress_new_line}" -eq 0 ] && echo
 
+    if [[ "${AP_LOGS_GENERAL_ENABLED}" == 1 ]]; then
+        printf "%s" "${ap_param_text_escaped}" >>"${AP_LOGS_GENERAL_FILE}"
+        [ "${ap_opt_suppress_new_line}" -eq 0 ] && echo >>"${AP_LOGS_GENERAL_FILE}"
+    fi
+
     if [[ "${AP_LOGS_DEBUG_ENABLED}" == 1 ]]; then
         printf "%s" "${ap_param_text_escaped}" >>"${AP_LOGS_DEBUG_FILE}"
         [ "${ap_opt_suppress_new_line}" -eq 0 ] && echo >>"${AP_LOGS_DEBUG_FILE}"
@@ -269,10 +274,12 @@ ap_func_log_msg() {
 
     [[ -z "${ap_param_msg}" ]] && return 1
 
-    if [[ "${ap_param_msg_type}" == "error" ]]; then
-        ap_log_file_path="${AP_LOGS_ERROR_FILE}"
+    if [[ "${ap_param_msg_type}" == "general" ]]; then
+        ap_log_file_path="${AP_LOGS_GENERAL_FILE}"
     elif [[ "${ap_param_msg_type}" == "debug" ]]; then
         ap_log_file_path="${AP_LOGS_DEBUG_FILE}"
+    elif [[ "${ap_param_msg_type}" == "error" ]]; then
+        ap_log_file_path="${AP_LOGS_ERROR_FILE}"
     fi
 
     # Add more information to log messages
@@ -281,7 +288,7 @@ ap_func_log_msg() {
     # Write messages to log file
     case "${ap_param_msg_type}" in
     'general')
-        if [[ "${AP_LOGS_DEBUG_ENABLED}" == 1 ]]; then
+        if [[ "${AP_LOGS_GENERAL_ENABLED}" == 1 ]]; then
             printf "%b" "${ap_msg}" >>"${ap_log_file_path}"
         fi
         ;;

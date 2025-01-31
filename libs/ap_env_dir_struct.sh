@@ -15,9 +15,12 @@ export AP_SYMLINKS_DIR="${HOME}/scripto-data/symlinks"
 
 # Sofware
 export AP_SOFT_DIR="${HOME}/scripto-data/software"
+export PATH="${AP_SOFT_DIR}/bin:${PATH}"
 
 # Configs
 export AP_CONFIGS_DIR="${HOME}/scripto-data/configs"
+export AP_CONF_DEVICE_NAME_FILE="${AP_CONF_DEVICE_NAME_FILE}"
+export AP_CONF_GENERATE_CACHE_FILES="${AP_CONFIGS_DIR}/.generate-cache-files"
 
 # Man pages
 export AP_MAN_DIR="${HOME}/scripto-data/man"
@@ -30,5 +33,3 @@ export AP_PRJ_DIR="${HOME}/scripto-data/projects"
 
 # Tmp
 export AP_TMP_DIR="${HOME}/scripto-data/tmp"
-
-export PATH="${AP_SOFT_DIR}/bin:${PATH}"

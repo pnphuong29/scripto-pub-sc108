@@ -32,7 +32,8 @@ fi
 export PATH="${HOME}/.local/bin:${PATH}"
 export PATH="${HOME}/bin:${PATH}"
 
-# Turn on/off debug mode (for writing to debug log files)
+# Turn on/off log mode (for writing to log files)
+export AP_LOGS_GENERAL_ENABLED=0
 export AP_LOGS_DEBUG_ENABLED=1
 
 # Enable/disable error messages in [getopts] command
