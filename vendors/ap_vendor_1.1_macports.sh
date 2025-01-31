@@ -1,11 +1,12 @@
 alias apinitmacports="ap_func_init_macports"
 ap_func_init_macports() {
     # export DISPLAY=:0.0 # For macOS < 10.5
-    alias @port='sudo port'
-    alias portselfupdate='sudo port selfupdate'
-    alias portinstall='sudo port install'
-    alias portinstallverbose='sudo port -v install'
-    alias portclean='sudo port clean'
+    alias sdport='sudo port'
+    alias lsportapps='port installed'
+
+    alias portselfupdate='sudo port -v selfupdate'
+    alias portinstall='sudo port -v install'
+    alias portclean='sudo port -v clean'
     alias portload='sudo port load'
     alias portunload='sudo port unload'
     alias portuninstall='sudo port uninstall'
@@ -16,6 +17,9 @@ ap_func_init_macports() {
     alias portinstalled='port installed'
     alias portinfo='port info'
     alias portcontents='port -q contents --size --units KiB'
+
+    apaddpath "/opt/local/bin"
+    apaddpath "/opt/local/sbin"
 
     if [ -f "/opt/local/etc/profile.d/bash_completion.sh" ]; then
         source "/opt/local/etc/profile.d/bash_completion.sh"
@@ -61,7 +65,7 @@ ap_func_setup_macports() {
     aplogshow "Download [MacPorts]\n"
     cd "${AP_TMP_DIR}"
     curl -SL \
-        "$(curl --silent https://api.github.com/repos/macports/macports-base/releases | jq -r '.[0].assets[].browser_download_url' | grep ".tar.gz" | grep -v asc)" >macports.tar.gz
+        "$(curl --silent https://api.github.com/repos/macports/macports-base/releases | jq -r '.[0].assets[].browser_download_url' | grep ".tar.gz" | grep -v asc | grep -v sig)" >macports.tar.gz
     tar -zxf "macports.tar.gz"
 
     aplogshow "Build and install [MacPorts]"
@@ -74,8 +78,11 @@ ap_func_setup_macports() {
     ./configure
     make
     sudo make install
-    cd ../
-    rm -rf "MacPorts"
+    # cd ~
+    # rm -rf "MacPorts"
+
+    sudo /opt/local/bin/port -v selfupdate
+    sudo port install bash-completion
 
     apinitmacports
     if alias apcreatedirstructmacports &>/dev/null; then
@@ -87,7 +94,7 @@ alias aprmmacports="ap_func_rm_macports"
 ap_func_rm_macports() {
     # https://guide.macports.org/chunked/installing.macports.uninstalling.html
     aplogshow "Remove [Macports]\n"
-    sudo port -fp uninstall installed
+    sudo port -fp uninstall --follow-dependencies installed
 
     # Remove Users and Groups
     aplogshow "Remove Macports users and groups\n"
@@ -109,10 +116,10 @@ ap_func_rm_macports() {
         "${HOME}/.macports"
 
     if alias aprmdirstructmacports &>/dev/null; then
-        aprmdirstructmacport
+        aprmdirstructmacports
     fi
 
     if alias aprmglobalsymlinkmacports &>/dev/null; then
-        aprmglobalsymlinkmacport
+        aprmglobalsymlinkmacports
     fi
 }

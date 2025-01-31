@@ -12,7 +12,20 @@ ap_func_init_brew() {
     #     fi
     # fi
 
+    alias lsbrewapps="brew list"
+    alias findbrew="brew search"
+
     alias brewcleanup="brew cleanup"
+    alias brewinfo="brew info"
+    alias brewlist="brew list"
+    alias brewdoctor="brew doctor"
+    alias brewcleanup="brew cleanup"
+    alias brewautoremove="brew autoremove"
+    alias brewsearch="brew search"
+
+    # Put below codes in ~/.profile for macOS and ~/.bashrc for Linux
+    # before sourcing ~/scripto-main/ap_master.sh
+    # eval "$(/opt/homebrew/bin/brew shellenv)"
 
     if alias apinitbrewshare &>/dev/null; then
         apinitbrewshare
@@ -55,6 +68,9 @@ ap_func_setup_brew() {
     # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
     apinitbrew
+    if alias apcreatedirstructbrew &>/dev/null; then
+        apcreatedirstructbrew
+    fi
 }
 
 alias aprmbrew="ap_func_rm_brew"
@@ -63,4 +79,12 @@ ap_func_rm_brew() {
     aplogshow "Remove [brew]\n"
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
     # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+
+    if alias aprmdirstructbrew &>/dev/null; then
+        aprmdirstructbrew
+    fi
+
+    if alias aprmglobalsymlinkbrew &>/dev/null; then
+        aprmglobalsymlinkbrew
+    fi
 }

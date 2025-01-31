@@ -10,45 +10,36 @@ ap_func_init_common_apps() {
 
 alias apsetupcommonapps="ap_func_setup_common_apps"
 ap_func_setup_common_apps() {
-    # Require [brew]
     aplogshow "Install common apps\n"
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        if [[ "$(uname -m)" == 'arm64' ]]; then
-            brew install \
-                bash \
-                bash-completion@2 \
-                launchctl-completion \
-                coreutils \
-                findutils \
-                make \
-                cmake \
-                gcc \
-                gpg2 \
-                gnu-sed \
-                gawk \
-                pandoc \
-                tmux \
-                unar \
-                pgrep \
-                poppler \
-                exiftool \
-                vim \
-                curl \
-                wget \
-                git
+        brew install \
+            bash \
+            bash-completion@2 \
+            launchctl-completion \
+            coreutils \
+            findutils \
+            make \
+            cmake \
+            gcc \
+            gpg2 \
+            gnu-sed \
+            gawk \
+            less \
+            pandoc \
+            tmux \
+            unar \
+            pgrep \
+            poppler \
+            exiftool \
+            vim \
+            curl \
+            wget \
+            git
 
-            # Link bash
-            aplogshow "Link [${HOME}/scripto-data/software/bin/bash] to [/opt/local/bin/bash]\n"
-            ln -sf /opt/local/bin/bash "${HOME}/scripto-data/software/bin/bash"
-        elif [[ "$(uname -m)" == 'x86_64' ]]; then
-            port install \
-                coreutils \
-                findutils
-
-            # Link bash
-            aplogshow "Link [${HOME}/scripto-data/software/bin/bash] to [/usr/local/bin/bash]\n"
-            ln -sf /usr/local/bin/bash "${HOME}/scripto-data/software/bin/bash"
-        fi
+        # Link bash
+        # Cannot remember why I need below codes
+        # aplogshow "Link [${HOME}/scripto-data/software/bin/bash] to [/opt/homebrew/bin/bash]\n"
+        # ln -sf /opt/homebrew/bin/bash "${HOME}/scripto-data/software/bin/bash"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         # Enable necessary ubuntu software repositories
         sudo apt update
@@ -112,8 +103,9 @@ ap_func_setup_common_apps() {
         sudo snap refresh core
 
         # Link bash
-        aplogshow "Link [${HOME}/scripto-data/software/bin/bash] to [/bin/bash]\n"
-        ln -sf /bin/bash "${HOME}/scripto-data/software/bin/bash"
+        # Cannot remember why I need below codes
+        # aplogshow "Link [${HOME}/scripto-data/software/bin/bash] to [/bin/bash]\n"
+        # ln -sf /bin/bash "${HOME}/scripto-data/software/bin/bash"
     fi
 
     apcreatedirstructgit

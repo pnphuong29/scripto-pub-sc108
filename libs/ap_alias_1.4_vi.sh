@@ -27,3 +27,4 @@ alias virequirementsdev="vi requirements-dev.txt"
 alias vienv="vi .env"
 alias vitsconfig='vi tsconfig.json'
 alias vitsconfigbase='vi tsconfig.base.json'
+alias visccrontabtest='vi "${HOME}/scripto-share/crontabs/ap_crontab_test.sh"'

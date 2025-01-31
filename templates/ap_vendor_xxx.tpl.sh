@@ -183,10 +183,15 @@ ap_func_setup_xxx() {
 
     tar -zxf xxx.tar.gz
     rm -f xxx.tar.gz
+
     mv xxx* xxx
     mv xxx "${AP_SOFT_DIR}/"
     cd "${AP_SOFT_DIR}/xxx"
     # rm -rf "${AP_TMP_DIR}/xxx"
+
+    ./configure
+    make
+    sudo make install
 
     cargo install xxx
     pip install xxx

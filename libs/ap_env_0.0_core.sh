@@ -23,6 +23,12 @@ if type brew &>/dev/null; then
     export PATH
 fi
 
+if type port &>/dev/null; then
+    PATH="/opt/local/bin:${PATH}"
+    PATH="/opt/local/sbin:${PATH}"
+    export PATH
+fi
+
 export PATH="${HOME}/.local/bin:${PATH}"
 export PATH="${HOME}/bin:${PATH}"
 

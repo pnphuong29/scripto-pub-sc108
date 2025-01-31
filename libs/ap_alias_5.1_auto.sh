@@ -285,18 +285,19 @@ for i in {1..14}; do
 done
 
 # Alias - Edit Logs
-# for ap_editor in "${AP_EDITOR_ARR[@]}"; do
-#     ap_cmd="alias ${ap_editor}logdebug='${ap_editor}"
+for ap_editor in "${AP_EDITOR_ARR[@]}"; do
+    ap_cmd="alias ${ap_editor}logs='${ap_editor}"
 
-#     if [ "${ap_editor}" == "vi" ]; then
-#         ap_cmd="${ap_cmd} -p"
-#     fi
+    if [ "${ap_editor}" == "vi" ]; then
+        ap_cmd="${ap_cmd} -p"
+    fi
 
-#     ap_cmd="${ap_cmd} \
-#         ${HOME}/scripto-share/dockers/ap_dkc_common.sh \
-#         ${HOME}/scripto-common/dockers/ap_dkc_common.sh \
-#         ${ap_dkc_file} \
-#     '"
-#     # aplogdebug "Execute command [${ap_cmd}]\n"
-#     eval "$(printf "%s" "${ap_cmd}")"
-# done
+    ap_cmd="${ap_cmd} \
+        ${AP_LOGS_DIR}/general/ap_debug.log \
+        ${AP_LOGS_DIR}/general/ap_error.log \
+        ${AP_LOGS_DIR}/general/ap_general.log \
+        ${AP_LOGS_DIR}/crontabs/ap_crontab_test.log \
+    '"
+    # aplogdebug "Execute command [${ap_cmd}]\n"
+    eval "$(printf "%s" "${ap_cmd}")"
+done

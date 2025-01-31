@@ -252,7 +252,7 @@ ap_func_log_msg() {
             return 1
             ;;
         *)
-            echo "Invalid option"
+            echo "Invalid option [${OPTARG}]"
             return 1
             ;;
         esac
@@ -279,14 +279,38 @@ ap_func_log_msg() {
     ap_msg="$(gdate "+%Y-%m-%d %H:%M:%S"): ${ap_opt_msg_prefix}${ap_param_msg}"
 
     # Write messages to log file
-    if [[ "${ap_param_msg_type}" == "debug" ]]; then
-        # Only write debug log if enabled
+    case "${ap_param_msg_type}" in
+    'general')
         if [[ "${AP_LOGS_DEBUG_ENABLED}" == 1 ]]; then
             printf "%b" "${ap_msg}" >>"${ap_log_file_path}"
         fi
-    else
+        ;;
+    'debug')
+        if [[ "${AP_LOGS_DEBUG_ENABLED}" == 1 ]]; then
+            printf "%b" "${ap_msg}" >>"${ap_log_file_path}"
+        fi
+        ;;
+    'error')
         printf "%b" "${ap_msg}" >>"${ap_log_file_path}"
-    fi
+        ;;
+    ':')
+        echo "Missing message type argument"
+        return 1
+        ;;
+    *)
+        echo "Unknown message type [${OPTARG}]"
+        return 1
+        ;;
+    esac
+
+    # if [[ "${ap_param_msg_type}" == "debug" ]]; then
+    #     # Only write debug log if enabled
+    #     if [[ "${AP_LOGS_DEBUG_ENABLED}" == 1 ]]; then
+    #         printf "%b" "${ap_msg}" >>"${ap_log_file_path}"
+    #     fi
+    # else
+    #     printf "%b" "${ap_msg}" >>"${ap_log_file_path}"
+    # fi
 
     # Show message on terminal
     [[ "${ap_param_show_msg_on_terminal}" == 1 ]] && eval "$(printf "%b" "${ap_param_cmd_show_msg} \"${ap_opt_msg_prefix}${ap_param_msg}\"")"
