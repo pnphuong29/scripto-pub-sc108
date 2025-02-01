@@ -1,12 +1,9 @@
+# https://wezfurlong.org/wezterm/installation.html
 alias apinitwezterm="ap_func_init_wezterm"
 ap_func_init_wezterm() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         apaddpath "/Applications/WezTerm.app/Contents/MacOS"
     fi
-
-    # export WEZTERM_CONFIG_FILE="${HOME}/scripto-common/vendors/wezterm/ap_wezterm.config.lua"
-    # https://wezfurlong.org/wezterm/config/lua/config/term.html
-    alias weztermgenerateterapshowmsginfo='curl -SL "https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terapshowmsginfo" >"${HOME}/scripto-common/vendors/wezterm/ap_wezterm.terapshowmsginfo"'
 
     if alias apinitweztermshare &>/dev/null; then
         apinitweztermshare
@@ -21,13 +18,6 @@ alias apcreatedirstructwezterm="ap_func_create_dirstruct_wezterm"
 ap_func_create_dirstruct_wezterm() {
     aplogshow "Generate [wezterm] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_wezterm.bash]\n"
     wezterm shell-completion --shell bash >"${AP_COMPLETIONS_DIR}/ap_completion_wezterm.bash"
-
-    # Term info
-    # https://wezfurlong.org/wezterm/config/lua/config/term.html
-    # aplogshow "Installing terapshowmsginfo for wezterm\n"
-    # curl -SL "https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terapshowmsginfo" >"${HOME}/scripto-common/vendors/wezterm/ap_wezterm.terapshowmsginfo"
-    # sudo tic -x -o ~/.terapshowmsginfo "${HOME}/scripto-common/vendors/wezterm/ap_wezterm.terapshowmsginfo"
-    # sudo chown "${USER}" ~/.terapshowmsginfo
 
     if alias apcreatedirstructweztermshare &>/dev/null; then
         apcreatedirstructweztermshare
@@ -54,7 +44,6 @@ ap_func_rm_dirstruct_wezterm() {
 
 alias apsetupwezterm="ap_func_setup_wezterm"
 ap_func_setup_wezterm() {
-    # https://wezfurlong.org/wezterm/installation.html
     aplogshow "Install [wezterm]\n"
 
     rm -rf "${AP_TMP_DIR}/wezterm"
