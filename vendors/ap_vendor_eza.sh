@@ -51,9 +51,9 @@ ap_func_rm_dirstruct_eza() {
 
 alias apcreateglobalsymlinkeza="ap_func_create_global_symlink_eza"
 ap_func_create_global_symlink_eza() {
-    if [ -f "${HOME}.cargo/bin/eza" ]; then
-        aplogshow "Create symlink from [/usr/local/bin/eza] to [${HOME}.cargo/bin/eza]\n"
-        sudo ln -sf "${HOME}.cargo/bin/eza" "/usr/local/bin/eza"
+    if [ -f "${HOME}/.cargo/bin/eza" ]; then
+        aplogshow "Create symlink from [/usr/local/bin/eza] to [${HOME}/.cargo/bin/eza]\n"
+        sudo ln -sf "${HOME}/.cargo/bin/eza" "/usr/local/bin/eza"
     fi
 }
 
@@ -71,6 +71,7 @@ ap_func_setup_eza() {
 
     cargo install eza
     apiniteza
+    apcreateglobalsymlinkeza
 
     if alias apcreatedirstructeza &>/dev/null; then
         apcreatedirstructeza
