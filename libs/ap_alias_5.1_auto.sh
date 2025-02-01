@@ -1,4 +1,4 @@
-if [ -s "${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh" ] && [[ "$(cat "${AP_CONF_GENERATE_CACHE_FILE}")" == '1' ]]; then
+if [ -s "${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh" ] && [ "$(cat "${AP_CONF_GENERATE_CACHE_FILE}")" == '1' ]; then
     echo "Using cache file [sc108_ap_alias_5.1_auto.sh]"
     source "${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
 else

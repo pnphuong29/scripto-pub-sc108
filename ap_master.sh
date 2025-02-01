@@ -63,7 +63,7 @@ if [ ! -d "${AP_CACHE_DIR}" ]; then
     mkdir -p "${AP_CACHE_DIR}"
 fi
 
-if [ -s "${AP_CACHE_DIR}/sc108_ap_master_part_1.sh" ] && [[ "$(cat "${AP_CONF_GENERATE_CACHE_FILE}")" == '1' ]]; then
+if [ -s "${AP_CACHE_DIR}/sc108_ap_master_part_1.sh" ] && [ "$(cat "${AP_CONF_GENERATE_CACHE_FILE}")" == '1' ]; then
     echo "Using cache file [sc108_ap_master_part_1.sh]"
     source "${AP_CACHE_DIR}/sc108_ap_master_part_1.sh"
 else
@@ -142,7 +142,7 @@ if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
     [ ! -L /usr/local/bin/md5 ] && sudo ln -sf /usr/bin/md5sum /usr/local/bin/md5
 fi
 
-if [ -s "${AP_CACHE_DIR}/sc108_ap_master_part_2.sh" ] && [[ "$(cat "${AP_CONF_GENERATE_CACHE_FILE}")" == '1' ]]; then
+if [ -s "${AP_CACHE_DIR}/sc108_ap_master_part_2.sh" ] && [ "$(cat "${AP_CONF_GENERATE_CACHE_FILE}")" == '1' ]; then
     echo "Using cache file [sc108_ap_master_part_2.sh]"
     source "${AP_CACHE_DIR}/sc108_ap_master_part_2.sh"
 else
