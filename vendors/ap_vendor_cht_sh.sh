@@ -1,7 +1,7 @@
 alias apinitchtsh="ap_func_init_chtsh"
 ap_func_init_chtsh() {
-    if alias apcreatedirstructchtshshare &>/dev/null; then
-        apcreatedirstructchtshshare
+    if alias apinitchtshshare &>/dev/null; then
+        apinitchtshshare
     fi
 
     if alias apinitchtshcommon &>/dev/null; then

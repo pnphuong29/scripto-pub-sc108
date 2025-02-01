@@ -1,11 +1,19 @@
-# Debug
-alias enablelogdebug='export AP_LOGS_DEBUG_ENABLED=1'
-alias disablelogdebug='export AP_LOGS_DEBUG_ENABLED=0'
+# Logs
+alias enablelogdebug='echo "Enable debug log"; export AP_LOGS_DEBUG_ENABLED=1'
+alias disablelogdebug='echo "Disable debug log"; export AP_LOGS_DEBUG_ENABLED=0'
 alias islogdebugenabled='echo "AP_LOGS_DEBUG_ENABLED=${AP_LOGS_DEBUG_ENABLED}"'
 
-alias enableloggeneral='export AP_LOGS_GENERAL_ENABLED=1'
-alias disableloggeneral='export AP_LOGS_GENERAL_ENABLED=0'
+alias enableloggeneral='echo "Enable geneal log"; export AP_LOGS_GENERAL_ENABLED=1'
+alias disableloggeneral='echo "Enable geneal log"; export AP_LOGS_GENERAL_ENABLED=0'
 alias isloggeneralenabled='echo "AP_LOGS_GENERAL_ENABLED=${AP_LOGS_GENERAL_ENABLED}"'
+
+# Cache
+alias e='echo "Enable scripto cache"; printf "1" >"${AP_CONF_GENERATE_CACHE_FILE}"'
+alias enablecache='echo "Enable scripto cache"; printf "1" >"${AP_CONF_GENERATE_CACHE_FILE}"'
+alias d='echo "Disable scripto cache"; printf "0" >"${AP_CONF_GENERATE_CACHE_FILE}"'
+alias disablecache='echo "Disable scripto cache"; printf "0" >"${AP_CONF_GENERATE_CACHE_FILE}"'
+alias iscacheenabled="cat \${AP_CONF_GENERATE_CACHE_FILE};echo"
+alias clearcache='rm -rf "${AP_CACHE_DIR}"/*'
 
 # Copy commands
 if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
@@ -17,15 +25,6 @@ elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
 fi
 
 alias cpd='pwd | tr -d "\n" | apcopy'
-
-# List commands
-alias lspaths='echo "${PATH}" | tr ":" "\n"'
-alias lsaliases='alias | gsed "s@alias @@" | grep "^[@|1|2]" | sort'
-alias lsaliasesfzf='alias | gsed "s@alias @@" | grep "^[@|1|2|3]" | sort | fzf'
-alias lsusers="type getent &>/dev/null && getent passwd || cat /etc/passwd"
-alias lsgroups="type getent &>/dev/null && getent group || cat /etc/groups"
-alias lservices='sudo launchctl list'
-alias lservicesgrep='sudo launchctl list | grep'
 
 # Show commands
 alias showdt='gdate +"%Y%m%d_%H%M%S"'

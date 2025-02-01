@@ -1,4 +1,4 @@
-# Aliases - Vi commands
+# Vi commands
 alias visshknowhosts="vi \${HOME}/.ssh/known_hosts"
 alias visshconfig="vi \${HOME}/.ssh/config"
 alias visshauthorizedkeys="vi \${HOME}/.ssh/authorized_keys"

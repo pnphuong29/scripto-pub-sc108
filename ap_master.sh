@@ -36,6 +36,7 @@ export AP_CONF_DEVICE_NAME_FILE="${AP_CONFIGS_DIR}/.device-name"
 export AP_CONF_GENERATE_CACHE_FILE="${AP_CONFIGS_DIR}/.generate-cache-files"
 
 if [ ! -d "${AP_CONFIGS_DIR}" ]; then
+    echo "Creating directory [${AP_CONFIGS_DIR}]"
     mkdir -p "${AP_CONFIGS_DIR}"
 fi
 
@@ -44,80 +45,88 @@ if [ ! -s "${AP_CONF_DEVICE_NAME_FILE}" ]; then
     ap_device_id="$(showdeviceid)"
     if [ -n "${ap_device_id}" ]; then
         ap_device_name="$(grep "${ap_device_id}" ~/scripto-main/devices.env | cut -d= -f2 | tr -d '\n')"
+        echo "Create .device-name file with content [${ap_device_name}]"
         printf "%s" "${ap_device_name}" >"${AP_CONF_DEVICE_NAME_FILE}"
     fi
 fi
 
 # Create ${AP_CONF_GENERATE_CACHE_FILE} file if not existed
 if [ ! -s "${AP_CONF_GENERATE_CACHE_FILE}" ]; then
+    echo "Create .generate-cache-files file with content [1]"
     printf "1" >"${AP_CONF_GENERATE_CACHE_FILE}"
 fi
-
-alias enablecache="printf '1' >\${AP_CONF_GENERATE_CACHE_FILE}"
-alias disablecache="printf '0' >\${AP_CONF_GENERATE_CACHE_FILE}"
 
 # Cache
 export AP_CACHE_DIR="${HOME}/scripto-data/cache"
 if [ ! -d "${AP_CACHE_DIR}" ]; then
+    echo "Creating directory [${AP_CACHE_DIR}]"
     mkdir -p "${AP_CACHE_DIR}"
 fi
 
-if [ -s "${AP_CACHE_ENV_FILE}" ] && [[ "$(cat "${AP_CONF_GENERATE_CACHE_FILE}")" == '0' ]]; then
-    source "${AP_CACHE_ENV_FILE}"
+if [ -s "${AP_CACHE_DIR}/sc108_ap_master_part_1.sh" ] && [[ "$(cat "${AP_CONF_GENERATE_CACHE_FILE}")" == '1' ]]; then
+    echo "Using cache file [sc108_ap_master_part_1.sh]"
+    source "${AP_CACHE_DIR}/sc108_ap_master_part_1.sh"
 else
-    # Renew cache
-    printf "1" >"${AP_CONF_GENERATE_CACHE_FILE}"
-    true >"${AP_CACHE_ENV_FILE}" # Truncate or create file
+    echo "Renewing cache file [sc108_ap_master_part_1.sh]"
+    true >"${AP_CACHE_DIR}/sc108_ap_master_part_1.sh"
 
     # Load scripto common server environment variables
     if [ -d "${HOME}/scripto-common/libs" ]; then
         while read -r ap_env; do
             # source "${ap_env}"
-            cat "${ap_env}" >>"${AP_CACHE_ENV_FILE}"
+            cat "${ap_env}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_1.sh"
         done < <(gfind "${HOME}/scripto-common/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | grep -v -e "7s" | sort)
     fi
 
     # Load scripto share server environment variables
     if [ -d "${HOME}/scripto-share/libs" ]; then
         while read -r ap_env; do
-            source "${ap_env}"
+            # source "${ap_env}"
+            cat "${ap_env}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_1.sh"
         done < <(gfind "${HOME}/scripto-share/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | grep -v -e "7s" | sort)
     fi
 
     # Load scripto main server environment variables
     if [ -d "${HOME}/scripto-main/libs" ]; then
         while read -r ap_env; do
-            source "${ap_env}"
+            # source "${ap_env}"
+            cat "${ap_env}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_1.sh"
         done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_servers*.sh" | grep -v -e "7s" | sort)
     fi
 
     # Load scripto environment variables
     if [ -d "${HOME}/scripto/libs" ]; then
         while read -r ap_env; do
-            source "${ap_env}"
+            # source "${ap_env}"
+            cat "${ap_env}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_1.sh"
         done < <(gfind "${HOME}/scripto/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | grep -v -e "7s" | sort)
     fi
 
     # Load scripto share environment variables
     if [ -d "${HOME}/scripto-share/libs" ]; then
         while read -r ap_env; do
-            source "${ap_env}"
+            # source "${ap_env}"
+            cat "${ap_env}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_1.sh"
         done < <(gfind "${HOME}/scripto-share/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | grep -v -e "7s" | sort)
     fi
 
     # Load scripto common environment variables
     if [ -d "${HOME}/scripto-common/libs" ]; then
         while read -r ap_env; do
-            source "${ap_env}"
+            # source "${ap_env}"
+            cat "${ap_env}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_1.sh"
         done < <(gfind "${HOME}/scripto-common/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | grep -v -e "7s" | sort)
     fi
 
     # Load scripto main environment variables
     if [ -d "${HOME}/scripto-main/libs" ]; then
         while read -r ap_env; do
-            source "${ap_env}"
+            # source "${ap_env}"
+            cat "${ap_env}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_1.sh"
         done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_env_*.sh" | grep -v -e "7s" | sort)
     fi
+
+    source "${AP_CACHE_DIR}/sc108_ap_master_part_1.sh"
 fi
 
 # Load scripto core libraries
@@ -133,88 +142,110 @@ if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
     [ ! -L /usr/local/bin/md5 ] && sudo ln -sf /usr/bin/md5sum /usr/local/bin/md5
 fi
 
-# Load scripto aliases
-if [ -d "${HOME}/scripto/libs" ]; then
-    while read -r ap_alias; do
-        source "${ap_alias}"
-    done < <(gfind "${HOME}/scripto/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | grep -v -e "7s" | sort)
-fi
+if [ -s "${AP_CACHE_DIR}/sc108_ap_master_part_2.sh" ] && [[ "$(cat "${AP_CONF_GENERATE_CACHE_FILE}")" == '1' ]]; then
+    echo "Using cache file [sc108_ap_master_part_2.sh]"
+    source "${AP_CACHE_DIR}/sc108_ap_master_part_2.sh"
+else
+    echo "Renewing cache file [sc108_ap_master_part_2.sh]"
+    true >"${AP_CACHE_DIR}/sc108_ap_master_part_2.sh"
 
-# Load scripto functions
-if [ -d "${HOME}/scripto/libs" ]; then
-    while read -r ap_func; do
-        source "${ap_func}"
-    done < <(gfind "${HOME}/scripto/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | grep -v -e "7s" | sort)
-fi
+    # Load scripto aliases
+    if [ -d "${HOME}/scripto/libs" ]; then
+        while read -r ap_alias; do
+            # source "${ap_alias}"
+            cat "${ap_alias}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_2.sh"
+        done < <(gfind "${HOME}/scripto/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | grep -v -e "7s" | sort)
+    fi
 
-# Load scripto share aliases
-if [ -d "${HOME}/scripto-share/libs" ]; then
-    while read -r ap_alias; do
-        source "${ap_alias}"
-    done < <(gfind "${HOME}/scripto-share/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | grep -v -e "7s" | sort)
-fi
+    # Load scripto functions
+    if [ -d "${HOME}/scripto/libs" ]; then
+        while read -r ap_func; do
+            # source "${ap_func}"
+            cat "${ap_func}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_2.sh"
+        done < <(gfind "${HOME}/scripto/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | grep -v -e "7s" | sort)
+    fi
 
-# Load scripto common aliases
-if [ -d "${HOME}/scripto-common/libs" ]; then
-    while read -r ap_alias; do
-        source "${ap_alias}"
-    done < <(gfind "${HOME}/scripto-common/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | grep -v -e "7s" | sort)
-fi
+    # Load scripto share aliases
+    if [ -d "${HOME}/scripto-share/libs" ]; then
+        while read -r ap_alias; do
+            # source "${ap_alias}"
+            cat "${ap_alias}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_2.sh"
+        done < <(gfind "${HOME}/scripto-share/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | grep -v -e "7s" | sort)
+    fi
 
-# Load scripto main aliases
-if [ -d "${HOME}/scripto-main/libs" ]; then
-    while read -r ap_alias; do
-        source "${ap_alias}"
-    done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | grep -v -e "7s" | sort)
-fi
+    # Load scripto common aliases
+    if [ -d "${HOME}/scripto-common/libs" ]; then
+        while read -r ap_alias; do
+            # source "${ap_alias}"
+            cat "${ap_alias}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_2.sh"
+        done < <(gfind "${HOME}/scripto-common/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | grep -v -e "7s" | sort)
+    fi
 
-# Load scripto share vendors
-if [ -d "${HOME}/scripto-share/vendors" ]; then
-    while read -r ap_vendor; do
-        source "${ap_vendor}"
-    done < <(gfind "${HOME}/scripto-share/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | grep -v -e "7s" | sort)
-fi
+    # Load scripto main aliases
+    if [ -d "${HOME}/scripto-main/libs" ]; then
+        while read -r ap_alias; do
+            # source "${ap_alias}"
+            cat "${ap_alias}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_2.sh"
+        done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_alias_*.sh" | grep -v -e "7s" | sort)
+    fi
 
-# Load scripto common vendors
-if [ -d "${HOME}/scripto-common/vendors" ]; then
-    while read -r ap_vendor; do
-        source "${ap_vendor}"
-    done < <(gfind "${HOME}/scripto-common/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | grep -v -e "7s" | sort)
-fi
+    # Load scripto share vendors
+    if [ -d "${HOME}/scripto-share/vendors" ]; then
+        while read -r ap_vendor; do
+            # source "${ap_vendor}"
+            cat "${ap_vendor}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_2.sh"
+        done < <(gfind "${HOME}/scripto-share/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | grep -v -e "7s" | sort)
+    fi
 
-# Load scripto main vendors
-if [ -d "${HOME}/scripto-main/vendors" ]; then
-    while read -r ap_vendor; do
-        source "${ap_vendor}"
-    done < <(gfind "${HOME}/scripto-main/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | grep -v -e "7s" | sort)
-fi
+    # Load scripto common vendors
+    if [ -d "${HOME}/scripto-common/vendors" ]; then
+        while read -r ap_vendor; do
+            # source "${ap_vendor}"
+            cat "${ap_vendor}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_2.sh"
+        done < <(gfind "${HOME}/scripto-common/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | grep -v -e "7s" | sort)
+    fi
 
-# Load scripto vendors
-if [ -d "${HOME}/scripto/vendors" ]; then
-    while read -r ap_vendor; do
-        source "${ap_vendor}"
-    done < <(gfind "${HOME}/scripto/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | grep -v -e "7s" | sort)
-fi
+    # Load scripto main vendors
+    if [ -d "${HOME}/scripto-main/vendors" ]; then
+        while read -r ap_vendor; do
+            # source "${ap_vendor}"
+            cat "${ap_vendor}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_2.sh"
+        done < <(gfind "${HOME}/scripto-main/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | grep -v -e "7s" | sort)
+    fi
 
-# Load share functions
-if [ -d "${HOME}/scripto-share/libs" ]; then
-    while read -r ap_func; do
-        source "${ap_func}"
-    done < <(gfind "${HOME}/scripto-share/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | grep -v -e "7s" | sort)
-fi
+    # Load scripto vendors
+    if [ -d "${HOME}/scripto/vendors" ]; then
+        while read -r ap_vendor; do
+            # source "${ap_vendor}"
+            cat "${ap_vendor}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_2.sh"
+        done < <(gfind "${HOME}/scripto/vendors" -maxdepth 1 -type f -name "ap_vendor_*.sh" | grep -v -e "7s" | sort)
+    fi
 
-# Load common functions
-if [ -d "${HOME}/scripto-common/libs" ]; then
-    while read -r ap_func; do
-        source "${ap_func}"
-    done < <(gfind "${HOME}/scripto-common/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | grep -v -e "7s" | sort)
-fi
+    # Load share functions
+    if [ -d "${HOME}/scripto-share/libs" ]; then
+        while read -r ap_func; do
+            # source "${ap_func}"
+            cat "${ap_func}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_2.sh"
+        done < <(gfind "${HOME}/scripto-share/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | grep -v -e "7s" | sort)
+    fi
 
-# Load main functions
-if [ -d "${HOME}/scripto-main/libs" ]; then
-    while read -r ap_func; do
-        source "${ap_func}"
-    done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | grep -v -e "7s" | sort)
+    # Load common functions
+    if [ -d "${HOME}/scripto-common/libs" ]; then
+        while read -r ap_func; do
+            # source "${ap_func}"
+            cat "${ap_func}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_2.sh"
+        done < <(gfind "${HOME}/scripto-common/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | grep -v -e "7s" | sort)
+    fi
+
+    # Load main functions
+    if [ -d "${HOME}/scripto-main/libs" ]; then
+        while read -r ap_func; do
+            # source "${ap_func}"
+            cat "${ap_func}" >>"${AP_CACHE_DIR}/sc108_ap_master_part_2.sh"
+        done < <(gfind "${HOME}/scripto-main/libs" -maxdepth 1 -type f -name "ap_func_*.sh" | grep -v -e "7s" | sort)
+    fi
+
+    source "${AP_CACHE_DIR}/sc108_ap_master_part_2.sh"
 fi
 
 # Update $PATH

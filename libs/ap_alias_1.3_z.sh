@@ -1,9 +1,10 @@
-# Aliases - CD - Common locations
+# Z commands
 alias zdl="cd \${AP_DL_DIR}"
 alias zsymlinks="cd \${AP_SYMLINKS_DIR}"
 alias zsoft="cd \${AP_SOFT_DIR}"
 alias zsoftbin="cd \${AP_SOFT_DIR}/bin"
 alias zconfigs="cd \${AP_CONFIGS_DIR}"
+alias zcache="cd \${AP_CACHE_DIR}"
 alias zman="cd \${AP_MAN_DIR}"
 alias zcompletions="cd \${AP_COMPLETIONS_DIR}"
 alias ztmp="cd \${AP_TMP_DIR}"
@@ -26,7 +27,7 @@ alias zetc="cd /etc"
 alias zvar="cd /var"
 alias zvarlog="cd /var/log"
 
-# Aliases - CD - Linux
+# Z commands - Linux
 alias zlocalshare="cd \${HOME}/.local/share"
 alias zlocalstate="cd \${HOME}/.local/state"
 alias zdesktopshortcuts="cd \${HOME}/.local/share/applications"

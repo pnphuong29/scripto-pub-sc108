@@ -1,4 +1,4 @@
-# Aliases - Net commands
+# Net commands
 if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
     alias lsportlistening='sudo lsof -i -P | grep LISTEN | grep :$PORT'
 else

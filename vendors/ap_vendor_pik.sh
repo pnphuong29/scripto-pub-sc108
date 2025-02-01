@@ -61,9 +61,12 @@ ap_func_rm_global_symlink_pik() {
 
 alias apsetuppik="ap_func_setup_pik"
 ap_func_setup_pik() {
-    cargo install pik
+    aplogshow "Setup [pik]\n"
 
+    cargo install pik
     apinitpik
+    apcreateglobalsymlinkpik
+
     if alias apcreatedirstructpik &>/dev/null; then
         apcreatedirstructpik
     fi
@@ -71,6 +74,7 @@ ap_func_setup_pik() {
 
 alias aprmpik="ap_func_rm_pik"
 ap_func_rm_pik() {
+    aplogshow "Remove [pik]\n"
     cargo uninstall pik
 
     if alias aprmdirstructpik &>/dev/null; then

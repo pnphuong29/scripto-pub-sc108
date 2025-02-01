@@ -59,9 +59,9 @@ ap_func_rm_nix() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         # https://nixos.org/manual/nix/stable/installation/uninstall#macos
         sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist
-        sudo rm /Library/LaunchDaemons/org.nixos.nix-daemon.plist
+        sudo rm -f /Library/LaunchDaemons/org.nixos.nix-daemon.plist
         sudo launchctl unload /Library/LaunchDaemons/org.nixos.darwin-store.plist
-        sudo rm /Library/LaunchDaemons/org.nixos.darwin-store.plist
+        sudo rm -f /Library/LaunchDaemons/org.nixos.darwin-store.plist
         sudo dscl . -delete /Groups/nixbld
         for u in $(sudo dscl . -list /Users | grep _nixbld); do sudo dscl . -delete /Users/$u; done
         sudo rm -rf /etc/nix /var/root/.nix-profile /var/root/.nix-defexpr /var/root/.nix-channels ~/.nix-profile ~/.nix-defexpr ~/.nix-channels
