@@ -122,6 +122,7 @@ ap_func_rm_nvim() {
     rm -rf ~/.config/nvim
     rm -rf ~/.config/coc
     rm -rf ~/.local/share/nvim
+    rm -rf ~/.local/state/nvim
 
     if alias aprmdirstructnvim &>/dev/null; then
         aprmdirstructnvim
