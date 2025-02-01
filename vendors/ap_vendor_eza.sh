@@ -1,16 +1,5 @@
 alias apiniteza="ap_func_init_eza"
 ap_func_init_eza() {
-    alias eza1="eza -a --long --header --icons --group --group-directories-first"
-    alias l="eza1 --all --git"
-    alias lfiles="eza1 --all --git -f"
-    alias lgit="eza1 --all --git"
-    alias lmodified="eza1 --all --sort=modified"
-    alias ld="eza1 --all -D"
-    alias l2="eza1 --tree --level 2"
-    alias ld2="eza1 --tree --level 2 -D"
-    alias l3="eza1 --tree --level 3"
-    alias ld3="eza1 --tree --level 3 -D"
-
     if alias apinitezashare &>/dev/null; then
         apinitezashare
     fi

@@ -1,16 +1,7 @@
+# https://github.com/neovim/neovim
+# Dependencies: fzf, nodejs, python, ruby
 alias apinitnvim="ap_func_init_nvim"
 ap_func_init_nvim() {
-    alias vi="nvim"
-
-    alias znvimswapshare="cd \${HOME}/.local/share/nvim/swap"
-    alias znvimswapstate="cd \${HOME}/.local/state/nvim/swap"
-    alias aprmnvimswapsharefiles="rm -f \${HOME}/.local/share/nvim/swap/\*"
-    alias aprmnvimswapstatefiles="rm -f \${HOME}/.local/state/nvim/swap/\*"
-
-    alias znvimconfigs="cd \${HOME}/.config/nvim"
-    alias znvimcoc="cd \${HOME}/.config/coc"
-    alias znvimcocextensions="cd \${HOME}/.config/coc/extensions"
-
     if alias apinitnvimshare &>/dev/null; then
         apinitnvimshare
     fi
@@ -31,14 +22,10 @@ ap_func_create_dirstruct_nvim() {
     sh -c 'curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-    # For root user
-    sudo mkdir -p /root/.local/share/nvim/site/autoload
-    sudo cp -f "${HOME}/.local/share/nvim/site/autoload/plug.vim" /root/.local/share/nvim/site/autoload/
-
     # Install client providers for neovim
     pip install --upgrade pynvim
     gem install neovim
-    npm install -g neovim
+    pnpm install -g neovim
 
     if alias apcreatedirstructnvimshare &>/dev/null; then
         apcreatedirstructnvimshare
@@ -107,11 +94,11 @@ ap_func_setup_nvim() {
     fi
 
     tar -zxf neovim.tar.gz
-    rm -f neovim.tar.gz
+    # rm -f neovim.tar.gz
     mv nvim* nvim
     mv nvim "${AP_SOFT_DIR}/"
     cd "${AP_SOFT_DIR}/nvim"
-    rm -rf "${AP_TMP_DIR}/neovim"
+    # rm -rf "${AP_TMP_DIR}/neovim"
 
     # Use [apt] to install nvim
     # sudo apt-get install python-dev python-pip python3-dev python3-pip # Require python (use pyenv to install)
@@ -120,6 +107,8 @@ ap_func_setup_nvim() {
     # sudo apt-get install neovim
 
     apinitnvim
+    apcreateglobalsymlinknvim
+
     if alias apcreatedirstructnvim &>/dev/null; then
         apcreatedirstructnvim
     fi
