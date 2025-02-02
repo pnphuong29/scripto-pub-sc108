@@ -1,9 +1,11 @@
 alias apinitsuperfile="ap_func_init_superfile"
 ap_func_init_superfile() {
     if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
+        export AP_SPF_CONF_DIR="${HOME}/Library/Application Support/superfile"
         alias zspfdata='cd "${HOME}/Library/Application Support/superfile"'
         alias zspfconfigs='cd "${HOME}/Library/Application Support/superfile"'
     elif [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]]; then
+        export AP_SPF_CONF_DIR="${HOME}/.config/superfile"
         alias zspfdata='cd "${HOME}/.config/superfile"'
         alias zspfconfigs='cd "${HOME}/.config/superfile"'
     fi
@@ -84,6 +86,7 @@ ap_func_rm_superfile() {
     aplogshow "Remove [superfile]\n"
 
     rm -f "/usr/local/bin/superfile"
+    rm -rf "${AP_SPF_CONF_DIR}"
 
     if alias aprmdirstructsuperfile &>/dev/null; then
         aprmdirstructsuperfile
