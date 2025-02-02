@@ -1,3 +1,4 @@
+# https://github.com/pamburus/hl
 alias apinithl="ap_func_init_hl"
 ap_func_init_hl() {
     if alias apinithlshare &>/dev/null; then
@@ -73,13 +74,14 @@ ap_func_setup_hl() {
     cd "${AP_SOFT_DIR}/bin"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        brew install pamburus/tap/hl
+        curl -sSfL https://github.com/pamburus/hl/releases/latest/download/hl-macos.tar.gz | tar xz
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         curl -sSfL https://github.com/pamburus/hl/releases/latest/download/hl-linux-x86_64-musl.tar.gz | tar xz
     fi
 
     apinithl
     apcreateglobalsymlinkhl
+
     if alias apcreatedirstructhl &>/dev/null; then
         apcreatedirstructhl
     fi
@@ -88,12 +90,7 @@ ap_func_setup_hl() {
 alias aprmhl="ap_func_rm_hl"
 ap_func_rm_hl() {
     aplogshow "Remove [hl]\n"
-
-    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        brew remove hl
-    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        rm -f "${AP_SOFT_DIR}/bin/hl"
-    fi
+    rm -f "${AP_SOFT_DIR}/bin/hl"
 
     if alias aprmdirstructhl &>/dev/null; then
         aprmdirstructhl

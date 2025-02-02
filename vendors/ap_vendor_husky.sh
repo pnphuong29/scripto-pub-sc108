@@ -15,12 +15,6 @@ ap_func_init_husky() {
 
 alias apcreatedirstructhusky="ap_func_create_dirstruct_husky"
 ap_func_create_dirstruct_husky() {
-    if [ -f "${HOME}/scripto-share/vendors/husky/init.sh" ]; then
-        aplogshow "Create symlink from [${HOME}/.config/husky/init.sh] to [${HOME}/scripto-share/vendors/husky/init.sh]\n"
-        mkdir -p "${HOME}/.config/husky"
-        ln -sf "${HOME}/scripto-share/vendors/husky/init.sh" "${HOME}/.config/husky/init.sh"
-    fi
-
     if alias apcreatedirstructhuskyshare &>/dev/null; then
         apcreatedirstructhuskyshare
     fi
@@ -36,9 +30,6 @@ ap_func_create_dirstruct_husky() {
 
 alias aprmdirstructhusky="ap_func_rm_dirstruct_husky"
 ap_func_rm_dirstruct_husky() {
-    aplogshow "Remove [${HOME}/.config/husky]\n"
-    rm -f "${HOME}/.config/husky"
-
     if alias aprmdirstructhuskyshare &>/dev/null; then
         aprmdirstructhuskyshare
     fi
@@ -49,5 +40,31 @@ ap_func_rm_dirstruct_husky() {
 
     if alias aprmdirstructhuskymain &>/dev/null; then
         aprmdirstructhuskymain
+    fi
+}
+
+alias apsetuphusky="ap_func_setup_husky"
+ap_func_setup_husky() {
+    apshowmsginfo "Install [husky]\n"
+
+    pnpm install -g husky
+    apinithusky
+
+    if alias apcreatedirstructhusky &>/dev/null; then
+        apcreatedirstructhusky
+    fi
+}
+
+alias aprmhusky="ap_func_rm_husky"
+ap_func_rm_husky() {
+    apshowmsginfo "Remove [husky]\n"
+    pnpm uninstall -g husky
+
+    if alias aprmdirstructhusky &>/dev/null; then
+        aprmdirstructhusky
+    fi
+
+    if alias aprmglobalsymlinkhusky &>/dev/null; then
+        aprmglobalsymlinkhusky
     fi
 }

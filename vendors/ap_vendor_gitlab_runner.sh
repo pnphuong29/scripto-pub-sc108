@@ -52,12 +52,12 @@ ap_func_setup_gitlabrunner() {
 
     # https://docs.gitlab.com/runner/install/osx.html#limitations-on-macos
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        curl -SL https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-darwin-amd64 >/usr/local/bin/gitlab-runner"
+        curl -SL "https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-darwin-amd64" >/usr/local/bin/gitlab-runner
         sudo chmod +x /usr/local/bin/gitlab-runner
         gitlab-runner install
         gitlab-runner start
-    elif [ ${AP_OS_TYPE} == ${AP_OS_TYPE_UBUNTU} ]; then
-        curl -SL https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64 >/usr/local/bin/gitlab-runner"
+    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+        curl -SL "https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64" >/usr/local/bin/gitlab-runner
         sudo chmod +x /usr/local/bin/gitlab-runner
         sudo useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash
         sudo gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner

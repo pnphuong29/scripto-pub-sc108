@@ -21,21 +21,21 @@ ap_func_init_xxx() {
 
 alias apcreatedirstructxxx="ap_func_create_dirstruct_xxx"
 ap_func_create_dirstruct_xxx() {
-    aplogshow "Generate [xxx] bash autocomplete\n"
+    apshowmsginfo "Generate [xxx] bash autocomplete\n"
     xxx >"${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash"
 
     if [ -f "${HOME}/scripto-share/vendors/xxx/bindings.json" ]; then
-        aplogshow "Create symlink from [${HOME}/.config/xxx/bindings.json] to [${HOME}/scripto-share/vendors/xxx/bindings.json]\n"
+        apshowmsginfo "Create symlink from [${HOME}/.config/xxx/bindings.json] to [${HOME}/scripto-share/vendors/xxx/bindings.json]\n"
         ln -sf "${HOME}/scripto-share/vendors/xxx/bindings.json" "${HOME}/.config/xxx/bindings.json"
     fi
 
-    aplogshow "Create symlink from [${AP_SOFT_DIR}/bin/xxx] to [${AP_SOFT_DIR}/xxx/bin/xxx]\n"
+    apshowmsginfo "Create symlink from [${AP_SOFT_DIR}/bin/xxx] to [${AP_SOFT_DIR}/xxx/bin/xxx]\n"
     ln -sf "${AP_SOFT_DIR}/xxx/bin/xxx" "${AP_SOFT_DIR}/bin/xxx"
 
-    aplogshow "Create symlink from [${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash] to [${AP_SOFT_DIR}/xxx/complete/xxx.bash]\n"
-    ln -sf "${AP_SOFT_DIR}/xxx/autocomplete/xxx.bash" "${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash"
+    apshowmsginfo "Create symlink from [${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash] to [${AP_SOFT_DIR}/xxx/complete/xxx.bash]\n"
+    ln -sf "${AP_SOFT_DIR}/xxx/complete/xxx.bash" "${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash"
 
-    aplogshow "Create symlink from [${AP_MAN_DIR}/man1/xxx.1] to [${AP_SOFT_DIR}/xxx/xxx.1]\n"
+    apshowmsginfo "Create symlink from [${AP_MAN_DIR}/man1/xxx.1] to [${AP_SOFT_DIR}/xxx/xxx.1]\n"
     ln -sf "${AP_SOFT_DIR}/xxx/xxx.1" "${AP_MAN_DIR}/man1/xxx.1"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
@@ -83,16 +83,16 @@ ap_func_create_dirstruct_xxx() {
 
 alias aprmdirstructxxx="ap_func_rm_dirstruct_xxx"
 ap_func_rm_dirstruct_xxx() {
-    aplogshow "Remove [${HOME}/.config/xxx/]\n"
+    apshowmsginfo "Remove [${HOME}/.config/xxx/]\n"
     rm -f "${HOME}/.config/xxx/"
 
-    aplogshow "Remove [${AP_SOFT_DIR}/bin/xxx]\n"
+    apshowmsginfo "Remove [${AP_SOFT_DIR}/bin/xxx]\n"
     rm -f "${AP_SOFT_DIR}/bin/xxx"
 
-    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash]\n"
+    apshowmsginfo "Remove [${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash"
 
-    aplogshow "Remove [${AP_MAN_DIR}/man1/xxx.1]\n"
+    apshowmsginfo "Remove [${AP_MAN_DIR}/man1/xxx.1]\n"
     rm -f "${AP_MAN_DIR}/man1/xxx.1"
 
     if alias aprmdirstructxxxshare &>/dev/null; then
@@ -111,7 +111,7 @@ ap_func_rm_dirstruct_xxx() {
 alias apcreateglobalsymlinkxxx="ap_func_create_global_symlink_xxx"
 ap_func_create_global_symlink_xxx() {
     if [ -f "${AP_SOFT_DIR}/bin/xxx" ]; then
-        aplogshow "Create symlink from [/usr/local/bin/xxx] to [${AP_SOFT_DIR}/bin/xxx]\n"
+        apshowmsginfo "Create symlink from [/usr/local/bin/xxx] to [${AP_SOFT_DIR}/bin/xxx]\n"
         sudo ln -sf "${AP_SOFT_DIR}/bin/xxx" "/usr/local/bin/xxx"
     fi
 }
@@ -119,7 +119,7 @@ ap_func_create_global_symlink_xxx() {
 alias aprmglobalsymlinkxxx="ap_func_rm_global_symlink_xxx"
 ap_func_rm_global_symlink_xxx() {
     if [ -f "/usr/local/bin/xxx" ]; then
-        aplogshow "Remove [/usr/local/bin/xxx]\n"
+        apshowmsginfo "Remove [/usr/local/bin/xxx]\n"
         sudo rm -f "/usr/local/bin/xxx"
     fi
 }
@@ -131,9 +131,9 @@ ap_func_setup_xxx() {
         ap_xxx_setup_version="$1"
     fi
 
-    aplogshow "Install [xxx] version [${ap_xxx_setup_version}]\n"
+    apshowmsginfo "Install [xxx] version [${ap_xxx_setup_version}]\n"
 
-    aplogshow "Install [xxx]\n"
+    apshowmsginfo "Install [xxx]\n"
 
     # Remove old app dir if any
     rm -rf "${AP_SOFT_DIR}/xxx"
@@ -143,7 +143,7 @@ ap_func_setup_xxx() {
     mkdir -p "${AP_TMP_DIR}/xxx"
     cd "${AP_TMP_DIR}/xxx"
 
-    aplogshow "Download [xxx] version [${ap_xxx_setup_version}] from [https://ziglang.org/download/${ap_xxx_setup_version}/zig-${ap_os}-${ap_xxx_setup_version}.tar.xz]\n"
+    apshowmsginfo "Download [xxx] version [${ap_xxx_setup_version}] from [https://ziglang.org/download/${ap_xxx_setup_version}/zig-${ap_os}-${ap_xxx_setup_version}.tar.xz]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install xxx
@@ -210,9 +210,9 @@ ap_func_rm_xxx() {
         ap_xxx_remove_version="$1"
     fi
 
-    aplogshow "Remove [xxx] v${ap_xxx_remove_version}\n"
+    apshowmsginfo "Remove [xxx] v${ap_xxx_remove_version}\n"
 
-    aplogshow "Remove [xxx]\n"
+    apshowmsginfo "Remove [xxx]\n"
     cargo uninstall xxx
     pip uninstall xxx
     npm uninstall -g xxx
