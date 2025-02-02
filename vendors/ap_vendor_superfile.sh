@@ -56,7 +56,7 @@ ap_func_rm_dirstruct_superfile() {
 # alias apcreateglobalsymlinksuperfile="ap_func_create_global_symlink_superfile"
 # ap_func_create_global_symlink_superfile() {
 #     if [ -f "${AP_SOFT_DIR}/bin/superfile" ]; then
-#         aplogshow "Create symlink from [/usr/local/bin/superfile] to [${AP_SOFT_DIR}/bin/superfile]\n"
+#         apshowmsginfo "Create symlink from [/usr/local/bin/superfile] to [${AP_SOFT_DIR}/bin/superfile]\n"
 #         sudo ln -sf "${AP_SOFT_DIR}/bin/superfile" "/usr/local/bin/superfile"
 #     fi
 # }
@@ -64,17 +64,18 @@ ap_func_rm_dirstruct_superfile() {
 # alias aprmglobalsymlinksuperfile="ap_func_rm_global_symlink_superfile"
 # ap_func_rm_global_symlink_superfile() {
 #     if [ -f "/usr/local/bin/superfile" ]; then
-#         aplogshow "Remove [/usr/local/bin/superfile]\n"
+#         apshowmsginfo "Remove [/usr/local/bin/superfile]\n"
 #         sudo rm -f "/usr/local/bin/superfile"
 #     fi
 # }
 
 alias apsetupsuperfile="ap_func_setup_superfile"
 ap_func_setup_superfile() {
-    aplogshow "Install [superfile]\n"
+    apshowmsginfo "Install [superfile]\n"
 
     bash -c "$(curl -sLo- https://superfile.netlify.app/install.sh)"
     apinitsuperfile
+    apshowmsginfo "You should run spf 1st time to initialize the configuration directory\n"
 
     if alias apcreatedirstructsuperfile &>/dev/null; then
         apcreatedirstructsuperfile
@@ -83,7 +84,7 @@ ap_func_setup_superfile() {
 
 alias aprmsuperfile="ap_func_rm_superfile"
 ap_func_rm_superfile() {
-    aplogshow "Remove [superfile]\n"
+    apshowmsginfo "Remove [superfile]\n"
 
     rm -f "/usr/local/bin/superfile"
     rm -rf "${AP_SPF_CONF_DIR}"
