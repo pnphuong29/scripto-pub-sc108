@@ -40,7 +40,7 @@ if [ ! -d "${AP_CONFIGS_DIR}" ]; then
     mkdir -p "${AP_CONFIGS_DIR}"
 fi
 
-# Create ${AP_CONF_DEVICE_NAME_FILE} file if not existed
+# Create device-name file if not existed
 if [ ! -s "${AP_CONF_DEVICE_NAME_FILE}" ]; then
     ap_device_id="$(showdeviceid)"
     if [ -n "${ap_device_id}" ]; then
