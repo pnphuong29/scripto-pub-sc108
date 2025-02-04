@@ -27,6 +27,9 @@ ap_func_create_dirstruct_nvim() {
     gem install neovim
     pnpm install -g neovim
 
+    # Install markdown-oxide
+    # cargo install --locked --git https://github.com/Feel-ix-343/markdown-oxide.git markdown-oxide
+
     if alias apcreatedirstructnvimshare &>/dev/null; then
         apcreatedirstructnvimshare
     fi

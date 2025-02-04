@@ -1,12 +1,5 @@
 alias apinitdbeaver="ap_func_init_dbeaver"
 ap_func_init_dbeaver() {
-    AP_DBEAVER_WS_DIR="${HOME}/Library/DBeaverData" # macOS
-    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        AP_DBEAVER_WS_DIR="${HOME}/snap/dbeaver-ce/current/.local/share/DBeaverData"
-    fi
-    export AP_DBEAVER_WS_DIR
-    alias zdbeaverdata='cd "${AP_DBEAVER_WS_DIR}"'
-
     if alias apinitdbeavershare &>/dev/null; then
         apinitdbeavershare
     fi
@@ -62,6 +55,7 @@ ap_func_setup_dbeaver() {
         sudo dpkg -i dbeaver.deb
     fi
 
+    cd ~
     apinitdbeaver
 
     if alias apcreatedirstructdbeaver &>/dev/null; then

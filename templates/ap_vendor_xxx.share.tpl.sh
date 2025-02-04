@@ -1,5 +1,7 @@
 alias apinitxxxshare="ap_func_init_xxx_share"
 ap_func_init_xxx_share() {
+    export AP_XXX_CONF_DIR="${HOME}/.config/xxx"
+
     alias zxxx="cd /Applications/xxx.app/Contents/MacOS"
     alias zxxx="cd \${HOME}/.xxx"
     alias zxxx="cd \${HOME}/.config/xxx"

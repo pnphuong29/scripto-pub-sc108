@@ -1,6 +1,7 @@
 alias apinitxxx="ap_func_init_xxx"
 ap_func_init_xxx() {
     export AP_XXX_SETUP_VERSION=''
+    export AP_XXX_CONF_DIR="${HOME}/.config/xxx"
 
     alias zxxx="cd /Applications/xxx.app/Contents/MacOS"
     alias zxxx="cd \${HOME}/.xxx"
@@ -29,11 +30,15 @@ ap_func_create_dirstruct_xxx() {
         ln -sf "${HOME}/scripto-share/vendors/xxx/bindings.json" "${HOME}/.config/xxx/bindings.json"
     fi
 
-    apshowmsginfo "Create symlink from [${AP_SOFT_DIR}/bin/xxx] to [${AP_SOFT_DIR}/xxx/bin/xxx]\n"
-    ln -sf "${AP_SOFT_DIR}/xxx/bin/xxx" "${AP_SOFT_DIR}/bin/xxx"
+    if [ -f "${AP_SOFT_DIR}/xxx/xxx" ]; then
+        apshowmsginfo "Create symlink from [${AP_SOFT_DIR}/bin/xxx] to [${AP_SOFT_DIR}/xxx/bin/xxx]\n"
+        ln -sf "${AP_SOFT_DIR}/xxx/bin/xxx" "${AP_SOFT_DIR}/bin/xxx"
+    fi
 
-    apshowmsginfo "Create symlink from [${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash] to [${AP_SOFT_DIR}/xxx/complete/xxx.bash]\n"
-    ln -sf "${AP_SOFT_DIR}/xxx/complete/xxx.bash" "${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash"
+    if [ -f "${AP_SOFT_DIR}/xxx/xxx" ]; then
+        apshowmsginfo "Create symlink from [${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash] to [${AP_SOFT_DIR}/xxx/complete/xxx.bash]\n"
+        ln -sf "${AP_SOFT_DIR}/xxx/complete/xxx.bash" "${AP_COMPLETIONS_DIR}/ap_completion_xxx.bash"
+    fi
 
     apshowmsginfo "Create symlink from [${AP_MAN_DIR}/man1/xxx.1] to [${AP_SOFT_DIR}/xxx/xxx.1]\n"
     ln -sf "${AP_SOFT_DIR}/xxx/xxx.1" "${AP_MAN_DIR}/man1/xxx.1"

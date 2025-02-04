@@ -15,6 +15,12 @@ ap_func_init_pspg() {
 
 alias apcreatedirstructpspg="ap_func_create_dirstruct_pspg"
 ap_func_create_dirstruct_pspg() {
+    # apshowmsginfo "Generate [pspg] bash autocomplete\n"
+    # curl -SL "https://raw.githubusercontent.com/okbob/pspg/refs/heads/master/bash-completion.sh" >"${AP_COMPLETIONS_DIR}/ap_completion_pspg.bash"
+
+    apshowmsginfo "Generate [pspg] man page\n"
+    curl -SL "https://raw.githubusercontent.com/okbob/pspg/refs/heads/master/pspg.1" >"${AP_MAN_DIR}/man1/pspg.1"
+
     if alias apcreatedirstructpspgshare &>/dev/null; then
         apcreatedirstructpspgshare
     fi

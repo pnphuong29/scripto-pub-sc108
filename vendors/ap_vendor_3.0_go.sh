@@ -14,6 +14,10 @@ ap_func_init_go() {
     alias zgomodules="cd \${GOPATH}/pkg/mod"
     alias zgobin="cd \${GOPATH}/bin"
 
+    alias goclean='go clean'
+    alias gocleandryrun='go clean -n'
+    alias gocleancache='go clean -cache'
+
     if alias apinitxxxshare &>/dev/null; then
         apinitxxxshare
     fi
