@@ -101,11 +101,6 @@ ap_func_setup_common_apps() {
         aplogshow "Install & upgrade [snap core]\n"
         sudo snap install core
         sudo snap refresh core
-
-        # Link bash
-        # Cannot remember why I need below codes
-        # aplogshow "Link [${HOME}/scripto-data/software/bin/bash] to [/bin/bash]\n"
-        # ln -sf /bin/bash "${HOME}/scripto-data/software/bin/bash"
     fi
 
     apcreatedirstructgit

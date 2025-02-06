@@ -48,6 +48,10 @@ ap_func_create_dir_struct_core() {
     # Tmp
     aplogshow "Create directories [${AP_TMP_DIR}]\n"
     mkdir -p "${AP_TMP_DIR}"
+
+    # Symlink bash for nvim floaterm
+    aplogshow "Link [${HOME}/scripto-data/symlinks/bash] to [\${SHELL}]\n"
+    ln -sf "${SHELL}" "${HOME}/scripto-data/symlinks/bash"
 }
 
 # alias apcreatedirstructglobal="ap_func_create_dir_struct_global"
