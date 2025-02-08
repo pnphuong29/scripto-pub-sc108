@@ -54,6 +54,8 @@ ap_func_setup_1password() {
     aplogshow "Install [1password-cli]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        # https://1password.com/downloads/mac
+        brew install --cask 1password # Best to download and install manually from 1password.com
         brew install 1password-cli
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         sudo -s \
@@ -67,7 +69,8 @@ ap_func_setup_1password() {
         sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
         curl -sS https://downloads.1password.com/linux/keys/1password.asc |
             sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
-        sudo apt update && sudo apt install 1password-cli
+        sudo apt update
+        sudo apt install 1password 1password-cli
     fi
 
     apinit1password
