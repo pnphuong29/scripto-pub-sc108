@@ -3,6 +3,7 @@ ap_func_init_go() {
     # https://go.dev/doc/gopath_code
     # https://github.com/golang/go/wiki/SettingGOPATH
     # https://pkg.go.dev/cmd/go#hdr-GOPATH_environment_variable
+    export AP_GO_SETUP_VERSION='1.23.6'
 
     export GOROOT="${AP_SOFT_DIR}/go"
     export GOPATH="${HOME}/go"
@@ -33,18 +34,18 @@ ap_func_setup_go() {
     # https://go.dev/doc/manage-install
     # https://stackoverflow.com/questions/1210664/no-module-named-sqlite3
 
-    local ap_go_version='1.22.5'
-    local ap_go_dir_name="go"
-    local ap_go_src_file_name="go${ap_go_version}.darwin-amd64.tar.gz"
-
+    local ap_go_setup_version="${AP_GO_SETUP_VERSION}"
     if [ -n "$1" ]; then
-        ap_go_version="$1"
+        ap_go_setup_version="$1"
     fi
 
-    aplogshow "Install [GO v${ap_go_version}]\n"
+    apshowmsginfo "Install [go] version [${ap_go_setup_version}]\n"
+
+    local ap_go_dir_name="go"
+    local ap_go_src_file_name="go${ap_go_setup_version}.darwin-amd64.tar.gz"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        ap_go_src_file_name="go${ap_go_version}.linux-amd64.tar.gz"
+        ap_go_src_file_name="go${ap_go_setup_version}.linux-amd64.tar.gz"
     fi
 
     local ap_vendors_go_dir="${AP_SOFT_DIR}/go"
