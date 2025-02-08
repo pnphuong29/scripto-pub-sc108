@@ -1,5 +1,6 @@
 # Symbols
 export AP_SYM_PASSED="✅"
+export AP_SYM_SUCCESS="✅"
 export AP_SYM_CHECKED="✅"
 export AP_SYM_TICKED="✅"
 export AP_SYM_CORRECT="✅"

@@ -14,7 +14,8 @@ alias apshowmsgyellow='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_YELLOW}" --'
 alias apshowmsgcyan='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_CYAN}" --'
 alias apshowmsgmagenta='ap_func_show_msg -e -n -f "${AP_SCHEME_COLOR_MAGENTA}" --'
 
-alias apshowmsginfo="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_GREEN} --"
+alias apshowmsginfo="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_CYAN} --"
+alias apshowmsgsuccess="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_GREEN} -- \${AP_SYM_SUCCESS} "
 alias apshowmsgerror="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_RED} --"
 alias apshowmsgwarn="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_YELLOW} --"
 alias apshowmsglog="ap_func_show_msg -e -n -f \${AP_SCHEME_COLOR_CYAN} --"
@@ -138,13 +139,9 @@ ap_func_show_msg() {
     aprtn_success
 }
 
-alias apshowdash='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 49'
-alias apshowhyphen='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 49'
-alias apshowsymmagenta='ap_func_show_symbols -f "${AP_SCHEME_COLOR_MAGENTA}" --'
-alias apshowsymhash21='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 21'
-alias apshowsymhash49='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 49'
-alias apshowsymhyphen21='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 21'
-alias apshowsymhyphen49='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 49'
+alias apshowdash='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 70'
+alias apshowhyphen='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 70'
+alias apshowhash='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 70'
 # @$func $$ ap_func_show_symbols {
 # ap_func_show_symbols [-cnf] [format] [--] [symbol] [no_of_times]
 # Description

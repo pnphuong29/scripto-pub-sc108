@@ -390,3 +390,43 @@ alias isgitrepo="ap_func_is_in_git_repo"
 ap_func_is_in_git_repo() {
     git rev-parse HEAD >/dev/null 2>&1
 }
+
+# Create symlinks for all files in sub-directories in each util directory
+alias createsymlinksforscutils="ap_func_create_symlinks_util"
+ap_func_create_symlinks_util() {
+    ap_util_dirs=("${HOME}/scripto/utils" "${HOME}/scripto-share/utils" "${HOME}/scripto-common/utils" "${HOME}/scripto-main/utils")
+    for ap_util_dir in "${ap_util_dirs[@]}"; do
+        [ ! -d "${ap_util_dir}" ] && continue
+        apshowmsginfo "Processing util directory: [${ap_util_dir}]\n"
+        apshowhash
+        # Loop through all directories in the current folder
+        for ap_dir in "${ap_util_dir}"/*/; do
+            # Skip directories that start with underscore
+            if [[ "${ap_dir:0:1}" != "_" ]]; then
+                # Remove trailing slash from directory name
+                ap_dir="${ap_dir%/}"
+
+                apshowmsginfo "Processing dir [${ap_dir}]\n"
+                # Loop through all files in the subdirectory
+                for ap_file in "${ap_dir}"/*; do
+                    # Check if it's a regular file (not a directory)
+                    if [ -f "$ap_file" ]; then
+                        # Get just the filename without the path
+                        ap_filename="$(basename "${ap_file}")"
+
+                        # Create symlink in current directory
+                        # If symlink already exists, skip it
+                        if [ ! -e "${ap_filename}" ]; then
+                            ln -s "${ap_file}" "${ap_util_dir}/${ap_filename}"
+                            apshowmsgsuccess "Created symlink for [${ap_filename}]\n"
+                        else
+                            apshowmsgwarn "Skipping: ${ap_filename} (already exists)\n"
+                        fi
+                    fi
+                done
+            fi
+        done
+        apshowhash
+        echo
+    done
+}
