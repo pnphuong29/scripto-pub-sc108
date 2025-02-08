@@ -70,7 +70,6 @@ ap_func_setup_common_apps() {
             cmake \
             clang \
             net-tools \
-            iputils \
             curl \
             wget \
             sshpass \

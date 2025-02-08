@@ -76,7 +76,7 @@ ap_func_setup_gimp() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install --cask gimp
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        sudo snap install -y gimp
+        sudo snap install gimp
     fi
 
     apinitgimp
