@@ -415,13 +415,8 @@ ap_func_create_symlinks_util() {
                         ap_filename="$(basename "${ap_file}")"
 
                         # Create symlink in current directory
-                        # If symlink already exists, skip it
-                        if [ ! -e "${ap_filename}" ]; then
-                            ln -s "${ap_file}" "${ap_util_dir}/${ap_filename}"
-                            apshowmsgsuccess "Created symlink for [${ap_filename}]\n"
-                        else
-                            apshowmsgwarn "Skipping: ${ap_filename} (already exists)\n"
-                        fi
+                        ln -sf "${ap_file}" "../${ap_filename}"
+                        apshowmsgsuccess "Created symlink from [${ap_filename}] to [${ap_file}]\n"
                     fi
                 done
             fi

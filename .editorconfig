@@ -6,7 +6,7 @@ charset = utf-8
 # indent size is different than tab width
 indent_size = 4
 indent_style = space
-insert_final_newline = true
+insert_final_newline = false
 trim_trailing_whitespace = true
 end_of_line = lf
 
