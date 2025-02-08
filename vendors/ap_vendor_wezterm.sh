@@ -1,4 +1,5 @@
 # https://wezfurlong.org/wezterm/installation.html
+# https://github.com/wezterm/wezterm
 alias apinitwezterm="ap_func_init_wezterm"
 ap_func_init_wezterm() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
@@ -52,7 +53,7 @@ ap_func_setup_wezterm() {
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         curl -SL \
-            "$(curl --silent https://api.github.com/repos/wez/wezterm/releases | jq -r '.[0].assets[].browser_download_url' | grep "macos" | grep -v sha256)" >wezterm.zip
+            "$(curl --silent https://api.github.com/repos/wezterm/wezterm/releases | jq -r '.[0].assets[].browser_download_url' | grep "macos" | grep -v sha256)" >wezterm.zip
         unzip wezterm.zip
         mv WezTerm* wezterm
         rm -rf "/Applications/WezTerm"
@@ -60,7 +61,7 @@ ap_func_setup_wezterm() {
         cd "/Applications"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         curl -SL \
-            "$(curl --silent https://api.github.com/repos/wez/wezterm/releases | jq -r '.[0].assets[].browser_download_url' | grep "Ubuntu22.04.deb$")" >wezterm.deb
+            "$(curl --silent https://api.github.com/repos/wezterm/wezterm/releases | jq -r '.[0].assets[].browser_download_url' | grep "Ubuntu22.04.deb$")" >wezterm.deb
         sudo dpkg -i wezterm.deb
     fi
 
