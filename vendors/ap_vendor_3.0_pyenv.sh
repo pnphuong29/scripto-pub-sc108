@@ -189,7 +189,7 @@ ap_func_setup_pyenv() {
 
     aplogshow "Set pyenv global version [${AP_PYTHON_VERSION_DEFAULT}]\n"
     pyenv global "${AP_PYTHON_VERSION_DEFAULT}" # Set default global python
-    pyenv local "${AP_PYTHON_VERSION_DEFAULT}"  # Create and set .python-version file
+    # pyenv local "${AP_PYTHON_VERSION_DEFAULT}"  # Create and set .python-version file
 
     apinitpyenv
     apcreatedirstructpip
