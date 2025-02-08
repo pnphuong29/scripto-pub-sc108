@@ -45,6 +45,22 @@ ap_func_rm_dirstruct_ollama() {
     fi
 }
 
+alias apcreateglobalsymlinkollama="ap_func_create_global_symlink_ollama"
+ap_func_create_global_symlink_ollama() {
+    if [ -f "${AP_SOFT_DIR}/bin/ollama" ]; then
+        apshowmsginfo "Create symlink from [/usr/local/bin/ollama] to [${AP_SOFT_DIR}/bin/ollama]\n"
+        sudo ln -sf "${AP_SOFT_DIR}/bin/ollama" "/usr/local/bin/ollama"
+    fi
+}
+
+alias aprmglobalsymlinkollama="ap_func_rm_global_symlink_ollama"
+ap_func_rm_global_symlink_ollama() {
+    if [ -f "/usr/local/bin/ollama" ]; then
+        apshowmsginfo "Remove [/usr/local/bin/ollama]\n"
+        sudo rm -f "/usr/local/bin/ollama"
+    fi
+}
+
 alias apsetupollama="ap_func_setup_ollama"
 ap_func_setup_ollama() {
     aplogshow "Install [ollama]\n"

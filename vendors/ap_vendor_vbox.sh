@@ -1,6 +1,6 @@
 alias apinitvbox="ap_func_init_vbox"
 ap_func_init_vbox() {
-    export AP_VBOX_VERSION="7.1.4"
+    export AP_VBOX_VERSION="7.1.6"
     alias dlvboxguestadditions="cd \${AP_SOFT_DIR}/vbox; curl -SOL http://download.virtualbox.org/virtualbox/\${AP_VBOX_VERSION}/VBoxGuestAdditions_\${AP_VBOX_VERSION}.iso"
     alias dlvboxextpack="cd \${AP_SOFT_DIR}/vbox; curl -SOL http://download.virtualbox.org/virtualbox/\${AP_VBOX_VERSION}/Oracle_VM_VirtualBox_Extension_Pack-\${AP_VBOX_VERSION}.vbox-extpack"
 
@@ -59,8 +59,14 @@ ap_func_setup_vbox() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         # Use brew to install VirtualBox
         # brew install virtualbox virtualbox-extension-pack
-        #  https://download.virtualbox.org/virtualbox/7.1.4/VirtualBox-7.1.4-165100-macOSArm64.dmg
-        curl -SL "https://download.virtualbox.org/virtualbox/${AP_VBOX_VERSION}/VirtualBox-${AP_VBOX_VERSION}-165100-macOSArm64.dmg" -o virtualbox.dmg
+        if [[ "$(uname -m)" == 'arm64' ]]; then
+            # https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-macOSArm64.dmg
+            curl -SL "https://download.virtualbox.org/virtualbox/${AP_VBOX_VERSION}/VirtualBox-${AP_VBOX_VERSION}-167084-macOSArm64.dmg" -o virtualbox.dmg
+        elif [[ "$(uname -m)" == 'x86_64' ]]; then
+            # https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-OSX.dmg
+            curl -SL "https://download.virtualbox.org/virtualbox/${AP_VBOX_VERSION}/VirtualBox-${AP_VBOX_VERSION}-167084-OSX.dmg" -o virtualbox.dmg
+        fi
+
         hdiutil attach -nobrowse virtualbox.dmg
         cd "/Volumes/VirtualBox"
         sudo installer -pkg VirtualBox.pkg -target "/Applications"
@@ -70,8 +76,8 @@ ap_func_setup_vbox() {
         # Use apt to install VirtualBox, usually results in old version
         # sudo apt update
         # sudo apt install -y virtualbox
-        # https://download.virtualbox.org/virtualbox/7.1.4/virtualbox-7.1_7.1.4-165100~Ubuntu~jammy_amd64.deb
-        curl -SL "https://download.virtualbox.org/virtualbox/${AP_VBOX_VERSION}/virtualbox-7.1_${AP_VBOX_VERSION}-165100~Ubuntu~jammy_amd64.deb" -o virtualbox.deb
+        # https://download.virtualbox.org/virtualbox/7.1.6/virtualbox-7.1_7.1.6-167084~Ubuntu~noble_amd64.deb # Ubuntu 24.04
+        curl -SL "https://download.virtualbox.org/virtualbox/${AP_VBOX_VERSION}/virtualbox-7.1_${AP_VBOX_VERSION}-167084~Ubuntu~noble_amd64.deb" -o virtualbox.deb
         sudo dpkg -i virtualbox.deb
     fi
 
