@@ -1,4 +1,29 @@
 # @#IMPORTANT - Changing the loading (sourcing) order of below files may cause unexpected results!!!
+# Detect OS type
+export AP_OS_TYPE_MACOS='macos'
+export AP_OS_TYPE_UBUNTU='ubuntu'
+export AP_OS_TYPE_UNKNOWN='unknown'
+
+if [ "$(uname)" == 'Darwin' ]; then
+    export AP_OS_TYPE="${AP_OS_TYPE_MACOS}"
+elif [ "$(uname)" == 'Linux' ] && [ "$(grep ^ID= /etc/os-release | cut -d = -f 2)" == 'ubuntu' ]; then
+    export AP_OS_TYPE="${AP_OS_TYPE_UBUNTU}"
+else
+    export AP_OS_TYPE="${AP_OS_TYPE_UNKNOWN}"
+fi
+
+# Turn on/off log mode (for writing to log files)
+export AP_LOGS_GENERAL_ENABLED=0
+export AP_LOGS_DEBUG_ENABLED=1
+
+# Enable/disable error messages in [getopts] command
+# export OPTERR=0
+
+AP_UID="$(id -u)"
+export AP_UID
+
+AP_GID="$(id -g)"
+export AP_GID
 
 # Core functions
 alias showdeviceid="ap_func_get_device_id"
