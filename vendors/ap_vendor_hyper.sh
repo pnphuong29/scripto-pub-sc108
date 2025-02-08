@@ -43,8 +43,14 @@ ap_func_setup_hyper() {
     cd "${AP_TMP_DIR}/hyper"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        curl -SL \
-            "$(curl --silent https://api.github.com/repos/vercel/hyper/releases | jq -r '.[].assets[].browser_download_url' | grep -v canary | grep "mac-x64.zip$" | head -1)" >hyper.zip
+        if [[ "$(uname -m)" == 'arm64' ]]; then
+            curl -SL \
+                "$(curl --silent https://api.github.com/repos/vercel/hyper/releases | jq -r '.[].assets[].browser_download_url' | grep -v canary | grep "mac-arm64.zip$" | head -1)" >hyper.zip
+        elif [[ "$(uname -m)" == 'x86_64' ]]; then
+            curl -SL \
+                "$(curl --silent https://api.github.com/repos/vercel/hyper/releases | jq -r '.[].assets[].browser_download_url' | grep -v canary | grep "mac-x64.zip$" | head -1)" >hyper.zip
+        fi
+
         unzip hyper.zip
         rm -rf /Applications/Hyper.app
         mv Hyper.app /Applications/
