@@ -15,7 +15,7 @@ ap_func_init_1password() {
 
 alias apcreatedirstruct1password="ap_func_create_dirstruct_1password"
 ap_func_create_dirstruct_1password() {
-    aplogshow "Generate [1password] bash autocomplete\n"
+    apshowmsginfo "Generate [1password] bash autocomplete\n"
     op completion bash >"${AP_COMPLETIONS_DIR}/ap_completion_1password.bash"
 
     if alias apcreatedirstruct1passwordshare &>/dev/null; then
@@ -33,7 +33,7 @@ ap_func_create_dirstruct_1password() {
 
 alias aprmdirstruct1password="ap_func_rm_dirstruct_1password"
 ap_func_rm_dirstruct_1password() {
-    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_1password.bash]\n"
+    apshowmsginfo "Remove [${AP_COMPLETIONS_DIR}/ap_completion_1password.bash]\n"
     rm -f "${AP_COMPLETIONS_DIR}/ap_completion_1password.bash"
 
     if alias aprmdirstruct1passwordshare &>/dev/null; then
@@ -51,7 +51,7 @@ ap_func_rm_dirstruct_1password() {
 
 alias apsetup1password="ap_func_setup_1password"
 ap_func_setup_1password() {
-    aplogshow "Install [1password-cli]\n"
+    apshowmsginfo "Install [1password]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         # https://1password.com/downloads/mac
@@ -81,12 +81,14 @@ ap_func_setup_1password() {
 
 alias aprm1password="ap_func_rm_1password"
 ap_func_rm_1password() {
-    aplogshow "Remove [1password]\n"
+    apshowmsginfo "Remove [1password]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew remove 1password-cli
+        brew remove --cask 1password
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        sudo apt purge -y 1password-cli
+        sudo apt-get remove --purge -y 1password 1password-cli
+        sudo apt-get autoremove --purge -y
     fi
 
     if alias aprmdirstruct1password &>/dev/null; then

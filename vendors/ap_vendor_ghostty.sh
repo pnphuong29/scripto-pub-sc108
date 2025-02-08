@@ -37,8 +37,8 @@ ap_func_create_dirstruct_ghostty() {
             ln -sf "${HOME}/scripto-common/vendors/ghostty/share/linux/bash-completion/completions/ghostty.bash" "${AP_COMPLETIONS_DIR}/ap_completion_ghostty.bash"
         fi
 
-        if [ -f "${HOME}/scripto-common/vendors/ghostty/share/linux/applications/com.mitchellh.ghostty.desktop" ]; then
-            cp -f "${HOME}/scripto-common/vendors/ghostty/share/linux/applications/com.mitchellh.ghostty.desktop" "${HOME}/.local/share/applications/com.mitchellh.ghostty.desktop"
+        if [ -f "${HOME}/scripto-common/vendors/ghostty/com.mitchellh.ghostty.desktop" ]; then
+            cp -f "${HOME}/scripto-common/vendors/ghostty/com.mitchellh.ghostty.desktop" "${HOME}/.local/share/applications/com.mitchellh.ghostty.desktop"
         fi
 
         aplogshow "Create symlink from [${AP_MAN_DIR}/man1/ghostty.1] to [${HOME}/scripto-common/vendors/ghostty/share/linux/man/man1/ghostty.1]\n"
