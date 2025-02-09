@@ -397,6 +397,7 @@ ap_func_create_symlinks_util() {
     ap_util_dirs=("${HOME}/scripto/utils" "${HOME}/scripto-share/utils" "${HOME}/scripto-common/utils" "${HOME}/scripto-main/utils")
     for ap_util_dir in "${ap_util_dirs[@]}"; do
         [ ! -d "${ap_util_dir}" ] && continue
+        cd "${ap_util_dir}"
         apshowmsginfo "Processing util directory: [${ap_util_dir}]\n"
         apshowhyphen
         # Loop through all directories in the current folder
@@ -410,13 +411,14 @@ ap_func_create_symlinks_util() {
                 # Loop through all files in the subdirectory
                 for ap_file in "${ap_dir}"/*; do
                     # Check if it's a regular file (not a directory)
-                    if [ -f "$ap_file" ]; then
+                    if [ -f "${ap_file}" ]; then
                         # Get just the filename without the path
                         ap_filename="$(basename "${ap_file}")"
+                        ap_relative_path="${ap_dir##*/}/${ap_filename}"
 
                         # Create symlink in current directory
-                        ln -sf "${ap_file}" "${ap_util_dir}/${ap_filename}"
-                        apshowmsgsuccess "Created symlink from [${ap_filename}] to [${ap_file}]\n"
+                        ln -sf "${ap_relative_path}" "${ap_filename}"
+                        apshowmsgsuccess "Created symlink from [${ap_filename}] to [${ap_relative_path}]\n"
                     fi
                 done
             fi
