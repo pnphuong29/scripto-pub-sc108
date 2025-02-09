@@ -1,5 +1,7 @@
 alias apinitpik="ap_func_init_pik"
 ap_func_init_pik() {
+    alias pikall='pik -a -t -F'
+
     if alias apinitpikshare &>/dev/null; then
         apinitpikshare
     fi
