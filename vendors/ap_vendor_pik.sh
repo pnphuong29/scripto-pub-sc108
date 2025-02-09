@@ -15,6 +15,11 @@ ap_func_init_pik() {
 
 alias apcreatedirstructpik="ap_func_create_dirstruct_pik"
 ap_func_create_dirstruct_pik() {
+    # Just need a global pik command to access all processes
+    apshowmsginfo "Copy [pik] to [/usr/local/bin/]\n"
+    sudo cp -f "${HOME}/.cargo/bin/pik" "/usr/local/bin/"
+    cargo uninstall pik
+
     if alias apcreatedirstructpikshare &>/dev/null; then
         apcreatedirstructpikshare
     fi
@@ -65,7 +70,7 @@ ap_func_setup_pik() {
 
     cargo install pik
     apinitpik
-    apcreateglobalsymlinkpik
+    # apcreateglobalsymlinkpik
 
     if alias apcreatedirstructpik &>/dev/null; then
         apcreatedirstructpik
