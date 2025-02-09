@@ -1,6 +1,6 @@
 alias apinityazi="ap_func_init_yazi"
 ap_func_init_yazi() {
-    apaddpath "${AP_SOFT_DIR}/yazi"
+    # apaddpath "${AP_SOFT_DIR}/yazi"
 
     if alias apinityazishare &>/dev/null; then
         apinityazishare
