@@ -398,7 +398,7 @@ ap_func_create_symlinks_util() {
     for ap_util_dir in "${ap_util_dirs[@]}"; do
         [ ! -d "${ap_util_dir}" ] && continue
         apshowmsginfo "Processing util directory: [${ap_util_dir}]\n"
-        apshowhash
+        apshowhyphen
         # Loop through all directories in the current folder
         for ap_dir in "${ap_util_dir}"/*/; do
             # Skip directories that start with underscore
@@ -415,13 +415,13 @@ ap_func_create_symlinks_util() {
                         ap_filename="$(basename "${ap_file}")"
 
                         # Create symlink in current directory
-                        ln -sf "${ap_file}" "../${ap_filename}"
+                        ln -sf "${ap_file}" "${ap_util_dir}/${ap_filename}"
                         apshowmsgsuccess "Created symlink from [${ap_filename}] to [${ap_file}]\n"
                     fi
                 done
             fi
         done
-        apshowhash
+        apshowhyphen
         echo
     done
 }

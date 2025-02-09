@@ -139,7 +139,6 @@ ap_func_show_msg() {
     aprtn_success
 }
 
-alias apshowdash='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 70'
 alias apshowhyphen='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "-" 70'
 alias apshowhash='ap_func_show_symbols -f "${AP_SCHEME_COLOR_RED}" -- "#" 70'
 # @$func $$ ap_func_show_symbols {
