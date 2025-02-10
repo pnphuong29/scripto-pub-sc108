@@ -15,6 +15,7 @@ else
         # eval "$(printf "%s" "${ap_cmd}")"
         printf "%s\n" "${ap_cmd}" >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
     done
+    echo >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
 
     # TODO: Some vendors including number in their name, so we need to handle this case
     # Scripto - Edit sc vendors
@@ -55,6 +56,7 @@ else
             printf "%s\n" "${ap_cmd}" >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
         done
     done
+    echo >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
 
     # Scripto Common - Edit sc vendors
     for ap_vendor in "${HOME}/scripto-common/vendors"/ap_vendor_*.sh; do
@@ -99,6 +101,7 @@ else
             printf "%s\n" "${ap_cmd}" >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
         done
     done
+    echo >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
 
     # Scripto Share - Edit sc vendors
     for ap_vendor in "${HOME}/scripto-share/vendors"/ap_vendor_*.sh; do
@@ -143,6 +146,7 @@ else
             printf "%s\n" "${ap_cmd}" >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
         done
     done
+    echo >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
 
     # Scripto Main - Edit sc vendors
     for ap_vendor in "${HOME}/scripto-main/vendors"/ap_vendor_*.sh; do
@@ -187,6 +191,7 @@ else
             printf "%s\n" "${ap_cmd}" >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
         done
     done
+    echo >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
 
     # Scripto Share - Edit sc docker compose files
     for ap_dkc_file in "${HOME}/scripto-share/dockers"/ap_dkc_*.yml; do
@@ -216,6 +221,7 @@ else
             printf "%s\n" "${ap_cmd}" >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
         done
     done
+    echo >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
 
     # Scripto Common - Edit sc docker compose files
     for ap_dkc_file in "${HOME}/scripto-common/dockers"/ap_dkc_*.yml; do
@@ -245,6 +251,7 @@ else
             printf "%s\n" "${ap_cmd}" >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
         done
     done
+    echo >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
 
     # Scripto Main - Edit sc docker compose files
     for ap_dkc_file in "${HOME}/scripto-main/dockers"/ap_dkc_*.yml; do
@@ -274,6 +281,7 @@ else
             printf "%s\n" "${ap_cmd}" >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
         done
     done
+    echo >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
 
     # Alias - Edit test scripts
     for i in {1..14}; do
@@ -292,6 +300,7 @@ else
         # eval "$(printf "%s" "alias runsmtb${i}='source ${HOME}/scripto-main/tests/ap_test_bash_${i}.sh'")"
         printf "%s\n" "alias runsmtb${i}='source ${HOME}/scripto-main/tests/ap_test_bash_${i}.sh'" >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
     done
+    echo >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
 
     for i in {1..14}; do
         for ap_editor in "${AP_EDITOR_ARR[@]}"; do
@@ -309,6 +318,7 @@ else
         # eval "$(printf "%s" "alias runsmtpy${i}='python ${HOME}/scripto-main/tests/ap_test_py_${i}.py'")"
         printf "%s\n" "alias runsmtpy${i}='python ${HOME}/scripto-main/tests/ap_test_py_${i}.py'" >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
     done
+    echo >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
 
     for i in {1..14}; do
         for ap_editor in "${AP_EDITOR_ARR[@]}"; do
@@ -318,6 +328,7 @@ else
         # eval "$(printf "%s" "alias rundevpy${i}='python ${AP_PRJ_DEV1_DIR}/py/test_py_${i}.py'")"
         printf "%s\n" "alias rundevpy${i}='python ${AP_PRJ_DEV1_DIR}/py/test_py_${i}.py'" >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
     done
+    echo >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
 
     for i in {1..14}; do
         for ap_editor in "${AP_EDITOR_ARR[@]}"; do
@@ -327,6 +338,7 @@ else
         # eval "$(printf "%s" "alias rundevts${i}='source ${AP_PRJ_DEV1_DIR}/ts/test_ts_${i}.ts'")"
         printf "%s\n" "alias rundevts${i}='source ${AP_PRJ_DEV1_DIR}/ts/test_ts_${i}.ts'" >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
     done
+    echo >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
 
     # Alias - Edit logs
     for ap_editor in "${AP_EDITOR_ARR[@]}"; do
@@ -346,6 +358,7 @@ else
         # eval "$(printf "%s" "${ap_cmd}")"
         printf "%s\n" "${ap_cmd}" >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
     done
+    echo >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
 
     # Alias - Edit setup vendor scripts
     for ap_editor in "${AP_EDITOR_ARR[@]}"; do
@@ -364,6 +377,7 @@ else
         # eval "$(printf "%s" "${ap_cmd}")"
         printf "%s\n" "${ap_cmd}" >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
     done
+    echo >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
 
     # Alias - Edit cache files
     for ap_editor in "${AP_EDITOR_ARR[@]}"; do
@@ -382,6 +396,7 @@ else
         # eval "$(printf "%s" "${ap_cmd}")"
         printf "%s\n" "${ap_cmd}" >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
     done
+    echo >>"${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
 
     source "${AP_CACHE_DIR}/sc108_ap_alias_5.1_auto.sh"
 fi
