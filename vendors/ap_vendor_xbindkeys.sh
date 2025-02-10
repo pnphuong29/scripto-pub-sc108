@@ -40,6 +40,8 @@ ap_func_setup_xbindkeys() {
     sudo apt install -y xbindkeys xautomation xdotool
     # xbindkeys_autostart
 
+    apshowmsginfo "You should restart your system to make xbindkeys work properly.\n"
+
     apinitxbindkeys
     if alias apcreatedirstructxbindkeys &>/dev/null; then
         apcreatedirstructxbindkeys
