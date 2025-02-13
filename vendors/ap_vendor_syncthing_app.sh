@@ -1,6 +1,13 @@
 alias apinitsyncthingapp="ap_func_init_syncthingapp"
 ap_func_init_syncthingapp() {
-    alias zsyncthingapp="cd /Applications/Syncthing.app/Contents/Resources/syncthing"
+    # Please note that syncthing cli is different than Syncthing app
+    # Run below commands if syncthing app did not generate default configuration
+    if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
+        alias zsyncthingapp="cd /Applications/Syncthing.app/Contents/Resources/syncthing"
+        alias stappgenerateconfig='/Applications/Syncthing.app/Contents/Resources/syncthing/syncthing generate --gui-user=admin --gui-password=admin'
+    # elif [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]]; then
+    #     alias stappgenerateconfig='syncthing generate --gui-user=admin --gui-password=admin'
+    fi
 
     if alias apinitsyncthingappshare &>/dev/null; then
         apinitsyncthingappshare
@@ -59,27 +66,28 @@ ap_func_setup_syncthingapp() {
         rm -rf "/Applications/Syncthing.app"
         cp -R "/Volumes/Syncthing/Syncthing.app" /Applications/
         hdiutil detach "/Volumes/syncthing"
-    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        # https://apt.syncthing.net/
+    # For Ubuntu, install syncthing cli instead for easier management and it also the same as you install syncthing app
+    # elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+    #     # https://apt.syncthing.net/
 
-        # Add the release PGP keys:
-        sudo mkdir -p /etc/apt/keyrings
-        sudo curl -L -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+    #     # Add the release PGP keys:
+    #     sudo mkdir -p /etc/apt/keyrings
+    #     sudo curl -L -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
 
-        # Add the "stable" channel to your APT sources:
-        echo "deb [signed-by=/etc/apt/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
+    #     # Add the "stable" channel to your APT sources:
+    #     echo "deb [signed-by=/etc/apt/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
 
-        # Increase preference of Syncthing's packages ("pinning")
-        printf "Package: *\nPin: origin apt.syncthing.net\nPin-Priority: 990\n" | sudo tee /etc/apt/preferences.d/syncthing.pref
+    #     # Increase preference of Syncthing's packages ("pinning")
+    #     printf "Package: *\nPin: origin apt.syncthing.net\nPin-Priority: 990\n" | sudo tee /etc/apt/preferences.d/syncthing.pref
 
-        # Update package lists
-        sudo apt-get update
+    #     # Update package lists
+    #     sudo apt-get update
 
-        # Install required libraries
-        sudo apt-get install -y apt-transport-https ca-certificate
+    #     # Install required libraries
+    #     sudo apt-get install -y apt-transport-https ca-certificate
 
-        # Install syncthing
-        sudo apt-get install -y syncthing
+    #     # Install syncthing
+    #     sudo apt-get install -y syncthing
     fi
 
     apinitsyncthingapp
@@ -94,13 +102,13 @@ ap_func_rm_syncthingapp() {
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         rm -rf "/Applications/Syncthing.app"
-    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        sudo apt-get remove --purge -y syncthing
-        sudo rm -f /etc/apt/sources.list.d/syncthing.list
-        sudo rm -f /etc/apt/keyrings/syncthing-archive-keyring.gpg
-        sudo rm -f /etc/apt/preferences.d/syncthing.pref
-        sudo apt-get update
-        sudo apt-get autoremove --purge -y
+    # elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+    #     sudo apt-get remove --purge -y syncthing
+    #     sudo rm -f /etc/apt/sources.list.d/syncthing.list
+    #     sudo rm -f /etc/apt/keyrings/syncthing-archive-keyring.gpg
+    #     sudo rm -f /etc/apt/preferences.d/syncthing.pref
+    #     sudo apt-get update
+    #     sudo apt-get autoremove --purge -y
     fi
 
     if alias aprmdirstructsyncthingapp &>/dev/null; then

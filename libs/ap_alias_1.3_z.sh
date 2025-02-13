@@ -29,10 +29,12 @@ alias zvarlog="cd /var/log"
 
 # Z commands - Linux
 alias zlocalshare="cd \${HOME}/.local/share"
+alias zlocalapps="cd \${HOME}/.local/share/applications"
 alias zlocalstate="cd \${HOME}/.local/state"
-alias zdesktopshortcuts="cd \${HOME}/.local/share/applications"
+alias zusrapps="cd /usr/local/share/applications"
 alias zconfig="cd \${HOME}/.config"
 alias zautostart="cd \${HOME}/.config/autostart"
-alias zusersnap="cd \${HOME}/snap"
-alias zsnap="cd /snap"
+
+alias zsnap="cd \${HOME}/snap"
+alias zsnapglobal="cd /snap"
 alias zsnapdesktopshortcuts="cd /var/lib/snapd/desktop/applications"

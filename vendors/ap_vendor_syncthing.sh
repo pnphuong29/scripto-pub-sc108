@@ -101,6 +101,8 @@ ap_func_setup_syncthing() {
     mv syncthing "${AP_SOFT_DIR}/"
 
     apinitsyncthing
+    apcreateglobalsymlinksyncthing
+
     if alias apcreatedirstructsyncthing &>/dev/null; then
         apcreatedirstructsyncthing
     fi
