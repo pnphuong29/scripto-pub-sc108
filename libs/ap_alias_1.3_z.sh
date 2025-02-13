@@ -31,7 +31,7 @@ alias zvarlog="cd /var/log"
 alias zlocalshare="cd \${HOME}/.local/share"
 alias zlocalapps="cd \${HOME}/.local/share/applications"
 alias zlocalstate="cd \${HOME}/.local/state"
-alias zusrapps="cd /usr/local/share/applications"
+alias zusrapps="cd /usr/share/applications"
 alias zconfig="cd \${HOME}/.config"
 alias zautostart="cd \${HOME}/.config/autostart"
 
