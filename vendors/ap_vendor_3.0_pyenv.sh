@@ -185,7 +185,21 @@ ap_func_setup_pyenv() {
 
     # Install Python
     aplogshow "Installing [Python ${AP_PYTHON_VERSION_DEFAULT}]\n"
-    pyenv install "${AP_PYTHON_VERSION_DEFAULT}"
+    # pyenv install "${AP_PYTHON_VERSION_DEFAULT}"
+
+    # Use below command to install shared library such as tkinter for tcl/tk support
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        # Uncomment below command to fix openssl@1.1 issue
+        # https://github.com/pyenv/pyenv/issues/2805#issuecomment-1743536437
+        # brew uninstall --ignore-dependencies openssl@1.1
+        env LDFLAGS="-L$(brew --prefix openssl@1.1)/lib -L$(brew --prefix readline)/lib -L$(brew --prefix sqlite3)/lib -L$(brew --prefix xz)/lib -L$(brew --prefix zlib)/lib -L$(brew --prefix tcl-tk)/lib" \
+            CPPFLAGS="-I$(brew --prefix openssl@1.1)/include -I$(brew --prefix readline)/include -I$(brew --prefix sqlite3)/include -I$(brew --prefix xz)/include -I$(brew --prefix zlib)/include -I$(brew --prefix tcl-tk)/include" \
+            PKG_CONFIG_PATH="$(brew --prefix openssl@1.1)/lib/pkgconfig:$(brew --prefix readline)/lib/pkgconfig:$(brew --prefix sqlite3)/lib/pkgconfig:$(brew --prefix xz)/lib/pkgconfig:$(brew --prefix zlib)/lib/pkgconfig:$(brew --prefix tcl-tk)/lib/pkgconfig" \
+            CONFIGURE_OPTS='--enable-optimizations' \
+            pyenv install "${AP_PYTHON_VERSION_DEFAULT}"
+    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+        env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install "${AP_PYTHON_VERSION_DEFAULT}"
+    fi
 
     aplogshow "Set pyenv global version [${AP_PYTHON_VERSION_DEFAULT}]\n"
     pyenv global "${AP_PYTHON_VERSION_DEFAULT}" # Set default global python
