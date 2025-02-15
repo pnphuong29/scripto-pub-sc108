@@ -19,9 +19,6 @@ alias zsdata="cd \${HOME}/scripto-data"
 
 alias zdata="cd \${AP_DATA_DIR}"
 alias zwww="cd \${AP_WWW_DIR}"
-alias zwww2="cd \${AP_WWW_DIR}/www"
-alias zwwwtest="cd \${AP_WWW_DIR}/test"
-alias zwwwtmp="cd \${AP_WWW_DIR}/tmp"
 
 alias zetc="cd /etc"
 alias zvar="cd /var"
