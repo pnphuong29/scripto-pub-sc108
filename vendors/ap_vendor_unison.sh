@@ -15,9 +15,6 @@ ap_func_init_unison() {
 
 alias apcreatedirstructunison="ap_func_create_dirstruct_unison"
 ap_func_create_dirstruct_unison() {
-    apshowmsginfo "Create unison directories at [${HOME}/.unison]\n"
-    mkdir -p "${HOME}/.unison"
-
     if alias apcreatedirstructunisonshare &>/dev/null; then
         apcreatedirstructunisonshare
     fi
@@ -33,9 +30,6 @@ ap_func_create_dirstruct_unison() {
 
 alias aprmdirstructunison="ap_func_rm_dirstruct_unison"
 ap_func_rm_dirstruct_unison() {
-    apshowmsginfo "Remove [${HOME}/.unison/]\n"
-    rm -f "${HOME}/.unison/"
-
     if alias aprmdirstructunisonshare &>/dev/null; then
         aprmdirstructunisonshare
     fi
