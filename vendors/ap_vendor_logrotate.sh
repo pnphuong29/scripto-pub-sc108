@@ -67,7 +67,7 @@ ap_func_setup_logrotate() {
     if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
         brew install logrotate
     elif [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]]; then
-        sudo apt-get install -y logrotate
+        sudo apt install -y logrotate
     fi
 
     # Method 2: Install logrotate from source
@@ -113,8 +113,8 @@ ap_func_rm_logrotate() {
         rm -rf /usr/local/etc/logrotate.d
         rm -f /usr/local/etc/logrotate.conf
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        sudo apt-get remove --purge -y logrotate
-        sudo apt-get autoremove --purge -y
+        sudo apt remove --purge -y logrotate
+        sudo apt autoremove --purge -y
     fi
 
     if alias aprmdirstructlogrotate &>/dev/null; then
