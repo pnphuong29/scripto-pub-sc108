@@ -1,13 +1,6 @@
 # https://sigal.saimon.org/en/latest/installation.html
 alias apinitsigal="ap_func_init_sigal"
 ap_func_init_sigal() {
-    alias initsigalconfig="cp \${HOME}/scripto-common/vendors/sigal/sigal.conf.py ./"
-
-    alias sigalinit="sigal init"
-    alias sigalserve="sigal serve"
-    alias sigalserveport="sigal serve -p \${AP_PORT_SIGAL}"
-    alias sigalbuild="sigal build"
-
     if alias apinitsigalshare &>/dev/null; then
         apinitsigalshare
     fi

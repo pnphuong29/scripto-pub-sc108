@@ -1,8 +1,5 @@
 alias apinitunison="ap_func_init_unison"
 ap_func_init_unison() {
-    alias initunisonconfig="cp \${HOME}/scripto-common/vendors/unison/test.prf \${HOME}/.unison/"
-    alias unisonpc7="unison ~/Downloads ssh://pnphuong29@mahakaruna.ddns.inf:8022//home/pnphuong29/Downloads/test"
-
     if alias apinitunisonshare &>/dev/null; then
         apinitunisonshare
     fi
