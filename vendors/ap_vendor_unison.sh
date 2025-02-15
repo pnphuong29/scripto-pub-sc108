@@ -43,6 +43,25 @@ ap_func_rm_dirstruct_unison() {
     fi
 }
 
+alias apcreateglobalsymlinkunison="ap_func_create_global_symlink_unison"
+ap_func_create_global_symlink_unison() {
+    if type brew &>/dev/null; then
+        ap_brew_prefix="$(brew --prefix)"
+        if [ -f "${ap_brew_prefix}/bin/unison" ]; then
+            apshowmsginfo "Create symlink from [/usr/local/bin/unison] to [${ap_brew_prefix}/bin/unison]\n"
+            sudo ln -sf "${ap_brew_prefix}/bin/unison" "/usr/local/bin/unison"
+        fi
+    fi
+}
+
+alias aprmglobalsymlinkunison="ap_func_rm_global_symlink_unison"
+ap_func_rm_global_symlink_unison() {
+    if [ -f "/usr/local/bin/unison" ]; then
+        apshowmsginfo "Remove [/usr/local/bin/unison]\n"
+        sudo rm -f "/usr/local/bin/unison"
+    fi
+}
+
 alias apsetupunison="ap_func_setup_unison"
 ap_func_setup_unison() {
     apshowmsginfo "Install [unison]\n"
@@ -54,6 +73,8 @@ ap_func_setup_unison() {
     fi
 
     apinitunison
+    apcreateglobalsymlinkunison
+
     if alias apcreatedirstructunison &>/dev/null; then
         apcreatedirstructunison
     fi

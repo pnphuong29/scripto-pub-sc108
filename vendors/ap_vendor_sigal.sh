@@ -68,6 +68,7 @@ ap_func_setup_sigal() {
     # pip install "sigal[all]" # install with optional dependencies
     uv tool install "sigal[all]" # install with optional dependencies
     apinitsigal
+    apcreateglobalsymlinksigal
 
     if alias apcreatedirstructsigal &>/dev/null; then
         apcreatedirstructsigal
