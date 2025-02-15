@@ -44,6 +44,22 @@ ap_func_rm_dirstruct_sigal() {
     fi
 }
 
+alias apcreateglobalsymlinksigal="ap_func_create_global_symlink_sigal"
+ap_func_create_global_symlink_sigal() {
+    if [ -f "${HOME}/.local/bin/sigal" ]; then
+        apshowmsginfo "Create symlink from [/usr/local/bin/sigal] to [${HOME}/.local/bin/sigal]\n"
+        sudo ln -sf "${HOME}/.local/bin/sigal" "/usr/local/bin/sigal"
+    fi
+}
+
+alias aprmglobalsymlinksigal="ap_func_rm_global_symlink_sigal"
+ap_func_rm_global_symlink_sigal() {
+    if [ -f "/usr/local/bin/sigal" ]; then
+        apshowmsginfo "Remove [/usr/local/bin/sigal]\n"
+        sudo rm -f "/usr/local/bin/sigal"
+    fi
+}
+
 alias apsetupsigal="ap_func_setup_sigal"
 ap_func_setup_sigal() {
     aplogshow "Install [sigal]\n"
