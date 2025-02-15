@@ -5,6 +5,7 @@ ap_func_init_sigal() {
 
     alias sigalinit="sigal init"
     alias sigalserve="sigal serve"
+    alias sigalserveport="sigal serve -p \${AP_PORT_SIGAL}"
     alias sigalbuild="sigal build"
 
     if alias apinitsigalshare &>/dev/null; then
