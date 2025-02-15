@@ -120,7 +120,7 @@ ap_func_setup_common_desktop_apps() {
         brew install --cask \
             google-chrome
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        # `libfuse2` should be installed only in Ubuntu >= 22.04
+        # `libfuse` should be installed only in Ubuntu >= 22.04
         # `mesa-utils` is installed for `glxinfo` command
         sudo apt install -y \
             xbindkeys \
@@ -138,7 +138,9 @@ ap_func_setup_common_desktop_apps() {
             gnome-tweaks \
             chrome-gnome-shell \
             flatpak \
-            libfuse2 \
+            libfuse-dev \
+            libfuse3-3 \
+            libfuse3-dev \
             mesa-utils
 
         # Flatpak

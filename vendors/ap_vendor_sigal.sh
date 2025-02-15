@@ -56,7 +56,8 @@ ap_func_setup_sigal() {
     aplogshow "Install [sigal]\n"
 
     # pip install sigal
-    pip install "sigal[all]" # install with optional dependencies
+    # pip install "sigal[all]" # install with optional dependencies
+    uv tool install "sigal[all]" # install with optional dependencies
     apinitsigal
 
     if alias apcreatedirstructsigal &>/dev/null; then
@@ -68,7 +69,8 @@ alias aprmsigal="ap_func_rm_sigal"
 ap_func_rm_sigal() {
     aplogshow "Remove [sigal]\n"
     # pip uninstall sigal
-    pip uninstall "sigal[all]"
+    # pip uninstall "sigal[all]"
+    uv tool uninstall "sigal[all]"
 
     if alias aprmdirstructsigal &>/dev/null; then
         aprmdirstructsigal
