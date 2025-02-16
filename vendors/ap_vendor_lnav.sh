@@ -1,8 +1,5 @@
 alias apinitlnav="ap_func_init_lnav"
 ap_func_init_lnav() {
-    export AP_LNAV_CONF_DIR="${HOME}/.config/lnav"
-    alias zlnavconfig="cd \${HOME}/.config/lnav"
-
     if alias apinitlnavshare &>/dev/null; then
         apinitlnavshare
     fi
@@ -18,11 +15,6 @@ ap_func_init_lnav() {
 
 alias apcreatedirstructlnav="ap_func_create_dirstruct_lnav"
 ap_func_create_dirstruct_lnav() {
-    # if [ -f "${HOME}/scripto-share/vendors/lnav/bindings.json" ]; then
-    #     apshowmsginfo "Create symlink from [${HOME}/.config/lnav/bindings.json] to [${HOME}/scripto-share/vendors/lnav/bindings.json]\n"
-    #     ln -sf "${HOME}/scripto-share/vendors/lnav/bindings.json" "${HOME}/.config/lnav/bindings.json"
-    # fi
-
     if [ -f "${AP_SOFT_DIR}/lnav/lnav" ]; then
         apshowmsginfo "Create symlink from [${AP_SOFT_DIR}/bin/lnav] to [${AP_SOFT_DIR}/lnav/lnav]\n"
         ln -sf "${AP_SOFT_DIR}/lnav/lnav" "${AP_SOFT_DIR}/bin/lnav"
@@ -30,36 +22,6 @@ ap_func_create_dirstruct_lnav() {
 
     apshowmsginfo "Create symlink from [${AP_MAN_DIR}/man1/lnav.1] to [${AP_SOFT_DIR}/lnav/lnav.1]\n"
     ln -sf "${AP_SOFT_DIR}/lnav/lnav.1" "${AP_MAN_DIR}/man1/lnav.1"
-
-    # if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-    #     if [ -f "${HOME}/scripto-common/vendors/lnav/config.mac.env" ]; then
-    #         if [ -d "${XDG_CONFIG_HOME}" ]; then
-    #             mkdir -p "${XDG_CONFIG_HOME}/lnav"
-    #             ln -sf "${HOME}/scripto-common/vendors/lnav/config.base.env" "${XDG_CONFIG_HOME}/lnav/config.base.env"
-    #             ln -sf "${HOME}/scripto-common/vendors/lnav/config.key.mac.env" "${XDG_CONFIG_HOME}/lnav/config.key.mac.env"
-    #             ln -sf "${HOME}/scripto-common/vendors/lnav/config.mac.env" "${XDG_CONFIG_HOME}/lnav/config"
-    #         else
-    #             mkdir -p "${HOME}/Library/Application Support/com.mitchellh.lnav"
-    #             ln -sf "${HOME}/scripto-common/vendors/lnav/config.base.env" "${HOME}/Library/Application Support/com.mitchellh.lnav/config.base.env"
-    #             ln -sf "${HOME}/scripto-common/vendors/lnav/config.key.mac.env" "${HOME}/Library/Application Support/com.mitchellh.lnav/config.key.mac.env"
-    #             ln -sf "${HOME}/scripto-common/vendors/lnav/config.mac.env" "${HOME}/Library/Application Support/com.mitchellh.lnav/config"
-    #         fi
-    #     fi
-    # elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-    #     if [ -f "${HOME}/scripto-common/vendors/lnav/config.linux.env" ]; then
-    #         if [ -d "${XDG_CONFIG_HOME}" ]; then
-    #             mkdir -p "${XDG_CONFIG_HOME}/lnav"
-    #             ln -sf "${HOME}/scripto-common/vendors/lnav/config.base.env" "${XDG_CONFIG_HOME}/lnav/config.base.env"
-    #             ln -sf "${HOME}/scripto-common/vendors/lnav/config.key.linux.env" "${XDG_CONFIG_HOME}/lnav/config.key.linux.env"
-    #             ln -sf "${HOME}/scripto-common/vendors/lnav/config.linux.env" "${XDG_CONFIG_HOME}/lnav/config"
-    #         else
-    #             mkdir -p "${HOME}/.config/lnav"
-    #             ln -sf "${HOME}/scripto-common/vendors/lnav/config.base.env" "${HOME}/.config/lnav/config.base.env"
-    #             ln -sf "${HOME}/scripto-common/vendors/lnav/config.key.linux.env" "${HOME}/.config/lnav/config.key.linux.env"
-    #             ln -sf "${HOME}/scripto-common/vendors/lnav/config.linux.env" "${HOME}/.config/lnav/config"
-    #         fi
-    #     fi
-    # fi
 
     if alias apcreatedirstructlnavshare &>/dev/null; then
         apcreatedirstructlnavshare
@@ -76,9 +38,6 @@ ap_func_create_dirstruct_lnav() {
 
 alias aprmdirstructlnav="ap_func_rm_dirstruct_lnav"
 ap_func_rm_dirstruct_lnav() {
-    apshowmsginfo "Remove [${HOME}/.config/lnav/]\n"
-    rm -rf "${HOME}/.config/lnav/"
-
     apshowmsginfo "Remove [${AP_SOFT_DIR}/bin/lnav]\n"
     rm -f "${AP_SOFT_DIR}/bin/lnav"
 
