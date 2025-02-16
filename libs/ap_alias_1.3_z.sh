@@ -25,6 +25,8 @@ alias zvar="cd /var"
 alias zvarlog="cd /var/log"
 
 # Z commands - Linux
+alias zlocal="cd \${HOME}/.local"
+alias zlocalbin="cd \${HOME}/.local/bin"
 alias zlocalshare="cd \${HOME}/.local/share"
 alias zlocalapps="cd \${HOME}/.local/share/applications"
 alias zlocalstate="cd \${HOME}/.local/state"
