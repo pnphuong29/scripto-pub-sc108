@@ -77,7 +77,7 @@ ap_func_create_dirstruct_lnav() {
 alias aprmdirstructlnav="ap_func_rm_dirstruct_lnav"
 ap_func_rm_dirstruct_lnav() {
     apshowmsginfo "Remove [${HOME}/.config/lnav/]\n"
-    rm -f "${HOME}/.config/lnav/"
+    rm -rf "${HOME}/.config/lnav/"
 
     apshowmsginfo "Remove [${AP_SOFT_DIR}/bin/lnav]\n"
     rm -f "${AP_SOFT_DIR}/bin/lnav"
@@ -141,17 +141,18 @@ ap_func_setup_lnav() {
     fi
 
     unzip lnav.zip
-    mv lnav* lnav
+    mv lnav-* lnav
     mv lnav "${AP_SOFT_DIR}/"
     cd "${AP_SOFT_DIR}/lnav"
     # rm -rf "${AP_TMP_DIR}/lnav"
 
     apinitlnav
-    apcreateglobalsymlinklnav
 
     if alias apcreatedirstructlnav &>/dev/null; then
         apcreatedirstructlnav
     fi
+
+    apcreateglobalsymlinklnav
 }
 
 alias aprmlnav="ap_func_rm_lnav"

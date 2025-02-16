@@ -3,9 +3,9 @@ ap_func_init_xxx() {
     export AP_XXX_SETUP_VERSION=''
     export AP_XXX_CONF_DIR="${HOME}/.config/xxx"
 
-    alias zxxx="cd /Applications/xxx.app/Contents/MacOS"
-    alias zxxx="cd \${HOME}/.xxx"
-    alias zxxx="cd \${HOME}/.config/xxx"
+    alias zxxxconfig="cd /Applications/xxx.app/Contents/MacOS"
+    alias zxxxconfig="cd \${HOME}/.xxx"
+    alias zxxxconfig="cd \${HOME}/.config/xxx"
 
     if alias apinitxxxshare &>/dev/null; then
         apinitxxxshare
@@ -89,7 +89,7 @@ ap_func_create_dirstruct_xxx() {
 alias aprmdirstructxxx="ap_func_rm_dirstruct_xxx"
 ap_func_rm_dirstruct_xxx() {
     apshowmsginfo "Remove [${HOME}/.config/xxx/]\n"
-    rm -f "${HOME}/.config/xxx/"
+    rm -rf "${HOME}/.config/xxx/"
 
     apshowmsginfo "Remove [${AP_SOFT_DIR}/bin/xxx]\n"
     rm -f "${AP_SOFT_DIR}/bin/xxx"
