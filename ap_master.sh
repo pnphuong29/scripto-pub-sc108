@@ -12,6 +12,19 @@ else
     export AP_OS_TYPE="${AP_OS_TYPE_UNKNOWN}"
 fi
 
+export AP_USER='pnphuong29'
+export AP_HOME="/Users/${AP_USER}"
+
+# This will resolve absolute paths in different platforms such as macOS, Ubuntu, etc.
+# in VScode's settings.json file and many more similar cases.
+if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]]; then
+    if [ ! -L "${AP_HOME}" ]; then
+        echo "Create symlink from [${AP_HOME}] to [${HOME}]\n"
+        sudo mkdir -p "/Users"
+        sudo ln -s "${HOME}" "${AP_HOME}"
+    fi
+fi
+
 # Turn on/off log mode (for writing to log files)
 export AP_LOGS_GENERAL_ENABLED=0
 export AP_LOGS_DEBUG_ENABLED=1
