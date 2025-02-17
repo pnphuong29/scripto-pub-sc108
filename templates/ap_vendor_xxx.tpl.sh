@@ -160,9 +160,10 @@ ap_func_setup_xxx() {
                 "$(curl --silent "https://api.github.com/repos/owner/xxx/releases" | jq -r '.[0].assets[].browser_download_url' | grep "macos" | grep x86_64 | grep -v sha256)" >xxx.tar.gz
         fi
 
+        rm -rf "/Applications/xxx"
+
         unzip xxx.zip
         mv xxx* xxx
-        rm -rf "/Applications/xxx"
         mv "xxx/xxx.app" /Applications/
         cd "/Applications"
 
