@@ -31,27 +31,28 @@ ap_func_rm_dirstruct_mycli() {
     fi
 }
 
-alias apcreateglobalsymlinkmycli="ap_func_create_global_symlink_mycli"
-ap_func_create_global_symlink_mycli() {
-    if [ -f "${AP_SOFT_DIR}/bin/mycli" ]; then
-        aplogshow "Create symlink from [/usr/local/bin/mycli] to [${AP_SOFT_DIR}/bin/mycli]\n"
-        sudo ln -sf "${AP_SOFT_DIR}/bin/mycli" "/usr/local/bin/mycli"
-    fi
-}
+# alias apcreateglobalsymlinkmycli="ap_func_create_global_symlink_mycli"
+# ap_func_create_global_symlink_mycli() {
+#     if [ -f "${AP_SOFT_DIR}/bin/mycli" ]; then
+#         aplogshow "Create symlink from [/usr/local/bin/mycli] to [${AP_SOFT_DIR}/bin/mycli]\n"
+#         sudo ln -sf "${AP_SOFT_DIR}/bin/mycli" "/usr/local/bin/mycli"
+#     fi
+# }
 
-alias aprmglobalsymlinkmycli="ap_func_rm_global_symlink_mycli"
-ap_func_rm_global_symlink_mycli() {
-    if [ -f "/usr/local/bin/mycli" ]; then
-        aplogshow "Remove [/usr/local/bin/mycli]\n"
-        sudo rm -f "/usr/local/bin/mycli"
-    fi
-}
+# alias aprmglobalsymlinkmycli="ap_func_rm_global_symlink_mycli"
+# ap_func_rm_global_symlink_mycli() {
+#     if [ -f "/usr/local/bin/mycli" ]; then
+#         aplogshow "Remove [/usr/local/bin/mycli]\n"
+#         sudo rm -f "/usr/local/bin/mycli"
+#     fi
+# }
 
 alias apsetupmycli="ap_func_setup_mycli"
 ap_func_setup_mycli() {
     # https://github.com/dbcli/mycli
     aplogshow "Install [mycli]\n"
-    pip install mycli
+    # pip install mycli
+    uv tool install mycli
 
     apinitmycli
     if alias apcreatedirstructmycli &>/dev/null; then
@@ -62,7 +63,8 @@ ap_func_setup_mycli() {
 alias aprmmycli="ap_func_rm_mycli"
 ap_func_rm_mycli() {
     aplogshow "Remove [mycli]\n"
-    pip uninstall mycli
+    # pip uninstall mycli
+    uv tool uninstall mycli
 
     if alias aprmdirstructmycli &>/dev/null; then
         aprmdirstructmycli
@@ -94,8 +96,10 @@ ap_func_mycli() {
 
     if [ -n "$5" ]; then
         ap_db="$5"
+        apshowmsginfo "Execute [mycli -h \"${ap_host}\" -P \"${ap_port}\" -u \"${ap_user}\" -p \"${ap_pass}\" -D \"${ap_db}\"]\n"
         mycli -h "${ap_host}" -P "${ap_port}" -u "${ap_user}" -p "${ap_pass}" -D "${ap_db}"
     else
+        apshowmsginfo "Execute [mycli -h \"${ap_host}\" -P \"${ap_port}\" -u \"${ap_user}\" -p \"${ap_pass}\"]\n"
         mycli -h "${ap_host}" -P "${ap_port}" -u "${ap_user}" -p "${ap_pass}"
     fi
 
