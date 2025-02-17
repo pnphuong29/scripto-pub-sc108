@@ -1,3 +1,5 @@
+# https://www.postgresql.org/download/linux/
+# https://www.postgresql.org/download/macosx/
 alias apinitpostgresql="ap_func_init_postgresql"
 ap_func_init_postgresql() {
     if alias apinitpostgresqlshare &>/dev/null; then
@@ -33,21 +35,20 @@ ap_func_rm_dirstruct_postgresql() {
 
 alias apsetuppostgresql="ap_func_setup_postgresql"
 ap_func_setup_postgresql() {
-    # https://www.postgresql.org/download/linux/
-    # https://www.postgresql.org/download/macosx/
-    aplogshow "Install [PostgreSQL]\n"
+    aplogshow "Install [PostgreSQL v16]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         brew install postgresql@16
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-        wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-        sudo apt update
-        sudo apt install -y postgresql
+        sudo apt install -y postgresql-16
+        # sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+        # wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+        # sudo apt update
+        # sudo apt install -y postgresql
 
-        local ap_pgsql_major_version
-        ap_pgsql_major_version="$(psql --version | cut -d ' ' -f 3 | cut -d . -f 1)"
-        sudo apt install -y "postgresql-server-dev-${ap_pgsql_major_version}"
+        # local ap_pgsql_major_version
+        # ap_pgsql_major_version="$(psql --version | cut -d ' ' -f 3 | cut -d . -f 1)"
+        # sudo apt install -y "postgresql-server-dev-${ap_pgsql_major_version}"
     fi
 
     apinitpostgresql
