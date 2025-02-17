@@ -39,24 +39,29 @@ alias apsetuppass="ap_func_setup_pass"
 ap_func_setup_pass() {
     aplogshow "Install [pass]\n"
 
-    # Remove old app dir if any
-    rm -rf "${AP_SOFT_DIR}/pass"
-    rm -rf "${AP_TMP_DIR}/pass"
-
-    # Install pass
-    mkdir -p "${AP_TMP_DIR}/pass"
-    cd "${AP_TMP_DIR}/pass"
-
-    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        curl -SOL "https://git.zx2c4.com/password-store/snapshot/password-store-master.tar.xz"
+    # Option 1: Install pass from package manager
+    if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
+        brew install pass
+    elif [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]]; then
+        sudo apt install -y pass
     fi
 
-    tar -Jxf password-store-master.tar.xz
-    cd password-store-master
-    PREFIX="${AP_SOFT_DIR}/pass" WITH_ALLCOMP=yes make install
+    # Option 2: Install pass from source
+    # # Remove old app dir if any
+    # rm -rf "${AP_SOFT_DIR}/pass"
+    # rm -rf "${AP_TMP_DIR}/pass"
 
-    cd "${AP_SOFT_DIR}/pass"
-    rm -rf "${AP_TMP_DIR}/pass"
+    # # Install pass
+    # mkdir -p "${AP_TMP_DIR}/pass"
+    # cd "${AP_TMP_DIR}/pass"
+
+    # curl -SOL "https://git.zx2c4.com/password-store/snapshot/password-store-master.tar.xz"
+    # tar -Jxf password-store-master.tar.xz
+    # cd password-store-master
+    # PREFIX="${AP_SOFT_DIR}/pass" WITH_ALLCOMP=yes make install
+
+    # cd "${AP_SOFT_DIR}/pass"
+    # rm -rf "${AP_TMP_DIR}/pass"
 
     apinitpass
     if alias apcreatedirstructpass &>/dev/null; then
@@ -67,7 +72,14 @@ ap_func_setup_pass() {
 alias aprmpass="ap_func_rm_pass"
 ap_func_rm_pass() {
     aplogshow "Remove [pass]\n"
-    rm -rf "${AP_SOFT_DIR}/pass"
+    # rm -rf "${AP_SOFT_DIR}/pass"
+
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        brew remove pass
+    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+        sudo apt remove --purge -y pass
+        sudo apt autoremove --purge -y
+    fi
 
     if alias aprmdirstructpass &>/dev/null; then
         aprmdirstructpass

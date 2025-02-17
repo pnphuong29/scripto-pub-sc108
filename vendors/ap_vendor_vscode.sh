@@ -1,9 +1,5 @@
 alias apinitvscode="ap_func_init_vscode"
 ap_func_init_vscode() {
-    alias zcodeconf='cd ~/.config/Code'
-    alias zcodeconfuser='cd ~/.config/Code/User'
-    alias zcodeconfsnippets='cd ~/.config/Code/User/snippets'
-
     if alias apinitvscodeshare &>/dev/null; then
         apinitvscodeshare
     fi
@@ -15,11 +11,6 @@ ap_func_init_vscode() {
 
 alias apcreatedirstructvscode="ap_func_create_dirstruct_vscode"
 ap_func_create_dirstruct_vscode() {
-    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        aplogshow "Create symlink from [${AP_SOFT_DIR}/bin/code] to [/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code]\n"
-        ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" "${AP_SOFT_DIR}/bin/code"
-    fi
-
     if alias apcreatedirstructvscodeshare &>/dev/null; then
         apcreatedirstructvscodeshare
     fi
@@ -31,9 +22,6 @@ ap_func_create_dirstruct_vscode() {
 
 alias aprmdirstructvscode="ap_func_rm_dirstruct_vscode"
 ap_func_rm_dirstruct_vscode() {
-    aplogshow "Remove [${AP_SOFT_DIR}/bin/code]\n"
-    rm -f "${AP_SOFT_DIR}/bin/code"
-
     if alias aprmdirstructvscodeshare &>/dev/null; then
         aprmdirstructvscodeshare
     fi

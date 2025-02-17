@@ -12,17 +12,6 @@ else
     export AP_OS_TYPE="${AP_OS_TYPE_UNKNOWN}"
 fi
 
-export AP_USER='pnphuong29'
-if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
-    if [ -d /Users/pnphuong29 ]; then
-        export AP_HOME='/Users/pnphuong29'
-    fi
-elif [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]]; then
-    if [ -d /home/pnphuong29 ]; then
-        export AP_HOME='/home/pnphuong29'
-    fi
-fi
-
 # Turn on/off log mode (for writing to log files)
 export AP_LOGS_GENERAL_ENABLED=0
 export AP_LOGS_DEBUG_ENABLED=1
