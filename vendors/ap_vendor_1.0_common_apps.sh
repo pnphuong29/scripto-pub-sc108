@@ -21,6 +21,7 @@ ap_func_setup_common_apps() {
             make \
             cmake \
             gcc \
+            pkg-config \
             gpg2 \
             gnu-sed \
             gawk \
