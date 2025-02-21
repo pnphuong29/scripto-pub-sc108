@@ -32,6 +32,26 @@ ap_func_rm_dirstruct_pass() {
     fi
 }
 
+alias apcreateglobalsymlinkpass="ap_func_create_global_symlink_pass"
+ap_func_create_global_symlink_pass() {
+    if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
+        if [ -f "${AP_SOFT_DIR}/bin/pass" ]; then
+            apshowmsginfo "Create symlink from [/usr/local/bin/pass] to [${AP_SOFT_DIR}/bin/pass]\n"
+            sudo ln -sf "${AP_SOFT_DIR}/bin/pass" "/usr/local/bin/pass"
+        fi
+    fi
+}
+
+alias aprmglobalsymlinkpass="ap_func_rm_global_symlink_pass"
+ap_func_rm_global_symlink_pass() {
+    if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
+        if [ -f "/usr/local/bin/pass" ]; then
+            apshowmsginfo "Remove [/usr/local/bin/pass]\n"
+            sudo rm -f "/usr/local/bin/pass"
+        fi
+    fi
+}
+
 alias apsetuppass="ap_func_setup_pass"
 ap_func_setup_pass() {
     aplogshow "Install [pass]\n"

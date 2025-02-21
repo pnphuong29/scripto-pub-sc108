@@ -43,21 +43,25 @@ ap_func_rm_dirstruct_gpg() {
     fi
 }
 
-# alias apcreateglobalsymlinkgpg="ap_func_create_global_symlink_gpg"
-# ap_func_create_global_symlink_gpg() {
-#     if [ -f "${AP_SOFT_DIR}/bin/gpg" ]; then
-#         apshowmsginfo "Create symlink from [/usr/local/bin/gpg] to [${AP_SOFT_DIR}/bin/gpg]\n"
-#         sudo ln -sf "${AP_SOFT_DIR}/bin/gpg" "/usr/local/bin/gpg"
-#     fi
-# }
+alias apcreateglobalsymlinkgpg="ap_func_create_global_symlink_gpg"
+ap_func_create_global_symlink_gpg() {
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        if [ -f "/opt/homebrew/bin/gpg" ]; then
+            apshowmsginfo "Create symlink from [/usr/local/bin/gpg] to [/opt/homebrew/bin/gpg]\n"
+            sudo ln -sf "/opt/homebrew/bin/gpg" "/usr/local/bin/gpg"
+        fi
+    fi
+}
 
-# alias aprmglobalsymlinkgpg="ap_func_rm_global_symlink_gpg"
-# ap_func_rm_global_symlink_gpg() {
-#     if [ -f "/usr/local/bin/gpg" ]; then
-#         apshowmsginfo "Remove [/usr/local/bin/gpg]\n"
-#         sudo rm -f "/usr/local/bin/gpg"
-#     fi
-# }
+alias aprmglobalsymlinkgpg="ap_func_rm_global_symlink_gpg"
+ap_func_rm_global_symlink_gpg() {
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        if [ -f "/usr/local/bin/gpg" ]; then
+            apshowmsginfo "Remove [/usr/local/bin/gpg]\n"
+            sudo rm -f "/usr/local/bin/gpg"
+        fi
+    fi
+}
 
 alias apsetupgpg="ap_func_setup_gpg"
 ap_func_setup_gpg() {
