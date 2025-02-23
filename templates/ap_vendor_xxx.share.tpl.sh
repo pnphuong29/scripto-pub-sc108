@@ -34,7 +34,7 @@ ap_func_create_dirstruct_xxx_share() {
 
 alias aprmdirstructxxxshare="ap_func_rm_dirstruct_xxx_share"
 ap_func_rm_dirstruct_xxx_share() {
-    apshowmsginfo "Remove [${HOME}/.config/xxx/bindings.json/]\n"
+    apshowmsginfo "Remove [${HOME}/.config/xxx/bindings.json]\n"
     rm -f "${HOME}/.config/xxx/bindings.json"
 
     apshowmsginfo "Remove [${HOME}/.config/xxx/]\n"
