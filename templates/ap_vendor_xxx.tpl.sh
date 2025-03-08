@@ -205,6 +205,8 @@ ap_func_setup_xxx() {
     npm install -g xxx
 
     apinitxxx
+    apcreateglobalsymlinkxxx
+
     if alias apcreatedirstructxxx &>/dev/null; then
         apcreatedirstructxxx
     fi

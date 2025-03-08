@@ -5,6 +5,12 @@ ap_func_init_xxx_share() {
     alias zxxx="cd /Applications/xxx.app/Contents/MacOS"
     alias zxxx="cd \${HOME}/.xxx"
     alias zxxx="cd \${HOME}/.config/xxx"
+
+    alias viscxxx="vi -p \
+	   \${HOME}/scripto/vendors/ap_vendor_xxx.sh \
+	   \${HOME}/scripto-share/vendors/ap_vendor_xxx.sh \
+	   \${HOME}/.config/xxx/config.toml \
+	"
 }
 
 alias apcreatedirstructxxxshare="ap_func_create_dirstruct_xxx_share"
