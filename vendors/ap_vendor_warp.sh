@@ -23,7 +23,7 @@ ap_func_create_dirstruct_warp() {
 }
 
 alias aprmdirstructwarp="ap_func_rm_dirstruct_warp"
-ap_func_rm_dirstruct_warp() {
+ap_func_rm_dirstruct_warp()
     if alias aprmdirstructwarpshare &>/dev/null; then
         aprmdirstructwarpshare
     fi
