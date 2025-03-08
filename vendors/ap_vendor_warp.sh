@@ -38,17 +38,23 @@ ap_func_setup_warp() {
     # https://www.warp.dev/
     aplogshow "Install [Warp v${AP_WARP_VERSION}]\n"
 
+    local ap_dl_url=''
+    cd "${AP_TMP_DIR}"
+
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         # brew install --cask warp # Error when install using this way
-        curl -SL "https://releases.warp.dev/stable/v${AP_WARP_VERSION}.stable_02/Warp.dmg" >warp.dmg
+        ap_dl_url="https://releases.warp.dev/stable/v${AP_WARP_VERSION}.stable_02/Warp.dmg"
+        apshowmsginfo "Download warp from [${ap_dl_url}]"
+        curl -SL "${ap_dl_url}" >warp.dmg
         hdiutil attach -nobrowse warp.dmg
         cd "/Volumes/Warp"
         cp -R "Warp.app" /Applications/
         cd ~
         hdiutil detach "/Volumes/Warp"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
-        cd "${AP_TMP_DIR}"
-        curl -SL "https://releases.warp.dev/stable/v${AP_WARP_VERSION}.stable_02/warp-terminal_${AP_WARP_VERSION}.stable.02_amd64.deb" >warp.deb
+        ap_dl_url="https://releases.warp.dev/stable/v${AP_WARP_VERSION}.stable_02/warp-terminal_${AP_WARP_VERSION}.stable.02_amd64.deb"
+        apshowmsginfo "Download warp from [${ap_dl_url}]"
+        curl -SL "${ap_dl_url}" >warp.deb
         sudo dpkg -i warp.deb
     fi
 
