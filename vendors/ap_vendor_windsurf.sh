@@ -1,5 +1,7 @@
 alias apinitwindsurf="ap_func_init_windsurf"
 ap_func_init_windsurf() {
+    export AP_WINDSURF_SETUP_VERSION='1.3.4'
+
     if alias apinitwindsurfshare &>/dev/null; then
         apinitwindsurfshare
     fi
@@ -50,9 +52,9 @@ ap_func_setup_windsurf() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         # brew install --cask windsurf
         if [[ "$(uname -m)" == 'arm64' ]]; then
-            curl -SL "https://windsurf-stable.codeiumdata.com/darwin-arm64-dmg/stable/ff5014a12e72ceb812f9e7f61876befac66725e5/Windsurf-darwin-arm64-1.3.4.dmg" >windsurf.dmg
+            curl -SL "https://windsurf-stable.codeiumdata.com/darwin-arm64-dmg/stable/ff5014a12e72ceb812f9e7f61876befac66725e5/Windsurf-darwin-arm64-${AP_WINDSURF_SETUP_VERSION}.dmg" >windsurf.dmg
         elif [[ "$(uname -m)" == 'x86_64' ]]; then
-            curl -SL "https://windsurf-stable.codeiumdata.com/darwin-x64-dmg/stable/ff5014a12e72ceb812f9e7f61876befac66725e5/Windsurf-darwin-x64-1.3.4.dmg" >windsurf.dmg
+            curl -SL "https://windsurf-stable.codeiumdata.com/darwin-x64-dmg/stable/ff5014a12e72ceb812f9e7f61876befac66725e5/Windsurf-darwin-x64-${AP_WINDSURF_SETUP_VERSION}.dmg" >windsurf.dmg
         fi
 
         hdiutil attach -nobrowse windsurf.dmg
