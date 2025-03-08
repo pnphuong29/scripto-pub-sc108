@@ -1,12 +1,14 @@
 alias apinitjava="ap_func_init_java"
 ap_func_init_java() {
     export AP_JDK_SETUP_VERSION='21'
-    export JAVA_HOME="${AP_SOFT_DIR}/java/jdk-${AP_JDK_SETUP_VERSION}.jdk/Contents/Home"
 
     local ap_java_dir="${AP_SOFT_DIR}/java/jdk-${AP_JDK_SETUP_VERSION}.jdk"
     local ap_bin_path="${ap_java_dir}/Contents/Home/bin"
 
-    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        export JAVA_HOME="${ap_java_dir}/Contents/Home"
+    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+        export JAVA_HOME="${ap_java_dir}"
         ap_bin_path="${ap_java_dir}/bin"
     fi
 

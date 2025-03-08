@@ -49,13 +49,13 @@ ap_func_setup_redis() {
         sudo chmod 644 /usr/share/keyrings/redis-archive-keyring.gpg
         echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
         sudo apt-get update
-        sudo apt-get install -y redis-stack-server
-        # sudo apt-get install -y redis redis-server redis-tools # old method
+        # sudo apt-get install -y redis-stack-server # no longer available
+        sudo apt-get install -y redis redis-server
         # sudo snap install redis # obsolete
 
-        sudo systemctl enable redis-stack-server
-        sudo systemctl start redis-stack-server
-        # sudo systemctl enable redis-server
+        # sudo systemctl enable redis-stack-server
+        # sudo systemctl start redis-stack-server
+        # sudo systemctl enable redis-server # autostart after install
         # sudo systemctl start redis-server
     fi
 
