@@ -1,6 +1,6 @@
 alias apinitwarp="ap_func_init_warp"
 ap_func_init_warp() {
-    export AP_WARP_VERSION='v0.2025.01.22.08.02'
+    export AP_WARP_VERSION='0.2025.03.05.08.02'
 
     if alias apinitwarpshare &>/dev/null; then
         apinitwarpshare
