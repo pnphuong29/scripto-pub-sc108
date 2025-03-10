@@ -96,6 +96,7 @@ ap_func_create_dirstruct_node() {
 
     aplogshow "Generate [pnpm] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_pnpm.bash]\n"
     pnpm completion bash >"${AP_COMPLETIONS_DIR}/ap_completion_pnpm.bash"
+    gsed -i '/_pnpm_completion/s/$/ pn/' "${AP_COMPLETIONS_DIR}/ap_completion_pnpm.bash"
 
     if alias apcreatedirstructnodeshare &>/dev/null; then
         apcreatedirstructnodeshare
