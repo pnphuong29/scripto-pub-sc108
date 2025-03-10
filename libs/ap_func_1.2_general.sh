@@ -337,7 +337,7 @@ ap_func_rsync() {
 
     # Implementation
     local ap_src_path="${PWD}"
-    local ap_dst_path="/tmp/"
+    local ap_dst_path="/Users/pnphuong29/Downloads/"
 
     if [ -n "${1}" ]; then
         ap_src_path="${1}"
