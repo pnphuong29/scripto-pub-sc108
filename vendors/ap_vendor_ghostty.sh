@@ -28,8 +28,9 @@ ap_func_create_dirstruct_ghostty() {
         aplogshow "Create symlink from [${AP_MAN_DIR}/man5/ghostty.5] to [${HOME}/scripto-common/vendors/ghostty/share/macos/man/man5/ghostty.5]\n"
         ln -sf "${HOME}/scripto-common/vendors/ghostty/share/macos/man/man5/ghostty.5" "${AP_MAN_DIR}/man5/ghostty.5"
 
-        aplogshow "Create symlink from [${AP_SOFT_DIR}/bin/ghostty] to [/Applications/Ghostty.app/Contents/MacOS/ghostty]\n"
-        ln -sf "/Applications/Ghostty.app/Contents/MacOS/ghostty" "${AP_SOFT_DIR}/bin/ghostty"
+        # if use brew then ghostty bin is already located at /opt/homebrew/bin/ghostty
+        # aplogshow "Create symlink from [${AP_SOFT_DIR}/bin/ghostty] to [/Applications/Ghostty.app/Contents/MacOS/ghostty]\n"
+        # ln -sf "/Applications/Ghostty.app/Contents/MacOS/ghostty" "${AP_SOFT_DIR}/bin/ghostty"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         if [ -f "${HOME}/scripto-common/vendors/ghostty/share/linux/bash-completion/completions/ghostty.bash" ]; then
             aplogshow "Create symlink from [${AP_COMPLETIONS_DIR}/ap_completion_ghostty.bash] to [${HOME}/scripto-common/vendors/ghostty/share/linux/bash-completion/completions/ghostty.bash]\n"
@@ -93,9 +94,16 @@ ap_func_rm_dirstruct_ghostty() {
 
 alias apcreateglobalsymlinkghostty="ap_func_create_global_symlink_ghostty"
 ap_func_create_global_symlink_ghostty() {
-    if [ -f "${AP_SOFT_DIR}/bin/ghostty" ]; then
-        aplogshow "Create symlink from [/usr/local/bin/ghostty] to [${AP_SOFT_DIR}/bin/ghostty]\n"
-        sudo ln -sf "${AP_SOFT_DIR}/bin/ghostty" "/usr/local/bin/ghostty"
+    if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
+        if [ -f "/opt/homebrew/bin/ghostty" ]; then
+            aplogshow "Create symlink from [/usr/local/bin/ghostty] to [/opt/homebrew/bin/ghostty]\n"
+            sudo ln -sf "/opt/homebrew/bin/ghostty" "/usr/local/bin/ghostty"
+        fi
+    elif [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]]; then
+        if [ -f "${AP_SOFT_DIR}/bin/ghostty" ]; then
+            aplogshow "Create symlink from [/usr/local/bin/ghostty] to [${AP_SOFT_DIR}/bin/ghostty]\n"
+            sudo ln -sf "${AP_SOFT_DIR}/bin/ghostty" "/usr/local/bin/ghostty"
+        fi
     fi
 }
 
