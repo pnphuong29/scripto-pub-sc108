@@ -124,26 +124,26 @@ ap_func_setup_ghostty() {
     mkdir -p "${AP_TMP_DIR}/ghostty"
     cd "${AP_TMP_DIR}/ghostty"
 
-    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
+    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
+        # Build source code in macOS sometimes failed, better use brew
+        # Update latest share files to common scripts ghostty vendor configs
+        # if [ -d zig-out/share ]; then
+        #     rm -rf "${HOME}/scripto-common/vendors/ghostty/share/macos"
+        #     cp -R zig-out/share "${HOME}/scripto-common/vendors/ghostty/share/"
+        #     mv "${HOME}/scripto-common/vendors/ghostty/share/share" "${HOME}/scripto-common/vendors/ghostty/share/macos"
+        # fi
+
+        # cd macos && xcodebuild
+        # mv build/ReleaseLocal/Ghostty.app /Applications/
+        brew install --cask ghostty
+    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         # Install required libraries
         sudo apt install libgtk-4-dev libadwaita-1-dev git
-    fi
 
-    git clone https://github.com/ghostty-org/ghostty
-    cd ghostty
-    zig build -Doptimize=ReleaseFast
+        git clone https://github.com/ghostty-org/ghostty
+        cd ghostty
+        zig build -Doptimize=ReleaseFast
 
-    if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        # Update latest share files to common scripts ghostty vendor configs
-        if [ -d zig-out/share ]; then
-            rm -rf "${HOME}/scripto-common/vendors/ghostty/share/macos"
-            cp -R zig-out/share "${HOME}/scripto-common/vendors/ghostty/share/"
-            mv "${HOME}/scripto-common/vendors/ghostty/share/share" "${HOME}/scripto-common/vendors/ghostty/share/macos"
-        fi
-
-        cd macos && xcodebuild
-        mv build/ReleaseLocal/Ghostty.app /Applications/
-    elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         # Update latest share files to common scripts ghostty vendor configs
         if [ -d zig-out/share ]; then
             rm -rf "${HOME}/scripto-common/vendors/ghostty/share/linux"
