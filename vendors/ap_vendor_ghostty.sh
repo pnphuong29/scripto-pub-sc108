@@ -94,6 +94,10 @@ ap_func_rm_dirstruct_ghostty() {
 
 alias apcreateglobalsymlinkghostty="ap_func_create_global_symlink_ghostty"
 ap_func_create_global_symlink_ghostty() {
+    # if [ -f "${AP_SOFT_DIR}/bin/ghostty" ]; then
+    #     apshowmsginfo "Create symlink from [/usr/local/bin/ghostty] to [${AP_SOFT_DIR}/bin/ghostty]\n"
+    #     sudo ln -sf "${AP_SOFT_DIR}/bin/ghostty" "/usr/local/bin/ghostty"
+    # fi
     if [[ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]]; then
         if [ -f "/opt/homebrew/bin/ghostty" ]; then
             apshowmsginfo "Create symlink from [/usr/local/bin/ghostty] to [/opt/homebrew/bin/ghostty]\n"
@@ -133,9 +137,7 @@ ap_func_setup_ghostty() {
     cd "${AP_TMP_DIR}/ghostty"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        # Build source code in macOS sometimes failed, better use brew
-        # Maybe build failed because using nightly version of ghostty
-        # Should use latest tag instead of tig tag (nightly version)
+        # Still failed to build on macos
         # Update latest share files to common scripts ghostty vendor configs
         # if [ -d zig-out/share ]; then
         #     rm -rf "${HOME}/scripto-common/vendors/ghostty/share/macos"
@@ -150,6 +152,9 @@ ap_func_setup_ghostty() {
         # Install required libraries
         sudo apt install libgtk-4-dev libadwaita-1-dev git
 
+        # Download source code
+        # Build source code may fail because using nightly version of ghostty
+        # Should use latest tag instead of tig tag (nightly version)
         # git clone https://github.com/ghostty-org/ghostty
         curl -SL "$(curl --silent https://api.github.com/repos/ghostty-org/ghostty/tags | jq -r '.[0].tarball_url')" >ghostty.tar.gz
         tar -xzf ghostty.tar.gz
@@ -182,7 +187,7 @@ ap_func_rm_ghostty() {
     apshowmsginfo "Remove [ghostty]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
-        rm -rf "/Applications/Ghostty.app"
+        # rm -rf "/Applications/Ghostty.app"
         brew remove --cask ghostty
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         rm -rf "${AP_SOFT_DIR}/ghostty"
