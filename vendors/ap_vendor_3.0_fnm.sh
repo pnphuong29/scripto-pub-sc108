@@ -1,23 +1,5 @@
 alias apinitfnm="ap_func_init_fnm"
 ap_func_init_fnm() {
-    # export FNM_PATH="${HOME}/.fnm"
-    # apaddpath "${FNM_PATH}"
-    alias zfnm="cd \${FNM_DIR}"
-    alias zfnmnodeversions="cd \${FNM_DIR}/node-versions"
-
-    # Below codes will not work (recursive mode) when using ssh into pc7, so run `local` mode, then run `recursive` to fix
-    if [ -f "${HOME}/.cargo/bin/fnm" ]; then
-        eval "$(
-            "${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=local --shell bash
-        )"
-        eval "$(
-            "${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash
-        )"
-    fi
-
-    NODE_PATH="$(pnpm root -g)"
-    export NODE_PATH
-
     if alias apinitfnmshare &>/dev/null; then
         apinitfnmshare
     fi
@@ -33,23 +15,6 @@ ap_func_init_fnm() {
 
 alias apcreatedirstructfnm="ap_func_create_dirstruct_fnm"
 ap_func_create_dirstruct_fnm() {
-    aplogshow "Generate [fnm] bash autocomplete\n"
-    fnm completions --shell bash >"${AP_COMPLETIONS_DIR}/ap_completion_fnm.bash"
-
-    # if [ -f "${HOME}/.cargo/bin/fnm" ]; then
-    #     TARGET_LINE='--version-file-strategy=recursive'
-    #     MASTER_LINE='time source ~/scripto-main/ap_master.sh'
-    #     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ] && ! grep fnm "${HOME}/.profile" &>/dev/null; then
-    #         gsed -i "\|${MASTER_LINE}|d" "${HOME}/.profile"
-    #         echo 'eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"' >>"${HOME}/.profile"
-    #         gsed -i "/${TARGET_LINE}/i ${MASTER_LINE}" ~/.profile
-    #     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ] && ! grep fnm "${HOME}/.bashrc" &>/dev/null; then
-    #         gsed -i "\|${MASTER_LINE}|d" "${HOME}/.bashrc"
-    #         echo 'eval "$("${HOME}/.cargo/bin/fnm" env --use-on-cd --version-file-strategy=recursive --shell bash)"' >>"${HOME}/.bashrc"
-    #         gsed -i "/${TARGET_LINE}/i ${MASTER_LINE}" ~/.bashrc
-    #     fi
-    # fi
-
     if alias apcreatedirstructfnmshare &>/dev/null; then
         apcreatedirstructfnmshare
     fi
@@ -65,9 +30,6 @@ ap_func_create_dirstruct_fnm() {
 
 alias aprmdirstructfnm="ap_func_rm_dirstruct_fnm"
 ap_func_rm_dirstruct_fnm() {
-    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_fnm.bash]\n"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_fnm.bash"
-
     if alias aprmdirstructfnmshare &>/dev/null; then
         aprmdirstructfnmshare
     fi
