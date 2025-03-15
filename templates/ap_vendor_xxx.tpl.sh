@@ -202,10 +202,14 @@ ap_func_setup_xxx() {
 
     cargo install xxx
     pip install xxx
-    npm install -g xxx
+    pnpm install -g xxx
 
     apinitxxx
+
     apcreateglobalsymlinkxxx
+    if alias apcreateglobalsymlinkxxx &>/dev/null; then
+        apcreatedirstructxxx
+    fi
 
     if alias apcreatedirstructxxx &>/dev/null; then
         apcreatedirstructxxx

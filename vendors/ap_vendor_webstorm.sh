@@ -1,6 +1,6 @@
 alias apinitwebstorm="ap_func_init_webstorm"
 ap_func_init_webstorm() {
-    export AP_WEBSTORM_SETUP_VERSION='2024.3.4'
+    export AP_WEBSTORM_SETUP_VERSION='2024.3.5'
 
     if alias apinitwebstormshare &>/dev/null; then
         apinitwebstormshare

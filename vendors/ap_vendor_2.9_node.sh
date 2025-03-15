@@ -48,7 +48,8 @@ ap_func_init_node() {
 
     # pnpm
     alias pn='pnpm'
-    alias pnupdate='pnpm self-update'
+    alias pnselfupdate='pnpm self-update'
+    alias pnupdate='pnpm update'
     alias pnversion='pnpm --version'
     alias pnfilter='pnpm --filter'
     alias pnx='pnpm exec'
@@ -73,6 +74,7 @@ ap_func_init_node() {
     alias pnserve='pnpm run serve'
     alias pndev='pnpm run dev'
     alias pnbuild='pnpm run build'
+    alias pnbuildesm='pnpm run buildEsm'
     alias pnbuildlegacypeerdeps='pnpm run build --legacy-peer-deps'
     alias pnbuildtypes='pnpm run buildTypes'
     alias pnbuildnode='pnpm run buildNode'
