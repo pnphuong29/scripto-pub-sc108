@@ -88,13 +88,13 @@ ap_func_setup_webstorm() {
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         apshowmsginfo "Download [webstorm] version [${ap_webstorm_setup_version}] from [https://download-cdn.jetbrains.com/webstorm/WebStorm-${AP_WEBSTORM_SETUP_VERSION}.tar.gz]\n"
         curl -SL "https://download-cdn.jetbrains.com/webstorm/WebStorm-${AP_WEBSTORM_SETUP_VERSION}.tar.gz" >webstorm.tar.gz
+
+        tar -zxf webstorm.tar.gz
+        mv Webstorm* webstorm
+        mv webstorm "${AP_SOFT_DIR}/"
+        cd "${AP_SOFT_DIR}/webstorm"
     fi
 
-    tar -zxf webstorm.tar.gz
-
-    mv Webstorm* webstorm
-    mv webstorm "${AP_SOFT_DIR}/"
-    cd "${AP_SOFT_DIR}/webstorm"
     # rm -rf "${AP_TMP_DIR}/webstorm"
 
     apinitwebstorm
