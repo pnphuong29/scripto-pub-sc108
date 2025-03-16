@@ -90,7 +90,7 @@ ap_func_setup_webstorm() {
         curl -SL "https://download-cdn.jetbrains.com/webstorm/WebStorm-${AP_WEBSTORM_SETUP_VERSION}.tar.gz" >webstorm.tar.gz
 
         tar -zxf webstorm.tar.gz
-        mv Webstorm* webstorm
+        mv WebStorm* webstorm
         mv webstorm "${AP_SOFT_DIR}/"
         cd "${AP_SOFT_DIR}/webstorm"
     fi

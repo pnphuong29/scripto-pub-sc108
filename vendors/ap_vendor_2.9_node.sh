@@ -1,89 +1,5 @@
 alias apinitnode="ap_func_init_node"
 ap_func_init_node() {
-    export AP_NODE_VERSION_16="16.20.2"
-    export AP_NODE_VERSION_18="18.20.5"
-    export AP_NODE_VERSION_20="20.18.1"
-    export AP_NODE_VERSION_22="22.13.0"
-    export AP_NODE_VERSION_DEFAULT="${AP_NODE_VERSION_20}"
-
-    if [ -d "${HOME}/.local/share/pnpm" ]; then
-        export PNPM_HOME="${HOME}/.local/share/pnpm"
-        apaddpath "${PNPM_HOME}"
-    fi
-
-    if [ -d "${HOME}/.yarn/bin" ]; then
-        apaddpath "${HOME}/.yarn/bin"
-    fi
-
-    # npm
-    alias npmi='npm install'
-    alias npmid='npm install --save-dev'
-    alias npmig='npm install --global'
-    alias npmilegacypeerdeps='npm install --legacy-peer-deps'
-
-    alias npmu='npm upgrade'
-    alias npmug='npm upgrade --global'
-
-    alias npmls='npm ls'
-    alias npmlsg='npm ls -g'
-
-    alias npmrm='npm uninstall'
-    alias npmrmg='npm uninstall -g'
-
-    alias npmrun='npm run'
-    alias npmclean='npm run clean'
-    alias npmlint='npm run lint'
-    alias npmtest='npm run test'
-    alias npmserve='npm run serve'
-    alias npmdev='npm run dev'
-    alias npmbuild='npm run build'
-    alias npmbuildlegacypeerdeps='npm run build --legacy-peer-deps'
-    alias npmbuildtypes='npm run buildTypes'
-    alias npmbuildnode='npm run buildNode'
-    alias npmbuildnodeswc='npm run buildNodeSwc'
-    alias npmbuildesm='npm run buildEsm'
-    alias npmbuildesmswc='npm run buildEsmSwc'
-
-    alias npmcreate='npm create'
-
-    # pnpm
-    alias pn='pnpm'
-    alias pnselfupdate='pnpm self-update'
-    alias pnupdate='pnpm update'
-    alias pnupdateg='pnpm update -g'
-    alias pnversion='pnpm --version'
-    alias pnfilter='pnpm --filter'
-    alias pnx='pnpm exec'
-    alias pndl='pnpm dlx'
-
-    alias pni='pnpm install'
-    alias pnig='pnpm install --global'
-
-    alias pna='pnpm add'
-    alias pnad='pnpm add -D'
-
-    alias pnls='pnpm ls'
-    alias pnlsg='pnpm ls --global'
-
-    alias pnrm='pnpm rm'
-    alias pnrmg='pnpm rm --global'
-
-    alias pnrun='pnpm run'
-    alias pnclean='pnpm run clean'
-    alias pnformat='pnpm run format'
-    alias pnlint='pnpm run lint'
-    alias pntest='pnpm run test'
-    alias pnserve='pnpm run serve'
-    alias pndev='pnpm run dev'
-    alias pnbuild='pnpm run build'
-    alias pnbuildesm='pnpm run buildEsm'
-    alias pnbuildlegacypeerdeps='pnpm run build --legacy-peer-deps'
-    alias pnbuildtypes='pnpm run buildTypes'
-    alias pnbuildnode='pnpm run buildNode'
-    alias pnbuildnodeswc='pnpm run buildNodeSwc'
-    alias pnbuildesm='pnpm run buildEsm'
-    alias pnbuildesmswc='pnpm run buildEsmSwc'
-
     if alias apinitnodeshare &>/dev/null; then
         apinitnodeshare
     fi
@@ -95,13 +11,6 @@ ap_func_init_node() {
 
 alias apcreatedirstructnode="ap_func_create_dirstruct_node"
 ap_func_create_dirstruct_node() {
-    aplogshow "Generate [npm] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_npm.bash]\n"
-    npm completion >"${AP_COMPLETIONS_DIR}/ap_completion_npm.bash"
-
-    aplogshow "Generate [pnpm] bash autocomplete at [${AP_COMPLETIONS_DIR}/ap_completion_pnpm.bash]\n"
-    pnpm completion bash >"${AP_COMPLETIONS_DIR}/ap_completion_pnpm.bash"
-    gsed -i '/_pnpm_completion/s/$/ pn/' "${AP_COMPLETIONS_DIR}/ap_completion_pnpm.bash"
-
     if alias apcreatedirstructnodeshare &>/dev/null; then
         apcreatedirstructnodeshare
     fi
@@ -113,12 +22,6 @@ ap_func_create_dirstruct_node() {
 
 alias aprmdirstructnode="ap_func_rm_dirstruct_node"
 ap_func_rm_dirstruct_node() {
-    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_npm.bash]\n"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_npm.bash"
-
-    aplogshow "Remove [${AP_COMPLETIONS_DIR}/ap_completion_pnpm.bash]\n"
-    rm -f "${AP_COMPLETIONS_DIR}/ap_completion_pnpm.bash"
-
     if alias aprmdirstructnodeshare &>/dev/null; then
         aprmdirstructnodeshare
     fi
@@ -130,19 +33,18 @@ ap_func_rm_dirstruct_node() {
 
 alias apcreateglobalsymlinknode="ap_func_create_global_symlink_node"
 ap_func_create_global_symlink_node() {
-    local ap_path
-    ap_path="$(nvm which node | cut -d ' ' -f 3)"
-    # ap_path="$(which node | cut -d ' ' -f 3)"
+    if [ -d "${FNM_DIR}/aliases/default/bin" ]; then
+        aplogshow "Create symlink from [/usr/local/bin/node] to [${FNM_DIR}/aliases/default/bin/node]\n"
+        sudo ln -sf "${FNM_DIR}/aliases/default/bin/node" "/usr/local/bin/node"
 
-    if [ -f "${ap_path}" ]; then
-        aplogshow "Create symlink from [/usr/local/bin/node] to [${ap_path}]\n"
-        sudo ln -sf "${ap_path}" "/usr/local/bin/node"
+        aplogshow "Create symlink from [/usr/local/bin/npm] to [${FNM_DIR}/aliases/default/bin/npm]\n"
+        sudo ln -sf "${FNM_DIR}/aliases/default/bin/npm" "/usr/local/bin/npm"
 
-        aplogshow "Create symlink from [/usr/local/bin/npm] to [${ap_path%/*}/npm]\n"
-        sudo ln -sf "${ap_path%/*}/npm" "/usr/local/bin/npm"
+        aplogshow "Create symlink from [/usr/local/bin/pnpm] to [${FNM_DIR}/aliases/default/bin/pnpm]\n"
+        sudo ln -sf "${FNM_DIR}/aliases/default/bin/pnpm" "/usr/local/bin/pnpm"
 
-        aplogshow "Create symlink from [/usr/local/bin/yarn] to [${ap_path%/*}/yarn]\n"
-        sudo ln -sf "${ap_path%/*}/yarn" "/usr/local/bin/yarn"
+        aplogshow "Create symlink from [/usr/local/bin/yarn] to [${FNM_DIR}/aliases/default/bin/yarn]\n"
+        sudo ln -sf "${FNM_DIR}/aliases/default/bin/yarn" "/usr/local/bin/yarn"
     fi
 }
 
@@ -153,6 +55,9 @@ ap_func_rm_global_symlink_node() {
 
     aplogshow "Remove [/usr/local/bin/npm]\n"
     sudo rm -f "/usr/local/bin/npm"
+
+    aplogshow "Remove [/usr/local/bin/pnpm]\n"
+    sudo rm -f "/usr/local/bin/pnpm"
 
     aplogshow "Remove [/usr/local/bin/yarn]\n"
     sudo rm -f "/usr/local/bin/yarn"
