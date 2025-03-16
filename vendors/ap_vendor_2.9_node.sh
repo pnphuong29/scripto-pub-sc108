@@ -50,6 +50,7 @@ ap_func_init_node() {
     alias pn='pnpm'
     alias pnselfupdate='pnpm self-update'
     alias pnupdate='pnpm update'
+    alias pnupdateg='pnpm update -g'
     alias pnversion='pnpm --version'
     alias pnfilter='pnpm --filter'
     alias pnx='pnpm exec'
@@ -69,6 +70,7 @@ ap_func_init_node() {
 
     alias pnrun='pnpm run'
     alias pnclean='pnpm run clean'
+    alias pnformat='pnpm run format'
     alias pnlint='pnpm run lint'
     alias pntest='pnpm run test'
     alias pnserve='pnpm run serve'
