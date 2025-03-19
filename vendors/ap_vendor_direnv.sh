@@ -88,6 +88,7 @@ ap_func_setup_direnv() {
             "$(curl --silent "https://api.github.com/repos/direnv/direnv/releases" | jq -r '.[0].assets[].browser_download_url' | grep "linux" | grep amd64)" >direnv
     fi
 
+    chmod +x direnv
     mv direnv "${AP_SOFT_DIR}/bin/"
     cd "${AP_SOFT_DIR}/bin"
     # rm -rf "${AP_TMP_DIR}/direnv"
