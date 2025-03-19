@@ -1,7 +1,5 @@
 alias apinitzed="ap_func_init_zed"
 ap_func_init_zed() {
-    alias zzedconfig="cd \${HOME}/.config/zed"
-
     if alias apinitzedshare &>/dev/null; then
         apinitzedshare
     fi
@@ -51,7 +49,6 @@ ap_func_setup_zed() {
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         # brew install --cask zed
-
         if [[ "$(uname -m)" == 'arm64' ]]; then
             curl -SL \
                 "$(curl --silent "https://api.github.com/repos/zed-industries/zed/releases" | jq -r '.[0].assets[].browser_download_url' | grep "dmg" | grep aarch64)" >zed.dmg
