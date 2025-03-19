@@ -92,10 +92,10 @@ ap_func_setup_stripe() {
 
     apinitstripe
 
-    # apcreateglobalsymlinkstripe
-    # if alias apcreateglobalsymlinkstripe &>/dev/null; then
-    #     apcreatedirstructstripe
-    # fi
+    apcreateglobalsymlinkstripe
+    if alias apcreateglobalsymlinkstripe &>/dev/null; then
+        apcreatedirstructstripe
+    fi
 
     if alias apcreatedirstructstripe &>/dev/null; then
         apcreatedirstructstripe
