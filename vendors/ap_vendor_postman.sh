@@ -17,11 +17,11 @@ alias apcreatedirstructpostman="ap_func_create_dirstruct_postman"
 ap_func_create_dirstruct_postman() {
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         # Create a symbolic link to the Postman executable
-        aplogshow "Creating symbolic link from [${AP_SOFT_DIR}/bin/postman] to [${AP_SOFT_DIR}/postman/Postman]\n"
+        apshowmsginfo "Creating symbolic link from [${AP_SOFT_DIR}/bin/postman] to [${AP_SOFT_DIR}/postman/Postman]\n"
         ln -sf "${AP_SOFT_DIR}/postman/Postman" "${AP_SOFT_DIR}/bin/postman"
 
         # Create a desktop entry for Postman
-        aplogshow "Creating desktop entry at [${HOME}/.local/share/applications/postman.desktop]\n"
+        apshowmsginfo "Creating desktop entry at [${HOME}/.local/share/applications/postman.desktop]\n"
         cat <<-EOL | tee "${HOME}/.local/share/applications/postman.desktop" >/dev/null
 [Desktop Entry]
 Name=Postman
@@ -67,7 +67,7 @@ ap_func_rm_dirstruct_postman() {
 
 alias apsetuppostman="ap_func_setup_postman"
 ap_func_setup_postman() {
-    aplogshow "Install [postman]\n"
+    apshowmsginfo "Install [postman]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         # Define the URL for the latest Postman tarball
@@ -80,46 +80,46 @@ ap_func_setup_postman() {
         TARGET_DIR="/Applications/Postman.app"
 
         # Download the Postman zip file
-        aplogshow "Downloading Postman...\n"
+        apshowmsginfo "Downloading Postman...\n"
         curl -o "${TARGET_FILE}" "${POSTMAN_URL}"
 
         # Remove any existing Postman application
         if [ -d "${TARGET_DIR}" ]; then
-            aplogshow "Removing existing Postman application [/Applications/Postman.app]"
+            apshowmsginfo "Removing existing Postman application [/Applications/Postman.app]"
             rm -rf "${TARGET_DIR}"
         fi
 
         # Unzip the downloaded file to the Applications directory
-        aplogshow "Extracting Postman...\n"
+        apshowmsginfo "Extracting Postman...\n"
         unzip "${TARGET_FILE}" -d /Applications
 
         # Clean up the zip file
-        aplogshow "Cleaning up...\n"
+        apshowmsginfo "Cleaning up...\n"
         rm "${TARGET_FILE}"
     elif [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_UBUNTU}" ]; then
         # Define the URL for the latest Postman tarball
         POSTMAN_URL="https://dl.pstmn.io/download/latest/linux64"
 
         # Download the Postman tarball
-        aplogshow "Downloading Postman...\n"
+        apshowmsginfo "Downloading Postman...\n"
         wget -O "${AP_TMP_DIR}/postman.tar.gz" "${POSTMAN_URL}"
 
         # Remove any existing Postman directory
         if [ -d "${AP_SOFT_DIR}/postman" ]; then
-            aplogshow "Removing existing Postman directory [${AP_SOFT_DIR}/postman]\n"
+            apshowmsginfo "Removing existing Postman directory [${AP_SOFT_DIR}/postman]\n"
             rm -rf "${AP_SOFT_DIR}/postman"
         fi
 
         # Extract the tarball to the target directory
-        aplogshow "Extracting Postman...\n"
+        apshowmsginfo "Extracting Postman...\n"
         tar -xzvf "${AP_TMP_DIR}/postman.tar.gz" -C "${AP_SOFT_DIR}"
 
         # Rename target dir
-        aplogshow "Rename [${AP_SOFT_DIR}/Postman] to [${AP_SOFT_DIR}/postman\n"
+        apshowmsginfo "Rename [${AP_SOFT_DIR}/Postman] to [${AP_SOFT_DIR}/postman\n"
         mv "${AP_SOFT_DIR}/Postman" "${AP_SOFT_DIR}/postman"
 
         # Clean up the tarball
-        aplogshow "Cleaning up...\n"
+        apshowmsginfo "Cleaning up...\n"
         rm "${AP_TMP_DIR}/postman.tar.gz"
     fi
 
@@ -131,7 +131,7 @@ ap_func_setup_postman() {
 
 alias aprmpostman="ap_func_rm_postman"
 ap_func_rm_postman() {
-    aplogshow "Remove [postman]\n"
+    apshowmsginfo "Remove [postman]\n"
 
     if [ "${AP_OS_TYPE}" == "${AP_OS_TYPE_MACOS}" ]; then
         rm -rf "/Applications/Postman.app"
